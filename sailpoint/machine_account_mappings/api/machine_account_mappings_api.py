@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
 
 from sailpoint.machine_account_mappings.api_client import ApiClient, RequestSerialized
 from sailpoint.machine_account_mappings.api_response import ApiResponse
@@ -43,7 +43,7 @@ class MachineAccountMappingsApi:
     def create_machine_account_mappings_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,15 +56,15 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Attributemappings]:
+    ) -> List[AttributeMappings]:
         """Create machine account mappings
 
         Creates Machine Account Mappings for both identities and accounts for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class MachineAccountMappingsApi:
 
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,12 +97,12 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class MachineAccountMappingsApi:
     def create_machine_account_mappings_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,15 +132,15 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Attributemappings]]:
+    ) -> ApiResponse[List[AttributeMappings]]:
         """Create machine account mappings
 
         Creates Machine Account Mappings for both identities and accounts for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,7 +165,7 @@ class MachineAccountMappingsApi:
 
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,12 +173,12 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -195,7 +195,7 @@ class MachineAccountMappingsApi:
     def create_machine_account_mappings_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -215,8 +215,8 @@ class MachineAccountMappingsApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -241,7 +241,7 @@ class MachineAccountMappingsApi:
 
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -249,12 +249,12 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -266,7 +266,7 @@ class MachineAccountMappingsApi:
     def _create_machine_account_mappings_v1_serialize(
         self,
         source_id,
-        attributemappings,
+        attribute_mappings,
         _request_auth,
         _content_type,
         _headers,
@@ -294,8 +294,8 @@ class MachineAccountMappingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if attributemappings is not None:
-            _body_params = attributemappings
+        if attribute_mappings is not None:
+            _body_params = attribute_mappings
 
 
         # set the HTTP header `Accept`
@@ -397,12 +397,12 @@ class MachineAccountMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -470,12 +470,12 @@ class MachineAccountMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -543,12 +543,12 @@ class MachineAccountMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -638,7 +638,7 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Attributemappings]:
+    ) -> List[AttributeMappings]:
         """Machine account mapping for source
 
         Retrieves Machine account mappings for a specified source using Source ID.
@@ -682,13 +682,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -719,7 +719,7 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Attributemappings]]:
+    ) -> ApiResponse[List[AttributeMappings]]:
         """Machine account mapping for source
 
         Retrieves Machine account mappings for a specified source using Source ID.
@@ -763,13 +763,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -844,13 +844,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -936,7 +936,7 @@ class MachineAccountMappingsApi:
     def set_machine_account_mappings_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -949,15 +949,15 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Attributemappings]:
+    ) -> List[AttributeMappings]:
         """Update source's machine account mappings
 
         Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -982,7 +982,7 @@ class MachineAccountMappingsApi:
 
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -990,13 +990,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1013,7 +1013,7 @@ class MachineAccountMappingsApi:
     def set_machine_account_mappings_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1026,15 +1026,15 @@ class MachineAccountMappingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Attributemappings]]:
+    ) -> ApiResponse[List[AttributeMappings]]:
         """Update source's machine account mappings
 
         Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1059,7 +1059,7 @@ class MachineAccountMappingsApi:
 
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1067,13 +1067,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1090,7 +1090,7 @@ class MachineAccountMappingsApi:
     def set_machine_account_mappings_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        attributemappings: Attributemappings,
+        attribute_mappings: AttributeMappings,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1110,8 +1110,8 @@ class MachineAccountMappingsApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param attributemappings: (required)
-        :type attributemappings: Attributemappings
+        :param attribute_mappings: (required)
+        :type attribute_mappings: AttributeMappings
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1136,7 +1136,7 @@ class MachineAccountMappingsApi:
 
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
-            attributemappings=attributemappings,
+            attribute_mappings=attribute_mappings,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1144,13 +1144,13 @@ class MachineAccountMappingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributemappings]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeMappings]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1162,7 +1162,7 @@ class MachineAccountMappingsApi:
     def _set_machine_account_mappings_v1_serialize(
         self,
         source_id,
-        attributemappings,
+        attribute_mappings,
         _request_auth,
         _content_type,
         _headers,
@@ -1190,8 +1190,8 @@ class MachineAccountMappingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if attributemappings is not None:
-            _body_params = attributemappings
+        if attribute_mappings is not None:
+            _body_params = attribute_mappings
 
 
         # set the HTTP header `Accept`

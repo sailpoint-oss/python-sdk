@@ -39,17 +39,17 @@ Returns the publicly visible attributes of an identity available to request appr
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Publicidentityconfig**](../models/publicidentityconfig)
+[**PublicIdentityConfig**](../models/public-identity-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | Publicidentityconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | PublicIdentityConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPublicIdentityConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPublicIdentityConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -60,7 +60,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi
 from sailpoint.public_identities_config.api_client import ApiClient
-from sailpoint.public_identities_config.models.publicidentityconfig import Publicidentityconfig
+from sailpoint.public_identities_config.models.public_identity_config import PublicIdentityConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -93,20 +93,20 @@ Updates the publicly visible attributes of an identity available to request appr
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | publicidentityconfig | [**Publicidentityconfig**](../models/publicidentityconfig) | True  | 
+ Body  | public_identity_config | [**PublicIdentityConfig**](../models/public-identity-config) | True  | 
 
 ### Return type
-[**Publicidentityconfig**](../models/publicidentityconfig)
+[**PublicIdentityConfig**](../models/public-identity-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | Publicidentityconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | PublicIdentityConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPublicIdentityConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPublicIdentityConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -117,20 +117,34 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi
 from sailpoint.public_identities_config.api_client import ApiClient
-from sailpoint.public_identities_config.models.publicidentityconfig import Publicidentityconfig
+from sailpoint.public_identities_config.models.public_identity_config import PublicIdentityConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    publicidentityconfig = '''sailpoint.public_identities_config.Publicidentityconfig()''' # Publicidentityconfig | 
+    public_identity_config = '''{
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "attributes" : [ {
+            "name" : "Country",
+            "key" : "country"
+          }, {
+            "name" : "Country",
+            "key" : "country"
+          } ],
+          "modifiedBy" : {
+            "name" : "Thomas Edison",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }
+        }''' # PublicIdentityConfig | 
 
     try:
         # Update the public identities configuration
-        new_publicidentityconfig = Publicidentityconfig.from_json(publicidentityconfig)
-        results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(publicidentityconfig=new_publicidentityconfig)
+        new_public_identity_config = PublicIdentityConfig.from_json(public_identity_config)
+        results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(public_identity_config=new_public_identity_config)
         # Below is a request that includes all optional parameters
-        # results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(new_publicidentityconfig)
+        # results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(new_public_identity_config)
         print("The response of PublicIdentitiesConfigApi->update_public_identity_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

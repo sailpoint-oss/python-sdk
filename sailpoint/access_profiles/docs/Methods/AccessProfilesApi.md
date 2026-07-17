@@ -72,20 +72,20 @@ The maximum supported length for the description field is 2000 characters. Longe
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofile | [**Accessprofile**](../models/accessprofile) | True  | 
+ Body  | access_profile | [**AccessProfile**](../models/access-profile) | True  | 
 
 ### Return type
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Access profile created. | Accessprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Access profile created. | AccessProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -96,20 +96,135 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofile import Accessprofile
+from sailpoint.access_profiles.models.access_profile import AccessProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessprofile = '''sailpoint.access_profiles.Accessprofile()''' # Accessprofile | 
+    access_profile = '''{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "created" : "2021-03-01T22:32:58.104Z",
+          "description" : "Collection of entitlements to read/write the employee database",
+          "source" : {
+            "name" : "ODS-AD-SOURCE",
+            "id" : "2c91809773dee3610173fdb0b6061ef4",
+            "type" : "SOURCE"
+          },
+          "enabled" : true,
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "accessRequestConfig" : {
+            "commentsRequired" : true,
+            "reauthorizationRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
+          },
+          "name" : "Employee-database-read-write",
+          "provisioningCriteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            }, {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            } ],
+            "attribute" : "email",
+            "operation" : "EQUALS",
+            "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+          },
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c91808a7190d06e01719938fcd20792",
+          "requestable" : true
+        }''' # AccessProfile | 
 
     try:
         # Create access profile
-        new_accessprofile = Accessprofile.from_json(accessprofile)
-        results = AccessProfilesApi(api_client).create_access_profile_v1(accessprofile=new_accessprofile)
+        new_access_profile = AccessProfile.from_json(access_profile)
+        results = AccessProfilesApi(api_client).create_access_profile_v1(access_profile=new_access_profile)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).create_access_profile_v1(new_accessprofile)
+        # results = AccessProfilesApi(api_client).create_access_profile_v1(new_access_profile)
         print("The response of AccessProfilesApi->create_access_profile_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -143,11 +258,11 @@ Path   | id | **str** | True  | ID of the Access Profile to delete
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Returned when an access profile cannot be deleted as it&#39;s being used. | Errorresponsedto |  -  |
+400 | Returned when an access profile cannot be deleted as it&#39;s being used. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -193,21 +308,21 @@ A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles asso
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofilebulkdeleterequest | [**Accessprofilebulkdeleterequest**](../models/accessprofilebulkdeleterequest) | True  | 
+ Body  | access_profile_bulk_delete_request | [**AccessProfileBulkDeleteRequest**](../models/access-profile-bulk-delete-request) | True  | 
 
 ### Return type
-[**Accessprofilebulkdeleteresponse**](../models/accessprofilebulkdeleteresponse)
+[**AccessProfileBulkDeleteResponse**](../models/access-profile-bulk-delete-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returned only if **bestEffortOnly** is **false**, and one or more Access Profiles are in use. | Accessprofilebulkdeleteresponse |  -  |
-202 | Returned if at least one deletion will be performed. | Accessprofilebulkdeleteresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Returned only if **bestEffortOnly** is **false**, and one or more Access Profiles are in use. | AccessProfileBulkDeleteResponse |  -  |
+202 | Returned if at least one deletion will be performed. | AccessProfileBulkDeleteResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -218,21 +333,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofilebulkdeleterequest import Accessprofilebulkdeleterequest
-from sailpoint.access_profiles.models.accessprofilebulkdeleteresponse import Accessprofilebulkdeleteresponse
+from sailpoint.access_profiles.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
+from sailpoint.access_profiles.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessprofilebulkdeleterequest = '''{"bestEffortOnly":true,"accessProfileIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}''' # Accessprofilebulkdeleterequest | 
+    access_profile_bulk_delete_request = '''{
+          "accessProfileIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ],
+          "bestEffortOnly" : true
+        }''' # AccessProfileBulkDeleteRequest | 
 
     try:
         # Delete access profile(s)
-        new_accessprofilebulkdeleterequest = Accessprofilebulkdeleterequest.from_json(accessprofilebulkdeleterequest)
-        results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v1(accessprofilebulkdeleterequest=new_accessprofilebulkdeleterequest)
+        new_access_profile_bulk_delete_request = AccessProfileBulkDeleteRequest.from_json(access_profile_bulk_delete_request)
+        results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v1(access_profile_bulk_delete_request=new_access_profile_bulk_delete_request)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v1(new_accessprofilebulkdeleterequest)
+        # results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v1(new_access_profile_bulk_delete_request)
         print("The response of AccessProfilesApi->delete_access_profiles_in_bulk_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -269,11 +387,11 @@ Path   | id | **str** | True  | ID of the access profile containing the entitlem
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of entitlements. | List[Entitlement] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -327,17 +445,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the Access Profile
 
 ### Return type
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An AccessProfile | Accessprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An AccessProfile | AccessProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -348,7 +466,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofile import Accessprofile
+from sailpoint.access_profiles.models.access_profile import AccessProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -393,17 +511,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | include_unsegmented | **bool** |   (optional) (default to True) | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
 
 ### Return type
-[**List[Accessprofile]**](../models/accessprofile)
+[**List[AccessProfile]**](../models/access-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of access profiles. | List[Accessprofile] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of access profiles. | List[AccessProfile] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -414,7 +532,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofile import Accessprofile
+from sailpoint.access_profiles.models.access_profile import AccessProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -488,20 +606,20 @@ A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Access Profile to patch
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
 
 ### Return type
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the Access Profile as updated. | Accessprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the Access Profile as updated. | AccessProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -512,22 +630,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofile import Accessprofile
-from sailpoint.access_profiles.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.access_profiles.models.access_profile import AccessProfile
+from sailpoint.access_profiles.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to patch # str | ID of the Access Profile to patch
-    jsonpatchoperation = '''[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]''' # List[Jsonpatchoperation] | 
+    json_patch_operation = '''[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]''' # List[JsonPatchOperation] | 
 
     try:
         # Patch a specified access profile
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = AccessProfilesApi(api_client).patch_access_profile_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = AccessProfilesApi(api_client).patch_access_profile_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).patch_access_profile_v1(id, new_jsonpatchoperation)
+        # results = AccessProfilesApi(api_client).patch_access_profile_v1(id, new_json_patch_operation)
         print("The response of AccessProfilesApi->patch_access_profile_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -565,22 +683,22 @@ This API initiates a bulk update of field requestable for one or more Access Pro
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofilebulkupdaterequest_inner | [**[]AccessprofilebulkupdaterequestInner**](../models/accessprofilebulkupdaterequest-inner) | True  | 
+ Body  | access_profile_bulk_update_request_inner | [**[]AccessProfileBulkUpdateRequestInner**](../models/access-profile-bulk-update-request-inner) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessprofileupdateitem]**](../models/accessprofileupdateitem)
+[**List[AccessProfileUpdateItem]**](../models/access-profile-update-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | List of updated and not updated Access Profiles. | List[Accessprofileupdateitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | List of updated and not updated Access Profiles. | List[AccessProfileUpdateItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 412 | Precondition Failed - Returned in response if API/Feature not enabled for an organization. | UpdateAccessProfilesInBulkV1412Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -591,23 +709,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofilebulkupdaterequest_inner import AccessprofilebulkupdaterequestInner
-from sailpoint.access_profiles.models.accessprofileupdateitem import Accessprofileupdateitem
+from sailpoint.access_profiles.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+from sailpoint.access_profiles.models.access_profile_update_item import AccessProfileUpdateItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessprofilebulkupdaterequest_inner = '''[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]''' # List[AccessprofilebulkupdaterequestInner] | 
+    access_profile_bulk_update_request_inner = '''[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]''' # List[AccessProfileBulkUpdateRequestInner] | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update access profile(s) requestable field.
-        new_accessprofilebulkupdaterequest_inner = AccessprofilebulkupdaterequestInner.from_json(accessprofilebulkupdaterequest_inner)
-        results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(accessprofilebulkupdaterequest_inner=new_accessprofilebulkupdaterequest_inner)
+        new_access_profile_bulk_update_request_inner = AccessProfileBulkUpdateRequestInner.from_json(access_profile_bulk_update_request_inner)
+        results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(access_profile_bulk_update_request_inner=new_access_profile_bulk_update_request_inner)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(new_accessprofilebulkupdaterequest_inner, x_sail_point_experimental)
+        # results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(new_access_profile_bulk_update_request_inner, x_sail_point_experimental)
         print("The response of AccessProfilesApi->update_access_profiles_in_bulk_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

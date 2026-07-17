@@ -22,7 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.scheduled_search.models.schedule import Schedule
-from sailpoint.scheduled_search.models.searchschedule_recipients_inner import SearchscheduleRecipientsInner
+from sailpoint.scheduled_search.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +36,7 @@ class CreateScheduledSearchV1Request(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The date the scheduled search was initially created.")
     modified: Optional[datetime] = Field(default=None, description="The last date the scheduled search was modified.")
     schedule: Schedule
-    recipients: List[SearchscheduleRecipientsInner] = Field(description="A list of identities that should receive the scheduled search report via email.")
+    recipients: List[SearchScheduleRecipientsInner] = Field(description="A list of identities that should receive the scheduled search report via email.")
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates if the scheduled search is enabled. ")
     email_empty_results: Optional[StrictBool] = Field(default=False, description="Indicates if email generation should occur when search returns no results. ", alias="emailEmptyResults")
     display_query_details: Optional[StrictBool] = Field(default=False, description="Indicates if the generated email should include the query and search results preview (which could include PII). ", alias="displayQueryDetails")
@@ -133,7 +133,7 @@ class CreateScheduledSearchV1Request(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "schedule": Schedule.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
-            "recipients": [SearchscheduleRecipientsInner.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
+            "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "emailEmptyResults": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,
             "displayQueryDetails": obj.get("displayQueryDetails") if obj.get("displayQueryDetails") is not None else False

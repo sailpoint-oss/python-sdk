@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Any, Dict, List
 from typing_extensions import Annotated
-from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
 
 from sailpoint.privilege_criteria_configuration.api_client import ApiClient, RequestSerialized
 from sailpoint.privilege_criteria_configuration.api_response import ApiResponse
@@ -55,7 +55,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Privilegecriteriaconfigdto:
+    ) -> PrivilegeCriteriaConfigDTO:
         """Get privilege criteria config
 
         Use this API to get the privilege criteria configuration by Id.
@@ -93,12 +93,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +127,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Privilegecriteriaconfigdto]:
+    ) -> ApiResponse[PrivilegeCriteriaConfigDTO]:
         """Get privilege criteria config
 
         Use this API to get the privilege criteria configuration by Id.
@@ -165,12 +165,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,12 +237,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -330,7 +330,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Privilegecriteriaconfigdto]:
+    ) -> List[PrivilegeCriteriaConfigDTO]:
         """List privilege criteria config
 
         Use this API to list the privilege criteria configuration.
@@ -368,12 +368,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriaconfigdto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaConfigDTO]",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -402,7 +402,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Privilegecriteriaconfigdto]]:
+    ) -> ApiResponse[List[PrivilegeCriteriaConfigDTO]]:
         """List privilege criteria config
 
         Use this API to list the privilege criteria configuration.
@@ -440,12 +440,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriaconfigdto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaConfigDTO]",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -512,12 +512,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriaconfigdto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaConfigDTO]",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -608,7 +608,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Privilegecriteriaconfigdto:
+    ) -> PrivilegeCriteriaConfigDTO:
         """Update privilege criteria configuration
 
         Use this API to update the privilege criteria configuration.
@@ -649,12 +649,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -684,7 +684,7 @@ class PrivilegeCriteriaConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Privilegecriteriaconfigdto]:
+    ) -> ApiResponse[PrivilegeCriteriaConfigDTO]:
         """Update privilege criteria configuration
 
         Use this API to update the privilege criteria configuration.
@@ -725,12 +725,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -801,12 +801,12 @@ class PrivilegeCriteriaConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriaconfigdto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaConfigDTO",
+            '400': "ErrorResponseDto",
             '401': "GetPrivilegeCriteriaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPrivilegeCriteriaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

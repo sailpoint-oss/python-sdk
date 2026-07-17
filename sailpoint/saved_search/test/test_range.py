@@ -35,10 +35,10 @@ class TestRange(unittest.TestCase):
         model = Range()
         if include_optional:
             return Range(
-                lower = sailpoint.saved_search.models.bound.bound(
+                lower = sailpoint.saved_search.models.bound.Bound(
                     value = '1', 
                     inclusive = False, ),
-                upper = sailpoint.saved_search.models.bound.bound(
+                upper = sailpoint.saved_search.models.bound.Bound(
                     value = '1', 
                     inclusive = False, )
             )

@@ -73,11 +73,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/tags/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/tags/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/tags/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/tags/docs/ErrorResponseDto.md)
  - [ListTagsV1401Response](sailpoint/tags/docs/ListTagsV1401Response.md)
  - [ListTagsV1429Response](sailpoint/tags/docs/ListTagsV1429Response.md)
- - [Localeorigin](sailpoint/tags/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/tags/docs/LocaleOrigin.md)
  - [Tag2](sailpoint/tags/docs/Tag2.md)
  - [Tag2TagCategoryRefsInner](sailpoint/tags/docs/Tag2TagCategoryRefsInner.md)
 

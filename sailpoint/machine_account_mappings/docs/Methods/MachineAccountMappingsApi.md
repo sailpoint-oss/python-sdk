@@ -33,20 +33,20 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
- Body  | attributemappings | [**Attributemappings**](../models/attributemappings) | True  | 
+ Body  | attribute_mappings | [**AttributeMappings**](../models/attribute-mappings) | True  | 
 
 ### Return type
-[**List[Attributemappings]**](../models/attributemappings)
+[**List[AttributeMappings]**](../models/attribute-mappings)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Newly created Attribute Mapping Object | List[Attributemappings] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Newly created Attribute Mapping Object | List[AttributeMappings] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -57,21 +57,41 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.machine_account_mappings.api_client import ApiClient
-from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-    attributemappings = '''sailpoint.machine_account_mappings.Attributemappings()''' # Attributemappings | 
+    attribute_mappings = '''{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }''' # AttributeMappings | 
 
     try:
         # Create machine account mappings
-        new_attributemappings = Attributemappings.from_json(attributemappings)
-        results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id=source_id, attributemappings=new_attributemappings)
+        new_attribute_mappings = AttributeMappings.from_json(attribute_mappings)
+        results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id=source_id, attribute_mappings=new_attribute_mappings)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attributemappings)
+        # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attribute_mappings)
         print("The response of MachineAccountMappingsApi->create_machine_account_mappings_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -103,12 +123,12 @@ Path   | source_id | **str** | True  | source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -155,18 +175,18 @@ Path   | source_id | **str** | True  | Source ID
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Attributemappings]**](../models/attributemappings)
+[**List[AttributeMappings]**](../models/attribute-mappings)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An array of Attribute Mapping Objects | List[Attributemappings] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An array of Attribute Mapping Objects | List[AttributeMappings] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -177,7 +197,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.machine_account_mappings.api_client import ApiClient
-from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -215,21 +235,21 @@ Use this API to update Machine Account Attribute Mapping for a Source. A token w
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
- Body  | attributemappings | [**Attributemappings**](../models/attributemappings) | True  | 
+ Body  | attribute_mappings | [**AttributeMappings**](../models/attribute-mappings) | True  | 
 
 ### Return type
-[**List[Attributemappings]**](../models/attributemappings)
+[**List[AttributeMappings]**](../models/attribute-mappings)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated Machine Account Attributes for a Source. | List[Attributemappings] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated Machine Account Attributes for a Source. | List[AttributeMappings] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -240,21 +260,41 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.machine_account_mappings.api_client import ApiClient
-from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-    attributemappings = '''sailpoint.machine_account_mappings.Attributemappings()''' # Attributemappings | 
+    attribute_mappings = '''{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }''' # AttributeMappings | 
 
     try:
         # Update source's machine account mappings
-        new_attributemappings = Attributemappings.from_json(attributemappings)
-        results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id=source_id, attributemappings=new_attributemappings)
+        new_attribute_mappings = AttributeMappings.from_json(attribute_mappings)
+        results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id=source_id, attribute_mappings=new_attribute_mappings)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id, new_attributemappings)
+        # results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id, new_attribute_mappings)
         print("The response of MachineAccountMappingsApi->set_machine_account_mappings_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

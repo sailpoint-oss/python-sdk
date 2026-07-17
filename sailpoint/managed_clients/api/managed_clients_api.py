@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.managed_clients.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.managed_clients.models.managedclient import Managedclient
-from sailpoint.managed_clients.models.managedclienthealthindicators import Managedclienthealthindicators
-from sailpoint.managed_clients.models.managedclientrequest import Managedclientrequest
-from sailpoint.managed_clients.models.managedclientstatus import Managedclientstatus
-from sailpoint.managed_clients.models.managedclienttype import Managedclienttype
+from sailpoint.managed_clients.models.json_patch_operation import JsonPatchOperation
+from sailpoint.managed_clients.models.managed_client import ManagedClient
+from sailpoint.managed_clients.models.managed_client_health_indicators import ManagedClientHealthIndicators
+from sailpoint.managed_clients.models.managed_client_request import ManagedClientRequest
+from sailpoint.managed_clients.models.managed_client_status import ManagedClientStatus
+from sailpoint.managed_clients.models.managed_client_type import ManagedClientType
 
 from sailpoint.managed_clients.api_client import ApiClient, RequestSerialized
 from sailpoint.managed_clients.api_response import ApiResponse
@@ -47,7 +47,7 @@ class ManagedClientsApi:
     @validate_call
     def create_managed_client_v1(
         self,
-        managedclientrequest: Managedclientrequest,
+        managed_client_request: ManagedClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,13 +60,13 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclient:
+    ) -> ManagedClient:
         """Create managed client
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
-        :param managedclientrequest: (required)
-        :type managedclientrequest: Managedclientrequest
+        :param managed_client_request: (required)
+        :type managed_client_request: ManagedClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,7 +90,7 @@ class ManagedClientsApi:
         """ # noqa: E501
 
         _param = self._create_managed_client_v1_serialize(
-            managedclientrequest=managedclientrequest,
+            managed_client_request=managed_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -98,12 +98,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class ManagedClientsApi:
     @validate_call
     def create_managed_client_v1_with_http_info(
         self,
-        managedclientrequest: Managedclientrequest,
+        managed_client_request: ManagedClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,13 +132,13 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclient]:
+    ) -> ApiResponse[ManagedClient]:
         """Create managed client
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
-        :param managedclientrequest: (required)
-        :type managedclientrequest: Managedclientrequest
+        :param managed_client_request: (required)
+        :type managed_client_request: ManagedClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +162,7 @@ class ManagedClientsApi:
         """ # noqa: E501
 
         _param = self._create_managed_client_v1_serialize(
-            managedclientrequest=managedclientrequest,
+            managed_client_request=managed_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,12 +170,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -191,7 +191,7 @@ class ManagedClientsApi:
     @validate_call
     def create_managed_client_v1_without_preload_content(
         self,
-        managedclientrequest: Managedclientrequest,
+        managed_client_request: ManagedClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,8 +209,8 @@ class ManagedClientsApi:
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
-        :param managedclientrequest: (required)
-        :type managedclientrequest: Managedclientrequest
+        :param managed_client_request: (required)
+        :type managed_client_request: ManagedClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,7 +234,7 @@ class ManagedClientsApi:
         """ # noqa: E501
 
         _param = self._create_managed_client_v1_serialize(
-            managedclientrequest=managedclientrequest,
+            managed_client_request=managed_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,12 +242,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -258,7 +258,7 @@ class ManagedClientsApi:
 
     def _create_managed_client_v1_serialize(
         self,
-        managedclientrequest,
+        managed_client_request,
         _request_auth,
         _content_type,
         _headers,
@@ -284,8 +284,8 @@ class ManagedClientsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if managedclientrequest is not None:
-            _body_params = managedclientrequest
+        if managed_client_request is not None:
+            _body_params = managed_client_request
 
 
         # set the HTTP header `Accept`
@@ -387,11 +387,11 @@ class ManagedClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -459,11 +459,11 @@ class ManagedClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -531,11 +531,11 @@ class ManagedClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -623,7 +623,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclienthealthindicators:
+    ) -> ManagedClientHealthIndicators:
         """Get managed client health indicators
 
         Get a managed client's health indicators, using its ID.
@@ -661,13 +661,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclienthealthindicators",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientHealthIndicators",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -696,7 +696,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclienthealthindicators]:
+    ) -> ApiResponse[ManagedClientHealthIndicators]:
         """Get managed client health indicators
 
         Get a managed client's health indicators, using its ID.
@@ -734,13 +734,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclienthealthindicators",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientHealthIndicators",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -807,13 +807,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclienthealthindicators",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientHealthIndicators",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -889,7 +889,7 @@ class ManagedClientsApi:
     def get_managed_client_status_v1(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
-        type: Annotated[Managedclienttype, Field(description="Managed client type to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -902,7 +902,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclientstatus:
+    ) -> ManagedClientStatus:
         """Get managed client status
 
         Get a managed client's status, using its ID.
@@ -910,7 +910,7 @@ class ManagedClientsApi:
         :param id: Managed client ID to get status for. (required)
         :type id: str
         :param type: Managed client type to get status for. (required)
-        :type type: Managedclienttype
+        :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -943,13 +943,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclientstatus",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientStatus",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -966,7 +966,7 @@ class ManagedClientsApi:
     def get_managed_client_status_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
-        type: Annotated[Managedclienttype, Field(description="Managed client type to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -979,7 +979,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclientstatus]:
+    ) -> ApiResponse[ManagedClientStatus]:
         """Get managed client status
 
         Get a managed client's status, using its ID.
@@ -987,7 +987,7 @@ class ManagedClientsApi:
         :param id: Managed client ID to get status for. (required)
         :type id: str
         :param type: Managed client type to get status for. (required)
-        :type type: Managedclienttype
+        :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1020,13 +1020,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclientstatus",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientStatus",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1043,7 +1043,7 @@ class ManagedClientsApi:
     def get_managed_client_status_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
-        type: Annotated[Managedclienttype, Field(description="Managed client type to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1064,7 +1064,7 @@ class ManagedClientsApi:
         :param id: Managed client ID to get status for. (required)
         :type id: str
         :param type: Managed client type to get status for. (required)
-        :type type: Managedclienttype
+        :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1097,13 +1097,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclientstatus",
-            '400': "Errorresponsedto",
+            '200': "ManagedClientStatus",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1196,7 +1196,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclient:
+    ) -> ManagedClient:
         """Get managed client
 
         Get managed client by ID. 
@@ -1234,13 +1234,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1269,7 +1269,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclient]:
+    ) -> ApiResponse[ManagedClient]:
         """Get managed client
 
         Get managed client by ID. 
@@ -1307,13 +1307,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1380,13 +1380,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1477,7 +1477,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Managedclient]:
+    ) -> List[ManagedClient]:
         """Get managed clients
 
         List managed clients.
@@ -1524,12 +1524,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclient]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClient]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1561,7 +1561,7 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Managedclient]]:
+    ) -> ApiResponse[List[ManagedClient]]:
         """Get managed clients
 
         List managed clients.
@@ -1608,12 +1608,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclient]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClient]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1692,12 +1692,12 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclient]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClient]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1790,7 +1790,7 @@ class ManagedClientsApi:
     def update_managed_client_v1(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1803,15 +1803,15 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclient:
+    ) -> ManagedClient:
         """Update managed client
 
         Update an existing managed client.
 
         :param id: Managed client ID. (required)
         :type id: str
-        :param jsonpatchoperation: JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1836,7 +1836,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1844,13 +1844,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1867,7 +1867,7 @@ class ManagedClientsApi:
     def update_managed_client_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1880,15 +1880,15 @@ class ManagedClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclient]:
+    ) -> ApiResponse[ManagedClient]:
         """Update managed client
 
         Update an existing managed client.
 
         :param id: Managed client ID. (required)
         :type id: str
-        :param jsonpatchoperation: JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1913,7 +1913,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1921,13 +1921,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1944,7 +1944,7 @@ class ManagedClientsApi:
     def update_managed_client_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Managed client ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1964,8 +1964,8 @@ class ManagedClientsApi:
 
         :param id: Managed client ID. (required)
         :type id: str
-        :param jsonpatchoperation: JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1990,7 +1990,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1998,13 +1998,13 @@ class ManagedClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclient",
-            '400': "Errorresponsedto",
+            '200': "ManagedClient",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2016,7 +2016,7 @@ class ManagedClientsApi:
     def _update_managed_client_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2026,7 +2026,7 @@ class ManagedClientsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2045,8 +2045,8 @@ class ManagedClientsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

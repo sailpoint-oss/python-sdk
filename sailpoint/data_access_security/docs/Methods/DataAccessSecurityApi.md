@@ -63,12 +63,12 @@ Path   | id | **int** | True  | The unique identifier of the task to cancel.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -110,7 +110,7 @@ This endpoint creates a new application in Data Access Security with the specifi
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | basecreateapplicationrequest | [**Basecreateapplicationrequest**](../models/basecreateapplicationrequest) | True  | Request body containing the details required to create a new application.
+ Body  | base_create_application_request | [**BaseCreateApplicationRequest**](../models/base-create-application-request) | True  | Request body containing the details required to create a new application.
 
 ### Return type
  (empty response body)
@@ -119,12 +119,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -135,20 +135,66 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the details required to create a new application.
+    base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the details required to create a new application.
 
     try:
         # Create application
-        new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
-        DataAccessSecurityApi(api_client).create_application_v1(basecreateapplicationrequest=new_basecreateapplicationrequest)
+        new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+        DataAccessSecurityApi(api_client).create_application_v1(base_create_application_request=new_base_create_application_request)
         # Below is a request that includes all optional parameters
-        # DataAccessSecurityApi(api_client).create_application_v1(new_basecreateapplicationrequest)
+        # DataAccessSecurityApi(api_client).create_application_v1(new_base_create_application_request)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->create_application_v1: %s\n" % e)
 ```
@@ -176,12 +222,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The identity collector was created successfully. | CreateIdentityCollectorV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -199,7 +245,10 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createidentitycollectorrequest = '''sailpoint.data_access_security.Createidentitycollectorrequest()''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+    createidentitycollectorrequest = '''{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector"
+        }''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
 
     try:
         # Create identity collector
@@ -227,7 +276,7 @@ Create a new schedule.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | createschedulerequest | [**Createschedulerequest**](../models/createschedulerequest) | True  | 
+ Body  | create_schedule_request | [**CreateScheduleRequest**](../models/create-schedule-request) | True  | 
 
 ### Return type
 **int**
@@ -236,12 +285,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | OK | int |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -252,20 +301,31 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.createschedulerequest import Createschedulerequest
+from sailpoint.data_access_security.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createschedulerequest = '''sailpoint.data_access_security.Createschedulerequest()''' # Createschedulerequest | 
+    create_schedule_request = '''{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }''' # CreateScheduleRequest | 
 
     try:
         # Create a new schedule.
-        new_createschedulerequest = Createschedulerequest.from_json(createschedulerequest)
-        results = DataAccessSecurityApi(api_client).create_schedule_v1(createschedulerequest=new_createschedulerequest)
+        new_create_schedule_request = CreateScheduleRequest.from_json(create_schedule_request)
+        results = DataAccessSecurityApi(api_client).create_schedule_v1(create_schedule_request=new_create_schedule_request)
         # Below is a request that includes all optional parameters
-        # results = DataAccessSecurityApi(api_client).create_schedule_v1(new_createschedulerequest)
+        # results = DataAccessSecurityApi(api_client).create_schedule_v1(new_create_schedule_request)
         print("The response of DataAccessSecurityApi->create_schedule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -286,7 +346,7 @@ Assign owner to application resource.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | assignresourceownerrequest | [**Assignresourceownerrequest**](../models/assignresourceownerrequest) | True  | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+ Body  | assign_resource_owner_request | [**AssignResourceOwnerRequest**](../models/assign-resource-owner-request) | True  | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
 
 ### Return type
 **int**
@@ -295,12 +355,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | 1 - success, otherwise failure. | int |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -311,20 +371,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.assignresourceownerrequest import Assignresourceownerrequest
+from sailpoint.data_access_security.models.assign_resource_owner_request import AssignResourceOwnerRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    assignresourceownerrequest = '''sailpoint.data_access_security.Assignresourceownerrequest()''' # Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+    assign_resource_owner_request = '''{
+          "fullPath" : "/shared/hr/documents/employee-records.pdf",
+          "identityId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "appId" : 12345
+        }''' # AssignResourceOwnerRequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
 
     try:
         # Assign owner to application resource.
-        new_assignresourceownerrequest = Assignresourceownerrequest.from_json(assignresourceownerrequest)
-        results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(assignresourceownerrequest=new_assignresourceownerrequest)
+        new_assign_resource_owner_request = AssignResourceOwnerRequest.from_json(assign_resource_owner_request)
+        results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(assign_resource_owner_request=new_assign_resource_owner_request)
         # Below is a request that includes all optional parameters
-        # results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(new_assignresourceownerrequest)
+        # results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(new_assign_resource_owner_request)
         print("The response of DataAccessSecurityApi->das_v1_owners_assign_post:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -350,18 +414,18 @@ Path   | owner_identity_id | **str** | True  | Unique identifier for the owner. 
   Query | offset | **int** |   (optional) (default to 0) | Not applicable for this endpoint. Do not use.
 
 ### Return type
-[**List[Resourcemodel]**](../models/resourcemodel)
+[**List[ResourceModel]**](../models/resource-model)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of resources owned by the specified identity was retrieved successfully. | List[Resourcemodel] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of resources owned by the specified identity was retrieved successfully. | List[ResourceModel] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -372,7 +436,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.resourcemodel import Resourcemodel
+from sailpoint.data_access_security.models.resource_model import ResourceModel
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -409,7 +473,7 @@ Re-elect resource owner.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | reelectrequest | [**Reelectrequest**](../models/reelectrequest) | True  | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+ Body  | reelect_request | [**ReelectRequest**](../models/reelect-request) | True  | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
 
 ### Return type
 **int**
@@ -418,12 +482,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The number of elections CREATED. In case of failure, some elections may not be STARTED. | int |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -434,20 +498,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.reelectrequest import Reelectrequest
+from sailpoint.data_access_security.models.reelect_request import ReelectRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    reelectrequest = '''sailpoint.data_access_security.Reelectrequest()''' # Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+    reelect_request = '''{
+          "ownerId" : "c1a2b3d4-e5f6-7890-abcd-1234567890ab",
+          "campaignName" : "Annual Resource Owner Election",
+          "reviewers" : [ "d4e5f6a7-b8c9-0123-4567-89abcdef0123", "e7f8g9h0-i1j2-3456-7890-klmnopqrstuv" ]
+        }''' # ReelectRequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
 
     try:
         # Re-elect resource owner.
-        new_reelectrequest = Reelectrequest.from_json(reelectrequest)
-        results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(reelectrequest=new_reelectrequest)
+        new_reelect_request = ReelectRequest.from_json(reelect_request)
+        results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(reelect_request=new_reelect_request)
         # Below is a request that includes all optional parameters
-        # results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(new_reelectrequest)
+        # results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(new_reelect_request)
         print("The response of DataAccessSecurityApi->das_v1_owners_reelect_post:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -479,12 +547,12 @@ Path   | resource_id | **int** | True  | Unique identifier for the resource.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A list of owner identity UUIDs for the specified resource was retrieved successfully. | List[str] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -541,12 +609,12 @@ Path   | destination_identity_id | **str** | True  | Unique identifier for the d
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The number of resources whose owners were overwritten. | int |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -600,12 +668,12 @@ Path   | id | **int** | True  | The unique identifier of the application to dele
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -656,12 +724,12 @@ Path   | id | **int** | True  | The unique identifier of the identity collector 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -712,12 +780,12 @@ Path   | id | **int** | True  | The unique identifier of the schedule to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -769,12 +837,12 @@ Path   | id | **int** | True  | The unique identifier of the task to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -819,18 +887,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **int** | True  | The unique identifier of the application to retrieve.
 
 ### Return type
-[**Applicationitem**](../models/applicationitem)
+[**ApplicationItem**](../models/application-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The application details were retrieved successfully. | Applicationitem |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The application details were retrieved successfully. | ApplicationItem |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -841,7 +909,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.applicationitem import Applicationitem
+from sailpoint.data_access_security.models.application_item import ApplicationItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -881,18 +949,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Applicationitem]**](../models/applicationitem)
+[**List[ApplicationItem]**](../models/application-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of applications matching the filter criteria. | List[Applicationitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of applications matching the filter criteria. | List[ApplicationItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -903,7 +971,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.applicationitem import Applicationitem
+from sailpoint.data_access_security.models.application_item import ApplicationItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -946,18 +1014,18 @@ Path   | app_id | **int** | True  | The unique identifier of the application for
   Query | offset | **int** |   (optional) (default to 0) | Not applicable for this endpoint. Do not use.
 
 ### Return type
-[**List[Dataownermodel]**](../models/dataownermodel)
+[**List[DataOwnerModel]**](../models/data-owner-model)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK. Returns a list of DataOwnerModel objects. | List[Dataownermodel] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK. Returns a list of DataOwnerModel objects. | List[DataOwnerModel] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -968,7 +1036,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.dataownermodel import Dataownermodel
+from sailpoint.data_access_security.models.data_owner_model import DataOwnerModel
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1008,18 +1076,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **int** | True  | The unique identifier of the schedule to retrieve.
 
 ### Return type
-[**Scheduleinfo**](../models/scheduleinfo)
+[**ScheduleInfo**](../models/schedule-info)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A schedule object. | Scheduleinfo |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A schedule object. | ScheduleInfo |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1030,7 +1098,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1070,18 +1138,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Scheduleinfo]**](../models/scheduleinfo)
+[**List[ScheduleInfo]**](../models/schedule-info)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Schedule objects. | List[Scheduleinfo] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Schedule objects. | List[ScheduleInfo] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1092,7 +1160,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1133,18 +1201,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **int** | True  | The unique identifier of the task to retrieve.
 
 ### Return type
-[**Taskinfo**](../models/taskinfo)
+[**TaskInfo**](../models/task-info)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Task object. | Taskinfo |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Task object. | TaskInfo |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1155,7 +1223,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.taskinfo import Taskinfo
+from sailpoint.data_access_security.models.task_info import TaskInfo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1195,18 +1263,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Taskinfo]**](../models/taskinfo)
+[**List[TaskInfo]**](../models/task-info)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK. Returns a list of Data Access Security tasks. | List[Taskinfo] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK. Returns a list of Data Access Security tasks. | List[TaskInfo] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1217,7 +1285,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.taskinfo import Taskinfo
+from sailpoint.data_access_security.models.task_info import TaskInfo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1269,12 +1337,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A list of identity collectors matching the filter criteria. | List[Identitycollectorlistitem] |  * X-Total-Count - The total number of results matching the filter criteria, regardless of paging limits.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1324,7 +1392,7 @@ This endpoint updates an existing application in Data Access Security with the s
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **int** | True  | The unique identifier of the application to update.
- Body  | basecreateapplicationrequest | [**Basecreateapplicationrequest**](../models/basecreateapplicationrequest) | True  | Request body containing the updated details for the application.
+ Body  | base_create_application_request | [**BaseCreateApplicationRequest**](../models/base-create-application-request) | True  | Request body containing the updated details for the application.
 
 ### Return type
  (empty response body)
@@ -1333,12 +1401,12 @@ Path   | id | **int** | True  | The unique identifier of the application to upda
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1349,21 +1417,67 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 12345 # int | The unique identifier of the application to update. # int | The unique identifier of the application to update.
-    basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the updated details for the application.
+    base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the updated details for the application.
 
     try:
         # Update application by identifier.
-        new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
-        DataAccessSecurityApi(api_client).put_application_v1(id=id, basecreateapplicationrequest=new_basecreateapplicationrequest)
+        new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+        DataAccessSecurityApi(api_client).put_application_v1(id=id, base_create_application_request=new_base_create_application_request)
         # Below is a request that includes all optional parameters
-        # DataAccessSecurityApi(api_client).put_application_v1(id, new_basecreateapplicationrequest)
+        # DataAccessSecurityApi(api_client).put_application_v1(id, new_base_create_application_request)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->put_application_v1: %s\n" % e)
 ```
@@ -1392,13 +1506,13 @@ Path   | id | **int** | True  | The unique identifier of the identity collector 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 409 | Conflict - Returned if an identity collector with the same name already exists. | PutIdentityCollectorV1409Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1416,7 +1530,11 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 12345 # int | The unique identifier of the identity collector to update. # int | The unique identifier of the identity collector to update.
-    updateidentitycollectorrequest = '''sailpoint.data_access_security.Updateidentitycollectorrequest()''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+    updateidentitycollectorrequest = '''{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector",
+          "type" : "Active Directory"
+        }''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
 
     try:
         # Update identity collector by identifier
@@ -1443,7 +1561,7 @@ Update a schedule.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **int** | True  | The unique identifier of the schedule to update.
- Body  | updateschedulerequest | [**Updateschedulerequest**](../models/updateschedulerequest) | True  | 
+ Body  | update_schedule_request | [**UpdateScheduleRequest**](../models/update-schedule-request) | True  | 
 
 ### Return type
  (empty response body)
@@ -1452,12 +1570,12 @@ Path   | id | **int** | True  | The unique identifier of the schedule to update.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1468,21 +1586,32 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.data_access_security.api_client import ApiClient
-from sailpoint.data_access_security.models.updateschedulerequest import Updateschedulerequest
+from sailpoint.data_access_security.models.update_schedule_request import UpdateScheduleRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 1001 # int | The unique identifier of the schedule to update. # int | The unique identifier of the schedule to update.
-    updateschedulerequest = '''sailpoint.data_access_security.Updateschedulerequest()''' # Updateschedulerequest | 
+    update_schedule_request = '''{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }''' # UpdateScheduleRequest | 
 
     try:
         # Update a schedule.
-        new_updateschedulerequest = Updateschedulerequest.from_json(updateschedulerequest)
-        DataAccessSecurityApi(api_client).put_schedule_v1(id=id, updateschedulerequest=new_updateschedulerequest)
+        new_update_schedule_request = UpdateScheduleRequest.from_json(update_schedule_request)
+        DataAccessSecurityApi(api_client).put_schedule_v1(id=id, update_schedule_request=new_update_schedule_request)
         # Below is a request that includes all optional parameters
-        # DataAccessSecurityApi(api_client).put_schedule_v1(id, new_updateschedulerequest)
+        # DataAccessSecurityApi(api_client).put_schedule_v1(id, new_update_schedule_request)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->put_schedule_v1: %s\n" % e)
 ```
@@ -1510,12 +1639,12 @@ Path   | id | **int** | True  | The unique identifier of the task to rerun.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined

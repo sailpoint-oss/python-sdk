@@ -47,11 +47,11 @@ configuration = sailpoint.global_tenant_security_settings.Configuration(
 with sailpoint.global_tenant_security_settings.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.global_tenant_security_settings.GlobalTenantSecuritySettingsApi(api_client)
-    networkconfiguration = sailpoint.global_tenant_security_settings.Networkconfiguration() # Networkconfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
+    network_configuration = sailpoint.global_tenant_security_settings.NetworkConfiguration() # NetworkConfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
     try:
         # Create security network configuration.
-        api_response = api_instance.create_auth_org_network_config_v1(networkconfiguration)
+        api_response = api_instance.create_auth_org_network_config_v1(network_configuration)
         print("The response of GlobalTenantSecuritySettingsApi->create_auth_org_network_config_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -79,22 +79,22 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/global_tenant_security_settings/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/global_tenant_security_settings/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/global_tenant_security_settings/docs/Errorresponsedto.md)
- - [Federationprotocoldetails](sailpoint/global_tenant_security_settings/docs/Federationprotocoldetails.md)
+ - [ErrorMessageDto](sailpoint/global_tenant_security_settings/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/global_tenant_security_settings/docs/ErrorResponseDto.md)
+ - [FederationProtocolDetails](sailpoint/global_tenant_security_settings/docs/FederationProtocolDetails.md)
  - [GetAuthOrgNetworkConfigV1401Response](sailpoint/global_tenant_security_settings/docs/GetAuthOrgNetworkConfigV1401Response.md)
  - [GetAuthOrgNetworkConfigV1429Response](sailpoint/global_tenant_security_settings/docs/GetAuthOrgNetworkConfigV1429Response.md)
- - [Idpdetails](sailpoint/global_tenant_security_settings/docs/Idpdetails.md)
- - [Jitconfiguration](sailpoint/global_tenant_security_settings/docs/Jitconfiguration.md)
- - [Jsonpatchoperation](sailpoint/global_tenant_security_settings/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/global_tenant_security_settings/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/global_tenant_security_settings/docs/Localeorigin.md)
- - [Lockoutconfiguration](sailpoint/global_tenant_security_settings/docs/Lockoutconfiguration.md)
- - [Networkconfiguration](sailpoint/global_tenant_security_settings/docs/Networkconfiguration.md)
- - [Serviceproviderconfiguration](sailpoint/global_tenant_security_settings/docs/Serviceproviderconfiguration.md)
- - [ServiceproviderconfigurationFederationProtocolDetailsInner](sailpoint/global_tenant_security_settings/docs/ServiceproviderconfigurationFederationProtocolDetailsInner.md)
- - [Sessionconfiguration](sailpoint/global_tenant_security_settings/docs/Sessionconfiguration.md)
- - [Spdetails](sailpoint/global_tenant_security_settings/docs/Spdetails.md)
+ - [IdpDetails](sailpoint/global_tenant_security_settings/docs/IdpDetails.md)
+ - [JITConfiguration](sailpoint/global_tenant_security_settings/docs/JITConfiguration.md)
+ - [JsonPatchOperation](sailpoint/global_tenant_security_settings/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/global_tenant_security_settings/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/global_tenant_security_settings/docs/LocaleOrigin.md)
+ - [LockoutConfiguration](sailpoint/global_tenant_security_settings/docs/LockoutConfiguration.md)
+ - [NetworkConfiguration](sailpoint/global_tenant_security_settings/docs/NetworkConfiguration.md)
+ - [ServiceProviderConfiguration](sailpoint/global_tenant_security_settings/docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](sailpoint/global_tenant_security_settings/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](sailpoint/global_tenant_security_settings/docs/SessionConfiguration.md)
+ - [SpDetails](sailpoint/global_tenant_security_settings/docs/SpDetails.md)
 
 
 <a id="documentation-for-authorization"></a>

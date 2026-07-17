@@ -20,15 +20,15 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from sailpoint.shared_signals_framework_ssf.models.jwk import Jwk
+from sailpoint.shared_signals_framework_ssf.models.jwk import JWK
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Jwks(BaseModel):
+class JWKS(BaseModel):
     """
     JSON Web Key Set containing the transmitter's public keys for verifying signed delivery requests.
     """ # noqa: E501
-    keys: List[Jwk] = Field(description="Array of JSON Web Keys.")
+    keys: List[JWK] = Field(description="Array of JSON Web Keys.")
     __properties: ClassVar[List[str]] = ["keys"]
 
     model_config = ConfigDict(
@@ -49,7 +49,7 @@ class Jwks(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Jwks from a JSON string"""
+        """Create an instance of JWKS from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class Jwks(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Jwks from a dict"""
+        """Create an instance of JWKS from a dict"""
         if obj is None:
             return None
 
@@ -89,7 +89,7 @@ class Jwks(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "keys": [Jwk.from_dict(_item) for _item in obj["keys"]] if obj.get("keys") is not None else None
+            "keys": [JWK.from_dict(_item) for _item in obj["keys"]] if obj.get("keys") is not None else None
         })
         return _obj
 

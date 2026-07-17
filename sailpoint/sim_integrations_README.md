@@ -47,12 +47,12 @@ configuration = sailpoint.sim_integrations.Configuration(
 with sailpoint.sim_integrations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sim_integrations.SIMIntegrationsApi(api_client)
-    simintegrationdetails = sailpoint.sim_integrations.Simintegrationdetails() # Simintegrationdetails | DTO containing the details of the SIM integration
+    sim_integration_details = sailpoint.sim_integrations.SimIntegrationDetails() # SimIntegrationDetails | DTO containing the details of the SIM integration
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create new sim integration
-        api_response = api_instance.create_sim_integration_v1(simintegrationdetails, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_sim_integration_v1(sim_integration_details, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of SIMIntegrationsApi->create_sim_integration_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -78,25 +78,25 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/sim_integrations/docs/ArrayInner.md)
- - [Basecommondto](sailpoint/sim_integrations/docs/Basecommondto.md)
- - [Beforeprovisioningruledto](sailpoint/sim_integrations/docs/Beforeprovisioningruledto.md)
- - [Dtotype](sailpoint/sim_integrations/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/sim_integrations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/sim_integrations/docs/Errorresponsedto.md)
+ - [BaseCommonDto](sailpoint/sim_integrations/docs/BaseCommonDto.md)
+ - [BeforeProvisioningRuleDto](sailpoint/sim_integrations/docs/BeforeProvisioningRuleDto.md)
+ - [DtoType](sailpoint/sim_integrations/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/sim_integrations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/sim_integrations/docs/ErrorResponseDto.md)
  - [GetSIMIntegrationV1401Response](sailpoint/sim_integrations/docs/GetSIMIntegrationV1401Response.md)
  - [GetSIMIntegrationV1429Response](sailpoint/sim_integrations/docs/GetSIMIntegrationV1429Response.md)
- - [Jsonpatch](sailpoint/sim_integrations/docs/Jsonpatch.md)
- - [Jsonpatchoperation](sailpoint/sim_integrations/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/sim_integrations/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/sim_integrations/docs/Localeorigin.md)
- - [Ownerdto](sailpoint/sim_integrations/docs/Ownerdto.md)
- - [Provisioningconfig](sailpoint/sim_integrations/docs/Provisioningconfig.md)
- - [ProvisioningconfigPlanInitializerScript](sailpoint/sim_integrations/docs/ProvisioningconfigPlanInitializerScript.md)
- - [Servicedeskintegrationdto](sailpoint/sim_integrations/docs/Servicedeskintegrationdto.md)
- - [Servicedesksource](sailpoint/sim_integrations/docs/Servicedesksource.md)
- - [Simintegrationdetails](sailpoint/sim_integrations/docs/Simintegrationdetails.md)
- - [SimintegrationdetailsAllOfBeforeProvisioningRule](sailpoint/sim_integrations/docs/SimintegrationdetailsAllOfBeforeProvisioningRule.md)
- - [Sourceclusterdto](sailpoint/sim_integrations/docs/Sourceclusterdto.md)
+ - [JsonPatch](sailpoint/sim_integrations/docs/JsonPatch.md)
+ - [JsonPatchOperation](sailpoint/sim_integrations/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/sim_integrations/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/sim_integrations/docs/LocaleOrigin.md)
+ - [OwnerDto](sailpoint/sim_integrations/docs/OwnerDto.md)
+ - [ProvisioningConfig](sailpoint/sim_integrations/docs/ProvisioningConfig.md)
+ - [ProvisioningConfigPlanInitializerScript](sailpoint/sim_integrations/docs/ProvisioningConfigPlanInitializerScript.md)
+ - [ServiceDeskIntegrationDto](sailpoint/sim_integrations/docs/ServiceDeskIntegrationDto.md)
+ - [ServiceDeskSource](sailpoint/sim_integrations/docs/ServiceDeskSource.md)
+ - [SimIntegrationDetails](sailpoint/sim_integrations/docs/SimIntegrationDetails.md)
+ - [SimIntegrationDetailsAllOfBeforeProvisioningRule](sailpoint/sim_integrations/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md)
+ - [SourceClusterDto](sailpoint/sim_integrations/docs/SourceClusterDto.md)
 
 
 <a id="documentation-for-authorization"></a>

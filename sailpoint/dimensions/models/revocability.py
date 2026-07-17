@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.dimensions.models.accessprofileapprovalscheme import Accessprofileapprovalscheme
+from sailpoint.dimensions.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class Revocability(BaseModel):
     """
     Revocability
     """ # noqa: E501
-    approval_schemes: Optional[List[Accessprofileapprovalscheme]] = Field(default=None, description="List describing the steps involved in approving the revocation request.", alias="approvalSchemes")
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps involved in approving the revocation request.", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class Revocability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalSchemes": [Accessprofileapprovalscheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
+            "approvalSchemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
 

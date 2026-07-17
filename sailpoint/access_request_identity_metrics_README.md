@@ -72,11 +72,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/access_request_identity_metrics/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/access_request_identity_metrics/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/access_request_identity_metrics/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/access_request_identity_metrics/docs/ErrorResponseDto.md)
  - [GetAccessRequestIdentityMetricsV1401Response](sailpoint/access_request_identity_metrics/docs/GetAccessRequestIdentityMetricsV1401Response.md)
  - [GetAccessRequestIdentityMetricsV1429Response](sailpoint/access_request_identity_metrics/docs/GetAccessRequestIdentityMetricsV1429Response.md)
- - [Localeorigin](sailpoint/access_request_identity_metrics/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/access_request_identity_metrics/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

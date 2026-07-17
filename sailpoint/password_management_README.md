@@ -47,12 +47,12 @@ configuration = sailpoint.password_management.Configuration(
 with sailpoint.password_management.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.password_management.PasswordManagementApi(api_client)
-    passworddigittokenreset = {"userId":"Abby.Smith","length":8,"durationMinutes":5} # Passworddigittokenreset | 
+    password_digit_token_reset = {"userId":"Abby.Smith","length":8,"durationMinutes":5} # PasswordDigitTokenReset | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Generate a digit token
-        api_response = api_instance.create_digit_token_v1(passworddigittokenreset, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_digit_token_v1(password_digit_token_reset, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of PasswordManagementApi->create_digit_token_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,17 +74,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/password_management/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/password_management/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/password_management/docs/Localeorigin.md)
- - [Passwordchangerequest](sailpoint/password_management/docs/Passwordchangerequest.md)
- - [Passwordchangeresponse](sailpoint/password_management/docs/Passwordchangeresponse.md)
- - [Passworddigittoken](sailpoint/password_management/docs/Passworddigittoken.md)
- - [Passworddigittokenreset](sailpoint/password_management/docs/Passworddigittokenreset.md)
- - [Passwordinfo](sailpoint/password_management/docs/Passwordinfo.md)
- - [Passwordinfoaccount](sailpoint/password_management/docs/Passwordinfoaccount.md)
- - [Passwordinfoquerydto](sailpoint/password_management/docs/Passwordinfoquerydto.md)
- - [Passwordstatus](sailpoint/password_management/docs/Passwordstatus.md)
+ - [ErrorMessageDto](sailpoint/password_management/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/password_management/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/password_management/docs/LocaleOrigin.md)
+ - [PasswordChangeRequest](sailpoint/password_management/docs/PasswordChangeRequest.md)
+ - [PasswordChangeResponse](sailpoint/password_management/docs/PasswordChangeResponse.md)
+ - [PasswordDigitToken](sailpoint/password_management/docs/PasswordDigitToken.md)
+ - [PasswordDigitTokenReset](sailpoint/password_management/docs/PasswordDigitTokenReset.md)
+ - [PasswordInfo](sailpoint/password_management/docs/PasswordInfo.md)
+ - [PasswordInfoAccount](sailpoint/password_management/docs/PasswordInfoAccount.md)
+ - [PasswordInfoQueryDTO](sailpoint/password_management/docs/PasswordInfoQueryDTO.md)
+ - [PasswordStatus](sailpoint/password_management/docs/PasswordStatus.md)
  - [QueryPasswordInfoV1401Response](sailpoint/password_management/docs/QueryPasswordInfoV1401Response.md)
  - [QueryPasswordInfoV1429Response](sailpoint/password_management/docs/QueryPasswordInfoV1429Response.md)
 

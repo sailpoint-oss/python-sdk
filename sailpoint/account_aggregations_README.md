@@ -70,12 +70,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountaggregationstatus](sailpoint/account_aggregations/docs/Accountaggregationstatus.md)
- - [Errormessagedto](sailpoint/account_aggregations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/account_aggregations/docs/Errorresponsedto.md)
+ - [AccountAggregationStatus](sailpoint/account_aggregations/docs/AccountAggregationStatus.md)
+ - [ErrorMessageDto](sailpoint/account_aggregations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/account_aggregations/docs/ErrorResponseDto.md)
  - [GetAccountAggregationStatusV1400Response](sailpoint/account_aggregations/docs/GetAccountAggregationStatusV1400Response.md)
  - [GetAccountAggregationStatusV1429Response](sailpoint/account_aggregations/docs/GetAccountAggregationStatusV1429Response.md)
- - [Localeorigin](sailpoint/account_aggregations/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/account_aggregations/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

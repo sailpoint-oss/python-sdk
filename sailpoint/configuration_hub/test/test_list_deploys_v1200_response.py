@@ -36,7 +36,7 @@ class TestListDeploysV1200Response(unittest.TestCase):
         if include_optional:
             return ListDeploysV1200Response(
                 items = [
-                    sailpoint.configuration_hub.models.deployresponse.deployresponse(
+                    sailpoint.configuration_hub.models.deploy_response.DeployResponse(
                         job_id = '07659d7d-2cce-47c0-9e49-185787ee565a', 
                         status = 'COMPLETE', 
                         type = 'CONFIG_DEPLOY_DRAFT', 

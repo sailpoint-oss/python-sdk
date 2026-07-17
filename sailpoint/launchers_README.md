@@ -47,11 +47,11 @@ configuration = sailpoint.launchers.Configuration(
 with sailpoint.launchers.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.launchers.LaunchersApi(api_client)
-    launcherrequest = sailpoint.launchers.Launcherrequest() # Launcherrequest | Payload to create a Launcher
+    launcher_request = sailpoint.launchers.LauncherRequest() # LauncherRequest | Payload to create a Launcher
 
     try:
         # Create launcher
-        api_response = api_instance.create_launcher_v1(launcherrequest)
+        api_response = api_instance.create_launcher_v1(launcher_request)
         print("The response of LaunchersApi->create_launcher_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -75,17 +75,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/launchers/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/launchers/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/launchers/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/launchers/docs/ErrorResponseDto.md)
  - [GetLaunchersV1200Response](sailpoint/launchers/docs/GetLaunchersV1200Response.md)
  - [GetLaunchersV1401Response](sailpoint/launchers/docs/GetLaunchersV1401Response.md)
  - [GetLaunchersV1429Response](sailpoint/launchers/docs/GetLaunchersV1429Response.md)
  - [Launcher](sailpoint/launchers/docs/Launcher.md)
  - [LauncherOwner](sailpoint/launchers/docs/LauncherOwner.md)
  - [LauncherReference](sailpoint/launchers/docs/LauncherReference.md)
- - [Launcherrequest](sailpoint/launchers/docs/Launcherrequest.md)
- - [LauncherrequestReference](sailpoint/launchers/docs/LauncherrequestReference.md)
- - [Localeorigin](sailpoint/launchers/docs/Localeorigin.md)
+ - [LauncherRequest](sailpoint/launchers/docs/LauncherRequest.md)
+ - [LauncherRequestReference](sailpoint/launchers/docs/LauncherRequestReference.md)
+ - [LocaleOrigin](sailpoint/launchers/docs/LocaleOrigin.md)
  - [StartLauncherV1200Response](sailpoint/launchers/docs/StartLauncherV1200Response.md)
 
 

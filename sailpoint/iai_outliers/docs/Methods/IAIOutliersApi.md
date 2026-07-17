@@ -60,11 +60,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns zip of two CSVs to download. One CSV for ignored outliers and the other for non-ignored outliers. | bytearray |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -129,18 +129,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Outliersummary]**](../models/outliersummary)
+[**List[OutlierSummary]**](../models/outlier-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers | List[Outliersummary] |  * X-Total-Count - The total result count.  |
+200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers | List[OutlierSummary] |  * X-Total-Count - The total result count.  |
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -151,7 +151,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.iai_outliers.api_client import ApiClient
-from sailpoint.iai_outliers.models.outliersummary import Outliersummary
+from sailpoint.iai_outliers.models.outlier_summary import OutlierSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -218,11 +218,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns list of objects. Each object contains information about outliers. | List[Outlier] |  * X-Total-Count - The total result count.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -290,18 +290,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Latestoutliersummary]**](../models/latestoutliersummary)
+[**List[LatestOutlierSummary]**](../models/latest-outlier-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers. | List[Latestoutliersummary] |  -  |
+200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers. | List[LatestOutlierSummary] |  -  |
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -312,7 +312,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.iai_outliers.api_client import ApiClient
-from sailpoint.iai_outliers.models.latestoutliersummary import Latestoutliersummary
+from sailpoint.iai_outliers.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -367,18 +367,18 @@ Path   | outlier_feature_id | **str** | True  | Contributing feature id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Outlierfeaturesummary**](../models/outlierfeaturesummary)
+[**OutlierFeatureSummary**](../models/outlier-feature-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns selected contributing feature summary for an outlier. | Outlierfeaturesummary |  * accept-language - The locale to use for translations  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns selected contributing feature summary for an outlier. | OutlierFeatureSummary |  * accept-language - The locale to use for translations  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -389,7 +389,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.iai_outliers.api_client import ApiClient
-from sailpoint.iai_outliers.models.outlierfeaturesummary import Outlierfeaturesummary
+from sailpoint.iai_outliers.models.outlier_feature_summary import OutlierFeatureSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -448,18 +448,18 @@ Path   | outlier_id | **str** | True  | The outlier id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Outliercontributingfeature]**](../models/outliercontributingfeature)
+[**List[OutlierContributingFeature]**](../models/outlier-contributing-feature)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object contains a feature and metadata about that feature. | List[Outliercontributingfeature] |  * X-Total-Count - The total result count.  * accept-language - The locale to use for translations  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns list of objects. Each object contains a feature and metadata about that feature. | List[OutlierContributingFeature] |  * X-Total-Count - The total result count.  * accept-language - The locale to use for translations  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -470,7 +470,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.iai_outliers.api_client import ApiClient
-from sailpoint.iai_outliers.models.outliercontributingfeature import Outliercontributingfeature
+from sailpoint.iai_outliers.models.outlier_contributing_feature import OutlierContributingFeature
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -533,11 +533,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -605,18 +605,18 @@ Path   | contributing_feature_name | **str** | True  | The name of contributing 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Outlierscontributingfeatureaccessitems]**](../models/outlierscontributingfeatureaccessitems)
+[**List[OutliersContributingFeatureAccessItems]**](../models/outliers-contributing-feature-access-items)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The list of access items. | List[Outlierscontributingfeatureaccessitems] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The list of access items. | List[OutliersContributingFeatureAccessItems] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -627,7 +627,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.iai_outliers.api_client import ApiClient
-from sailpoint.iai_outliers.models.outlierscontributingfeatureaccessitems import Outlierscontributingfeatureaccessitems
+from sailpoint.iai_outliers.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -691,11 +691,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityOutlierSnapshotsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityOutlierSnapshotsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json

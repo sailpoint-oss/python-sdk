@@ -47,11 +47,11 @@ configuration = sailpoint.password_sync_groups.Configuration(
 with sailpoint.password_sync_groups.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.password_sync_groups.PasswordSyncGroupsApi(api_client)
-    passwordsyncgroup = {"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]} # Passwordsyncgroup | 
+    password_sync_group = {"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]} # PasswordSyncGroup | 
 
     try:
         # Create password sync group
-        api_response = api_instance.create_password_sync_group_v1(passwordsyncgroup)
+        api_response = api_instance.create_password_sync_group_v1(password_sync_group)
         print("The response of PasswordSyncGroupsApi->create_password_sync_group_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,12 +74,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/password_sync_groups/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/password_sync_groups/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/password_sync_groups/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/password_sync_groups/docs/ErrorResponseDto.md)
  - [GetPasswordSyncGroupsV1401Response](sailpoint/password_sync_groups/docs/GetPasswordSyncGroupsV1401Response.md)
  - [GetPasswordSyncGroupsV1429Response](sailpoint/password_sync_groups/docs/GetPasswordSyncGroupsV1429Response.md)
- - [Localeorigin](sailpoint/password_sync_groups/docs/Localeorigin.md)
- - [Passwordsyncgroup](sailpoint/password_sync_groups/docs/Passwordsyncgroup.md)
+ - [LocaleOrigin](sailpoint/password_sync_groups/docs/LocaleOrigin.md)
+ - [PasswordSyncGroup](sailpoint/password_sync_groups/docs/PasswordSyncGroup.md)
 
 
 <a id="documentation-for-authorization"></a>

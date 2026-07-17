@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.machine_identities.models.correlationconfig import Correlationconfig
-from sailpoint.machine_identities.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.machine_identities.models.machineidentityaggregationrequest import Machineidentityaggregationrequest
-from sailpoint.machine_identities.models.machineidentityaggregationresponse import Machineidentityaggregationresponse
-from sailpoint.machine_identities.models.machineidentityrequest import Machineidentityrequest
-from sailpoint.machine_identities.models.machineidentityresponse import Machineidentityresponse
-from sailpoint.machine_identities.models.machineidentityuserentitlementresponse import Machineidentityuserentitlementresponse
+from sailpoint.machine_identities.models.correlation_config import CorrelationConfig
+from sailpoint.machine_identities.models.json_patch_operation import JsonPatchOperation
+from sailpoint.machine_identities.models.machine_identity_aggregation_request import MachineIdentityAggregationRequest
+from sailpoint.machine_identities.models.machine_identity_aggregation_response import MachineIdentityAggregationResponse
+from sailpoint.machine_identities.models.machine_identity_request import MachineIdentityRequest
+from sailpoint.machine_identities.models.machine_identity_response import MachineIdentityResponse
+from sailpoint.machine_identities.models.machine_identity_user_entitlement_response import MachineIdentityUserEntitlementResponse
 from sailpoint.machine_identities.models.machineidentityv2 import Machineidentityv2
 
 from sailpoint.machine_identities.api_client import ApiClient, RequestSerialized
@@ -49,7 +49,7 @@ class MachineIdentitiesApi:
     @validate_call
     def create_machine_identity_v1(
         self,
-        machineidentityrequest: Machineidentityrequest,
+        machine_identity_request: MachineIdentityRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -63,13 +63,13 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineidentityresponse:
+    ) -> MachineIdentityResponse:
         """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
-        :param machineidentityrequest: (required)
-        :type machineidentityrequest: Machineidentityrequest
+        :param machine_identity_request: (required)
+        :type machine_identity_request: MachineIdentityRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -95,7 +95,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_v1_serialize(
-            machineidentityrequest=machineidentityrequest,
+            machine_identity_request=machine_identity_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -104,13 +104,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -126,7 +126,7 @@ class MachineIdentitiesApi:
     @validate_call
     def create_machine_identity_v1_with_http_info(
         self,
-        machineidentityrequest: Machineidentityrequest,
+        machine_identity_request: MachineIdentityRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -140,13 +140,13 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineidentityresponse]:
+    ) -> ApiResponse[MachineIdentityResponse]:
         """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
-        :param machineidentityrequest: (required)
-        :type machineidentityrequest: Machineidentityrequest
+        :param machine_identity_request: (required)
+        :type machine_identity_request: MachineIdentityRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -172,7 +172,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_v1_serialize(
-            machineidentityrequest=machineidentityrequest,
+            machine_identity_request=machine_identity_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -181,13 +181,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -203,7 +203,7 @@ class MachineIdentitiesApi:
     @validate_call
     def create_machine_identity_v1_without_preload_content(
         self,
-        machineidentityrequest: Machineidentityrequest,
+        machine_identity_request: MachineIdentityRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -222,8 +222,8 @@ class MachineIdentitiesApi:
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
-        :param machineidentityrequest: (required)
-        :type machineidentityrequest: Machineidentityrequest
+        :param machine_identity_request: (required)
+        :type machine_identity_request: MachineIdentityRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -249,7 +249,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_v1_serialize(
-            machineidentityrequest=machineidentityrequest,
+            machine_identity_request=machine_identity_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -258,13 +258,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -275,7 +275,7 @@ class MachineIdentitiesApi:
 
     def _create_machine_identity_v1_serialize(
         self,
-        machineidentityrequest,
+        machine_identity_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -304,8 +304,8 @@ class MachineIdentitiesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if machineidentityrequest is not None:
-            _body_params = machineidentityrequest
+        if machine_identity_request is not None:
+            _body_params = machine_identity_request
 
 
         # set the HTTP header `Accept`
@@ -407,12 +407,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -480,12 +480,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -553,12 +553,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -702,12 +702,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -779,12 +779,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -856,12 +856,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -991,12 +991,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1064,12 +1064,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1137,12 +1137,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1277,12 +1277,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1358,12 +1358,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1439,12 +1439,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1539,7 +1539,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineidentityresponse:
+    ) -> MachineIdentityResponse:
         """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
@@ -1580,13 +1580,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1616,7 +1616,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineidentityresponse]:
+    ) -> ApiResponse[MachineIdentityResponse]:
         """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
@@ -1657,13 +1657,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1734,13 +1734,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1870,12 +1870,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1943,12 +1943,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2016,12 +2016,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2111,7 +2111,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Correlationconfig:
+    ) -> CorrelationConfig:
         """Get ownership correlation config
 
         This end-point retrieves a single ownership correlation config by ID for the specified source resource.
@@ -2155,13 +2155,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2192,7 +2192,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Correlationconfig]:
+    ) -> ApiResponse[CorrelationConfig]:
         """Get ownership correlation config
 
         This end-point retrieves a single ownership correlation config by ID for the specified source resource.
@@ -2236,13 +2236,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2317,13 +2317,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2422,7 +2422,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Machineidentityresponse]:
+    ) -> List[MachineIdentityResponse]:
         """List machine identities
 
         This API returns a list of machine identities.
@@ -2475,13 +2475,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2515,7 +2515,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Machineidentityresponse]]:
+    ) -> ApiResponse[List[MachineIdentityResponse]]:
         """List machine identities
 
         This API returns a list of machine identities.
@@ -2568,13 +2568,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2661,13 +2661,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2835,12 +2835,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Machineidentityv2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2924,12 +2924,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Machineidentityv2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3013,12 +3013,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Machineidentityv2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3133,7 +3133,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Machineidentityuserentitlementresponse]:
+    ) -> List[MachineIdentityUserEntitlementResponse]:
         """List machine identity's user entitlements
 
         This API returns a list of user entitlements associated with machine identities.
@@ -3186,13 +3186,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityuserentitlementresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityUserEntitlementResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3226,7 +3226,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Machineidentityuserentitlementresponse]]:
+    ) -> ApiResponse[List[MachineIdentityUserEntitlementResponse]]:
         """List machine identity's user entitlements
 
         This API returns a list of user entitlements associated with machine identities.
@@ -3279,13 +3279,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityuserentitlementresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityUserEntitlementResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3372,13 +3372,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineidentityuserentitlementresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineIdentityUserEntitlementResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3496,7 +3496,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Correlationconfig]:
+    ) -> List[CorrelationConfig]:
         """List ownership correlation configs
 
         Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs for the specified source resource, creating default rows if they are missing. Use the optional type query parameter to return a single matching config.
@@ -3549,12 +3549,12 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Correlationconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[CorrelationConfig]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3588,7 +3588,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Correlationconfig]]:
+    ) -> ApiResponse[List[CorrelationConfig]]:
         """List ownership correlation configs
 
         Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs for the specified source resource, creating default rows if they are missing. Use the optional type query parameter to return a single matching config.
@@ -3641,12 +3641,12 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Correlationconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[CorrelationConfig]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3733,12 +3733,12 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Correlationconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[CorrelationConfig]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3839,7 +3839,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3852,7 +3852,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Correlationconfig:
+    ) -> CorrelationConfig:
         """Patch ownership correlation config
 
         Selectively updates an ownership correlation config using an RFC 6902 JSONPatch payload. Only replace on /attributes (full object) and replace on /rules (full array; merge by stable rule id, remove rules omitted from the array) are allowed.
@@ -3863,8 +3863,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the correlation config. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3891,7 +3891,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3899,13 +3899,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3924,7 +3924,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3937,7 +3937,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Correlationconfig]:
+    ) -> ApiResponse[CorrelationConfig]:
         """Patch ownership correlation config
 
         Selectively updates an ownership correlation config using an RFC 6902 JSONPatch payload. Only replace on /attributes (full object) and replace on /rules (full array; merge by stable rule id, remove rules omitted from the array) are allowed.
@@ -3948,8 +3948,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the correlation config. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3976,7 +3976,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3984,13 +3984,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4009,7 +4009,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4033,8 +4033,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the correlation config. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4061,7 +4061,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4069,13 +4069,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4089,7 +4089,7 @@ class MachineIdentitiesApi:
         source_id,
         resource_id,
         config_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -4099,7 +4099,7 @@ class MachineIdentitiesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4122,8 +4122,8 @@ class MachineIdentitiesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -4174,7 +4174,7 @@ class MachineIdentitiesApi:
     def start_machine_identity_aggregation_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineidentityaggregationrequest: Machineidentityaggregationrequest,
+        machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4188,15 +4188,15 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineidentityaggregationresponse:
+    ) -> MachineIdentityAggregationResponse:
         """Start machine identity aggregation
 
         Starts a machine identity (AI Agents) aggregation on the specified source.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineidentityaggregationrequest: (required)
-        :type machineidentityaggregationrequest: Machineidentityaggregationrequest
+        :param machine_identity_aggregation_request: (required)
+        :type machine_identity_aggregation_request: MachineIdentityAggregationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4223,7 +4223,7 @@ class MachineIdentitiesApi:
 
         _param = self._start_machine_identity_aggregation_v1_serialize(
             source_id=source_id,
-            machineidentityaggregationrequest=machineidentityaggregationrequest,
+            machine_identity_aggregation_request=machine_identity_aggregation_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4232,13 +4232,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityaggregationresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityAggregationResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4255,7 +4255,7 @@ class MachineIdentitiesApi:
     def start_machine_identity_aggregation_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineidentityaggregationrequest: Machineidentityaggregationrequest,
+        machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4269,15 +4269,15 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineidentityaggregationresponse]:
+    ) -> ApiResponse[MachineIdentityAggregationResponse]:
         """Start machine identity aggregation
 
         Starts a machine identity (AI Agents) aggregation on the specified source.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineidentityaggregationrequest: (required)
-        :type machineidentityaggregationrequest: Machineidentityaggregationrequest
+        :param machine_identity_aggregation_request: (required)
+        :type machine_identity_aggregation_request: MachineIdentityAggregationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4304,7 +4304,7 @@ class MachineIdentitiesApi:
 
         _param = self._start_machine_identity_aggregation_v1_serialize(
             source_id=source_id,
-            machineidentityaggregationrequest=machineidentityaggregationrequest,
+            machine_identity_aggregation_request=machine_identity_aggregation_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4313,13 +4313,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityaggregationresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityAggregationResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4336,7 +4336,7 @@ class MachineIdentitiesApi:
     def start_machine_identity_aggregation_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineidentityaggregationrequest: Machineidentityaggregationrequest,
+        machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4357,8 +4357,8 @@ class MachineIdentitiesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineidentityaggregationrequest: (required)
-        :type machineidentityaggregationrequest: Machineidentityaggregationrequest
+        :param machine_identity_aggregation_request: (required)
+        :type machine_identity_aggregation_request: MachineIdentityAggregationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4385,7 +4385,7 @@ class MachineIdentitiesApi:
 
         _param = self._start_machine_identity_aggregation_v1_serialize(
             source_id=source_id,
-            machineidentityaggregationrequest=machineidentityaggregationrequest,
+            machine_identity_aggregation_request=machine_identity_aggregation_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4394,13 +4394,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityaggregationresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityAggregationResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4412,7 +4412,7 @@ class MachineIdentitiesApi:
     def _start_machine_identity_aggregation_v1_serialize(
         self,
         source_id,
-        machineidentityaggregationrequest,
+        machine_identity_aggregation_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -4443,8 +4443,8 @@ class MachineIdentitiesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if machineidentityaggregationrequest is not None:
-            _body_params = machineidentityaggregationrequest
+        if machine_identity_aggregation_request is not None:
+            _body_params = machine_identity_aggregation_request
 
 
         # set the HTTP header `Accept`
@@ -4509,7 +4509,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineidentityresponse:
+    ) -> MachineIdentityResponse:
         """Update machine identity details
 
         Use this API to update machine identity details. 
@@ -4553,13 +4553,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4590,7 +4590,7 @@ class MachineIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineidentityresponse]:
+    ) -> ApiResponse[MachineIdentityResponse]:
         """Update machine identity details
 
         Use this API to update machine identity details. 
@@ -4634,13 +4634,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4715,13 +4715,13 @@ class MachineIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineidentityresponse",
-            '400': "Errorresponsedto",
+            '200': "MachineIdentityResponse",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4817,7 +4817,7 @@ class MachineIdentitiesApi:
     def update_machine_identity_v2(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4837,8 +4837,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
-        :param jsonpatchoperation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4863,7 +4863,7 @@ class MachineIdentitiesApi:
 
         _param = self._update_machine_identity_v2_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4872,12 +4872,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4894,7 +4894,7 @@ class MachineIdentitiesApi:
     def update_machine_identity_v2_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4914,8 +4914,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
-        :param jsonpatchoperation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4940,7 +4940,7 @@ class MachineIdentitiesApi:
 
         _param = self._update_machine_identity_v2_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4949,12 +4949,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4971,7 +4971,7 @@ class MachineIdentitiesApi:
     def update_machine_identity_v2_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4991,8 +4991,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
-        :param jsonpatchoperation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5017,7 +5017,7 @@ class MachineIdentitiesApi:
 
         _param = self._update_machine_identity_v2_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5026,12 +5026,12 @@ class MachineIdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Machineidentityv2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5043,7 +5043,7 @@ class MachineIdentitiesApi:
     def _update_machine_identity_v2_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -5053,7 +5053,7 @@ class MachineIdentitiesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -5072,8 +5072,8 @@ class MachineIdentitiesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

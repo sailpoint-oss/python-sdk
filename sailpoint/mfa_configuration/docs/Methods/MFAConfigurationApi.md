@@ -34,17 +34,17 @@ This API returns the configuration of an Duo MFA method.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Mfaduoconfig**](../models/mfaduoconfig)
+[**MfaDuoConfig**](../models/mfa-duo-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The configuration of an Duo MFA method. | Mfaduoconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The configuration of an Duo MFA method. | MfaDuoConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -55,7 +55,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
+from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -91,17 +91,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | all_languages | **bool** |   (optional) | Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false
 
 ### Return type
-[**List[Kbaquestion]**](../models/kbaquestion)
+[**List[KbaQuestion]**](../models/kba-question)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The configuration for KBA MFA method. | List[Kbaquestion] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The configuration for KBA MFA method. | List[KbaQuestion] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -112,7 +112,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.kbaquestion import Kbaquestion
+from sailpoint.mfa_configuration.models.kba_question import KbaQuestion
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -147,17 +147,17 @@ This API returns the configuration of an Okta MFA method.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Mfaoktaconfig**](../models/mfaoktaconfig)
+[**MfaOktaConfig**](../models/mfa-okta-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The configuration of an Okta MFA method. | Mfaoktaconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The configuration of an Okta MFA method. | MfaOktaConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -168,7 +168,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -201,20 +201,20 @@ This API sets the configuration of an Duo MFA method.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | mfaduoconfig | [**Mfaduoconfig**](../models/mfaduoconfig) | True  | 
+ Body  | mfa_duo_config | [**MfaDuoConfig**](../models/mfa-duo-config) | True  | 
 
 ### Return type
-[**Mfaduoconfig**](../models/mfaduoconfig)
+[**MfaDuoConfig**](../models/mfa-duo-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | MFA configuration of an Duo MFA method. | Mfaduoconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | MFA configuration of an Duo MFA method. | MfaDuoConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -225,20 +225,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
+from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    mfaduoconfig = '''{"mfaMethod":"duo-web","enabled":true,"host":"www.example.com","accessKey":"qw123Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email","configProperties":{"skey":"12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B","ikey":"Q123WE45R6TY7890ZXCV"}}''' # Mfaduoconfig | 
+    mfa_duo_config = '''{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "configProperties" : {
+            "skey" : "qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x",
+            "ikey" : "Q123WE45R6TY7890ZXCV"
+          },
+          "mfaMethod" : "duo-web",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }''' # MfaDuoConfig | 
 
     try:
         # Set duo mfa configuration
-        new_mfaduoconfig = Mfaduoconfig.from_json(mfaduoconfig)
-        results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(mfaduoconfig=new_mfaduoconfig)
+        new_mfa_duo_config = MfaDuoConfig.from_json(mfa_duo_config)
+        results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(mfa_duo_config=new_mfa_duo_config)
         # Below is a request that includes all optional parameters
-        # results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(new_mfaduoconfig)
+        # results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(new_mfa_duo_config)
         print("The response of MFAConfigurationApi->set_mfa_duo_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -259,20 +269,20 @@ This API sets the configuration of an Okta MFA method.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | mfaoktaconfig | [**Mfaoktaconfig**](../models/mfaoktaconfig) | True  | 
+ Body  | mfa_okta_config | [**MfaOktaConfig**](../models/mfa-okta-config) | True  | 
 
 ### Return type
-[**Mfaoktaconfig**](../models/mfaoktaconfig)
+[**MfaOktaConfig**](../models/mfa-okta-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | MFA configuration of an Okta MFA method. | Mfaoktaconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | MFA configuration of an Okta MFA method. | MfaOktaConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -283,20 +293,26 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    mfaoktaconfig = '''{"mfaMethod":"okta-verify","enabled":true,"host":"www.example.com","accessKey":"dk778Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email"}''' # Mfaoktaconfig | 
+    mfa_okta_config = '''{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "mfaMethod" : "okta-verify",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }''' # MfaOktaConfig | 
 
     try:
         # Set okta mfa configuration
-        new_mfaoktaconfig = Mfaoktaconfig.from_json(mfaoktaconfig)
-        results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(mfaoktaconfig=new_mfaoktaconfig)
+        new_mfa_okta_config = MfaOktaConfig.from_json(mfa_okta_config)
+        results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(mfa_okta_config=new_mfa_okta_config)
         # Below is a request that includes all optional parameters
-        # results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(new_mfaoktaconfig)
+        # results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(new_mfa_okta_config)
         print("The response of MFAConfigurationApi->set_mfa_okta_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -317,20 +333,20 @@ This API sets answers to challenge questions.  Any configured questions omitted 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | kbaanswerrequestitem | [**[]Kbaanswerrequestitem**](../models/kbaanswerrequestitem) | True  | 
+ Body  | kba_answer_request_item | [**[]KbaAnswerRequestItem**](../models/kba-answer-request-item) | True  | 
 
 ### Return type
-[**List[Kbaanswerresponseitem]**](../models/kbaanswerresponseitem)
+[**List[KbaAnswerResponseItem]**](../models/kba-answer-response-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The new KBA configuration for the user. | List[Kbaanswerresponseitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The new KBA configuration for the user. | List[KbaAnswerResponseItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -341,21 +357,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.kbaanswerrequestitem import Kbaanswerrequestitem
-from sailpoint.mfa_configuration.models.kbaanswerresponseitem import Kbaanswerresponseitem
+from sailpoint.mfa_configuration.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.mfa_configuration.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    kbaanswerrequestitem = '''[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]''' # List[Kbaanswerrequestitem] | 
+    kba_answer_request_item = '''[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]''' # List[KbaAnswerRequestItem] | 
 
     try:
         # Set mfa kba configuration
-        new_kbaanswerrequestitem = Kbaanswerrequestitem.from_json(kbaanswerrequestitem)
-        results = MFAConfigurationApi(api_client).set_mfakba_config_v1(kbaanswerrequestitem=new_kbaanswerrequestitem)
+        new_kba_answer_request_item = KbaAnswerRequestItem.from_json(kba_answer_request_item)
+        results = MFAConfigurationApi(api_client).set_mfakba_config_v1(kba_answer_request_item=new_kba_answer_request_item)
         # Below is a request that includes all optional parameters
-        # results = MFAConfigurationApi(api_client).set_mfakba_config_v1(new_kbaanswerrequestitem)
+        # results = MFAConfigurationApi(api_client).set_mfakba_config_v1(new_kba_answer_request_item)
         print("The response of MFAConfigurationApi->set_mfakba_config_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -380,17 +396,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | method | **str** | True  | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
 
 ### Return type
-[**Mfaconfigtestresponse**](../models/mfaconfigtestresponse)
+[**MfaConfigTestResponse**](../models/mfa-config-test-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The result of configuration test for the MFA provider. | Mfaconfigtestresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The result of configuration test for the MFA provider. | MfaConfigTestResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -401,7 +417,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.mfa_configuration.api_client import ApiClient
-from sailpoint.mfa_configuration.models.mfaconfigtestresponse import Mfaconfigtestresponse
+from sailpoint.mfa_configuration.models.mfa_config_test_response import MfaConfigTestResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

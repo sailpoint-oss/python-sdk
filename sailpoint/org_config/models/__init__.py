@@ -15,12 +15,12 @@
 
 # import models into model package
 from sailpoint.org_config.models.array_inner import ArrayInner
-from sailpoint.org_config.models.errormessagedto import Errormessagedto
-from sailpoint.org_config.models.errorresponsedto import Errorresponsedto
+from sailpoint.org_config.models.error_message_dto import ErrorMessageDto
+from sailpoint.org_config.models.error_response_dto import ErrorResponseDto
 from sailpoint.org_config.models.get_org_config_v1401_response import GetOrgConfigV1401Response
 from sailpoint.org_config.models.get_org_config_v1429_response import GetOrgConfigV1429Response
-from sailpoint.org_config.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.org_config.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.org_config.models.localeorigin import Localeorigin
-from sailpoint.org_config.models.orgconfig import Orgconfig
-from sailpoint.org_config.models.reportconfigdto import Reportconfigdto
+from sailpoint.org_config.models.json_patch_operation import JsonPatchOperation
+from sailpoint.org_config.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.org_config.models.locale_origin import LocaleOrigin
+from sailpoint.org_config.models.org_config import OrgConfig
+from sailpoint.org_config.models.report_config_dto import ReportConfigDTO

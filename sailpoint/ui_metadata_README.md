@@ -71,13 +71,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/ui_metadata/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/ui_metadata/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/ui_metadata/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/ui_metadata/docs/ErrorResponseDto.md)
  - [GetTenantUiMetadataV1401Response](sailpoint/ui_metadata/docs/GetTenantUiMetadataV1401Response.md)
  - [GetTenantUiMetadataV1429Response](sailpoint/ui_metadata/docs/GetTenantUiMetadataV1429Response.md)
- - [Localeorigin](sailpoint/ui_metadata/docs/Localeorigin.md)
- - [Tenantuimetadataitemresponse](sailpoint/ui_metadata/docs/Tenantuimetadataitemresponse.md)
- - [Tenantuimetadataitemupdaterequest](sailpoint/ui_metadata/docs/Tenantuimetadataitemupdaterequest.md)
+ - [LocaleOrigin](sailpoint/ui_metadata/docs/LocaleOrigin.md)
+ - [TenantUiMetadataItemResponse](sailpoint/ui_metadata/docs/TenantUiMetadataItemResponse.md)
+ - [TenantUiMetadataItemUpdateRequest](sailpoint/ui_metadata/docs/TenantUiMetadataItemUpdateRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

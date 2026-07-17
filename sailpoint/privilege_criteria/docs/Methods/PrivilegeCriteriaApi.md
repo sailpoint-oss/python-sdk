@@ -33,20 +33,20 @@ Use this API to create a custom privilege criteria
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | createprivilegecriteriarequest | [**Createprivilegecriteriarequest**](../models/createprivilegecriteriarequest) | True  | Create custom privilege criteria request body.
+ Body  | create_privilege_criteria_request | [**CreatePrivilegeCriteriaRequest**](../models/create-privilege-criteria-request) | True  | Create custom privilege criteria request body.
 
 ### Return type
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Custom privilege criteria created | Privilegecriteriadto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Custom privilege criteria created | PrivilegeCriteriaDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPrivilegeCriteriaV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPrivilegeCriteriaV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -57,20 +57,52 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.privilege_criteria.api_client import ApiClient
-from sailpoint.privilege_criteria.models.createprivilegecriteriarequest import Createprivilegecriteriarequest
+from sailpoint.privilege_criteria.models.create_privilege_criteria_request import CreatePrivilegeCriteriaRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createprivilegecriteriarequest = '''sailpoint.privilege_criteria.Createprivilegecriteriarequest()''' # Createprivilegecriteriarequest | Create custom privilege criteria request body.
+    create_privilege_criteria_request = '''{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            } ],
+            "operator" : "AND"
+          } ],
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }''' # CreatePrivilegeCriteriaRequest | Create custom privilege criteria request body.
 
     try:
         # Create custom privilege criteria
-        new_createprivilegecriteriarequest = Createprivilegecriteriarequest.from_json(createprivilegecriteriarequest)
-        results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria_v1(createprivilegecriteriarequest=new_createprivilegecriteriarequest)
+        new_create_privilege_criteria_request = CreatePrivilegeCriteriaRequest.from_json(create_privilege_criteria_request)
+        results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria_v1(create_privilege_criteria_request=new_create_privilege_criteria_request)
         # Below is a request that includes all optional parameters
-        # results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria_v1(new_createprivilegecriteriarequest)
+        # results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria_v1(new_create_privilege_criteria_request)
         print("The response of PrivilegeCriteriaApi->create_custom_privilege_criteria_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -100,11 +132,11 @@ Path   | criteria_id | **str** | True  | The Id of the custom privilege criteria
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | Success |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPrivilegeCriteriaV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPrivilegeCriteriaV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -149,17 +181,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | criteria_id | **str** | True  | The Id of the privilege criteria record to return.
 
 ### Return type
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Privilegecriteriadto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | PrivilegeCriteriaDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPrivilegeCriteriaV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPrivilegeCriteriaV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -170,7 +202,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.privilege_criteria.api_client import ApiClient
-from sailpoint.privilege_criteria.models.privilegecriteriadto import Privilegecriteriadto
+from sailpoint.privilege_criteria.models.privilege_criteria_dto import PrivilegeCriteriaDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -207,17 +239,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** | True  | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  **sourceId**: *eq*  **privilegeLevel**: *eq*  **Supported composite operators**: *and*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=type eq \"CUSTOM\" and sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
 
 ### Return type
-[**List[Privilegecriteriadto]**](../models/privilegecriteriadto)
+[**List[PrivilegeCriteriaDTO]**](../models/privilege-criteria-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | List[Privilegecriteriadto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | List[PrivilegeCriteriaDTO] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPrivilegeCriteriaV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPrivilegeCriteriaV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -228,7 +260,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.privilege_criteria.api_client import ApiClient
-from sailpoint.privilege_criteria.models.privilegecriteriadto import Privilegecriteriadto
+from sailpoint.privilege_criteria.models.privilege_criteria_dto import PrivilegeCriteriaDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -264,20 +296,20 @@ Use this API to update a specific custom privilege criteria by overwriting the i
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | criteria_id | **str** | True  | The Id of the privilege criteria record to return.
- Body  | privilegecriteriadto | [**Privilegecriteriadto**](../models/privilegecriteriadto) | True  | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+ Body  | privilege_criteria_dto | [**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto) | True  | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
 
 ### Return type
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Privilegecriteriadto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | PrivilegeCriteriaDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPrivilegeCriteriaV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPrivilegeCriteriaV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -288,21 +320,58 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.privilege_criteria.api_client import ApiClient
-from sailpoint.privilege_criteria.models.privilegecriteriadto import Privilegecriteriadto
+from sailpoint.privilege_criteria.models.privilege_criteria_dto import PrivilegeCriteriaDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     criteria_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the privilege criteria record to return. # str | The Id of the privilege criteria record to return.
-    privilegecriteriadto = '''sailpoint.privilege_criteria.Privilegecriteriadto()''' # Privilegecriteriadto | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+    privilege_criteria_dto = '''{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "id" : "2c9180867817ac4d017817c491119a20",
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }''' # PrivilegeCriteriaDTO | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
 
     try:
         # Update privilege criteria
-        new_privilegecriteriadto = Privilegecriteriadto.from_json(privilegecriteriadto)
-        results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value_v1(criteria_id=criteria_id, privilegecriteriadto=new_privilegecriteriadto)
+        new_privilege_criteria_dto = PrivilegeCriteriaDto.from_json(privilege_criteria_dto)
+        results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value_v1(criteria_id=criteria_id, privilege_criteria_dto=new_privilege_criteria_dto)
         # Below is a request that includes all optional parameters
-        # results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value_v1(criteria_id, new_privilegecriteriadto)
+        # results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value_v1(criteria_id, new_privilege_criteria_dto)
         print("The response of PrivilegeCriteriaApi->put_custom_privilege_criteria_value_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

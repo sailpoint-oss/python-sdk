@@ -47,11 +47,11 @@ configuration = sailpoint.oauth_clients.Configuration(
 with sailpoint.oauth_clients.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.oauth_clients.OAuthClientsApi(api_client)
-    createoauthclientrequest = sailpoint.oauth_clients.Createoauthclientrequest() # Createoauthclientrequest | 
+    create_o_auth_client_request = sailpoint.oauth_clients.CreateOAuthClientRequest() # CreateOAuthClientRequest | 
 
     try:
         # Create oauth client
-        api_response = api_instance.create_oauth_client_v1(createoauthclientrequest)
+        api_response = api_instance.create_oauth_client_v1(create_o_auth_client_request)
         print("The response of OAuthClientsApi->create_oauth_client_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,20 +74,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accesstype](sailpoint/oauth_clients/docs/Accesstype.md)
+ - [AccessType](sailpoint/oauth_clients/docs/AccessType.md)
  - [ArrayInner](sailpoint/oauth_clients/docs/ArrayInner.md)
- - [Clienttype](sailpoint/oauth_clients/docs/Clienttype.md)
- - [Createoauthclientrequest](sailpoint/oauth_clients/docs/Createoauthclientrequest.md)
- - [Createoauthclientresponse](sailpoint/oauth_clients/docs/Createoauthclientresponse.md)
- - [Errormessagedto](sailpoint/oauth_clients/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/oauth_clients/docs/Errorresponsedto.md)
- - [Getoauthclientresponse](sailpoint/oauth_clients/docs/Getoauthclientresponse.md)
- - [Granttype](sailpoint/oauth_clients/docs/Granttype.md)
- - [Jsonpatchoperation](sailpoint/oauth_clients/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/oauth_clients/docs/JsonpatchoperationValue.md)
+ - [ClientType](sailpoint/oauth_clients/docs/ClientType.md)
+ - [CreateOAuthClientRequest](sailpoint/oauth_clients/docs/CreateOAuthClientRequest.md)
+ - [CreateOAuthClientResponse](sailpoint/oauth_clients/docs/CreateOAuthClientResponse.md)
+ - [ErrorMessageDto](sailpoint/oauth_clients/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/oauth_clients/docs/ErrorResponseDto.md)
+ - [GetOAuthClientResponse](sailpoint/oauth_clients/docs/GetOAuthClientResponse.md)
+ - [GrantType](sailpoint/oauth_clients/docs/GrantType.md)
+ - [JsonPatchOperation](sailpoint/oauth_clients/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/oauth_clients/docs/JsonPatchOperationValue.md)
  - [ListOauthClientsV1401Response](sailpoint/oauth_clients/docs/ListOauthClientsV1401Response.md)
  - [ListOauthClientsV1429Response](sailpoint/oauth_clients/docs/ListOauthClientsV1429Response.md)
- - [Localeorigin](sailpoint/oauth_clients/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/oauth_clients/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

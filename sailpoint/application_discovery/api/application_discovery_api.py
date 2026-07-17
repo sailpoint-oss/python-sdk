@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBytes, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.application_discovery.models.applicationdiscoveryrequest import Applicationdiscoveryrequest
-from sailpoint.application_discovery.models.applicationdiscoveryresponse import Applicationdiscoveryresponse
+from sailpoint.application_discovery.models.application_discovery_request import ApplicationDiscoveryRequest
+from sailpoint.application_discovery.models.application_discovery_response import ApplicationDiscoveryResponse
 from sailpoint.application_discovery.models.get_discovered_applications_v1200_response_inner import GetDiscoveredApplicationsV1200ResponseInner
-from sailpoint.application_discovery.models.manualdiscoverapplicationstemplate import Manualdiscoverapplicationstemplate
+from sailpoint.application_discovery.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 
 from sailpoint.application_discovery.api_client import ApiClient, RequestSerialized
 from sailpoint.application_discovery.api_response import ApiResponse
@@ -113,11 +113,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetDiscoveredApplicationsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -201,11 +201,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetDiscoveredApplicationsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -289,11 +289,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetDiscoveredApplicationsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -402,7 +402,7 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Manualdiscoverapplicationstemplate:
+    ) -> ManualDiscoverApplicationsTemplate:
         """Download csv template for discovery
 
         Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
@@ -437,12 +437,12 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Manualdiscoverapplicationstemplate",
-            '400': "Errorresponsedto",
+            '200': "ManualDiscoverApplicationsTemplate",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -470,7 +470,7 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Manualdiscoverapplicationstemplate]:
+    ) -> ApiResponse[ManualDiscoverApplicationsTemplate]:
         """Download csv template for discovery
 
         Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
@@ -505,12 +505,12 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Manualdiscoverapplicationstemplate",
-            '400': "Errorresponsedto",
+            '200': "ManualDiscoverApplicationsTemplate",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -573,12 +573,12 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Manualdiscoverapplicationstemplate",
-            '400': "Errorresponsedto",
+            '200': "ManualDiscoverApplicationsTemplate",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -703,11 +703,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -775,11 +775,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -847,11 +847,11 @@ class ApplicationDiscoveryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -940,7 +940,7 @@ class ApplicationDiscoveryApi:
     def start_application_discovery_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The sourceId.")],
-        applicationdiscoveryrequest: Applicationdiscoveryrequest,
+        application_discovery_request: ApplicationDiscoveryRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -954,15 +954,15 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Applicationdiscoveryresponse:
+    ) -> ApplicationDiscoveryResponse:
         """Start Application Discovery
 
         Use this API to discover applications.
 
         :param source_id: The sourceId. (required)
         :type source_id: str
-        :param applicationdiscoveryrequest: (required)
-        :type applicationdiscoveryrequest: Applicationdiscoveryrequest
+        :param application_discovery_request: (required)
+        :type application_discovery_request: ApplicationDiscoveryRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -989,7 +989,7 @@ class ApplicationDiscoveryApi:
 
         _param = self._start_application_discovery_v1_serialize(
             source_id=source_id,
-            applicationdiscoveryrequest=applicationdiscoveryrequest,
+            application_discovery_request=application_discovery_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -998,13 +998,13 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationdiscoveryresponse",
-            '400': "Errorresponsedto",
+            '200': "ApplicationDiscoveryResponse",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
             '403': "StartApplicationDiscoveryV1403Response",
-            '404': "Errorresponsedto",
+            '404': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1021,7 +1021,7 @@ class ApplicationDiscoveryApi:
     def start_application_discovery_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The sourceId.")],
-        applicationdiscoveryrequest: Applicationdiscoveryrequest,
+        application_discovery_request: ApplicationDiscoveryRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1035,15 +1035,15 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Applicationdiscoveryresponse]:
+    ) -> ApiResponse[ApplicationDiscoveryResponse]:
         """Start Application Discovery
 
         Use this API to discover applications.
 
         :param source_id: The sourceId. (required)
         :type source_id: str
-        :param applicationdiscoveryrequest: (required)
-        :type applicationdiscoveryrequest: Applicationdiscoveryrequest
+        :param application_discovery_request: (required)
+        :type application_discovery_request: ApplicationDiscoveryRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1070,7 +1070,7 @@ class ApplicationDiscoveryApi:
 
         _param = self._start_application_discovery_v1_serialize(
             source_id=source_id,
-            applicationdiscoveryrequest=applicationdiscoveryrequest,
+            application_discovery_request=application_discovery_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1079,13 +1079,13 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationdiscoveryresponse",
-            '400': "Errorresponsedto",
+            '200': "ApplicationDiscoveryResponse",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
             '403': "StartApplicationDiscoveryV1403Response",
-            '404': "Errorresponsedto",
+            '404': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1102,7 +1102,7 @@ class ApplicationDiscoveryApi:
     def start_application_discovery_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The sourceId.")],
-        applicationdiscoveryrequest: Applicationdiscoveryrequest,
+        application_discovery_request: ApplicationDiscoveryRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1123,8 +1123,8 @@ class ApplicationDiscoveryApi:
 
         :param source_id: The sourceId. (required)
         :type source_id: str
-        :param applicationdiscoveryrequest: (required)
-        :type applicationdiscoveryrequest: Applicationdiscoveryrequest
+        :param application_discovery_request: (required)
+        :type application_discovery_request: ApplicationDiscoveryRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1151,7 +1151,7 @@ class ApplicationDiscoveryApi:
 
         _param = self._start_application_discovery_v1_serialize(
             source_id=source_id,
-            applicationdiscoveryrequest=applicationdiscoveryrequest,
+            application_discovery_request=application_discovery_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1160,13 +1160,13 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationdiscoveryresponse",
-            '400': "Errorresponsedto",
+            '200': "ApplicationDiscoveryResponse",
+            '400': "ErrorResponseDto",
             '401': "StartApplicationDiscoveryV1401Response",
             '403': "StartApplicationDiscoveryV1403Response",
-            '404': "Errorresponsedto",
+            '404': "ErrorResponseDto",
             '429': "StartApplicationDiscoveryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1178,7 +1178,7 @@ class ApplicationDiscoveryApi:
     def _start_application_discovery_v1_serialize(
         self,
         source_id,
-        applicationdiscoveryrequest,
+        application_discovery_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1209,8 +1209,8 @@ class ApplicationDiscoveryApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if applicationdiscoveryrequest is not None:
-            _body_params = applicationdiscoveryrequest
+        if application_discovery_request is not None:
+            _body_params = application_discovery_request
 
 
         # set the HTTP header `Accept`

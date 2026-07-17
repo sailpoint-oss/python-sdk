@@ -47,12 +47,12 @@ configuration = sailpoint.custom_user_levels.Configuration(
 with sailpoint.custom_user_levels.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.custom_user_levels.CustomUserLevelsApi(api_client)
-    userlevelrequest = {"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]} # Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    user_level_request = {"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]} # UserLevelRequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create a custom user level
-        api_response = api_instance.create_custom_user_level_v1(userlevelrequest, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_custom_user_level_v1(user_level_request, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of CustomUserLevelsApi->create_custom_user_level_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -80,26 +80,26 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/custom_user_levels/docs/ArrayInner.md)
- - [Authuserlevelsidentitycount](sailpoint/custom_user_levels/docs/Authuserlevelsidentitycount.md)
- - [Authuserslimresponse](sailpoint/custom_user_levels/docs/Authuserslimresponse.md)
- - [Dtotype](sailpoint/custom_user_levels/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/custom_user_levels/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/custom_user_levels/docs/Errorresponsedto.md)
- - [Hierarchicalrightset](sailpoint/custom_user_levels/docs/Hierarchicalrightset.md)
- - [Identityreference](sailpoint/custom_user_levels/docs/Identityreference.md)
- - [Jsonpatch](sailpoint/custom_user_levels/docs/Jsonpatch.md)
- - [Jsonpatchoperation](sailpoint/custom_user_levels/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/custom_user_levels/docs/JsonpatchoperationValue.md)
+ - [AuthUserLevelsIdentityCount](sailpoint/custom_user_levels/docs/AuthUserLevelsIdentityCount.md)
+ - [AuthUserSlimResponse](sailpoint/custom_user_levels/docs/AuthUserSlimResponse.md)
+ - [DtoType](sailpoint/custom_user_levels/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/custom_user_levels/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/custom_user_levels/docs/ErrorResponseDto.md)
+ - [HierarchicalRightSet](sailpoint/custom_user_levels/docs/HierarchicalRightSet.md)
+ - [IdentityReference](sailpoint/custom_user_levels/docs/IdentityReference.md)
+ - [JsonPatch](sailpoint/custom_user_levels/docs/JsonPatch.md)
+ - [JsonPatchOperation](sailpoint/custom_user_levels/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/custom_user_levels/docs/JsonPatchOperationValue.md)
  - [ListUserLevelsV1401Response](sailpoint/custom_user_levels/docs/ListUserLevelsV1401Response.md)
  - [ListUserLevelsV1429Response](sailpoint/custom_user_levels/docs/ListUserLevelsV1429Response.md)
- - [Localeorigin](sailpoint/custom_user_levels/docs/Localeorigin.md)
- - [Nestedconfig](sailpoint/custom_user_levels/docs/Nestedconfig.md)
- - [Publicidentity](sailpoint/custom_user_levels/docs/Publicidentity.md)
- - [PublicidentityAttributesInner](sailpoint/custom_user_levels/docs/PublicidentityAttributesInner.md)
- - [Rightsetdto](sailpoint/custom_user_levels/docs/Rightsetdto.md)
- - [Userlevelpublishsummary](sailpoint/custom_user_levels/docs/Userlevelpublishsummary.md)
- - [Userlevelrequest](sailpoint/custom_user_levels/docs/Userlevelrequest.md)
- - [Userlevelsummarydto](sailpoint/custom_user_levels/docs/Userlevelsummarydto.md)
+ - [LocaleOrigin](sailpoint/custom_user_levels/docs/LocaleOrigin.md)
+ - [NestedConfig](sailpoint/custom_user_levels/docs/NestedConfig.md)
+ - [PublicIdentity](sailpoint/custom_user_levels/docs/PublicIdentity.md)
+ - [PublicIdentityAttributesInner](sailpoint/custom_user_levels/docs/PublicIdentityAttributesInner.md)
+ - [RightSetDTO](sailpoint/custom_user_levels/docs/RightSetDTO.md)
+ - [UserLevelPublishSummary](sailpoint/custom_user_levels/docs/UserLevelPublishSummary.md)
+ - [UserLevelRequest](sailpoint/custom_user_levels/docs/UserLevelRequest.md)
+ - [UserLevelSummaryDTO](sailpoint/custom_user_levels/docs/UserLevelSummaryDTO.md)
 
 
 <a id="documentation-for-authorization"></a>

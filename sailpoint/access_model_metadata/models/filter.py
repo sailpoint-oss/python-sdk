@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.access_model_metadata.models.filtertype import Filtertype
+from sailpoint.access_model_metadata.models.filter_type import FilterType
 from sailpoint.access_model_metadata.models.range import Range
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class Filter(BaseModel):
     """
     Filter
     """ # noqa: E501
-    type: Optional[Union[Filtertype, str]] = None
+    type: Optional[Union[FilterType, str]] = None
     range: Optional[Range] = None
     terms: Optional[List[StrictStr]] = Field(default=None, description="The terms to be filtered.")
     exclude: Optional[StrictBool] = Field(default=False, description="Indicates if the filter excludes results.")

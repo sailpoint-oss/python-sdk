@@ -6,7 +6,7 @@
       source: |
         from sailpoint.account_usages.api.account_usages_api import AccountUsagesApi
         from sailpoint.account_usages.api_client import ApiClient
-        from sailpoint.account_usages.models.accountusage import Accountusage
+        from sailpoint.account_usages.models.account_usage import AccountUsage
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

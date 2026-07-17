@@ -73,17 +73,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/role_propagation/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/role_propagation/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/role_propagation/docs/Localeorigin.md)
- - [RolePropagationConfigInput](sailpoint/role_propagation/docs/RolePropagationConfigInput.md)
- - [RolePropagationConfigResponse](sailpoint/role_propagation/docs/RolePropagationConfigResponse.md)
- - [RolePropagationOngoingResponse](sailpoint/role_propagation/docs/RolePropagationOngoingResponse.md)
- - [RolePropagationOngoingResponseRolePropagationDetails](sailpoint/role_propagation/docs/RolePropagationOngoingResponseRolePropagationDetails.md)
- - [RolePropagationResponse](sailpoint/role_propagation/docs/RolePropagationResponse.md)
- - [RolePropagationStatusResponse](sailpoint/role_propagation/docs/RolePropagationStatusResponse.md)
- - [RolePropagationStatusResponseLaunchedBy](sailpoint/role_propagation/docs/RolePropagationStatusResponseLaunchedBy.md)
- - [RolePropagationStatusResponseTerminatedBy](sailpoint/role_propagation/docs/RolePropagationStatusResponseTerminatedBy.md)
+ - [ErrorMessageDto](sailpoint/role_propagation/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/role_propagation/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/role_propagation/docs/LocaleOrigin.md)
+ - [Rolepropagationconfiginput](sailpoint/role_propagation/docs/Rolepropagationconfiginput.md)
+ - [Rolepropagationconfigresponse](sailpoint/role_propagation/docs/Rolepropagationconfigresponse.md)
+ - [Rolepropagationongoingresponse](sailpoint/role_propagation/docs/Rolepropagationongoingresponse.md)
+ - [RolepropagationongoingresponseRolePropagationDetails](sailpoint/role_propagation/docs/RolepropagationongoingresponseRolePropagationDetails.md)
+ - [Rolepropagationresponse](sailpoint/role_propagation/docs/Rolepropagationresponse.md)
+ - [Rolepropagationstatusresponse](sailpoint/role_propagation/docs/Rolepropagationstatusresponse.md)
+ - [RolepropagationstatusresponseLaunchedBy](sailpoint/role_propagation/docs/RolepropagationstatusresponseLaunchedBy.md)
+ - [RolepropagationstatusresponseTerminatedBy](sailpoint/role_propagation/docs/RolepropagationstatusresponseTerminatedBy.md)
  - [StartRolePropagationV1401Response](sailpoint/role_propagation/docs/StartRolePropagationV1401Response.md)
  - [StartRolePropagationV1429Response](sailpoint/role_propagation/docs/StartRolePropagationV1429Response.md)
 

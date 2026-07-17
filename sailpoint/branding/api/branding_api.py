@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBytes, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.branding.models.brandingitem import Brandingitem
+from sailpoint.branding.models.branding_item import BrandingItem
 
 from sailpoint.branding.api_client import ApiClient, RequestSerialized
 from sailpoint.branding.api_response import ApiResponse
@@ -62,7 +62,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Brandingitem:
+    ) -> BrandingItem:
         """Create a branding item
 
         This API endpoint creates a branding item.
@@ -121,12 +121,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Brandingitem",
-            '400': "Errorresponsedto",
+            '201': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -162,7 +162,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Brandingitem]:
+    ) -> ApiResponse[BrandingItem]:
         """Create a branding item
 
         This API endpoint creates a branding item.
@@ -221,12 +221,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Brandingitem",
-            '400': "Errorresponsedto",
+            '201': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -321,12 +321,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Brandingitem",
-            '400': "Errorresponsedto",
+            '201': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -487,12 +487,12 @@ class BrandingApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -560,12 +560,12 @@ class BrandingApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -633,12 +633,12 @@ class BrandingApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -725,7 +725,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Brandingitem]:
+    ) -> List[BrandingItem]:
         """List of branding items
 
         This API endpoint returns a list of branding items.
@@ -760,12 +760,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Brandingitem]",
-            '400': "Errorresponsedto",
+            '200': "List[BrandingItem]",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -793,7 +793,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Brandingitem]]:
+    ) -> ApiResponse[List[BrandingItem]]:
         """List of branding items
 
         This API endpoint returns a list of branding items.
@@ -828,12 +828,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Brandingitem]",
-            '400': "Errorresponsedto",
+            '200': "List[BrandingItem]",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -896,12 +896,12 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Brandingitem]",
-            '400': "Errorresponsedto",
+            '200': "List[BrandingItem]",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -986,7 +986,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Brandingitem:
+    ) -> BrandingItem:
         """Get a branding item
 
         This API endpoint retrieves information for an existing branding item by name.    
@@ -1024,13 +1024,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1059,7 +1059,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Brandingitem]:
+    ) -> ApiResponse[BrandingItem]:
         """Get a branding item
 
         This API endpoint retrieves information for an existing branding item by name.    
@@ -1097,13 +1097,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1170,13 +1170,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1272,7 +1272,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Brandingitem:
+    ) -> BrandingItem:
         """Update a branding item
 
         This API endpoint updates information for an existing branding item.
@@ -1334,13 +1334,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1377,7 +1377,7 @@ class BrandingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Brandingitem]:
+    ) -> ApiResponse[BrandingItem]:
         """Update a branding item
 
         This API endpoint updates information for an existing branding item.
@@ -1439,13 +1439,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1544,13 +1544,13 @@ class BrandingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Brandingitem",
-            '400': "Errorresponsedto",
+            '200': "BrandingItem",
+            '400': "ErrorResponseDto",
             '401': "GetBrandingListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetBrandingListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

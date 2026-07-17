@@ -20,8 +20,8 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.saved_search.models.create_saved_search_v1_request import CreateSavedSearchV1Request
-from sailpoint.saved_search.models.savedsearch import Savedsearch
-from sailpoint.saved_search.models.searcharguments import Searcharguments
+from sailpoint.saved_search.models.saved_search import SavedSearch
+from sailpoint.saved_search.models.search_arguments import SearchArguments
 
 from sailpoint.saved_search.api_client import ApiClient, RequestSerialized
 from sailpoint.saved_search.api_response import ApiResponse
@@ -57,7 +57,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Savedsearch:
+    ) -> SavedSearch:
         """Create a saved search
 
         Creates a new saved search. 
@@ -95,12 +95,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Savedsearch",
-            '400': "Errorresponsedto",
+            '201': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Savedsearch]:
+    ) -> ApiResponse[SavedSearch]:
         """Create a saved search
 
         Creates a new saved search. 
@@ -167,12 +167,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Savedsearch",
-            '400': "Errorresponsedto",
+            '201': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,12 +239,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Savedsearch",
-            '400': "Errorresponsedto",
+            '201': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -384,12 +384,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -457,12 +457,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -530,12 +530,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -611,7 +611,7 @@ class SavedSearchApi:
     def execute_saved_search_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        searcharguments: Annotated[Searcharguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
+        search_arguments: Annotated[SearchArguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -631,8 +631,8 @@ class SavedSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param searcharguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
-        :type searcharguments: Searcharguments
+        :param search_arguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
+        :type search_arguments: SearchArguments
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -657,7 +657,7 @@ class SavedSearchApi:
 
         _param = self._execute_saved_search_v1_serialize(
             id=id,
-            searcharguments=searcharguments,
+            search_arguments=search_arguments,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -666,12 +666,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -688,7 +688,7 @@ class SavedSearchApi:
     def execute_saved_search_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        searcharguments: Annotated[Searcharguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
+        search_arguments: Annotated[SearchArguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -708,8 +708,8 @@ class SavedSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param searcharguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
-        :type searcharguments: Searcharguments
+        :param search_arguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
+        :type search_arguments: SearchArguments
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -734,7 +734,7 @@ class SavedSearchApi:
 
         _param = self._execute_saved_search_v1_serialize(
             id=id,
-            searcharguments=searcharguments,
+            search_arguments=search_arguments,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -743,12 +743,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -765,7 +765,7 @@ class SavedSearchApi:
     def execute_saved_search_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        searcharguments: Annotated[Searcharguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
+        search_arguments: Annotated[SearchArguments, Field(description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -785,8 +785,8 @@ class SavedSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param searcharguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
-        :type searcharguments: Searcharguments
+        :param search_arguments: When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  (required)
+        :type search_arguments: SearchArguments
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,7 +811,7 @@ class SavedSearchApi:
 
         _param = self._execute_saved_search_v1_serialize(
             id=id,
-            searcharguments=searcharguments,
+            search_arguments=search_arguments,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -820,12 +820,12 @@ class SavedSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -837,7 +837,7 @@ class SavedSearchApi:
     def _execute_saved_search_v1_serialize(
         self,
         id,
-        searcharguments,
+        search_arguments,
         _request_auth,
         _content_type,
         _headers,
@@ -865,8 +865,8 @@ class SavedSearchApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if searcharguments is not None:
-            _body_params = searcharguments
+        if search_arguments is not None:
+            _body_params = search_arguments
 
 
         # set the HTTP header `Accept`
@@ -929,7 +929,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Savedsearch:
+    ) -> SavedSearch:
         """Return saved search by id
 
         Returns the specified saved search. 
@@ -967,13 +967,13 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1002,7 +1002,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Savedsearch]:
+    ) -> ApiResponse[SavedSearch]:
         """Return saved search by id
 
         Returns the specified saved search. 
@@ -1040,13 +1040,13 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1113,13 +1113,13 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1210,7 +1210,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Savedsearch]:
+    ) -> List[SavedSearch]:
         """A list of saved searches
 
         Returns a list of saved searches. 
@@ -1257,12 +1257,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Savedsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[SavedSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1294,7 +1294,7 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Savedsearch]]:
+    ) -> ApiResponse[List[SavedSearch]]:
         """A list of saved searches
 
         Returns a list of saved searches. 
@@ -1341,12 +1341,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Savedsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[SavedSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1425,12 +1425,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Savedsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[SavedSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1523,7 +1523,7 @@ class SavedSearchApi:
     def put_saved_search_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        savedsearch: Annotated[Savedsearch, Field(description="The saved search to persist.")],
+        saved_search: Annotated[SavedSearch, Field(description="The saved search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1536,15 +1536,15 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Savedsearch:
+    ) -> SavedSearch:
         """Updates an existing saved search 
 
         Updates an existing saved search.   >**NOTE: You cannot update the `owner` of the saved search.** 
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param savedsearch: The saved search to persist. (required)
-        :type savedsearch: Savedsearch
+        :param saved_search: The saved search to persist. (required)
+        :type saved_search: SavedSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1569,7 +1569,7 @@ class SavedSearchApi:
 
         _param = self._put_saved_search_v1_serialize(
             id=id,
-            savedsearch=savedsearch,
+            saved_search=saved_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1577,12 +1577,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1599,7 +1599,7 @@ class SavedSearchApi:
     def put_saved_search_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        savedsearch: Annotated[Savedsearch, Field(description="The saved search to persist.")],
+        saved_search: Annotated[SavedSearch, Field(description="The saved search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1612,15 +1612,15 @@ class SavedSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Savedsearch]:
+    ) -> ApiResponse[SavedSearch]:
         """Updates an existing saved search 
 
         Updates an existing saved search.   >**NOTE: You cannot update the `owner` of the saved search.** 
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param savedsearch: The saved search to persist. (required)
-        :type savedsearch: Savedsearch
+        :param saved_search: The saved search to persist. (required)
+        :type saved_search: SavedSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1645,7 +1645,7 @@ class SavedSearchApi:
 
         _param = self._put_saved_search_v1_serialize(
             id=id,
-            savedsearch=savedsearch,
+            saved_search=saved_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1653,12 +1653,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1675,7 +1675,7 @@ class SavedSearchApi:
     def put_saved_search_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        savedsearch: Annotated[Savedsearch, Field(description="The saved search to persist.")],
+        saved_search: Annotated[SavedSearch, Field(description="The saved search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1695,8 +1695,8 @@ class SavedSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param savedsearch: The saved search to persist. (required)
-        :type savedsearch: Savedsearch
+        :param saved_search: The saved search to persist. (required)
+        :type saved_search: SavedSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1721,7 +1721,7 @@ class SavedSearchApi:
 
         _param = self._put_saved_search_v1_serialize(
             id=id,
-            savedsearch=savedsearch,
+            saved_search=saved_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1729,12 +1729,12 @@ class SavedSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Savedsearch",
-            '400': "Errorresponsedto",
+            '200': "SavedSearch",
+            '400': "ErrorResponseDto",
             '401': "ListSavedSearchesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSavedSearchesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1746,7 +1746,7 @@ class SavedSearchApi:
     def _put_saved_search_v1_serialize(
         self,
         id,
-        savedsearch,
+        saved_search,
         _request_auth,
         _content_type,
         _headers,
@@ -1774,8 +1774,8 @@ class SavedSearchApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if savedsearch is not None:
-            _body_params = savedsearch
+        if saved_search is not None:
+            _body_params = saved_search
 
 
         # set the HTTP header `Accept`

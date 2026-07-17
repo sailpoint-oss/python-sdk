@@ -47,12 +47,12 @@ configuration = sailpoint.apps.Configuration(
 with sailpoint.apps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.apps.AppsApi(api_client)
-    sourceappcreatedto = {"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}} # Sourceappcreatedto | 
+    source_app_create_dto = {"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}} # SourceAppCreateDto | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create source app
-        api_response = api_instance.create_source_app_v1(sourceappcreatedto, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_source_app_v1(source_app_create_dto, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of AppsApi->create_source_app_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -84,35 +84,35 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessprofiledetails](sailpoint/apps/docs/Accessprofiledetails.md)
- - [AccessprofiledetailsAccountSelector](sailpoint/apps/docs/AccessprofiledetailsAccountSelector.md)
- - [Appaccessprofileselector](sailpoint/apps/docs/Appaccessprofileselector.md)
- - [AppaccessprofileselectorAccountMatchConfig](sailpoint/apps/docs/AppaccessprofileselectorAccountMatchConfig.md)
- - [AppaccessprofileselectorAccountMatchConfigMatchExpression](sailpoint/apps/docs/AppaccessprofileselectorAccountMatchConfigMatchExpression.md)
- - [Appaccountdetails](sailpoint/apps/docs/Appaccountdetails.md)
- - [AppaccountdetailsSourceAccount](sailpoint/apps/docs/AppaccountdetailsSourceAccount.md)
+ - [AccessProfileDetails](sailpoint/apps/docs/AccessProfileDetails.md)
+ - [AccessProfileDetailsAccountSelector](sailpoint/apps/docs/AccessProfileDetailsAccountSelector.md)
+ - [AppAccessProfileSelector](sailpoint/apps/docs/AppAccessProfileSelector.md)
+ - [AppAccessProfileSelectorAccountMatchConfig](sailpoint/apps/docs/AppAccessProfileSelectorAccountMatchConfig.md)
+ - [AppAccessProfileSelectorAccountMatchConfigMatchExpression](sailpoint/apps/docs/AppAccessProfileSelectorAccountMatchConfigMatchExpression.md)
+ - [AppAccountDetails](sailpoint/apps/docs/AppAccountDetails.md)
+ - [AppAccountDetailsSourceAccount](sailpoint/apps/docs/AppAccountDetailsSourceAccount.md)
  - [ArrayInner](sailpoint/apps/docs/ArrayInner.md)
- - [Basereferencedto](sailpoint/apps/docs/Basereferencedto.md)
- - [Dtotype](sailpoint/apps/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/apps/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/apps/docs/Errorresponsedto.md)
+ - [BaseReferenceDto](sailpoint/apps/docs/BaseReferenceDto.md)
+ - [DtoType](sailpoint/apps/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/apps/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/apps/docs/ErrorResponseDto.md)
  - [GetSourceAppV1401Response](sailpoint/apps/docs/GetSourceAppV1401Response.md)
  - [GetSourceAppV1429Response](sailpoint/apps/docs/GetSourceAppV1429Response.md)
- - [Jsonpatchoperation](sailpoint/apps/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/apps/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/apps/docs/Localeorigin.md)
- - [Matchterm](sailpoint/apps/docs/Matchterm.md)
- - [Sourceapp](sailpoint/apps/docs/Sourceapp.md)
- - [SourceappAccountSource](sailpoint/apps/docs/SourceappAccountSource.md)
- - [Sourceappbulkupdaterequest](sailpoint/apps/docs/Sourceappbulkupdaterequest.md)
- - [Sourceappcreatedto](sailpoint/apps/docs/Sourceappcreatedto.md)
- - [SourceappcreatedtoAccountSource](sailpoint/apps/docs/SourceappcreatedtoAccountSource.md)
- - [Sourceapppatchdto](sailpoint/apps/docs/Sourceapppatchdto.md)
- - [Userapp](sailpoint/apps/docs/Userapp.md)
- - [UserappAccount](sailpoint/apps/docs/UserappAccount.md)
- - [UserappOwner](sailpoint/apps/docs/UserappOwner.md)
- - [UserappSource](sailpoint/apps/docs/UserappSource.md)
- - [UserappSourceApp](sailpoint/apps/docs/UserappSourceApp.md)
+ - [JsonPatchOperation](sailpoint/apps/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/apps/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/apps/docs/LocaleOrigin.md)
+ - [MatchTerm](sailpoint/apps/docs/MatchTerm.md)
+ - [SourceApp](sailpoint/apps/docs/SourceApp.md)
+ - [SourceAppAccountSource](sailpoint/apps/docs/SourceAppAccountSource.md)
+ - [SourceAppBulkUpdateRequest](sailpoint/apps/docs/SourceAppBulkUpdateRequest.md)
+ - [SourceAppCreateDto](sailpoint/apps/docs/SourceAppCreateDto.md)
+ - [SourceAppCreateDtoAccountSource](sailpoint/apps/docs/SourceAppCreateDtoAccountSource.md)
+ - [SourceAppPatchDto](sailpoint/apps/docs/SourceAppPatchDto.md)
+ - [UserApp](sailpoint/apps/docs/UserApp.md)
+ - [UserAppAccount](sailpoint/apps/docs/UserAppAccount.md)
+ - [UserAppOwner](sailpoint/apps/docs/UserAppOwner.md)
+ - [UserAppSource](sailpoint/apps/docs/UserAppSource.md)
+ - [UserAppSourceApp](sailpoint/apps/docs/UserAppSourceApp.md)
 
 
 <a id="documentation-for-authorization"></a>

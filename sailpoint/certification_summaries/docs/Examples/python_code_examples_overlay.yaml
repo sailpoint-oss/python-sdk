@@ -6,7 +6,7 @@
       source: |
         from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi
         from sailpoint.certification_summaries.api_client import ApiClient
-        from sailpoint.certification_summaries.models.accesssummary import Accesssummary
+        from sailpoint.certification_summaries.models.access_summary import AccessSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -38,7 +38,7 @@
       source: |
         from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi
         from sailpoint.certification_summaries.api_client import ApiClient
-        from sailpoint.certification_summaries.models.identitycertdecisionsummary import Identitycertdecisionsummary
+        from sailpoint.certification_summaries.models.identity_cert_decision_summary import IdentityCertDecisionSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -64,7 +64,7 @@
       source: |
         from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi
         from sailpoint.certification_summaries.api_client import ApiClient
-        from sailpoint.certification_summaries.models.certificationidentitysummary import Certificationidentitysummary
+        from sailpoint.certification_summaries.models.certification_identity_summary import CertificationIdentitySummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -95,7 +95,7 @@
       source: |
         from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi
         from sailpoint.certification_summaries.api_client import ApiClient
-        from sailpoint.certification_summaries.models.certificationidentitysummary import Certificationidentitysummary
+        from sailpoint.certification_summaries.models.certification_identity_summary import CertificationIdentitySummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

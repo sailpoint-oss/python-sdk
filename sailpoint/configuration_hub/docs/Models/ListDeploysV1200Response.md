@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ListDeploysV1200Response', 'ListDeplo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[]Deployresponse**](deployresponse) | list of deployments | [optional] 
+**items** | [**[]DeployResponse**](deploy-response) | list of deployments | [optional] 
 }
 
 ## Example
@@ -26,7 +26,7 @@ from sailpoint.configuration_hub.models.list_deploys_v1200_response import ListD
 
 list_deploys_v1200_response = ListDeploysV1200Response(
 items=[
-                    sailpoint.configuration_hub.models.deployresponse.deployresponse(
+                    sailpoint.configuration_hub.models.deploy_response.DeployResponse(
                         job_id = '07659d7d-2cce-47c0-9e49-185787ee565a', 
                         status = 'COMPLETE', 
                         type = 'CONFIG_DEPLOY_DRAFT', 

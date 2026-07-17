@@ -33,7 +33,7 @@ Create a Launcher with given information
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | launcherrequest | [**Launcherrequest**](../models/launcherrequest) | True  | Payload to create a Launcher
+ Body  | launcher_request | [**LauncherRequest**](../models/launcher-request) | True  | Payload to create a Launcher
 
 ### Return type
 [**Launcher**](../models/launcher)
@@ -42,12 +42,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Launcher created successfully | Launcher |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -59,20 +59,30 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.launchers.api.launchers_api import LaunchersApi
 from sailpoint.launchers.api_client import ApiClient
 from sailpoint.launchers.models.launcher import Launcher
-from sailpoint.launchers.models.launcherrequest import Launcherrequest
+from sailpoint.launchers.models.launcher_request import LauncherRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    launcherrequest = '''sailpoint.launchers.Launcherrequest()''' # Launcherrequest | Payload to create a Launcher
+    launcher_request = '''{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }''' # LauncherRequest | Payload to create a Launcher
 
     try:
         # Create launcher
-        new_launcherrequest = Launcherrequest.from_json(launcherrequest)
-        results = LaunchersApi(api_client).create_launcher_v1(launcherrequest=new_launcherrequest)
+        new_launcher_request = LauncherRequest.from_json(launcher_request)
+        results = LaunchersApi(api_client).create_launcher_v1(launcher_request=new_launcher_request)
         # Below is a request that includes all optional parameters
-        # results = LaunchersApi(api_client).create_launcher_v1(new_launcherrequest)
+        # results = LaunchersApi(api_client).create_launcher_v1(new_launcher_request)
         print("The response of LaunchersApi->create_launcher_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -102,12 +112,12 @@ Path   | launcher_id | **str** | True  | ID of the Launcher to be deleted
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | Launcher deleted successfully |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -158,12 +168,12 @@ Path   | launcher_id | **str** | True  | ID of the Launcher to be retrieved
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Launcher retrieved successfully | Launcher |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -219,12 +229,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Launchers | GetLaunchersV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -272,7 +282,7 @@ Replace the given Launcher ID with given payload
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | launcher_id | **str** | True  | ID of the Launcher to be replaced
- Body  | launcherrequest | [**Launcherrequest**](../models/launcherrequest) | True  | Payload to replace Launcher
+ Body  | launcher_request | [**LauncherRequest**](../models/launcher-request) | True  | Payload to replace Launcher
 
 ### Return type
 [**Launcher**](../models/launcher)
@@ -281,12 +291,12 @@ Path   | launcher_id | **str** | True  | ID of the Launcher to be replaced
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Launcher replaced successfully | Launcher |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -298,21 +308,31 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.launchers.api.launchers_api import LaunchersApi
 from sailpoint.launchers.api_client import ApiClient
 from sailpoint.launchers.models.launcher import Launcher
-from sailpoint.launchers.models.launcherrequest import Launcherrequest
+from sailpoint.launchers.models.launcher_request import LauncherRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     launcher_id = 'e3012408-8b61-4564-ad41-c5ec131c325b' # str | ID of the Launcher to be replaced # str | ID of the Launcher to be replaced
-    launcherrequest = '''sailpoint.launchers.Launcherrequest()''' # Launcherrequest | Payload to replace Launcher
+    launcher_request = '''{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }''' # LauncherRequest | Payload to replace Launcher
 
     try:
         # Replace launcher
-        new_launcherrequest = Launcherrequest.from_json(launcherrequest)
-        results = LaunchersApi(api_client).put_launcher_v1(launcher_id=launcher_id, launcherrequest=new_launcherrequest)
+        new_launcher_request = LauncherRequest.from_json(launcher_request)
+        results = LaunchersApi(api_client).put_launcher_v1(launcher_id=launcher_id, launcher_request=new_launcher_request)
         # Below is a request that includes all optional parameters
-        # results = LaunchersApi(api_client).put_launcher_v1(launcher_id, new_launcherrequest)
+        # results = LaunchersApi(api_client).put_launcher_v1(launcher_id, new_launcher_request)
         print("The response of LaunchersApi->put_launcher_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -342,12 +362,12 @@ Path   | launcher_id | **str** | True  | ID of the Launcher to be launched
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Launcher launched successfully | StartLauncherV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetLaunchersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetLaunchersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined

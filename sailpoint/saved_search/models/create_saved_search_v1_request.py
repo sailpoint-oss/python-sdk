@@ -23,7 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.saved_search.models.column import Column
 from sailpoint.saved_search.models.index import Index
-from sailpoint.saved_search.models.savedsearchdetail_filters import SavedsearchdetailFilters
+from sailpoint.saved_search.models.saved_search_detail_filters import SavedSearchDetailFilters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,7 +41,7 @@ class CreateSavedSearchV1Request(BaseModel):
     fields: Optional[List[StrictStr]] = Field(default=None, description="The fields to be searched against in a multi-field query. ")
     order_by: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="Sort by index. This takes precedence over the `sort` property. ", alias="orderBy")
     sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. ")
-    filters: Optional[SavedsearchdetailFilters] = None
+    filters: Optional[SavedSearchDetailFilters] = None
     __properties: ClassVar[List[str]] = ["name", "description", "created", "modified", "indices", "columns", "query", "fields", "orderBy", "sort", "filters"]
 
     model_config = ConfigDict(
@@ -159,7 +159,7 @@ class CreateSavedSearchV1Request(BaseModel):
             "fields": obj.get("fields"),
             "orderBy": obj.get("orderBy"),
             "sort": obj.get("sort"),
-            "filters": SavedsearchdetailFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None
+            "filters": SavedSearchDetailFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None
         })
         return _obj
 

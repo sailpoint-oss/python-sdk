@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'ImportSpConfigV1Request', 'ImportSpCo
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | **bytearray** | JSON file containing the objects to be imported. | [required]
-**options** | [**Importoptions**](importoptions) |  | [optional] 
+**options** | [**ImportOptions**](import-options) |  | [optional] 
 }
 
 ## Example

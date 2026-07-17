@@ -35,20 +35,20 @@ The response is returned with HTTP 202 Accepted while the workflow initializes.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | jitactivationactivaterequest | [**Jitactivationactivaterequest**](../models/jitactivationactivaterequest) | True  | 
+ Body  | jit_activation_activate_request | [**JitActivationActivateRequest**](../models/jit-activation-activate-request) | True  | 
 
 ### Return type
-[**Jitactivationactivateresponse**](../models/jitactivationactivateresponse)
+[**JitActivationActivateResponse**](../models/jit-activation-activate-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. The activation workflow was accepted and is running.  | Jitactivationactivateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. The activation workflow was accepted and is running.  | JitActivationActivateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartActivateWorkflowV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartActivateWorkflowV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -59,21 +59,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.jit_activations.api.jit_activations_api import JITActivationsApi
 from sailpoint.jit_activations.api_client import ApiClient
-from sailpoint.jit_activations.models.jitactivationactivaterequest import Jitactivationactivaterequest
-from sailpoint.jit_activations.models.jitactivationactivateresponse import Jitactivationactivateresponse
+from sailpoint.jit_activations.models.jit_activation_activate_request import JitActivationActivateRequest
+from sailpoint.jit_activations.models.jit_activation_activate_response import JitActivationActivateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    jitactivationactivaterequest = '''sailpoint.jit_activations.Jitactivationactivaterequest()''' # Jitactivationactivaterequest | 
+    jit_activation_activate_request = '''{
+          "activationPeriodMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationActivateRequest | 
 
     try:
         # Start JIT activation workflow
-        new_jitactivationactivaterequest = Jitactivationactivaterequest.from_json(jitactivationactivaterequest)
-        results = JITActivationsApi(api_client).start_activate_workflow_v1(jitactivationactivaterequest=new_jitactivationactivaterequest)
+        new_jit_activation_activate_request = JitActivationActivateRequest.from_json(jit_activation_activate_request)
+        results = JITActivationsApi(api_client).start_activate_workflow_v1(jit_activation_activate_request=new_jit_activation_activate_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_activate_workflow_v1(new_jitactivationactivaterequest)
+        # results = JITActivationsApi(api_client).start_activate_workflow_v1(new_jit_activation_activate_request)
         print("The response of JITActivationsApi->start_activate_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -100,21 +103,21 @@ The response is returned with HTTP 202 Accepted after the signal is sent.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | jitactivationdeactivaterequest | [**Jitactivationdeactivaterequest**](../models/jitactivationdeactivaterequest) | True  | 
+ Body  | jit_activation_deactivate_request | [**JitActivationDeactivateRequest**](../models/jit-activation-deactivate-request) | True  | 
 
 ### Return type
-[**Jitactivationdeactivateresponse**](../models/jitactivationdeactivateresponse)
+[**JitActivationDeactivateResponse**](../models/jit-activation-deactivate-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. The deactivation signal was sent to the workflow.  | Jitactivationdeactivateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. The deactivation signal was sent to the workflow.  | JitActivationDeactivateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartActivateWorkflowV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartActivateWorkflowV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -125,21 +128,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.jit_activations.api.jit_activations_api import JITActivationsApi
 from sailpoint.jit_activations.api_client import ApiClient
-from sailpoint.jit_activations.models.jitactivationdeactivaterequest import Jitactivationdeactivaterequest
-from sailpoint.jit_activations.models.jitactivationdeactivateresponse import Jitactivationdeactivateresponse
+from sailpoint.jit_activations.models.jit_activation_deactivate_request import JitActivationDeactivateRequest
+from sailpoint.jit_activations.models.jit_activation_deactivate_response import JitActivationDeactivateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    jitactivationdeactivaterequest = '''sailpoint.jit_activations.Jitactivationdeactivaterequest()''' # Jitactivationdeactivaterequest | 
+    jit_activation_deactivate_request = '''{
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationDeactivateRequest | 
 
     try:
         # Deactivate JIT activation workflow
-        new_jitactivationdeactivaterequest = Jitactivationdeactivaterequest.from_json(jitactivationdeactivaterequest)
-        results = JITActivationsApi(api_client).start_deactivate_workflow_v1(jitactivationdeactivaterequest=new_jitactivationdeactivaterequest)
+        new_jit_activation_deactivate_request = JitActivationDeactivateRequest.from_json(jit_activation_deactivate_request)
+        results = JITActivationsApi(api_client).start_deactivate_workflow_v1(jit_activation_deactivate_request=new_jit_activation_deactivate_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_deactivate_workflow_v1(new_jitactivationdeactivaterequest)
+        # results = JITActivationsApi(api_client).start_deactivate_workflow_v1(new_jit_activation_deactivate_request)
         print("The response of JITActivationsApi->start_deactivate_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -167,21 +172,21 @@ The response is returned with HTTP 202 Accepted after the signal is sent.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | jitactivationextendrequest | [**Jitactivationextendrequest**](../models/jitactivationextendrequest) | True  | 
+ Body  | jit_activation_extend_request | [**JitActivationExtendRequest**](../models/jit-activation-extend-request) | True  | 
 
 ### Return type
-[**Jitactivationextendresponse**](../models/jitactivationextendresponse)
+[**JitActivationExtendResponse**](../models/jit-activation-extend-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. The extend signal was sent to the workflow.  | Jitactivationextendresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. The extend signal was sent to the workflow.  | JitActivationExtendResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartActivateWorkflowV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartActivateWorkflowV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -192,21 +197,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.jit_activations.api.jit_activations_api import JITActivationsApi
 from sailpoint.jit_activations.api_client import ApiClient
-from sailpoint.jit_activations.models.jitactivationextendrequest import Jitactivationextendrequest
-from sailpoint.jit_activations.models.jitactivationextendresponse import Jitactivationextendresponse
+from sailpoint.jit_activations.models.jit_activation_extend_request import JitActivationExtendRequest
+from sailpoint.jit_activations.models.jit_activation_extend_response import JitActivationExtendResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    jitactivationextendrequest = '''sailpoint.jit_activations.Jitactivationextendrequest()''' # Jitactivationextendrequest | 
+    jit_activation_extend_request = '''{
+          "activationPeriodExtensionMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationExtendRequest | 
 
     try:
         # Extend JIT activation workflow
-        new_jitactivationextendrequest = Jitactivationextendrequest.from_json(jitactivationextendrequest)
-        results = JITActivationsApi(api_client).start_extend_workflow_v1(jitactivationextendrequest=new_jitactivationextendrequest)
+        new_jit_activation_extend_request = JitActivationExtendRequest.from_json(jit_activation_extend_request)
+        results = JITActivationsApi(api_client).start_extend_workflow_v1(jit_activation_extend_request=new_jit_activation_extend_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_extend_workflow_v1(new_jitactivationextendrequest)
+        # results = JITActivationsApi(api_client).start_extend_workflow_v1(new_jit_activation_extend_request)
         print("The response of JITActivationsApi->start_extend_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

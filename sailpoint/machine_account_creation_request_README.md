@@ -47,12 +47,12 @@ configuration = sailpoint.machine_account_creation_request.Configuration(
 with sailpoint.machine_account_creation_request.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.machine_account_creation_request.MachineAccountCreationRequestApi(api_client)
-    machineaccountcreaterequestinput = sailpoint.machine_account_creation_request.Machineaccountcreaterequestinput() # Machineaccountcreaterequestinput | 
+    machine_account_create_request_input = sailpoint.machine_account_creation_request.MachineAccountCreateRequestInput() # MachineAccountCreateRequestInput | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Submit Machine Account Creation Request
-        api_response = api_instance.create_machine_account_request_v1(machineaccountcreaterequestinput, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_machine_account_request_v1(machine_account_create_request_input, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of MachineAccountCreationRequestApi->create_machine_account_request_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -73,21 +73,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountrequestasyncresult](sailpoint/machine_account_creation_request/docs/Accountrequestasyncresult.md)
- - [Accountrequestdetailsdto](sailpoint/machine_account_creation_request/docs/Accountrequestdetailsdto.md)
- - [AccountrequestdetailsdtoRequester](sailpoint/machine_account_creation_request/docs/AccountrequestdetailsdtoRequester.md)
- - [Accountrequestphase](sailpoint/machine_account_creation_request/docs/Accountrequestphase.md)
- - [Accountrequestphasestate](sailpoint/machine_account_creation_request/docs/Accountrequestphasestate.md)
- - [Basereferencedto](sailpoint/machine_account_creation_request/docs/Basereferencedto.md)
+ - [AccountRequestAsyncResult](sailpoint/machine_account_creation_request/docs/AccountRequestAsyncResult.md)
+ - [AccountRequestDetailsDto](sailpoint/machine_account_creation_request/docs/AccountRequestDetailsDto.md)
+ - [AccountRequestDetailsDtoRequester](sailpoint/machine_account_creation_request/docs/AccountRequestDetailsDtoRequester.md)
+ - [AccountRequestPhase](sailpoint/machine_account_creation_request/docs/AccountRequestPhase.md)
+ - [AccountRequestPhaseState](sailpoint/machine_account_creation_request/docs/AccountRequestPhaseState.md)
+ - [BaseReferenceDto](sailpoint/machine_account_creation_request/docs/BaseReferenceDto.md)
  - [CreateMachineAccountRequestV1401Response](sailpoint/machine_account_creation_request/docs/CreateMachineAccountRequestV1401Response.md)
  - [CreateMachineAccountRequestV1429Response](sailpoint/machine_account_creation_request/docs/CreateMachineAccountRequestV1429Response.md)
- - [Dtotype](sailpoint/machine_account_creation_request/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/machine_account_creation_request/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/machine_account_creation_request/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/machine_account_creation_request/docs/Localeorigin.md)
- - [Machineaccountcreateaccessdto](sailpoint/machine_account_creation_request/docs/Machineaccountcreateaccessdto.md)
- - [MachineaccountcreateaccessdtoSubtypesInner](sailpoint/machine_account_creation_request/docs/MachineaccountcreateaccessdtoSubtypesInner.md)
- - [Machineaccountcreaterequestinput](sailpoint/machine_account_creation_request/docs/Machineaccountcreaterequestinput.md)
+ - [DtoType](sailpoint/machine_account_creation_request/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/machine_account_creation_request/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/machine_account_creation_request/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/machine_account_creation_request/docs/LocaleOrigin.md)
+ - [MachineAccountCreateAccessDto](sailpoint/machine_account_creation_request/docs/MachineAccountCreateAccessDto.md)
+ - [MachineAccountCreateAccessDtoSubtypesInner](sailpoint/machine_account_creation_request/docs/MachineAccountCreateAccessDtoSubtypesInner.md)
+ - [MachineAccountCreateRequestInput](sailpoint/machine_account_creation_request/docs/MachineAccountCreateRequestInput.md)
 
 
 <a id="documentation-for-authorization"></a>

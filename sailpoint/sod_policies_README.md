@@ -47,11 +47,11 @@ configuration = sailpoint.sod_policies.Configuration(
 with sailpoint.sod_policies.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sod_policies.SODPoliciesApi(api_client)
-    sodpolicy = {"name":"Conflicting-Policy-Name","description":"This policy ensures compliance of xyz","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Owner Name"},"externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"creatorId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","modifierId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}} # Sodpolicy | 
+    sod_policy = {"name":"Conflicting-Policy-Name","description":"This policy ensures compliance of xyz","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Owner Name"},"externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"creatorId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","modifierId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}} # SodPolicy | 
 
     try:
         # Create sod policy
-        api_response = api_instance.create_sod_policy_v1(sodpolicy)
+        api_response = api_instance.create_sod_policy_v1(sod_policy)
         print("The response of SODPoliciesApi->create_sod_policy_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -86,34 +86,34 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accesscriteria](sailpoint/sod_policies/docs/Accesscriteria.md)
- - [AccesscriteriaCriteriaListInner](sailpoint/sod_policies/docs/AccesscriteriaCriteriaListInner.md)
+ - [AccessCriteria](sailpoint/sod_policies/docs/AccessCriteria.md)
+ - [AccessCriteriaCriteriaListInner](sailpoint/sod_policies/docs/AccessCriteriaCriteriaListInner.md)
  - [ArrayInner](sailpoint/sod_policies/docs/ArrayInner.md)
- - [Conflictingaccesscriteria](sailpoint/sod_policies/docs/Conflictingaccesscriteria.md)
- - [Errormessagedto](sailpoint/sod_policies/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/sod_policies/docs/Errorresponsedto.md)
- - [Jsonpatchoperation](sailpoint/sod_policies/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/sod_policies/docs/JsonpatchoperationValue.md)
+ - [ConflictingAccessCriteria](sailpoint/sod_policies/docs/ConflictingAccessCriteria.md)
+ - [ErrorMessageDto](sailpoint/sod_policies/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/sod_policies/docs/ErrorResponseDto.md)
+ - [JsonPatchOperation](sailpoint/sod_policies/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/sod_policies/docs/JsonPatchOperationValue.md)
  - [ListSodPoliciesV1401Response](sailpoint/sod_policies/docs/ListSodPoliciesV1401Response.md)
  - [ListSodPoliciesV1429Response](sailpoint/sod_policies/docs/ListSodPoliciesV1429Response.md)
- - [Localeorigin](sailpoint/sod_policies/docs/Localeorigin.md)
- - [Multipolicyrequest](sailpoint/sod_policies/docs/Multipolicyrequest.md)
- - [Reportresultreference](sailpoint/sod_policies/docs/Reportresultreference.md)
+ - [LocaleOrigin](sailpoint/sod_policies/docs/LocaleOrigin.md)
+ - [MultiPolicyRequest](sailpoint/sod_policies/docs/MultiPolicyRequest.md)
+ - [ReportResultReference](sailpoint/sod_policies/docs/ReportResultReference.md)
  - [Schedule](sailpoint/sod_policies/docs/Schedule.md)
  - [ScheduleDays](sailpoint/sod_policies/docs/ScheduleDays.md)
  - [ScheduleHours](sailpoint/sod_policies/docs/ScheduleHours.md)
  - [ScheduleMonths](sailpoint/sod_policies/docs/ScheduleMonths.md)
- - [Scheduletype](sailpoint/sod_policies/docs/Scheduletype.md)
+ - [ScheduleType](sailpoint/sod_policies/docs/ScheduleType.md)
  - [Selector](sailpoint/sod_policies/docs/Selector.md)
- - [Selectortype](sailpoint/sod_policies/docs/Selectortype.md)
- - [Sodpolicy](sailpoint/sod_policies/docs/Sodpolicy.md)
- - [SodpolicyConflictingAccessCriteria](sailpoint/sod_policies/docs/SodpolicyConflictingAccessCriteria.md)
- - [SodpolicyOwnerRef](sailpoint/sod_policies/docs/SodpolicyOwnerRef.md)
- - [Sodpolicyschedule](sailpoint/sod_policies/docs/Sodpolicyschedule.md)
- - [Sodrecipient](sailpoint/sod_policies/docs/Sodrecipient.md)
- - [Sodreportresultdto](sailpoint/sod_policies/docs/Sodreportresultdto.md)
- - [Violationownerassignmentconfig](sailpoint/sod_policies/docs/Violationownerassignmentconfig.md)
- - [ViolationownerassignmentconfigOwnerRef](sailpoint/sod_policies/docs/ViolationownerassignmentconfigOwnerRef.md)
+ - [SelectorType](sailpoint/sod_policies/docs/SelectorType.md)
+ - [SodPolicy](sailpoint/sod_policies/docs/SodPolicy.md)
+ - [SodPolicyConflictingAccessCriteria](sailpoint/sod_policies/docs/SodPolicyConflictingAccessCriteria.md)
+ - [SodPolicyOwnerRef](sailpoint/sod_policies/docs/SodPolicyOwnerRef.md)
+ - [SodPolicySchedule](sailpoint/sod_policies/docs/SodPolicySchedule.md)
+ - [SodRecipient](sailpoint/sod_policies/docs/SodRecipient.md)
+ - [SodReportResultDto](sailpoint/sod_policies/docs/SodReportResultDto.md)
+ - [ViolationOwnerAssignmentConfig](sailpoint/sod_policies/docs/ViolationOwnerAssignmentConfig.md)
+ - [ViolationOwnerAssignmentConfigOwnerRef](sailpoint/sod_policies/docs/ViolationOwnerAssignmentConfigOwnerRef.md)
 
 
 <a id="documentation-for-authorization"></a>

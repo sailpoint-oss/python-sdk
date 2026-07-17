@@ -48,21 +48,21 @@ This API ignores a recommended access request item. Once an item is ignored, it 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestrecommendationactionitemdto | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | True  | The recommended access item to ignore for an identity.
+ Body  | access_request_recommendation_action_item_dto | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | True  | The recommended access item to ignore for an identity.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Recommendation successfully stored as ignored. | Accessrequestrecommendationactionitemresponsedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Recommendation successfully stored as ignored. | AccessRequestRecommendationActionItemResponseDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -73,23 +73,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
+    access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Ignore access request recommendation
-        new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_ignored_item_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -121,21 +127,21 @@ This API consumes a notification that a recommended access request item was requ
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestrecommendationactionitemdto | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | True  | The recommended access item that was requested for an identity.
+ Body  | access_request_recommendation_action_item_dto | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | True  | The recommended access item that was requested for an identity.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Notification successfully acknowledged. | Accessrequestrecommendationactionitemresponsedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Notification successfully acknowledged. | AccessRequestRecommendationActionItemResponseDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -146,23 +152,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access item that was requested for an identity.
+    access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Accept access request recommendation
-        new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_requested_item_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -194,21 +206,21 @@ This API consumes a notification that a recommended access request item was view
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestrecommendationactionitemdto | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | True  | The recommended access that was viewed for an identity.
+ Body  | access_request_recommendation_action_item_dto | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | True  | The recommended access that was viewed for an identity.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Recommendation successfully stored as viewed. | Accessrequestrecommendationactionitemresponsedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Recommendation successfully stored as viewed. | AccessRequestRecommendationActionItemResponseDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -219,23 +231,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access that was viewed for an identity.
+    access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Mark viewed access request recommendations
-        new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_item_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -267,21 +285,21 @@ This API consumes a notification that a set of recommended access request item w
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestrecommendationactionitemdto | [**[]Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | True  | The recommended access items that were viewed for an identity.
+ Body  | access_request_recommendation_action_item_dto | [**[]AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | True  | The recommended access items that were viewed for an identity.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessrequestrecommendationactionitemresponsedto]**](../models/accessrequestrecommendationactionitemresponsedto)
+[**List[AccessRequestRecommendationActionItemResponseDto]**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Recommendations successfully stored as viewed. | List[Accessrequestrecommendationactionitemresponsedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Recommendations successfully stored as viewed. | List[AccessRequestRecommendationActionItemResponseDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -292,23 +310,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessrequestrecommendationactionitemdto = '''[sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()]''' # List[Accessrequestrecommendationactionitemdto] | The recommended access items that were viewed for an identity.
+    access_request_recommendation_action_item_dto = '''[sailpoint.iai_access_request_recommendations.AccessRequestRecommendationActionItemDto()]''' # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Bulk mark viewed access request recommendations
-        new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+        # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_items_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -344,17 +362,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto)
+[**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Configurations for Access Request Recommender for the tenant. | Accessrequestrecommendationconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Configurations for Access Request Recommender for the tenant. | AccessRequestRecommendationConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -365,7 +383,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationconfigdto import Accessrequestrecommendationconfigdto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -419,17 +437,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessrequestrecommendationactionitemresponsedto]**](../models/accessrequestrecommendationactionitemresponsedto)
+[**List[AccessRequestRecommendationActionItemResponseDto]**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns list of ignored access request recommendations. | List[Accessrequestrecommendationactionitemresponsedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Returns list of ignored access request recommendations. | List[AccessRequestRecommendationActionItemResponseDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -440,7 +458,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -500,17 +518,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessrequestrecommendationactionitemresponsedto]**](../models/accessrequestrecommendationactionitemresponsedto)
+[**List[AccessRequestRecommendationActionItemResponseDto]**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns the list of requested access request recommendations. | List[Accessrequestrecommendationactionitemresponsedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Returns the list of requested access request recommendations. | List[AccessRequestRecommendationActionItemResponseDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -521,7 +539,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -583,17 +601,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessrequestrecommendationitemdetail]**](../models/accessrequestrecommendationitemdetail)
+[**List[AccessRequestRecommendationItemDetail]**](../models/access-request-recommendation-item-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of access request recommendations for the identityId | List[Accessrequestrecommendationitemdetail] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of access request recommendations for the identityId | List[AccessRequestRecommendationItemDetail] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -604,7 +622,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationitemdetail import Accessrequestrecommendationitemdetail
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -666,17 +684,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessrequestrecommendationactionitemresponsedto]**](../models/accessrequestrecommendationactionitemresponsedto)
+[**List[AccessRequestRecommendationActionItemResponseDto]**](../models/access-request-recommendation-action-item-response-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns list of viewed access request recommendations. | List[Accessrequestrecommendationactionitemresponsedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Returns list of viewed access request recommendations. | List[AccessRequestRecommendationActionItemResponseDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -687,7 +705,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -739,21 +757,21 @@ This API updates the configurations for Access Request Recommender for the tenan
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestrecommendationconfigdto | [**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto) | True  | The desired configurations for Access Request Recommender for the tenant.
+ Body  | access_request_recommendation_config_dto | [**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto) | True  | The desired configurations for Access Request Recommender for the tenant.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto)
+[**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully updated configurations for Access Request Recommender for the tenant. | Accessrequestrecommendationconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully updated configurations for Access Request Recommender for the tenant. | AccessRequestRecommendationConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestRecommendationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestRecommendationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -764,22 +782,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationconfigdto import Accessrequestrecommendationconfigdto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accessrequestrecommendationconfigdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationconfigdto()''' # Accessrequestrecommendationconfigdto | The desired configurations for Access Request Recommender for the tenant.
+    access_request_recommendation_config_dto = '''{
+          "scoreThreshold" : 0.5,
+          "startDateAttribute" : "startDate",
+          "restrictionAttribute" : "location",
+          "moverAttribute" : "isMover",
+          "joinerAttribute" : "isJoiner",
+          "useRestrictionAttribute" : true
+        }''' # AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update access request recommendations config
-        new_accessrequestrecommendationconfigdto = Accessrequestrecommendationconfigdto.from_json(accessrequestrecommendationconfigdto)
-        results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(accessrequestrecommendationconfigdto=new_accessrequestrecommendationconfigdto)
+        new_access_request_recommendation_config_dto = AccessRequestRecommendationConfigDto.from_json(access_request_recommendation_config_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(access_request_recommendation_config_dto=new_access_request_recommendation_config_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(new_accessrequestrecommendationconfigdto, x_sail_point_experimental)
+        # results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(new_access_request_recommendation_config_dto, x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

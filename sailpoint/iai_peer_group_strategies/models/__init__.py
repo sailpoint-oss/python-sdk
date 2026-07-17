@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.iai_peer_group_strategies.models.errormessagedto import Errormessagedto
-from sailpoint.iai_peer_group_strategies.models.errorresponsedto import Errorresponsedto
+from sailpoint.iai_peer_group_strategies.models.error_message_dto import ErrorMessageDto
+from sailpoint.iai_peer_group_strategies.models.error_response_dto import ErrorResponseDto
 from sailpoint.iai_peer_group_strategies.models.get_peer_group_outliers_v1401_response import GetPeerGroupOutliersV1401Response
 from sailpoint.iai_peer_group_strategies.models.get_peer_group_outliers_v1429_response import GetPeerGroupOutliersV1429Response
-from sailpoint.iai_peer_group_strategies.models.localeorigin import Localeorigin
-from sailpoint.iai_peer_group_strategies.models.peergroupmember import Peergroupmember
+from sailpoint.iai_peer_group_strategies.models.locale_origin import LocaleOrigin
+from sailpoint.iai_peer_group_strategies.models.peer_group_member import PeerGroupMember

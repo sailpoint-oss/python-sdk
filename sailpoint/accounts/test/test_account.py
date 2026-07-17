@@ -58,11 +58,11 @@ class TestAccount(unittest.TestCase):
                 uuid = '{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}',
                 manually_correlated = False,
                 has_entitlements = True,
-                identity = sailpoint.accounts.models.account_all_of_identity.account_allOf_identity(
+                identity = sailpoint.accounts.models.account_all_of_identity.Account_allOf_identity(
                     id = '2c918084660f45d6016617daa9210584', 
                     type = 'IDENTITY', 
                     name = 'John Doe', ),
-                source_owner = sailpoint.accounts.models.account_all_of_source_owner.account_allOf_sourceOwner(
+                source_owner = sailpoint.accounts.models.account_all_of_source_owner.Account_allOf_sourceOwner(
                     id = '2c918084660f45d6016617daa9210584', 
                     type = 'IDENTITY', 
                     name = 'Adam Kennedy', ),

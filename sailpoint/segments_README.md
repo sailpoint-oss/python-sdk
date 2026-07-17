@@ -74,18 +74,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/segments/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/segments/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/segments/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/segments/docs/ErrorResponseDto.md)
  - [Expression](sailpoint/segments/docs/Expression.md)
  - [ExpressionChildrenInner](sailpoint/segments/docs/ExpressionChildrenInner.md)
  - [ListSegmentsV1401Response](sailpoint/segments/docs/ListSegmentsV1401Response.md)
  - [ListSegmentsV1429Response](sailpoint/segments/docs/ListSegmentsV1429Response.md)
- - [Localeorigin](sailpoint/segments/docs/Localeorigin.md)
- - [Ownerreferencesegments](sailpoint/segments/docs/Ownerreferencesegments.md)
+ - [LocaleOrigin](sailpoint/segments/docs/LocaleOrigin.md)
+ - [OwnerReferenceSegments](sailpoint/segments/docs/OwnerReferenceSegments.md)
  - [Segment](sailpoint/segments/docs/Segment.md)
  - [SegmentVisibilityCriteria](sailpoint/segments/docs/SegmentVisibilityCriteria.md)
  - [Value](sailpoint/segments/docs/Value.md)
- - [Visibilitycriteria](sailpoint/segments/docs/Visibilitycriteria.md)
+ - [VisibilityCriteria](sailpoint/segments/docs/VisibilityCriteria.md)
 
 
 <a id="documentation-for-authorization"></a>

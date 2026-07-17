@@ -20,9 +20,9 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.workflows.models.workflowbody_owner import WorkflowbodyOwner
-from sailpoint.workflows.models.workflowdefinition import Workflowdefinition
-from sailpoint.workflows.models.workflowtrigger import Workflowtrigger
+from sailpoint.workflows.models.workflow_body_owner import WorkflowBodyOwner
+from sailpoint.workflows.models.workflow_definition import WorkflowDefinition
+from sailpoint.workflows.models.workflow_trigger import WorkflowTrigger
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,11 +31,11 @@ class CreateWorkflowV1Request(BaseModel):
     CreateWorkflowV1Request
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the workflow")
-    owner: Optional[WorkflowbodyOwner] = None
+    owner: Optional[WorkflowBodyOwner] = None
     description: Optional[StrictStr] = Field(default=None, description="Description of what the workflow accomplishes")
-    definition: Optional[Workflowdefinition] = None
+    definition: Optional[WorkflowDefinition] = None
     enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
-    trigger: Optional[Workflowtrigger] = None
+    trigger: Optional[WorkflowTrigger] = None
     __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger"]
 
     model_config = ConfigDict(
@@ -99,11 +99,11 @@ class CreateWorkflowV1Request(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "owner": WorkflowbodyOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": WorkflowBodyOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "description": obj.get("description"),
-            "definition": Workflowdefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
+            "definition": WorkflowDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger": Workflowtrigger.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None
+            "trigger": WorkflowTrigger.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None
         })
         return _obj
 

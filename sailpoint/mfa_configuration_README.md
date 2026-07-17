@@ -75,17 +75,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/mfa_configuration/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/mfa_configuration/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/mfa_configuration/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/mfa_configuration/docs/ErrorResponseDto.md)
  - [GetMFAOktaConfigV1401Response](sailpoint/mfa_configuration/docs/GetMFAOktaConfigV1401Response.md)
  - [GetMFAOktaConfigV1429Response](sailpoint/mfa_configuration/docs/GetMFAOktaConfigV1429Response.md)
- - [Kbaanswerrequestitem](sailpoint/mfa_configuration/docs/Kbaanswerrequestitem.md)
- - [Kbaanswerresponseitem](sailpoint/mfa_configuration/docs/Kbaanswerresponseitem.md)
- - [Kbaquestion](sailpoint/mfa_configuration/docs/Kbaquestion.md)
- - [Localeorigin](sailpoint/mfa_configuration/docs/Localeorigin.md)
- - [Mfaconfigtestresponse](sailpoint/mfa_configuration/docs/Mfaconfigtestresponse.md)
- - [Mfaduoconfig](sailpoint/mfa_configuration/docs/Mfaduoconfig.md)
- - [Mfaoktaconfig](sailpoint/mfa_configuration/docs/Mfaoktaconfig.md)
+ - [KbaAnswerRequestItem](sailpoint/mfa_configuration/docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](sailpoint/mfa_configuration/docs/KbaAnswerResponseItem.md)
+ - [KbaQuestion](sailpoint/mfa_configuration/docs/KbaQuestion.md)
+ - [LocaleOrigin](sailpoint/mfa_configuration/docs/LocaleOrigin.md)
+ - [MfaConfigTestResponse](sailpoint/mfa_configuration/docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](sailpoint/mfa_configuration/docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](sailpoint/mfa_configuration/docs/MfaOktaConfig.md)
 
 
 <a id="documentation-for-authorization"></a>

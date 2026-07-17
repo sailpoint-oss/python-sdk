@@ -21,7 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.certification_campaigns.models.accessconstraint import Accessconstraint
+from sailpoint.certification_campaigns.models.access_constraint import AccessConstraint
 from sailpoint.certification_campaigns.models.campaign2_all_of_search_campaign_info_reviewer import Campaign2AllOfSearchCampaignInfoReviewer
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,7 +35,7 @@ class Campaign2AllOfSearchCampaignInfo(BaseModel):
     reviewer: Optional[Campaign2AllOfSearchCampaignInfoReviewer] = None
     query: Optional[StrictStr] = Field(default=None, description="The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set.")
     identity_ids: Optional[List[StrictStr]] = Field(default=None, description="A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.", alias="identityIds")
-    access_constraints: Optional[Annotated[List[Accessconstraint], Field(max_length=1000)]] = Field(default=None, description="Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.", alias="accessConstraints")
+    access_constraints: Optional[Annotated[List[AccessConstraint], Field(max_length=1000)]] = Field(default=None, description="Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.", alias="accessConstraints")
     __properties: ClassVar[List[str]] = ["type", "description", "reviewer", "query", "identityIds", "accessConstraints"]
 
     @field_validator('type')
@@ -126,7 +126,7 @@ class Campaign2AllOfSearchCampaignInfo(BaseModel):
             "reviewer": Campaign2AllOfSearchCampaignInfoReviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
             "query": obj.get("query"),
             "identityIds": obj.get("identityIds"),
-            "accessConstraints": [Accessconstraint.from_dict(_item) for _item in obj["accessConstraints"]] if obj.get("accessConstraints") is not None else None
+            "accessConstraints": [AccessConstraint.from_dict(_item) for _item in obj["accessConstraints"]] if obj.get("accessConstraints") is not None else None
         })
         return _obj
 

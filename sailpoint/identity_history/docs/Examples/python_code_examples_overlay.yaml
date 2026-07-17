@@ -6,7 +6,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.accessitemdiff import Accessitemdiff
+        from sailpoint.identity_history.models.access_item_diff import AccessItemDiff
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -41,7 +41,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.identitycompareresponse import Identitycompareresponse
+        from sailpoint.identity_history.models.identity_compare_response import IdentityCompareResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -109,7 +109,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.identityhistoryresponse import Identityhistoryresponse
+        from sailpoint.identity_history.models.identity_history_response import IdentityHistoryResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -136,7 +136,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.metricresponse import Metricresponse
+        from sailpoint.identity_history.models.metric_response import MetricResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -170,7 +170,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.identityhistoryresponse import Identityhistoryresponse
+        from sailpoint.identity_history.models.identity_history_response import IdentityHistoryResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -224,7 +224,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.identitylistitem import Identitylistitem
+        from sailpoint.identity_history.models.identity_list_item import IdentityListItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -318,7 +318,7 @@
       source: |
         from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi
         from sailpoint.identity_history.api_client import ApiClient
-        from sailpoint.identity_history.models.identitysnapshotsummaryresponse import Identitysnapshotsummaryresponse
+        from sailpoint.identity_history.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

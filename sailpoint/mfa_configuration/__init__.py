@@ -31,14 +31,14 @@ from sailpoint.mfa_configuration.exceptions import ApiAttributeError
 from sailpoint.mfa_configuration.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.mfa_configuration.models.errormessagedto import Errormessagedto
-from sailpoint.mfa_configuration.models.errorresponsedto import Errorresponsedto
+from sailpoint.mfa_configuration.models.error_message_dto import ErrorMessageDto
+from sailpoint.mfa_configuration.models.error_response_dto import ErrorResponseDto
 from sailpoint.mfa_configuration.models.get_mfa_okta_config_v1401_response import GetMFAOktaConfigV1401Response
 from sailpoint.mfa_configuration.models.get_mfa_okta_config_v1429_response import GetMFAOktaConfigV1429Response
-from sailpoint.mfa_configuration.models.kbaanswerrequestitem import Kbaanswerrequestitem
-from sailpoint.mfa_configuration.models.kbaanswerresponseitem import Kbaanswerresponseitem
-from sailpoint.mfa_configuration.models.kbaquestion import Kbaquestion
-from sailpoint.mfa_configuration.models.localeorigin import Localeorigin
-from sailpoint.mfa_configuration.models.mfaconfigtestresponse import Mfaconfigtestresponse
-from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
-from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+from sailpoint.mfa_configuration.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.mfa_configuration.models.kba_answer_response_item import KbaAnswerResponseItem
+from sailpoint.mfa_configuration.models.kba_question import KbaQuestion
+from sailpoint.mfa_configuration.models.locale_origin import LocaleOrigin
+from sailpoint.mfa_configuration.models.mfa_config_test_response import MfaConfigTestResponse
+from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig

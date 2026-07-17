@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.password_policies.models.errormessagedto import Errormessagedto
-from sailpoint.password_policies.models.errorresponsedto import Errorresponsedto
+from sailpoint.password_policies.models.error_message_dto import ErrorMessageDto
+from sailpoint.password_policies.models.error_response_dto import ErrorResponseDto
 from sailpoint.password_policies.models.get_password_policy_by_id_v1401_response import GetPasswordPolicyByIdV1401Response
 from sailpoint.password_policies.models.get_password_policy_by_id_v1429_response import GetPasswordPolicyByIdV1429Response
-from sailpoint.password_policies.models.localeorigin import Localeorigin
-from sailpoint.password_policies.models.passwordpolicyv3dto import Passwordpolicyv3dto
+from sailpoint.password_policies.models.locale_origin import LocaleOrigin
+from sailpoint.password_policies.models.password_policy_v3_dto import PasswordPolicyV3Dto

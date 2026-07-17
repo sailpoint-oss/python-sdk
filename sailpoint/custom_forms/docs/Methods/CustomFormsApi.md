@@ -53,15 +53,15 @@ Generate json schema dynamically.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | body | [**Formdefinitiondynamicschemarequest**](../models/formdefinitiondynamicschemarequest) |   (optional) | Body is the request payload to create a form definition dynamic schema
+ Body  | body | [**FormDefinitionDynamicSchemaRequest**](../models/form-definition-dynamic-schema-request) |   (optional) | Body is the request payload to create a form definition dynamic schema
 
 ### Return type
-[**Formdefinitiondynamicschemaresponse**](../models/formdefinitiondynamicschemaresponse)
+[**FormDefinitionDynamicSchemaResponse**](../models/form-definition-dynamic-schema-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a form elements dynamic schema | Formdefinitiondynamicschemaresponse |  -  |
+200 | Returns a form elements dynamic schema | FormDefinitionDynamicSchemaResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -78,14 +78,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.formdefinitiondynamicschemarequest import Formdefinitiondynamicschemarequest
-from sailpoint.custom_forms.models.formdefinitiondynamicschemaresponse import Formdefinitiondynamicschemaresponse
+from sailpoint.custom_forms.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
+from sailpoint.custom_forms.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    body = '''{"id":"sp:forms","attributes":{"formDefinitionId":"00000000-0000-0000-0000-000000000000"},"description":"AnotherDescription","type":"action","versionNumber":1}''' # Formdefinitiondynamicschemarequest | Body is the request payload to create a form definition dynamic schema (optional)
+    body = '''{
+          "description" : "A description",
+          "attributes" : {
+            "formDefinitionId" : "00000000-0000-0000-0000-000000000000"
+          },
+          "id" : "00000000-0000-0000-0000-000000000000",
+          "type" : "action",
+          "versionNumber" : 1
+        }''' # FormDefinitionDynamicSchemaRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     try:
         # Generate json schema dynamically.
@@ -117,12 +125,12 @@ Path   | form_definition_id | **str** | True  | FormDefinitionID  String specify
    | file | **bytearray** | True  | File specifying the multipart
 
 ### Return type
-[**Formdefinitionfileuploadresponse**](../models/formdefinitionfileuploadresponse)
+[**FormDefinitionFileUploadResponse**](../models/form-definition-file-upload-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Returns a new form definition file | Formdefinitionfileuploadresponse |  -  |
+201 | Returns a new form definition file | FormDefinitionFileUploadResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -142,7 +150,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.formdefinitionfileuploadresponse import Formdefinitionfileuploadresponse
+from sailpoint.custom_forms.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -177,15 +185,15 @@ Creates a form definition.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | body | [**Createformdefinitionrequest**](../models/createformdefinitionrequest) |   (optional) | Body is the request payload to create form definition request
+ Body  | body | [**CreateFormDefinitionRequest**](../models/create-form-definition-request) |   (optional) | Body is the request payload to create form definition request
 
 ### Return type
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Returns a new form definition | Formdefinitionresponse |  -  |
+201 | Returns a new form definition | FormDefinitionResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -201,14 +209,124 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.createformdefinitionrequest import Createformdefinitionrequest
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+from sailpoint.custom_forms.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    body = '''{"name":"my form","description":"my form description","owner":{"type":"IDENTITY","id":"00000000-0000-0000-0000-000000000000"},"formElements":[{"id":"000000000000","elementType":"SECTION","config":{"alignment":"LEFT","description":"elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute","label":"Section","labelStyle":"h2","showLabel":true,"formElements":[{"id":"0000000000000","key":"textField","elementType":"TEXT","config":{"default":"","description":"","helpText":"form element type text","label":"Text Field","placeholder":"","required":false},"validations":[]}]}}]}''' # Createformdefinitionrequest | Body is the request payload to create form definition request (optional)
+    body = '''{
+          "owner" : {
+            "name" : "Grant Smith",
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          },
+          "formConditions" : [ {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          }, {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          } ],
+          "formInput" : [ {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          }, {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          } ],
+          "name" : "My form",
+          "description" : "My form description",
+          "usedBy" : [ {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          }, {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          } ],
+          "formElements" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          } ]
+        }''' # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     try:
         # Creates a form definition.
@@ -236,15 +354,15 @@ Creates a form instance.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | body | [**Createforminstancerequest**](../models/createforminstancerequest) |   (optional) | Body is the request payload to create a form instance
+ Body  | body | [**CreateFormInstanceRequest**](../models/create-form-instance-request) |   (optional) | Body is the request payload to create a form instance
 
 ### Return type
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Returns a new form instance | Forminstanceresponse |  -  |
+201 | Returns a new form instance | FormInstanceResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -260,14 +378,34 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.createforminstancerequest import Createforminstancerequest
-from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+from sailpoint.custom_forms.models.create_form_instance_request import CreateFormInstanceRequest
+from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    body = '''{"expire":"2023-06-20T15:57:55.332882Z","formDefinitionId":"00000000-0000-0000-0000-000000000000","recipients":[{"type":"IDENTITY","id":"an-identity-id"}],"createdBy":{"type":"WORKFLOW_EXECUTION","id":"a-workflow-execution-id"}}''' # Createforminstancerequest | Body is the request payload to create a form instance (optional)
+    body = '''{
+          "formInput" : {
+            "input1" : "Sales"
+          },
+          "standAloneForm" : false,
+          "createdBy" : {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "WORKFLOW_EXECUTION"
+          },
+          "recipients" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          } ],
+          "expire" : "2023-08-12T20:14:57.74486Z",
+          "formDefinitionId" : "00000000-0000-0000-0000-000000000000",
+          "state" : "ASSIGNED",
+          "ttl" : 1571827560
+        }''' # CreateFormInstanceRequest | Body is the request payload to create a form instance (optional)
 
     try:
         # Creates a form instance.
@@ -482,12 +620,12 @@ Param Type | Name | Data Type | Required  | Description
 Path   | form_definition_id | **str** | True  | Form definition ID
 
 ### Return type
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a form definition | Formdefinitionresponse |  -  |
+200 | Returns a form definition | FormDefinitionResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -504,7 +642,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -543,12 +681,12 @@ Param Type | Name | Data Type | Required  | Description
 Path   | form_instance_id | **str** | True  | Form instance ID
 
 ### Return type
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a form instance by its key | Forminstanceresponse |  -  |
+200 | Returns a form instance by its key | FormInstanceResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -565,7 +703,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -723,12 +861,12 @@ Path   | form_definition_id | **str** | True  | Form definition ID
  Body  | body | **[]Dict[str, object]** |   (optional) | Body is the request payload to patch a form definition, check: https://jsonpatch.com
 
 ### Return type
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns the form definition updated | Formdefinitionresponse |  -  |
+200 | Returns the form definition updated | FormDefinitionResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -745,7 +883,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -786,12 +924,12 @@ Path   | form_instance_id | **str** | True  | Form instance ID
  Body  | body | **[]Dict[str, object]** |   (optional) | Body is the request payload to patch a form instance, check: https://jsonpatch.com
 
 ### Return type
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns the form instance updated | Forminstanceresponse |  -  |
+200 | Returns the form instance updated | FormInstanceResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -809,7 +947,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -850,12 +988,12 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) (default to 'name') | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**
 
 ### Return type
-[**Listformdefinitionsbytenantresponse**](../models/listformdefinitionsbytenantresponse)
+[**ListFormDefinitionsByTenantResponse**](../models/list-form-definitions-by-tenant-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a list of form definitions by tenant | Listformdefinitionsbytenantresponse |  -  |
+200 | Returns a list of form definitions by tenant | ListFormDefinitionsByTenantResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -871,7 +1009,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.listformdefinitionsbytenantresponse import Listformdefinitionsbytenantresponse
+from sailpoint.custom_forms.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -916,12 +1054,12 @@ Path   | form_element_id | **str** | True  | Form element ID
   Query | query | **str** |   (optional) | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.
 
 ### Return type
-[**Listformelementdatabyelementidresponse**](../models/listformelementdatabyelementidresponse)
+[**ListFormElementDataByElementIDResponse**](../models/list-form-element-data-by-element-id-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Retrieves dynamic data to aid in correctly completing a valid form by form element ID from data source configuration | Listformelementdatabyelementidresponse |  -  |
+200 | Retrieves dynamic data to aid in correctly completing a valid form by form element ID from data source configuration | ListFormElementDataByElementIDResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -938,7 +1076,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.listformelementdatabyelementidresponse import Listformelementdatabyelementidresponse
+from sailpoint.custom_forms.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -981,12 +1119,12 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
 
 ### Return type
-[**List[Listforminstancesbytenantresponse]**](../models/listforminstancesbytenantresponse)
+[**List[ListFormInstancesByTenantResponse]**](../models/list-form-instances-by-tenant-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a list of form instances by tenant | List[Listforminstancesbytenantresponse] |  -  |
+200 | Returns a list of form instances by tenant | List[ListFormInstancesByTenantResponse] |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -1002,7 +1140,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.listforminstancesbytenantresponse import Listforminstancesbytenantresponse
+from sailpoint.custom_forms.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1039,12 +1177,12 @@ No parameters required.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Listpredefinedselectoptionsresponse**](../models/listpredefinedselectoptionsresponse)
+[**ListPredefinedSelectOptionsResponse**](../models/list-predefined-select-options-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a list of available predefined select options | Listpredefinedselectoptionsresponse |  -  |
+200 | Returns a list of available predefined select options | ListPredefinedSelectOptionsResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -1060,7 +1198,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.listpredefinedselectoptionsresponse import Listpredefinedselectoptionsresponse
+from sailpoint.custom_forms.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1097,15 +1235,15 @@ Path   | form_definition_id | **str** | True  | Form definition ID
   Query | limit | **int** |   (optional) (default to 10) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
   Query | query | **str** |   (optional) | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.
- Body  | formelementpreviewrequest | [**Formelementpreviewrequest**](../models/formelementpreviewrequest) |   (optional) | Body is the request payload to create a form definition dynamic schema
+ Body  | form_element_preview_request | [**FormElementPreviewRequest**](../models/form-element-preview-request) |   (optional) | Body is the request payload to create a form definition dynamic schema
 
 ### Return type
-[**Previewdatasourceresponse**](../models/previewdatasourceresponse)
+[**PreviewDataSourceResponse**](../models/preview-data-source-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a preview of a form definition data source | Previewdatasourceresponse |  -  |
+200 | Returns a preview of a form definition data source | PreviewDataSourceResponse |  -  |
 400 | An error with the request occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 401 | An error with the authorization occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
 403 | An error with the user permissions occurred | SearchFormDefinitionsByTenantV1400Response |  -  |
@@ -1122,8 +1260,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
 from sailpoint.custom_forms.api_client import ApiClient
-from sailpoint.custom_forms.models.formelementpreviewrequest import Formelementpreviewrequest
-from sailpoint.custom_forms.models.previewdatasourceresponse import Previewdatasourceresponse
+from sailpoint.custom_forms.models.form_element_preview_request import FormElementPreviewRequest
+from sailpoint.custom_forms.models.preview_data_source_response import PreviewDataSourceResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1133,14 +1271,24 @@ with ApiClient(configuration) as api_client:
     limit = 10 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
     filters = 'value eq \"ID01\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
     query = 'ac' # str | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional) # str | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
-    formelementpreviewrequest = '''sailpoint.custom_forms.Formelementpreviewrequest()''' # Formelementpreviewrequest | Body is the request payload to create a form definition dynamic schema (optional)
+    form_element_preview_request = '''{
+          "dataSource" : {
+            "config" : {
+              "indices" : [ "identities" ],
+              "query" : "*",
+              "aggregationBucketField" : "attributes.cloudStatus.exact",
+              "objectType" : "IDENTITY"
+            },
+            "dataSourceType" : "STATIC"
+          }
+        }''' # FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     try:
         # Preview form definition data source.
         
         results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id=form_definition_id)
         # Below is a request that includes all optional parameters
-        # results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id, limit, filters, query, new_formelementpreviewrequest)
+        # results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id, limit, filters, query, new_form_element_preview_request)
         print("The response of CustomFormsApi->show_preview_data_source_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

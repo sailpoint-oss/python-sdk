@@ -37,18 +37,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Identity ID
 
 ### Return type
-[**Authuser**](../models/authuser)
+[**AuthUser**](../models/auth-user)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The specified user&#39;s authentication system details. | Authuser |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The specified user&#39;s authentication system details. | AuthUser |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAuthUserV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAuthUserV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -59,7 +59,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.auth_users.api.auth_users_api import AuthUsersApi
 from sailpoint.auth_users.api_client import ApiClient
-from sailpoint.auth_users.models.authuser import Authuser
+from sailpoint.auth_users.models.auth_user import AuthUser
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -98,21 +98,21 @@ A '400.1.1 Illegal update attempt' detail code indicates that you attempted to P
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Identity ID
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
-[**Authuser**](../models/authuser)
+[**AuthUser**](../models/auth-user)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Auth user updated. | Authuser |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Auth user updated. | AuthUser |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAuthUserV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAuthUserV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -123,22 +123,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.auth_users.api.auth_users_api import AuthUsersApi
 from sailpoint.auth_users.api_client import ApiClient
-from sailpoint.auth_users.models.authuser import Authuser
-from sailpoint.auth_users.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.auth_users.models.auth_user import AuthUser
+from sailpoint.auth_users.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID # str | Identity ID
-    jsonpatchoperation = '''[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]''' # List[Jsonpatchoperation] | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = '''[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]''' # List[JsonPatchOperation] | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Auth user update
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = AuthUsersApi(api_client).patch_auth_user_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = AuthUsersApi(api_client).patch_auth_user_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = AuthUsersApi(api_client).patch_auth_user_v1(id, new_jsonpatchoperation)
+        # results = AuthUsersApi(api_client).patch_auth_user_v1(id, new_json_patch_operation)
         print("The response of AuthUsersApi->patch_auth_user_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

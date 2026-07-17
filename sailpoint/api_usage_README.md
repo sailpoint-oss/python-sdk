@@ -72,12 +72,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/api_usage/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/api_usage/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/api_usage/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/api_usage/docs/ErrorResponseDto.md)
  - [GetTotalCountV1401Response](sailpoint/api_usage/docs/GetTotalCountV1401Response.md)
  - [GetTotalCountV1429Response](sailpoint/api_usage/docs/GetTotalCountV1429Response.md)
- - [Localeorigin](sailpoint/api_usage/docs/Localeorigin.md)
- - [Summaryresponse](sailpoint/api_usage/docs/Summaryresponse.md)
+ - [LocaleOrigin](sailpoint/api_usage/docs/LocaleOrigin.md)
+ - [SummaryResponse](sailpoint/api_usage/docs/SummaryResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.access_profiles.models.accessprofile import Accessprofile
-from sailpoint.access_profiles.models.accessprofilebulkdeleterequest import Accessprofilebulkdeleterequest
-from sailpoint.access_profiles.models.accessprofilebulkdeleteresponse import Accessprofilebulkdeleteresponse
-from sailpoint.access_profiles.models.accessprofilebulkupdaterequest_inner import AccessprofilebulkupdaterequestInner
-from sailpoint.access_profiles.models.accessprofileupdateitem import Accessprofileupdateitem
+from sailpoint.access_profiles.models.access_profile import AccessProfile
+from sailpoint.access_profiles.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
+from sailpoint.access_profiles.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
+from sailpoint.access_profiles.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+from sailpoint.access_profiles.models.access_profile_update_item import AccessProfileUpdateItem
 from sailpoint.access_profiles.models.entitlement import Entitlement
-from sailpoint.access_profiles.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.access_profiles.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.access_profiles.api_client import ApiClient, RequestSerialized
 from sailpoint.access_profiles.api_response import ApiResponse
@@ -48,7 +48,7 @@ class AccessProfilesApi:
     @validate_call
     def create_access_profile_v1(
         self,
-        accessprofile: Accessprofile,
+        access_profile: AccessProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,13 +61,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofile:
+    ) -> AccessProfile:
         """Create access profile
 
         Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
-        :param accessprofile: (required)
-        :type accessprofile: Accessprofile
+        :param access_profile: (required)
+        :type access_profile: AccessProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +91,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._create_access_profile_v1_serialize(
-            accessprofile=accessprofile,
+            access_profile=access_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -99,12 +99,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessprofile",
-            '400': "Errorresponsedto",
+            '201': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -120,7 +120,7 @@ class AccessProfilesApi:
     @validate_call
     def create_access_profile_v1_with_http_info(
         self,
-        accessprofile: Accessprofile,
+        access_profile: AccessProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,13 +133,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofile]:
+    ) -> ApiResponse[AccessProfile]:
         """Create access profile
 
         Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
-        :param accessprofile: (required)
-        :type accessprofile: Accessprofile
+        :param access_profile: (required)
+        :type access_profile: AccessProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +163,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._create_access_profile_v1_serialize(
-            accessprofile=accessprofile,
+            access_profile=access_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -171,12 +171,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessprofile",
-            '400': "Errorresponsedto",
+            '201': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class AccessProfilesApi:
     @validate_call
     def create_access_profile_v1_without_preload_content(
         self,
-        accessprofile: Accessprofile,
+        access_profile: AccessProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class AccessProfilesApi:
 
         Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
-        :param accessprofile: (required)
-        :type accessprofile: Accessprofile
+        :param access_profile: (required)
+        :type access_profile: AccessProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._create_access_profile_v1_serialize(
-            accessprofile=accessprofile,
+            access_profile=access_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,12 +243,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessprofile",
-            '400': "Errorresponsedto",
+            '201': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,7 +259,7 @@ class AccessProfilesApi:
 
     def _create_access_profile_v1_serialize(
         self,
-        accessprofile,
+        access_profile,
         _request_auth,
         _content_type,
         _headers,
@@ -285,8 +285,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessprofile is not None:
-            _body_params = accessprofile
+        if access_profile is not None:
+            _body_params = access_profile
 
 
         # set the HTTP header `Accept`
@@ -388,11 +388,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -460,11 +460,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -532,11 +532,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -611,7 +611,7 @@ class AccessProfilesApi:
     @validate_call
     def delete_access_profiles_in_bulk_v1(
         self,
-        accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -624,13 +624,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofilebulkdeleteresponse:
+    ) -> AccessProfileBulkDeleteResponse:
         """Delete access profile(s)
 
         This endpoint initiates a bulk deletion of one or more access profiles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
 
-        :param accessprofilebulkdeleterequest: (required)
-        :type accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -654,7 +654,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._delete_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkdeleterequest=accessprofilebulkdeleterequest,
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -662,13 +662,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofilebulkdeleteresponse",
-            '202': "Accessprofilebulkdeleteresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -684,7 +684,7 @@ class AccessProfilesApi:
     @validate_call
     def delete_access_profiles_in_bulk_v1_with_http_info(
         self,
-        accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -697,13 +697,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofilebulkdeleteresponse]:
+    ) -> ApiResponse[AccessProfileBulkDeleteResponse]:
         """Delete access profile(s)
 
         This endpoint initiates a bulk deletion of one or more access profiles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
 
-        :param accessprofilebulkdeleterequest: (required)
-        :type accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -727,7 +727,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._delete_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkdeleterequest=accessprofilebulkdeleterequest,
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -735,13 +735,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofilebulkdeleteresponse",
-            '202': "Accessprofilebulkdeleteresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -757,7 +757,7 @@ class AccessProfilesApi:
     @validate_call
     def delete_access_profiles_in_bulk_v1_without_preload_content(
         self,
-        accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -775,8 +775,8 @@ class AccessProfilesApi:
 
         This endpoint initiates a bulk deletion of one or more access profiles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
 
-        :param accessprofilebulkdeleterequest: (required)
-        :type accessprofilebulkdeleterequest: Accessprofilebulkdeleterequest
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -800,7 +800,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._delete_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkdeleterequest=accessprofilebulkdeleterequest,
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -808,13 +808,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofilebulkdeleteresponse",
-            '202': "Accessprofilebulkdeleteresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -825,7 +825,7 @@ class AccessProfilesApi:
 
     def _delete_access_profiles_in_bulk_v1_serialize(
         self,
-        accessprofilebulkdeleterequest,
+        access_profile_bulk_delete_request,
         _request_auth,
         _content_type,
         _headers,
@@ -851,8 +851,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessprofilebulkdeleterequest is not None:
-            _body_params = accessprofilebulkdeleterequest
+        if access_profile_bulk_delete_request is not None:
+            _body_params = access_profile_bulk_delete_request
 
 
         # set the HTTP header `Accept`
@@ -974,11 +974,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1066,11 +1066,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1158,11 +1158,11 @@ class AccessProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1275,7 +1275,7 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofile:
+    ) -> AccessProfile:
         """Get an access profile
 
         This API returns an Access Profile by its ID.
@@ -1313,12 +1313,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1347,7 +1347,7 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofile]:
+    ) -> ApiResponse[AccessProfile]:
         """Get an access profile
 
         This API returns an Access Profile by its ID.
@@ -1385,12 +1385,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1457,12 +1457,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1557,7 +1557,7 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessprofile]:
+    ) -> List[AccessProfile]:
         """List access profiles
 
         Get a list of access profiles. >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
@@ -1616,12 +1616,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1657,7 +1657,7 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessprofile]]:
+    ) -> ApiResponse[List[AccessProfile]]:
         """List access profiles
 
         Get a list of access profiles. >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
@@ -1716,12 +1716,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1816,12 +1816,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1934,7 +1934,7 @@ class AccessProfilesApi:
     def patch_access_profile_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1947,15 +1947,15 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofile:
+    ) -> AccessProfile:
         """Patch a specified access profile
 
         This API updates an existing Access Profile. The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **additionalOwners**  **requestable**  **accessRequestConfig**  **revokeRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
 
         :param id: ID of the Access Profile to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1980,7 +1980,7 @@ class AccessProfilesApi:
 
         _param = self._patch_access_profile_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,12 +1988,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2010,7 +2010,7 @@ class AccessProfilesApi:
     def patch_access_profile_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2023,15 +2023,15 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofile]:
+    ) -> ApiResponse[AccessProfile]:
         """Patch a specified access profile
 
         This API updates an existing Access Profile. The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **additionalOwners**  **requestable**  **accessRequestConfig**  **revokeRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
 
         :param id: ID of the Access Profile to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2056,7 +2056,7 @@ class AccessProfilesApi:
 
         _param = self._patch_access_profile_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2064,12 +2064,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2086,7 +2086,7 @@ class AccessProfilesApi:
     def patch_access_profile_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2106,8 +2106,8 @@ class AccessProfilesApi:
 
         :param id: ID of the Access Profile to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2132,7 +2132,7 @@ class AccessProfilesApi:
 
         _param = self._patch_access_profile_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2140,12 +2140,12 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessprofile",
-            '400': "Errorresponsedto",
+            '200': "AccessProfile",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2157,7 +2157,7 @@ class AccessProfilesApi:
     def _patch_access_profile_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2167,7 +2167,7 @@ class AccessProfilesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2186,8 +2186,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2237,7 +2237,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_in_bulk_v1(
         self,
-        accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner],
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2251,13 +2251,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessprofileupdateitem]:
+    ) -> List[AccessProfileUpdateItem]:
         """Update access profile(s) requestable field.
 
         This API initiates a bulk update of field requestable for one or more Access Profiles.  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
 
-        :param accessprofilebulkupdaterequest_inner: (required)
-        :type accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner]
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2283,7 +2283,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkupdaterequest_inner=accessprofilebulkupdaterequest_inner,
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2292,13 +2292,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Accessprofileupdateitem]",
-            '400': "Errorresponsedto",
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '412': "UpdateAccessProfilesInBulkV1412Response",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2314,7 +2314,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_in_bulk_v1_with_http_info(
         self,
-        accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner],
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2328,13 +2328,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessprofileupdateitem]]:
+    ) -> ApiResponse[List[AccessProfileUpdateItem]]:
         """Update access profile(s) requestable field.
 
         This API initiates a bulk update of field requestable for one or more Access Profiles.  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
 
-        :param accessprofilebulkupdaterequest_inner: (required)
-        :type accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner]
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2360,7 +2360,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkupdaterequest_inner=accessprofilebulkupdaterequest_inner,
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2369,13 +2369,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Accessprofileupdateitem]",
-            '400': "Errorresponsedto",
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '412': "UpdateAccessProfilesInBulkV1412Response",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2391,7 +2391,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_in_bulk_v1_without_preload_content(
         self,
-        accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner],
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2410,8 +2410,8 @@ class AccessProfilesApi:
 
         This API initiates a bulk update of field requestable for one or more Access Profiles.  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
 
-        :param accessprofilebulkupdaterequest_inner: (required)
-        :type accessprofilebulkupdaterequest_inner: List[AccessprofilebulkupdaterequestInner]
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2437,7 +2437,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
-            accessprofilebulkupdaterequest_inner=accessprofilebulkupdaterequest_inner,
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2446,13 +2446,13 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Accessprofileupdateitem]",
-            '400': "Errorresponsedto",
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '412': "UpdateAccessProfilesInBulkV1412Response",
             '429': "ListAccessProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2463,7 +2463,7 @@ class AccessProfilesApi:
 
     def _update_access_profiles_in_bulk_v1_serialize(
         self,
-        accessprofilebulkupdaterequest_inner,
+        access_profile_bulk_update_request_inner,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2474,7 +2474,7 @@ class AccessProfilesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'AccessprofilebulkupdaterequestInner': '',
+            'AccessProfileBulkUpdateRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2493,8 +2493,8 @@ class AccessProfilesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessprofilebulkupdaterequest_inner is not None:
-            _body_params = accessprofilebulkupdaterequest_inner
+        if access_profile_bulk_update_request_inner is not None:
+            _body_params = access_profile_bulk_update_request_inner
 
 
         # set the HTTP header `Accept`

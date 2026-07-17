@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.account_activities.models.accountactivity import Accountactivity
+from sailpoint.account_activities.models.account_activity import AccountActivity
 
 from sailpoint.account_activities.api_client import ApiClient, RequestSerialized
 from sailpoint.account_activities.api_response import ApiResponse
@@ -55,7 +55,7 @@ class AccountActivitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountactivity:
+    ) -> AccountActivity:
         """Get an account activity
 
         This gets a single account activity by its id.
@@ -93,13 +93,13 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountactivity",
-            '400': "Errorresponsedto",
+            '200': "AccountActivity",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class AccountActivitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountactivity]:
+    ) -> ApiResponse[AccountActivity]:
         """Get an account activity
 
         This gets a single account activity by its id.
@@ -166,13 +166,13 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountactivity",
-            '400': "Errorresponsedto",
+            '200': "AccountActivity",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,13 +239,13 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountactivity",
-            '400': "Errorresponsedto",
+            '200': "AccountActivity",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -340,7 +340,7 @@ class AccountActivitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accountactivity]:
+    ) -> List[AccountActivity]:
         """List account activities
 
         This gets a collection of account activities that satisfy the given query parameters.
@@ -399,12 +399,12 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactivity]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActivity]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -440,7 +440,7 @@ class AccountActivitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accountactivity]]:
+    ) -> ApiResponse[List[AccountActivity]]:
         """List account activities
 
         This gets a collection of account activities that satisfy the given query parameters.
@@ -499,12 +499,12 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactivity]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActivity]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -599,12 +599,12 @@ class AccountActivitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactivity]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActivity]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountActivitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountActivitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

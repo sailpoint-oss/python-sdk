@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.shared_signals_framework_ssf.models.jwk import Jwk
+from sailpoint.shared_signals_framework_ssf.models.jwk import JWK
 
-class TestJwk(unittest.TestCase):
-    """Jwk unit test stubs"""
+class TestJWK(unittest.TestCase):
+    """JWK unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestJwk(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Jwk:
-        """Test Jwk
+    def make_instance(self, include_optional) -> JWK:
+        """Test JWK
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Jwk`
+        # uncomment below to create an instance of `JWK`
         """
-        model = Jwk()
+        model = JWK()
         if include_optional:
-            return Jwk(
+            return JWK(
                 alg = 'RS256',
                 e = 'AQAB',
                 kid = 'mrk-3db792b3d0a642dbbb5bb28b542929cd',
@@ -43,12 +43,12 @@ class TestJwk(unittest.TestCase):
                 use = 'sig'
             )
         else:
-            return Jwk(
+            return JWK(
         )
         """
 
-    def testJwk(self):
-        """Test Jwk"""
+    def testJWK(self):
+        """Test JWK"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

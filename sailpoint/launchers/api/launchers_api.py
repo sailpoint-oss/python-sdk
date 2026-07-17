@@ -21,7 +21,7 @@ from typing import Optional
 from typing_extensions import Annotated
 from sailpoint.launchers.models.get_launchers_v1200_response import GetLaunchersV1200Response
 from sailpoint.launchers.models.launcher import Launcher
-from sailpoint.launchers.models.launcherrequest import Launcherrequest
+from sailpoint.launchers.models.launcher_request import LauncherRequest
 from sailpoint.launchers.models.start_launcher_v1200_response import StartLauncherV1200Response
 
 from sailpoint.launchers.api_client import ApiClient, RequestSerialized
@@ -45,7 +45,7 @@ class LaunchersApi:
     @validate_call
     def create_launcher_v1(
         self,
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to create a Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to create a Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,8 +63,8 @@ class LaunchersApi:
 
         Create a Launcher with given information
 
-        :param launcherrequest: Payload to create a Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to create a Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,7 +88,7 @@ class LaunchersApi:
         """ # noqa: E501
 
         _param = self._create_launcher_v1_serialize(
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,12 +97,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -118,7 +118,7 @@ class LaunchersApi:
     @validate_call
     def create_launcher_v1_with_http_info(
         self,
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to create a Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to create a Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,8 +136,8 @@ class LaunchersApi:
 
         Create a Launcher with given information
 
-        :param launcherrequest: Payload to create a Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to create a Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +161,7 @@ class LaunchersApi:
         """ # noqa: E501
 
         _param = self._create_launcher_v1_serialize(
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,12 +170,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -191,7 +191,7 @@ class LaunchersApi:
     @validate_call
     def create_launcher_v1_without_preload_content(
         self,
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to create a Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to create a Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,8 +209,8 @@ class LaunchersApi:
 
         Create a Launcher with given information
 
-        :param launcherrequest: Payload to create a Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to create a Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,7 +234,7 @@ class LaunchersApi:
         """ # noqa: E501
 
         _param = self._create_launcher_v1_serialize(
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,12 +243,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,7 +259,7 @@ class LaunchersApi:
 
     def _create_launcher_v1_serialize(
         self,
-        launcherrequest,
+        launcher_request,
         _request_auth,
         _content_type,
         _headers,
@@ -285,8 +285,8 @@ class LaunchersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if launcherrequest is not None:
-            _body_params = launcherrequest
+        if launcher_request is not None:
+            _body_params = launcher_request
 
 
         # set the HTTP header `Accept`
@@ -388,12 +388,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -461,12 +461,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -534,12 +534,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -666,12 +666,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -739,12 +739,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -812,12 +812,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -952,12 +952,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetLaunchersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1033,12 +1033,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetLaunchersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1114,12 +1114,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetLaunchersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1207,7 +1207,7 @@ class LaunchersApi:
     def put_launcher_v1(
         self,
         launcher_id: Annotated[StrictStr, Field(description="ID of the Launcher to be replaced")],
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to replace Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to replace Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1227,8 +1227,8 @@ class LaunchersApi:
 
         :param launcher_id: ID of the Launcher to be replaced (required)
         :type launcher_id: str
-        :param launcherrequest: Payload to replace Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to replace Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1253,7 +1253,7 @@ class LaunchersApi:
 
         _param = self._put_launcher_v1_serialize(
             launcher_id=launcher_id,
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1262,12 +1262,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1284,7 +1284,7 @@ class LaunchersApi:
     def put_launcher_v1_with_http_info(
         self,
         launcher_id: Annotated[StrictStr, Field(description="ID of the Launcher to be replaced")],
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to replace Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to replace Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1304,8 +1304,8 @@ class LaunchersApi:
 
         :param launcher_id: ID of the Launcher to be replaced (required)
         :type launcher_id: str
-        :param launcherrequest: Payload to replace Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to replace Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1330,7 +1330,7 @@ class LaunchersApi:
 
         _param = self._put_launcher_v1_serialize(
             launcher_id=launcher_id,
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1339,12 +1339,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1361,7 +1361,7 @@ class LaunchersApi:
     def put_launcher_v1_without_preload_content(
         self,
         launcher_id: Annotated[StrictStr, Field(description="ID of the Launcher to be replaced")],
-        launcherrequest: Annotated[Launcherrequest, Field(description="Payload to replace Launcher")],
+        launcher_request: Annotated[LauncherRequest, Field(description="Payload to replace Launcher")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1381,8 +1381,8 @@ class LaunchersApi:
 
         :param launcher_id: ID of the Launcher to be replaced (required)
         :type launcher_id: str
-        :param launcherrequest: Payload to replace Launcher (required)
-        :type launcherrequest: Launcherrequest
+        :param launcher_request: Payload to replace Launcher (required)
+        :type launcher_request: LauncherRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1407,7 +1407,7 @@ class LaunchersApi:
 
         _param = self._put_launcher_v1_serialize(
             launcher_id=launcher_id,
-            launcherrequest=launcherrequest,
+            launcher_request=launcher_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1416,12 +1416,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Launcher",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1433,7 +1433,7 @@ class LaunchersApi:
     def _put_launcher_v1_serialize(
         self,
         launcher_id,
-        launcherrequest,
+        launcher_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1461,8 +1461,8 @@ class LaunchersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if launcherrequest is not None:
-            _body_params = launcherrequest
+        if launcher_request is not None:
+            _body_params = launcher_request
 
 
         # set the HTTP header `Accept`
@@ -1564,12 +1564,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StartLauncherV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1637,12 +1637,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StartLauncherV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1710,12 +1710,12 @@ class LaunchersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StartLauncherV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetLaunchersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetLaunchersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

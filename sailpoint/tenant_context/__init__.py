@@ -32,11 +32,11 @@ from sailpoint.tenant_context.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.tenant_context.models.array_inner import ArrayInner
-from sailpoint.tenant_context.models.errormessagedto import Errormessagedto
-from sailpoint.tenant_context.models.errorresponsedto import Errorresponsedto
+from sailpoint.tenant_context.models.error_message_dto import ErrorMessageDto
+from sailpoint.tenant_context.models.error_response_dto import ErrorResponseDto
 from sailpoint.tenant_context.models.get_tenant_context_v1200_response_inner import GetTenantContextV1200ResponseInner
 from sailpoint.tenant_context.models.get_tenant_context_v1401_response import GetTenantContextV1401Response
 from sailpoint.tenant_context.models.get_tenant_context_v1429_response import GetTenantContextV1429Response
-from sailpoint.tenant_context.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.tenant_context.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.tenant_context.models.localeorigin import Localeorigin
+from sailpoint.tenant_context.models.json_patch_operation import JsonPatchOperation
+from sailpoint.tenant_context.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.tenant_context.models.locale_origin import LocaleOrigin

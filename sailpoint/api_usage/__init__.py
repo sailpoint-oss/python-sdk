@@ -31,9 +31,9 @@ from sailpoint.api_usage.exceptions import ApiAttributeError
 from sailpoint.api_usage.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.api_usage.models.errormessagedto import Errormessagedto
-from sailpoint.api_usage.models.errorresponsedto import Errorresponsedto
+from sailpoint.api_usage.models.error_message_dto import ErrorMessageDto
+from sailpoint.api_usage.models.error_response_dto import ErrorResponseDto
 from sailpoint.api_usage.models.get_total_count_v1401_response import GetTotalCountV1401Response
 from sailpoint.api_usage.models.get_total_count_v1429_response import GetTotalCountV1429Response
-from sailpoint.api_usage.models.localeorigin import Localeorigin
-from sailpoint.api_usage.models.summaryresponse import Summaryresponse
+from sailpoint.api_usage.models.locale_origin import LocaleOrigin
+from sailpoint.api_usage.models.summary_response import SummaryResponse

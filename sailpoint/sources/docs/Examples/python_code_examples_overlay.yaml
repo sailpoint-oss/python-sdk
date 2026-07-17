@@ -6,20 +6,59 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
-          provisioningpolicydtov1 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov1 | 
+          provisioning_policy_dto = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDto | 
           try:
               # Create provisioning policy
-              new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-              results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
+              new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+              results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioning_policy_dto=new_provisioning_policy_dto)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).create_provisioning_policy_v1(source_id, new_provisioningpolicydto)
+              # results = SourcesApi(api_client).create_provisioning_policy_v1(source_id, new_provisioning_policy_dto)
               print("The response of SourcesApi->create_provisioning_policy_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -32,7 +71,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+        from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -40,15 +79,56 @@
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
-          provisioningpolicydtov2 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov2 | 
+          provisioning_policy_dto_v2 = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDtoV2 | 
           use_default_fields = False # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False)
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Create provisioning policy
-              new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
-              results = SourcesApi(api_client).create_provisioning_policy_v2(source_id=source_id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+              new_provisioning_policy_dto_v2 = ProvisioningPolicyDtoV2.from_json(provisioning_policy_dto_v2)
+              results = SourcesApi(api_client).create_provisioning_policy_v2(source_id=source_id, provisioning_policy_dto_v2=new_provisioning_policy_dto_v2)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).create_provisioning_policy_v2(source_id, new_provisioningpolicydtov2, use_default_fields, x_sail_point_experimental)
+              # results = SourcesApi(api_client).create_provisioning_policy_v2(source_id, new_provisioning_policy_dto_v2, use_default_fields, x_sail_point_experimental)
               print("The response of SourcesApi->create_provisioning_policy_v2:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -119,7 +199,89 @@
 
 
         with ApiClient(configuration) as api_client:
-          source = '''sailpoint.sources.Source()''' # Source | 
+          source = '''{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }''' # Source | 
           provision_as_csv = false # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
           try:
               # Creates a source in identitynow.
@@ -139,7 +301,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.taskresultdto import Taskresultdto
+        from sailpoint.sources.models.task_result_dto import TaskResultDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -186,14 +348,14 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.usagetype import Usagetype
+        from sailpoint.sources.models.usage_type import UsageType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-          usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+          usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
           try:
               # Delete provisioning policy by usagetype
               
@@ -306,7 +468,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
+        from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -353,7 +515,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.correlationconfig import Correlationconfig
+        from sailpoint.sources.models.correlation_config import CorrelationConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -401,7 +563,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
+        from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -426,7 +588,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
+        from sailpoint.sources.models.native_change_detection_config import NativeChangeDetectionConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -451,15 +613,15 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-        from sailpoint.sources.models.usagetype import Usagetype
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+        from sailpoint.sources.models.usage_type import UsageType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-          usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+          usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
           try:
               # Get provisioning policy by usagetype
               
@@ -478,7 +640,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+        from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -506,7 +668,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.attrsyncsourceconfig import Attrsyncsourceconfig
+        from sailpoint.sources.models.attr_sync_source_config import AttrSyncSourceConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -533,7 +695,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.connectordetail import Connectordetail
+        from sailpoint.sources.models.connector_detail import ConnectorDetail
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -559,7 +721,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.sourceconnectionsdto import Sourceconnectionsdto
+        from sailpoint.sources.models.source_connections_dto import SourceConnectionsDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -584,7 +746,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.sourceentitlementrequestconfig import Sourceentitlementrequestconfig
+        from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -611,7 +773,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.sourcehealthdto import Sourcehealthdto
+        from sailpoint.sources.models.source_health_dto import SourceHealthDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -793,7 +955,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.loadaccountstask import Loadaccountstask
+        from sailpoint.sources.models.load_accounts_task import LoadAccountsTask
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -873,7 +1035,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.loadentitlementtask import Loadentitlementtask
+        from sailpoint.sources.models.load_entitlement_task import LoadEntitlementTask
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -899,7 +1061,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.loaduncorrelatedaccountstask import Loaduncorrelatedaccountstask
+        from sailpoint.sources.models.load_uncorrelated_accounts_task import LoadUncorrelatedAccountsTask
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -925,7 +1087,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
+        from sailpoint.sources.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -954,7 +1116,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -982,7 +1144,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+        from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1045,7 +1207,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.statusresponse import Statusresponse
+        from sailpoint.sources.models.status_response import StatusResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1070,20 +1232,40 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.correlationconfig import Correlationconfig
+        from sailpoint.sources.models.correlation_config import CorrelationConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-          correlationconfig = '''sailpoint.sources.Correlationconfig()''' # Correlationconfig | 
+          correlation_config = '''{
+          "attributeAssignments" : [ {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          }, {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          } ],
+          "name" : "Source [source] Account Correlation",
+          "id" : "2c9180835d191a86015d28455b4a2329"
+        }''' # CorrelationConfig | 
           try:
               # Update source correlation configuration
-              new_correlationconfig = Correlationconfig.from_json(correlationconfig)
-              results = SourcesApi(api_client).put_correlation_config_v1(id=id, correlationconfig=new_correlationconfig)
+              new_correlation_config = CorrelationConfig.from_json(correlation_config)
+              results = SourcesApi(api_client).put_correlation_config_v1(id=id, correlation_config=new_correlation_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).put_correlation_config_v1(id, new_correlationconfig)
+              # results = SourcesApi(api_client).put_correlation_config_v1(id, new_correlation_config)
               print("The response of SourcesApi->put_correlation_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1096,20 +1278,27 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
+        from sailpoint.sources.models.native_change_detection_config import NativeChangeDetectionConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-          nativechangedetectionconfig = '''sailpoint.sources.Nativechangedetectionconfig()''' # Nativechangedetectionconfig | 
+          native_change_detection_config = '''{
+          "selectedEntitlements" : [ "memberOf", "memberOfSharedMailbox" ],
+          "operations" : [ "ACCOUNT_UPDATED", "ACCOUNT_DELETED" ],
+          "selectedNonEntitlementAttributes" : [ "lastName", "phoneNumber", "objectType", "servicePrincipalName" ],
+          "allNonEntitlementAttributes" : false,
+          "allEntitlements" : false,
+          "enabled" : true
+        }''' # NativeChangeDetectionConfig | 
           try:
               # Update native change detection configuration
-              new_nativechangedetectionconfig = Nativechangedetectionconfig.from_json(nativechangedetectionconfig)
-              results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id=source_id, nativechangedetectionconfig=new_nativechangedetectionconfig)
+              new_native_change_detection_config = NativeChangeDetectionConfig.from_json(native_change_detection_config)
+              results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id=source_id, native_change_detection_config=new_native_change_detection_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id, new_nativechangedetectionconfig)
+              # results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id, new_native_change_detection_config)
               print("The response of SourcesApi->put_native_change_detection_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1122,22 +1311,61 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-        from sailpoint.sources.models.usagetype import Usagetype
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+        from sailpoint.sources.models.usage_type import UsageType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-          usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-          provisioningpolicydtov1 = '''sailpoint.sources.Provisioningpolicydtov1()''' # Provisioningpolicydtov1 | 
+          usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+          provisioning_policy_dto = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDto | 
           try:
               # Update provisioning policy by usagetype
-              new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-              results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioningpolicydtov1=new_provisioningpolicydto)
+              new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+              results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioning_policy_dto=new_provisioning_policy_dto)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).put_provisioning_policy_v1(source_id, usage_type, new_provisioningpolicydto)
+              # results = SourcesApi(api_client).put_provisioning_policy_v1(source_id, usage_type, new_provisioning_policy_dto)
               print("The response of SourcesApi->put_provisioning_policy_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1150,7 +1378,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+        from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1159,14 +1387,55 @@
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
           id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
-          provisioningpolicydtov2 = '''sailpoint.sources.Provisioningpolicydtov2()''' # Provisioningpolicydtov2 | 
+          provisioning_policy_dto_v2 = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDtoV2 | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update provisioning policy by ID
-              new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
-              results = SourcesApi(api_client).put_provisioning_policy_v2(source_id=source_id, id=id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+              new_provisioning_policy_dto_v2 = ProvisioningPolicyDtoV2.from_json(provisioning_policy_dto_v2)
+              results = SourcesApi(api_client).put_provisioning_policy_v2(source_id=source_id, id=id, provisioning_policy_dto_v2=new_provisioning_policy_dto_v2)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).put_provisioning_policy_v2(source_id, id, new_provisioningpolicydtov2, x_sail_point_experimental)
+              # results = SourcesApi(api_client).put_provisioning_policy_v2(source_id, id, new_provisioning_policy_dto_v2, x_sail_point_experimental)
               print("The response of SourcesApi->put_provisioning_policy_v2:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1179,7 +1448,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.attrsyncsourceconfig import Attrsyncsourceconfig
+        from sailpoint.sources.models.attr_sync_source_config import AttrSyncSourceConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1187,14 +1456,31 @@
 
         with ApiClient(configuration) as api_client:
           id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-          attrsyncsourceconfig = '''sailpoint.sources.Attrsyncsourceconfig()''' # Attrsyncsourceconfig | 
+          attr_sync_source_config = '''{
+          "attributes" : [ {
+            "name" : "email",
+            "displayName" : "Email",
+            "enabled" : true,
+            "target" : "mail"
+          }, {
+            "name" : "firstname",
+            "displayName" : "First Name",
+            "enabled" : false,
+            "target" : "givenName"
+          } ],
+          "source" : {
+            "name" : "HR Active Directory",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "SOURCE"
+          }
+        }''' # AttrSyncSourceConfig | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update attribute sync config
-              new_attrsyncsourceconfig = Attrsyncsourceconfig.from_json(attrsyncsourceconfig)
-              results = SourcesApi(api_client).put_source_attr_sync_config_v1(id=id, attrsyncsourceconfig=new_attrsyncsourceconfig)
+              new_attr_sync_source_config = AttrSyncSourceConfig.from_json(attr_sync_source_config)
+              results = SourcesApi(api_client).put_source_attr_sync_config_v1(id=id, attr_sync_source_config=new_attr_sync_source_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).put_source_attr_sync_config_v1(id, new_attrsyncsourceconfig, x_sail_point_experimental)
+              # results = SourcesApi(api_client).put_source_attr_sync_config_v1(id, new_attr_sync_source_config, x_sail_point_experimental)
               print("The response of SourcesApi->put_source_attr_sync_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1241,7 +1527,89 @@
 
         with ApiClient(configuration) as api_client:
           id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
-          source = '''sailpoint.sources.Source()''' # Source | 
+          source = '''{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }''' # Source | 
           try:
               # Update source (full)
               new_source = Source.from_json(source)
@@ -1260,21 +1628,24 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.resourceobjectsrequest import Resourceobjectsrequest
-        from sailpoint.sources.models.resourceobjectsresponse import Resourceobjectsresponse
+        from sailpoint.sources.models.resource_objects_request import ResourceObjectsRequest
+        from sailpoint.sources.models.resource_objects_response import ResourceObjectsResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source # str | The ID of the Source
-          resourceobjectsrequest = '''sailpoint.sources.Resourceobjectsrequest()''' # Resourceobjectsrequest | 
+          resource_objects_request = '''{
+          "maxCount" : 100,
+          "objectType" : "group"
+        }''' # ResourceObjectsRequest | 
           try:
               # Peek source connector's resource objects
-              new_resourceobjectsrequest = Resourceobjectsrequest.from_json(resourceobjectsrequest)
-              results = SourcesApi(api_client).search_resource_objects_v1(source_id=source_id, resourceobjectsrequest=new_resourceobjectsrequest)
+              new_resource_objects_request = ResourceObjectsRequest.from_json(resource_objects_request)
+              results = SourcesApi(api_client).search_resource_objects_v1(source_id=source_id, resource_objects_request=new_resource_objects_request)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).search_resource_objects_v1(source_id, new_resourceobjectsrequest)
+              # results = SourcesApi(api_client).search_resource_objects_v1(source_id, new_resource_objects_request)
               print("The response of SourcesApi->search_resource_objects_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1287,7 +1658,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.sourcesyncjob import Sourcesyncjob
+        from sailpoint.sources.models.source_sync_job import SourceSyncJob
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1314,7 +1685,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.statusresponse import Statusresponse
+        from sailpoint.sources.models.status_response import StatusResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1339,7 +1710,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.statusresponse import Statusresponse
+        from sailpoint.sources.models.status_response import StatusResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1364,21 +1735,21 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '00eebcf881994e419d72e757fd30dc0e' # str | Human account source ID. # str | Human account source ID.
-          jsonpatchoperation = '''[sailpoint.sources.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+          json_patch_operation = '''[sailpoint.sources.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Human Account Deletion Approval Config
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id=source_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id, new_json_patch_operation)
               print("The response of SourcesApi->update_account_deletion_approval_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1391,21 +1762,21 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account source ID. # str | machine account source ID.
-          jsonpatchoperation = '''[sailpoint.sources.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+          json_patch_operation = '''[sailpoint.sources.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Machine Account Deletion Approval Config
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id=source_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id, new_json_patch_operation)
               print("The response of SourcesApi->update_machine_account_deletion_approval_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1418,20 +1789,20 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
+        from sailpoint.sources.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-          passwordpolicyholdersdto_inner = '''[sailpoint.sources.PasswordpolicyholdersdtoInner()]''' # List[PasswordpolicyholdersdtoInner] | 
+          password_policy_holders_dto_inner = '''[sailpoint.sources.PasswordPolicyHoldersDtoInner()]''' # List[PasswordPolicyHoldersDtoInner] | 
           try:
               # Update password policy
-              new_passwordpolicyholdersdto_inner = PasswordpolicyholdersdtoInner.from_json(passwordpolicyholdersdto_inner)
-              results = SourcesApi(api_client).update_password_policy_holders_v1(source_id=source_id, passwordpolicyholdersdto_inner=new_passwordpolicyholdersdto_inner)
+              new_password_policy_holders_dto_inner = PasswordPolicyHoldersDtoInner.from_json(password_policy_holders_dto_inner)
+              results = SourcesApi(api_client).update_password_policy_holders_v1(source_id=source_id, password_policy_holders_dto_inner=new_password_policy_holders_dto_inner)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_password_policy_holders_v1(source_id, new_passwordpolicyholdersdto_inner)
+              # results = SourcesApi(api_client).update_password_policy_holders_v1(source_id, new_password_policy_holders_dto_inner)
               print("The response of SourcesApi->update_password_policy_holders_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -1445,20 +1816,20 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
-          provisioningpolicydtov1 = '''[sailpoint.sources.Provisioningpolicydtov1()]''' # List[Provisioningpolicydtov1] | 
+          provisioning_policy_dto = '''[sailpoint.sources.ProvisioningPolicyDto()]''' # List[ProvisioningPolicyDto] | 
           try:
               # Bulk update provisioning policies
-              new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-              results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
+              new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+              results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioning_policy_dto=new_provisioning_policy_dto)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id, new_provisioningpolicydto)
+              # results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id, new_provisioning_policy_dto)
               print("The response of SourcesApi->update_provisioning_policies_in_bulk_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -1472,23 +1843,23 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-        from sailpoint.sources.models.usagetype import Usagetype
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+        from sailpoint.sources.models.usage_type import UsageType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
-          usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-          jsonpatchoperation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+          usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+          json_patch_operation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
           try:
               # Partial update of provisioning policy
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_provisioning_policy_v1(source_id, usage_type, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_provisioning_policy_v1(source_id, usage_type, new_json_patch_operation)
               print("The response of SourcesApi->update_provisioning_policy_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1501,8 +1872,8 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1511,14 +1882,14 @@
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
           id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
-          jsonpatchoperation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+          json_patch_operation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Partial update of provisioning policy
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_provisioning_policy_v2(source_id=source_id, id=id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_provisioning_policy_v2(source_id=source_id, id=id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_provisioning_policy_v2(source_id, id, new_jsonpatchoperation, x_sail_point_experimental)
+              # results = SourcesApi(api_client).update_provisioning_policy_v2(source_id, id, new_json_patch_operation, x_sail_point_experimental)
               print("The response of SourcesApi->update_provisioning_policy_v2:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1531,7 +1902,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.sourceentitlementrequestconfig import Sourceentitlementrequestconfig
+        from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -1539,14 +1910,41 @@
 
         with ApiClient(configuration) as api_client:
           id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-          sourceentitlementrequestconfig = '''{"accessRequestConfig":{"approvalSchemes":[]}}''' # Sourceentitlementrequestconfig | 
+          source_entitlement_request_config = '''{
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "reauthorizationRequired" : false,
+            "requestCommentRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 5,
+              "timeUnit" : "DAYS"
+            }
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          }
+        }''' # SourceEntitlementRequestConfig | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update source entitlement request configuration
-              new_sourceentitlementrequestconfig = Sourceentitlementrequestconfig.from_json(sourceentitlementrequestconfig)
-              results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, sourceentitlementrequestconfig=new_sourceentitlementrequestconfig)
+              new_source_entitlement_request_config = SourceEntitlementRequestConfig.from_json(source_entitlement_request_config)
+              results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, source_entitlement_request_config=new_source_entitlement_request_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_sourceentitlementrequestconfig, x_sail_point_experimental)
+              # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config, x_sail_point_experimental)
               print("The response of SourcesApi->update_source_entitlement_request_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1559,7 +1957,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
         from sailpoint.sources.models.schedule3 import Schedule3
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -1568,13 +1966,13 @@
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
           schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type. # str | The Schedule type.
-          jsonpatchoperation = '''[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schedule.
+          json_patch_operation = '''[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schedule.
           try:
               # Update source schedule (partial)
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_source_schedule_v1(source_id=source_id, schedule_type=schedule_type, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_source_schedule_v1(source_id=source_id, schedule_type=schedule_type, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_schedule_v1(source_id, schedule_type, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_source_schedule_v1(source_id, schedule_type, new_json_patch_operation)
               print("The response of SourcesApi->update_source_schedule_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1587,7 +1985,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
         from sailpoint.sources.models.model_schema import ModelSchema
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -1596,13 +1994,13 @@
         with ApiClient(configuration) as api_client:
           source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
           schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id. # str | The Schema id.
-          jsonpatchoperation = '''[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+          json_patch_operation = '''[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
           try:
               # Update source schema (partial)
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_source_schema_v1(source_id=source_id, schema_id=schema_id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_source_schema_v1(source_id=source_id, schema_id=schema_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_schema_v1(source_id, schema_id, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_source_schema_v1(source_id, schema_id, new_json_patch_operation)
               print("The response of SourcesApi->update_source_schema_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1615,7 +2013,7 @@
       source: |
         from sailpoint.sources.api.sources_api import SourcesApi
         from sailpoint.sources.api_client import ApiClient
-        from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
         from sailpoint.sources.models.source import Source
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -1623,13 +2021,13 @@
 
         with ApiClient(configuration) as api_client:
           id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
-          jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"new description"}]''' # List[Jsonpatchoperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+          json_patch_operation = '''[{"op":"replace","path":"/description","value":"new description"}]''' # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
           try:
               # Update source (partial)
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SourcesApi(api_client).update_source_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SourcesApi(api_client).update_source_v1(id=id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_v1(id, new_jsonpatchoperation)
+              # results = SourcesApi(api_client).update_source_v1(id, new_json_patch_operation)
               print("The response of SourcesApi->update_source_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

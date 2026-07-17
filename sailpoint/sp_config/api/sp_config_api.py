@@ -19,15 +19,15 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.sp_config.models.exportpayload import Exportpayload
-from sailpoint.sp_config.models.importoptions import Importoptions
-from sailpoint.sp_config.models.spconfigexportjob import Spconfigexportjob
-from sailpoint.sp_config.models.spconfigexportjobstatus import Spconfigexportjobstatus
-from sailpoint.sp_config.models.spconfigexportresults import Spconfigexportresults
-from sailpoint.sp_config.models.spconfigimportjobstatus import Spconfigimportjobstatus
-from sailpoint.sp_config.models.spconfigimportresults import Spconfigimportresults
-from sailpoint.sp_config.models.spconfigjob import Spconfigjob
-from sailpoint.sp_config.models.spconfigobject import Spconfigobject
+from sailpoint.sp_config.models.export_payload import ExportPayload
+from sailpoint.sp_config.models.import_options import ImportOptions
+from sailpoint.sp_config.models.sp_config_export_job import SpConfigExportJob
+from sailpoint.sp_config.models.sp_config_export_job_status import SpConfigExportJobStatus
+from sailpoint.sp_config.models.sp_config_export_results import SpConfigExportResults
+from sailpoint.sp_config.models.sp_config_import_job_status import SpConfigImportJobStatus
+from sailpoint.sp_config.models.sp_config_import_results import SpConfigImportResults
+from sailpoint.sp_config.models.sp_config_job import SpConfigJob
+from sailpoint.sp_config.models.sp_config_object import SpConfigObject
 
 from sailpoint.sp_config.api_client import ApiClient, RequestSerialized
 from sailpoint.sp_config.api_response import ApiResponse
@@ -50,7 +50,7 @@ class SPConfigApi:
     @validate_call
     def export_sp_config_v1(
         self,
-        exportpayload: Annotated[Exportpayload, Field(description="Export options control what will be included in the export.")],
+        export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,13 +63,13 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigexportjob:
+    ) -> SpConfigExportJob:
         """Initiates configuration objects export job
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects).
 
-        :param exportpayload: Export options control what will be included in the export. (required)
-        :type exportpayload: Exportpayload
+        :param export_payload: Export options control what will be included in the export. (required)
+        :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,7 +93,7 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_v1_serialize(
-            exportpayload=exportpayload,
+            export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,13 +101,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigexportjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigExportJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,7 +123,7 @@ class SPConfigApi:
     @validate_call
     def export_sp_config_v1_with_http_info(
         self,
-        exportpayload: Annotated[Exportpayload, Field(description="Export options control what will be included in the export.")],
+        export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,13 +136,13 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigexportjob]:
+    ) -> ApiResponse[SpConfigExportJob]:
         """Initiates configuration objects export job
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects).
 
-        :param exportpayload: Export options control what will be included in the export. (required)
-        :type exportpayload: Exportpayload
+        :param export_payload: Export options control what will be included in the export. (required)
+        :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,7 +166,7 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_v1_serialize(
-            exportpayload=exportpayload,
+            export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,13 +174,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigexportjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigExportJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -196,7 +196,7 @@ class SPConfigApi:
     @validate_call
     def export_sp_config_v1_without_preload_content(
         self,
-        exportpayload: Annotated[Exportpayload, Field(description="Export options control what will be included in the export.")],
+        export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,8 +214,8 @@ class SPConfigApi:
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects).
 
-        :param exportpayload: Export options control what will be included in the export. (required)
-        :type exportpayload: Exportpayload
+        :param export_payload: Export options control what will be included in the export. (required)
+        :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,7 +239,7 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_v1_serialize(
-            exportpayload=exportpayload,
+            export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,13 +247,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigexportjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigExportJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -264,7 +264,7 @@ class SPConfigApi:
 
     def _export_sp_config_v1_serialize(
         self,
-        exportpayload,
+        export_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -290,8 +290,8 @@ class SPConfigApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if exportpayload is not None:
-            _body_params = exportpayload
+        if export_payload is not None:
+            _body_params = export_payload
 
 
         # set the HTTP header `Accept`
@@ -354,7 +354,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigexportjobstatus:
+    ) -> SpConfigExportJobStatus:
         """Get export job status
 
         This gets the status of the export job identified by the `id` parameter. The request will need one of the following security scopes: - sp:config:read - sp:config:manage
@@ -392,13 +392,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -427,7 +427,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigexportjobstatus]:
+    ) -> ApiResponse[SpConfigExportJobStatus]:
         """Get export job status
 
         This gets the status of the export job identified by the `id` parameter. The request will need one of the following security scopes: - sp:config:read - sp:config:manage
@@ -465,13 +465,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -538,13 +538,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -632,7 +632,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigexportresults:
+    ) -> SpConfigExportResults:
         """Download export job result.
 
         This endpoint gets the export file resulting from the export job with the requested `id` and downloads it to a file. The request will need one of the following security scopes: - sp:config:read - sp:config:manage
@@ -670,13 +670,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -705,7 +705,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigexportresults]:
+    ) -> ApiResponse[SpConfigExportResults]:
         """Download export job result.
 
         This endpoint gets the export file resulting from the export job with the requested `id` and downloads it to a file. The request will need one of the following security scopes: - sp:config:read - sp:config:manage
@@ -743,13 +743,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -816,13 +816,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigexportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigExportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -910,7 +910,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigimportjobstatus:
+    ) -> SpConfigImportJobStatus:
         """Get import job status
 
         'This gets the status of the import job identified by the `id` parameter.   For more information about the object types that currently support import functionality,  refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects).' 
@@ -948,13 +948,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -983,7 +983,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigimportjobstatus]:
+    ) -> ApiResponse[SpConfigImportJobStatus]:
         """Get import job status
 
         'This gets the status of the import job identified by the `id` parameter.   For more information about the object types that currently support import functionality,  refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects).' 
@@ -1021,13 +1021,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1094,13 +1094,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportjobstatus",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportJobStatus",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1188,7 +1188,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigimportresults:
+    ) -> SpConfigImportResults:
         """Download import job result
 
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import. The request will need the following security scope: - sp:config:manage
@@ -1226,13 +1226,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1261,7 +1261,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigimportresults]:
+    ) -> ApiResponse[SpConfigImportResults]:
         """Download import job result
 
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import. The request will need the following security scope: - sp:config:manage
@@ -1299,13 +1299,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1372,13 +1372,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Spconfigimportresults",
-            '400': "Errorresponsedto",
+            '200': "SpConfigImportResults",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1455,7 +1455,7 @@ class SPConfigApi:
         self,
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
-        options: Optional[Importoptions] = None,
+        options: Optional[ImportOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1468,7 +1468,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Spconfigjob:
+    ) -> SpConfigJob:
         """Initiates configuration objects import job
 
         This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the `/sp-config/export/{exportJobId}/download` endpoint.  You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.   For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects). 
@@ -1478,7 +1478,7 @@ class SPConfigApi:
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
         :type preview: bool
         :param options:
-        :type options: Importoptions
+        :type options: ImportOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1512,13 +1512,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1536,7 +1536,7 @@ class SPConfigApi:
         self,
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
-        options: Optional[Importoptions] = None,
+        options: Optional[ImportOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1549,7 +1549,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Spconfigjob]:
+    ) -> ApiResponse[SpConfigJob]:
         """Initiates configuration objects import job
 
         This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the `/sp-config/export/{exportJobId}/download` endpoint.  You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.   For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects). 
@@ -1559,7 +1559,7 @@ class SPConfigApi:
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
         :type preview: bool
         :param options:
-        :type options: Importoptions
+        :type options: ImportOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1593,13 +1593,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1617,7 +1617,7 @@ class SPConfigApi:
         self,
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
-        options: Optional[Importoptions] = None,
+        options: Optional[ImportOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1640,7 +1640,7 @@ class SPConfigApi:
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
         :type preview: bool
         :param options:
-        :type options: Importoptions
+        :type options: ImportOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1674,13 +1674,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Spconfigjob",
-            '400': "Errorresponsedto",
+            '202': "SpConfigJob",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1788,7 +1788,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Spconfigobject]:
+    ) -> List[SpConfigObject]:
         """List config objects
 
         Get a list of object configurations that the tenant export/import service knows.
@@ -1823,13 +1823,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Spconfigobject]",
-            '400': "Errorresponsedto",
+            '200': "List[SpConfigObject]",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1857,7 +1857,7 @@ class SPConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Spconfigobject]]:
+    ) -> ApiResponse[List[SpConfigObject]]:
         """List config objects
 
         Get a list of object configurations that the tenant export/import service knows.
@@ -1892,13 +1892,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Spconfigobject]",
-            '400': "Errorresponsedto",
+            '200': "List[SpConfigObject]",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1961,13 +1961,13 @@ class SPConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Spconfigobject]",
-            '400': "Errorresponsedto",
+            '200': "List[SpConfigObject]",
+            '400': "ErrorResponseDto",
             '401': "ExportSpConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ExportSpConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ImportFormDefinitionsV1RequestInner(BaseModel):
     """
     ImportFormDefinitionsV1RequestInner
     """ # noqa: E501
-    object: Optional[Formdefinitionresponse] = None
+    object: Optional[FormDefinitionResponse] = None
     var_self: Optional[StrictStr] = Field(default=None, alias="self")
     version: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["object", "self", "version"]
@@ -87,7 +87,7 @@ class ImportFormDefinitionsV1RequestInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object": Formdefinitionresponse.from_dict(obj["object"]) if obj.get("object") is not None else None,
+            "object": FormDefinitionResponse.from_dict(obj["object"]) if obj.get("object") is not None else None,
             "self": obj.get("self"),
             "version": obj.get("version")
         })

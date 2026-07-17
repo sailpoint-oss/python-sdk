@@ -70,16 +70,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/machine_classification_config/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/machine_classification_config/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/machine_classification_config/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/machine_classification_config/docs/ErrorResponseDto.md)
  - [GetMachineClassificationConfigV1401Response](sailpoint/machine_classification_config/docs/GetMachineClassificationConfigV1401Response.md)
  - [GetMachineClassificationConfigV1429Response](sailpoint/machine_classification_config/docs/GetMachineClassificationConfigV1429Response.md)
- - [Localeorigin](sailpoint/machine_classification_config/docs/Localeorigin.md)
- - [Machineclassificationconfig](sailpoint/machine_classification_config/docs/Machineclassificationconfig.md)
- - [Machineclassificationcriterialevel1](sailpoint/machine_classification_config/docs/Machineclassificationcriterialevel1.md)
- - [Machineclassificationcriterialevel2](sailpoint/machine_classification_config/docs/Machineclassificationcriterialevel2.md)
- - [Machineclassificationcriterialevel3](sailpoint/machine_classification_config/docs/Machineclassificationcriterialevel3.md)
- - [Machineclassificationcriteriaoperation](sailpoint/machine_classification_config/docs/Machineclassificationcriteriaoperation.md)
+ - [LocaleOrigin](sailpoint/machine_classification_config/docs/LocaleOrigin.md)
+ - [MachineClassificationConfig](sailpoint/machine_classification_config/docs/MachineClassificationConfig.md)
+ - [MachineClassificationCriteriaLevel1](sailpoint/machine_classification_config/docs/MachineClassificationCriteriaLevel1.md)
+ - [MachineClassificationCriteriaLevel2](sailpoint/machine_classification_config/docs/MachineClassificationCriteriaLevel2.md)
+ - [MachineClassificationCriteriaLevel3](sailpoint/machine_classification_config/docs/MachineClassificationCriteriaLevel3.md)
+ - [MachineClassificationCriteriaOperation](sailpoint/machine_classification_config/docs/MachineClassificationCriteriaOperation.md)
 
 
 <a id="documentation-for-authorization"></a>

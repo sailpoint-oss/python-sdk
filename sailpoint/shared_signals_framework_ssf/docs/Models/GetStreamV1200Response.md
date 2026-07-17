@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **stream_id** | **str** | Unique stream identifier. | [optional] 
 **iss** | **str** | Issuer (transmitter) URL. | [optional] 
 **aud** | **str** | Audience for the stream. | [optional] 
-**delivery** | [**Deliveryresponse**](deliveryresponse) |  | [optional] 
+**delivery** | [**DeliveryResponse**](delivery-response) |  | [optional] 
 **events_supported** | **[]str** | Event types supported by the transmitter. Use CAEP event-type URIs in the form: `https://schemas.openid.net/secevent/caep/event-type/{event-type}` (e.g. session-revoked).  | [optional] 
 **events_requested** | **[]str** | Event types requested by the receiver. Use CAEP event-type URIs in the form: `https://schemas.openid.net/secevent/caep/event-type/{event-type}` (e.g. session revoke).  | [optional] 
 **events_delivered** | **[]str** | Event types currently being delivered (intersection of supported and requested). | [optional] 
@@ -37,7 +37,7 @@ get_stream_v1200_response = GetStreamV1200Response(
 stream_id='550e8400-e29b-41d4-a716-446655440000',
 iss='https://tenant.sailpoint.com',
 aud='https://receiver.example.com',
-delivery=sailpoint.shared_signals_framework_ssf.models.deliveryresponse.deliveryresponse(
+delivery=sailpoint.shared_signals_framework_ssf.models.delivery_response.DeliveryResponse(
                     method = 'urn:ietf:rfc:8935', 
                     endpoint_url = 'https://receiver.example.com/ssf/events', ),
 events_supported=[https://schemas.openid.net/secevent/caep/event-type/{event-type}],

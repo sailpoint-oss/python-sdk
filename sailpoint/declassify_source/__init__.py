@@ -31,8 +31,8 @@ from sailpoint.declassify_source.exceptions import ApiAttributeError
 from sailpoint.declassify_source.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.declassify_source.models.errormessagedto import Errormessagedto
-from sailpoint.declassify_source.models.errorresponsedto import Errorresponsedto
-from sailpoint.declassify_source.models.localeorigin import Localeorigin
+from sailpoint.declassify_source.models.error_message_dto import ErrorMessageDto
+from sailpoint.declassify_source.models.error_response_dto import ErrorResponseDto
+from sailpoint.declassify_source.models.locale_origin import LocaleOrigin
 from sailpoint.declassify_source.models.send_declassify_machine_account_from_source_v1401_response import SendDeclassifyMachineAccountFromSourceV1401Response
 from sailpoint.declassify_source.models.send_declassify_machine_account_from_source_v1429_response import SendDeclassifyMachineAccountFromSourceV1429Response

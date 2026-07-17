@@ -38,18 +38,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**
 
 ### Return type
-[**List[Taskstatus]**](../models/taskstatus)
+[**List[TaskStatus]**](../models/task-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with a TaskStatus for the task with the given task ID. | List[Taskstatus] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with a TaskStatus for the task with the given task ID. | List[TaskStatus] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTaskStatusV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTaskStatusV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -60,7 +60,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.task_management.api.task_management_api import TaskManagementApi
 from sailpoint.task_management.api_client import ApiClient
-from sailpoint.task_management.models.taskstatus import Taskstatus
+from sailpoint.task_management.models.task_status import TaskStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -102,18 +102,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Task ID.
 
 ### Return type
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with a TaskStatus for the task with the given task ID. | Taskstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with a TaskStatus for the task with the given task ID. | TaskStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTaskStatusV1401Response |  -  |
 403 | Forbidden, generally due to a lack of security rights |  |  -  |
 404 | TaskStatus with the given id was not found. |  |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTaskStatusV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -124,7 +124,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.task_management.api.task_management_api import TaskManagementApi
 from sailpoint.task_management.api_client import ApiClient
-from sailpoint.task_management.models.taskstatus import Taskstatus
+from sailpoint.task_management.models.task_status import TaskStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -159,21 +159,21 @@ Update a current task status by task ID. Use this API to clear a pending task by
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Task ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the object.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the object.
 
 ### Return type
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates the PATCH operation succeeded, and the API returns the updated task object. | Taskstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates the PATCH operation succeeded, and the API returns the updated task object. | TaskStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTaskStatusV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTaskStatusV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -184,22 +184,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.task_management.api.task_management_api import TaskManagementApi
 from sailpoint.task_management.api_client import ApiClient
-from sailpoint.task_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.task_management.models.taskstatus import Taskstatus
+from sailpoint.task_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.task_management.models.task_status import TaskStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '00eebcf881994e419d72e757fd30dc0e' # str | Task ID. # str | Task ID.
-    jsonpatchoperation = '''[sailpoint.task_management.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+    json_patch_operation = '''[sailpoint.task_management.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Update task status by id
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = TaskManagementApi(api_client).update_task_status_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = TaskManagementApi(api_client).update_task_status_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = TaskManagementApi(api_client).update_task_status_v1(id, new_jsonpatchoperation)
+        # results = TaskManagementApi(api_client).update_task_status_v1(id, new_json_patch_operation)
         print("The response of TaskManagementApi->update_task_status_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

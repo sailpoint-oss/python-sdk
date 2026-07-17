@@ -40,18 +40,18 @@ Param Type | Name | Data Type | Required  | Description
  Body  | transform | [**Transform**](../models/transform) | True  | The transform to be created.
 
 ### Return type
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Indicates the transform was successfully created and returns its representation. | Transformread |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Indicates the transform was successfully created and returns its representation. | TransformRead |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTransformsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTransformsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -63,13 +63,17 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.transforms.api.transforms_api import TransformsApi
 from sailpoint.transforms.api_client import ApiClient
 from sailpoint.transforms.models.transform import Transform
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    transform = '''{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM dd yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}''' # Transform | The transform to be created.
+    transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The transform to be created.
 
     try:
         # Create transform
@@ -106,12 +110,12 @@ Path   | id | **str** | True  | ID of the transform to delete
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTransformsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTransformsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -156,18 +160,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the transform to retrieve
 
 ### Return type
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Transform with the given ID | Transformread |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Transform with the given ID | TransformRead |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTransformsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTransformsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -178,7 +182,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.transforms.api.transforms_api import TransformsApi
 from sailpoint.transforms.api_client import ApiClient
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -219,18 +223,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw*
 
 ### Return type
-[**List[Transformread]**](../models/transformread)
+[**List[TransformRead]**](../models/transform-read)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of transforms matching the given criteria. | List[Transformread] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of transforms matching the given criteria. | List[TransformRead] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTransformsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTransformsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -241,7 +245,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.transforms.api.transforms_api import TransformsApi
 from sailpoint.transforms.api_client import ApiClient
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -284,18 +288,18 @@ Path   | id | **str** | True  | ID of the transform to update
  Body  | transform | [**Transform**](../models/transform) |   (optional) | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified.
 
 ### Return type
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Indicates the transform was successfully updated and returns its new representation. | Transformread |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Indicates the transform was successfully updated and returns its new representation. | TransformRead |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTransformsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTransformsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -307,14 +311,18 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.transforms.api.transforms_api import TransformsApi
 from sailpoint.transforms.api_client import ApiClient
 from sailpoint.transforms.models.transform import Transform
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to update # str | ID of the transform to update
-    transform = '''{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM-dd-yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}''' # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+    transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
 
     try:
         # Update a transform

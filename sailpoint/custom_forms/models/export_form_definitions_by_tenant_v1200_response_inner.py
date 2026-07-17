@@ -21,7 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.custom_forms.models.export_form_definitions_by_tenant_v1200_response_inner_self import ExportFormDefinitionsByTenantV1200ResponseInnerSelf
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class ExportFormDefinitionsByTenantV1200ResponseInner(BaseModel):
     """
     ExportFormDefinitionsByTenantV1200ResponseInner
     """ # noqa: E501
-    object: Optional[Formdefinitionresponse] = None
+    object: Optional[FormDefinitionResponse] = None
     var_self: Optional[ExportFormDefinitionsByTenantV1200ResponseInnerSelf] = Field(default=None, alias="self")
     version: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["object", "self", "version"]
@@ -91,7 +91,7 @@ class ExportFormDefinitionsByTenantV1200ResponseInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object": Formdefinitionresponse.from_dict(obj["object"]) if obj.get("object") is not None else None,
+            "object": FormDefinitionResponse.from_dict(obj["object"]) if obj.get("object") is not None else None,
             "self": ExportFormDefinitionsByTenantV1200ResponseInnerSelf.from_dict(obj["self"]) if obj.get("self") is not None else None,
             "version": obj.get("version")
         })

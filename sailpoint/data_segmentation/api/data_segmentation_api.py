@@ -20,7 +20,7 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.data_segmentation.models.data_segment import DataSegment
-from sailpoint.data_segmentation.models.segmentmembership import Segmentmembership
+from sailpoint.data_segmentation.models.segment_membership import SegmentMembership
 
 from sailpoint.data_segmentation.api_client import ApiClient, RequestSerialized
 from sailpoint.data_segmentation.api_response import ApiResponse
@@ -95,11 +95,11 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -167,11 +167,11 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,11 +239,11 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -391,12 +391,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -472,12 +472,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -553,12 +553,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -655,7 +655,7 @@ class DataSegmentationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Segmentmembership]:
+    ) -> List[SegmentMembership]:
         """Get segmentmembership by identity id
 
         This API returns the segment membership specified by the given identity ID.
@@ -696,13 +696,13 @@ class DataSegmentationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Segmentmembership]",
-            '400': "Errorresponsedto",
+            '200': "List[SegmentMembership]",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -732,7 +732,7 @@ class DataSegmentationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Segmentmembership]]:
+    ) -> ApiResponse[List[SegmentMembership]]:
         """Get segmentmembership by identity id
 
         This API returns the segment membership specified by the given identity ID.
@@ -773,13 +773,13 @@ class DataSegmentationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Segmentmembership]",
-            '400': "Errorresponsedto",
+            '200': "List[SegmentMembership]",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -850,13 +850,13 @@ class DataSegmentationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Segmentmembership]",
-            '400': "Errorresponsedto",
+            '200': "List[SegmentMembership]",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -990,12 +990,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1067,12 +1067,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1144,12 +1144,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1283,12 +1283,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1360,12 +1360,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1437,12 +1437,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1600,12 +1600,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[DataSegment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1701,12 +1701,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[DataSegment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1802,12 +1802,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[DataSegment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1977,12 +1977,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2058,12 +2058,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2139,12 +2139,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSegment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2303,12 +2303,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2388,12 +2388,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2473,12 +2473,12 @@ class DataSegmentationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetDataSegmentIdentityMembershipV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetDataSegmentIdentityMembershipV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

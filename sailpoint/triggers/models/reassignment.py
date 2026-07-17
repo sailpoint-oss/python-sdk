@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.triggers.models.certificationreference import Certificationreference
+from sailpoint.triggers.models.certification_reference import CertificationReference
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class Reassignment(BaseModel):
     """
     Reassignment
     """ # noqa: E501
-    var_from: Optional[Certificationreference] = Field(default=None, alias="from")
+    var_from: Optional[CertificationReference] = Field(default=None, alias="from")
     comment: Optional[StrictStr] = Field(default=None, description="The comment entered when the Certification was reassigned")
     __properties: ClassVar[List[str]] = ["from", "comment"]
 
@@ -86,7 +86,7 @@ class Reassignment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "from": Certificationreference.from_dict(obj["from"]) if obj.get("from") is not None else None,
+            "from": CertificationReference.from_dict(obj["from"]) if obj.get("from") is not None else None,
             "comment": obj.get("comment")
         })
         return _obj

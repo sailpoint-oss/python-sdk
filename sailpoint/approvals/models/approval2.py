@@ -22,14 +22,14 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.approvals.models.approval2_approval_criteria import Approval2ApprovalCriteria
-from sailpoint.approvals.models.approvalcomment3 import Approvalcomment3
-from sailpoint.approvals.models.approvaldescription import Approvaldescription
-from sailpoint.approvals.models.approvalidentity import Approvalidentity
-from sailpoint.approvals.models.approvalidentityrecord import Approvalidentityrecord
-from sailpoint.approvals.models.approvalname import Approvalname
-from sailpoint.approvals.models.approvalreassignmenthistory import Approvalreassignmenthistory
-from sailpoint.approvals.models.approvalreference import Approvalreference
-from sailpoint.approvals.models.approvalrequestedtarget import Approvalrequestedtarget
+from sailpoint.approvals.models.approval_comment3 import ApprovalComment3
+from sailpoint.approvals.models.approval_description import ApprovalDescription
+from sailpoint.approvals.models.approval_identity import ApprovalIdentity
+from sailpoint.approvals.models.approval_identity_record import ApprovalIdentityRecord
+from sailpoint.approvals.models.approval_name import ApprovalName
+from sailpoint.approvals.models.approval_reassignment_history import ApprovalReassignmentHistory
+from sailpoint.approvals.models.approval_reference import ApprovalReference
+from sailpoint.approvals.models.approval_requested_target import ApprovalRequestedTarget
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,32 +40,32 @@ class Approval2(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The Approval ID")
     tenant_id: Optional[StrictStr] = Field(default=None, description="The Tenant ID of the Approval", alias="tenantId")
     type: Optional[StrictStr] = Field(default=None, description="The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL")
-    approvers: Optional[List[Approvalidentity]] = Field(default=None, description="Object representation of an approver of an approval")
+    approvers: Optional[List[ApprovalIdentity]] = Field(default=None, description="Object representation of an approver of an approval")
     created_date: Optional[StrictStr] = Field(default=None, description="Date the approval was created", alias="createdDate")
     due_date: Optional[StrictStr] = Field(default=None, description="Date the approval is due", alias="dueDate")
     escalation_step: Optional[StrictStr] = Field(default=None, description="Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain.", alias="escalationStep")
     serial_step: Optional[StrictInt] = Field(default=None, description="The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0.", alias="serialStep")
     is_escalated: Optional[StrictBool] = Field(default=False, description="Whether or not the approval has been escalated. Will reset to false when the approval is actioned on.", alias="isEscalated")
-    name: Optional[List[Approvalname]] = Field(default=None, description="The name of the approval for a given locale")
+    name: Optional[List[ApprovalName]] = Field(default=None, description="The name of the approval for a given locale")
     batch_request: Optional[Dict[str, Any]] = Field(default=None, alias="batchRequest")
     approval_config: Optional[Dict[str, Any]] = Field(default=None, alias="approvalConfig")
-    description: Optional[List[Approvaldescription]] = Field(default=None, description="The description of the approval for a given locale")
+    description: Optional[List[ApprovalDescription]] = Field(default=None, description="The description of the approval for a given locale")
     medium: Optional[StrictStr] = Field(default=None, description="Signifies what medium to use when sending notifications (currently only email is utilized)")
     priority: Optional[StrictStr] = Field(default=None, description="The priority of the approval")
     requester: Optional[Dict[str, Any]] = None
     requestee: Optional[Dict[str, Any]] = None
-    comments: Optional[List[Approvalcomment3]] = Field(default=None, description="Object representation of a comment on the approval")
-    approved_by: Optional[List[Approvalidentityrecord]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
-    rejected_by: Optional[List[Approvalidentityrecord]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
-    assigned_to: Optional[List[Approvalidentity]] = Field(default=None, description="Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.", alias="assignedTo")
+    comments: Optional[List[ApprovalComment3]] = Field(default=None, description="Object representation of a comment on the approval")
+    approved_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
+    rejected_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
+    assigned_to: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.", alias="assignedTo")
     completed_date: Optional[StrictStr] = Field(default=None, description="Date the approval was completed", alias="completedDate")
     approval_criteria: Optional[Approval2ApprovalCriteria] = Field(default=None, alias="approvalCriteria")
     additional_attributes: Optional[StrictStr] = Field(default=None, description="Json string representing additional attributes known about the object to be approved.", alias="additionalAttributes")
-    reference_data: Optional[List[Approvalreference]] = Field(default=None, description="Reference data related to the approval", alias="referenceData")
-    reassignment_history: Optional[List[Approvalreassignmenthistory]] = Field(default=None, description="History of whom the approval request was assigned to", alias="reassignmentHistory")
+    reference_data: Optional[List[ApprovalReference]] = Field(default=None, description="Reference data related to the approval", alias="referenceData")
+    reassignment_history: Optional[List[ApprovalReassignmentHistory]] = Field(default=None, description="History of whom the approval request was assigned to", alias="reassignmentHistory")
     static_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Field that can include any static additional info that may be needed by the service that the approval request originated from", alias="staticAttributes")
     modified_date: Optional[datetime] = Field(default=None, description="Date/time that the approval request was last updated", alias="modifiedDate")
-    requested_target: Optional[List[Approvalrequestedtarget]] = Field(default=None, description="RequestedTarget used to specify the actual object or target the approval request is for", alias="requestedTarget")
+    requested_target: Optional[List[ApprovalRequestedTarget]] = Field(default=None, description="RequestedTarget used to specify the actual object or target the approval request is for", alias="requestedTarget")
     __properties: ClassVar[List[str]] = ["id", "tenantId", "type", "approvers", "createdDate", "dueDate", "escalationStep", "serialStep", "isEscalated", "name", "batchRequest", "approvalConfig", "description", "medium", "priority", "requester", "requestee", "comments", "approvedBy", "rejectedBy", "assignedTo", "completedDate", "approvalCriteria", "additionalAttributes", "referenceData", "reassignmentHistory", "staticAttributes", "modifiedDate", "requestedTarget"]
 
     @field_validator('medium')
@@ -227,32 +227,32 @@ class Approval2(BaseModel):
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
             "type": obj.get("type"),
-            "approvers": [Approvalidentity.from_dict(_item) for _item in obj["approvers"]] if obj.get("approvers") is not None else None,
+            "approvers": [ApprovalIdentity.from_dict(_item) for _item in obj["approvers"]] if obj.get("approvers") is not None else None,
             "createdDate": obj.get("createdDate"),
             "dueDate": obj.get("dueDate"),
             "escalationStep": obj.get("escalationStep"),
             "serialStep": obj.get("serialStep"),
             "isEscalated": obj.get("isEscalated") if obj.get("isEscalated") is not None else False,
-            "name": [Approvalname.from_dict(_item) for _item in obj["name"]] if obj.get("name") is not None else None,
-            "batchRequest": Approvalbatch.from_dict(obj["batchRequest"]) if obj.get("batchRequest") is not None else None,
-            "approvalConfig": Approvalconfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None,
-            "description": [Approvaldescription.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
+            "name": [ApprovalName.from_dict(_item) for _item in obj["name"]] if obj.get("name") is not None else None,
+            "batchRequest": ApprovalBatch.from_dict(obj["batchRequest"]) if obj.get("batchRequest") is not None else None,
+            "approvalConfig": ApprovalConfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None,
+            "description": [ApprovalDescription.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
             "medium": obj.get("medium"),
             "priority": obj.get("priority"),
-            "requester": Approvalidentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
-            "requestee": Approvalidentity.from_dict(obj["requestee"]) if obj.get("requestee") is not None else None,
-            "comments": [Approvalcomment3.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
-            "approvedBy": [Approvalidentityrecord.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
-            "rejectedBy": [Approvalidentityrecord.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
-            "assignedTo": [Approvalidentity.from_dict(_item) for _item in obj["assignedTo"]] if obj.get("assignedTo") is not None else None,
+            "requester": ApprovalIdentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "requestee": ApprovalIdentity.from_dict(obj["requestee"]) if obj.get("requestee") is not None else None,
+            "comments": [ApprovalComment3.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
+            "approvedBy": [ApprovalIdentityRecord.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
+            "rejectedBy": [ApprovalIdentityRecord.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
+            "assignedTo": [ApprovalIdentity.from_dict(_item) for _item in obj["assignedTo"]] if obj.get("assignedTo") is not None else None,
             "completedDate": obj.get("completedDate"),
             "approvalCriteria": Approval2ApprovalCriteria.from_dict(obj["approvalCriteria"]) if obj.get("approvalCriteria") is not None else None,
             "additionalAttributes": obj.get("additionalAttributes"),
-            "referenceData": [Approvalreference.from_dict(_item) for _item in obj["referenceData"]] if obj.get("referenceData") is not None else None,
-            "reassignmentHistory": [Approvalreassignmenthistory.from_dict(_item) for _item in obj["reassignmentHistory"]] if obj.get("reassignmentHistory") is not None else None,
+            "referenceData": [ApprovalReference.from_dict(_item) for _item in obj["referenceData"]] if obj.get("referenceData") is not None else None,
+            "reassignmentHistory": [ApprovalReassignmentHistory.from_dict(_item) for _item in obj["reassignmentHistory"]] if obj.get("reassignmentHistory") is not None else None,
             "staticAttributes": obj.get("staticAttributes"),
             "modifiedDate": obj.get("modifiedDate"),
-            "requestedTarget": [Approvalrequestedtarget.from_dict(_item) for _item in obj["requestedTarget"]] if obj.get("requestedTarget") is not None else None
+            "requestedTarget": [ApprovalRequestedTarget.from_dict(_item) for _item in obj["requestedTarget"]] if obj.get("requestedTarget") is not None else None
         })
         return _obj
 

@@ -6,20 +6,45 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrations import Multihostintegrations
-        from sailpoint.multi_host_integration.models.multihostintegrationscreate import Multihostintegrationscreate
+        from sailpoint.multi_host_integration.models.multi_host_integrations import MultiHostIntegrations
+        from sailpoint.multi_host_integration.models.multi_host_integrations_create import MultiHostIntegrationsCreate
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          multihostintegrationscreate = '''sailpoint.multi_host_integration.Multihostintegrationscreate()''' # Multihostintegrationscreate | The specifics of the Multi-Host Integration to create
+          multi_host_integrations_create = '''{
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "connector" : "multihost-microsoft-sql-server",
+          "connectorAttributes" : {
+            "maxSourcesPerAggGroup" : 10,
+            "maxAllowedSources" : 300
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "name" : "My Multi-Host Integration",
+          "description" : "This is the Multi-Host Integration.",
+          "modified" : "2024-01-23T18:08:50.897Z"
+        }''' # MultiHostIntegrationsCreate | The specifics of the Multi-Host Integration to create
           try:
               # Create multi-host integration
-              new_multihostintegrationscreate = Multihostintegrationscreate.from_json(multihostintegrationscreate)
-              results = MultiHostIntegrationApi(api_client).create_multi_host_integration_v1(multihostintegrationscreate=new_multihostintegrationscreate)
+              new_multi_host_integrations_create = MultiHostIntegrationsCreate.from_json(multi_host_integrations_create)
+              results = MultiHostIntegrationApi(api_client).create_multi_host_integration_v1(multi_host_integrations_create=new_multi_host_integrations_create)
               # Below is a request that includes all optional parameters
-              # results = MultiHostIntegrationApi(api_client).create_multi_host_integration_v1(new_multihostintegrationscreate)
+              # results = MultiHostIntegrationApi(api_client).create_multi_host_integration_v1(new_multi_host_integrations_create)
               print("The response of MultiHostIntegrationApi->create_multi_host_integration_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -32,20 +57,20 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrationscreatesources import Multihostintegrationscreatesources
+        from sailpoint.multi_host_integration.models.multi_host_integrations_create_sources import MultiHostIntegrationsCreateSources
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           multihost_id = '2c91808568c529c60168cca6f90c1326' # str | ID of the Multi-Host Integration. # str | ID of the Multi-Host Integration.
-          multihostintegrationscreatesources = '''[sailpoint.multi_host_integration.Multihostintegrationscreatesources()]''' # List[Multihostintegrationscreatesources] | The specifics of the sources to create within Multi-Host Integration.
+          multi_host_integrations_create_sources = '''[sailpoint.multi_host_integration.MultiHostIntegrationsCreateSources()]''' # List[MultiHostIntegrationsCreateSources] | The specifics of the sources to create within Multi-Host Integration.
           try:
               # Create sources within multi-host integration
-              new_multihostintegrationscreatesources = Multihostintegrationscreatesources.from_json(multihostintegrationscreatesources)
-              MultiHostIntegrationApi(api_client).create_sources_within_multi_host_v1(multihost_id=multihost_id, multihostintegrationscreatesources=new_multihostintegrationscreatesources)
+              new_multi_host_integrations_create_sources = MultiHostIntegrationsCreateSources.from_json(multi_host_integrations_create_sources)
+              MultiHostIntegrationApi(api_client).create_sources_within_multi_host_v1(multihost_id=multihost_id, multi_host_integrations_create_sources=new_multi_host_integrations_create_sources)
               # Below is a request that includes all optional parameters
-              # MultiHostIntegrationApi(api_client).create_sources_within_multi_host_v1(multihost_id, new_multihostintegrationscreatesources)
+              # MultiHostIntegrationApi(api_client).create_sources_within_multi_host_v1(multihost_id, new_multi_host_integrations_create_sources)
           except Exception as e:
               print("Exception when calling MultiHostIntegrationApi->create_sources_within_multi_host_v1: %s\n" % e)
 - path: /multihosts/v1/{multiHostId}/sources/bulk-delete
@@ -101,7 +126,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrationsaggscheduleupdate import Multihostintegrationsaggscheduleupdate
+        from sailpoint.multi_host_integration.models.multi_host_integrations_agg_schedule_update import MultiHostIntegrationsAggScheduleUpdate
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -129,7 +154,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrationsaggscheduleupdate import Multihostintegrationsaggscheduleupdate
+        from sailpoint.multi_host_integration.models.multi_host_integrations_agg_schedule_update import MultiHostIntegrationsAggScheduleUpdate
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -157,7 +182,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrations import Multihostintegrations
+        from sailpoint.multi_host_integration.models.multi_host_integrations import MultiHostIntegrations
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -188,7 +213,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrations import Multihostintegrations
+        from sailpoint.multi_host_integration.models.multi_host_integrations import MultiHostIntegrations
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -213,7 +238,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.sourcecreationerrors import Sourcecreationerrors
+        from sailpoint.multi_host_integration.models.source_creation_errors import SourceCreationErrors
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -239,7 +264,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostintegrationtemplatetype import Multihostintegrationtemplatetype
+        from sailpoint.multi_host_integration.models.multi_host_integration_template_type import MultiHostIntegrationTemplateType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -264,7 +289,7 @@
       source: |
         from sailpoint.multi_host_integration.api.multi_host_integration_api import MultiHostIntegrationApi
         from sailpoint.multi_host_integration.api_client import ApiClient
-        from sailpoint.multi_host_integration.models.multihostsources import Multihostsources
+        from sailpoint.multi_host_integration.models.multi_host_sources import MultiHostSources
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

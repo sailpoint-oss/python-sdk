@@ -47,11 +47,11 @@ configuration = sailpoint.sod_violations.Configuration(
 with sailpoint.sod_violations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sod_violations.SODViolationsApi(api_client)
-    identitywithnewaccess = {"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]} # Identitywithnewaccess | 
+    identity_with_new_access = {"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]} # IdentityWithNewAccess | 
 
     try:
         # Predict sod violations for identity.
-        api_response = api_instance.start_predict_sod_violations_v1(identitywithnewaccess)
+        api_response = api_instance.start_predict_sod_violations_v1(identity_with_new_access)
         print("The response of SODViolationsApi->start_predict_sod_violations_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -71,23 +71,23 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Dtotype](sailpoint/sod_violations/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/sod_violations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/sod_violations/docs/Errorresponsedto.md)
- - [Exceptionaccesscriteria](sailpoint/sod_violations/docs/Exceptionaccesscriteria.md)
- - [Exceptioncriteria](sailpoint/sod_violations/docs/Exceptioncriteria.md)
- - [ExceptioncriteriaCriteriaListInner](sailpoint/sod_violations/docs/ExceptioncriteriaCriteriaListInner.md)
- - [Exceptioncriteriaaccess](sailpoint/sod_violations/docs/Exceptioncriteriaaccess.md)
- - [Identitywithnewaccess](sailpoint/sod_violations/docs/Identitywithnewaccess.md)
- - [IdentitywithnewaccessAccessRefsInner](sailpoint/sod_violations/docs/IdentitywithnewaccessAccessRefsInner.md)
- - [Localeorigin](sailpoint/sod_violations/docs/Localeorigin.md)
- - [Sodpolicydto2](sailpoint/sod_violations/docs/Sodpolicydto2.md)
- - [Sodviolationcheck](sailpoint/sod_violations/docs/Sodviolationcheck.md)
+ - [DtoType](sailpoint/sod_violations/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/sod_violations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/sod_violations/docs/ErrorResponseDto.md)
+ - [ExceptionAccessCriteria](sailpoint/sod_violations/docs/ExceptionAccessCriteria.md)
+ - [ExceptionCriteria](sailpoint/sod_violations/docs/ExceptionCriteria.md)
+ - [ExceptionCriteriaAccess](sailpoint/sod_violations/docs/ExceptionCriteriaAccess.md)
+ - [ExceptionCriteriaCriteriaListInner](sailpoint/sod_violations/docs/ExceptionCriteriaCriteriaListInner.md)
+ - [IdentityWithNewAccess](sailpoint/sod_violations/docs/IdentityWithNewAccess.md)
+ - [IdentityWithNewAccessAccessRefsInner](sailpoint/sod_violations/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [LocaleOrigin](sailpoint/sod_violations/docs/LocaleOrigin.md)
+ - [SodPolicyDto2](sailpoint/sod_violations/docs/SodPolicyDto2.md)
+ - [SodViolationCheck](sailpoint/sod_violations/docs/SodViolationCheck.md)
  - [StartPredictSodViolationsV1401Response](sailpoint/sod_violations/docs/StartPredictSodViolationsV1401Response.md)
  - [StartPredictSodViolationsV1429Response](sailpoint/sod_violations/docs/StartPredictSodViolationsV1429Response.md)
- - [Violationcontext](sailpoint/sod_violations/docs/Violationcontext.md)
- - [ViolationcontextPolicy](sailpoint/sod_violations/docs/ViolationcontextPolicy.md)
- - [Violationprediction](sailpoint/sod_violations/docs/Violationprediction.md)
+ - [ViolationContext](sailpoint/sod_violations/docs/ViolationContext.md)
+ - [ViolationContextPolicy](sailpoint/sod_violations/docs/ViolationContextPolicy.md)
+ - [ViolationPrediction](sailpoint/sod_violations/docs/ViolationPrediction.md)
 
 
 <a id="documentation-for-authorization"></a>

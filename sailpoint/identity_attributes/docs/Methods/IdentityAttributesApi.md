@@ -33,21 +33,21 @@ Use this API to create a new identity attribute.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identityattribute2 | [**Identityattribute2**](../models/identityattribute2) | True  | 
+ Body  | identity_attribute2 | [**IdentityAttribute2**](../models/identity-attribute2) | True  | 
 
 ### Return type
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | The identity attribute was created successfully. | Identityattribute2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | The identity attribute was created successfully. | IdentityAttribute2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -58,20 +58,20 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.identity_attributes.api_client import ApiClient
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identityattribute2 = '''sailpoint.identity_attributes.Identityattribute2()''' # Identityattribute2 | 
+    identity_attribute2 = '''sailpoint.identity_attributes.IdentityAttribute2()''' # IdentityAttribute2 | 
 
     try:
         # Create identity attribute
-        new_identityattribute2 = Identityattribute2.from_json(identityattribute2)
-        results = IdentityAttributesApi(api_client).create_identity_attribute_v1(identityattribute2=new_identityattribute2)
+        new_identity_attribute2 = IdentityAttribute2.from_json(identity_attribute2)
+        results = IdentityAttributesApi(api_client).create_identity_attribute_v1(identity_attribute2=new_identity_attribute2)
         # Below is a request that includes all optional parameters
-        # results = IdentityAttributesApi(api_client).create_identity_attribute_v1(new_identityattribute2)
+        # results = IdentityAttributesApi(api_client).create_identity_attribute_v1(new_identity_attribute2)
         print("The response of IdentityAttributesApi->create_identity_attribute_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -101,12 +101,12 @@ Path   | name | **str** | True  | The attribute's technical name.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -148,7 +148,7 @@ Use this API to bulk delete identity attributes for a given set of names. Attrib
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identityattributenames | [**Identityattributenames**](../models/identityattributenames) | True  | 
+ Body  | identity_attribute_names | [**IdentityAttributeNames**](../models/identity-attribute-names) | True  | 
 
 ### Return type
  (empty response body)
@@ -157,12 +157,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -173,20 +173,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.identity_attributes.api_client import ApiClient
-from sailpoint.identity_attributes.models.identityattributenames import Identityattributenames
+from sailpoint.identity_attributes.models.identity_attribute_names import IdentityAttributeNames
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identityattributenames = '''sailpoint.identity_attributes.Identityattributenames()''' # Identityattributenames | 
+    identity_attribute_names = '''{
+          "ids" : [ "name", "displayName" ]
+        }''' # IdentityAttributeNames | 
 
     try:
         # Bulk delete identity attributes
-        new_identityattributenames = Identityattributenames.from_json(identityattributenames)
-        IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(identityattributenames=new_identityattributenames)
+        new_identity_attribute_names = IdentityAttributeNames.from_json(identity_attribute_names)
+        IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(identity_attribute_names=new_identity_attribute_names)
         # Below is a request that includes all optional parameters
-        # IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(new_identityattributenames)
+        # IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(new_identity_attribute_names)
     except Exception as e:
         print("Exception when calling IdentityAttributesApi->delete_identity_attributes_in_bulk_v1: %s\n" % e)
 ```
@@ -208,18 +210,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | name | **str** | True  | The attribute's technical name.
 
 ### Return type
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The identity attribute with the given name | Identityattribute2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The identity attribute with the given name | IdentityAttribute2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -230,7 +232,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.identity_attributes.api_client import ApiClient
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -270,17 +272,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Identityattribute2]**](../models/identityattribute2)
+[**List[IdentityAttribute2]**](../models/identity-attribute2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identity attributes. | List[Identityattribute2] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of identity attributes. | List[IdentityAttribute2] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -291,7 +293,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.identity_attributes.api_client import ApiClient
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -330,21 +332,21 @@ This updates an existing identity attribute.  Making an attribute searchable req
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | name | **str** | True  | The attribute's technical name.
- Body  | identityattribute2 | [**Identityattribute2**](../models/identityattribute2) | True  | 
+ Body  | identity_attribute2 | [**IdentityAttribute2**](../models/identity-attribute2) | True  | 
 
 ### Return type
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The identity attribute was updated successfully | Identityattribute2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The identity attribute was updated successfully | IdentityAttribute2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityAttributesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityAttributesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -355,21 +357,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.identity_attributes.api_client import ApiClient
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     name = 'displayName' # str | The attribute's technical name. # str | The attribute's technical name.
-    identityattribute2 = '''sailpoint.identity_attributes.Identityattribute2()''' # Identityattribute2 | 
+    identity_attribute2 = '''sailpoint.identity_attributes.IdentityAttribute2()''' # IdentityAttribute2 | 
 
     try:
         # Update identity attribute
-        new_identityattribute2 = Identityattribute2.from_json(identityattribute2)
-        results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name=name, identityattribute2=new_identityattribute2)
+        new_identity_attribute2 = IdentityAttribute2.from_json(identity_attribute2)
+        results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name=name, identity_attribute2=new_identity_attribute2)
         # Below is a request that includes all optional parameters
-        # results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name, new_identityattribute2)
+        # results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name, new_identity_attribute2)
         print("The response of IdentityAttributesApi->put_identity_attribute_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

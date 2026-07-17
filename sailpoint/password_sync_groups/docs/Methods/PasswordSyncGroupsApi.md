@@ -64,20 +64,20 @@ This API creates a password sync group based on the specifications provided.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passwordsyncgroup | [**Passwordsyncgroup**](../models/passwordsyncgroup) | True  | 
+ Body  | password_sync_group | [**PasswordSyncGroup**](../models/password-sync-group) | True  | 
 
 ### Return type
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password sync group. | Passwordsyncgroup |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password sync group. | PasswordSyncGroup |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordSyncGroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordSyncGroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -88,20 +88,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_sync_groups.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.password_sync_groups.api_client import ApiClient
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    passwordsyncgroup = '''{"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}''' # Passwordsyncgroup | 
+    password_sync_group = '''{
+          "created" : "2023-03-16T04:00:00Z",
+          "name" : "Password Sync Group 1",
+          "modified" : "2023-03-16T04:00:00Z",
+          "passwordPolicyId" : "2c91808d744ba0ce01746f93b6204501",
+          "id" : "6881f631-3bd5-4213-9c75-8e05cc3e35dd",
+          "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+        }''' # PasswordSyncGroup | 
 
     try:
         # Create password sync group
-        new_passwordsyncgroup = Passwordsyncgroup.from_json(passwordsyncgroup)
-        results = PasswordSyncGroupsApi(api_client).create_password_sync_group_v1(passwordsyncgroup=new_passwordsyncgroup)
+        new_password_sync_group = PasswordSyncGroup.from_json(password_sync_group)
+        results = PasswordSyncGroupsApi(api_client).create_password_sync_group_v1(password_sync_group=new_password_sync_group)
         # Below is a request that includes all optional parameters
-        # results = PasswordSyncGroupsApi(api_client).create_password_sync_group_v1(new_passwordsyncgroup)
+        # results = PasswordSyncGroupsApi(api_client).create_password_sync_group_v1(new_password_sync_group)
         print("The response of PasswordSyncGroupsApi->create_password_sync_group_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -131,11 +138,11 @@ Path   | id | **str** | True  | The ID of password sync group to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordSyncGroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordSyncGroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -180,18 +187,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of password sync group to retrieve.
 
 ### Return type
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password sync group. | Passwordsyncgroup |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password sync group. | PasswordSyncGroup |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordSyncGroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordSyncGroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -202,7 +209,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_sync_groups.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.password_sync_groups.api_client import ApiClient
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -241,17 +248,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Passwordsyncgroup]**](../models/passwordsyncgroup)
+[**List[PasswordSyncGroup]**](../models/password-sync-group)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of password sync groups. | List[Passwordsyncgroup] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of password sync groups. | List[PasswordSyncGroup] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordSyncGroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordSyncGroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -262,7 +269,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_sync_groups.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.password_sync_groups.api_client import ApiClient
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -300,21 +307,21 @@ This API updates the specified password sync group.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of password sync group to update.
- Body  | passwordsyncgroup | [**Passwordsyncgroup**](../models/passwordsyncgroup) | True  | 
+ Body  | password_sync_group | [**PasswordSyncGroup**](../models/password-sync-group) | True  | 
 
 ### Return type
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password sync group. | Passwordsyncgroup |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password sync group. | PasswordSyncGroup |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordSyncGroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordSyncGroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -325,21 +332,28 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_sync_groups.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.password_sync_groups.api_client import ApiClient
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd' # str | The ID of password sync group to update. # str | The ID of password sync group to update.
-    passwordsyncgroup = '''{"id":"6881f631-3bd5-4213-9c75-8e05cc3e35dd","name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}''' # Passwordsyncgroup | 
+    password_sync_group = '''{
+          "created" : "2023-03-16T04:00:00Z",
+          "name" : "Password Sync Group 1",
+          "modified" : "2023-03-16T04:00:00Z",
+          "passwordPolicyId" : "2c91808d744ba0ce01746f93b6204501",
+          "id" : "6881f631-3bd5-4213-9c75-8e05cc3e35dd",
+          "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+        }''' # PasswordSyncGroup | 
 
     try:
         # Update password sync group by id
-        new_passwordsyncgroup = Passwordsyncgroup.from_json(passwordsyncgroup)
-        results = PasswordSyncGroupsApi(api_client).update_password_sync_group_v1(id=id, passwordsyncgroup=new_passwordsyncgroup)
+        new_password_sync_group = PasswordSyncGroup.from_json(password_sync_group)
+        results = PasswordSyncGroupsApi(api_client).update_password_sync_group_v1(id=id, password_sync_group=new_password_sync_group)
         # Below is a request that includes all optional parameters
-        # results = PasswordSyncGroupsApi(api_client).update_password_sync_group_v1(id, new_passwordsyncgroup)
+        # results = PasswordSyncGroupsApi(api_client).update_password_sync_group_v1(id, new_password_sync_group)
         print("The response of PasswordSyncGroupsApi->update_password_sync_group_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

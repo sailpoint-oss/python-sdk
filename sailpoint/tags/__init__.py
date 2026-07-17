@@ -31,10 +31,10 @@ from sailpoint.tags.exceptions import ApiAttributeError
 from sailpoint.tags.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.tags.models.errormessagedto import Errormessagedto
-from sailpoint.tags.models.errorresponsedto import Errorresponsedto
+from sailpoint.tags.models.error_message_dto import ErrorMessageDto
+from sailpoint.tags.models.error_response_dto import ErrorResponseDto
 from sailpoint.tags.models.list_tags_v1401_response import ListTagsV1401Response
 from sailpoint.tags.models.list_tags_v1429_response import ListTagsV1429Response
-from sailpoint.tags.models.localeorigin import Localeorigin
+from sailpoint.tags.models.locale_origin import LocaleOrigin
 from sailpoint.tags.models.tag2 import Tag2
 from sailpoint.tags.models.tag2_tag_category_refs_inner import Tag2TagCategoryRefsInner

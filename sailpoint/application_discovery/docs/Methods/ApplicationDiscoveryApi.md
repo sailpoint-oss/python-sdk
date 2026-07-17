@@ -47,11 +47,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of discovered applications. By default, the API returns a list of SLIM discovered applications. | List[GetDiscoveredApplicationsV1200ResponseInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartApplicationDiscoveryV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartApplicationDiscoveryV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -104,17 +104,17 @@ The downloaded template is specifically designed for use with the `/manual-disco
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Manualdiscoverapplicationstemplate**](../models/manualdiscoverapplicationstemplate)
+[**ManualDiscoverApplicationsTemplate**](../models/manual-discover-applications-template)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A CSV file download was successful. | Manualdiscoverapplicationstemplate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A CSV file download was successful. | ManualDiscoverApplicationsTemplate |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartApplicationDiscoveryV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartApplicationDiscoveryV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -125,7 +125,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.application_discovery.api_client import ApiClient
-from sailpoint.application_discovery.models.manualdiscoverapplicationstemplate import Manualdiscoverapplicationstemplate
+from sailpoint.application_discovery.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -168,11 +168,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The CSV has been successfully processed. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartApplicationDiscoveryV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartApplicationDiscoveryV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -226,22 +226,22 @@ Use this API to discover applications.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The sourceId.
- Body  | applicationdiscoveryrequest | [**Applicationdiscoveryrequest**](../models/applicationdiscoveryrequest) | True  | 
+ Body  | application_discovery_request | [**ApplicationDiscoveryRequest**](../models/application-discovery-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Applicationdiscoveryresponse**](../models/applicationdiscoveryresponse)
+[**ApplicationDiscoveryResponse**](../models/application-discovery-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Application Discovery task was started successfully. | Applicationdiscoveryresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Application Discovery task was started successfully. | ApplicationDiscoveryResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartApplicationDiscoveryV1401Response |  -  |
 403 | Forbidden. Returned when the user doesn&#39;t have access to this endpoint, or when the quota of allowed invocations for the day has been exceeded.  | StartApplicationDiscoveryV1403Response |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartApplicationDiscoveryV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -252,8 +252,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.application_discovery.api_client import ApiClient
-from sailpoint.application_discovery.models.applicationdiscoveryrequest import Applicationdiscoveryrequest
-from sailpoint.application_discovery.models.applicationdiscoveryresponse import Applicationdiscoveryresponse
+from sailpoint.application_discovery.models.application_discovery_request import ApplicationDiscoveryRequest
+from sailpoint.application_discovery.models.application_discovery_response import ApplicationDiscoveryResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -261,15 +261,17 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'source_id_example' # str | The sourceId. # str | The sourceId.
-    applicationdiscoveryrequest = '''sailpoint.application_discovery.Applicationdiscoveryrequest()''' # Applicationdiscoveryrequest | 
+    application_discovery_request = '''{
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ]
+        }''' # ApplicationDiscoveryRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Start Application Discovery
-        new_applicationdiscoveryrequest = Applicationdiscoveryrequest.from_json(applicationdiscoveryrequest)
-        results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id=source_id, applicationdiscoveryrequest=new_applicationdiscoveryrequest)
+        new_application_discovery_request = ApplicationDiscoveryRequest.from_json(application_discovery_request)
+        results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id=source_id, application_discovery_request=new_application_discovery_request)
         # Below is a request that includes all optional parameters
-        # results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id, new_applicationdiscoveryrequest, x_sail_point_experimental)
+        # results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id, new_application_discovery_request, x_sail_point_experimental)
         print("The response of ApplicationDiscoveryApi->start_application_discovery_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -49,17 +49,17 @@ Path   | strategy | **str** | True  | The strategy used to create peer groups. C
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Peergroupmember]**](../models/peergroupmember)
+[**List[PeerGroupMember]**](../models/peer-group-member)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identities that are not included in peer groups. | List[Peergroupmember] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of identities that are not included in peer groups. | List[PeerGroupMember] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPeerGroupOutliersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPeerGroupOutliersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -70,7 +70,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_peer_group_strategies.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 from sailpoint.iai_peer_group_strategies.api_client import ApiClient
-from sailpoint.iai_peer_group_strategies.models.peergroupmember import Peergroupmember
+from sailpoint.iai_peer_group_strategies.models.peer_group_member import PeerGroupMember
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

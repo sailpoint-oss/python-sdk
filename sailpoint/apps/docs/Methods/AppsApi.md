@@ -54,21 +54,21 @@ This endpoint creates a source app using the given source app payload
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sourceappcreatedto | [**Sourceappcreatedto**](../models/sourceappcreatedto) | True  | 
+ Body  | source_app_create_dto | [**SourceAppCreateDto**](../models/source-app-create-dto) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the source app as created. | Sourceapp |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the source app as created. | SourceApp |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -79,23 +79,32 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
-from sailpoint.apps.models.sourceappcreatedto import Sourceappcreatedto
+from sailpoint.apps.models.source_app import SourceApp
+from sailpoint.apps.models.source_app_create_dto import SourceAppCreateDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    sourceappcreatedto = '''{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}''' # Sourceappcreatedto | 
+    source_app_create_dto = '''{
+          "name" : "my app",
+          "description" : "the source app for engineers",
+          "accountSource" : {
+            "name" : "ODS-AD-Source",
+            "id" : "2c9180827ca885d7017ca8ce28a000eb",
+            "type" : "SOURCE"
+          },
+          "matchAllAccounts" : true
+        }''' # SourceAppCreateDto | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create source app
-        new_sourceappcreatedto = Sourceappcreatedto.from_json(sourceappcreatedto)
-        results = AppsApi(api_client).create_source_app_v1(sourceappcreatedto=new_sourceappcreatedto)
+        new_source_app_create_dto = SourceAppCreateDto.from_json(source_app_create_dto)
+        results = AppsApi(api_client).create_source_app_v1(source_app_create_dto=new_source_app_create_dto)
         # Below is a request that includes all optional parameters
-        # results = AppsApi(api_client).create_source_app_v1(new_sourceappcreatedto, x_sail_point_experimental)
+        # results = AppsApi(api_client).create_source_app_v1(new_source_app_create_dto, x_sail_point_experimental)
         print("The response of AppsApi->create_source_app_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -133,17 +142,17 @@ Path   | id | **str** | True  | ID of the source app
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessprofiledetails]**](../models/accessprofiledetails)
+[**List[AccessProfileDetails]**](../models/access-profile-details)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The final list of access profiles for the specified source app | List[Accessprofiledetails] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The final list of access profiles for the specified source app | List[AccessProfileDetails] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -154,7 +163,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.accessprofiledetails import Accessprofiledetails
+from sailpoint.apps.models.access_profile_details import AccessProfileDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -208,17 +217,17 @@ Path   | id | **str** | True  | source app ID.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the source app as deleted. | Sourceapp |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the source app as deleted. | SourceApp |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -229,7 +238,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
+from sailpoint.apps.models.source_app import SourceApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -280,18 +289,18 @@ Path   | id | **str** | True  | ID of the source app
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the source app. | Sourceapp |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the source app. | SourceApp |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -302,7 +311,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
+from sailpoint.apps.models.source_app import SourceApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -356,17 +365,17 @@ Path   | id | **str** | True  | ID of the source app
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Accessprofiledetails]**](../models/accessprofiledetails)
+[**List[AccessProfileDetails]**](../models/access-profile-details)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of access profiles for the specified source app | List[Accessprofiledetails] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of access profiles for the specified source app | List[AccessProfileDetails] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -377,7 +386,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.accessprofiledetails import Accessprofiledetails
+from sailpoint.apps.models.access_profile_details import AccessProfileDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -436,17 +445,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Sourceapp]**](../models/sourceapp)
+[**List[SourceApp]**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of source apps | List[Sourceapp] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of source apps | List[SourceApp] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -457,7 +466,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
+from sailpoint.apps.models.source_app import SourceApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -517,17 +526,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Userapp]**](../models/userapp)
+[**List[UserApp]**](../models/user-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of user apps | List[Userapp] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of user apps | List[UserApp] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -538,7 +547,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.userapp import Userapp
+from sailpoint.apps.models.user_app import UserApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -597,17 +606,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Sourceapp]**](../models/sourceapp)
+[**List[SourceApp]**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of source apps | List[Sourceapp] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of source apps | List[SourceApp] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -618,7 +627,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
+from sailpoint.apps.models.source_app import SourceApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -676,17 +685,17 @@ Path   | id | **str** | True  | ID of the user app
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Appaccountdetails]**](../models/appaccountdetails)
+[**List[AppAccountDetails]**](../models/app-account-details)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of available accounts for the specified user app | List[Appaccountdetails] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of available accounts for the specified user app | List[AppAccountDetails] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -697,7 +706,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.appaccountdetails import Appaccountdetails
+from sailpoint.apps.models.app_account_details import AppAccountDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -755,17 +764,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Sourceapp]**](../models/sourceapp)
+[**List[SourceApp]**](../models/source-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of source apps | List[Sourceapp] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of source apps | List[SourceApp] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -776,7 +785,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceapp import Sourceapp
+from sailpoint.apps.models.source_app import SourceApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -835,17 +844,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Userapp]**](../models/userapp)
+[**List[UserApp]**](../models/user-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of user apps | List[Userapp] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of user apps | List[UserApp] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -856,7 +865,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.userapp import Userapp
+from sailpoint.apps.models.user_app import UserApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -911,21 +920,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the source app to patch
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |   (optional) | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) |   (optional) | 
 
 ### Return type
-[**Sourceapppatchdto**](../models/sourceapppatchdto)
+[**SourceAppPatchDto**](../models/source-app-patch-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the source app as updated. | Sourceapppatchdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the source app as updated. | SourceAppPatchDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -936,8 +945,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.apps.models.sourceapppatchdto import Sourceapppatchdto
+from sailpoint.apps.models.json_patch_operation import JsonPatchOperation
+from sailpoint.apps.models.source_app_patch_dto import SourceAppPatchDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -946,14 +955,14 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121e121518' # str | ID of the source app to patch # str | ID of the source app to patch
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-    jsonpatchoperation = '''[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]''' # List[Jsonpatchoperation] |  (optional)
+    json_patch_operation = '''[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]''' # List[JsonPatchOperation] |  (optional)
 
     try:
         # Patch source app by id
         
         results = AppsApi(api_client).patch_source_app_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = AppsApi(api_client).patch_source_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+        # results = AppsApi(api_client).patch_source_app_v1(id, x_sail_point_experimental, new_json_patch_operation)
         print("The response of AppsApi->patch_source_app_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -988,21 +997,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the user app to patch
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |   (optional) | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) |   (optional) | 
 
 ### Return type
-[**Userapp**](../models/userapp)
+[**UserApp**](../models/user-app)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the user app as updated. | Userapp |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the user app as updated. | UserApp |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1013,8 +1022,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.apps.models.userapp import Userapp
+from sailpoint.apps.models.json_patch_operation import JsonPatchOperation
+from sailpoint.apps.models.user_app import UserApp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1023,14 +1032,14 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121e121518' # str | ID of the user app to patch # str | ID of the user app to patch
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-    jsonpatchoperation = '''[sailpoint.apps.Jsonpatchoperation()]''' # List[Jsonpatchoperation] |  (optional)
+    json_patch_operation = '''[sailpoint.apps.JsonPatchOperation()]''' # List[JsonPatchOperation] |  (optional)
 
     try:
         # Patch user app by id
         
         results = AppsApi(api_client).patch_user_app_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = AppsApi(api_client).patch_user_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+        # results = AppsApi(api_client).patch_user_app_v1(id, x_sail_point_experimental, new_json_patch_operation)
         print("The response of AppsApi->patch_user_app_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1065,7 +1074,7 @@ Name, description and owner can't be empty or null.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
- Body  | sourceappbulkupdaterequest | [**Sourceappbulkupdaterequest**](../models/sourceappbulkupdaterequest) |   (optional) | 
+ Body  | source_app_bulk_update_request | [**SourceAppBulkUpdateRequest**](../models/source-app-bulk-update-request) |   (optional) | 
 
 ### Return type
  (empty response body)
@@ -1074,12 +1083,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSourceAppV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSourceAppV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1090,7 +1099,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.apps.api.apps_api import AppsApi
 from sailpoint.apps.api_client import ApiClient
-from sailpoint.apps.models.sourceappbulkupdaterequest import Sourceappbulkupdaterequest
+from sailpoint.apps.models.source_app_bulk_update_request import SourceAppBulkUpdateRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1098,14 +1107,25 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-    sourceappbulkupdaterequest = '''sailpoint.apps.Sourceappbulkupdaterequest()''' # Sourceappbulkupdaterequest |  (optional)
+    source_app_bulk_update_request = '''{
+          "appIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
+          "jsonPatch" : [ {
+            "op" : "replace",
+            "path" : "/enabled",
+            "value" : false
+          }, {
+            "op" : "replace",
+            "path" : "/matchAllAccounts",
+            "value" : false
+          } ]
+        }''' # SourceAppBulkUpdateRequest |  (optional)
 
     try:
         # Bulk update source apps
         
         AppsApi(api_client).update_source_apps_in_bulk_v1()
         # Below is a request that includes all optional parameters
-        # AppsApi(api_client).update_source_apps_in_bulk_v1(x_sail_point_experimental, new_sourceappbulkupdaterequest)
+        # AppsApi(api_client).update_source_apps_in_bulk_v1(x_sail_point_experimental, new_source_app_bulk_update_request)
     except Exception as e:
         print("Exception when calling AppsApi->update_source_apps_in_bulk_v1: %s\n" % e)
 ```

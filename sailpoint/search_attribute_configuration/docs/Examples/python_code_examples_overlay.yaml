@@ -6,21 +6,28 @@
       source: |
         from sailpoint.search_attribute_configuration.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
         from sailpoint.search_attribute_configuration.api_client import ApiClient
-        from sailpoint.search_attribute_configuration.models.searchattributeconfig import Searchattributeconfig
+        from sailpoint.search_attribute_configuration.models.search_attribute_config import SearchAttributeConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          searchattributeconfig = '''{"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}}''' # Searchattributeconfig | 
+          search_attribute_config = '''{
+          "displayName" : "New Mail Attribute",
+          "name" : "newMailAttribute",
+          "applicationAttributes" : {
+            "2c91808b79fd2422017a0b35d30f3968" : "employeeNumber",
+            "2c91808b79fd2422017a0b36008f396b" : "employeeNumber"
+          }
+        }''' # SearchAttributeConfig | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Create extended search attributes
-              new_searchattributeconfig = Searchattributeconfig.from_json(searchattributeconfig)
-              results = SearchAttributeConfigurationApi(api_client).create_search_attribute_config_v1(searchattributeconfig=new_searchattributeconfig)
+              new_search_attribute_config = SearchAttributeConfig.from_json(search_attribute_config)
+              results = SearchAttributeConfigurationApi(api_client).create_search_attribute_config_v1(search_attribute_config=new_search_attribute_config)
               # Below is a request that includes all optional parameters
-              # results = SearchAttributeConfigurationApi(api_client).create_search_attribute_config_v1(new_searchattributeconfig, x_sail_point_experimental)
+              # results = SearchAttributeConfigurationApi(api_client).create_search_attribute_config_v1(new_search_attribute_config, x_sail_point_experimental)
               print("The response of SearchAttributeConfigurationApi->create_search_attribute_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -57,7 +64,7 @@
       source: |
         from sailpoint.search_attribute_configuration.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
         from sailpoint.search_attribute_configuration.api_client import ApiClient
-        from sailpoint.search_attribute_configuration.models.searchattributeconfig import Searchattributeconfig
+        from sailpoint.search_attribute_configuration.models.search_attribute_config import SearchAttributeConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -86,7 +93,7 @@
       source: |
         from sailpoint.search_attribute_configuration.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
         from sailpoint.search_attribute_configuration.api_client import ApiClient
-        from sailpoint.search_attribute_configuration.models.searchattributeconfig import Searchattributeconfig
+        from sailpoint.search_attribute_configuration.models.search_attribute_config import SearchAttributeConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -113,8 +120,8 @@
       source: |
         from sailpoint.search_attribute_configuration.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
         from sailpoint.search_attribute_configuration.api_client import ApiClient
-        from sailpoint.search_attribute_configuration.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.search_attribute_configuration.models.searchattributeconfig import Searchattributeconfig
+        from sailpoint.search_attribute_configuration.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.search_attribute_configuration.models.search_attribute_config import SearchAttributeConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -122,14 +129,14 @@
 
         with ApiClient(configuration) as api_client:
           name = 'promotedMailAttribute' # str | Name of the search attribute configuration to patch. # str | Name of the search attribute configuration to patch.
-          jsonpatchoperation = '''[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]''' # List[Jsonpatchoperation] | 
+          json_patch_operation = '''[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]''' # List[JsonPatchOperation] | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update extended search attribute
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SearchAttributeConfigurationApi(api_client).patch_search_attribute_config_v1(name=name, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SearchAttributeConfigurationApi(api_client).patch_search_attribute_config_v1(name=name, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SearchAttributeConfigurationApi(api_client).patch_search_attribute_config_v1(name, new_jsonpatchoperation, x_sail_point_experimental)
+              # results = SearchAttributeConfigurationApi(api_client).patch_search_attribute_config_v1(name, new_json_patch_operation, x_sail_point_experimental)
               print("The response of SearchAttributeConfigurationApi->patch_search_attribute_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

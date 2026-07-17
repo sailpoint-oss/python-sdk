@@ -50,7 +50,7 @@ with sailpoint.requestable_objects.ApiClient(configuration) as api_client:
     identity_id = 'e7eab60924f64aa284175b9fa3309599' # str | If present, the value returns only requestable objects for the specified identity.  * Admin users can call this with any identity ID value.  * Non-admin users can only specify *me* or pass their own identity ID value.  * If absent, returns a list of all requestable objects for the tenant. Only admin users can make such a call. In this case, the available, pending, assigned accesses will not be annotated in the result. (optional)
     types = ['ACCESS_PROFILE,ROLE'] # List[str] | Filters the results to the specified type/types, where each type is one of `ROLE` or `ACCESS_PROFILE`. If absent, all types are returned. SailPoint may add support for additional types in the future without notice. (optional)
     term = 'Finance Role' # str | Allows searching requestable access items with a partial match on the name or description. If `term` is provided, then the API will ignore the `filter` query parameter. (optional)
-    statuses = [sailpoint.requestable_objects.Requestableobjectrequeststatus()] # List[Requestableobjectrequeststatus] | Filters the result to the specified status/statuses, where each status is one of `AVAILABLE`, `ASSIGNED`, or `PENDING`. Specifying this parameter without also specifying an `identity-id` parameter results in an error.  SailPoint may add additional statuses in the future without notice. (optional)
+    statuses = [sailpoint.requestable_objects.RequestableObjectRequestStatus()] # List[RequestableObjectRequestStatus] | Filters the result to the specified status/statuses, where each status is one of `AVAILABLE`, `ASSIGNED`, or `PENDING`. Specifying this parameter without also specifying an `identity-id` parameter results in an error.  SailPoint may add additional statuses in the future without notice. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -78,15 +78,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/requestable_objects/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/requestable_objects/docs/Errorresponsedto.md)
- - [Identityreferencewithnameandemail](sailpoint/requestable_objects/docs/Identityreferencewithnameandemail.md)
+ - [ErrorMessageDto](sailpoint/requestable_objects/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/requestable_objects/docs/ErrorResponseDto.md)
+ - [IdentityReferenceWithNameAndEmail](sailpoint/requestable_objects/docs/IdentityReferenceWithNameAndEmail.md)
  - [ListRequestableObjectsV1401Response](sailpoint/requestable_objects/docs/ListRequestableObjectsV1401Response.md)
  - [ListRequestableObjectsV1429Response](sailpoint/requestable_objects/docs/ListRequestableObjectsV1429Response.md)
- - [Localeorigin](sailpoint/requestable_objects/docs/Localeorigin.md)
- - [Requestableobject](sailpoint/requestable_objects/docs/Requestableobject.md)
- - [Requestableobjectrequeststatus](sailpoint/requestable_objects/docs/Requestableobjectrequeststatus.md)
- - [Requestableobjecttype](sailpoint/requestable_objects/docs/Requestableobjecttype.md)
+ - [LocaleOrigin](sailpoint/requestable_objects/docs/LocaleOrigin.md)
+ - [RequestableObject](sailpoint/requestable_objects/docs/RequestableObject.md)
+ - [RequestableObjectRequestStatus](sailpoint/requestable_objects/docs/RequestableObjectRequestStatus.md)
+ - [RequestableObjectType](sailpoint/requestable_objects/docs/RequestableObjectType.md)
 
 
 <a id="documentation-for-authorization"></a>

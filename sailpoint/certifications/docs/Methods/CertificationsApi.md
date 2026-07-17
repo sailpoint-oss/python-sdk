@@ -64,18 +64,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The task ID
 
 ### Return type
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A certification task | Certificationtask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A certification task | CertificationTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -86,7 +86,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.certificationtask import Certificationtask
+from sailpoint.certifications.models.certification_task import CertificationTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -128,18 +128,18 @@ Path   | item_id | **str** | True  | The certification item ID
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Permissiondto]**](../models/permissiondto)
+[**List[PermissionDTO]**](../models/permission-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of permissions associated with the given itemId | List[Permissiondto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of permissions associated with the given itemId | List[PermissionDTO] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -150,7 +150,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.permissiondto import Permissiondto
+from sailpoint.certifications.models.permission_dto import PermissionDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -193,18 +193,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The certification id
 
 ### Return type
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An identity campaign certification object | Identitycertificationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An identity campaign certification object | IdentityCertificationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -215,7 +215,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -256,18 +256,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in*
 
 ### Return type
-[**List[Certificationtask]**](../models/certificationtask)
+[**List[CertificationTask]**](../models/certification-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of pending certification tasks | List[Certificationtask] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of pending certification tasks | List[CertificationTask] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -278,7 +278,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.certificationtask import Certificationtask
+from sailpoint.certifications.models.certification_task import CertificationTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -325,18 +325,18 @@ Path   | id | **str** | True  | The certification ID
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email**
 
 ### Return type
-[**List[Identityreferencewithnameandemail]**](../models/identityreferencewithnameandemail)
+[**List[IdentityReferenceWithNameAndEmail]**](../models/identity-reference-with-name-and-email)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of reviewers | List[Identityreferencewithnameandemail] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of reviewers | List[IdentityReferenceWithNameAndEmail] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -347,7 +347,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identityreferencewithnameandemail import Identityreferencewithnameandemail
+from sailpoint.certifications.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -398,18 +398,18 @@ Path   | id | **str** | True  | The identity campaign certification ID
   Query | roles | **str** |   (optional) | Filter results to view access review items that pertain to any of the specified comma-separated role IDs.  An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time.
 
 ### Return type
-[**List[Accessreviewitem]**](../models/accessreviewitem)
+[**List[AccessReviewItem]**](../models/access-review-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of access review items | List[Accessreviewitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of access review items | List[AccessReviewItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -420,7 +420,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.accessreviewitem import Accessreviewitem
+from sailpoint.certifications.models.access_review_item import AccessReviewItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -471,17 +471,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed**
 
 ### Return type
-[**List[Identitycertificationdto]**](../models/identitycertificationdto)
+[**List[IdentityCertificationDto]**](../models/identity-certification-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identity campaign certifications. | List[Identitycertificationdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of identity campaign certifications. | List[IdentityCertificationDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -492,7 +492,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -533,21 +533,21 @@ The API makes a decision to approve or revoke one or more identity campaign cert
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the identity campaign certification on which to make decisions
- Body  | reviewdecision | [**[]Reviewdecision**](../models/reviewdecision) | True  | A non-empty array of decisions to be made.
+ Body  | review_decision | [**[]ReviewDecision**](../models/review-decision) | True  | A non-empty array of decisions to be made.
 
 ### Return type
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An identity campaign certification object | Identitycertificationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An identity campaign certification object | IdentityCertificationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -558,22 +558,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
-from sailpoint.certifications.models.reviewdecision import Reviewdecision
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.certifications.models.review_decision import ReviewDecision
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the identity campaign certification on which to make decisions # str | The ID of the identity campaign certification on which to make decisions
-    reviewdecision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]''' # List[Reviewdecision] | A non-empty array of decisions to be made.
+    review_decision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]''' # List[ReviewDecision] | A non-empty array of decisions to be made.
 
     try:
         # Decide on a certification item
-        new_reviewdecision = Reviewdecision.from_json(reviewdecision)
-        results = CertificationsApi(api_client).make_identity_decision_v1(id=id, reviewdecision=new_reviewdecision)
+        new_review_decision = ReviewDecision.from_json(review_decision)
+        results = CertificationsApi(api_client).make_identity_decision_v1(id=id, review_decision=new_review_decision)
         # Below is a request that includes all optional parameters
-        # results = CertificationsApi(api_client).make_identity_decision_v1(id, new_reviewdecision)
+        # results = CertificationsApi(api_client).make_identity_decision_v1(id, new_review_decision)
         print("The response of CertificationsApi->make_identity_decision_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -595,21 +595,21 @@ This API reassigns up to 50 identities or items in an identity campaign certific
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The identity campaign certification ID
- Body  | reviewreassign | [**Reviewreassign**](../models/reviewreassign) | True  | 
+ Body  | review_reassign | [**ReviewReassign**](../models/review-reassign) | True  | 
 
 ### Return type
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An identity campaign certification details after completing the reassignment. | Identitycertificationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An identity campaign certification details after completing the reassignment. | IdentityCertificationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -620,22 +620,32 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
-from sailpoint.certifications.models.reviewreassign import Reviewreassign
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.certifications.models.review_reassign import ReviewReassign
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
-    reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+    review_reassign = '''{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReviewReassign | 
 
     try:
         # Reassign identities or items
-        new_reviewreassign = Reviewreassign.from_json(reviewreassign)
-        results = CertificationsApi(api_client).reassign_identity_certifications_v1(id=id, reviewreassign=new_reviewreassign)
+        new_review_reassign = ReviewReassign.from_json(review_reassign)
+        results = CertificationsApi(api_client).reassign_identity_certifications_v1(id=id, review_reassign=new_review_reassign)
         # Below is a request that includes all optional parameters
-        # results = CertificationsApi(api_client).reassign_identity_certifications_v1(id, new_reviewreassign)
+        # results = CertificationsApi(api_client).reassign_identity_certifications_v1(id, new_review_reassign)
         print("The response of CertificationsApi->reassign_identity_certifications_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -659,18 +669,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The identity campaign certification ID
 
 ### Return type
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An identity campaign certification object | Identitycertificationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An identity campaign certification object | IdentityCertificationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -681,7 +691,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -721,21 +731,21 @@ Reviewers for this certification can also call this API.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The identity campaign certification ID
- Body  | reviewreassign | [**Reviewreassign**](../models/reviewreassign) | True  | 
+ Body  | review_reassign | [**ReviewReassign**](../models/review-reassign) | True  | 
 
 ### Return type
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A certification task object for the reassignment which can be queried for status. | Certificationtask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A certification task object for the reassignment which can be queried for status. | CertificationTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityCertificationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityCertificationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -746,22 +756,32 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certifications.api.certifications_api import CertificationsApi
 from sailpoint.certifications.api_client import ApiClient
-from sailpoint.certifications.models.certificationtask import Certificationtask
-from sailpoint.certifications.models.reviewreassign import Reviewreassign
+from sailpoint.certifications.models.certification_task import CertificationTask
+from sailpoint.certifications.models.review_reassign import ReviewReassign
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
-    reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+    review_reassign = '''{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReviewReassign | 
 
     try:
         # Reassign certifications asynchronously
-        new_reviewreassign = Reviewreassign.from_json(reviewreassign)
-        results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id=id, reviewreassign=new_reviewreassign)
+        new_review_reassign = ReviewReassign.from_json(review_reassign)
+        results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id=id, review_reassign=new_review_reassign)
         # Below is a request that includes all optional parameters
-        # results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id, new_reviewreassign)
+        # results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id, new_review_reassign)
         print("The response of CertificationsApi->submit_reassign_certs_async_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

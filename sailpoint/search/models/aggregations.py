@@ -20,10 +20,10 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.search.models.bucketaggregation import Bucketaggregation
-from sailpoint.search.models.filteraggregation import Filteraggregation
-from sailpoint.search.models.metricaggregation import Metricaggregation
-from sailpoint.search.models.nestedaggregation import Nestedaggregation
+from sailpoint.search.models.bucket_aggregation import BucketAggregation
+from sailpoint.search.models.filter_aggregation import FilterAggregation
+from sailpoint.search.models.metric_aggregation import MetricAggregation
+from sailpoint.search.models.nested_aggregation import NestedAggregation
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,10 +31,10 @@ class Aggregations(BaseModel):
     """
     Aggregations
     """ # noqa: E501
-    nested: Optional[Nestedaggregation] = None
-    metric: Optional[Metricaggregation] = None
-    filter: Optional[Filteraggregation] = None
-    bucket: Optional[Bucketaggregation] = None
+    nested: Optional[NestedAggregation] = None
+    metric: Optional[MetricAggregation] = None
+    filter: Optional[FilterAggregation] = None
+    bucket: Optional[BucketAggregation] = None
     __properties: ClassVar[List[str]] = ["nested", "metric", "filter", "bucket"]
 
     model_config = ConfigDict(
@@ -100,10 +100,10 @@ class Aggregations(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "nested": Nestedaggregation.from_dict(obj["nested"]) if obj.get("nested") is not None else None,
-            "metric": Metricaggregation.from_dict(obj["metric"]) if obj.get("metric") is not None else None,
-            "filter": Filteraggregation.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
-            "bucket": Bucketaggregation.from_dict(obj["bucket"]) if obj.get("bucket") is not None else None
+            "nested": NestedAggregation.from_dict(obj["nested"]) if obj.get("nested") is not None else None,
+            "metric": MetricAggregation.from_dict(obj["metric"]) if obj.get("metric") is not None else None,
+            "filter": FilterAggregation.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
+            "bucket": BucketAggregation.from_dict(obj["bucket"]) if obj.get("bucket") is not None else None
         })
         return _obj
 

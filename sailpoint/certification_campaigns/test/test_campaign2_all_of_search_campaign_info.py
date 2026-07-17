@@ -37,7 +37,7 @@ class TestCampaign2AllOfSearchCampaignInfo(unittest.TestCase):
             return Campaign2AllOfSearchCampaignInfo(
                 type = 'ACCESS',
                 description = 'Search Campaign description',
-                reviewer = sailpoint.certification_campaigns.models.campaign_2_all_of_search_campaign_info_reviewer.campaign_2_allOf_searchCampaignInfo_reviewer(
+                reviewer = sailpoint.certification_campaigns.models.campaign_2_all_of_search_campaign_info_reviewer.Campaign_2_allOf_searchCampaignInfo_reviewer(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),

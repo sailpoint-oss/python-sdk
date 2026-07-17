@@ -32,22 +32,22 @@ from sailpoint.scheduled_search.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.scheduled_search.models.create_scheduled_search_v1_request import CreateScheduledSearchV1Request
-from sailpoint.scheduled_search.models.dtotype import Dtotype
-from sailpoint.scheduled_search.models.errormessagedto import Errormessagedto
-from sailpoint.scheduled_search.models.errorresponsedto import Errorresponsedto
+from sailpoint.scheduled_search.models.dto_type import DtoType
+from sailpoint.scheduled_search.models.error_message_dto import ErrorMessageDto
+from sailpoint.scheduled_search.models.error_response_dto import ErrorResponseDto
 from sailpoint.scheduled_search.models.list_scheduled_search_v1401_response import ListScheduledSearchV1401Response
 from sailpoint.scheduled_search.models.list_scheduled_search_v1429_response import ListScheduledSearchV1429Response
-from sailpoint.scheduled_search.models.localeorigin import Localeorigin
+from sailpoint.scheduled_search.models.locale_origin import LocaleOrigin
 from sailpoint.scheduled_search.models.schedule import Schedule
 from sailpoint.scheduled_search.models.schedule_days import ScheduleDays
 from sailpoint.scheduled_search.models.schedule_hours import ScheduleHours
 from sailpoint.scheduled_search.models.schedule_months import ScheduleMonths
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
-from sailpoint.scheduled_search.models.scheduledsearch_all_of_owner import ScheduledsearchAllOfOwner
-from sailpoint.scheduled_search.models.scheduledsearchname import Scheduledsearchname
-from sailpoint.scheduled_search.models.scheduletype import Scheduletype
-from sailpoint.scheduled_search.models.searchschedule import Searchschedule
-from sailpoint.scheduled_search.models.searchschedule_recipients_inner import SearchscheduleRecipientsInner
+from sailpoint.scheduled_search.models.schedule_type import ScheduleType
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
+from sailpoint.scheduled_search.models.scheduled_search_all_of_owner import ScheduledSearchAllOfOwner
+from sailpoint.scheduled_search.models.scheduled_search_name import ScheduledSearchName
+from sailpoint.scheduled_search.models.search_schedule import SearchSchedule
+from sailpoint.scheduled_search.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 from sailpoint.scheduled_search.models.selector import Selector
-from sailpoint.scheduled_search.models.selectortype import Selectortype
-from sailpoint.scheduled_search.models.typedreference import Typedreference
+from sailpoint.scheduled_search.models.selector_type import SelectorType
+from sailpoint.scheduled_search.models.typed_reference import TypedReference

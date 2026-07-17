@@ -19,15 +19,15 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.governance_groups.models.bulkworkgroupmembersrequest_inner import BulkworkgroupmembersrequestInner
-from sailpoint.governance_groups.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.governance_groups.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
+from sailpoint.governance_groups.models.json_patch_operation import JsonPatchOperation
 from sailpoint.governance_groups.models.list_workgroup_members_v1200_response_inner import ListWorkgroupMembersV1200ResponseInner
-from sailpoint.governance_groups.models.workgroupbulkdeleterequest import Workgroupbulkdeleterequest
-from sailpoint.governance_groups.models.workgroupconnectiondto import Workgroupconnectiondto
-from sailpoint.governance_groups.models.workgroupdeleteitem import Workgroupdeleteitem
-from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
-from sailpoint.governance_groups.models.workgroupmemberadditem import Workgroupmemberadditem
-from sailpoint.governance_groups.models.workgroupmemberdeleteitem import Workgroupmemberdeleteitem
+from sailpoint.governance_groups.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
+from sailpoint.governance_groups.models.workgroup_connection_dto import WorkgroupConnectionDto
+from sailpoint.governance_groups.models.workgroup_delete_item import WorkgroupDeleteItem
+from sailpoint.governance_groups.models.workgroup_dto import WorkgroupDto
+from sailpoint.governance_groups.models.workgroup_member_add_item import WorkgroupMemberAddItem
+from sailpoint.governance_groups.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 
 from sailpoint.governance_groups.api_client import ApiClient, RequestSerialized
 from sailpoint.governance_groups.api_response import ApiResponse
@@ -50,7 +50,7 @@ class GovernanceGroupsApi:
     @validate_call
     def create_workgroup_v1(
         self,
-        workgroupdto: Workgroupdto,
+        workgroup_dto: WorkgroupDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,13 +63,13 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workgroupdto:
+    ) -> WorkgroupDto:
         """Create a new governance group.
 
         This API creates a new Governance Group.
 
-        :param workgroupdto: (required)
-        :type workgroupdto: Workgroupdto
+        :param workgroup_dto: (required)
+        :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,7 +93,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_v1_serialize(
-            workgroupdto=workgroupdto,
+            workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,12 +101,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -122,7 +122,7 @@ class GovernanceGroupsApi:
     @validate_call
     def create_workgroup_v1_with_http_info(
         self,
-        workgroupdto: Workgroupdto,
+        workgroup_dto: WorkgroupDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,13 +135,13 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workgroupdto]:
+    ) -> ApiResponse[WorkgroupDto]:
         """Create a new governance group.
 
         This API creates a new Governance Group.
 
-        :param workgroupdto: (required)
-        :type workgroupdto: Workgroupdto
+        :param workgroup_dto: (required)
+        :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,7 +165,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_v1_serialize(
-            workgroupdto=workgroupdto,
+            workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,12 +173,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -194,7 +194,7 @@ class GovernanceGroupsApi:
     @validate_call
     def create_workgroup_v1_without_preload_content(
         self,
-        workgroupdto: Workgroupdto,
+        workgroup_dto: WorkgroupDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,8 +212,8 @@ class GovernanceGroupsApi:
 
         This API creates a new Governance Group.
 
-        :param workgroupdto: (required)
-        :type workgroupdto: Workgroupdto
+        :param workgroup_dto: (required)
+        :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,7 +237,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_v1_serialize(
-            workgroupdto=workgroupdto,
+            workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -245,12 +245,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -261,7 +261,7 @@ class GovernanceGroupsApi:
 
     def _create_workgroup_v1_serialize(
         self,
-        workgroupdto,
+        workgroup_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -287,8 +287,8 @@ class GovernanceGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if workgroupdto is not None:
-            _body_params = workgroupdto
+        if workgroup_dto is not None:
+            _body_params = workgroup_dto
 
 
         # set the HTTP header `Accept`
@@ -339,7 +339,7 @@ class GovernanceGroupsApi:
     def delete_workgroup_members_v1(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -352,15 +352,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workgroupmemberdeleteitem]:
+    ) -> List[WorkgroupMemberDeleteItem]:
         """Remove members from governance group
 
         This API removes one or more  members from a Governance Group.  A >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be removed from  a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be removed from  a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -385,7 +385,7 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -393,12 +393,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -415,7 +415,7 @@ class GovernanceGroupsApi:
     def delete_workgroup_members_v1_with_http_info(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -428,15 +428,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workgroupmemberdeleteitem]]:
+    ) -> ApiResponse[List[WorkgroupMemberDeleteItem]]:
         """Remove members from governance group
 
         This API removes one or more  members from a Governance Group.  A >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be removed from  a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be removed from  a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,7 +461,7 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -469,12 +469,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -491,7 +491,7 @@ class GovernanceGroupsApi:
     def delete_workgroup_members_v1_without_preload_content(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be removed from  a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,8 +511,8 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be removed from  a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be removed from  a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -537,7 +537,7 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -545,12 +545,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -562,7 +562,7 @@ class GovernanceGroupsApi:
     def _delete_workgroup_members_v1_serialize(
         self,
         workgroup_id,
-        bulkworkgroupmembersrequest_inner,
+        bulk_workgroup_members_request_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -572,7 +572,7 @@ class GovernanceGroupsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'BulkworkgroupmembersrequestInner': '',
+            'BulkWorkgroupMembersRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -591,8 +591,8 @@ class GovernanceGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkworkgroupmembersrequest_inner is not None:
-            _body_params = bulkworkgroupmembersrequest_inner
+        if bulk_workgroup_members_request_inner is not None:
+            _body_params = bulk_workgroup_members_request_inner
 
 
         # set the HTTP header `Accept`
@@ -694,11 +694,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -766,11 +766,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -838,11 +838,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -917,7 +917,7 @@ class GovernanceGroupsApi:
     @validate_call
     def delete_workgroups_in_bulk_v1(
         self,
-        workgroupbulkdeleterequest: Workgroupbulkdeleterequest,
+        workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,13 +930,13 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workgroupdeleteitem]:
+    ) -> List[WorkgroupDeleteItem]:
         """Delete governance group(s)
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param workgroupbulkdeleterequest: (required)
-        :type workgroupbulkdeleterequest: Workgroupbulkdeleterequest
+        :param workgroup_bulk_delete_request: (required)
+        :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,7 +960,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_v1_serialize(
-            workgroupbulkdeleterequest=workgroupbulkdeleterequest,
+            workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -968,12 +968,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -989,7 +989,7 @@ class GovernanceGroupsApi:
     @validate_call
     def delete_workgroups_in_bulk_v1_with_http_info(
         self,
-        workgroupbulkdeleterequest: Workgroupbulkdeleterequest,
+        workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1002,13 +1002,13 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workgroupdeleteitem]]:
+    ) -> ApiResponse[List[WorkgroupDeleteItem]]:
         """Delete governance group(s)
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param workgroupbulkdeleterequest: (required)
-        :type workgroupbulkdeleterequest: Workgroupbulkdeleterequest
+        :param workgroup_bulk_delete_request: (required)
+        :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1032,7 +1032,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_v1_serialize(
-            workgroupbulkdeleterequest=workgroupbulkdeleterequest,
+            workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1040,12 +1040,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1061,7 +1061,7 @@ class GovernanceGroupsApi:
     @validate_call
     def delete_workgroups_in_bulk_v1_without_preload_content(
         self,
-        workgroupbulkdeleterequest: Workgroupbulkdeleterequest,
+        workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1079,8 +1079,8 @@ class GovernanceGroupsApi:
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param workgroupbulkdeleterequest: (required)
-        :type workgroupbulkdeleterequest: Workgroupbulkdeleterequest
+        :param workgroup_bulk_delete_request: (required)
+        :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1104,7 +1104,7 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_v1_serialize(
-            workgroupbulkdeleterequest=workgroupbulkdeleterequest,
+            workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1112,12 +1112,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupdeleteitem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupDeleteItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1128,7 +1128,7 @@ class GovernanceGroupsApi:
 
     def _delete_workgroups_in_bulk_v1_serialize(
         self,
-        workgroupbulkdeleterequest,
+        workgroup_bulk_delete_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1154,8 +1154,8 @@ class GovernanceGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if workgroupbulkdeleterequest is not None:
-            _body_params = workgroupbulkdeleterequest
+        if workgroup_bulk_delete_request is not None:
+            _body_params = workgroup_bulk_delete_request
 
 
         # set the HTTP header `Accept`
@@ -1218,7 +1218,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workgroupdto:
+    ) -> WorkgroupDto:
         """Get governance group by id
 
         This API returns a Governance Groups by its ID.
@@ -1256,12 +1256,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1290,7 +1290,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workgroupdto]:
+    ) -> ApiResponse[WorkgroupDto]:
         """Get governance group by id
 
         This API returns a Governance Groups by its ID.
@@ -1328,12 +1328,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1400,12 +1400,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1497,7 +1497,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workgroupconnectiondto]:
+    ) -> List[WorkgroupConnectionDto]:
         """List connections for governance group
 
         This API returns list of connections associated with a Governance Group.
@@ -1547,12 +1547,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupconnectiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupConnectionDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1585,7 +1585,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workgroupconnectiondto]]:
+    ) -> ApiResponse[List[WorkgroupConnectionDto]]:
         """List connections for governance group
 
         This API returns list of connections associated with a Governance Group.
@@ -1635,12 +1635,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupconnectiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupConnectionDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1723,12 +1723,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupconnectiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupConnectionDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1891,11 +1891,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListWorkgroupMembersV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1979,11 +1979,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListWorkgroupMembersV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2067,11 +2067,11 @@ class GovernanceGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListWorkgroupMembersV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2183,7 +2183,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workgroupdto]:
+    ) -> List[WorkgroupDto]:
         """List governance groups
 
         This API returns list of Governance Groups
@@ -2233,12 +2233,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupdto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2271,7 +2271,7 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workgroupdto]]:
+    ) -> ApiResponse[List[WorkgroupDto]]:
         """List governance groups
 
         This API returns list of Governance Groups
@@ -2321,12 +2321,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupdto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2409,12 +2409,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workgroupdto]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkgroupDto]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2512,7 +2512,7 @@ class GovernanceGroupsApi:
     def patch_workgroup_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2525,15 +2525,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workgroupdto:
+    ) -> WorkgroupDto:
         """Patch a governance group
 
         This API updates an existing governance group by ID. The following fields and objects are patchable: * name * description * owner
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2558,7 +2558,7 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2566,12 +2566,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2588,7 +2588,7 @@ class GovernanceGroupsApi:
     def patch_workgroup_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2601,15 +2601,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workgroupdto]:
+    ) -> ApiResponse[WorkgroupDto]:
         """Patch a governance group
 
         This API updates an existing governance group by ID. The following fields and objects are patchable: * name * description * owner
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2634,7 +2634,7 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2642,12 +2642,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2664,7 +2664,7 @@ class GovernanceGroupsApi:
     def patch_workgroup_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2684,8 +2684,8 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2710,7 +2710,7 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2718,12 +2718,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workgroupdto",
-            '400': "Errorresponsedto",
+            '200': "WorkgroupDto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2735,7 +2735,7 @@ class GovernanceGroupsApi:
     def _patch_workgroup_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2745,7 +2745,7 @@ class GovernanceGroupsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2764,8 +2764,8 @@ class GovernanceGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2816,7 +2816,7 @@ class GovernanceGroupsApi:
     def update_workgroup_members_v1(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2829,15 +2829,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workgroupmemberadditem]:
+    ) -> List[WorkgroupMemberAddItem]:
         """Add members to governance group
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be added to a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be added to a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2862,7 +2862,7 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2870,12 +2870,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberadditem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberAddItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2892,7 +2892,7 @@ class GovernanceGroupsApi:
     def update_workgroup_members_v1_with_http_info(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2905,15 +2905,15 @@ class GovernanceGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workgroupmemberadditem]]:
+    ) -> ApiResponse[List[WorkgroupMemberAddItem]]:
         """Add members to governance group
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be added to a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be added to a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2938,7 +2938,7 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2946,12 +2946,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberadditem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberAddItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2968,7 +2968,7 @@ class GovernanceGroupsApi:
     def update_workgroup_members_v1_without_preload_content(
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
-        bulkworkgroupmembersrequest_inner: Annotated[List[BulkworkgroupmembersrequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
+        bulk_workgroup_members_request_inner: Annotated[List[BulkWorkgroupMembersRequestInner], Field(description="List of identities to be added to a Governance Group members list.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2988,8 +2988,8 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param bulkworkgroupmembersrequest_inner: List of identities to be added to a Governance Group members list. (required)
-        :type bulkworkgroupmembersrequest_inner: List[BulkworkgroupmembersrequestInner]
+        :param bulk_workgroup_members_request_inner: List of identities to be added to a Governance Group members list. (required)
+        :type bulk_workgroup_members_request_inner: List[BulkWorkgroupMembersRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3014,7 +3014,7 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_v1_serialize(
             workgroup_id=workgroup_id,
-            bulkworkgroupmembersrequest_inner=bulkworkgroupmembersrequest_inner,
+            bulk_workgroup_members_request_inner=bulk_workgroup_members_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3022,12 +3022,12 @@ class GovernanceGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Workgroupmemberadditem]",
-            '400': "Errorresponsedto",
+            '207': "List[WorkgroupMemberAddItem]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkgroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkgroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3039,7 +3039,7 @@ class GovernanceGroupsApi:
     def _update_workgroup_members_v1_serialize(
         self,
         workgroup_id,
-        bulkworkgroupmembersrequest_inner,
+        bulk_workgroup_members_request_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -3049,7 +3049,7 @@ class GovernanceGroupsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'BulkworkgroupmembersrequestInner': '',
+            'BulkWorkgroupMembersRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3068,8 +3068,8 @@ class GovernanceGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkworkgroupmembersrequest_inner is not None:
-            _body_params = bulkworkgroupmembersrequest_inner
+        if bulk_workgroup_members_request_inner is not None:
+            _body_params = bulk_workgroup_members_request_inner
 
 
         # set the HTTP header `Accept`

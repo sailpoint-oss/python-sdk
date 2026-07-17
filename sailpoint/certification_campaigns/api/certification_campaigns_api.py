@@ -19,22 +19,22 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.certification_campaigns.models.activatecampaignoptions import Activatecampaignoptions
-from sailpoint.certification_campaigns.models.adminreviewreassign import Adminreviewreassign
+from sailpoint.certification_campaigns.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.certification_campaigns.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.certification_campaigns.models.campaign2 import Campaign2
-from sailpoint.certification_campaigns.models.campaigncompleteoptions import Campaigncompleteoptions
-from sailpoint.certification_campaigns.models.campaignreference import Campaignreference
-from sailpoint.certification_campaigns.models.campaignreport import Campaignreport
-from sailpoint.certification_campaigns.models.campaignreportsconfig import Campaignreportsconfig
-from sailpoint.certification_campaigns.models.campaignsdeleterequest import Campaignsdeleterequest
-from sailpoint.certification_campaigns.models.campaigntemplate import Campaigntemplate
-from sailpoint.certification_campaigns.models.certificationtask import Certificationtask
+from sailpoint.certification_campaigns.models.campaign_complete_options import CampaignCompleteOptions
+from sailpoint.certification_campaigns.models.campaign_reference import CampaignReference
+from sailpoint.certification_campaigns.models.campaign_report import CampaignReport
+from sailpoint.certification_campaigns.models.campaign_reports_config import CampaignReportsConfig
+from sailpoint.certification_campaigns.models.campaign_template import CampaignTemplate
+from sailpoint.certification_campaigns.models.campaigns_delete_request import CampaignsDeleteRequest
+from sailpoint.certification_campaigns.models.certification_task import CertificationTask
 from sailpoint.certification_campaigns.models.get_active_campaigns_v1200_response_inner import GetActiveCampaignsV1200ResponseInner
 from sailpoint.certification_campaigns.models.get_campaign_v1200_response import GetCampaignV1200Response
-from sailpoint.certification_campaigns.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.certification_campaigns.models.reporttype import Reporttype
+from sailpoint.certification_campaigns.models.json_patch_operation import JsonPatchOperation
+from sailpoint.certification_campaigns.models.report_type import ReportType
 from sailpoint.certification_campaigns.models.schedule2 import Schedule2
-from sailpoint.certification_campaigns.models.slimcampaign import Slimcampaign
+from sailpoint.certification_campaigns.models.slim_campaign import SlimCampaign
 
 from sailpoint.certification_campaigns.api_client import ApiClient, RequestSerialized
 from sailpoint.certification_campaigns.api_response import ApiResponse
@@ -58,7 +58,7 @@ class CertificationCampaignsApi:
     def complete_campaign_v1(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        campaigncompleteoptions: Annotated[Optional[Campaigncompleteoptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
+        campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -78,8 +78,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param campaigncompleteoptions: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
-        :type campaigncompleteoptions: Campaigncompleteoptions
+        :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
+        :type campaign_complete_options: CampaignCompleteOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,7 +104,7 @@ class CertificationCampaignsApi:
 
         _param = self._complete_campaign_v1_serialize(
             id=id,
-            campaigncompleteoptions=campaigncompleteoptions,
+            campaign_complete_options=campaign_complete_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,12 +113,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -135,7 +135,7 @@ class CertificationCampaignsApi:
     def complete_campaign_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        campaigncompleteoptions: Annotated[Optional[Campaigncompleteoptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
+        campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -155,8 +155,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param campaigncompleteoptions: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
-        :type campaigncompleteoptions: Campaigncompleteoptions
+        :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
+        :type campaign_complete_options: CampaignCompleteOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -181,7 +181,7 @@ class CertificationCampaignsApi:
 
         _param = self._complete_campaign_v1_serialize(
             id=id,
-            campaigncompleteoptions=campaigncompleteoptions,
+            campaign_complete_options=campaign_complete_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,12 +190,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -212,7 +212,7 @@ class CertificationCampaignsApi:
     def complete_campaign_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        campaigncompleteoptions: Annotated[Optional[Campaigncompleteoptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
+        campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -232,8 +232,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param campaigncompleteoptions: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
-        :type campaigncompleteoptions: Campaigncompleteoptions
+        :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
+        :type campaign_complete_options: CampaignCompleteOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -258,7 +258,7 @@ class CertificationCampaignsApi:
 
         _param = self._complete_campaign_v1_serialize(
             id=id,
-            campaigncompleteoptions=campaigncompleteoptions,
+            campaign_complete_options=campaign_complete_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,12 +267,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -284,7 +284,7 @@ class CertificationCampaignsApi:
     def _complete_campaign_v1_serialize(
         self,
         id,
-        campaigncompleteoptions,
+        campaign_complete_options,
         _request_auth,
         _content_type,
         _headers,
@@ -312,8 +312,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaigncompleteoptions is not None:
-            _body_params = campaigncompleteoptions
+        if campaign_complete_options is not None:
+            _body_params = campaign_complete_options
 
 
         # set the HTTP header `Accept`
@@ -363,7 +363,7 @@ class CertificationCampaignsApi:
     @validate_call
     def create_campaign_template_v1(
         self,
-        campaigntemplate: Campaigntemplate,
+        campaign_template: CampaignTemplate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -376,13 +376,13 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaigntemplate:
+    ) -> CampaignTemplate:
         """Create a campaign template
 
         Use this API to create a certification campaign template based on campaign. 
 
-        :param campaigntemplate: (required)
-        :type campaigntemplate: Campaigntemplate
+        :param campaign_template: (required)
+        :type campaign_template: CampaignTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -406,7 +406,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._create_campaign_template_v1_serialize(
-            campaigntemplate=campaigntemplate,
+            campaign_template=campaign_template,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -414,12 +414,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -435,7 +435,7 @@ class CertificationCampaignsApi:
     @validate_call
     def create_campaign_template_v1_with_http_info(
         self,
-        campaigntemplate: Campaigntemplate,
+        campaign_template: CampaignTemplate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -448,13 +448,13 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaigntemplate]:
+    ) -> ApiResponse[CampaignTemplate]:
         """Create a campaign template
 
         Use this API to create a certification campaign template based on campaign. 
 
-        :param campaigntemplate: (required)
-        :type campaigntemplate: Campaigntemplate
+        :param campaign_template: (required)
+        :type campaign_template: CampaignTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -478,7 +478,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._create_campaign_template_v1_serialize(
-            campaigntemplate=campaigntemplate,
+            campaign_template=campaign_template,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -486,12 +486,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,7 +507,7 @@ class CertificationCampaignsApi:
     @validate_call
     def create_campaign_template_v1_without_preload_content(
         self,
-        campaigntemplate: Campaigntemplate,
+        campaign_template: CampaignTemplate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -525,8 +525,8 @@ class CertificationCampaignsApi:
 
         Use this API to create a certification campaign template based on campaign. 
 
-        :param campaigntemplate: (required)
-        :type campaigntemplate: Campaigntemplate
+        :param campaign_template: (required)
+        :type campaign_template: CampaignTemplate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -550,7 +550,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._create_campaign_template_v1_serialize(
-            campaigntemplate=campaigntemplate,
+            campaign_template=campaign_template,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -558,12 +558,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +574,7 @@ class CertificationCampaignsApi:
 
     def _create_campaign_template_v1_serialize(
         self,
-        campaigntemplate,
+        campaign_template,
         _request_auth,
         _content_type,
         _headers,
@@ -600,8 +600,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaigntemplate is not None:
-            _body_params = campaigntemplate
+        if campaign_template is not None:
+            _body_params = campaign_template
 
 
         # set the HTTP header `Accept`
@@ -703,11 +703,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Campaign2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -775,11 +775,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Campaign2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -847,11 +847,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Campaign2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -991,12 +991,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1064,12 +1064,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1137,12 +1137,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1269,12 +1269,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1342,12 +1342,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1415,12 +1415,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1495,7 +1495,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_v1(
         self,
-        campaignsdeleterequest: Annotated[Campaignsdeleterequest, Field(description="IDs of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1513,8 +1513,8 @@ class CertificationCampaignsApi:
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
-        :param campaignsdeleterequest: IDs of the campaigns to delete. (required)
-        :type campaignsdeleterequest: Campaignsdeleterequest
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
+        :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1538,7 +1538,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._delete_campaigns_v1_serialize(
-            campaignsdeleterequest=campaignsdeleterequest,
+            campaigns_delete_request=campaigns_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1547,12 +1547,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1568,7 +1568,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_v1_with_http_info(
         self,
-        campaignsdeleterequest: Annotated[Campaignsdeleterequest, Field(description="IDs of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1586,8 +1586,8 @@ class CertificationCampaignsApi:
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
-        :param campaignsdeleterequest: IDs of the campaigns to delete. (required)
-        :type campaignsdeleterequest: Campaignsdeleterequest
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
+        :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1611,7 +1611,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._delete_campaigns_v1_serialize(
-            campaignsdeleterequest=campaignsdeleterequest,
+            campaigns_delete_request=campaigns_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1620,12 +1620,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1641,7 +1641,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_v1_without_preload_content(
         self,
-        campaignsdeleterequest: Annotated[Campaignsdeleterequest, Field(description="IDs of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1659,8 +1659,8 @@ class CertificationCampaignsApi:
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
-        :param campaignsdeleterequest: IDs of the campaigns to delete. (required)
-        :type campaignsdeleterequest: Campaignsdeleterequest
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
+        :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1684,7 +1684,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._delete_campaigns_v1_serialize(
-            campaignsdeleterequest=campaignsdeleterequest,
+            campaigns_delete_request=campaigns_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1693,12 +1693,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1709,7 +1709,7 @@ class CertificationCampaignsApi:
 
     def _delete_campaigns_v1_serialize(
         self,
-        campaignsdeleterequest,
+        campaigns_delete_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1735,8 +1735,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaignsdeleterequest is not None:
-            _body_params = campaignsdeleterequest
+        if campaigns_delete_request is not None:
+            _body_params = campaigns_delete_request
 
 
         # set the HTTP header `Accept`
@@ -1858,11 +1858,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaignsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1950,11 +1950,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaignsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2042,11 +2042,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaignsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2160,7 +2160,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignreportsconfig:
+    ) -> CampaignReportsConfig:
         """Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  
@@ -2195,12 +2195,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2228,7 +2228,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignreportsconfig]:
+    ) -> ApiResponse[CampaignReportsConfig]:
         """Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  
@@ -2263,12 +2263,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2331,12 +2331,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2421,7 +2421,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Campaignreport]:
+    ) -> List[CampaignReport]:
         """Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. 
@@ -2459,13 +2459,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaignreport]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignReport]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2494,7 +2494,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Campaignreport]]:
+    ) -> ApiResponse[List[CampaignReport]]:
         """Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. 
@@ -2532,13 +2532,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaignreport]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignReport]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2605,13 +2605,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaignreport]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignReport]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2738,12 +2738,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2811,12 +2811,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2884,12 +2884,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2977,7 +2977,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaigntemplate:
+    ) -> CampaignTemplate:
         """Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. 
@@ -3015,13 +3015,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3050,7 +3050,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaigntemplate]:
+    ) -> ApiResponse[CampaignTemplate]:
         """Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. 
@@ -3088,13 +3088,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3161,13 +3161,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3259,7 +3259,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Campaigntemplate]:
+    ) -> List[CampaignTemplate]:
         """List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.  The API returns all campaign templates matching the query parameters.  
@@ -3309,12 +3309,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaigntemplate]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignTemplate]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3347,7 +3347,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Campaigntemplate]]:
+    ) -> ApiResponse[List[CampaignTemplate]]:
         """List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.  The API returns all campaign templates matching the query parameters.  
@@ -3397,12 +3397,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaigntemplate]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignTemplate]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3485,12 +3485,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Campaigntemplate]",
-            '400': "Errorresponsedto",
+            '200': "List[CampaignTemplate]",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3643,12 +3643,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetCampaignV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3720,12 +3720,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetCampaignV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3797,12 +3797,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetCampaignV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3883,7 +3883,7 @@ class CertificationCampaignsApi:
     def move_v1(
         self,
         id: Annotated[StrictStr, Field(description="The certification campaign ID")],
-        adminreviewreassign: Adminreviewreassign,
+        admin_review_reassign: AdminReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3896,15 +3896,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Certificationtask:
+    ) -> CertificationTask:
         """Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.     
 
         :param id: The certification campaign ID (required)
         :type id: str
-        :param adminreviewreassign: (required)
-        :type adminreviewreassign: Adminreviewreassign
+        :param admin_review_reassign: (required)
+        :type admin_review_reassign: AdminReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3929,7 +3929,7 @@ class CertificationCampaignsApi:
 
         _param = self._move_v1_serialize(
             id=id,
-            adminreviewreassign=adminreviewreassign,
+            admin_review_reassign=admin_review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3937,13 +3937,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Certificationtask",
-            '400': "Errorresponsedto",
+            '202': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3960,7 +3960,7 @@ class CertificationCampaignsApi:
     def move_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The certification campaign ID")],
-        adminreviewreassign: Adminreviewreassign,
+        admin_review_reassign: AdminReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3973,15 +3973,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Certificationtask]:
+    ) -> ApiResponse[CertificationTask]:
         """Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.     
 
         :param id: The certification campaign ID (required)
         :type id: str
-        :param adminreviewreassign: (required)
-        :type adminreviewreassign: Adminreviewreassign
+        :param admin_review_reassign: (required)
+        :type admin_review_reassign: AdminReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4006,7 +4006,7 @@ class CertificationCampaignsApi:
 
         _param = self._move_v1_serialize(
             id=id,
-            adminreviewreassign=adminreviewreassign,
+            admin_review_reassign=admin_review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4014,13 +4014,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Certificationtask",
-            '400': "Errorresponsedto",
+            '202': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4037,7 +4037,7 @@ class CertificationCampaignsApi:
     def move_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The certification campaign ID")],
-        adminreviewreassign: Adminreviewreassign,
+        admin_review_reassign: AdminReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4057,8 +4057,8 @@ class CertificationCampaignsApi:
 
         :param id: The certification campaign ID (required)
         :type id: str
-        :param adminreviewreassign: (required)
-        :type adminreviewreassign: Adminreviewreassign
+        :param admin_review_reassign: (required)
+        :type admin_review_reassign: AdminReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4083,7 +4083,7 @@ class CertificationCampaignsApi:
 
         _param = self._move_v1_serialize(
             id=id,
-            adminreviewreassign=adminreviewreassign,
+            admin_review_reassign=admin_review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4091,13 +4091,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Certificationtask",
-            '400': "Errorresponsedto",
+            '202': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4109,7 +4109,7 @@ class CertificationCampaignsApi:
     def _move_v1_serialize(
         self,
         id,
-        adminreviewreassign,
+        admin_review_reassign,
         _request_auth,
         _content_type,
         _headers,
@@ -4137,8 +4137,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if adminreviewreassign is not None:
-            _body_params = adminreviewreassign
+        if admin_review_reassign is not None:
+            _body_params = admin_review_reassign
 
 
         # set the HTTP header `Accept`
@@ -4189,7 +4189,7 @@ class CertificationCampaignsApi:
     def patch_campaign_template_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4202,15 +4202,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaigntemplate:
+    ) -> CampaignTemplate:
         """Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4235,7 +4235,7 @@ class CertificationCampaignsApi:
 
         _param = self._patch_campaign_template_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4243,13 +4243,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4266,7 +4266,7 @@ class CertificationCampaignsApi:
     def patch_campaign_template_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4279,15 +4279,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaigntemplate]:
+    ) -> ApiResponse[CampaignTemplate]:
         """Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4312,7 +4312,7 @@ class CertificationCampaignsApi:
 
         _param = self._patch_campaign_template_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4320,13 +4320,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4343,7 +4343,7 @@ class CertificationCampaignsApi:
     def patch_campaign_template_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4363,8 +4363,8 @@ class CertificationCampaignsApi:
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4389,7 +4389,7 @@ class CertificationCampaignsApi:
 
         _param = self._patch_campaign_template_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4397,13 +4397,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaigntemplate",
-            '400': "Errorresponsedto",
+            '200': "CampaignTemplate",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4415,7 +4415,7 @@ class CertificationCampaignsApi:
     def _patch_campaign_template_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -4425,7 +4425,7 @@ class CertificationCampaignsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4444,8 +4444,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -4495,7 +4495,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_v1(
         self,
-        campaignreportsconfig: Annotated[Campaignreportsconfig, Field(description="Campaign report configuration.")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4508,13 +4508,13 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignreportsconfig:
+    ) -> CampaignReportsConfig:
         """Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports.  
 
-        :param campaignreportsconfig: Campaign report configuration. (required)
-        :type campaignreportsconfig: Campaignreportsconfig
+        :param campaign_reports_config: Campaign report configuration. (required)
+        :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4538,7 +4538,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._set_campaign_reports_config_v1_serialize(
-            campaignreportsconfig=campaignreportsconfig,
+            campaign_reports_config=campaign_reports_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4546,12 +4546,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4567,7 +4567,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_v1_with_http_info(
         self,
-        campaignreportsconfig: Annotated[Campaignreportsconfig, Field(description="Campaign report configuration.")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4580,13 +4580,13 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignreportsconfig]:
+    ) -> ApiResponse[CampaignReportsConfig]:
         """Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports.  
 
-        :param campaignreportsconfig: Campaign report configuration. (required)
-        :type campaignreportsconfig: Campaignreportsconfig
+        :param campaign_reports_config: Campaign report configuration. (required)
+        :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4610,7 +4610,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._set_campaign_reports_config_v1_serialize(
-            campaignreportsconfig=campaignreportsconfig,
+            campaign_reports_config=campaign_reports_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4618,12 +4618,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4639,7 +4639,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_v1_without_preload_content(
         self,
-        campaignreportsconfig: Annotated[Campaignreportsconfig, Field(description="Campaign report configuration.")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4657,8 +4657,8 @@ class CertificationCampaignsApi:
 
         Use this API to overwrite the configuration for campaign reports.  
 
-        :param campaignreportsconfig: Campaign report configuration. (required)
-        :type campaignreportsconfig: Campaignreportsconfig
+        :param campaign_reports_config: Campaign report configuration. (required)
+        :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4682,7 +4682,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
 
         _param = self._set_campaign_reports_config_v1_serialize(
-            campaignreportsconfig=campaignreportsconfig,
+            campaign_reports_config=campaign_reports_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4690,12 +4690,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreportsconfig",
-            '400': "Errorresponsedto",
+            '200': "CampaignReportsConfig",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4706,7 +4706,7 @@ class CertificationCampaignsApi:
 
     def _set_campaign_reports_config_v1_serialize(
         self,
-        campaignreportsconfig,
+        campaign_reports_config,
         _request_auth,
         _content_type,
         _headers,
@@ -4732,8 +4732,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaignreportsconfig is not None:
-            _body_params = campaignreportsconfig
+        if campaign_reports_config is not None:
+            _body_params = campaign_reports_config
 
 
         # set the HTTP header `Accept`
@@ -4839,12 +4839,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4916,12 +4916,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4993,12 +4993,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5141,12 +5141,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5214,12 +5214,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5287,12 +5287,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5368,7 +5368,7 @@ class CertificationCampaignsApi:
     def start_campaign_report_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
-        type: Annotated[Reporttype, Field(description="Type of the report to run.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5389,7 +5389,7 @@ class CertificationCampaignsApi:
         :param id: ID of the campaign the report is being run for. (required)
         :type id: str
         :param type: Type of the report to run. (required)
-        :type type: Reporttype
+        :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5423,12 +5423,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5445,7 +5445,7 @@ class CertificationCampaignsApi:
     def start_campaign_report_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
-        type: Annotated[Reporttype, Field(description="Type of the report to run.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5466,7 +5466,7 @@ class CertificationCampaignsApi:
         :param id: ID of the campaign the report is being run for. (required)
         :type id: str
         :param type: Type of the report to run. (required)
-        :type type: Reporttype
+        :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5500,12 +5500,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5522,7 +5522,7 @@ class CertificationCampaignsApi:
     def start_campaign_report_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
-        type: Annotated[Reporttype, Field(description="Type of the report to run.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5543,7 +5543,7 @@ class CertificationCampaignsApi:
         :param id: ID of the campaign the report is being run for. (required)
         :type id: str
         :param type: Type of the report to run. (required)
-        :type type: Reporttype
+        :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5577,12 +5577,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5661,7 +5661,7 @@ class CertificationCampaignsApi:
     def start_campaign_v1(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        activatecampaignoptions: Annotated[Optional[Activatecampaignoptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
+        activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5681,8 +5681,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param activatecampaignoptions: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
-        :type activatecampaignoptions: Activatecampaignoptions
+        :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
+        :type activate_campaign_options: ActivateCampaignOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5707,7 +5707,7 @@ class CertificationCampaignsApi:
 
         _param = self._start_campaign_v1_serialize(
             id=id,
-            activatecampaignoptions=activatecampaignoptions,
+            activate_campaign_options=activate_campaign_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5716,12 +5716,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5738,7 +5738,7 @@ class CertificationCampaignsApi:
     def start_campaign_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        activatecampaignoptions: Annotated[Optional[Activatecampaignoptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
+        activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5758,8 +5758,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param activatecampaignoptions: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
-        :type activatecampaignoptions: Activatecampaignoptions
+        :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
+        :type activate_campaign_options: ActivateCampaignOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5784,7 +5784,7 @@ class CertificationCampaignsApi:
 
         _param = self._start_campaign_v1_serialize(
             id=id,
-            activatecampaignoptions=activatecampaignoptions,
+            activate_campaign_options=activate_campaign_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5793,12 +5793,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5815,7 +5815,7 @@ class CertificationCampaignsApi:
     def start_campaign_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Campaign ID.")],
-        activatecampaignoptions: Annotated[Optional[Activatecampaignoptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
+        activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5835,8 +5835,8 @@ class CertificationCampaignsApi:
 
         :param id: Campaign ID. (required)
         :type id: str
-        :param activatecampaignoptions: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
-        :type activatecampaignoptions: Activatecampaignoptions
+        :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
+        :type activate_campaign_options: ActivateCampaignOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5861,7 +5861,7 @@ class CertificationCampaignsApi:
 
         _param = self._start_campaign_v1_serialize(
             id=id,
-            activatecampaignoptions=activatecampaignoptions,
+            activate_campaign_options=activate_campaign_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5870,12 +5870,12 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5887,7 +5887,7 @@ class CertificationCampaignsApi:
     def _start_campaign_v1_serialize(
         self,
         id,
-        activatecampaignoptions,
+        activate_campaign_options,
         _request_auth,
         _content_type,
         _headers,
@@ -5915,8 +5915,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if activatecampaignoptions is not None:
-            _body_params = activatecampaignoptions
+        if activate_campaign_options is not None:
+            _body_params = activate_campaign_options
 
 
         # set the HTTP header `Accept`
@@ -5979,7 +5979,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignreference:
+    ) -> CampaignReference:
         """Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
@@ -6017,12 +6017,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreference",
-            '400': "Errorresponsedto",
+            '200': "CampaignReference",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6051,7 +6051,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignreference]:
+    ) -> ApiResponse[CampaignReference]:
         """Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
@@ -6089,12 +6089,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreference",
-            '400': "Errorresponsedto",
+            '200': "CampaignReference",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6161,12 +6161,12 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignreference",
-            '400': "Errorresponsedto",
+            '200': "CampaignReference",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6242,7 +6242,7 @@ class CertificationCampaignsApi:
     def update_campaign_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6255,15 +6255,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Slimcampaign:
+    ) -> SlimCampaign:
         """Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6288,7 +6288,7 @@ class CertificationCampaignsApi:
 
         _param = self._update_campaign_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6296,13 +6296,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Slimcampaign",
-            '400': "Errorresponsedto",
+            '200': "SlimCampaign",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6319,7 +6319,7 @@ class CertificationCampaignsApi:
     def update_campaign_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6332,15 +6332,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Slimcampaign]:
+    ) -> ApiResponse[SlimCampaign]:
         """Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6365,7 +6365,7 @@ class CertificationCampaignsApi:
 
         _param = self._update_campaign_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6373,13 +6373,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Slimcampaign",
-            '400': "Errorresponsedto",
+            '200': "SlimCampaign",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6396,7 +6396,7 @@ class CertificationCampaignsApi:
     def update_campaign_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6416,8 +6416,8 @@ class CertificationCampaignsApi:
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param jsonpatchoperation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6442,7 +6442,7 @@ class CertificationCampaignsApi:
 
         _param = self._update_campaign_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6450,13 +6450,13 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Slimcampaign",
-            '400': "Errorresponsedto",
+            '200': "SlimCampaign",
+            '400': "ErrorResponseDto",
             '401': "GetActiveCampaignsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetActiveCampaignsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6468,7 +6468,7 @@ class CertificationCampaignsApi:
     def _update_campaign_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -6478,7 +6478,7 @@ class CertificationCampaignsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -6497,8 +6497,8 @@ class CertificationCampaignsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

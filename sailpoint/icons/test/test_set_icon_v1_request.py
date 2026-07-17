@@ -35,11 +35,11 @@ class TestSetIconV1Request(unittest.TestCase):
         model = SetIconV1Request()
         if include_optional:
             return SetIconV1Request(
-                image = '[B@522b2631'
+                image = '[B@3704122f'
             )
         else:
             return SetIconV1Request(
-                image = '[B@522b2631',
+                image = '[B@3704122f',
         )
         """
 

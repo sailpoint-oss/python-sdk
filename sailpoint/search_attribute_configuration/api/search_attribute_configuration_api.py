@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.search_attribute_configuration.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.search_attribute_configuration.models.searchattributeconfig import Searchattributeconfig
+from sailpoint.search_attribute_configuration.models.json_patch_operation import JsonPatchOperation
+from sailpoint.search_attribute_configuration.models.search_attribute_config import SearchAttributeConfig
 
 from sailpoint.search_attribute_configuration.api_client import ApiClient, RequestSerialized
 from sailpoint.search_attribute_configuration.api_response import ApiResponse
@@ -43,7 +43,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def create_search_attribute_config_v1(
         self,
-        searchattributeconfig: Searchattributeconfig,
+        search_attribute_config: SearchAttributeConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -62,8 +62,8 @@ class SearchAttributeConfigurationApi:
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
-        :param searchattributeconfig: (required)
-        :type searchattributeconfig: Searchattributeconfig
+        :param search_attribute_config: (required)
+        :type search_attribute_config: SearchAttributeConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -89,7 +89,7 @@ class SearchAttributeConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_search_attribute_config_v1_serialize(
-            searchattributeconfig=searchattributeconfig,
+            search_attribute_config=search_attribute_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -99,12 +99,12 @@ class SearchAttributeConfigurationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -120,7 +120,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def create_search_attribute_config_v1_with_http_info(
         self,
-        searchattributeconfig: Searchattributeconfig,
+        search_attribute_config: SearchAttributeConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -139,8 +139,8 @@ class SearchAttributeConfigurationApi:
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
-        :param searchattributeconfig: (required)
-        :type searchattributeconfig: Searchattributeconfig
+        :param search_attribute_config: (required)
+        :type search_attribute_config: SearchAttributeConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -166,7 +166,7 @@ class SearchAttributeConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_search_attribute_config_v1_serialize(
-            searchattributeconfig=searchattributeconfig,
+            search_attribute_config=search_attribute_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -176,12 +176,12 @@ class SearchAttributeConfigurationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -197,7 +197,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def create_search_attribute_config_v1_without_preload_content(
         self,
-        searchattributeconfig: Searchattributeconfig,
+        search_attribute_config: SearchAttributeConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -216,8 +216,8 @@ class SearchAttributeConfigurationApi:
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
-        :param searchattributeconfig: (required)
-        :type searchattributeconfig: Searchattributeconfig
+        :param search_attribute_config: (required)
+        :type search_attribute_config: SearchAttributeConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -243,7 +243,7 @@ class SearchAttributeConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_search_attribute_config_v1_serialize(
-            searchattributeconfig=searchattributeconfig,
+            search_attribute_config=search_attribute_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -253,12 +253,12 @@ class SearchAttributeConfigurationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -269,7 +269,7 @@ class SearchAttributeConfigurationApi:
 
     def _create_search_attribute_config_v1_serialize(
         self,
-        searchattributeconfig,
+        search_attribute_config,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -298,8 +298,8 @@ class SearchAttributeConfigurationApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if searchattributeconfig is not None:
-            _body_params = searchattributeconfig
+        if search_attribute_config is not None:
+            _body_params = search_attribute_config
 
 
         # set the HTTP header `Accept`
@@ -406,10 +406,10 @@ class SearchAttributeConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -482,10 +482,10 @@ class SearchAttributeConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -558,10 +558,10 @@ class SearchAttributeConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -654,7 +654,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Searchattributeconfig]:
+    ) -> List[SearchAttributeConfig]:
         """List extended search attributes
 
         Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
@@ -698,12 +698,12 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Searchattributeconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[SearchAttributeConfig]",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -734,7 +734,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Searchattributeconfig]]:
+    ) -> ApiResponse[List[SearchAttributeConfig]]:
         """List extended search attributes
 
         Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
@@ -778,12 +778,12 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Searchattributeconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[SearchAttributeConfig]",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -858,12 +858,12 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Searchattributeconfig]",
-            '400': "Errorresponsedto",
+            '200': "List[SearchAttributeConfig]",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -962,7 +962,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Searchattributeconfig:
+    ) -> SearchAttributeConfig:
         """Get extended search attribute
 
         Get an extended attribute configuration by name.
@@ -1003,13 +1003,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1039,7 +1039,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Searchattributeconfig]:
+    ) -> ApiResponse[SearchAttributeConfig]:
         """Get extended search attribute
 
         Get an extended attribute configuration by name.
@@ -1080,13 +1080,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1157,13 +1157,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1242,7 +1242,7 @@ class SearchAttributeConfigurationApi:
     def patch_search_attribute_config_v1(
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1256,15 +1256,15 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Searchattributeconfig:
+    ) -> SearchAttributeConfig:
         """Update extended search attribute
 
         Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
         :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1291,7 +1291,7 @@ class SearchAttributeConfigurationApi:
 
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1300,13 +1300,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "SearchAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1323,7 +1323,7 @@ class SearchAttributeConfigurationApi:
     def patch_search_attribute_config_v1_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1337,15 +1337,15 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Searchattributeconfig]:
+    ) -> ApiResponse[SearchAttributeConfig]:
         """Update extended search attribute
 
         Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
         :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1372,7 +1372,7 @@ class SearchAttributeConfigurationApi:
 
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1381,13 +1381,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "SearchAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1404,7 +1404,7 @@ class SearchAttributeConfigurationApi:
     def patch_search_attribute_config_v1_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1425,8 +1425,8 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1453,7 +1453,7 @@ class SearchAttributeConfigurationApi:
 
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1462,13 +1462,13 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Searchattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "SearchAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "GetSearchAttributeConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSearchAttributeConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1480,7 +1480,7 @@ class SearchAttributeConfigurationApi:
     def _patch_search_attribute_config_v1_serialize(
         self,
         name,
-        jsonpatchoperation,
+        json_patch_operation,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1491,7 +1491,7 @@ class SearchAttributeConfigurationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1512,8 +1512,8 @@ class SearchAttributeConfigurationApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

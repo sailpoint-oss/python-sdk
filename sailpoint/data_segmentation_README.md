@@ -78,22 +78,22 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [DataSegment](sailpoint/data_segmentation/docs/DataSegment.md)
- - [Dtotype](sailpoint/data_segmentation/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/data_segmentation/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/data_segmentation/docs/Errorresponsedto.md)
+ - [DtoType](sailpoint/data_segmentation/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/data_segmentation/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/data_segmentation/docs/ErrorResponseDto.md)
  - [Expression](sailpoint/data_segmentation/docs/Expression.md)
  - [ExpressionChildrenInner](sailpoint/data_segmentation/docs/ExpressionChildrenInner.md)
  - [GetDataSegmentIdentityMembershipV1401Response](sailpoint/data_segmentation/docs/GetDataSegmentIdentityMembershipV1401Response.md)
  - [GetDataSegmentIdentityMembershipV1429Response](sailpoint/data_segmentation/docs/GetDataSegmentIdentityMembershipV1429Response.md)
- - [Localeorigin](sailpoint/data_segmentation/docs/Localeorigin.md)
- - [Membershiptype](sailpoint/data_segmentation/docs/Membershiptype.md)
+ - [LocaleOrigin](sailpoint/data_segmentation/docs/LocaleOrigin.md)
+ - [MembershipType](sailpoint/data_segmentation/docs/MembershipType.md)
  - [Ref](sailpoint/data_segmentation/docs/Ref.md)
  - [Scope](sailpoint/data_segmentation/docs/Scope.md)
- - [Scopetype](sailpoint/data_segmentation/docs/Scopetype.md)
- - [Scopevisibilitytype](sailpoint/data_segmentation/docs/Scopevisibilitytype.md)
- - [Segmentmembership](sailpoint/data_segmentation/docs/Segmentmembership.md)
+ - [ScopeType](sailpoint/data_segmentation/docs/ScopeType.md)
+ - [ScopeVisibilityType](sailpoint/data_segmentation/docs/ScopeVisibilityType.md)
+ - [SegmentMembership](sailpoint/data_segmentation/docs/SegmentMembership.md)
  - [Value](sailpoint/data_segmentation/docs/Value.md)
- - [Visibilitycriteria](sailpoint/data_segmentation/docs/Visibilitycriteria.md)
+ - [VisibilityCriteria](sailpoint/data_segmentation/docs/VisibilityCriteria.md)
 
 
 <a id="documentation-for-authorization"></a>

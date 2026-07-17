@@ -14,15 +14,15 @@
 
 
 # import models into model package
-from sailpoint.segments.models.errormessagedto import Errormessagedto
-from sailpoint.segments.models.errorresponsedto import Errorresponsedto
+from sailpoint.segments.models.error_message_dto import ErrorMessageDto
+from sailpoint.segments.models.error_response_dto import ErrorResponseDto
 from sailpoint.segments.models.expression import Expression
 from sailpoint.segments.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.segments.models.list_segments_v1401_response import ListSegmentsV1401Response
 from sailpoint.segments.models.list_segments_v1429_response import ListSegmentsV1429Response
-from sailpoint.segments.models.localeorigin import Localeorigin
-from sailpoint.segments.models.ownerreferencesegments import Ownerreferencesegments
+from sailpoint.segments.models.locale_origin import LocaleOrigin
+from sailpoint.segments.models.owner_reference_segments import OwnerReferenceSegments
 from sailpoint.segments.models.segment import Segment
 from sailpoint.segments.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from sailpoint.segments.models.value import Value
-from sailpoint.segments.models.visibilitycriteria import Visibilitycriteria
+from sailpoint.segments.models.visibility_criteria import VisibilityCriteria

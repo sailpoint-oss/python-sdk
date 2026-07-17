@@ -38,17 +38,17 @@ Path   | account_id | **str** | True  | ID of IDN account
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**
 
 ### Return type
-[**List[Accountusage]**](../models/accountusage)
+[**List[AccountUsage]**](../models/account-usage)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Summary of account usage insights for past 12 months. | List[Accountusage] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Summary of account usage insights for past 12 months. | List[AccountUsage] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetUsagesByAccountIdV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetUsagesByAccountIdV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -59,7 +59,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.account_usages.api.account_usages_api import AccountUsagesApi
 from sailpoint.account_usages.api_client import ApiClient
-from sailpoint.account_usages.models.accountusage import Accountusage
+from sailpoint.account_usages.models.account_usage import AccountUsage
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

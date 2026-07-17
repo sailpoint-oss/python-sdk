@@ -47,12 +47,12 @@ configuration = sailpoint.iai_common_access.Configuration(
 with sailpoint.iai_common_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.iai_common_access.IAICommonAccessApi(api_client)
-    commonaccessitemrequest = sailpoint.iai_common_access.Commonaccessitemrequest() # Commonaccessitemrequest | 
+    common_access_item_request = sailpoint.iai_common_access.CommonAccessItemRequest() # CommonAccessItemRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create common access items
-        api_response = api_instance.create_common_access_v1(commonaccessitemrequest, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_common_access_v1(common_access_item_request, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of IAICommonAccessApi->create_common_access_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -73,18 +73,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Commonaccessidstatus](sailpoint/iai_common_access/docs/Commonaccessidstatus.md)
- - [Commonaccessitemaccess](sailpoint/iai_common_access/docs/Commonaccessitemaccess.md)
- - [Commonaccessitemrequest](sailpoint/iai_common_access/docs/Commonaccessitemrequest.md)
- - [Commonaccessitemresponse](sailpoint/iai_common_access/docs/Commonaccessitemresponse.md)
- - [Commonaccessitemstate](sailpoint/iai_common_access/docs/Commonaccessitemstate.md)
- - [Commonaccessresponse](sailpoint/iai_common_access/docs/Commonaccessresponse.md)
- - [Commonaccesstype](sailpoint/iai_common_access/docs/Commonaccesstype.md)
+ - [CommonAccessIDStatus](sailpoint/iai_common_access/docs/CommonAccessIDStatus.md)
+ - [CommonAccessItemAccess](sailpoint/iai_common_access/docs/CommonAccessItemAccess.md)
+ - [CommonAccessItemRequest](sailpoint/iai_common_access/docs/CommonAccessItemRequest.md)
+ - [CommonAccessItemResponse](sailpoint/iai_common_access/docs/CommonAccessItemResponse.md)
+ - [CommonAccessItemState](sailpoint/iai_common_access/docs/CommonAccessItemState.md)
+ - [CommonAccessResponse](sailpoint/iai_common_access/docs/CommonAccessResponse.md)
+ - [CommonAccessType](sailpoint/iai_common_access/docs/CommonAccessType.md)
  - [CreateCommonAccessV1429Response](sailpoint/iai_common_access/docs/CreateCommonAccessV1429Response.md)
- - [Errormessagedto](sailpoint/iai_common_access/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/iai_common_access/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/iai_common_access/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/iai_common_access/docs/ErrorResponseDto.md)
  - [GetCommonAccessV1401Response](sailpoint/iai_common_access/docs/GetCommonAccessV1401Response.md)
- - [Localeorigin](sailpoint/iai_common_access/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/iai_common_access/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

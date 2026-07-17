@@ -32,11 +32,11 @@ from sailpoint.auth_users.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.auth_users.models.array_inner import ArrayInner
-from sailpoint.auth_users.models.authuser import Authuser
-from sailpoint.auth_users.models.errormessagedto import Errormessagedto
-from sailpoint.auth_users.models.errorresponsedto import Errorresponsedto
+from sailpoint.auth_users.models.auth_user import AuthUser
+from sailpoint.auth_users.models.error_message_dto import ErrorMessageDto
+from sailpoint.auth_users.models.error_response_dto import ErrorResponseDto
 from sailpoint.auth_users.models.get_auth_user_v1401_response import GetAuthUserV1401Response
 from sailpoint.auth_users.models.get_auth_user_v1429_response import GetAuthUserV1429Response
-from sailpoint.auth_users.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.auth_users.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.auth_users.models.localeorigin import Localeorigin
+from sailpoint.auth_users.models.json_patch_operation import JsonPatchOperation
+from sailpoint.auth_users.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.auth_users.models.locale_origin import LocaleOrigin

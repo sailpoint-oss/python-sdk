@@ -14,11 +14,11 @@
 
 
 # import models into model package
-from sailpoint.jit_access.models.errormessagedto import Errormessagedto
-from sailpoint.jit_access.models.errorresponsedto import Errorresponsedto
+from sailpoint.jit_access.models.error_message_dto import ErrorMessageDto
+from sailpoint.jit_access.models.error_response_dto import ErrorResponseDto
 from sailpoint.jit_access.models.get_jit_activation_config_v1401_response import GetJitActivationConfigV1401Response
 from sailpoint.jit_access.models.get_jit_activation_config_v1429_response import GetJitActivationConfigV1429Response
-from sailpoint.jit_access.models.jitaccessoperationrequest import Jitaccessoperationrequest
-from sailpoint.jit_access.models.jitaccessoperationrequest_value import JitaccessoperationrequestValue
-from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
-from sailpoint.jit_access.models.localeorigin import Localeorigin
+from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
+from sailpoint.jit_access.models.jit_access_operation_request import JitAccessOperationRequest
+from sailpoint.jit_access.models.jit_access_operation_request_value import JitAccessOperationRequestValue
+from sailpoint.jit_access.models.locale_origin import LocaleOrigin

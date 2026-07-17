@@ -7,13 +7,17 @@
         from sailpoint.transforms.api.transforms_api import TransformsApi
         from sailpoint.transforms.api_client import ApiClient
         from sailpoint.transforms.models.transform import Transform
-        from sailpoint.transforms.models.transformread import Transformread
+        from sailpoint.transforms.models.transform_read import TransformRead
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          transform = '''{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM dd yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}''' # Transform | The transform to be created.
+          transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The transform to be created.
           try:
               # Create transform
               new_transform = Transform.from_json(transform)
@@ -54,7 +58,7 @@
       source: |
         from sailpoint.transforms.api.transforms_api import TransformsApi
         from sailpoint.transforms.api_client import ApiClient
-        from sailpoint.transforms.models.transformread import Transformread
+        from sailpoint.transforms.models.transform_read import TransformRead
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -79,7 +83,7 @@
       source: |
         from sailpoint.transforms.api.transforms_api import TransformsApi
         from sailpoint.transforms.api_client import ApiClient
-        from sailpoint.transforms.models.transformread import Transformread
+        from sailpoint.transforms.models.transform_read import TransformRead
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -110,14 +114,18 @@
         from sailpoint.transforms.api.transforms_api import TransformsApi
         from sailpoint.transforms.api_client import ApiClient
         from sailpoint.transforms.models.transform import Transform
-        from sailpoint.transforms.models.transformread import Transformread
+        from sailpoint.transforms.models.transform_read import TransformRead
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to update # str | ID of the transform to update
-          transform = '''{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM-dd-yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}''' # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+          transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
           try:
               # Update a transform
               

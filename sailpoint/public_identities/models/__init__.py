@@ -14,12 +14,12 @@
 
 
 # import models into model package
-from sailpoint.public_identities.models.dtotype import Dtotype
-from sailpoint.public_identities.models.errormessagedto import Errormessagedto
-from sailpoint.public_identities.models.errorresponsedto import Errorresponsedto
+from sailpoint.public_identities.models.dto_type import DtoType
+from sailpoint.public_identities.models.error_message_dto import ErrorMessageDto
+from sailpoint.public_identities.models.error_response_dto import ErrorResponseDto
 from sailpoint.public_identities.models.get_public_identities_v1401_response import GetPublicIdentitiesV1401Response
 from sailpoint.public_identities.models.get_public_identities_v1429_response import GetPublicIdentitiesV1429Response
-from sailpoint.public_identities.models.identityreference import Identityreference
-from sailpoint.public_identities.models.localeorigin import Localeorigin
-from sailpoint.public_identities.models.publicidentity import Publicidentity
-from sailpoint.public_identities.models.publicidentity_attributes_inner import PublicidentityAttributesInner
+from sailpoint.public_identities.models.identity_reference import IdentityReference
+from sailpoint.public_identities.models.locale_origin import LocaleOrigin
+from sailpoint.public_identities.models.public_identity import PublicIdentity
+from sailpoint.public_identities.models.public_identity_attributes_inner import PublicIdentityAttributesInner

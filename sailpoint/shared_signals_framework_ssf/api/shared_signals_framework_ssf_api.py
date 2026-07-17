@@ -19,17 +19,17 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.shared_signals_framework_ssf.models.createstreamrequest import Createstreamrequest
+from sailpoint.shared_signals_framework_ssf.models.create_stream_request import CreateStreamRequest
 from sailpoint.shared_signals_framework_ssf.models.get_stream_v1200_response import GetStreamV1200Response
-from sailpoint.shared_signals_framework_ssf.models.jwks import Jwks
-from sailpoint.shared_signals_framework_ssf.models.replacestreamconfigurationrequest import Replacestreamconfigurationrequest
-from sailpoint.shared_signals_framework_ssf.models.streamconfigresponse import Streamconfigresponse
-from sailpoint.shared_signals_framework_ssf.models.streamstatusresponse import Streamstatusresponse
-from sailpoint.shared_signals_framework_ssf.models.transmittermetadata import Transmittermetadata
-from sailpoint.shared_signals_framework_ssf.models.updatestreamconfigresponse import Updatestreamconfigresponse
-from sailpoint.shared_signals_framework_ssf.models.updatestreamconfigurationrequest import Updatestreamconfigurationrequest
-from sailpoint.shared_signals_framework_ssf.models.updatestreamstatusrequest import Updatestreamstatusrequest
-from sailpoint.shared_signals_framework_ssf.models.verificationrequest import Verificationrequest
+from sailpoint.shared_signals_framework_ssf.models.jwks import JWKS
+from sailpoint.shared_signals_framework_ssf.models.replace_stream_configuration_request import ReplaceStreamConfigurationRequest
+from sailpoint.shared_signals_framework_ssf.models.stream_config_response import StreamConfigResponse
+from sailpoint.shared_signals_framework_ssf.models.stream_status_response import StreamStatusResponse
+from sailpoint.shared_signals_framework_ssf.models.transmitter_metadata import TransmitterMetadata
+from sailpoint.shared_signals_framework_ssf.models.update_stream_config_response import UpdateStreamConfigResponse
+from sailpoint.shared_signals_framework_ssf.models.update_stream_configuration_request import UpdateStreamConfigurationRequest
+from sailpoint.shared_signals_framework_ssf.models.update_stream_status_request import UpdateStreamStatusRequest
+from sailpoint.shared_signals_framework_ssf.models.verification_request import VerificationRequest
 
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient, RequestSerialized
 from sailpoint.shared_signals_framework_ssf.api_response import ApiResponse
@@ -52,7 +52,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def create_stream_v1(
         self,
-        createstreamrequest: Createstreamrequest,
+        create_stream_request: CreateStreamRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,13 +65,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Streamconfigresponse:
+    ) -> StreamConfigResponse:
         """Create stream
 
         An SSF stream is associated with the client ID of the OAuth 2.0 access token used to create the stream. One SSF stream is allowed for each client ID.  You can create a maximum of 10 SSF stream configurations for one org. 
 
-        :param createstreamrequest: (required)
-        :type createstreamrequest: Createstreamrequest
+        :param create_stream_request: (required)
+        :type create_stream_request: CreateStreamRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,7 +95,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._create_stream_v1_serialize(
-            createstreamrequest=createstreamrequest,
+            create_stream_request=create_stream_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,12 +103,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Streamconfigresponse",
-            '400': "Errorresponsedto",
+            '201': "StreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -124,7 +124,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def create_stream_v1_with_http_info(
         self,
-        createstreamrequest: Createstreamrequest,
+        create_stream_request: CreateStreamRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,13 +137,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Streamconfigresponse]:
+    ) -> ApiResponse[StreamConfigResponse]:
         """Create stream
 
         An SSF stream is associated with the client ID of the OAuth 2.0 access token used to create the stream. One SSF stream is allowed for each client ID.  You can create a maximum of 10 SSF stream configurations for one org. 
 
-        :param createstreamrequest: (required)
-        :type createstreamrequest: Createstreamrequest
+        :param create_stream_request: (required)
+        :type create_stream_request: CreateStreamRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -167,7 +167,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._create_stream_v1_serialize(
-            createstreamrequest=createstreamrequest,
+            create_stream_request=create_stream_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -175,12 +175,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Streamconfigresponse",
-            '400': "Errorresponsedto",
+            '201': "StreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -196,7 +196,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def create_stream_v1_without_preload_content(
         self,
-        createstreamrequest: Createstreamrequest,
+        create_stream_request: CreateStreamRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,8 +214,8 @@ class SharedSignalsFrameworkSSFApi:
 
         An SSF stream is associated with the client ID of the OAuth 2.0 access token used to create the stream. One SSF stream is allowed for each client ID.  You can create a maximum of 10 SSF stream configurations for one org. 
 
-        :param createstreamrequest: (required)
-        :type createstreamrequest: Createstreamrequest
+        :param create_stream_request: (required)
+        :type create_stream_request: CreateStreamRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,7 +239,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._create_stream_v1_serialize(
-            createstreamrequest=createstreamrequest,
+            create_stream_request=create_stream_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,12 +247,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Streamconfigresponse",
-            '400': "Errorresponsedto",
+            '201': "StreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -263,7 +263,7 @@ class SharedSignalsFrameworkSSFApi:
 
     def _create_stream_v1_serialize(
         self,
-        createstreamrequest,
+        create_stream_request,
         _request_auth,
         _content_type,
         _headers,
@@ -289,8 +289,8 @@ class SharedSignalsFrameworkSSFApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if createstreamrequest is not None:
-            _body_params = createstreamrequest
+        if create_stream_request is not None:
+            _body_params = create_stream_request
 
 
         # set the HTTP header `Accept`
@@ -392,12 +392,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -465,12 +465,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -538,12 +538,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -632,7 +632,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jwks:
+    ) -> JWKS:
         """Get JWKS
 
         Returns the transmitter's JSON Web Key Set (JWKS) for verifying signed delivery requests.
@@ -667,12 +667,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jwks",
-            '400': "Errorresponsedto",
+            '200': "JWKS",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -700,7 +700,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jwks]:
+    ) -> ApiResponse[JWKS]:
         """Get JWKS
 
         Returns the transmitter's JSON Web Key Set (JWKS) for verifying signed delivery requests.
@@ -735,12 +735,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jwks",
-            '400': "Errorresponsedto",
+            '200': "JWKS",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -803,12 +803,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jwks",
-            '400': "Errorresponsedto",
+            '200': "JWKS",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -892,7 +892,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Transmittermetadata:
+    ) -> TransmitterMetadata:
         """Get SSF configuration
 
         Returns the SSF transmitter discovery metadata (well-known configuration).
@@ -927,12 +927,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transmittermetadata",
-            '400': "Errorresponsedto",
+            '200': "TransmitterMetadata",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -960,7 +960,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Transmittermetadata]:
+    ) -> ApiResponse[TransmitterMetadata]:
         """Get SSF configuration
 
         Returns the SSF transmitter discovery metadata (well-known configuration).
@@ -995,12 +995,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transmittermetadata",
-            '400': "Errorresponsedto",
+            '200': "TransmitterMetadata",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1063,12 +1063,12 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transmittermetadata",
-            '400': "Errorresponsedto",
+            '200': "TransmitterMetadata",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1153,7 +1153,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Streamstatusresponse:
+    ) -> StreamStatusResponse:
         """Get stream status
 
         Returns the status (enabled, paused, disabled) and optional reason for the stream associated with the client ID of the request's OAuth 2.0 access token. The stream_id query parameter is required.
@@ -1191,13 +1191,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1226,7 +1226,7 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Streamstatusresponse]:
+    ) -> ApiResponse[StreamStatusResponse]:
         """Get stream status
 
         Returns the status (enabled, paused, disabled) and optional reason for the stream associated with the client ID of the request's OAuth 2.0 access token. The stream_id query parameter is required.
@@ -1264,13 +1264,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1337,13 +1337,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1472,12 +1472,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetStreamV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1545,12 +1545,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetStreamV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1618,12 +1618,12 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetStreamV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1700,7 +1700,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def send_stream_verification_v1(
         self,
-        verificationrequest: Verificationrequest,
+        verification_request: VerificationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1718,8 +1718,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Verifies an SSF stream by publishing a verification event requested by a security events provider.
 
-        :param verificationrequest: (required)
-        :type verificationrequest: Verificationrequest
+        :param verification_request: (required)
+        :type verification_request: VerificationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1743,7 +1743,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._send_stream_verification_v1_serialize(
-            verificationrequest=verificationrequest,
+            verification_request=verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1752,11 +1752,11 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1772,7 +1772,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def send_stream_verification_v1_with_http_info(
         self,
-        verificationrequest: Verificationrequest,
+        verification_request: VerificationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1790,8 +1790,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Verifies an SSF stream by publishing a verification event requested by a security events provider.
 
-        :param verificationrequest: (required)
-        :type verificationrequest: Verificationrequest
+        :param verification_request: (required)
+        :type verification_request: VerificationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1815,7 +1815,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._send_stream_verification_v1_serialize(
-            verificationrequest=verificationrequest,
+            verification_request=verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1824,11 +1824,11 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1844,7 +1844,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def send_stream_verification_v1_without_preload_content(
         self,
-        verificationrequest: Verificationrequest,
+        verification_request: VerificationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1862,8 +1862,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Verifies an SSF stream by publishing a verification event requested by a security events provider.
 
-        :param verificationrequest: (required)
-        :type verificationrequest: Verificationrequest
+        :param verification_request: (required)
+        :type verification_request: VerificationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1887,7 +1887,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._send_stream_verification_v1_serialize(
-            verificationrequest=verificationrequest,
+            verification_request=verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1896,11 +1896,11 @@ class SharedSignalsFrameworkSSFApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1911,7 +1911,7 @@ class SharedSignalsFrameworkSSFApi:
 
     def _send_stream_verification_v1_serialize(
         self,
-        verificationrequest,
+        verification_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1937,8 +1937,8 @@ class SharedSignalsFrameworkSSFApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if verificationrequest is not None:
-            _body_params = verificationrequest
+        if verification_request is not None:
+            _body_params = verification_request
 
 
         # set the HTTP header `Accept`
@@ -1988,7 +1988,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def set_stream_configuration_v1(
         self,
-        replacestreamconfigurationrequest: Replacestreamconfigurationrequest,
+        replace_stream_configuration_request: ReplaceStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2001,13 +2001,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatestreamconfigresponse:
+    ) -> UpdateStreamConfigResponse:
         """Replace stream configuration
 
         Replaces a stream's configuration (PUT). stream_id and delivery are required; full receiver-supplied properties.  The associated stream with the client ID (through the request OAuth 2.0 access token) is replaced. 
 
-        :param replacestreamconfigurationrequest: (required)
-        :type replacestreamconfigurationrequest: Replacestreamconfigurationrequest
+        :param replace_stream_configuration_request: (required)
+        :type replace_stream_configuration_request: ReplaceStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2031,7 +2031,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._set_stream_configuration_v1_serialize(
-            replacestreamconfigurationrequest=replacestreamconfigurationrequest,
+            replace_stream_configuration_request=replace_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2039,13 +2039,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2061,7 +2061,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def set_stream_configuration_v1_with_http_info(
         self,
-        replacestreamconfigurationrequest: Replacestreamconfigurationrequest,
+        replace_stream_configuration_request: ReplaceStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2074,13 +2074,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatestreamconfigresponse]:
+    ) -> ApiResponse[UpdateStreamConfigResponse]:
         """Replace stream configuration
 
         Replaces a stream's configuration (PUT). stream_id and delivery are required; full receiver-supplied properties.  The associated stream with the client ID (through the request OAuth 2.0 access token) is replaced. 
 
-        :param replacestreamconfigurationrequest: (required)
-        :type replacestreamconfigurationrequest: Replacestreamconfigurationrequest
+        :param replace_stream_configuration_request: (required)
+        :type replace_stream_configuration_request: ReplaceStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2104,7 +2104,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._set_stream_configuration_v1_serialize(
-            replacestreamconfigurationrequest=replacestreamconfigurationrequest,
+            replace_stream_configuration_request=replace_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2112,13 +2112,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2134,7 +2134,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def set_stream_configuration_v1_without_preload_content(
         self,
-        replacestreamconfigurationrequest: Replacestreamconfigurationrequest,
+        replace_stream_configuration_request: ReplaceStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2152,8 +2152,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Replaces a stream's configuration (PUT). stream_id and delivery are required; full receiver-supplied properties.  The associated stream with the client ID (through the request OAuth 2.0 access token) is replaced. 
 
-        :param replacestreamconfigurationrequest: (required)
-        :type replacestreamconfigurationrequest: Replacestreamconfigurationrequest
+        :param replace_stream_configuration_request: (required)
+        :type replace_stream_configuration_request: ReplaceStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2177,7 +2177,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._set_stream_configuration_v1_serialize(
-            replacestreamconfigurationrequest=replacestreamconfigurationrequest,
+            replace_stream_configuration_request=replace_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2185,13 +2185,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2202,7 +2202,7 @@ class SharedSignalsFrameworkSSFApi:
 
     def _set_stream_configuration_v1_serialize(
         self,
-        replacestreamconfigurationrequest,
+        replace_stream_configuration_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2228,8 +2228,8 @@ class SharedSignalsFrameworkSSFApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if replacestreamconfigurationrequest is not None:
-            _body_params = replacestreamconfigurationrequest
+        if replace_stream_configuration_request is not None:
+            _body_params = replace_stream_configuration_request
 
 
         # set the HTTP header `Accept`
@@ -2279,7 +2279,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_configuration_v1(
         self,
-        updatestreamconfigurationrequest: Updatestreamconfigurationrequest,
+        update_stream_configuration_request: UpdateStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2292,13 +2292,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatestreamconfigresponse:
+    ) -> UpdateStreamConfigResponse:
         """Update stream configuration
 
         Partially updates a stream's configuration (PATCH). Only provided fields are updated.  The associated stream with the client ID (through the request OAuth 2.0 access token) is updated. 
 
-        :param updatestreamconfigurationrequest: (required)
-        :type updatestreamconfigurationrequest: Updatestreamconfigurationrequest
+        :param update_stream_configuration_request: (required)
+        :type update_stream_configuration_request: UpdateStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2322,7 +2322,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_configuration_v1_serialize(
-            updatestreamconfigurationrequest=updatestreamconfigurationrequest,
+            update_stream_configuration_request=update_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2330,13 +2330,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2352,7 +2352,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_configuration_v1_with_http_info(
         self,
-        updatestreamconfigurationrequest: Updatestreamconfigurationrequest,
+        update_stream_configuration_request: UpdateStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2365,13 +2365,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatestreamconfigresponse]:
+    ) -> ApiResponse[UpdateStreamConfigResponse]:
         """Update stream configuration
 
         Partially updates a stream's configuration (PATCH). Only provided fields are updated.  The associated stream with the client ID (through the request OAuth 2.0 access token) is updated. 
 
-        :param updatestreamconfigurationrequest: (required)
-        :type updatestreamconfigurationrequest: Updatestreamconfigurationrequest
+        :param update_stream_configuration_request: (required)
+        :type update_stream_configuration_request: UpdateStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2395,7 +2395,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_configuration_v1_serialize(
-            updatestreamconfigurationrequest=updatestreamconfigurationrequest,
+            update_stream_configuration_request=update_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2403,13 +2403,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2425,7 +2425,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_configuration_v1_without_preload_content(
         self,
-        updatestreamconfigurationrequest: Updatestreamconfigurationrequest,
+        update_stream_configuration_request: UpdateStreamConfigurationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2443,8 +2443,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Partially updates a stream's configuration (PATCH). Only provided fields are updated.  The associated stream with the client ID (through the request OAuth 2.0 access token) is updated. 
 
-        :param updatestreamconfigurationrequest: (required)
-        :type updatestreamconfigurationrequest: Updatestreamconfigurationrequest
+        :param update_stream_configuration_request: (required)
+        :type update_stream_configuration_request: UpdateStreamConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2468,7 +2468,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_configuration_v1_serialize(
-            updatestreamconfigurationrequest=updatestreamconfigurationrequest,
+            update_stream_configuration_request=update_stream_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2476,13 +2476,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatestreamconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "UpdateStreamConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2493,7 +2493,7 @@ class SharedSignalsFrameworkSSFApi:
 
     def _update_stream_configuration_v1_serialize(
         self,
-        updatestreamconfigurationrequest,
+        update_stream_configuration_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2519,8 +2519,8 @@ class SharedSignalsFrameworkSSFApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if updatestreamconfigurationrequest is not None:
-            _body_params = updatestreamconfigurationrequest
+        if update_stream_configuration_request is not None:
+            _body_params = update_stream_configuration_request
 
 
         # set the HTTP header `Accept`
@@ -2570,7 +2570,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_status_v1(
         self,
-        updatestreamstatusrequest: Updatestreamstatusrequest,
+        update_stream_status_request: UpdateStreamStatusRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2583,13 +2583,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Streamstatusresponse:
+    ) -> StreamStatusResponse:
         """Update stream status
 
         Updates the operational status (enabled, paused, disabled) with an optional reason for the stream associated with the client ID of the request's OAuth 2.0 access token.
 
-        :param updatestreamstatusrequest: (required)
-        :type updatestreamstatusrequest: Updatestreamstatusrequest
+        :param update_stream_status_request: (required)
+        :type update_stream_status_request: UpdateStreamStatusRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2613,7 +2613,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_status_v1_serialize(
-            updatestreamstatusrequest=updatestreamstatusrequest,
+            update_stream_status_request=update_stream_status_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2621,13 +2621,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2643,7 +2643,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_status_v1_with_http_info(
         self,
-        updatestreamstatusrequest: Updatestreamstatusrequest,
+        update_stream_status_request: UpdateStreamStatusRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2656,13 +2656,13 @@ class SharedSignalsFrameworkSSFApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Streamstatusresponse]:
+    ) -> ApiResponse[StreamStatusResponse]:
         """Update stream status
 
         Updates the operational status (enabled, paused, disabled) with an optional reason for the stream associated with the client ID of the request's OAuth 2.0 access token.
 
-        :param updatestreamstatusrequest: (required)
-        :type updatestreamstatusrequest: Updatestreamstatusrequest
+        :param update_stream_status_request: (required)
+        :type update_stream_status_request: UpdateStreamStatusRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2686,7 +2686,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_status_v1_serialize(
-            updatestreamstatusrequest=updatestreamstatusrequest,
+            update_stream_status_request=update_stream_status_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2694,13 +2694,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2716,7 +2716,7 @@ class SharedSignalsFrameworkSSFApi:
     @validate_call
     def update_stream_status_v1_without_preload_content(
         self,
-        updatestreamstatusrequest: Updatestreamstatusrequest,
+        update_stream_status_request: UpdateStreamStatusRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2734,8 +2734,8 @@ class SharedSignalsFrameworkSSFApi:
 
         Updates the operational status (enabled, paused, disabled) with an optional reason for the stream associated with the client ID of the request's OAuth 2.0 access token.
 
-        :param updatestreamstatusrequest: (required)
-        :type updatestreamstatusrequest: Updatestreamstatusrequest
+        :param update_stream_status_request: (required)
+        :type update_stream_status_request: UpdateStreamStatusRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2759,7 +2759,7 @@ class SharedSignalsFrameworkSSFApi:
         """ # noqa: E501
 
         _param = self._update_stream_status_v1_serialize(
-            updatestreamstatusrequest=updatestreamstatusrequest,
+            update_stream_status_request=update_stream_status_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2767,13 +2767,13 @@ class SharedSignalsFrameworkSSFApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Streamstatusresponse",
-            '400': "Errorresponsedto",
+            '200': "StreamStatusResponse",
+            '400': "ErrorResponseDto",
             '401': "GetSSFConfigurationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSSFConfigurationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2784,7 +2784,7 @@ class SharedSignalsFrameworkSSFApi:
 
     def _update_stream_status_v1_serialize(
         self,
-        updatestreamstatusrequest,
+        update_stream_status_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2810,8 +2810,8 @@ class SharedSignalsFrameworkSSFApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if updatestreamstatusrequest is not None:
-            _body_params = updatestreamstatusrequest
+        if update_stream_status_request is not None:
+            _body_params = update_stream_status_request
 
 
         # set the HTTP header `Accept`

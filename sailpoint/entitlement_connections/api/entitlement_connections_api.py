@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.entitlement_connections.models.entitlementconnection import Entitlementconnection
-from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateitem import Entitlementconnectionbulkupdateitem
-from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateresultitem import Entitlementconnectionbulkupdateresultitem
-from sailpoint.entitlement_connections.models.entitlementconnectionsearchhit import Entitlementconnectionsearchhit
-from sailpoint.entitlement_connections.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.entitlement_connections.models.entitlement_connection import EntitlementConnection
+from sailpoint.entitlement_connections.models.entitlement_connection_bulk_update_item import EntitlementConnectionBulkUpdateItem
+from sailpoint.entitlement_connections.models.entitlement_connection_bulk_update_result_item import EntitlementConnectionBulkUpdateResultItem
+from sailpoint.entitlement_connections.models.entitlement_connection_search_hit import EntitlementConnectionSearchHit
+from sailpoint.entitlement_connections.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.entitlement_connections.api_client import ApiClient, RequestSerialized
 from sailpoint.entitlement_connections.api_response import ApiResponse
@@ -64,7 +64,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlementconnectionsearchhit]:
+    ) -> List[EntitlementConnectionSearchHit]:
         """List my entitlement connections
 
         Returns entitlement connections constrained to the authenticated identity. This endpoint proxies to Search and supports standard collection query parameters. 
@@ -117,14 +117,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -158,7 +158,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlementconnectionsearchhit]]:
+    ) -> ApiResponse[List[EntitlementConnectionSearchHit]]:
         """List my entitlement connections
 
         Returns entitlement connections constrained to the authenticated identity. This endpoint proxies to Search and supports standard collection query parameters. 
@@ -211,14 +211,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -305,14 +305,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -432,7 +432,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlementconnectionsearchhit]:
+    ) -> List[EntitlementConnectionSearchHit]:
         """List entitlement connections
 
         Returns entitlement connections for the tenant.  This endpoint proxies to Search and supports standard collection query parameters. The `filters` and `sorters` values support the Entitlement Connections search fields documented by ECS. 
@@ -485,14 +485,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -526,7 +526,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlementconnectionsearchhit]]:
+    ) -> ApiResponse[List[EntitlementConnectionSearchHit]]:
         """List entitlement connections
 
         Returns entitlement connections for the tenant.  This endpoint proxies to Search and supports standard collection query parameters. The `filters` and `sorters` values support the Entitlement Connections search fields documented by ECS. 
@@ -579,14 +579,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -673,14 +673,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementconnectionsearchhit]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementConnectionSearchHit]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -783,7 +783,7 @@ class EntitlementConnectionsApi:
     def patch_entitlement_connection_by_id_v1(
         self,
         connection_id: Annotated[StrictStr, Field(description="Connection ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,15 +796,15 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlementconnection:
+    ) -> EntitlementConnection:
         """Update entitlement connection
 
         Applies JSON Patch operations to an entitlement connection selected by `connectionId`. 
 
         :param connection_id: Connection ID (UUID with or without hyphens). (required)
         :type connection_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -829,7 +829,7 @@ class EntitlementConnectionsApi:
 
         _param = self._patch_entitlement_connection_by_id_v1_serialize(
             connection_id=connection_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -837,14 +837,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -861,7 +861,7 @@ class EntitlementConnectionsApi:
     def patch_entitlement_connection_by_id_v1_with_http_info(
         self,
         connection_id: Annotated[StrictStr, Field(description="Connection ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -874,15 +874,15 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlementconnection]:
+    ) -> ApiResponse[EntitlementConnection]:
         """Update entitlement connection
 
         Applies JSON Patch operations to an entitlement connection selected by `connectionId`. 
 
         :param connection_id: Connection ID (UUID with or without hyphens). (required)
         :type connection_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -907,7 +907,7 @@ class EntitlementConnectionsApi:
 
         _param = self._patch_entitlement_connection_by_id_v1_serialize(
             connection_id=connection_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -915,14 +915,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -939,7 +939,7 @@ class EntitlementConnectionsApi:
     def patch_entitlement_connection_by_id_v1_without_preload_content(
         self,
         connection_id: Annotated[StrictStr, Field(description="Connection ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -959,8 +959,8 @@ class EntitlementConnectionsApi:
 
         :param connection_id: Connection ID (UUID with or without hyphens). (required)
         :type connection_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -985,7 +985,7 @@ class EntitlementConnectionsApi:
 
         _param = self._patch_entitlement_connection_by_id_v1_serialize(
             connection_id=connection_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -993,14 +993,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1012,7 +1012,7 @@ class EntitlementConnectionsApi:
     def _patch_entitlement_connection_by_id_v1_serialize(
         self,
         connection_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1022,7 +1022,7 @@ class EntitlementConnectionsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1041,8 +1041,8 @@ class EntitlementConnectionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -1095,7 +1095,7 @@ class EntitlementConnectionsApi:
         entitlement_id: Annotated[StrictStr, Field(description="Entitlement ID (UUID with or without hyphens).")],
         identity_id: Annotated[StrictStr, Field(description="Identity ID (UUID with or without hyphens).")],
         account_id: Annotated[StrictStr, Field(description="Account ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1108,7 +1108,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlementconnection:
+    ) -> EntitlementConnection:
         """Update connection by query
 
         Applies JSON Patch operations to a single entitlement connection selected by `entitlementId`, `identityId`, and `accountId`. 
@@ -1119,8 +1119,8 @@ class EntitlementConnectionsApi:
         :type identity_id: str
         :param account_id: Account ID (UUID with or without hyphens). (required)
         :type account_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1147,7 +1147,7 @@ class EntitlementConnectionsApi:
             entitlement_id=entitlement_id,
             identity_id=identity_id,
             account_id=account_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1155,14 +1155,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1181,7 +1181,7 @@ class EntitlementConnectionsApi:
         entitlement_id: Annotated[StrictStr, Field(description="Entitlement ID (UUID with or without hyphens).")],
         identity_id: Annotated[StrictStr, Field(description="Identity ID (UUID with or without hyphens).")],
         account_id: Annotated[StrictStr, Field(description="Account ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1194,7 +1194,7 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlementconnection]:
+    ) -> ApiResponse[EntitlementConnection]:
         """Update connection by query
 
         Applies JSON Patch operations to a single entitlement connection selected by `entitlementId`, `identityId`, and `accountId`. 
@@ -1205,8 +1205,8 @@ class EntitlementConnectionsApi:
         :type identity_id: str
         :param account_id: Account ID (UUID with or without hyphens). (required)
         :type account_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1233,7 +1233,7 @@ class EntitlementConnectionsApi:
             entitlement_id=entitlement_id,
             identity_id=identity_id,
             account_id=account_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1241,14 +1241,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1267,7 +1267,7 @@ class EntitlementConnectionsApi:
         entitlement_id: Annotated[StrictStr, Field(description="Entitlement ID (UUID with or without hyphens).")],
         identity_id: Annotated[StrictStr, Field(description="Identity ID (UUID with or without hyphens).")],
         account_id: Annotated[StrictStr, Field(description="Account ID (UUID with or without hyphens).")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1291,8 +1291,8 @@ class EntitlementConnectionsApi:
         :type identity_id: str
         :param account_id: Account ID (UUID with or without hyphens). (required)
         :type account_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1319,7 +1319,7 @@ class EntitlementConnectionsApi:
             entitlement_id=entitlement_id,
             identity_id=identity_id,
             account_id=account_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1327,14 +1327,14 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementconnection",
-            '400': "Errorresponsedto",
+            '200': "EntitlementConnection",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '412': "ListEntitlementConnectionsV1412Response",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1348,7 +1348,7 @@ class EntitlementConnectionsApi:
         entitlement_id,
         identity_id,
         account_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1358,7 +1358,7 @@ class EntitlementConnectionsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1387,8 +1387,8 @@ class EntitlementConnectionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -1438,7 +1438,7 @@ class EntitlementConnectionsApi:
     @validate_call
     def update_entitlement_connections_bulk_v1(
         self,
-        entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem],
+        entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1451,13 +1451,13 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlementconnectionbulkupdateresultitem]:
+    ) -> List[EntitlementConnectionBulkUpdateResultItem]:
         """Update connections in bulk
 
         Updates connection type for up to 100 connections in one request. The API returns per-item results in a 207 Multi-Status response. 
 
-        :param entitlementconnectionbulkupdateitem: (required)
-        :type entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem]
+        :param entitlement_connection_bulk_update_item: (required)
+        :type entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1481,7 +1481,7 @@ class EntitlementConnectionsApi:
         """ # noqa: E501
 
         _param = self._update_entitlement_connections_bulk_v1_serialize(
-            entitlementconnectionbulkupdateitem=entitlementconnectionbulkupdateitem,
+            entitlement_connection_bulk_update_item=entitlement_connection_bulk_update_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1489,12 +1489,12 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Entitlementconnectionbulkupdateresultitem]",
-            '400': "Errorresponsedto",
+            '207': "List[EntitlementConnectionBulkUpdateResultItem]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1510,7 +1510,7 @@ class EntitlementConnectionsApi:
     @validate_call
     def update_entitlement_connections_bulk_v1_with_http_info(
         self,
-        entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem],
+        entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1523,13 +1523,13 @@ class EntitlementConnectionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlementconnectionbulkupdateresultitem]]:
+    ) -> ApiResponse[List[EntitlementConnectionBulkUpdateResultItem]]:
         """Update connections in bulk
 
         Updates connection type for up to 100 connections in one request. The API returns per-item results in a 207 Multi-Status response. 
 
-        :param entitlementconnectionbulkupdateitem: (required)
-        :type entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem]
+        :param entitlement_connection_bulk_update_item: (required)
+        :type entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1553,7 +1553,7 @@ class EntitlementConnectionsApi:
         """ # noqa: E501
 
         _param = self._update_entitlement_connections_bulk_v1_serialize(
-            entitlementconnectionbulkupdateitem=entitlementconnectionbulkupdateitem,
+            entitlement_connection_bulk_update_item=entitlement_connection_bulk_update_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1561,12 +1561,12 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Entitlementconnectionbulkupdateresultitem]",
-            '400': "Errorresponsedto",
+            '207': "List[EntitlementConnectionBulkUpdateResultItem]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1582,7 +1582,7 @@ class EntitlementConnectionsApi:
     @validate_call
     def update_entitlement_connections_bulk_v1_without_preload_content(
         self,
-        entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem],
+        entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1600,8 +1600,8 @@ class EntitlementConnectionsApi:
 
         Updates connection type for up to 100 connections in one request. The API returns per-item results in a 207 Multi-Status response. 
 
-        :param entitlementconnectionbulkupdateitem: (required)
-        :type entitlementconnectionbulkupdateitem: List[Entitlementconnectionbulkupdateitem]
+        :param entitlement_connection_bulk_update_item: (required)
+        :type entitlement_connection_bulk_update_item: List[EntitlementConnectionBulkUpdateItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1625,7 +1625,7 @@ class EntitlementConnectionsApi:
         """ # noqa: E501
 
         _param = self._update_entitlement_connections_bulk_v1_serialize(
-            entitlementconnectionbulkupdateitem=entitlementconnectionbulkupdateitem,
+            entitlement_connection_bulk_update_item=entitlement_connection_bulk_update_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1633,12 +1633,12 @@ class EntitlementConnectionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Entitlementconnectionbulkupdateresultitem]",
-            '400': "Errorresponsedto",
+            '207': "List[EntitlementConnectionBulkUpdateResultItem]",
+            '400': "ErrorResponseDto",
             '401': "ListEntitlementConnectionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListEntitlementConnectionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1649,7 +1649,7 @@ class EntitlementConnectionsApi:
 
     def _update_entitlement_connections_bulk_v1_serialize(
         self,
-        entitlementconnectionbulkupdateitem,
+        entitlement_connection_bulk_update_item,
         _request_auth,
         _content_type,
         _headers,
@@ -1659,7 +1659,7 @@ class EntitlementConnectionsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Entitlementconnectionbulkupdateitem': '',
+            'EntitlementConnectionBulkUpdateItem': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1676,8 +1676,8 @@ class EntitlementConnectionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if entitlementconnectionbulkupdateitem is not None:
-            _body_params = entitlementconnectionbulkupdateitem
+        if entitlement_connection_bulk_update_item is not None:
+            _body_params = entitlement_connection_bulk_update_item
 
 
         # set the HTTP header `Accept`

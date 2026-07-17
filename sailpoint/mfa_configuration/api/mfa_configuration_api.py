@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.mfa_configuration.models.kbaanswerrequestitem import Kbaanswerrequestitem
-from sailpoint.mfa_configuration.models.kbaanswerresponseitem import Kbaanswerresponseitem
-from sailpoint.mfa_configuration.models.kbaquestion import Kbaquestion
-from sailpoint.mfa_configuration.models.mfaconfigtestresponse import Mfaconfigtestresponse
-from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
-from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+from sailpoint.mfa_configuration.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.mfa_configuration.models.kba_answer_response_item import KbaAnswerResponseItem
+from sailpoint.mfa_configuration.models.kba_question import KbaQuestion
+from sailpoint.mfa_configuration.models.mfa_config_test_response import MfaConfigTestResponse
+from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig
 
 from sailpoint.mfa_configuration.api_client import ApiClient, RequestSerialized
 from sailpoint.mfa_configuration.api_response import ApiResponse
@@ -59,7 +59,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mfaduoconfig:
+    ) -> MfaDuoConfig:
         """Configuration of duo mfa method
 
         This API returns the configuration of an Duo MFA method.
@@ -94,12 +94,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +127,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mfaduoconfig]:
+    ) -> ApiResponse[MfaDuoConfig]:
         """Configuration of duo mfa method
 
         This API returns the configuration of an Duo MFA method.
@@ -162,12 +162,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -230,12 +230,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -320,7 +320,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Kbaquestion]:
+    ) -> List[KbaQuestion]:
         """Configuration of kba mfa method
 
         This API returns the KBA configuration for MFA.
@@ -358,12 +358,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaquestion]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaQuestion]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -392,7 +392,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Kbaquestion]]:
+    ) -> ApiResponse[List[KbaQuestion]]:
         """Configuration of kba mfa method
 
         This API returns the KBA configuration for MFA.
@@ -430,12 +430,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaquestion]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaQuestion]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -502,12 +502,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaquestion]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaQuestion]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -596,7 +596,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mfaoktaconfig:
+    ) -> MfaOktaConfig:
         """Configuration of okta mfa method
 
         This API returns the configuration of an Okta MFA method.
@@ -631,12 +631,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -664,7 +664,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mfaoktaconfig]:
+    ) -> ApiResponse[MfaOktaConfig]:
         """Configuration of okta mfa method
 
         This API returns the configuration of an Okta MFA method.
@@ -699,12 +699,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -767,12 +767,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -844,7 +844,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_duo_config_v1(
         self,
-        mfaduoconfig: Mfaduoconfig,
+        mfa_duo_config: MfaDuoConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -857,13 +857,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mfaduoconfig:
+    ) -> MfaDuoConfig:
         """Set duo mfa configuration
 
         This API sets the configuration of an Duo MFA method.
 
-        :param mfaduoconfig: (required)
-        :type mfaduoconfig: Mfaduoconfig
+        :param mfa_duo_config: (required)
+        :type mfa_duo_config: MfaDuoConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -887,7 +887,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_duo_config_v1_serialize(
-            mfaduoconfig=mfaduoconfig,
+            mfa_duo_config=mfa_duo_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -895,12 +895,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -916,7 +916,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_duo_config_v1_with_http_info(
         self,
-        mfaduoconfig: Mfaduoconfig,
+        mfa_duo_config: MfaDuoConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -929,13 +929,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mfaduoconfig]:
+    ) -> ApiResponse[MfaDuoConfig]:
         """Set duo mfa configuration
 
         This API sets the configuration of an Duo MFA method.
 
-        :param mfaduoconfig: (required)
-        :type mfaduoconfig: Mfaduoconfig
+        :param mfa_duo_config: (required)
+        :type mfa_duo_config: MfaDuoConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -959,7 +959,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_duo_config_v1_serialize(
-            mfaduoconfig=mfaduoconfig,
+            mfa_duo_config=mfa_duo_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -967,12 +967,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -988,7 +988,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_duo_config_v1_without_preload_content(
         self,
-        mfaduoconfig: Mfaduoconfig,
+        mfa_duo_config: MfaDuoConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1006,8 +1006,8 @@ class MFAConfigurationApi:
 
         This API sets the configuration of an Duo MFA method.
 
-        :param mfaduoconfig: (required)
-        :type mfaduoconfig: Mfaduoconfig
+        :param mfa_duo_config: (required)
+        :type mfa_duo_config: MfaDuoConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1031,7 +1031,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_duo_config_v1_serialize(
-            mfaduoconfig=mfaduoconfig,
+            mfa_duo_config=mfa_duo_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1039,12 +1039,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaduoconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaDuoConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1055,7 +1055,7 @@ class MFAConfigurationApi:
 
     def _set_mfa_duo_config_v1_serialize(
         self,
-        mfaduoconfig,
+        mfa_duo_config,
         _request_auth,
         _content_type,
         _headers,
@@ -1081,8 +1081,8 @@ class MFAConfigurationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if mfaduoconfig is not None:
-            _body_params = mfaduoconfig
+        if mfa_duo_config is not None:
+            _body_params = mfa_duo_config
 
 
         # set the HTTP header `Accept`
@@ -1132,7 +1132,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_okta_config_v1(
         self,
-        mfaoktaconfig: Mfaoktaconfig,
+        mfa_okta_config: MfaOktaConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1145,13 +1145,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mfaoktaconfig:
+    ) -> MfaOktaConfig:
         """Set okta mfa configuration
 
         This API sets the configuration of an Okta MFA method.
 
-        :param mfaoktaconfig: (required)
-        :type mfaoktaconfig: Mfaoktaconfig
+        :param mfa_okta_config: (required)
+        :type mfa_okta_config: MfaOktaConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1175,7 +1175,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_okta_config_v1_serialize(
-            mfaoktaconfig=mfaoktaconfig,
+            mfa_okta_config=mfa_okta_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1183,12 +1183,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1204,7 +1204,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_okta_config_v1_with_http_info(
         self,
-        mfaoktaconfig: Mfaoktaconfig,
+        mfa_okta_config: MfaOktaConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1217,13 +1217,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mfaoktaconfig]:
+    ) -> ApiResponse[MfaOktaConfig]:
         """Set okta mfa configuration
 
         This API sets the configuration of an Okta MFA method.
 
-        :param mfaoktaconfig: (required)
-        :type mfaoktaconfig: Mfaoktaconfig
+        :param mfa_okta_config: (required)
+        :type mfa_okta_config: MfaOktaConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1247,7 +1247,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_okta_config_v1_serialize(
-            mfaoktaconfig=mfaoktaconfig,
+            mfa_okta_config=mfa_okta_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1255,12 +1255,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1276,7 +1276,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfa_okta_config_v1_without_preload_content(
         self,
-        mfaoktaconfig: Mfaoktaconfig,
+        mfa_okta_config: MfaOktaConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1294,8 +1294,8 @@ class MFAConfigurationApi:
 
         This API sets the configuration of an Okta MFA method.
 
-        :param mfaoktaconfig: (required)
-        :type mfaoktaconfig: Mfaoktaconfig
+        :param mfa_okta_config: (required)
+        :type mfa_okta_config: MfaOktaConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1319,7 +1319,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfa_okta_config_v1_serialize(
-            mfaoktaconfig=mfaoktaconfig,
+            mfa_okta_config=mfa_okta_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1327,12 +1327,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaoktaconfig",
-            '400': "Errorresponsedto",
+            '200': "MfaOktaConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1343,7 +1343,7 @@ class MFAConfigurationApi:
 
     def _set_mfa_okta_config_v1_serialize(
         self,
-        mfaoktaconfig,
+        mfa_okta_config,
         _request_auth,
         _content_type,
         _headers,
@@ -1369,8 +1369,8 @@ class MFAConfigurationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if mfaoktaconfig is not None:
-            _body_params = mfaoktaconfig
+        if mfa_okta_config is not None:
+            _body_params = mfa_okta_config
 
 
         # set the HTTP header `Accept`
@@ -1420,7 +1420,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfakba_config_v1(
         self,
-        kbaanswerrequestitem: List[Kbaanswerrequestitem],
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1433,13 +1433,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Kbaanswerresponseitem]:
+    ) -> List[KbaAnswerResponseItem]:
         """Set mfa kba configuration
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
-        :param kbaanswerrequestitem: (required)
-        :type kbaanswerrequestitem: List[Kbaanswerrequestitem]
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1463,7 +1463,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfakba_config_v1_serialize(
-            kbaanswerrequestitem=kbaanswerrequestitem,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1471,12 +1471,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaanswerresponseitem]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaAnswerResponseItem]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1492,7 +1492,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfakba_config_v1_with_http_info(
         self,
-        kbaanswerrequestitem: List[Kbaanswerrequestitem],
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1505,13 +1505,13 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Kbaanswerresponseitem]]:
+    ) -> ApiResponse[List[KbaAnswerResponseItem]]:
         """Set mfa kba configuration
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
-        :param kbaanswerrequestitem: (required)
-        :type kbaanswerrequestitem: List[Kbaanswerrequestitem]
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1535,7 +1535,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfakba_config_v1_serialize(
-            kbaanswerrequestitem=kbaanswerrequestitem,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1543,12 +1543,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaanswerresponseitem]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaAnswerResponseItem]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1564,7 +1564,7 @@ class MFAConfigurationApi:
     @validate_call
     def set_mfakba_config_v1_without_preload_content(
         self,
-        kbaanswerrequestitem: List[Kbaanswerrequestitem],
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1582,8 +1582,8 @@ class MFAConfigurationApi:
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
-        :param kbaanswerrequestitem: (required)
-        :type kbaanswerrequestitem: List[Kbaanswerrequestitem]
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1607,7 +1607,7 @@ class MFAConfigurationApi:
         """ # noqa: E501
 
         _param = self._set_mfakba_config_v1_serialize(
-            kbaanswerrequestitem=kbaanswerrequestitem,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1615,12 +1615,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Kbaanswerresponseitem]",
-            '400': "Errorresponsedto",
+            '200': "List[KbaAnswerResponseItem]",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1631,7 +1631,7 @@ class MFAConfigurationApi:
 
     def _set_mfakba_config_v1_serialize(
         self,
-        kbaanswerrequestitem,
+        kba_answer_request_item,
         _request_auth,
         _content_type,
         _headers,
@@ -1641,7 +1641,7 @@ class MFAConfigurationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Kbaanswerrequestitem': '',
+            'KbaAnswerRequestItem': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1658,8 +1658,8 @@ class MFAConfigurationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if kbaanswerrequestitem is not None:
-            _body_params = kbaanswerrequestitem
+        if kba_answer_request_item is not None:
+            _body_params = kba_answer_request_item
 
 
         # set the HTTP header `Accept`
@@ -1722,7 +1722,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mfaconfigtestresponse:
+    ) -> MfaConfigTestResponse:
         """Mfa method's test configuration
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
@@ -1760,12 +1760,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaconfigtestresponse",
-            '400': "Errorresponsedto",
+            '200': "MfaConfigTestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1794,7 +1794,7 @@ class MFAConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mfaconfigtestresponse]:
+    ) -> ApiResponse[MfaConfigTestResponse]:
         """Mfa method's test configuration
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
@@ -1832,12 +1832,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaconfigtestresponse",
-            '400': "Errorresponsedto",
+            '200': "MfaConfigTestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1904,12 +1904,12 @@ class MFAConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mfaconfigtestresponse",
-            '400': "Errorresponsedto",
+            '200': "MfaConfigTestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetMFAOktaConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetMFAOktaConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

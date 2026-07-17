@@ -6,22 +6,31 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
-        from sailpoint.apps.models.sourceappcreatedto import Sourceappcreatedto
+        from sailpoint.apps.models.source_app import SourceApp
+        from sailpoint.apps.models.source_app_create_dto import SourceAppCreateDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          sourceappcreatedto = '''{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}''' # Sourceappcreatedto | 
+          source_app_create_dto = '''{
+          "name" : "my app",
+          "description" : "the source app for engineers",
+          "accountSource" : {
+            "name" : "ODS-AD-Source",
+            "id" : "2c9180827ca885d7017ca8ce28a000eb",
+            "type" : "SOURCE"
+          },
+          "matchAllAccounts" : true
+        }''' # SourceAppCreateDto | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Create source app
-              new_sourceappcreatedto = Sourceappcreatedto.from_json(sourceappcreatedto)
-              results = AppsApi(api_client).create_source_app_v1(sourceappcreatedto=new_sourceappcreatedto)
+              new_source_app_create_dto = SourceAppCreateDto.from_json(source_app_create_dto)
+              results = AppsApi(api_client).create_source_app_v1(source_app_create_dto=new_source_app_create_dto)
               # Below is a request that includes all optional parameters
-              # results = AppsApi(api_client).create_source_app_v1(new_sourceappcreatedto, x_sail_point_experimental)
+              # results = AppsApi(api_client).create_source_app_v1(new_source_app_create_dto, x_sail_point_experimental)
               print("The response of AppsApi->create_source_app_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -34,7 +43,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.accessprofiledetails import Accessprofiledetails
+        from sailpoint.apps.models.access_profile_details import AccessProfileDetails
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -64,7 +73,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
+        from sailpoint.apps.models.source_app import SourceApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -91,7 +100,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
+        from sailpoint.apps.models.source_app import SourceApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -118,7 +127,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.accessprofiledetails import Accessprofiledetails
+        from sailpoint.apps.models.access_profile_details import AccessProfileDetails
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -149,7 +158,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
+        from sailpoint.apps.models.source_app import SourceApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -181,7 +190,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.userapp import Userapp
+        from sailpoint.apps.models.user_app import UserApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -212,7 +221,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
+        from sailpoint.apps.models.source_app import SourceApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -244,7 +253,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.appaccountdetails import Appaccountdetails
+        from sailpoint.apps.models.app_account_details import AppAccountDetails
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -274,7 +283,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceapp import Sourceapp
+        from sailpoint.apps.models.source_app import SourceApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -306,7 +315,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.userapp import Userapp
+        from sailpoint.apps.models.user_app import UserApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -337,8 +346,8 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.apps.models.sourceapppatchdto import Sourceapppatchdto
+        from sailpoint.apps.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.apps.models.source_app_patch_dto import SourceAppPatchDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -347,13 +356,13 @@
         with ApiClient(configuration) as api_client:
           id = '2c91808a7813090a017814121e121518' # str | ID of the source app to patch # str | ID of the source app to patch
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-          jsonpatchoperation = '''[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]''' # List[Jsonpatchoperation] |  (optional)
+          json_patch_operation = '''[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]''' # List[JsonPatchOperation] |  (optional)
           try:
               # Patch source app by id
               
               results = AppsApi(api_client).patch_source_app_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = AppsApi(api_client).patch_source_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+              # results = AppsApi(api_client).patch_source_app_v1(id, x_sail_point_experimental, new_json_patch_operation)
               print("The response of AppsApi->patch_source_app_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -366,8 +375,8 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.apps.models.userapp import Userapp
+        from sailpoint.apps.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.apps.models.user_app import UserApp
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -376,13 +385,13 @@
         with ApiClient(configuration) as api_client:
           id = '2c91808a7813090a017814121e121518' # str | ID of the user app to patch # str | ID of the user app to patch
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-          jsonpatchoperation = '''[sailpoint.apps.Jsonpatchoperation()]''' # List[Jsonpatchoperation] |  (optional)
+          json_patch_operation = '''[sailpoint.apps.JsonPatchOperation()]''' # List[JsonPatchOperation] |  (optional)
           try:
               # Patch user app by id
               
               results = AppsApi(api_client).patch_user_app_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = AppsApi(api_client).patch_user_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+              # results = AppsApi(api_client).patch_user_app_v1(id, x_sail_point_experimental, new_json_patch_operation)
               print("The response of AppsApi->patch_user_app_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -395,7 +404,7 @@
       source: |
         from sailpoint.apps.api.apps_api import AppsApi
         from sailpoint.apps.api_client import ApiClient
-        from sailpoint.apps.models.sourceappbulkupdaterequest import Sourceappbulkupdaterequest
+        from sailpoint.apps.models.source_app_bulk_update_request import SourceAppBulkUpdateRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -403,13 +412,24 @@
 
         with ApiClient(configuration) as api_client:
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-          sourceappbulkupdaterequest = '''sailpoint.apps.Sourceappbulkupdaterequest()''' # Sourceappbulkupdaterequest |  (optional)
+          source_app_bulk_update_request = '''{
+          "appIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
+          "jsonPatch" : [ {
+            "op" : "replace",
+            "path" : "/enabled",
+            "value" : false
+          }, {
+            "op" : "replace",
+            "path" : "/matchAllAccounts",
+            "value" : false
+          } ]
+        }''' # SourceAppBulkUpdateRequest |  (optional)
           try:
               # Bulk update source apps
               
               AppsApi(api_client).update_source_apps_in_bulk_v1()
               # Below is a request that includes all optional parameters
-              # AppsApi(api_client).update_source_apps_in_bulk_v1(x_sail_point_experimental, new_sourceappbulkupdaterequest)
+              # AppsApi(api_client).update_source_apps_in_bulk_v1(x_sail_point_experimental, new_source_app_bulk_update_request)
           except Exception as e:
               print("Exception when calling AppsApi->update_source_apps_in_bulk_v1: %s\n" % e)
 

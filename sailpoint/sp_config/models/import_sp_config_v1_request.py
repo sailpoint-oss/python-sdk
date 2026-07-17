@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
-from sailpoint.sp_config.models.importoptions import Importoptions
+from sailpoint.sp_config.models.import_options import ImportOptions
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class ImportSpConfigV1Request(BaseModel):
     ImportSpConfigV1Request
     """ # noqa: E501
     data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]] = Field(description="JSON file containing the objects to be imported.")
-    options: Optional[Importoptions] = None
+    options: Optional[ImportOptions] = None
     __properties: ClassVar[List[str]] = ["data", "options"]
 
     model_config = ConfigDict(
@@ -87,7 +87,7 @@ class ImportSpConfigV1Request(BaseModel):
 
         _obj = cls.model_validate({
             "data": obj.get("data"),
-            "options": Importoptions.from_dict(obj["options"]) if obj.get("options") is not None else None
+            "options": ImportOptions.from_dict(obj["options"]) if obj.get("options") is not None else None
         })
         return _obj
 

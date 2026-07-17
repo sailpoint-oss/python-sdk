@@ -29,10 +29,10 @@ from sailpoint.approvals.models.approval2_approval_criteria import Approval2Appr
 
 approval2_approval_criteria = Approval2ApprovalCriteria(
 type='SERIAL',
-approval=sailpoint.approvals.models.approval_2_approval_criteria_approval.approval_2_approvalCriteria_approval(
+approval=sailpoint.approvals.models.approval_2_approval_criteria_approval.Approval_2_approvalCriteria_approval(
                     calculation_type = 'COUNT', 
                     value = 70, ),
-rejection=sailpoint.approvals.models.approval_2_approval_criteria_rejection.approval_2_approvalCriteria_rejection(
+rejection=sailpoint.approvals.models.approval_2_approval_criteria_rejection.Approval_2_approvalCriteria_rejection(
                     calculation_type = 'COUNT', 
                     value = 30, )
 )

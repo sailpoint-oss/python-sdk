@@ -54,21 +54,21 @@ Create custom connector.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | v3createconnectordto | [**V3createconnectordto**](../models/v3createconnectordto) | True  | 
+ Body  | v3_create_connector_dto | [**V3CreateConnectorDto**](../models/v3-create-connector-dto) | True  | 
 
 ### Return type
-[**V3connectordto**](../models/v3connectordto)
+[**V3ConnectorDto**](../models/v3-connector-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Connector Dto object | V3connectordto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Connector Dto object | V3ConnectorDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -79,21 +79,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.v3connectordto import V3connectordto
-from sailpoint.connectors.models.v3createconnectordto import V3createconnectordto
+from sailpoint.connectors.models.v3_connector_dto import V3ConnectorDto
+from sailpoint.connectors.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    v3createconnectordto = '''sailpoint.connectors.V3createconnectordto()''' # V3createconnectordto | 
+    v3_create_connector_dto = '''{
+          "name" : "custom connector",
+          "directConnect" : true,
+          "className" : "sailpoint.connector.OpenConnectorAdapter",
+          "type" : "custom connector type",
+          "status" : "RELEASED"
+        }''' # V3CreateConnectorDto | 
 
     try:
         # Create custom connector
-        new_v3createconnectordto = V3createconnectordto.from_json(v3createconnectordto)
-        results = ConnectorsApi(api_client).create_custom_connector_v1(v3createconnectordto=new_v3createconnectordto)
+        new_v3_create_connector_dto = V3CreateConnectorDto.from_json(v3_create_connector_dto)
+        results = ConnectorsApi(api_client).create_custom_connector_v1(v3_create_connector_dto=new_v3_create_connector_dto)
         # Below is a request that includes all optional parameters
-        # results = ConnectorsApi(api_client).create_custom_connector_v1(new_v3createconnectordto)
+        # results = ConnectorsApi(api_client).create_custom_connector_v1(new_v3_create_connector_dto)
         print("The response of ConnectorsApi->create_custom_connector_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -123,12 +129,12 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -179,12 +185,12 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The connector&#39;s correlation config | str |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -235,18 +241,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | locale | **str** |   (optional) | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
 ### Return type
-[**List[V3connectordto]**](../models/v3connectordto)
+[**List[V3ConnectorDto]**](../models/v3-connector-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Connector Dto object | List[V3connectordto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Connector Dto object | List[V3ConnectorDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -257,7 +263,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.v3connectordto import V3connectordto
+from sailpoint.connectors.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -305,12 +311,12 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The connector&#39;s source template | str |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -363,12 +369,12 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The connector&#39;s source template | str |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -422,12 +428,12 @@ Path   | locale | **str** | True  | The locale to apply to the config. If no via
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The connector&#39;s translations | str |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -476,18 +482,18 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
   Query | locale | **str** |   (optional) | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
 ### Return type
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Connector Dto object | Connectordetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Connector Dto object | ConnectorDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -498,7 +504,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.connectordetail import Connectordetail
+from sailpoint.connectors.models.connector_detail import ConnectorDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -537,18 +543,18 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
    | file | **bytearray** | True  | connector correlation config xml file
 
 ### Return type
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The connector&#39;s update detail | Updatedetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The connector&#39;s update detail | UpdateDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -559,7 +565,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.updatedetail import Updatedetail
+from sailpoint.connectors.models.update_detail import UpdateDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -598,18 +604,18 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
    | file | **bytearray** | True  | connector source config xml file
 
 ### Return type
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The connector&#39;s update detail | Updatedetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The connector&#39;s update detail | UpdateDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -620,7 +626,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.updatedetail import Updatedetail
+from sailpoint.connectors.models.update_detail import UpdateDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -659,18 +665,18 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
    | file | **bytearray** | True  | connector source template xml file
 
 ### Return type
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The connector&#39;s update detail | Updatedetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The connector&#39;s update detail | UpdateDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -681,7 +687,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.updatedetail import Updatedetail
+from sailpoint.connectors.models.update_detail import UpdateDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -720,18 +726,18 @@ Path   | script_name | **str** | True  | The scriptName value of the connector. 
 Path   | locale | **str** | True  | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
 ### Return type
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The connector&#39;s update detail | Updatedetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The connector&#39;s update detail | UpdateDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -742,7 +748,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.updatedetail import Updatedetail
+from sailpoint.connectors.models.update_detail import UpdateDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -790,21 +796,21 @@ The following fields are patchable:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | script_name | **str** | True  | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of connector detail update operations 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of connector detail update operations 
 
 ### Return type
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A updated Connector Dto object | Connectordetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A updated Connector Dto object | ConnectorDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -815,22 +821,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connectors.api.connectors_api import ConnectorsApi
 from sailpoint.connectors.api_client import ApiClient
-from sailpoint.connectors.models.connectordetail import Connectordetail
-from sailpoint.connectors.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.connectors.models.connector_detail import ConnectorDetail
+from sailpoint.connectors.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
-    jsonpatchoperation = '''[sailpoint.connectors.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | A list of connector detail update operations 
+    json_patch_operation = '''[sailpoint.connectors.JsonPatchOperation()]''' # List[JsonPatchOperation] | A list of connector detail update operations 
 
     try:
         # Update connector by script name
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = ConnectorsApi(api_client).update_connector_v1(script_name=script_name, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = ConnectorsApi(api_client).update_connector_v1(script_name=script_name, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = ConnectorsApi(api_client).update_connector_v1(script_name, new_jsonpatchoperation)
+        # results = ConnectorsApi(api_client).update_connector_v1(script_name, new_json_patch_operation)
         print("The response of ConnectorsApi->update_connector_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

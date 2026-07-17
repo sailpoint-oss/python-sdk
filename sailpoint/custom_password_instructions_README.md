@@ -47,12 +47,12 @@ configuration = sailpoint.custom_password_instructions.Configuration(
 with sailpoint.custom_password_instructions.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.custom_password_instructions.CustomPasswordInstructionsApi(api_client)
-    custompasswordinstruction = {"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"} # Custompasswordinstruction | 
+    custom_password_instruction = {"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"} # CustomPasswordInstruction | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create custom password instructions
-        api_response = api_instance.create_custom_password_instructions_v1(custompasswordinstruction, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_custom_password_instructions_v1(custom_password_instruction, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of CustomPasswordInstructionsApi->create_custom_password_instructions_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -73,10 +73,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Custompasswordinstruction](sailpoint/custom_password_instructions/docs/Custompasswordinstruction.md)
- - [Errormessagedto](sailpoint/custom_password_instructions/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/custom_password_instructions/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/custom_password_instructions/docs/Localeorigin.md)
+ - [CustomPasswordInstruction](sailpoint/custom_password_instructions/docs/CustomPasswordInstruction.md)
+ - [ErrorMessageDto](sailpoint/custom_password_instructions/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/custom_password_instructions/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/custom_password_instructions/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

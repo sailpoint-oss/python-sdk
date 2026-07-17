@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.custom_forms.models.formdefinitionselfimportexportdto import Formdefinitionselfimportexportdto
+from sailpoint.custom_forms.models.form_definition_self_import_export_dto import FormDefinitionSelfImportExportDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ExportFormDefinitionsByTenantV1200ResponseInnerSelf(BaseModel):
     """
     ExportFormDefinitionsByTenantV1200ResponseInnerSelf
     """ # noqa: E501
-    object: Optional[Formdefinitionselfimportexportdto] = None
+    object: Optional[FormDefinitionSelfImportExportDto] = None
     __properties: ClassVar[List[str]] = ["object"]
 
     model_config = ConfigDict(
@@ -85,7 +85,7 @@ class ExportFormDefinitionsByTenantV1200ResponseInnerSelf(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object": Formdefinitionselfimportexportdto.from_dict(obj["object"]) if obj.get("object") is not None else None
+            "object": FormDefinitionSelfImportExportDto.from_dict(obj["object"]) if obj.get("object") is not None else None
         })
         return _obj
 

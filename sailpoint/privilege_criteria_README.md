@@ -47,11 +47,11 @@ configuration = sailpoint.privilege_criteria.Configuration(
 with sailpoint.privilege_criteria.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.privilege_criteria.PrivilegeCriteriaApi(api_client)
-    createprivilegecriteriarequest = sailpoint.privilege_criteria.Createprivilegecriteriarequest() # Createprivilegecriteriarequest | Create custom privilege criteria request body.
+    create_privilege_criteria_request = sailpoint.privilege_criteria.CreatePrivilegeCriteriaRequest() # CreatePrivilegeCriteriaRequest | Create custom privilege criteria request body.
 
     try:
         # Create custom privilege criteria
-        api_response = api_instance.create_custom_privilege_criteria_v1(createprivilegecriteriarequest)
+        api_response = api_instance.create_custom_privilege_criteria_v1(create_privilege_criteria_request)
         print("The response of PrivilegeCriteriaApi->create_custom_privilege_criteria_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,17 +74,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Createprivilegecriteriarequest](sailpoint/privilege_criteria/docs/Createprivilegecriteriarequest.md)
- - [CreateprivilegecriteriarequestGroupsInner](sailpoint/privilege_criteria/docs/CreateprivilegecriteriarequestGroupsInner.md)
- - [CreateprivilegecriteriarequestGroupsInnerCriteriaItemsInner](sailpoint/privilege_criteria/docs/CreateprivilegecriteriarequestGroupsInnerCriteriaItemsInner.md)
- - [Errormessagedto](sailpoint/privilege_criteria/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/privilege_criteria/docs/Errorresponsedto.md)
+ - [CreatePrivilegeCriteriaRequest](sailpoint/privilege_criteria/docs/CreatePrivilegeCriteriaRequest.md)
+ - [CreatePrivilegeCriteriaRequestGroupsInner](sailpoint/privilege_criteria/docs/CreatePrivilegeCriteriaRequestGroupsInner.md)
+ - [CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner](sailpoint/privilege_criteria/docs/CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner.md)
+ - [ErrorMessageDto](sailpoint/privilege_criteria/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/privilege_criteria/docs/ErrorResponseDto.md)
  - [ListPrivilegeCriteriaV1401Response](sailpoint/privilege_criteria/docs/ListPrivilegeCriteriaV1401Response.md)
  - [ListPrivilegeCriteriaV1429Response](sailpoint/privilege_criteria/docs/ListPrivilegeCriteriaV1429Response.md)
- - [Localeorigin](sailpoint/privilege_criteria/docs/Localeorigin.md)
- - [Privilegecriteriadto](sailpoint/privilege_criteria/docs/Privilegecriteriadto.md)
- - [PrivilegecriteriadtoGroupsInner](sailpoint/privilege_criteria/docs/PrivilegecriteriadtoGroupsInner.md)
- - [PrivilegecriteriadtoGroupsInnerCriteriaItemsInner](sailpoint/privilege_criteria/docs/PrivilegecriteriadtoGroupsInnerCriteriaItemsInner.md)
+ - [LocaleOrigin](sailpoint/privilege_criteria/docs/LocaleOrigin.md)
+ - [PrivilegeCriteriaDTO](sailpoint/privilege_criteria/docs/PrivilegeCriteriaDTO.md)
+ - [PrivilegeCriteriaDTOGroupsInner](sailpoint/privilege_criteria/docs/PrivilegeCriteriaDTOGroupsInner.md)
+ - [PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner](sailpoint/privilege_criteria/docs/PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner.md)
 
 
 <a id="documentation-for-authorization"></a>

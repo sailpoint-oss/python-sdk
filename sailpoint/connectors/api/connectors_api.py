@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.connectors.models.connectordetail import Connectordetail
-from sailpoint.connectors.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.connectors.models.updatedetail import Updatedetail
-from sailpoint.connectors.models.v3connectordto import V3connectordto
-from sailpoint.connectors.models.v3createconnectordto import V3createconnectordto
+from sailpoint.connectors.models.connector_detail import ConnectorDetail
+from sailpoint.connectors.models.json_patch_operation import JsonPatchOperation
+from sailpoint.connectors.models.update_detail import UpdateDetail
+from sailpoint.connectors.models.v3_connector_dto import V3ConnectorDto
+from sailpoint.connectors.models.v3_create_connector_dto import V3CreateConnectorDto
 
 from sailpoint.connectors.api_client import ApiClient, RequestSerialized
 from sailpoint.connectors.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ConnectorsApi:
     @validate_call
     def create_custom_connector_v1(
         self,
-        v3createconnectordto: V3createconnectordto,
+        v3_create_connector_dto: V3CreateConnectorDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +59,13 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V3connectordto:
+    ) -> V3ConnectorDto:
         """Create custom connector
 
         Create custom connector.    
 
-        :param v3createconnectordto: (required)
-        :type v3createconnectordto: V3createconnectordto
+        :param v3_create_connector_dto: (required)
+        :type v3_create_connector_dto: V3CreateConnectorDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class ConnectorsApi:
         """ # noqa: E501
 
         _param = self._create_custom_connector_v1_serialize(
-            v3createconnectordto=v3createconnectordto,
+            v3_create_connector_dto=v3_create_connector_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,13 +97,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V3connectordto",
-            '400': "Errorresponsedto",
+            '200': "V3ConnectorDto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class ConnectorsApi:
     @validate_call
     def create_custom_connector_v1_with_http_info(
         self,
-        v3createconnectordto: V3createconnectordto,
+        v3_create_connector_dto: V3CreateConnectorDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,13 +132,13 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V3connectordto]:
+    ) -> ApiResponse[V3ConnectorDto]:
         """Create custom connector
 
         Create custom connector.    
 
-        :param v3createconnectordto: (required)
-        :type v3createconnectordto: V3createconnectordto
+        :param v3_create_connector_dto: (required)
+        :type v3_create_connector_dto: V3CreateConnectorDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +162,7 @@ class ConnectorsApi:
         """ # noqa: E501
 
         _param = self._create_custom_connector_v1_serialize(
-            v3createconnectordto=v3createconnectordto,
+            v3_create_connector_dto=v3_create_connector_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,13 +170,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V3connectordto",
-            '400': "Errorresponsedto",
+            '200': "V3ConnectorDto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class ConnectorsApi:
     @validate_call
     def create_custom_connector_v1_without_preload_content(
         self,
-        v3createconnectordto: V3createconnectordto,
+        v3_create_connector_dto: V3CreateConnectorDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class ConnectorsApi:
 
         Create custom connector.    
 
-        :param v3createconnectordto: (required)
-        :type v3createconnectordto: V3createconnectordto
+        :param v3_create_connector_dto: (required)
+        :type v3_create_connector_dto: V3CreateConnectorDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class ConnectorsApi:
         """ # noqa: E501
 
         _param = self._create_custom_connector_v1_serialize(
-            v3createconnectordto=v3createconnectordto,
+            v3_create_connector_dto=v3_create_connector_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,13 +243,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V3connectordto",
-            '400': "Errorresponsedto",
+            '200': "V3ConnectorDto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -260,7 +260,7 @@ class ConnectorsApi:
 
     def _create_custom_connector_v1_serialize(
         self,
-        v3createconnectordto,
+        v3_create_connector_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -286,8 +286,8 @@ class ConnectorsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if v3createconnectordto is not None:
-            _body_params = v3createconnectordto
+        if v3_create_connector_dto is not None:
+            _body_params = v3_create_connector_dto
 
 
         # set the HTTP header `Accept`
@@ -389,12 +389,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -462,12 +462,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -535,12 +535,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -667,12 +667,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -740,12 +740,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -813,12 +813,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -911,7 +911,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[V3connectordto]:
+    ) -> List[V3ConnectorDto]:
         """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
@@ -961,13 +961,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[V3connectordto]",
-            '400': "Errorresponsedto",
+            '200': "List[V3ConnectorDto]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1000,7 +1000,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[V3connectordto]]:
+    ) -> ApiResponse[List[V3ConnectorDto]]:
         """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
@@ -1050,13 +1050,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[V3connectordto]",
-            '400': "Errorresponsedto",
+            '200': "List[V3ConnectorDto]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1139,13 +1139,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[V3connectordto]",
-            '400': "Errorresponsedto",
+            '200': "List[V3ConnectorDto]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1294,12 +1294,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1367,12 +1367,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1440,12 +1440,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1573,12 +1573,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1646,12 +1646,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1719,12 +1719,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1856,12 +1856,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1933,12 +1933,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2010,12 +2010,12 @@ class ConnectorsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2108,7 +2108,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectordetail:
+    ) -> ConnectorDetail:
         """Get connector by script name
 
         Fetches a connector that using its script name.    
@@ -2149,13 +2149,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2185,7 +2185,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectordetail]:
+    ) -> ApiResponse[ConnectorDetail]:
         """Get connector by script name
 
         Fetches a connector that using its script name.    
@@ -2226,13 +2226,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2303,13 +2303,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2403,7 +2403,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatedetail:
+    ) -> UpdateDetail:
         """Update connector correlation configuration
 
         Update a connector's correlation config using its script name.    
@@ -2444,13 +2444,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2480,7 +2480,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatedetail]:
+    ) -> ApiResponse[UpdateDetail]:
         """Update connector correlation configuration
 
         Update a connector's correlation config using its script name.    
@@ -2521,13 +2521,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2598,13 +2598,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2709,7 +2709,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatedetail:
+    ) -> UpdateDetail:
         """Update connector source configuration
 
         Update a connector's source config using its script name.    
@@ -2750,13 +2750,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2786,7 +2786,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatedetail]:
+    ) -> ApiResponse[UpdateDetail]:
         """Update connector source configuration
 
         Update a connector's source config using its script name.    
@@ -2827,13 +2827,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2904,13 +2904,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3015,7 +3015,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatedetail:
+    ) -> UpdateDetail:
         """Update connector source template
 
         Update a connector's source template using its script name.    
@@ -3056,13 +3056,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3092,7 +3092,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatedetail]:
+    ) -> ApiResponse[UpdateDetail]:
         """Update connector source template
 
         Update a connector's source template using its script name.    
@@ -3133,13 +3133,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3210,13 +3210,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3321,7 +3321,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Updatedetail:
+    ) -> UpdateDetail:
         """Update connector translations
 
         Update a connector's translations using its script name.    
@@ -3362,13 +3362,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3398,7 +3398,7 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Updatedetail]:
+    ) -> ApiResponse[UpdateDetail]:
         """Update connector translations
 
         Update a connector's translations using its script name.    
@@ -3439,13 +3439,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3516,13 +3516,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Updatedetail",
-            '400': "Errorresponsedto",
+            '200': "UpdateDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3614,7 +3614,7 @@ class ConnectorsApi:
     def update_connector_v1(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of connector detail update operations ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3627,15 +3627,15 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectordetail:
+    ) -> ConnectorDetail:
         """Update connector by script name
 
         This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
         :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param jsonpatchoperation: A list of connector detail update operations  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of connector detail update operations  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3660,7 +3660,7 @@ class ConnectorsApi:
 
         _param = self._update_connector_v1_serialize(
             script_name=script_name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3668,13 +3668,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3691,7 +3691,7 @@ class ConnectorsApi:
     def update_connector_v1_with_http_info(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of connector detail update operations ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3704,15 +3704,15 @@ class ConnectorsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectordetail]:
+    ) -> ApiResponse[ConnectorDetail]:
         """Update connector by script name
 
         This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
         :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param jsonpatchoperation: A list of connector detail update operations  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of connector detail update operations  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3737,7 +3737,7 @@ class ConnectorsApi:
 
         _param = self._update_connector_v1_serialize(
             script_name=script_name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3745,13 +3745,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3768,7 +3768,7 @@ class ConnectorsApi:
     def update_connector_v1_without_preload_content(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of connector detail update operations ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3788,8 +3788,8 @@ class ConnectorsApi:
 
         :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param jsonpatchoperation: A list of connector detail update operations  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of connector detail update operations  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3814,7 +3814,7 @@ class ConnectorsApi:
 
         _param = self._update_connector_v1_serialize(
             script_name=script_name,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3822,13 +3822,13 @@ class ConnectorsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3840,7 +3840,7 @@ class ConnectorsApi:
     def _update_connector_v1_serialize(
         self,
         script_name,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -3850,7 +3850,7 @@ class ConnectorsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3869,8 +3869,8 @@ class ConnectorsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

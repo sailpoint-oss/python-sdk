@@ -68,9 +68,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/declassify_source/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/declassify_source/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/declassify_source/docs/Localeorigin.md)
+ - [ErrorMessageDto](sailpoint/declassify_source/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/declassify_source/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/declassify_source/docs/LocaleOrigin.md)
  - [SendDeclassifyMachineAccountFromSourceV1401Response](sailpoint/declassify_source/docs/SendDeclassifyMachineAccountFromSourceV1401Response.md)
  - [SendDeclassifyMachineAccountFromSourceV1429Response](sailpoint/declassify_source/docs/SendDeclassifyMachineAccountFromSourceV1429Response.md)
 

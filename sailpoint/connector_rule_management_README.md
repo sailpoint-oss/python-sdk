@@ -47,11 +47,11 @@ configuration = sailpoint.connector_rule_management.Configuration(
 with sailpoint.connector_rule_management.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.connector_rule_management.ConnectorRuleManagementApi(api_client)
-    connectorrulecreaterequest = sailpoint.connector_rule_management.Connectorrulecreaterequest() # Connectorrulecreaterequest | Connector rule to create.
+    connector_rule_create_request = sailpoint.connector_rule_management.ConnectorRuleCreateRequest() # ConnectorRuleCreateRequest | Connector rule to create.
 
     try:
         # Create connector rule
-        api_response = api_instance.create_connector_rule_v1(connectorrulecreaterequest)
+        api_response = api_instance.create_connector_rule_v1(connector_rule_create_request)
         print("The response of ConnectorRuleManagementApi->create_connector_rule_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -76,18 +76,18 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Argument](sailpoint/connector_rule_management/docs/Argument.md)
- - [Connectorrulecreaterequest](sailpoint/connector_rule_management/docs/Connectorrulecreaterequest.md)
- - [ConnectorrulecreaterequestSignature](sailpoint/connector_rule_management/docs/ConnectorrulecreaterequestSignature.md)
- - [Connectorruleresponse](sailpoint/connector_rule_management/docs/Connectorruleresponse.md)
- - [Connectorruleupdaterequest](sailpoint/connector_rule_management/docs/Connectorruleupdaterequest.md)
- - [Connectorrulevalidationresponse](sailpoint/connector_rule_management/docs/Connectorrulevalidationresponse.md)
- - [ConnectorrulevalidationresponseDetailsInner](sailpoint/connector_rule_management/docs/ConnectorrulevalidationresponseDetailsInner.md)
- - [Errormessagedto](sailpoint/connector_rule_management/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/connector_rule_management/docs/Errorresponsedto.md)
+ - [ConnectorRuleCreateRequest](sailpoint/connector_rule_management/docs/ConnectorRuleCreateRequest.md)
+ - [ConnectorRuleCreateRequestSignature](sailpoint/connector_rule_management/docs/ConnectorRuleCreateRequestSignature.md)
+ - [ConnectorRuleResponse](sailpoint/connector_rule_management/docs/ConnectorRuleResponse.md)
+ - [ConnectorRuleUpdateRequest](sailpoint/connector_rule_management/docs/ConnectorRuleUpdateRequest.md)
+ - [ConnectorRuleValidationResponse](sailpoint/connector_rule_management/docs/ConnectorRuleValidationResponse.md)
+ - [ConnectorRuleValidationResponseDetailsInner](sailpoint/connector_rule_management/docs/ConnectorRuleValidationResponseDetailsInner.md)
+ - [ErrorMessageDto](sailpoint/connector_rule_management/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/connector_rule_management/docs/ErrorResponseDto.md)
  - [GetConnectorRuleListV1401Response](sailpoint/connector_rule_management/docs/GetConnectorRuleListV1401Response.md)
  - [GetConnectorRuleListV1429Response](sailpoint/connector_rule_management/docs/GetConnectorRuleListV1429Response.md)
- - [Localeorigin](sailpoint/connector_rule_management/docs/Localeorigin.md)
- - [Sourcecode](sailpoint/connector_rule_management/docs/Sourcecode.md)
+ - [LocaleOrigin](sailpoint/connector_rule_management/docs/LocaleOrigin.md)
+ - [SourceCode](sailpoint/connector_rule_management/docs/SourceCode.md)
 
 
 <a id="documentation-for-authorization"></a>

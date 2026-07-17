@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.search.models.aggregationresult import Aggregationresult
+from sailpoint.search.models.aggregation_result import AggregationResult
 from sailpoint.search.models.search import Search
 
 from sailpoint.search.api_client import ApiClient, RequestSerialized
@@ -59,7 +59,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Aggregationresult:
+    ) -> AggregationResult:
         """Perform a search query aggregation
 
         Performs a search query aggregation and returns the aggregation result. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
@@ -106,12 +106,12 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Aggregationresult",
-            '400': "Errorresponsedto",
+            '200': "AggregationResult",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -143,7 +143,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Aggregationresult]:
+    ) -> ApiResponse[AggregationResult]:
         """Perform a search query aggregation
 
         Performs a search query aggregation and returns the aggregation result. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
@@ -190,12 +190,12 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Aggregationresult",
-            '400': "Errorresponsedto",
+            '200': "AggregationResult",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -274,12 +274,12 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Aggregationresult",
-            '400': "Errorresponsedto",
+            '200': "AggregationResult",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -435,11 +435,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,11 +507,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -579,11 +579,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -727,12 +727,12 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -804,12 +804,12 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -881,12 +881,12 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1028,11 +1028,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1112,11 +1112,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1196,11 +1196,11 @@ class SearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SearchPostV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SearchPostV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

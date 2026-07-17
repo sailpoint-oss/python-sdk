@@ -6,19 +6,19 @@
       source: |
         from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
         from sailpoint.identity_attributes.api_client import ApiClient
-        from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+        from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          identityattribute2 = '''sailpoint.identity_attributes.Identityattribute2()''' # Identityattribute2 | 
+          identity_attribute2 = '''sailpoint.identity_attributes.IdentityAttribute2()''' # IdentityAttribute2 | 
           try:
               # Create identity attribute
-              new_identityattribute2 = Identityattribute2.from_json(identityattribute2)
-              results = IdentityAttributesApi(api_client).create_identity_attribute_v1(identityattribute2=new_identityattribute2)
+              new_identity_attribute2 = IdentityAttribute2.from_json(identity_attribute2)
+              results = IdentityAttributesApi(api_client).create_identity_attribute_v1(identity_attribute2=new_identity_attribute2)
               # Below is a request that includes all optional parameters
-              # results = IdentityAttributesApi(api_client).create_identity_attribute_v1(new_identityattribute2)
+              # results = IdentityAttributesApi(api_client).create_identity_attribute_v1(new_identity_attribute2)
               print("The response of IdentityAttributesApi->create_identity_attribute_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -53,19 +53,21 @@
       source: |
         from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
         from sailpoint.identity_attributes.api_client import ApiClient
-        from sailpoint.identity_attributes.models.identityattributenames import Identityattributenames
+        from sailpoint.identity_attributes.models.identity_attribute_names import IdentityAttributeNames
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          identityattributenames = '''sailpoint.identity_attributes.Identityattributenames()''' # Identityattributenames | 
+          identity_attribute_names = '''{
+          "ids" : [ "name", "displayName" ]
+        }''' # IdentityAttributeNames | 
           try:
               # Bulk delete identity attributes
-              new_identityattributenames = Identityattributenames.from_json(identityattributenames)
-              IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(identityattributenames=new_identityattributenames)
+              new_identity_attribute_names = IdentityAttributeNames.from_json(identity_attribute_names)
+              IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(identity_attribute_names=new_identity_attribute_names)
               # Below is a request that includes all optional parameters
-              # IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(new_identityattributenames)
+              # IdentityAttributesApi(api_client).delete_identity_attributes_in_bulk_v1(new_identity_attribute_names)
           except Exception as e:
               print("Exception when calling IdentityAttributesApi->delete_identity_attributes_in_bulk_v1: %s\n" % e)
 - path: /identity-attributes/v1/{name}
@@ -76,7 +78,7 @@
       source: |
         from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
         from sailpoint.identity_attributes.api_client import ApiClient
-        from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+        from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -101,7 +103,7 @@
       source: |
         from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
         from sailpoint.identity_attributes.api_client import ApiClient
-        from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+        from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -130,20 +132,20 @@
       source: |
         from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi
         from sailpoint.identity_attributes.api_client import ApiClient
-        from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
+        from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           name = 'displayName' # str | The attribute's technical name. # str | The attribute's technical name.
-          identityattribute2 = '''sailpoint.identity_attributes.Identityattribute2()''' # Identityattribute2 | 
+          identity_attribute2 = '''sailpoint.identity_attributes.IdentityAttribute2()''' # IdentityAttribute2 | 
           try:
               # Update identity attribute
-              new_identityattribute2 = Identityattribute2.from_json(identityattribute2)
-              results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name=name, identityattribute2=new_identityattribute2)
+              new_identity_attribute2 = IdentityAttribute2.from_json(identity_attribute2)
+              results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name=name, identity_attribute2=new_identity_attribute2)
               # Below is a request that includes all optional parameters
-              # results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name, new_identityattribute2)
+              # results = IdentityAttributesApi(api_client).put_identity_attribute_v1(name, new_identity_attribute2)
               print("The response of IdentityAttributesApi->put_identity_attribute_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.machine_identities.models.dtotype import Dtotype
+from sailpoint.machine_identities.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class MachineIdentityV2Source(BaseModel):
     """
     The source of the machine identity.
     """ # noqa: E501
-    type: Optional[Union[Dtotype, str]] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]

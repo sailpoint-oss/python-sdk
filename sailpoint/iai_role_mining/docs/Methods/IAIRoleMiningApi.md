@@ -68,20 +68,20 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
   Query | min_entitlement_popularity | **int** |   (optional) (default to 0) | Minimum popularity required for an entitlement to be included in the provisioned role.
   Query | include_common_access | **bool** |   (optional) (default to True) | Boolean determining whether common access entitlements will be included in the provisioned role.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
- Body  | roleminingpotentialroleprovisionrequest | [**Roleminingpotentialroleprovisionrequest**](../models/roleminingpotentialroleprovisionrequest) |   (optional) | Required information to create a new role
+ Body  | role_mining_potential_role_provision_request | [**RoleMiningPotentialRoleProvisionRequest**](../models/role-mining-potential-role-provision-request) |   (optional) | Required information to create a new role
 
 ### Return type
-[**Roleminingpotentialrolesummary**](../models/roleminingpotentialrolesummary)
+[**RoleMiningPotentialRoleSummary**](../models/role-mining-potential-role-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. Returns a potential role summary including the status of the provison request | Roleminingpotentialrolesummary |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. Returns a potential role summary including the status of the provison request | RoleMiningPotentialRoleSummary |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -92,8 +92,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialroleprovisionrequest import Roleminingpotentialroleprovisionrequest
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesummary import Roleminingpotentialrolesummary
+from sailpoint.iai_role_mining.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
+from sailpoint.iai_role_mining.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -105,14 +105,20 @@ with ApiClient(configuration) as api_client:
     min_entitlement_popularity = 0 # int | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0) # int | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0)
     include_common_access = True # bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to True) # bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to True)
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-    roleminingpotentialroleprovisionrequest = '''sailpoint.iai_role_mining.Roleminingpotentialroleprovisionrequest()''' # Roleminingpotentialroleprovisionrequest | Required information to create a new role (optional)
+    role_mining_potential_role_provision_request = '''{
+          "includeIdentities" : true,
+          "roleName" : "Finance - Accounting",
+          "ownerId" : "2b568c65bc3c4c57a43bd97e3a8e41",
+          "roleDescription" : "General access for accounting department",
+          "directlyAssignedEntitlements" : false
+        }''' # RoleMiningPotentialRoleProvisionRequest | Required information to create a new role (optional)
 
     try:
         # Create request to provision a potential role into an actual role.
         
         results = IAIRoleMiningApi(api_client).create_potential_role_provision_request_v1(session_id=session_id, potential_role_id=potential_role_id)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).create_potential_role_provision_request_v1(session_id, potential_role_id, min_entitlement_popularity, include_common_access, x_sail_point_experimental, new_roleminingpotentialroleprovisionrequest)
+        # results = IAIRoleMiningApi(api_client).create_potential_role_provision_request_v1(session_id, potential_role_id, min_entitlement_popularity, include_common_access, x_sail_point_experimental, new_role_mining_potential_role_provision_request)
         print("The response of IAIRoleMiningApi->create_potential_role_provision_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -144,21 +150,21 @@ This submits a create role mining session request to the role mining application
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | roleminingsessiondto | [**Roleminingsessiondto**](../models/roleminingsessiondto) | True  | Role mining session parameters
+ Body  | role_mining_session_dto | [**RoleMiningSessionDto**](../models/role-mining-session-dto) | True  | Role mining session parameters
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingsessionresponse**](../models/roleminingsessionresponse)
+[**RoleMiningSessionResponse**](../models/role-mining-session-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Submitted a role mining session request | Roleminingsessionresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Submitted a role mining session request | RoleMiningSessionResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -169,23 +175,54 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingsessiondto import Roleminingsessiondto
-from sailpoint.iai_role_mining.models.roleminingsessionresponse import Roleminingsessionresponse
+from sailpoint.iai_role_mining.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.iai_role_mining.models.role_mining_session_response import RoleMiningSessionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    roleminingsessiondto = '''sailpoint.iai_role_mining.Roleminingsessiondto()''' # Roleminingsessiondto | Role mining session parameters
+    role_mining_session_dto = '''{
+          "emailRecipientId" : "2c918090761a5aac0176215c46a62d58",
+          "prescribedPruneThreshold" : 10,
+          "pruneThreshold" : 50,
+          "saved" : true,
+          "potentialRolesReadyCount" : 0,
+          "scope" : {
+            "identityIds" : [ "2c918090761a5aac0176215c46a62d58", "2c918090761a5aac01722015c46a62d42" ],
+            "attributeFilterCriteria" : {
+              "displayName" : {
+                "untranslated" : "Location: Miami"
+              },
+              "ariaLabel" : {
+                "untranslated" : "Location: Miami"
+              },
+              "data" : {
+                "displayName" : {
+                  "translateKey" : "IDN.IDENTITY_ATTRIBUTES.LOCATION"
+                },
+                "name" : "location",
+                "operator" : "EQUALS",
+                "values" : [ "Miami" ]
+              }
+            },
+            "criteria" : "source.name:DataScienceDataset"
+          },
+          "potentialRoleCount" : 0,
+          "name" : "Saved RM Session - 07/10",
+          "minNumIdentitiesInPotentialRole" : 20,
+          "identityCount" : 0,
+          "type" : "SPECIALIZED"
+        }''' # RoleMiningSessionDto | Role mining session parameters
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create a role mining session
-        new_roleminingsessiondto = Roleminingsessiondto.from_json(roleminingsessiondto)
-        results = IAIRoleMiningApi(api_client).create_role_mining_sessions_v1(roleminingsessiondto=new_roleminingsessiondto)
+        new_role_mining_session_dto = RoleMiningSessionDto.from_json(role_mining_session_dto)
+        results = IAIRoleMiningApi(api_client).create_role_mining_sessions_v1(role_mining_session_dto=new_role_mining_session_dto)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).create_role_mining_sessions_v1(new_roleminingsessiondto, x_sail_point_experimental)
+        # results = IAIRoleMiningApi(api_client).create_role_mining_sessions_v1(new_role_mining_session_dto, x_sail_point_experimental)
         print("The response of IAIRoleMiningApi->create_role_mining_sessions_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -229,10 +266,10 @@ Path   | export_id | **str** | True  | The id of a previously run export job for
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns a zip file containing csv files for identities and entitlements for the potential role. | bytearray |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -294,19 +331,19 @@ Param Type | Name | Data Type | Required  | Description
 Path   | session_id | **str** | True  | The role mining session id
 Path   | potential_role_id | **str** | True  | A potential role id in a role mining session
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
- Body  | roleminingpotentialroleexportrequest | [**Roleminingpotentialroleexportrequest**](../models/roleminingpotentialroleexportrequest) |   (optional) | 
+ Body  | role_mining_potential_role_export_request | [**RoleMiningPotentialRoleExportRequest**](../models/role-mining-potential-role-export-request) |   (optional) | 
 
 ### Return type
-[**Roleminingpotentialroleexportresponse**](../models/roleminingpotentialroleexportresponse)
+[**RoleMiningPotentialRoleExportResponse**](../models/role-mining-potential-role-export-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Job Submitted. Returns a reportId that can be used to download the zip once complete | Roleminingpotentialroleexportresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Job Submitted. Returns a reportId that can be used to download the zip once complete | RoleMiningPotentialRoleExportResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -317,8 +354,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialroleexportrequest import Roleminingpotentialroleexportrequest
-from sailpoint.iai_role_mining.models.roleminingpotentialroleexportresponse import Roleminingpotentialroleexportresponse
+from sailpoint.iai_role_mining.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
+from sailpoint.iai_role_mining.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -328,14 +365,17 @@ with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
     potential_role_id = '278359a6-04b7-4669-9468-924cf580964a' # str | A potential role id in a role mining session # str | A potential role id in a role mining session
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
-    roleminingpotentialroleexportrequest = '''sailpoint.iai_role_mining.Roleminingpotentialroleexportrequest()''' # Roleminingpotentialroleexportrequest |  (optional)
+    role_mining_potential_role_export_request = '''{
+          "minEntitlementPopularity" : 0,
+          "includeCommonAccess" : true
+        }''' # RoleMiningPotentialRoleExportRequest |  (optional)
 
     try:
         # Asynchronously export details for a potential role in a role mining session and upload to S3
         
         results = IAIRoleMiningApi(api_client).export_role_mining_potential_role_async_v1(session_id=session_id, potential_role_id=potential_role_id)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).export_role_mining_potential_role_async_v1(session_id, potential_role_id, x_sail_point_experimental, new_roleminingpotentialroleexportrequest)
+        # results = IAIRoleMiningApi(api_client).export_role_mining_potential_role_async_v1(session_id, potential_role_id, x_sail_point_experimental, new_role_mining_potential_role_export_request)
         print("The response of IAIRoleMiningApi->export_role_mining_potential_role_async_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -373,16 +413,16 @@ Path   | export_id | **str** | True  | The id of a previously run export job for
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingpotentialroleexportresponse**](../models/roleminingpotentialroleexportresponse)
+[**RoleMiningPotentialRoleExportResponse**](../models/role-mining-potential-role-export-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Success. Returns the current status of this export | Roleminingpotentialroleexportresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Success. Returns the current status of this export | RoleMiningPotentialRoleExportResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -393,7 +433,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialroleexportresponse import Roleminingpotentialroleexportresponse
+from sailpoint.iai_role_mining.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -453,10 +493,10 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns a zip file containing csv files for identities and entitlements for the potential role. | bytearray |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -522,17 +562,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingpotentialrolesummary]**](../models/roleminingpotentialrolesummary)
+[**List[RoleMiningPotentialRoleSummary]**](../models/role-mining-potential-role-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns all potential role summaries that match the query parameters. | List[Roleminingpotentialrolesummary] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns all potential role summaries that match the query parameters. | List[RoleMiningPotentialRoleSummary] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -543,7 +583,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesummary import Roleminingpotentialrolesummary
+from sailpoint.iai_role_mining.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -607,10 +647,10 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns a map containing entitlement popularity distribution for a potential role. | Dict[str, int] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -680,17 +720,17 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingentitlement]**](../models/roleminingentitlement)
+[**List[RoleMiningEntitlement]**](../models/role-mining-entitlement)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of entitlements for a potential role. | List[Roleminingentitlement] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of entitlements for a potential role. | List[RoleMiningEntitlement] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -701,7 +741,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingentitlement import Roleminingentitlement
+from sailpoint.iai_role_mining.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -766,16 +806,16 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingentitlement]**](../models/roleminingentitlement)
+[**List[RoleMiningEntitlement]**](../models/role-mining-entitlement)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of excluded entitlements for a potential roles. | List[Roleminingentitlement] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of excluded entitlements for a potential roles. | List[RoleMiningEntitlement] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -786,7 +826,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingentitlement import Roleminingentitlement
+from sailpoint.iai_role_mining.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -850,16 +890,16 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingidentity]**](../models/roleminingidentity)
+[**List[RoleMiningIdentity]**](../models/role-mining-identity)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of identities for a potential role. | List[Roleminingidentity] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of identities for a potential role. | List[RoleMiningIdentity] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -870,7 +910,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingidentity import Roleminingidentity
+from sailpoint.iai_role_mining.models.role_mining_identity import RoleMiningIdentity
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -933,17 +973,17 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingpotentialroleapplication]**](../models/roleminingpotentialroleapplication)
+[**List[RoleMiningPotentialRoleApplication]**](../models/role-mining-potential-role-application)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of potential roles for a role mining session. | List[Roleminingpotentialroleapplication] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of potential roles for a role mining session. | List[RoleMiningPotentialRoleApplication] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -954,7 +994,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialroleapplication import Roleminingpotentialroleapplication
+from sailpoint.iai_role_mining.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1016,17 +1056,17 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingpotentialroleentitlements]**](../models/roleminingpotentialroleentitlements)
+[**List[RoleMiningPotentialRoleEntitlements]**](../models/role-mining-potential-role-entitlements)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns the entitlements of a potential role for a role mining session. session. | List[Roleminingpotentialroleentitlements] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns the entitlements of a potential role for a role mining session. session. | List[RoleMiningPotentialRoleEntitlements] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1037,7 +1077,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialroleentitlements import Roleminingpotentialroleentitlements
+from sailpoint.iai_role_mining.models.role_mining_potential_role_entitlements import RoleMiningPotentialRoleEntitlements
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1099,17 +1139,17 @@ Path   | source_id | **str** | True  | A source id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingpotentialrolesourceusage]**](../models/roleminingpotentialrolesourceusage)
+[**List[RoleMiningPotentialRoleSourceUsage]**](../models/role-mining-potential-role-source-usage)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of source usage for the identities in a potential role. | List[Roleminingpotentialrolesourceusage] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of source usage for the identities in a potential role. | List[RoleMiningPotentialRoleSourceUsage] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1120,7 +1160,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesourceusage import Roleminingpotentialrolesourceusage
+from sailpoint.iai_role_mining.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1182,17 +1222,17 @@ Path   | session_id | **str** | True  | The role mining session id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingpotentialrolesummary]**](../models/roleminingpotentialrolesummary)
+[**List[RoleMiningPotentialRoleSummary]**](../models/role-mining-potential-role-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of potential role summaries for a role mining session. | List[Roleminingpotentialrolesummary] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of potential role summaries for a role mining session. | List[RoleMiningPotentialRoleSummary] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1203,7 +1243,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesummary import Roleminingpotentialrolesummary
+from sailpoint.iai_role_mining.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1261,17 +1301,17 @@ Path   | potential_role_id | **str** | True  | A potential role id in a role min
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of potential roles for a role mining session. | Roleminingpotentialrole |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of potential roles for a role mining session. | RoleMiningPotentialRole |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1282,7 +1322,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrole import Roleminingpotentialrole
+from sailpoint.iai_role_mining.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1334,17 +1374,17 @@ Path   | potential_role_id | **str** | True  | A potential role id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of potential roles for a role mining session. | Roleminingpotentialrole |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of potential roles for a role mining session. | RoleMiningPotentialRole |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1355,7 +1395,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrole import Roleminingpotentialrole
+from sailpoint.iai_role_mining.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1406,16 +1446,16 @@ Path   | session_id | **str** | True  | The role mining session id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingsessionstatus**](../models/roleminingsessionstatus)
+[**RoleMiningSessionStatus**](../models/role-mining-session-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns session status | Roleminingsessionstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns session status | RoleMiningSessionStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1426,7 +1466,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingsessionstatus import Roleminingsessionstatus
+from sailpoint.iai_role_mining.models.role_mining_session_status import RoleMiningSessionStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1477,18 +1517,18 @@ Path   | session_id | **str** | True  | The role mining session id to be retriev
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingsessionresponse**](../models/roleminingsessionresponse)
+[**RoleMiningSessionResponse**](../models/role-mining-session-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns a role mining session | Roleminingsessionresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-401 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+200 | Returns a role mining session | RoleMiningSessionResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1499,7 +1539,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingsessionresponse import Roleminingsessionresponse
+from sailpoint.iai_role_mining.models.role_mining_session_response import RoleMiningSessionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1554,17 +1594,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingsessiondto]**](../models/roleminingsessiondto)
+[**List[RoleMiningSessionDto]**](../models/role-mining-session-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns all role mining sessions that match the query parameters. | List[Roleminingsessiondto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns all role mining sessions that match the query parameters. | List[RoleMiningSessionDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1575,7 +1615,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingsessiondto import Roleminingsessiondto
+from sailpoint.iai_role_mining.models.role_mining_session_dto import RoleMiningSessionDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1634,17 +1674,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Roleminingsessiondraftroledto]**](../models/roleminingsessiondraftroledto)
+[**List[RoleMiningSessionDraftRoleDto]**](../models/role-mining-session-draft-role-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of draft roles for a role mining session. | List[Roleminingsessiondraftroledto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of draft roles for a role mining session. | List[RoleMiningSessionDraftRoleDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1655,7 +1695,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingsessiondraftroledto import Roleminingsessiondraftroledto
+from sailpoint.iai_role_mining.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1720,7 +1760,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | session_id | **str** | True  | The role mining session id
 Path   | potential_role_id | **str** | True  | The potential role summary id
- Body  | jsonpatchoperationrolemining | [**[]Jsonpatchoperationrolemining**](../models/jsonpatchoperationrolemining) | True  | 
+ Body  | json_patch_operation_role_mining | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -1730,12 +1770,12 @@ Path   | potential_role_id | **str** | True  | The potential role summary id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns the potential role summary based on the potentialRoleId provided. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1746,7 +1786,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.jsonpatchoperationrolemining import Jsonpatchoperationrolemining
+from sailpoint.iai_role_mining.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1755,15 +1795,15 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id # str | The potential role summary id
-    jsonpatchoperationrolemining = '''[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]''' # List[Jsonpatchoperationrolemining] | 
+    json_patch_operation_role_mining = '''[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]''' # List[JsonPatchOperationRoleMining] | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update a potential role session
-        new_jsonpatchoperationrolemining = Jsonpatchoperationrolemining.from_json(jsonpatchoperationrolemining)
-        results = IAIRoleMiningApi(api_client).patch_potential_role_session_v1(session_id=session_id, potential_role_id=potential_role_id, jsonpatchoperationrolemining=new_jsonpatchoperationrolemining)
+        new_json_patch_operation_role_mining = JsonPatchOperationRoleMining.from_json(json_patch_operation_role_mining)
+        results = IAIRoleMiningApi(api_client).patch_potential_role_session_v1(session_id=session_id, potential_role_id=potential_role_id, json_patch_operation_role_mining=new_json_patch_operation_role_mining)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).patch_potential_role_session_v1(session_id, potential_role_id, new_jsonpatchoperationrolemining, x_sail_point_experimental)
+        # results = IAIRoleMiningApi(api_client).patch_potential_role_session_v1(session_id, potential_role_id, new_json_patch_operation_role_mining, x_sail_point_experimental)
         print("The response of IAIRoleMiningApi->patch_potential_role_session_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1809,7 +1849,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | session_id | **str** | True  | The role mining session id
 Path   | potential_role_id | **str** | True  | The potential role summary id
- Body  | jsonpatchoperationrolemining | [**[]Jsonpatchoperationrolemining**](../models/jsonpatchoperationrolemining) | True  | 
+ Body  | json_patch_operation_role_mining | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -1819,12 +1859,12 @@ Path   | potential_role_id | **str** | True  | The potential role summary id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Succeeded. Returns the potential role summary based on the potentialRoleId provided. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1835,7 +1875,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.jsonpatchoperationrolemining import Jsonpatchoperationrolemining
+from sailpoint.iai_role_mining.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1844,15 +1884,15 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id # str | The potential role summary id
-    jsonpatchoperationrolemining = '''[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]''' # List[Jsonpatchoperationrolemining] | 
+    json_patch_operation_role_mining = '''[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]''' # List[JsonPatchOperationRoleMining] | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update a potential role
-        new_jsonpatchoperationrolemining = Jsonpatchoperationrolemining.from_json(jsonpatchoperationrolemining)
-        results = IAIRoleMiningApi(api_client).patch_potential_role_v1(session_id=session_id, potential_role_id=potential_role_id, jsonpatchoperationrolemining=new_jsonpatchoperationrolemining)
+        new_json_patch_operation_role_mining = JsonPatchOperationRoleMining.from_json(json_patch_operation_role_mining)
+        results = IAIRoleMiningApi(api_client).patch_potential_role_v1(session_id=session_id, potential_role_id=potential_role_id, json_patch_operation_role_mining=new_json_patch_operation_role_mining)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).patch_potential_role_v1(session_id, potential_role_id, new_jsonpatchoperationrolemining, x_sail_point_experimental)
+        # results = IAIRoleMiningApi(api_client).patch_potential_role_v1(session_id, potential_role_id, new_json_patch_operation_role_mining, x_sail_point_experimental)
         print("The response of IAIRoleMiningApi->patch_potential_role_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1885,7 +1925,7 @@ The  method updates an existing role mining session using PATCH. Supports op in 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | session_id | **str** | True  | The role mining session id to be patched
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -1895,12 +1935,12 @@ Path   | session_id | **str** | True  | The role mining session id to be patched
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetRoleMiningSessionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1911,7 +1951,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.iai_role_mining.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1919,15 +1959,15 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id to be patched # str | The role mining session id to be patched
-    jsonpatchoperation = '''[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]''' # List[Jsonpatchoperation] | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
+    json_patch_operation = '''[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]''' # List[JsonPatchOperation] | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Patch a role mining session
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = IAIRoleMiningApi(api_client).patch_role_mining_session_v1(session_id=session_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = IAIRoleMiningApi(api_client).patch_role_mining_session_v1(session_id=session_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).patch_role_mining_session_v1(session_id, new_jsonpatchoperation, x_sail_point_experimental)
+        # results = IAIRoleMiningApi(api_client).patch_role_mining_session_v1(session_id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of IAIRoleMiningApi->patch_role_mining_session_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1961,20 +2001,20 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | session_id | **str** | True  | The role mining session id
 Path   | potential_role_id | **str** | True  | A potential role id in a role mining session
- Body  | roleminingpotentialroleeditentitlements | [**Roleminingpotentialroleeditentitlements**](../models/roleminingpotentialroleeditentitlements) | True  | Role mining session parameters
+ Body  | role_mining_potential_role_edit_entitlements | [**RoleMiningPotentialRoleEditEntitlements**](../models/role-mining-potential-role-edit-entitlements) | True  | Role mining session parameters
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Adds or removes entitlements from a potential role&#39;s entitlement exclusion list. | Roleminingpotentialrole |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Adds or removes entitlements from a potential role&#39;s entitlement exclusion list. | RoleMiningPotentialRole |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetRoleMiningSessionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1985,8 +2025,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_role_mining.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.iai_role_mining.api_client import ApiClient
-from sailpoint.iai_role_mining.models.roleminingpotentialrole import Roleminingpotentialrole
-from sailpoint.iai_role_mining.models.roleminingpotentialroleeditentitlements import Roleminingpotentialroleeditentitlements
+from sailpoint.iai_role_mining.models.role_mining_potential_role import RoleMiningPotentialRole
+from sailpoint.iai_role_mining.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1995,15 +2035,18 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session # str | A potential role id in a role mining session
-    roleminingpotentialroleeditentitlements = '''sailpoint.iai_role_mining.Roleminingpotentialroleeditentitlements()''' # Roleminingpotentialroleeditentitlements | Role mining session parameters
+    role_mining_potential_role_edit_entitlements = '''{
+          "ids" : [ "entId1", "entId2" ],
+          "exclude" : true
+        }''' # RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Edit entitlements for a potential role to exclude some entitlements
-        new_roleminingpotentialroleeditentitlements = Roleminingpotentialroleeditentitlements.from_json(roleminingpotentialroleeditentitlements)
-        results = IAIRoleMiningApi(api_client).update_entitlements_potential_role_v1(session_id=session_id, potential_role_id=potential_role_id, roleminingpotentialroleeditentitlements=new_roleminingpotentialroleeditentitlements)
+        new_role_mining_potential_role_edit_entitlements = RoleMiningPotentialRoleEditEntitlements.from_json(role_mining_potential_role_edit_entitlements)
+        results = IAIRoleMiningApi(api_client).update_entitlements_potential_role_v1(session_id=session_id, potential_role_id=potential_role_id, role_mining_potential_role_edit_entitlements=new_role_mining_potential_role_edit_entitlements)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).update_entitlements_potential_role_v1(session_id, potential_role_id, new_roleminingpotentialroleeditentitlements, x_sail_point_experimental)
+        # results = IAIRoleMiningApi(api_client).update_entitlements_potential_role_v1(session_id, potential_role_id, new_role_mining_potential_role_edit_entitlements, x_sail_point_experimental)
         print("The response of IAIRoleMiningApi->update_entitlements_potential_role_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

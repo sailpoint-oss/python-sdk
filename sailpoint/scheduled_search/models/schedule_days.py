@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.scheduled_search.models.selectortype import Selectortype
+from sailpoint.scheduled_search.models.selector_type import SelectorType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ScheduleDays(BaseModel):
     """
     ScheduleDays
     """ # noqa: E501
-    type: Selectortype
+    type: SelectorType
     values: List[StrictStr] = Field(description="The selected values. ")
     interval: Optional[StrictInt] = Field(default=None, description="The selected interval for RANGE selectors. ")
     __properties: ClassVar[List[str]] = ["type", "values", "interval"]

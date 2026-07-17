@@ -19,20 +19,20 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBytes, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.configuration_hub.models.backupresponse import Backupresponse
-from sailpoint.configuration_hub.models.deployrequest import Deployrequest
-from sailpoint.configuration_hub.models.deployresponse import Deployresponse
-from sailpoint.configuration_hub.models.draftresponse import Draftresponse
-from sailpoint.configuration_hub.models.jsonpatch import Jsonpatch
+from sailpoint.configuration_hub.models.backup_response import BackupResponse
+from sailpoint.configuration_hub.models.deploy_request import DeployRequest
+from sailpoint.configuration_hub.models.deploy_response import DeployResponse
+from sailpoint.configuration_hub.models.draft_response import DraftResponse
+from sailpoint.configuration_hub.models.json_patch import JsonPatch
 from sailpoint.configuration_hub.models.list_deploys_v1200_response import ListDeploysV1200Response
-from sailpoint.configuration_hub.models.objectmappingbulkcreaterequest import Objectmappingbulkcreaterequest
-from sailpoint.configuration_hub.models.objectmappingbulkcreateresponse import Objectmappingbulkcreateresponse
-from sailpoint.configuration_hub.models.objectmappingbulkpatchrequest import Objectmappingbulkpatchrequest
-from sailpoint.configuration_hub.models.objectmappingbulkpatchresponse import Objectmappingbulkpatchresponse
-from sailpoint.configuration_hub.models.objectmappingrequest import Objectmappingrequest
-from sailpoint.configuration_hub.models.objectmappingresponse import Objectmappingresponse
-from sailpoint.configuration_hub.models.scheduledactionpayload import Scheduledactionpayload
-from sailpoint.configuration_hub.models.scheduledactionresponse import Scheduledactionresponse
+from sailpoint.configuration_hub.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
+from sailpoint.configuration_hub.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
+from sailpoint.configuration_hub.models.object_mapping_bulk_patch_request import ObjectMappingBulkPatchRequest
+from sailpoint.configuration_hub.models.object_mapping_bulk_patch_response import ObjectMappingBulkPatchResponse
+from sailpoint.configuration_hub.models.object_mapping_request import ObjectMappingRequest
+from sailpoint.configuration_hub.models.object_mapping_response import ObjectMappingResponse
+from sailpoint.configuration_hub.models.scheduled_action_payload import ScheduledActionPayload
+from sailpoint.configuration_hub.models.scheduled_action_response import ScheduledActionResponse
 
 from sailpoint.configuration_hub.api_client import ApiClient, RequestSerialized
 from sailpoint.configuration_hub.api_response import ApiResponse
@@ -55,7 +55,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_deploy_v1(
         self,
-        deployrequest: Annotated[Deployrequest, Field(description="The deploy request body.")],
+        deploy_request: Annotated[DeployRequest, Field(description="The deploy request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,13 +68,13 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Deployresponse:
+    ) -> DeployResponse:
         """Create a deploy
 
         This API performs a deploy based on an existing daft.
 
-        :param deployrequest: The deploy request body. (required)
-        :type deployrequest: Deployrequest
+        :param deploy_request: The deploy request body. (required)
+        :type deploy_request: DeployRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,7 +98,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_deploy_v1_serialize(
-            deployrequest=deployrequest,
+            deploy_request=deploy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,12 +106,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Deployresponse",
-            '400': "Errorresponsedto",
+            '202': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +127,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_deploy_v1_with_http_info(
         self,
-        deployrequest: Annotated[Deployrequest, Field(description="The deploy request body.")],
+        deploy_request: Annotated[DeployRequest, Field(description="The deploy request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,13 +140,13 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Deployresponse]:
+    ) -> ApiResponse[DeployResponse]:
         """Create a deploy
 
         This API performs a deploy based on an existing daft.
 
-        :param deployrequest: The deploy request body. (required)
-        :type deployrequest: Deployrequest
+        :param deploy_request: The deploy request body. (required)
+        :type deploy_request: DeployRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,7 +170,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_deploy_v1_serialize(
-            deployrequest=deployrequest,
+            deploy_request=deploy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -178,12 +178,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Deployresponse",
-            '400': "Errorresponsedto",
+            '202': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +199,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_deploy_v1_without_preload_content(
         self,
-        deployrequest: Annotated[Deployrequest, Field(description="The deploy request body.")],
+        deploy_request: Annotated[DeployRequest, Field(description="The deploy request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,8 +217,8 @@ class ConfigurationHubApi:
 
         This API performs a deploy based on an existing daft.
 
-        :param deployrequest: The deploy request body. (required)
-        :type deployrequest: Deployrequest
+        :param deploy_request: The deploy request body. (required)
+        :type deploy_request: DeployRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -242,7 +242,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_deploy_v1_serialize(
-            deployrequest=deployrequest,
+            deploy_request=deploy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -250,12 +250,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Deployresponse",
-            '400': "Errorresponsedto",
+            '202': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -266,7 +266,7 @@ class ConfigurationHubApi:
 
     def _create_deploy_v1_serialize(
         self,
-        deployrequest,
+        deploy_request,
         _request_auth,
         _content_type,
         _headers,
@@ -292,8 +292,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if deployrequest is not None:
-            _body_params = deployrequest
+        if deploy_request is not None:
+            _body_params = deploy_request
 
 
         # set the HTTP header `Accept`
@@ -344,7 +344,7 @@ class ConfigurationHubApi:
     def create_object_mapping_v1(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingrequest: Annotated[Objectmappingrequest, Field(description="The object mapping request body.")],
+        object_mapping_request: Annotated[ObjectMappingRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -357,15 +357,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Objectmappingresponse:
+    ) -> ObjectMappingResponse:
         """Creates an object mapping
 
         This creates an object mapping between current org and source org. Source org should be \"default\" when creating an object mapping that is not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingrequest: The object mapping request body. (required)
-        :type objectmappingrequest: Objectmappingrequest
+        :param object_mapping_request: The object mapping request body. (required)
+        :type object_mapping_request: ObjectMappingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -390,7 +390,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mapping_v1_serialize(
             source_org=source_org,
-            objectmappingrequest=objectmappingrequest,
+            object_mapping_request=object_mapping_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -398,13 +398,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +421,7 @@ class ConfigurationHubApi:
     def create_object_mapping_v1_with_http_info(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingrequest: Annotated[Objectmappingrequest, Field(description="The object mapping request body.")],
+        object_mapping_request: Annotated[ObjectMappingRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -434,15 +434,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Objectmappingresponse]:
+    ) -> ApiResponse[ObjectMappingResponse]:
         """Creates an object mapping
 
         This creates an object mapping between current org and source org. Source org should be \"default\" when creating an object mapping that is not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingrequest: The object mapping request body. (required)
-        :type objectmappingrequest: Objectmappingrequest
+        :param object_mapping_request: The object mapping request body. (required)
+        :type object_mapping_request: ObjectMappingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -467,7 +467,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mapping_v1_serialize(
             source_org=source_org,
-            objectmappingrequest=objectmappingrequest,
+            object_mapping_request=object_mapping_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -475,13 +475,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -498,7 +498,7 @@ class ConfigurationHubApi:
     def create_object_mapping_v1_without_preload_content(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingrequest: Annotated[Objectmappingrequest, Field(description="The object mapping request body.")],
+        object_mapping_request: Annotated[ObjectMappingRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -518,8 +518,8 @@ class ConfigurationHubApi:
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingrequest: The object mapping request body. (required)
-        :type objectmappingrequest: Objectmappingrequest
+        :param object_mapping_request: The object mapping request body. (required)
+        :type object_mapping_request: ObjectMappingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -544,7 +544,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mapping_v1_serialize(
             source_org=source_org,
-            objectmappingrequest=objectmappingrequest,
+            object_mapping_request=object_mapping_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -552,13 +552,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -570,7 +570,7 @@ class ConfigurationHubApi:
     def _create_object_mapping_v1_serialize(
         self,
         source_org,
-        objectmappingrequest,
+        object_mapping_request,
         _request_auth,
         _content_type,
         _headers,
@@ -598,8 +598,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if objectmappingrequest is not None:
-            _body_params = objectmappingrequest
+        if object_mapping_request is not None:
+            _body_params = object_mapping_request
 
 
         # set the HTTP header `Accept`
@@ -650,7 +650,7 @@ class ConfigurationHubApi:
     def create_object_mappings_v1(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkcreaterequest: Annotated[Objectmappingbulkcreaterequest, Field(description="The bulk create object mapping request body.")],
+        object_mapping_bulk_create_request: Annotated[ObjectMappingBulkCreateRequest, Field(description="The bulk create object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -663,15 +663,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Objectmappingbulkcreateresponse:
+    ) -> ObjectMappingBulkCreateResponse:
         """Bulk creates object mappings
 
         This creates a set of object mappings (Max 25) between current org and source org. Source org should be \"default\" when creating object mappings that are not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkcreaterequest: The bulk create object mapping request body. (required)
-        :type objectmappingbulkcreaterequest: Objectmappingbulkcreaterequest
+        :param object_mapping_bulk_create_request: The bulk create object mapping request body. (required)
+        :type object_mapping_bulk_create_request: ObjectMappingBulkCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -696,7 +696,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkcreaterequest=objectmappingbulkcreaterequest,
+            object_mapping_bulk_create_request=object_mapping_bulk_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -704,13 +704,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkcreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -727,7 +727,7 @@ class ConfigurationHubApi:
     def create_object_mappings_v1_with_http_info(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkcreaterequest: Annotated[Objectmappingbulkcreaterequest, Field(description="The bulk create object mapping request body.")],
+        object_mapping_bulk_create_request: Annotated[ObjectMappingBulkCreateRequest, Field(description="The bulk create object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -740,15 +740,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Objectmappingbulkcreateresponse]:
+    ) -> ApiResponse[ObjectMappingBulkCreateResponse]:
         """Bulk creates object mappings
 
         This creates a set of object mappings (Max 25) between current org and source org. Source org should be \"default\" when creating object mappings that are not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkcreaterequest: The bulk create object mapping request body. (required)
-        :type objectmappingbulkcreaterequest: Objectmappingbulkcreaterequest
+        :param object_mapping_bulk_create_request: The bulk create object mapping request body. (required)
+        :type object_mapping_bulk_create_request: ObjectMappingBulkCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -773,7 +773,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkcreaterequest=objectmappingbulkcreaterequest,
+            object_mapping_bulk_create_request=object_mapping_bulk_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -781,13 +781,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkcreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -804,7 +804,7 @@ class ConfigurationHubApi:
     def create_object_mappings_v1_without_preload_content(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkcreaterequest: Annotated[Objectmappingbulkcreaterequest, Field(description="The bulk create object mapping request body.")],
+        object_mapping_bulk_create_request: Annotated[ObjectMappingBulkCreateRequest, Field(description="The bulk create object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -824,8 +824,8 @@ class ConfigurationHubApi:
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkcreaterequest: The bulk create object mapping request body. (required)
-        :type objectmappingbulkcreaterequest: Objectmappingbulkcreaterequest
+        :param object_mapping_bulk_create_request: The bulk create object mapping request body. (required)
+        :type object_mapping_bulk_create_request: ObjectMappingBulkCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -850,7 +850,7 @@ class ConfigurationHubApi:
 
         _param = self._create_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkcreaterequest=objectmappingbulkcreaterequest,
+            object_mapping_bulk_create_request=object_mapping_bulk_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -858,13 +858,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkcreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -876,7 +876,7 @@ class ConfigurationHubApi:
     def _create_object_mappings_v1_serialize(
         self,
         source_org,
-        objectmappingbulkcreaterequest,
+        object_mapping_bulk_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -904,8 +904,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if objectmappingbulkcreaterequest is not None:
-            _body_params = objectmappingbulkcreaterequest
+        if object_mapping_bulk_create_request is not None:
+            _body_params = object_mapping_bulk_create_request
 
 
         # set the HTTP header `Accept`
@@ -955,7 +955,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_scheduled_action_v1(
         self,
-        scheduledactionpayload: Annotated[Scheduledactionpayload, Field(description="The scheduled action creation request body.")],
+        scheduled_action_payload: Annotated[ScheduledActionPayload, Field(description="The scheduled action creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -968,13 +968,13 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduledactionresponse:
+    ) -> ScheduledActionResponse:
         """Create scheduled action
 
         This API creates a new scheduled action for the current tenant.
 
-        :param scheduledactionpayload: The scheduled action creation request body. (required)
-        :type scheduledactionpayload: Scheduledactionpayload
+        :param scheduled_action_payload: The scheduled action creation request body. (required)
+        :type scheduled_action_payload: ScheduledActionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -998,7 +998,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_scheduled_action_v1_serialize(
-            scheduledactionpayload=scheduledactionpayload,
+            scheduled_action_payload=scheduled_action_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1006,12 +1006,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1027,7 +1027,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_scheduled_action_v1_with_http_info(
         self,
-        scheduledactionpayload: Annotated[Scheduledactionpayload, Field(description="The scheduled action creation request body.")],
+        scheduled_action_payload: Annotated[ScheduledActionPayload, Field(description="The scheduled action creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1040,13 +1040,13 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduledactionresponse]:
+    ) -> ApiResponse[ScheduledActionResponse]:
         """Create scheduled action
 
         This API creates a new scheduled action for the current tenant.
 
-        :param scheduledactionpayload: The scheduled action creation request body. (required)
-        :type scheduledactionpayload: Scheduledactionpayload
+        :param scheduled_action_payload: The scheduled action creation request body. (required)
+        :type scheduled_action_payload: ScheduledActionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1070,7 +1070,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_scheduled_action_v1_serialize(
-            scheduledactionpayload=scheduledactionpayload,
+            scheduled_action_payload=scheduled_action_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1078,12 +1078,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1099,7 +1099,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_scheduled_action_v1_without_preload_content(
         self,
-        scheduledactionpayload: Annotated[Scheduledactionpayload, Field(description="The scheduled action creation request body.")],
+        scheduled_action_payload: Annotated[ScheduledActionPayload, Field(description="The scheduled action creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1117,8 +1117,8 @@ class ConfigurationHubApi:
 
         This API creates a new scheduled action for the current tenant.
 
-        :param scheduledactionpayload: The scheduled action creation request body. (required)
-        :type scheduledactionpayload: Scheduledactionpayload
+        :param scheduled_action_payload: The scheduled action creation request body. (required)
+        :type scheduled_action_payload: ScheduledActionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1142,7 +1142,7 @@ class ConfigurationHubApi:
         """ # noqa: E501
 
         _param = self._create_scheduled_action_v1_serialize(
-            scheduledactionpayload=scheduledactionpayload,
+            scheduled_action_payload=scheduled_action_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1150,12 +1150,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1166,7 +1166,7 @@ class ConfigurationHubApi:
 
     def _create_scheduled_action_v1_serialize(
         self,
-        scheduledactionpayload,
+        scheduled_action_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -1192,8 +1192,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if scheduledactionpayload is not None:
-            _body_params = scheduledactionpayload
+        if scheduled_action_payload is not None:
+            _body_params = scheduled_action_payload
 
 
         # set the HTTP header `Accept`
@@ -1257,7 +1257,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Backupresponse:
+    ) -> BackupResponse:
         """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects) for more information about supported objects.
@@ -1298,12 +1298,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Backupresponse",
-            '400': "Errorresponsedto",
+            '202': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1333,7 +1333,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Backupresponse]:
+    ) -> ApiResponse[BackupResponse]:
         """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects) for more information about supported objects.
@@ -1374,12 +1374,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Backupresponse",
-            '400': "Errorresponsedto",
+            '202': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1450,12 +1450,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Backupresponse",
-            '400': "Errorresponsedto",
+            '202': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1598,12 +1598,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1671,12 +1671,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1744,12 +1744,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1876,12 +1876,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1949,12 +1949,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2022,12 +2022,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2158,12 +2158,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2235,12 +2235,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2312,12 +2312,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2447,12 +2447,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2520,12 +2520,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2593,12 +2593,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2725,12 +2725,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2798,12 +2798,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2871,12 +2871,12 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2964,7 +2964,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Deployresponse:
+    ) -> DeployResponse:
         """Get a deploy
 
         This API gets an existing deploy for the current tenant.
@@ -3002,13 +3002,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Deployresponse",
-            '400': "Errorresponsedto",
+            '200': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3037,7 +3037,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Deployresponse]:
+    ) -> ApiResponse[DeployResponse]:
         """Get a deploy
 
         This API gets an existing deploy for the current tenant.
@@ -3075,13 +3075,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Deployresponse",
-            '400': "Errorresponsedto",
+            '200': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3148,13 +3148,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Deployresponse",
-            '400': "Errorresponsedto",
+            '200': "DeployResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3242,7 +3242,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Objectmappingresponse]:
+    ) -> List[ObjectMappingResponse]:
         """Gets list of object mappings
 
         This gets a list of existing object mappings between current org and source org. Source org should be \"default\" when getting object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:read
@@ -3280,13 +3280,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Objectmappingresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ObjectMappingResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3315,7 +3315,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Objectmappingresponse]]:
+    ) -> ApiResponse[List[ObjectMappingResponse]]:
         """Gets list of object mappings
 
         This gets a list of existing object mappings between current org and source org. Source org should be \"default\" when getting object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:read
@@ -3353,13 +3353,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Objectmappingresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ObjectMappingResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3426,13 +3426,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Objectmappingresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ObjectMappingResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3520,7 +3520,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Backupresponse:
+    ) -> BackupResponse:
         """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
@@ -3558,13 +3558,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Backupresponse",
-            '400': "Errorresponsedto",
+            '200': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3593,7 +3593,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Backupresponse]:
+    ) -> ApiResponse[BackupResponse]:
         """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
@@ -3631,13 +3631,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Backupresponse",
-            '400': "Errorresponsedto",
+            '200': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3704,13 +3704,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Backupresponse",
-            '400': "Errorresponsedto",
+            '200': "BackupResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3798,7 +3798,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Backupresponse]:
+    ) -> List[BackupResponse]:
         """List backups
 
         This API gets a list of existing backups for the current tenant.
@@ -3836,12 +3836,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3870,7 +3870,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Backupresponse]]:
+    ) -> ApiResponse[List[BackupResponse]]:
         """List backups
 
         This API gets a list of existing backups for the current tenant.
@@ -3908,12 +3908,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3980,12 +3980,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4110,11 +4110,11 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListDeploysV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4178,11 +4178,11 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListDeploysV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4246,11 +4246,11 @@ class ConfigurationHubApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListDeploysV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4335,7 +4335,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Draftresponse]:
+    ) -> List[DraftResponse]:
         """List drafts
 
         This API gets a list of existing drafts for the current tenant.
@@ -4373,12 +4373,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Draftresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[DraftResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4407,7 +4407,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Draftresponse]]:
+    ) -> ApiResponse[List[DraftResponse]]:
         """List drafts
 
         This API gets a list of existing drafts for the current tenant.
@@ -4445,12 +4445,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Draftresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[DraftResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4517,12 +4517,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Draftresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[DraftResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4611,7 +4611,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Scheduledactionresponse]:
+    ) -> List[ScheduledActionResponse]:
         """List scheduled actions
 
         This API gets a list of existing scheduled actions for the current tenant.
@@ -4646,12 +4646,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledactionresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledActionResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4679,7 +4679,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Scheduledactionresponse]]:
+    ) -> ApiResponse[List[ScheduledActionResponse]]:
         """List scheduled actions
 
         This API gets a list of existing scheduled actions for the current tenant.
@@ -4714,12 +4714,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledactionresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledActionResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4782,12 +4782,12 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledactionresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledActionResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4872,7 +4872,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Backupresponse]:
+    ) -> List[BackupResponse]:
         """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
@@ -4910,13 +4910,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4945,7 +4945,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Backupresponse]]:
+    ) -> ApiResponse[List[BackupResponse]]:
         """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
@@ -4983,13 +4983,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5056,13 +5056,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Backupresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BackupResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5140,7 +5140,7 @@ class ConfigurationHubApi:
     def update_object_mappings_v1(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkpatchrequest: Annotated[Objectmappingbulkpatchrequest, Field(description="The object mapping request body.")],
+        object_mapping_bulk_patch_request: Annotated[ObjectMappingBulkPatchRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5153,15 +5153,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Objectmappingbulkpatchresponse:
+    ) -> ObjectMappingBulkPatchResponse:
         """Bulk updates object mappings
 
         This updates a set of object mappings, only enabled and targetValue fields can be updated. Source org should be \"default\" when updating object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkpatchrequest: The object mapping request body. (required)
-        :type objectmappingbulkpatchrequest: Objectmappingbulkpatchrequest
+        :param object_mapping_bulk_patch_request: The object mapping request body. (required)
+        :type object_mapping_bulk_patch_request: ObjectMappingBulkPatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5186,7 +5186,7 @@ class ConfigurationHubApi:
 
         _param = self._update_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkpatchrequest=objectmappingbulkpatchrequest,
+            object_mapping_bulk_patch_request=object_mapping_bulk_patch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5194,13 +5194,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkpatchresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkPatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5217,7 +5217,7 @@ class ConfigurationHubApi:
     def update_object_mappings_v1_with_http_info(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkpatchrequest: Annotated[Objectmappingbulkpatchrequest, Field(description="The object mapping request body.")],
+        object_mapping_bulk_patch_request: Annotated[ObjectMappingBulkPatchRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5230,15 +5230,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Objectmappingbulkpatchresponse]:
+    ) -> ApiResponse[ObjectMappingBulkPatchResponse]:
         """Bulk updates object mappings
 
         This updates a set of object mappings, only enabled and targetValue fields can be updated. Source org should be \"default\" when updating object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkpatchrequest: The object mapping request body. (required)
-        :type objectmappingbulkpatchrequest: Objectmappingbulkpatchrequest
+        :param object_mapping_bulk_patch_request: The object mapping request body. (required)
+        :type object_mapping_bulk_patch_request: ObjectMappingBulkPatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5263,7 +5263,7 @@ class ConfigurationHubApi:
 
         _param = self._update_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkpatchrequest=objectmappingbulkpatchrequest,
+            object_mapping_bulk_patch_request=object_mapping_bulk_patch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5271,13 +5271,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkpatchresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkPatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5294,7 +5294,7 @@ class ConfigurationHubApi:
     def update_object_mappings_v1_without_preload_content(
         self,
         source_org: Annotated[StrictStr, Field(description="The name of the source org.")],
-        objectmappingbulkpatchrequest: Annotated[Objectmappingbulkpatchrequest, Field(description="The object mapping request body.")],
+        object_mapping_bulk_patch_request: Annotated[ObjectMappingBulkPatchRequest, Field(description="The object mapping request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5314,8 +5314,8 @@ class ConfigurationHubApi:
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
-        :param objectmappingbulkpatchrequest: The object mapping request body. (required)
-        :type objectmappingbulkpatchrequest: Objectmappingbulkpatchrequest
+        :param object_mapping_bulk_patch_request: The object mapping request body. (required)
+        :type object_mapping_bulk_patch_request: ObjectMappingBulkPatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5340,7 +5340,7 @@ class ConfigurationHubApi:
 
         _param = self._update_object_mappings_v1_serialize(
             source_org=source_org,
-            objectmappingbulkpatchrequest=objectmappingbulkpatchrequest,
+            object_mapping_bulk_patch_request=object_mapping_bulk_patch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5348,13 +5348,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectmappingbulkpatchresponse",
-            '400': "Errorresponsedto",
+            '200': "ObjectMappingBulkPatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5366,7 +5366,7 @@ class ConfigurationHubApi:
     def _update_object_mappings_v1_serialize(
         self,
         source_org,
-        objectmappingbulkpatchrequest,
+        object_mapping_bulk_patch_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5394,8 +5394,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if objectmappingbulkpatchrequest is not None:
-            _body_params = objectmappingbulkpatchrequest
+        if object_mapping_bulk_patch_request is not None:
+            _body_params = object_mapping_bulk_patch_request
 
 
         # set the HTTP header `Accept`
@@ -5446,7 +5446,7 @@ class ConfigurationHubApi:
     def update_scheduled_action_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the scheduled action.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5459,15 +5459,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduledactionresponse:
+    ) -> ScheduledActionResponse:
         """Update scheduled action
 
         This API updates an existing scheduled action using JSON Patch format.
 
         :param id: The ID of the scheduled action. (required)
         :type id: str
-        :param jsonpatch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5492,7 +5492,7 @@ class ConfigurationHubApi:
 
         _param = self._update_scheduled_action_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5500,13 +5500,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5523,7 +5523,7 @@ class ConfigurationHubApi:
     def update_scheduled_action_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the scheduled action.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5536,15 +5536,15 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduledactionresponse]:
+    ) -> ApiResponse[ScheduledActionResponse]:
         """Update scheduled action
 
         This API updates an existing scheduled action using JSON Patch format.
 
         :param id: The ID of the scheduled action. (required)
         :type id: str
-        :param jsonpatch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5569,7 +5569,7 @@ class ConfigurationHubApi:
 
         _param = self._update_scheduled_action_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5577,13 +5577,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5600,7 +5600,7 @@ class ConfigurationHubApi:
     def update_scheduled_action_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the scheduled action.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSON Patch document containing the changes to apply to the scheduled action.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5620,8 +5620,8 @@ class ConfigurationHubApi:
 
         :param id: The ID of the scheduled action. (required)
         :type id: str
-        :param jsonpatch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSON Patch document containing the changes to apply to the scheduled action. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5646,7 +5646,7 @@ class ConfigurationHubApi:
 
         _param = self._update_scheduled_action_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5654,13 +5654,13 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledactionresponse",
-            '400': "Errorresponsedto",
+            '200': "ScheduledActionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetObjectMappingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetObjectMappingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5672,7 +5672,7 @@ class ConfigurationHubApi:
     def _update_scheduled_action_v1_serialize(
         self,
         id,
-        jsonpatch,
+        json_patch,
         _request_auth,
         _content_type,
         _headers,
@@ -5700,8 +5700,8 @@ class ConfigurationHubApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatch is not None:
-            _body_params = jsonpatch
+        if json_patch is not None:
+            _body_params = json_patch
 
 
         # set the HTTP header `Accept`

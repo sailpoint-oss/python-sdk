@@ -24,7 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.scheduled_search.models.schedule_days import ScheduleDays
 from sailpoint.scheduled_search.models.schedule_hours import ScheduleHours
 from sailpoint.scheduled_search.models.schedule_months import ScheduleMonths
-from sailpoint.scheduled_search.models.scheduletype import Scheduletype
+from sailpoint.scheduled_search.models.schedule_type import ScheduleType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class Schedule(BaseModel):
     """
     The schedule information.
     """ # noqa: E501
-    type: Scheduletype
+    type: ScheduleType
     months: Optional[ScheduleMonths] = None
     days: Optional[ScheduleDays] = None
     hours: ScheduleHours

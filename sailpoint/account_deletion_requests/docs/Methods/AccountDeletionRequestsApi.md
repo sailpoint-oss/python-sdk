@@ -33,21 +33,21 @@ and generates an asynchronous result containing a tracking ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | account_id | **str** | True  | Account ID.
- Body  | accountdeleterequestinput | [**Accountdeleterequestinput**](../models/accountdeleterequestinput) |   (optional) | 
+ Body  | account_delete_request_input | [**AccountDeleteRequestInput**](../models/account-delete-request-input) |   (optional) | 
 
 ### Return type
-[**Accountrequestasyncresult**](../models/accountrequestasyncresult)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Account deletion request details. | Accountrequestasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Account deletion request details. | AccountRequestAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccountDeletionRequestsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccountDeletionRequestsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -58,22 +58,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.account_deletion_requests.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.account_deletion_requests.api_client import ApiClient
-from sailpoint.account_deletion_requests.models.accountdeleterequestinput import Accountdeleterequestinput
-from sailpoint.account_deletion_requests.models.accountrequestasyncresult import Accountrequestasyncresult
+from sailpoint.account_deletion_requests.models.account_delete_request_input import AccountDeleteRequestInput
+from sailpoint.account_deletion_requests.models.account_request_async_result import AccountRequestAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     account_id = 'ef38f94347e94562b5bb8424a56498d8' # str | Account ID. # str | Account ID.
-    accountdeleterequestinput = '''{"comments":"I requested this account deletion."}''' # Accountdeleterequestinput |  (optional)
+    account_delete_request_input = '''{
+          "comments" : "Requesting account deletion request"
+        }''' # AccountDeleteRequestInput |  (optional)
 
     try:
         # Delete account
         
         results = AccountDeletionRequestsApi(api_client).delete_account_request_v1(account_id=account_id)
         # Below is a request that includes all optional parameters
-        # results = AccountDeletionRequestsApi(api_client).delete_account_request_v1(account_id, new_accountdeleterequestinput)
+        # results = AccountDeletionRequestsApi(api_client).delete_account_request_v1(account_id, new_account_delete_request_input)
         print("The response of AccountDeletionRequestsApi->delete_account_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -100,18 +102,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | mine | **bool** |   (optional) (default to False) | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant.
 
 ### Return type
-[**List[Accountactionrequestdto]**](../models/accountactionrequestdto)
+[**List[AccountActionRequestDto]**](../models/account-action-request-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Account Action Request objects. | List[Accountactionrequestdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Account Action Request objects. | List[AccountActionRequestDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccountDeletionRequestsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccountDeletionRequestsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -122,7 +124,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.account_deletion_requests.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.account_deletion_requests.api_client import ApiClient
-from sailpoint.account_deletion_requests.models.accountactionrequestdto import Accountactionrequestdto
+from sailpoint.account_deletion_requests.models.account_action_request_dto import AccountActionRequestDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

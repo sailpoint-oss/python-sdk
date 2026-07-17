@@ -50,20 +50,20 @@ The valid values for `expirationDate` depend on the value provided for `userAwar
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | createpersonalaccesstokenrequest | [**Createpersonalaccesstokenrequest**](../models/createpersonalaccesstokenrequest) | True  | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
+ Body  | create_personal_access_token_request | [**CreatePersonalAccessTokenRequest**](../models/create-personal-access-token-request) | True  | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
 ### Return type
-[**Createpersonalaccesstokenresponse**](../models/createpersonalaccesstokenresponse)
+[**CreatePersonalAccessTokenResponse**](../models/create-personal-access-token-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created. Note - this is the only time Personal Access Tokens&#39; secret attribute will be displayed. | Createpersonalaccesstokenresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created. Note - this is the only time Personal Access Tokens&#39; secret attribute will be displayed. | CreatePersonalAccessTokenResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPersonalAccessTokensV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPersonalAccessTokensV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -74,21 +74,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.personal_access_tokens.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.personal_access_tokens.api_client import ApiClient
-from sailpoint.personal_access_tokens.models.createpersonalaccesstokenrequest import Createpersonalaccesstokenrequest
-from sailpoint.personal_access_tokens.models.createpersonalaccesstokenresponse import Createpersonalaccesstokenresponse
+from sailpoint.personal_access_tokens.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
+from sailpoint.personal_access_tokens.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createpersonalaccesstokenrequest = '''sailpoint.personal_access_tokens.Createpersonalaccesstokenrequest()''' # Createpersonalaccesstokenrequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
+    create_personal_access_token_request = '''{
+          "scope" : [ "demo:personal-access-token-scope:first", "demo:personal-access-token-scope:second" ],
+          "accessTokenValiditySeconds" : 36900,
+          "name" : "NodeJS Integration",
+          "userAwareTokenNeverExpires" : false,
+          "expirationDate" : "2026-12-31T23:59:59.999Z"
+        }''' # CreatePersonalAccessTokenRequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
     try:
         # Create personal access token
-        new_createpersonalaccesstokenrequest = Createpersonalaccesstokenrequest.from_json(createpersonalaccesstokenrequest)
-        results = PersonalAccessTokensApi(api_client).create_personal_access_token_v1(createpersonalaccesstokenrequest=new_createpersonalaccesstokenrequest)
+        new_create_personal_access_token_request = CreatePersonalAccessTokenRequest.from_json(create_personal_access_token_request)
+        results = PersonalAccessTokensApi(api_client).create_personal_access_token_v1(create_personal_access_token_request=new_create_personal_access_token_request)
         # Below is a request that includes all optional parameters
-        # results = PersonalAccessTokensApi(api_client).create_personal_access_token_v1(new_createpersonalaccesstokenrequest)
+        # results = PersonalAccessTokensApi(api_client).create_personal_access_token_v1(new_create_personal_access_token_request)
         print("The response of PersonalAccessTokensApi->create_personal_access_token_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -118,12 +124,12 @@ Path   | id | **str** | True  | The personal access token id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPersonalAccessTokensV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPersonalAccessTokensV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -169,17 +175,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*
 
 ### Return type
-[**List[Getpersonalaccesstokenresponse]**](../models/getpersonalaccesstokenresponse)
+[**List[GetPersonalAccessTokenResponse]**](../models/get-personal-access-token-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of personal access tokens. | List[Getpersonalaccesstokenresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of personal access tokens. | List[GetPersonalAccessTokenResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPersonalAccessTokensV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPersonalAccessTokensV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -190,7 +196,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.personal_access_tokens.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.personal_access_tokens.api_client import ApiClient
-from sailpoint.personal_access_tokens.models.getpersonalaccesstokenresponse import Getpersonalaccesstokenresponse
+from sailpoint.personal_access_tokens.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -236,21 +242,21 @@ When patching `expirationDate` and `userAwareTokenNeverExpires`, the valid value
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The Personal Access Token id
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
 ### Return type
-[**Getpersonalaccesstokenresponse**](../models/getpersonalaccesstokenresponse)
+[**GetPersonalAccessTokenResponse**](../models/get-personal-access-token-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Indicates the PATCH operation succeeded, and returns the PAT&#39;s new representation. | Getpersonalaccesstokenresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Indicates the PATCH operation succeeded, and returns the PAT&#39;s new representation. | GetPersonalAccessTokenResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPersonalAccessTokensV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPersonalAccessTokensV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -261,22 +267,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.personal_access_tokens.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.personal_access_tokens.api_client import ApiClient
-from sailpoint.personal_access_tokens.models.getpersonalaccesstokenresponse import Getpersonalaccesstokenresponse
-from sailpoint.personal_access_tokens.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.personal_access_tokens.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.personal_access_tokens.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Personal Access Token id # str | The Personal Access Token id
-    jsonpatchoperation = '''[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]''' # List[Jsonpatchoperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
+    json_patch_operation = '''[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
     try:
         # Patch personal access token
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = PersonalAccessTokensApi(api_client).patch_personal_access_token_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = PersonalAccessTokensApi(api_client).patch_personal_access_token_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = PersonalAccessTokensApi(api_client).patch_personal_access_token_v1(id, new_jsonpatchoperation)
+        # results = PersonalAccessTokensApi(api_client).patch_personal_access_token_v1(id, new_json_patch_operation)
         print("The response of PersonalAccessTokensApi->patch_personal_access_token_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -20,8 +20,8 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.scheduled_search.models.create_scheduled_search_v1_request import CreateScheduledSearchV1Request
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
-from sailpoint.scheduled_search.models.typedreference import Typedreference
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
+from sailpoint.scheduled_search.models.typed_reference import TypedReference
 
 from sailpoint.scheduled_search.api_client import ApiClient, RequestSerialized
 from sailpoint.scheduled_search.api_response import ApiResponse
@@ -57,7 +57,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduledsearch:
+    ) -> ScheduledSearch:
         """Create a new scheduled search
 
         Creates a new scheduled search. 
@@ -95,13 +95,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '201': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -130,7 +130,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduledsearch]:
+    ) -> ApiResponse[ScheduledSearch]:
         """Create a new scheduled search
 
         Creates a new scheduled search. 
@@ -168,13 +168,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '201': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -241,13 +241,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '201': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -387,12 +387,12 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -460,12 +460,12 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -533,12 +533,12 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -626,7 +626,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduledsearch:
+    ) -> ScheduledSearch:
         """Get a scheduled search
 
         Returns the specified scheduled search.
@@ -664,13 +664,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -699,7 +699,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduledsearch]:
+    ) -> ApiResponse[ScheduledSearch]:
         """Get a scheduled search
 
         Returns the specified scheduled search.
@@ -737,13 +737,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -810,13 +810,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -907,7 +907,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Scheduledsearch]:
+    ) -> List[ScheduledSearch]:
         """List scheduled searches
 
         Returns a list of scheduled searches. 
@@ -954,13 +954,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -992,7 +992,7 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Scheduledsearch]]:
+    ) -> ApiResponse[List[ScheduledSearch]]:
         """List scheduled searches
 
         Returns a list of scheduled searches. 
@@ -1039,13 +1039,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1124,13 +1124,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduledsearch]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduledSearch]",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1223,7 +1223,7 @@ class ScheduledSearchApi:
     def unsubscribe_scheduled_search_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        typedreference: Annotated[Typedreference, Field(description="The recipient to be removed from the scheduled search. ")],
+        typed_reference: Annotated[TypedReference, Field(description="The recipient to be removed from the scheduled search. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1243,8 +1243,8 @@ class ScheduledSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param typedreference: The recipient to be removed from the scheduled search.  (required)
-        :type typedreference: Typedreference
+        :param typed_reference: The recipient to be removed from the scheduled search.  (required)
+        :type typed_reference: TypedReference
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1269,7 +1269,7 @@ class ScheduledSearchApi:
 
         _param = self._unsubscribe_scheduled_search_v1_serialize(
             id=id,
-            typedreference=typedreference,
+            typed_reference=typed_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1278,9 +1278,9 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1297,7 +1297,7 @@ class ScheduledSearchApi:
     def unsubscribe_scheduled_search_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        typedreference: Annotated[Typedreference, Field(description="The recipient to be removed from the scheduled search. ")],
+        typed_reference: Annotated[TypedReference, Field(description="The recipient to be removed from the scheduled search. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1317,8 +1317,8 @@ class ScheduledSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param typedreference: The recipient to be removed from the scheduled search.  (required)
-        :type typedreference: Typedreference
+        :param typed_reference: The recipient to be removed from the scheduled search.  (required)
+        :type typed_reference: TypedReference
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1343,7 +1343,7 @@ class ScheduledSearchApi:
 
         _param = self._unsubscribe_scheduled_search_v1_serialize(
             id=id,
-            typedreference=typedreference,
+            typed_reference=typed_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1352,9 +1352,9 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1371,7 +1371,7 @@ class ScheduledSearchApi:
     def unsubscribe_scheduled_search_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        typedreference: Annotated[Typedreference, Field(description="The recipient to be removed from the scheduled search. ")],
+        typed_reference: Annotated[TypedReference, Field(description="The recipient to be removed from the scheduled search. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1391,8 +1391,8 @@ class ScheduledSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param typedreference: The recipient to be removed from the scheduled search.  (required)
-        :type typedreference: Typedreference
+        :param typed_reference: The recipient to be removed from the scheduled search.  (required)
+        :type typed_reference: TypedReference
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1417,7 +1417,7 @@ class ScheduledSearchApi:
 
         _param = self._unsubscribe_scheduled_search_v1_serialize(
             id=id,
-            typedreference=typedreference,
+            typed_reference=typed_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1426,9 +1426,9 @@ class ScheduledSearchApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1440,7 +1440,7 @@ class ScheduledSearchApi:
     def _unsubscribe_scheduled_search_v1_serialize(
         self,
         id,
-        typedreference,
+        typed_reference,
         _request_auth,
         _content_type,
         _headers,
@@ -1468,8 +1468,8 @@ class ScheduledSearchApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if typedreference is not None:
-            _body_params = typedreference
+        if typed_reference is not None:
+            _body_params = typed_reference
 
 
         # set the HTTP header `Accept`
@@ -1520,7 +1520,7 @@ class ScheduledSearchApi:
     def update_scheduled_search_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        scheduledsearch: Annotated[Scheduledsearch, Field(description="The scheduled search to persist.")],
+        scheduled_search: Annotated[ScheduledSearch, Field(description="The scheduled search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1533,15 +1533,15 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduledsearch:
+    ) -> ScheduledSearch:
         """Update an existing scheduled search
 
         Updates an existing scheduled search. 
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param scheduledsearch: The scheduled search to persist. (required)
-        :type scheduledsearch: Scheduledsearch
+        :param scheduled_search: The scheduled search to persist. (required)
+        :type scheduled_search: ScheduledSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1566,7 +1566,7 @@ class ScheduledSearchApi:
 
         _param = self._update_scheduled_search_v1_serialize(
             id=id,
-            scheduledsearch=scheduledsearch,
+            scheduled_search=scheduled_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1574,13 +1574,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1597,7 +1597,7 @@ class ScheduledSearchApi:
     def update_scheduled_search_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        scheduledsearch: Annotated[Scheduledsearch, Field(description="The scheduled search to persist.")],
+        scheduled_search: Annotated[ScheduledSearch, Field(description="The scheduled search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1610,15 +1610,15 @@ class ScheduledSearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduledsearch]:
+    ) -> ApiResponse[ScheduledSearch]:
         """Update an existing scheduled search
 
         Updates an existing scheduled search. 
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param scheduledsearch: The scheduled search to persist. (required)
-        :type scheduledsearch: Scheduledsearch
+        :param scheduled_search: The scheduled search to persist. (required)
+        :type scheduled_search: ScheduledSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1643,7 +1643,7 @@ class ScheduledSearchApi:
 
         _param = self._update_scheduled_search_v1_serialize(
             id=id,
-            scheduledsearch=scheduledsearch,
+            scheduled_search=scheduled_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1651,13 +1651,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1674,7 +1674,7 @@ class ScheduledSearchApi:
     def update_scheduled_search_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
-        scheduledsearch: Annotated[Scheduledsearch, Field(description="The scheduled search to persist.")],
+        scheduled_search: Annotated[ScheduledSearch, Field(description="The scheduled search to persist.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1694,8 +1694,8 @@ class ScheduledSearchApi:
 
         :param id: ID of the requested document. (required)
         :type id: str
-        :param scheduledsearch: The scheduled search to persist. (required)
-        :type scheduledsearch: Scheduledsearch
+        :param scheduled_search: The scheduled search to persist. (required)
+        :type scheduled_search: ScheduledSearch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1720,7 +1720,7 @@ class ScheduledSearchApi:
 
         _param = self._update_scheduled_search_v1_serialize(
             id=id,
-            scheduledsearch=scheduledsearch,
+            scheduled_search=scheduled_search,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1728,13 +1728,13 @@ class ScheduledSearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduledsearch",
-            '400': "Errorresponsedto",
+            '200': "ScheduledSearch",
+            '400': "ErrorResponseDto",
             '401': "ListScheduledSearchV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListScheduledSearchV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1746,7 +1746,7 @@ class ScheduledSearchApi:
     def _update_scheduled_search_v1_serialize(
         self,
         id,
-        scheduledsearch,
+        scheduled_search,
         _request_auth,
         _content_type,
         _headers,
@@ -1774,8 +1774,8 @@ class ScheduledSearchApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if scheduledsearch is not None:
-            _body_params = scheduledsearch
+        if scheduled_search is not None:
+            _body_params = scheduled_search
 
 
         # set the HTTP header `Accept`

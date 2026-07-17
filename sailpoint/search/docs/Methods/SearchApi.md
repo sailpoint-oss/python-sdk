@@ -60,17 +60,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**Aggregationresult**](../models/aggregationresult)
+[**AggregationResult**](../models/aggregation-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Aggregation results. | Aggregationresult |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Aggregation results. | AggregationResult |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SearchPostV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SearchPostV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -81,14 +81,130 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.search.api.search_api import SearchApi
 from sailpoint.search.api_client import ApiClient
-from sailpoint.search.models.aggregationresult import Aggregationresult
+from sailpoint.search.models.aggregation_result import AggregationResult
 from sailpoint.search.models.search import Search
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    search = '''sailpoint.search.Search()''' # Search | 
+    search = '''{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }''' # Search | 
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -128,11 +244,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SearchPostV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SearchPostV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -149,7 +265,123 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    search = '''sailpoint.search.Search()''' # Search | 
+    search = '''{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }''' # Search | 
 
     try:
         # Count documents satisfying a query
@@ -185,12 +417,12 @@ Path   | id | **str** | True  | ID of the requested document.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The requested document. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SearchPostV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SearchPostV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -247,11 +479,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of matching documents. | List[object] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SearchPostV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SearchPostV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -268,7 +500,123 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    search = '''sailpoint.search.Search()''' # Search | 
+    search = '''{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }''' # Search | 
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)

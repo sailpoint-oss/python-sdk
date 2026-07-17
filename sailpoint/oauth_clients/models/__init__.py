@@ -14,17 +14,17 @@
 
 
 # import models into model package
-from sailpoint.oauth_clients.models.accesstype import Accesstype
+from sailpoint.oauth_clients.models.access_type import AccessType
 from sailpoint.oauth_clients.models.array_inner import ArrayInner
-from sailpoint.oauth_clients.models.clienttype import Clienttype
-from sailpoint.oauth_clients.models.createoauthclientrequest import Createoauthclientrequest
-from sailpoint.oauth_clients.models.createoauthclientresponse import Createoauthclientresponse
-from sailpoint.oauth_clients.models.errormessagedto import Errormessagedto
-from sailpoint.oauth_clients.models.errorresponsedto import Errorresponsedto
-from sailpoint.oauth_clients.models.getoauthclientresponse import Getoauthclientresponse
-from sailpoint.oauth_clients.models.granttype import Granttype
-from sailpoint.oauth_clients.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.oauth_clients.models.jsonpatchoperation_value import JsonpatchoperationValue
+from sailpoint.oauth_clients.models.client_type import ClientType
+from sailpoint.oauth_clients.models.create_o_auth_client_request import CreateOAuthClientRequest
+from sailpoint.oauth_clients.models.create_o_auth_client_response import CreateOAuthClientResponse
+from sailpoint.oauth_clients.models.error_message_dto import ErrorMessageDto
+from sailpoint.oauth_clients.models.error_response_dto import ErrorResponseDto
+from sailpoint.oauth_clients.models.get_o_auth_client_response import GetOAuthClientResponse
+from sailpoint.oauth_clients.models.grant_type import GrantType
+from sailpoint.oauth_clients.models.json_patch_operation import JsonPatchOperation
+from sailpoint.oauth_clients.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.oauth_clients.models.list_oauth_clients_v1401_response import ListOauthClientsV1401Response
 from sailpoint.oauth_clients.models.list_oauth_clients_v1429_response import ListOauthClientsV1429Response
-from sailpoint.oauth_clients.models.localeorigin import Localeorigin
+from sailpoint.oauth_clients.models.locale_origin import LocaleOrigin

@@ -49,20 +49,20 @@ Create a new Access Model Metadata Attribute.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | attributedto | [**Attributedto**](../models/attributedto) | True  | Attribute to create
+ Body  | attribute_dto | [**AttributeDTO**](../models/attribute-dto) | True  | Attribute to create
 
 ### Return type
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created | Attributedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created | AttributeDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -73,20 +73,37 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributedto import Attributedto
+from sailpoint.access_model_metadata.models.attribute_dto import AttributeDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    attributedto = '''sailpoint.access_model_metadata.Attributedto()''' # Attributedto | Attribute to create
+    attribute_dto = '''{
+          "multiselect" : false,
+          "values" : [ {
+            "name" : "Public",
+            "value" : "public",
+            "status" : "active"
+          }, {
+            "name" : "Public",
+            "value" : "public",
+            "status" : "active"
+          } ],
+          "name" : "Privacy",
+          "description" : "Specifies the level of privacy associated with an access item.",
+          "type" : "governance",
+          "objectTypes" : [ "entitlement" ],
+          "key" : "iscPrivacy",
+          "status" : "active"
+        }''' # AttributeDTO | Attribute to create
 
     try:
         # Create access model metadata attribute
-        new_attributedto = Attributedto.from_json(attributedto)
-        results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_v1(attributedto=new_attributedto)
+        new_attribute_dto = AttributeDto.from_json(attribute_dto)
+        results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_v1(attribute_dto=new_attribute_dto)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_v1(new_attributedto)
+        # results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_v1(new_attribute_dto)
         print("The response of AccessModelMetadataApi->create_access_model_metadata_attribute_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -109,21 +126,21 @@ Create a new value for an existing Access Model Metadata Attribute.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | key | **str** | True  | Technical name of the Attribute.
- Body  | attributevaluedto | [**Attributevaluedto**](../models/attributevaluedto) | True  | Attribute value to create
+ Body  | attribute_value_dto | [**AttributeValueDTO**](../models/attribute-value-dto) | True  | Attribute value to create
 
 ### Return type
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created | Attributevaluedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created | AttributeValueDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -134,21 +151,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributevaluedto import Attributevaluedto
+from sailpoint.access_model_metadata.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
-    attributevaluedto = '''sailpoint.access_model_metadata.Attributevaluedto()''' # Attributevaluedto | Attribute value to create
+    attribute_value_dto = '''{
+          "name" : "Public",
+          "value" : "public",
+          "status" : "active"
+        }''' # AttributeValueDTO | Attribute value to create
 
     try:
         # Create access model metadata value
-        new_attributevaluedto = Attributevaluedto.from_json(attributevaluedto)
-        results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_value_v1(key=key, attributevaluedto=new_attributevaluedto)
+        new_attribute_value_dto = AttributeValueDto.from_json(attribute_value_dto)
+        results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_value_v1(key=key, attribute_value_dto=new_attribute_value_dto)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_value_v1(key, new_attributevaluedto)
+        # results = AccessModelMetadataApi(api_client).create_access_model_metadata_attribute_value_v1(key, new_attribute_value_dto)
         print("The response of AccessModelMetadataApi->create_access_model_metadata_attribute_value_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -172,18 +193,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | key | **str** | True  | Technical name of the Attribute.
 
 ### Return type
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Attributedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | AttributeDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -194,7 +215,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributedto import Attributedto
+from sailpoint.access_model_metadata.models.attribute_dto import AttributeDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -232,18 +253,18 @@ Path   | key | **str** | True  | Technical name of the Attribute.
 Path   | value | **str** | True  | Technical name of the Attribute value.
 
 ### Return type
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Attributevaluedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | AttributeValueDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -254,7 +275,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributevaluedto import Attributevaluedto
+from sailpoint.access_model_metadata.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -295,18 +316,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Attributedto]**](../models/attributedto)
+[**List[AttributeDTO]**](../models/attribute-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | List[Attributedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | List[AttributeDTO] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -317,7 +338,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributedto import Attributedto
+from sailpoint.access_model_metadata.models.attribute_dto import AttributeDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -360,18 +381,18 @@ Path   | key | **str** | True  | Technical name of the Attribute.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Attributevaluedto]**](../models/attributevaluedto)
+[**List[AttributeValueDTO]**](../models/attribute-value-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | List[Attributevaluedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | List[AttributeValueDTO] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -382,7 +403,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributevaluedto import Attributevaluedto
+from sailpoint.access_model_metadata.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -422,21 +443,21 @@ The following fields are patchable: **name**, **description**, **multiselect**, 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | key | **str** | True  | Technical name of the Attribute.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | JSON Patch array to apply
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | JSON Patch array to apply
 
 ### Return type
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK - Attribute updated successfully | Attributedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK - Attribute updated successfully | AttributeDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -447,22 +468,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributedto import Attributedto
-from sailpoint.access_model_metadata.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.access_model_metadata.models.attribute_dto import AttributeDTO
+from sailpoint.access_model_metadata.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
-    jsonpatchoperation = '''[sailpoint.access_model_metadata.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | JSON Patch array to apply
+    json_patch_operation = '''[sailpoint.access_model_metadata.JsonPatchOperation()]''' # List[JsonPatchOperation] | JSON Patch array to apply
 
     try:
         # Update access model metadata attribute
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_v1(key=key, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_v1(key=key, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_v1(key, new_jsonpatchoperation)
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_v1(key, new_json_patch_operation)
         print("The response of AccessModelMetadataApi->update_access_model_metadata_attribute_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -487,21 +508,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | key | **str** | True  | Technical name of the Attribute.
 Path   | value | **str** | True  | Technical name of the Attribute value.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | JSON Patch array to apply
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | JSON Patch array to apply
 
 ### Return type
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK - Attribute value updated successfully | Attributevaluedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK - Attribute value updated successfully | AttributeValueDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -512,8 +533,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.attributevaluedto import Attributevaluedto
-from sailpoint.access_model_metadata.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.access_model_metadata.models.attribute_value_dto import AttributeValueDTO
+from sailpoint.access_model_metadata.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -521,14 +542,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
     value = 'public' # str | Technical name of the Attribute value. # str | Technical name of the Attribute value.
-    jsonpatchoperation = '''[sailpoint.access_model_metadata.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | JSON Patch array to apply
+    json_patch_operation = '''[sailpoint.access_model_metadata.JsonPatchOperation()]''' # List[JsonPatchOperation] | JSON Patch array to apply
 
     try:
         # Update access model metadata value
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_value_v1(key=key, value=value, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_value_v1(key=key, value=value, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_value_v1(key, value, new_jsonpatchoperation)
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_attribute_value_v1(key, value, new_json_patch_operation)
         print("The response of AccessModelMetadataApi->update_access_model_metadata_attribute_value_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -552,20 +573,20 @@ Bulk update Access Model Metadata Attribute Values using a filter
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlementattributebulkupdatefilterrequest | [**Entitlementattributebulkupdatefilterrequest**](../models/entitlementattributebulkupdatefilterrequest) | True  | Attribute metadata bulk update request body.
+ Body  | entitlement_attribute_bulk_update_filter_request | [**EntitlementAttributeBulkUpdateFilterRequest**](../models/entitlement-attribute-bulk-update-filter-request) | True  | Attribute metadata bulk update request body.
 
 ### Return type
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Accessmodelmetadatabulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -576,21 +597,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.accessmodelmetadatabulkupdateresponse import Accessmodelmetadatabulkupdateresponse
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdatefilterrequest import Entitlementattributebulkupdatefilterrequest
+from sailpoint.access_model_metadata.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_filter_request import EntitlementAttributeBulkUpdateFilterRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    entitlementattributebulkupdatefilterrequest = '''sailpoint.access_model_metadata.Entitlementattributebulkupdatefilterrequest()''' # Entitlementattributebulkupdatefilterrequest | Attribute metadata bulk update request body.
+    entitlement_attribute_bulk_update_filter_request = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateFilterRequest | Attribute metadata bulk update request body.
 
     try:
         # Metadata Attribute update by filter
-        new_entitlementattributebulkupdatefilterrequest = Entitlementattributebulkupdatefilterrequest.from_json(entitlementattributebulkupdatefilterrequest)
-        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter_v1(entitlementattributebulkupdatefilterrequest=new_entitlementattributebulkupdatefilterrequest)
+        new_entitlement_attribute_bulk_update_filter_request = EntitlementAttributeBulkUpdateFilterRequest.from_json(entitlement_attribute_bulk_update_filter_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter_v1(entitlement_attribute_bulk_update_filter_request=new_entitlement_attribute_bulk_update_filter_request)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter_v1(new_entitlementattributebulkupdatefilterrequest)
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter_v1(new_entitlement_attribute_bulk_update_filter_request)
         print("The response of AccessModelMetadataApi->update_access_model_metadata_by_filter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -614,20 +643,20 @@ Bulk update Access Model Metadata Attribute Values using ids.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlementattributebulkupdateidsrequest | [**Entitlementattributebulkupdateidsrequest**](../models/entitlementattributebulkupdateidsrequest) | True  | Attribute metadata bulk update request body.
+ Body  | entitlement_attribute_bulk_update_ids_request | [**EntitlementAttributeBulkUpdateIdsRequest**](../models/entitlement-attribute-bulk-update-ids-request) | True  | Attribute metadata bulk update request body.
 
 ### Return type
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Accessmodelmetadatabulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -638,21 +667,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.accessmodelmetadatabulkupdateresponse import Accessmodelmetadatabulkupdateresponse
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdateidsrequest import Entitlementattributebulkupdateidsrequest
+from sailpoint.access_model_metadata.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    entitlementattributebulkupdateidsrequest = '''sailpoint.access_model_metadata.Entitlementattributebulkupdateidsrequest()''' # Entitlementattributebulkupdateidsrequest | Attribute metadata bulk update request body.
+    entitlement_attribute_bulk_update_ids_request = '''{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateIdsRequest | Attribute metadata bulk update request body.
 
     try:
         # Metadata Attribute update by ids
-        new_entitlementattributebulkupdateidsrequest = Entitlementattributebulkupdateidsrequest.from_json(entitlementattributebulkupdateidsrequest)
-        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids_v1(entitlementattributebulkupdateidsrequest=new_entitlementattributebulkupdateidsrequest)
+        new_entitlement_attribute_bulk_update_ids_request = EntitlementAttributeBulkUpdateIdsRequest.from_json(entitlement_attribute_bulk_update_ids_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids_v1(entitlement_attribute_bulk_update_ids_request=new_entitlement_attribute_bulk_update_ids_request)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids_v1(new_entitlementattributebulkupdateidsrequest)
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids_v1(new_entitlement_attribute_bulk_update_ids_request)
         print("The response of AccessModelMetadataApi->update_access_model_metadata_by_ids_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -676,20 +713,20 @@ Bulk update Access Model Metadata Attribute Values using a query
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlementattributebulkupdatequeryrequest | [**Entitlementattributebulkupdatequeryrequest**](../models/entitlementattributebulkupdatequeryrequest) | True  | Attribute metadata bulk update request body.
+ Body  | entitlement_attribute_bulk_update_query_request | [**EntitlementAttributeBulkUpdateQueryRequest**](../models/entitlement-attribute-bulk-update-query-request) | True  | Attribute metadata bulk update request body.
 
 ### Return type
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Accessmodelmetadatabulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttributeV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttributeV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -700,21 +737,145 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.access_model_metadata.api_client import ApiClient
-from sailpoint.access_model_metadata.models.accessmodelmetadatabulkupdateresponse import Accessmodelmetadatabulkupdateresponse
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdatequeryrequest import Entitlementattributebulkupdatequeryrequest
+from sailpoint.access_model_metadata.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    entitlementattributebulkupdatequeryrequest = '''sailpoint.access_model_metadata.Entitlementattributebulkupdatequeryrequest()''' # Entitlementattributebulkupdatequeryrequest | Attribute metadata bulk update request body.
+    entitlement_attribute_bulk_update_query_request = '''{
+          "query" : {
+            "queryDsl" : {
+              "match" : {
+                "name" : "john.doe"
+              }
+            },
+            "aggregationType" : "DSL",
+            "aggregationsVersion" : "",
+            "query" : {
+              "query" : "name:a*",
+              "timeZone" : "America/Chicago",
+              "fields" : "[\"firstName,lastName,email\"]",
+              "innerHit" : {
+                "query" : "source.name:\\\"Active Directory\\\"",
+                "type" : "access"
+              }
+            },
+            "aggregationsDsl" : { },
+            "sort" : [ "displayName", "+id" ],
+            "filters" : { },
+            "queryVersion" : "",
+            "queryType" : "SAILPOINT",
+            "includeNested" : true,
+            "queryResultFilter" : {
+              "excludes" : [ "stacktrace" ],
+              "includes" : [ "name", "displayName" ]
+            },
+            "indices" : [ "identities" ],
+            "typeAheadQuery" : {
+              "field" : "source.name",
+              "size" : 100,
+              "query" : "Work",
+              "sortByValue" : true,
+              "nestedType" : "access",
+              "sort" : "asc",
+              "maxExpansions" : 10
+            },
+            "textQuery" : {
+              "contains" : true,
+              "terms" : [ "The quick brown fox", "3141592", "7" ],
+              "matchAny" : false,
+              "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+            },
+            "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+            "aggregations" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "subAggregation" : {
+                  "filter" : {
+                    "field" : "access.type",
+                    "name" : "Entitlements",
+                    "type" : "TERM",
+                    "value" : "ENTITLEMENT"
+                  },
+                  "bucket" : {
+                    "field" : "attributes.city",
+                    "size" : 100,
+                    "minDocCount" : 2,
+                    "name" : "Identity Locations",
+                    "type" : "TERMS"
+                  },
+                  "metric" : {
+                    "field" : "@access.name",
+                    "name" : "Access Name Count",
+                    "type" : "COUNT"
+                  },
+                  "nested" : {
+                    "name" : "id",
+                    "type" : "access"
+                  }
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            }
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateQueryRequest | Attribute metadata bulk update request body.
 
     try:
         # Metadata Attribute update by query
-        new_entitlementattributebulkupdatequeryrequest = Entitlementattributebulkupdatequeryrequest.from_json(entitlementattributebulkupdatequeryrequest)
-        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query_v1(entitlementattributebulkupdatequeryrequest=new_entitlementattributebulkupdatequeryrequest)
+        new_entitlement_attribute_bulk_update_query_request = EntitlementAttributeBulkUpdateQueryRequest.from_json(entitlement_attribute_bulk_update_query_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query_v1(entitlement_attribute_bulk_update_query_request=new_entitlement_attribute_bulk_update_query_request)
         # Below is a request that includes all optional parameters
-        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query_v1(new_entitlementattributebulkupdatequeryrequest)
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query_v1(new_entitlement_attribute_bulk_update_query_request)
         print("The response of AccessModelMetadataApi->update_access_model_metadata_by_query_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

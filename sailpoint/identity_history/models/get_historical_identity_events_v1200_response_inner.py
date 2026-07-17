@@ -19,40 +19,40 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from sailpoint.identity_history.models.accessitemassociated import Accessitemassociated
-from sailpoint.identity_history.models.accessitemremoved import Accessitemremoved
-from sailpoint.identity_history.models.accessrequested import Accessrequested
-from sailpoint.identity_history.models.accountstatuschanged import Accountstatuschanged
-from sailpoint.identity_history.models.attributeschanged import Attributeschanged
-from sailpoint.identity_history.models.identitycertified import Identitycertified
+from sailpoint.identity_history.models.access_item_associated import AccessItemAssociated
+from sailpoint.identity_history.models.access_item_removed import AccessItemRemoved
+from sailpoint.identity_history.models.access_requested import AccessRequested
+from sailpoint.identity_history.models.account_status_changed import AccountStatusChanged
+from sailpoint.identity_history.models.attributes_changed import AttributesChanged
+from sailpoint.identity_history.models.identity_certified import IdentityCertified
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-GETHISTORICALIDENTITYEVENTSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["Accessitemassociated", "Accessitemremoved", "Accessrequested", "Accountstatuschanged", "Attributeschanged", "Identitycertified"]
+GETHISTORICALIDENTITYEVENTSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["AccessItemAssociated", "AccessItemRemoved", "AccessRequested", "AccountStatusChanged", "AttributesChanged", "IdentityCertified"]
 
 class GetHistoricalIdentityEventsV1200ResponseInner(BaseModel):
     """
     GetHistoricalIdentityEventsV1200ResponseInner
     """
 
-    # data type: Identitycertified
-    anyof_schema_1_validator: Optional[Identitycertified] = None
-    # data type: Accessitemassociated
-    anyof_schema_2_validator: Optional[Accessitemassociated] = None
-    # data type: Accessitemremoved
-    anyof_schema_3_validator: Optional[Accessitemremoved] = None
-    # data type: Attributeschanged
-    anyof_schema_4_validator: Optional[Attributeschanged] = None
-    # data type: Accessrequested
-    anyof_schema_5_validator: Optional[Accessrequested] = None
-    # data type: Accountstatuschanged
-    anyof_schema_6_validator: Optional[Accountstatuschanged] = None
+    # data type: IdentityCertified
+    anyof_schema_1_validator: Optional[IdentityCertified] = None
+    # data type: AccessItemAssociated
+    anyof_schema_2_validator: Optional[AccessItemAssociated] = None
+    # data type: AccessItemRemoved
+    anyof_schema_3_validator: Optional[AccessItemRemoved] = None
+    # data type: AttributesChanged
+    anyof_schema_4_validator: Optional[AttributesChanged] = None
+    # data type: AccessRequested
+    anyof_schema_5_validator: Optional[AccessRequested] = None
+    # data type: AccountStatusChanged
+    anyof_schema_6_validator: Optional[AccountStatusChanged] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Accessitemassociated, Accessitemremoved, Accessrequested, Accountstatuschanged, Attributeschanged, Identitycertified]] = None
+        actual_instance: Optional[Union[AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Accessitemassociated", "Accessitemremoved", "Accessrequested", "Accountstatuschanged", "Attributeschanged", "Identitycertified" }
+    any_of_schemas: Set[str] = { "AccessItemAssociated", "AccessItemRemoved", "AccessRequested", "AccountStatusChanged", "AttributesChanged", "IdentityCertified" }
 
     model_config = {
         "validate_assignment": True,
@@ -73,45 +73,45 @@ class GetHistoricalIdentityEventsV1200ResponseInner(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = GetHistoricalIdentityEventsV1200ResponseInner.model_construct()
         error_messages = []
-        # validate data type: Identitycertified
-        if not isinstance(v, Identitycertified):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Identitycertified`")
+        # validate data type: IdentityCertified
+        if not isinstance(v, IdentityCertified):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityCertified`")
         else:
             return v
 
-        # validate data type: Accessitemassociated
-        if not isinstance(v, Accessitemassociated):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemassociated`")
+        # validate data type: AccessItemAssociated
+        if not isinstance(v, AccessItemAssociated):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAssociated`")
         else:
             return v
 
-        # validate data type: Accessitemremoved
-        if not isinstance(v, Accessitemremoved):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemremoved`")
+        # validate data type: AccessItemRemoved
+        if not isinstance(v, AccessItemRemoved):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemRemoved`")
         else:
             return v
 
-        # validate data type: Attributeschanged
-        if not isinstance(v, Attributeschanged):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Attributeschanged`")
+        # validate data type: AttributesChanged
+        if not isinstance(v, AttributesChanged):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AttributesChanged`")
         else:
             return v
 
-        # validate data type: Accessrequested
-        if not isinstance(v, Accessrequested):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessrequested`")
+        # validate data type: AccessRequested
+        if not isinstance(v, AccessRequested):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequested`")
         else:
             return v
 
-        # validate data type: Accountstatuschanged
-        if not isinstance(v, Accountstatuschanged):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accountstatuschanged`")
+        # validate data type: AccountStatusChanged
+        if not isinstance(v, AccountStatusChanged):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountStatusChanged`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in GetHistoricalIdentityEventsV1200ResponseInner with anyOf schemas: Accessitemassociated, Accessitemremoved, Accessrequested, Accountstatuschanged, Attributeschanged, Identitycertified. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetHistoricalIdentityEventsV1200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -124,46 +124,46 @@ class GetHistoricalIdentityEventsV1200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[Identitycertified] = None
+        # anyof_schema_1_validator: Optional[IdentityCertified] = None
         try:
-            instance.actual_instance = Identitycertified.from_json(json_str)
+            instance.actual_instance = IdentityCertified.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[Accessitemassociated] = None
+        # anyof_schema_2_validator: Optional[AccessItemAssociated] = None
         try:
-            instance.actual_instance = Accessitemassociated.from_json(json_str)
+            instance.actual_instance = AccessItemAssociated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[Accessitemremoved] = None
+        # anyof_schema_3_validator: Optional[AccessItemRemoved] = None
         try:
-            instance.actual_instance = Accessitemremoved.from_json(json_str)
+            instance.actual_instance = AccessItemRemoved.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[Attributeschanged] = None
+        # anyof_schema_4_validator: Optional[AttributesChanged] = None
         try:
-            instance.actual_instance = Attributeschanged.from_json(json_str)
+            instance.actual_instance = AttributesChanged.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_5_validator: Optional[Accessrequested] = None
+        # anyof_schema_5_validator: Optional[AccessRequested] = None
         try:
-            instance.actual_instance = Accessrequested.from_json(json_str)
+            instance.actual_instance = AccessRequested.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_6_validator: Optional[Accountstatuschanged] = None
+        # anyof_schema_6_validator: Optional[AccountStatusChanged] = None
         try:
-            instance.actual_instance = Accountstatuschanged.from_json(json_str)
+            instance.actual_instance = AccountStatusChanged.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetHistoricalIdentityEventsV1200ResponseInner with anyOf schemas: Accessitemassociated, Accessitemremoved, Accessrequested, Accountstatuschanged, Attributeschanged, Identitycertified. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetHistoricalIdentityEventsV1200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -177,7 +177,7 @@ class GetHistoricalIdentityEventsV1200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Accessitemassociated, Accessitemremoved, Accessrequested, Accountstatuschanged, Attributeschanged, Identitycertified]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

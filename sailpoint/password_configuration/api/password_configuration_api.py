@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from sailpoint.password_configuration.models.passwordorgconfig import Passwordorgconfig
+from sailpoint.password_configuration.models.password_org_config import PasswordOrgConfig
 
 from sailpoint.password_configuration.api_client import ApiClient, RequestSerialized
 from sailpoint.password_configuration.api_response import ApiResponse
@@ -39,7 +39,7 @@ class PasswordConfigurationApi:
     @validate_call
     def create_password_org_config_v1(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -52,13 +52,13 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordorgconfig:
+    ) -> PasswordOrgConfig:
         """Create password org config
 
         This API creates the password org config. Unspecified fields will use default value. To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to \"true\". Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -82,7 +82,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -90,12 +90,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -111,7 +111,7 @@ class PasswordConfigurationApi:
     @validate_call
     def create_password_org_config_v1_with_http_info(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -124,13 +124,13 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordorgconfig]:
+    ) -> ApiResponse[PasswordOrgConfig]:
         """Create password org config
 
         This API creates the password org config. Unspecified fields will use default value. To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to \"true\". Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +154,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -162,12 +162,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -183,7 +183,7 @@ class PasswordConfigurationApi:
     @validate_call
     def create_password_org_config_v1_without_preload_content(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,8 +201,8 @@ class PasswordConfigurationApi:
 
         This API creates the password org config. Unspecified fields will use default value. To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to \"true\". Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -226,7 +226,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._create_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -234,12 +234,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -250,7 +250,7 @@ class PasswordConfigurationApi:
 
     def _create_password_org_config_v1_serialize(
         self,
-        passwordorgconfig,
+        password_org_config,
         _request_auth,
         _content_type,
         _headers,
@@ -276,8 +276,8 @@ class PasswordConfigurationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordorgconfig is not None:
-            _body_params = passwordorgconfig
+        if password_org_config is not None:
+            _body_params = password_org_config
 
 
         # set the HTTP header `Accept`
@@ -339,7 +339,7 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordorgconfig:
+    ) -> PasswordOrgConfig:
         """Get password org config
 
         This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
@@ -374,12 +374,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -407,7 +407,7 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordorgconfig]:
+    ) -> ApiResponse[PasswordOrgConfig]:
         """Get password org config
 
         This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
@@ -442,12 +442,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -510,12 +510,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -587,7 +587,7 @@ class PasswordConfigurationApi:
     @validate_call
     def put_password_org_config_v1(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -600,13 +600,13 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordorgconfig:
+    ) -> PasswordOrgConfig:
         """Update password org config
 
         This API updates the password org config for specified fields. Other fields will keep original value. You must set the `customInstructionsEnabled` field to \"true\" to be able to use custom password instructions.  Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -630,7 +630,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._put_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -638,12 +638,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -659,7 +659,7 @@ class PasswordConfigurationApi:
     @validate_call
     def put_password_org_config_v1_with_http_info(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -672,13 +672,13 @@ class PasswordConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordorgconfig]:
+    ) -> ApiResponse[PasswordOrgConfig]:
         """Update password org config
 
         This API updates the password org config for specified fields. Other fields will keep original value. You must set the `customInstructionsEnabled` field to \"true\" to be able to use custom password instructions.  Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -702,7 +702,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._put_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -710,12 +710,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -731,7 +731,7 @@ class PasswordConfigurationApi:
     @validate_call
     def put_password_org_config_v1_without_preload_content(
         self,
-        passwordorgconfig: Passwordorgconfig,
+        password_org_config: PasswordOrgConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -749,8 +749,8 @@ class PasswordConfigurationApi:
 
         This API updates the password org config for specified fields. Other fields will keep original value. You must set the `customInstructionsEnabled` field to \"true\" to be able to use custom password instructions.  Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-        :param passwordorgconfig: (required)
-        :type passwordorgconfig: Passwordorgconfig
+        :param password_org_config: (required)
+        :type password_org_config: PasswordOrgConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -774,7 +774,7 @@ class PasswordConfigurationApi:
         """ # noqa: E501
 
         _param = self._put_password_org_config_v1_serialize(
-            passwordorgconfig=passwordorgconfig,
+            password_org_config=password_org_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -782,12 +782,12 @@ class PasswordConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordorgconfig",
-            '400': "Errorresponsedto",
+            '200': "PasswordOrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -798,7 +798,7 @@ class PasswordConfigurationApi:
 
     def _put_password_org_config_v1_serialize(
         self,
-        passwordorgconfig,
+        password_org_config,
         _request_auth,
         _content_type,
         _headers,
@@ -824,8 +824,8 @@ class PasswordConfigurationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordorgconfig is not None:
-            _body_params = passwordorgconfig
+        if password_org_config is not None:
+            _body_params = password_org_config
 
 
         # set the HTTP header `Accept`

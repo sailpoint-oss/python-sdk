@@ -47,11 +47,11 @@ configuration = sailpoint.sp_config.Configuration(
 with sailpoint.sp_config.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sp_config.SPConfigApi(api_client)
-    exportpayload = {"description":"Export all available objects","excludeTypes":[],"includeTypes":["ACCESS_PROFILE","ACCESS_REQUEST_CONFIG","ATTR_SYNC_SOURCE_CONFIG","AUTH_ORG","CAMPAIGN_FILTER","CONNECTOR_RULE","FORM_DEFINITION","GOVERNANCE_GROUP","IDENTITY_OBJECT_CONFIG","IDENTITY_PROFILE","LIFECYCLE_STATE","NOTIFICATION_TEMPLATE","PASSWORD_POLICY","PASSWORD_SYNC_GROUP","PUBLIC_IDENTITIES_CONFIG","ROLE","RULE","SEGMENT","SERVICE_DESK_INTEGRATION","SOD_POLICY","SOURCE","TAG","TRANSFORM","TRIGGER_SUBSCRIPTION","WORKFLOW"],"objectOptions":{}} # Exportpayload | Export options control what will be included in the export.
+    export_payload = {"description":"Export all available objects","excludeTypes":[],"includeTypes":["ACCESS_PROFILE","ACCESS_REQUEST_CONFIG","ATTR_SYNC_SOURCE_CONFIG","AUTH_ORG","CAMPAIGN_FILTER","CONNECTOR_RULE","FORM_DEFINITION","GOVERNANCE_GROUP","IDENTITY_OBJECT_CONFIG","IDENTITY_PROFILE","LIFECYCLE_STATE","NOTIFICATION_TEMPLATE","PASSWORD_POLICY","PASSWORD_SYNC_GROUP","PUBLIC_IDENTITIES_CONFIG","ROLE","RULE","SEGMENT","SERVICE_DESK_INTEGRATION","SOD_POLICY","SOURCE","TAG","TRANSFORM","TRIGGER_SUBSCRIPTION","WORKFLOW"],"objectOptions":{}} # ExportPayload | Export options control what will be included in the export.
 
     try:
         # Initiates configuration objects export job
-        api_response = api_instance.export_sp_config_v1(exportpayload)
+        api_response = api_instance.export_sp_config_v1(export_payload)
         print("The response of SPConfigApi->export_sp_config_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -76,31 +76,31 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Configobject](sailpoint/sp_config/docs/Configobject.md)
- - [Errormessagedto](sailpoint/sp_config/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/sp_config/docs/Errorresponsedto.md)
+ - [ConfigObject](sailpoint/sp_config/docs/ConfigObject.md)
+ - [ErrorMessageDto](sailpoint/sp_config/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/sp_config/docs/ErrorResponseDto.md)
+ - [ExportOptions](sailpoint/sp_config/docs/ExportOptions.md)
+ - [ExportPayload](sailpoint/sp_config/docs/ExportPayload.md)
  - [ExportSpConfigV1401Response](sailpoint/sp_config/docs/ExportSpConfigV1401Response.md)
  - [ExportSpConfigV1429Response](sailpoint/sp_config/docs/ExportSpConfigV1429Response.md)
- - [Exportoptions](sailpoint/sp_config/docs/Exportoptions.md)
- - [Exportpayload](sailpoint/sp_config/docs/Exportpayload.md)
+ - [ImportObject](sailpoint/sp_config/docs/ImportObject.md)
+ - [ImportOptions](sailpoint/sp_config/docs/ImportOptions.md)
  - [ImportSpConfigV1Request](sailpoint/sp_config/docs/ImportSpConfigV1Request.md)
- - [Importobject](sailpoint/sp_config/docs/Importobject.md)
- - [Importoptions](sailpoint/sp_config/docs/Importoptions.md)
- - [Localeorigin](sailpoint/sp_config/docs/Localeorigin.md)
- - [Objectexportimportoptions](sailpoint/sp_config/docs/Objectexportimportoptions.md)
- - [Objectimportresult2](sailpoint/sp_config/docs/Objectimportresult2.md)
- - [Selfimportexportdto](sailpoint/sp_config/docs/Selfimportexportdto.md)
- - [Spconfigexportjob](sailpoint/sp_config/docs/Spconfigexportjob.md)
- - [Spconfigexportjobstatus](sailpoint/sp_config/docs/Spconfigexportjobstatus.md)
- - [Spconfigexportresults](sailpoint/sp_config/docs/Spconfigexportresults.md)
- - [Spconfigimportjobstatus](sailpoint/sp_config/docs/Spconfigimportjobstatus.md)
- - [Spconfigimportresults](sailpoint/sp_config/docs/Spconfigimportresults.md)
- - [Spconfigjob](sailpoint/sp_config/docs/Spconfigjob.md)
- - [Spconfigmessage2](sailpoint/sp_config/docs/Spconfigmessage2.md)
- - [Spconfigobject](sailpoint/sp_config/docs/Spconfigobject.md)
- - [Spconfigrule](sailpoint/sp_config/docs/Spconfigrule.md)
- - [SpconfigruleValue](sailpoint/sp_config/docs/SpconfigruleValue.md)
- - [Spconfigrules](sailpoint/sp_config/docs/Spconfigrules.md)
+ - [LocaleOrigin](sailpoint/sp_config/docs/LocaleOrigin.md)
+ - [ObjectExportImportOptions](sailpoint/sp_config/docs/ObjectExportImportOptions.md)
+ - [ObjectImportResult2](sailpoint/sp_config/docs/ObjectImportResult2.md)
+ - [SelfImportExportDto](sailpoint/sp_config/docs/SelfImportExportDto.md)
+ - [SpConfigExportJob](sailpoint/sp_config/docs/SpConfigExportJob.md)
+ - [SpConfigExportJobStatus](sailpoint/sp_config/docs/SpConfigExportJobStatus.md)
+ - [SpConfigExportResults](sailpoint/sp_config/docs/SpConfigExportResults.md)
+ - [SpConfigImportJobStatus](sailpoint/sp_config/docs/SpConfigImportJobStatus.md)
+ - [SpConfigImportResults](sailpoint/sp_config/docs/SpConfigImportResults.md)
+ - [SpConfigJob](sailpoint/sp_config/docs/SpConfigJob.md)
+ - [SpConfigMessage2](sailpoint/sp_config/docs/SpConfigMessage2.md)
+ - [SpConfigObject](sailpoint/sp_config/docs/SpConfigObject.md)
+ - [SpConfigRule](sailpoint/sp_config/docs/SpConfigRule.md)
+ - [SpConfigRuleValue](sailpoint/sp_config/docs/SpConfigRuleValue.md)
+ - [SpConfigRules](sailpoint/sp_config/docs/SpConfigRules.md)
 
 
 <a id="documentation-for-authorization"></a>

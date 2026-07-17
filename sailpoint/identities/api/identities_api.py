@@ -21,15 +21,15 @@ from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.identities.models.get_role_assignments_v1200_response_inner import GetRoleAssignmentsV1200ResponseInner
 from sailpoint.identities.models.identity import Identity
-from sailpoint.identities.models.identityentitlements import Identityentitlements
-from sailpoint.identities.models.identityownershipassociationdetails import Identityownershipassociationdetails
-from sailpoint.identities.models.identitysyncjob import Identitysyncjob
-from sailpoint.identities.models.inviteidentitiesrequest import Inviteidentitiesrequest
-from sailpoint.identities.models.processidentitiesrequest import Processidentitiesrequest
-from sailpoint.identities.models.roleassignmentdto import Roleassignmentdto
-from sailpoint.identities.models.sendaccountverificationrequest import Sendaccountverificationrequest
-from sailpoint.identities.models.taskresultresponse import Taskresultresponse
-from sailpoint.identities.models.taskstatus import Taskstatus
+from sailpoint.identities.models.identity_entitlements import IdentityEntitlements
+from sailpoint.identities.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
+from sailpoint.identities.models.identity_sync_job import IdentitySyncJob
+from sailpoint.identities.models.invite_identities_request import InviteIdentitiesRequest
+from sailpoint.identities.models.process_identities_request import ProcessIdentitiesRequest
+from sailpoint.identities.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.identities.models.send_account_verification_request import SendAccountVerificationRequest
+from sailpoint.identities.models.task_result_response import TaskResultResponse
+from sailpoint.identities.models.task_status import TaskStatus
 
 from sailpoint.identities.api_client import ApiClient, RequestSerialized
 from sailpoint.identities.api_response import ApiResponse
@@ -108,12 +108,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Identityassociationdetails",
+            '400': "IdentityAssociationDetails",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -185,12 +185,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Identityassociationdetails",
+            '400': "IdentityAssociationDetails",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -262,12 +262,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Identityassociationdetails",
+            '400': "IdentityAssociationDetails",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -358,7 +358,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityownershipassociationdetails:
+    ) -> IdentityOwnershipAssociationDetails:
         """Get ownership details
 
         Use this API to return an identity's owned objects that will cause problems for deleting the identity.  Use this API as a checklist of objects that you need to reassign to a different identity before you can delete the identity.  For a full list of objects owned by an identity, use the [Search API](https://developer.sailpoint.com/docs/api/v3/search-post/).  When you search for identities, the returned identities have a property, `owns`, that contains a more comprehensive list of identity's owned objects.
@@ -396,13 +396,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityownershipassociationdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityOwnershipAssociationDetails",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -431,7 +431,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityownershipassociationdetails]:
+    ) -> ApiResponse[IdentityOwnershipAssociationDetails]:
         """Get ownership details
 
         Use this API to return an identity's owned objects that will cause problems for deleting the identity.  Use this API as a checklist of objects that you need to reassign to a different identity before you can delete the identity.  For a full list of objects owned by an identity, use the [Search API](https://developer.sailpoint.com/docs/api/v3/search-post/).  When you search for identities, the returned identities have a property, `owns`, that contains a more comprehensive list of identity's owned objects.
@@ -469,13 +469,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityownershipassociationdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityOwnershipAssociationDetails",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -542,13 +542,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityownershipassociationdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityOwnershipAssociationDetails",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -675,12 +675,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Identity",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -748,12 +748,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Identity",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -821,12 +821,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Identity",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -915,7 +915,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleassignmentdto:
+    ) -> RoleAssignmentDto:
         """Role assignment details
 
 
@@ -955,13 +955,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleassignmentdto",
-            '400': "Errorresponsedto",
+            '200': "RoleAssignmentDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -991,7 +991,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleassignmentdto]:
+    ) -> ApiResponse[RoleAssignmentDto]:
         """Role assignment details
 
 
@@ -1031,13 +1031,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleassignmentdto",
-            '400': "Errorresponsedto",
+            '200': "RoleAssignmentDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1107,13 +1107,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleassignmentdto",
-            '400': "Errorresponsedto",
+            '200': "RoleAssignmentDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1251,12 +1251,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetRoleAssignmentsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1332,12 +1332,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetRoleAssignmentsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1413,12 +1413,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetRoleAssignmentsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1519,7 +1519,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identityentitlements]:
+    ) -> List[IdentityEntitlements]:
         """List of entitlements by identity.
 
         The API returns a list of all entitlements assigned to an identity, either directly or through the role or access profile. A token with ORG_ADMIN or API authority is required to call this API.
@@ -1566,13 +1566,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1604,7 +1604,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identityentitlements]]:
+    ) -> ApiResponse[List[IdentityEntitlements]]:
         """List of entitlements by identity.
 
         The API returns a list of all entitlements assigned to an identity, either directly or through the role or access profile. A token with ORG_ADMIN or API authority is required to call this API.
@@ -1651,13 +1651,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1736,13 +1736,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1904,11 +1904,11 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identity]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1996,11 +1996,11 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identity]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2088,11 +2088,11 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identity]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2246,12 +2246,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2319,12 +2319,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2392,12 +2392,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2473,7 +2473,7 @@ class IdentitiesApi:
     def send_identity_verification_account_token_v1(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        sendaccountverificationrequest: Sendaccountverificationrequest,
+        send_account_verification_request: SendAccountVerificationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2494,8 +2494,8 @@ class IdentitiesApi:
 
         :param id: Identity ID (required)
         :type id: str
-        :param sendaccountverificationrequest: (required)
-        :type sendaccountverificationrequest: Sendaccountverificationrequest
+        :param send_account_verification_request: (required)
+        :type send_account_verification_request: SendAccountVerificationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2522,7 +2522,7 @@ class IdentitiesApi:
 
         _param = self._send_identity_verification_account_token_v1_serialize(
             id=id,
-            sendaccountverificationrequest=sendaccountverificationrequest,
+            send_account_verification_request=send_account_verification_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2532,12 +2532,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2554,7 +2554,7 @@ class IdentitiesApi:
     def send_identity_verification_account_token_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        sendaccountverificationrequest: Sendaccountverificationrequest,
+        send_account_verification_request: SendAccountVerificationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2575,8 +2575,8 @@ class IdentitiesApi:
 
         :param id: Identity ID (required)
         :type id: str
-        :param sendaccountverificationrequest: (required)
-        :type sendaccountverificationrequest: Sendaccountverificationrequest
+        :param send_account_verification_request: (required)
+        :type send_account_verification_request: SendAccountVerificationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2603,7 +2603,7 @@ class IdentitiesApi:
 
         _param = self._send_identity_verification_account_token_v1_serialize(
             id=id,
-            sendaccountverificationrequest=sendaccountverificationrequest,
+            send_account_verification_request=send_account_verification_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2613,12 +2613,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2635,7 +2635,7 @@ class IdentitiesApi:
     def send_identity_verification_account_token_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        sendaccountverificationrequest: Sendaccountverificationrequest,
+        send_account_verification_request: SendAccountVerificationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2656,8 +2656,8 @@ class IdentitiesApi:
 
         :param id: Identity ID (required)
         :type id: str
-        :param sendaccountverificationrequest: (required)
-        :type sendaccountverificationrequest: Sendaccountverificationrequest
+        :param send_account_verification_request: (required)
+        :type send_account_verification_request: SendAccountVerificationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2684,7 +2684,7 @@ class IdentitiesApi:
 
         _param = self._send_identity_verification_account_token_v1_serialize(
             id=id,
-            sendaccountverificationrequest=sendaccountverificationrequest,
+            send_account_verification_request=send_account_verification_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2694,12 +2694,12 @@ class IdentitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2711,7 +2711,7 @@ class IdentitiesApi:
     def _send_identity_verification_account_token_v1_serialize(
         self,
         id,
-        sendaccountverificationrequest,
+        send_account_verification_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2742,8 +2742,8 @@ class IdentitiesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if sendaccountverificationrequest is not None:
-            _body_params = sendaccountverificationrequest
+        if send_account_verification_request is not None:
+            _body_params = send_account_verification_request
 
 
         # set the HTTP header `Accept`
@@ -2793,7 +2793,7 @@ class IdentitiesApi:
     @validate_call
     def start_identities_invite_v1(
         self,
-        inviteidentitiesrequest: Inviteidentitiesrequest,
+        invite_identities_request: InviteIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2807,13 +2807,13 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskstatus:
+    ) -> TaskStatus:
         """Invite identities to register
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param inviteidentitiesrequest: (required)
-        :type inviteidentitiesrequest: Inviteidentitiesrequest
+        :param invite_identities_request: (required)
+        :type invite_identities_request: InviteIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2839,7 +2839,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_v1_serialize(
-            inviteidentitiesrequest=inviteidentitiesrequest,
+            invite_identities_request=invite_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2848,13 +2848,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskstatus",
-            '400': "Errorresponsedto",
+            '202': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2870,7 +2870,7 @@ class IdentitiesApi:
     @validate_call
     def start_identities_invite_v1_with_http_info(
         self,
-        inviteidentitiesrequest: Inviteidentitiesrequest,
+        invite_identities_request: InviteIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2884,13 +2884,13 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskstatus]:
+    ) -> ApiResponse[TaskStatus]:
         """Invite identities to register
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param inviteidentitiesrequest: (required)
-        :type inviteidentitiesrequest: Inviteidentitiesrequest
+        :param invite_identities_request: (required)
+        :type invite_identities_request: InviteIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2916,7 +2916,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_v1_serialize(
-            inviteidentitiesrequest=inviteidentitiesrequest,
+            invite_identities_request=invite_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2925,13 +2925,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskstatus",
-            '400': "Errorresponsedto",
+            '202': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2947,7 +2947,7 @@ class IdentitiesApi:
     @validate_call
     def start_identities_invite_v1_without_preload_content(
         self,
-        inviteidentitiesrequest: Inviteidentitiesrequest,
+        invite_identities_request: InviteIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2966,8 +2966,8 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param inviteidentitiesrequest: (required)
-        :type inviteidentitiesrequest: Inviteidentitiesrequest
+        :param invite_identities_request: (required)
+        :type invite_identities_request: InviteIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2993,7 +2993,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_v1_serialize(
-            inviteidentitiesrequest=inviteidentitiesrequest,
+            invite_identities_request=invite_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3002,13 +3002,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskstatus",
-            '400': "Errorresponsedto",
+            '202': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3019,7 +3019,7 @@ class IdentitiesApi:
 
     def _start_identities_invite_v1_serialize(
         self,
-        inviteidentitiesrequest,
+        invite_identities_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -3048,8 +3048,8 @@ class IdentitiesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if inviteidentitiesrequest is not None:
-            _body_params = inviteidentitiesrequest
+        if invite_identities_request is not None:
+            _body_params = invite_identities_request
 
 
         # set the HTTP header `Accept`
@@ -3099,7 +3099,7 @@ class IdentitiesApi:
     @validate_call
     def start_identity_processing_v1(
         self,
-        processidentitiesrequest: Processidentitiesrequest,
+        process_identities_request: ProcessIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3113,13 +3113,13 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultresponse:
+    ) -> TaskResultResponse:
         """Process a list of identityids
 
         This operation should not be used to schedule your own identity processing or to perform system wide identity refreshes. The system will use a combination of [event-based processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#event-based-processing) and [scheduled processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#scheduled-processing) that runs every day at 8:00 AM and 8:00 PM in the tenant's timezone to keep your identities synchronized.   This endpoint will perform the following tasks: 1. Calculate identity attributes, including applying or running any rules or transforms (e.g. calculate Lifecycle State at a point-in-time it's expected to change). 2. Evaluate role assignments, leading to assignment of new roles and removal of existing roles. 3. Enforce provisioning for any assigned accesses that haven't been fulfilled (e.g. failure due to source health). 4. Recalculate manager relationships. 5. Potentially clean-up identity processing errors, assuming the error has been resolved.
 
-        :param processidentitiesrequest: (required)
-        :type processidentitiesrequest: Processidentitiesrequest
+        :param process_identities_request: (required)
+        :type process_identities_request: ProcessIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3145,7 +3145,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identity_processing_v1_serialize(
-            processidentitiesrequest=processidentitiesrequest,
+            process_identities_request=process_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3154,13 +3154,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultresponse",
-            '400': "Errorresponsedto",
+            '202': "TaskResultResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3176,7 +3176,7 @@ class IdentitiesApi:
     @validate_call
     def start_identity_processing_v1_with_http_info(
         self,
-        processidentitiesrequest: Processidentitiesrequest,
+        process_identities_request: ProcessIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3190,13 +3190,13 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultresponse]:
+    ) -> ApiResponse[TaskResultResponse]:
         """Process a list of identityids
 
         This operation should not be used to schedule your own identity processing or to perform system wide identity refreshes. The system will use a combination of [event-based processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#event-based-processing) and [scheduled processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#scheduled-processing) that runs every day at 8:00 AM and 8:00 PM in the tenant's timezone to keep your identities synchronized.   This endpoint will perform the following tasks: 1. Calculate identity attributes, including applying or running any rules or transforms (e.g. calculate Lifecycle State at a point-in-time it's expected to change). 2. Evaluate role assignments, leading to assignment of new roles and removal of existing roles. 3. Enforce provisioning for any assigned accesses that haven't been fulfilled (e.g. failure due to source health). 4. Recalculate manager relationships. 5. Potentially clean-up identity processing errors, assuming the error has been resolved.
 
-        :param processidentitiesrequest: (required)
-        :type processidentitiesrequest: Processidentitiesrequest
+        :param process_identities_request: (required)
+        :type process_identities_request: ProcessIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3222,7 +3222,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identity_processing_v1_serialize(
-            processidentitiesrequest=processidentitiesrequest,
+            process_identities_request=process_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3231,13 +3231,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultresponse",
-            '400': "Errorresponsedto",
+            '202': "TaskResultResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3253,7 +3253,7 @@ class IdentitiesApi:
     @validate_call
     def start_identity_processing_v1_without_preload_content(
         self,
-        processidentitiesrequest: Processidentitiesrequest,
+        process_identities_request: ProcessIdentitiesRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3272,8 +3272,8 @@ class IdentitiesApi:
 
         This operation should not be used to schedule your own identity processing or to perform system wide identity refreshes. The system will use a combination of [event-based processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#event-based-processing) and [scheduled processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#scheduled-processing) that runs every day at 8:00 AM and 8:00 PM in the tenant's timezone to keep your identities synchronized.   This endpoint will perform the following tasks: 1. Calculate identity attributes, including applying or running any rules or transforms (e.g. calculate Lifecycle State at a point-in-time it's expected to change). 2. Evaluate role assignments, leading to assignment of new roles and removal of existing roles. 3. Enforce provisioning for any assigned accesses that haven't been fulfilled (e.g. failure due to source health). 4. Recalculate manager relationships. 5. Potentially clean-up identity processing errors, assuming the error has been resolved.
 
-        :param processidentitiesrequest: (required)
-        :type processidentitiesrequest: Processidentitiesrequest
+        :param process_identities_request: (required)
+        :type process_identities_request: ProcessIdentitiesRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3299,7 +3299,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identity_processing_v1_serialize(
-            processidentitiesrequest=processidentitiesrequest,
+            process_identities_request=process_identities_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3308,13 +3308,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultresponse",
-            '400': "Errorresponsedto",
+            '202': "TaskResultResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3325,7 +3325,7 @@ class IdentitiesApi:
 
     def _start_identity_processing_v1_serialize(
         self,
-        processidentitiesrequest,
+        process_identities_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -3354,8 +3354,8 @@ class IdentitiesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if processidentitiesrequest is not None:
-            _body_params = processidentitiesrequest
+        if process_identities_request is not None:
+            _body_params = process_identities_request
 
 
         # set the HTTP header `Accept`
@@ -3419,7 +3419,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitysyncjob:
+    ) -> IdentitySyncJob:
         """Attribute synchronization for single identity.
 
         This end-point performs attribute synchronization for a selected identity. The endpoint can be called once in 10 seconds per identity.
@@ -3460,13 +3460,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Identitysyncjob",
-            '400': "Errorresponsedto",
+            '202': "IdentitySyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3496,7 +3496,7 @@ class IdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitysyncjob]:
+    ) -> ApiResponse[IdentitySyncJob]:
         """Attribute synchronization for single identity.
 
         This end-point performs attribute synchronization for a selected identity. The endpoint can be called once in 10 seconds per identity.
@@ -3537,13 +3537,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Identitysyncjob",
-            '400': "Errorresponsedto",
+            '202': "IdentitySyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3614,13 +3614,13 @@ class IdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Identitysyncjob",
-            '400': "Errorresponsedto",
+            '202': "IdentitySyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

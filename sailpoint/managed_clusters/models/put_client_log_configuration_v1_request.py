@@ -17,24 +17,24 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from sailpoint.managed_clusters.models.clientlogconfigurationdurationminutes import Clientlogconfigurationdurationminutes
-from sailpoint.managed_clusters.models.clientlogconfigurationexpiration import Clientlogconfigurationexpiration
+from sailpoint.managed_clusters.models.client_log_configuration_duration_minutes import ClientLogConfigurationDurationMinutes
+from sailpoint.managed_clusters.models.client_log_configuration_expiration import ClientLogConfigurationExpiration
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-PUTCLIENTLOGCONFIGURATIONV1REQUEST_ONE_OF_SCHEMAS = ["Clientlogconfigurationdurationminutes", "Clientlogconfigurationexpiration"]
+PUTCLIENTLOGCONFIGURATIONV1REQUEST_ONE_OF_SCHEMAS = ["ClientLogConfigurationDurationMinutes", "ClientLogConfigurationExpiration"]
 
 class PutClientLogConfigurationV1Request(BaseModel):
     """
     PutClientLogConfigurationV1Request
     """
-    # data type: Clientlogconfigurationdurationminutes
-    oneof_schema_1_validator: Optional[Clientlogconfigurationdurationminutes] = None
-    # data type: Clientlogconfigurationexpiration
-    oneof_schema_2_validator: Optional[Clientlogconfigurationexpiration] = None
-    actual_instance: Optional[Union[Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration]] = None
-    one_of_schemas: Set[str] = { "Clientlogconfigurationdurationminutes", "Clientlogconfigurationexpiration" }
+    # data type: ClientLogConfigurationDurationMinutes
+    oneof_schema_1_validator: Optional[ClientLogConfigurationDurationMinutes] = None
+    # data type: ClientLogConfigurationExpiration
+    oneof_schema_2_validator: Optional[ClientLogConfigurationExpiration] = None
+    actual_instance: Optional[Union[ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration]] = None
+    one_of_schemas: Set[str] = { "ClientLogConfigurationDurationMinutes", "ClientLogConfigurationExpiration" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -57,22 +57,22 @@ class PutClientLogConfigurationV1Request(BaseModel):
         instance = PutClientLogConfigurationV1Request.model_construct()
         error_messages = []
         match = 0
-        # validate data type: Clientlogconfigurationdurationminutes
-        if not isinstance(v, Clientlogconfigurationdurationminutes):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Clientlogconfigurationdurationminutes`")
+        # validate data type: ClientLogConfigurationDurationMinutes
+        if not isinstance(v, ClientLogConfigurationDurationMinutes):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ClientLogConfigurationDurationMinutes`")
         else:
             match += 1
-        # validate data type: Clientlogconfigurationexpiration
-        if not isinstance(v, Clientlogconfigurationexpiration):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Clientlogconfigurationexpiration`")
+        # validate data type: ClientLogConfigurationExpiration
+        if not isinstance(v, ClientLogConfigurationExpiration):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ClientLogConfigurationExpiration`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in PutClientLogConfigurationV1Request with oneOf schemas: Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in PutClientLogConfigurationV1Request with oneOf schemas: ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in PutClientLogConfigurationV1Request with oneOf schemas: Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in PutClientLogConfigurationV1Request with oneOf schemas: ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -87,25 +87,25 @@ class PutClientLogConfigurationV1Request(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into Clientlogconfigurationdurationminutes
+        # deserialize data into ClientLogConfigurationDurationMinutes
         try:
-            instance.actual_instance = Clientlogconfigurationdurationminutes.from_json(json_str)
+            instance.actual_instance = ClientLogConfigurationDurationMinutes.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into Clientlogconfigurationexpiration
+        # deserialize data into ClientLogConfigurationExpiration
         try:
-            instance.actual_instance = Clientlogconfigurationexpiration.from_json(json_str)
+            instance.actual_instance = ClientLogConfigurationExpiration.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into PutClientLogConfigurationV1Request with oneOf schemas: Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into PutClientLogConfigurationV1Request with oneOf schemas: ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into PutClientLogConfigurationV1Request with oneOf schemas: Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into PutClientLogConfigurationV1Request with oneOf schemas: ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -119,7 +119,7 @@ class PutClientLogConfigurationV1Request(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Clientlogconfigurationdurationminutes, Clientlogconfigurationexpiration]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], ClientLogConfigurationDurationMinutes, ClientLogConfigurationExpiration]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

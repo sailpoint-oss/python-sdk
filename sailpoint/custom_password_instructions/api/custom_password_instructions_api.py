@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.custom_password_instructions.models.custompasswordinstruction import Custompasswordinstruction
+from sailpoint.custom_password_instructions.models.custom_password_instruction import CustomPasswordInstruction
 
 from sailpoint.custom_password_instructions.api_client import ApiClient, RequestSerialized
 from sailpoint.custom_password_instructions.api_response import ApiResponse
@@ -42,7 +42,7 @@ class CustomPasswordInstructionsApi:
     @validate_call
     def create_custom_password_instructions_v1(
         self,
-        custompasswordinstruction: Custompasswordinstruction,
+        custom_password_instruction: CustomPasswordInstruction,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -56,13 +56,13 @@ class CustomPasswordInstructionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Custompasswordinstruction:
+    ) -> CustomPasswordInstruction:
         """Create custom password instructions
 
-        This API creates the custom password instructions for the specified page ID.
+        This API creates the custom password instructions for the specified page ID.  The `pageId` determines which login and password-recovery screen your custom instructions appear on. The following table describes each supported page ID and where its text is displayed:  | Page ID | Where the custom text appears | | --- | --- | | `flow-selection:select` | Flow-selection landing screen, under \"Need help signing in?\", above the navigation links. | | `reset-password:enter-username` | Reset-password \"enter username\" step, under the prompt, above the username field. | | `unlock-account:enter-username` | Unlock-account \"enter username\" step, under the prompt, above the username field. | | `forget-username:user-email` | Forgot-username screen, under \"Enter the email address for\", above the email field. | | `reset-password:enter-password` | Reset-password \"new password\" step, under the header, above the password fields. | | `change-password:enter-password` | Same \"new password\" screen, but the authenticated app/sync-group change variant. | | `reset-password:finish` | Reset-password success screen, under the success icon/heading, above the return button. | | `change-password:finish` | Success screen for the authenticated app/sync-group change, under the heading. | | `mfa:select` | MFA method-selection step, under the prompt, above the list of MFA options. | | `mfa:enter-code` | MFA code-entry step, under the option label, above the code field. | | `mfa:enter-kba` | KBA step, under \"Please answer these security questions\", above the questions form. | | `unlock-account:finish` | Unlock-account success screen, under the success icon/heading, above the return button. |  In every case the text shows as an info-icon + paragraph block that only appears if custom text is configured for that page ID, positioned between the screen's built-in heading and its form controls. 
 
-        :param custompasswordinstruction: (required)
-        :type custompasswordinstruction: Custompasswordinstruction
+        :param custom_password_instruction: (required)
+        :type custom_password_instruction: CustomPasswordInstruction
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -88,7 +88,7 @@ class CustomPasswordInstructionsApi:
         """ # noqa: E501
 
         _param = self._create_custom_password_instructions_v1_serialize(
-            custompasswordinstruction=custompasswordinstruction,
+            custom_password_instruction=custom_password_instruction,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -97,10 +97,10 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -116,7 +116,7 @@ class CustomPasswordInstructionsApi:
     @validate_call
     def create_custom_password_instructions_v1_with_http_info(
         self,
-        custompasswordinstruction: Custompasswordinstruction,
+        custom_password_instruction: CustomPasswordInstruction,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -130,13 +130,13 @@ class CustomPasswordInstructionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Custompasswordinstruction]:
+    ) -> ApiResponse[CustomPasswordInstruction]:
         """Create custom password instructions
 
-        This API creates the custom password instructions for the specified page ID.
+        This API creates the custom password instructions for the specified page ID.  The `pageId` determines which login and password-recovery screen your custom instructions appear on. The following table describes each supported page ID and where its text is displayed:  | Page ID | Where the custom text appears | | --- | --- | | `flow-selection:select` | Flow-selection landing screen, under \"Need help signing in?\", above the navigation links. | | `reset-password:enter-username` | Reset-password \"enter username\" step, under the prompt, above the username field. | | `unlock-account:enter-username` | Unlock-account \"enter username\" step, under the prompt, above the username field. | | `forget-username:user-email` | Forgot-username screen, under \"Enter the email address for\", above the email field. | | `reset-password:enter-password` | Reset-password \"new password\" step, under the header, above the password fields. | | `change-password:enter-password` | Same \"new password\" screen, but the authenticated app/sync-group change variant. | | `reset-password:finish` | Reset-password success screen, under the success icon/heading, above the return button. | | `change-password:finish` | Success screen for the authenticated app/sync-group change, under the heading. | | `mfa:select` | MFA method-selection step, under the prompt, above the list of MFA options. | | `mfa:enter-code` | MFA code-entry step, under the option label, above the code field. | | `mfa:enter-kba` | KBA step, under \"Please answer these security questions\", above the questions form. | | `unlock-account:finish` | Unlock-account success screen, under the success icon/heading, above the return button. |  In every case the text shows as an info-icon + paragraph block that only appears if custom text is configured for that page ID, positioned between the screen's built-in heading and its form controls. 
 
-        :param custompasswordinstruction: (required)
-        :type custompasswordinstruction: Custompasswordinstruction
+        :param custom_password_instruction: (required)
+        :type custom_password_instruction: CustomPasswordInstruction
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -162,7 +162,7 @@ class CustomPasswordInstructionsApi:
         """ # noqa: E501
 
         _param = self._create_custom_password_instructions_v1_serialize(
-            custompasswordinstruction=custompasswordinstruction,
+            custom_password_instruction=custom_password_instruction,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -171,10 +171,10 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -190,7 +190,7 @@ class CustomPasswordInstructionsApi:
     @validate_call
     def create_custom_password_instructions_v1_without_preload_content(
         self,
-        custompasswordinstruction: Custompasswordinstruction,
+        custom_password_instruction: CustomPasswordInstruction,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -207,10 +207,10 @@ class CustomPasswordInstructionsApi:
     ) -> RESTResponseType:
         """Create custom password instructions
 
-        This API creates the custom password instructions for the specified page ID.
+        This API creates the custom password instructions for the specified page ID.  The `pageId` determines which login and password-recovery screen your custom instructions appear on. The following table describes each supported page ID and where its text is displayed:  | Page ID | Where the custom text appears | | --- | --- | | `flow-selection:select` | Flow-selection landing screen, under \"Need help signing in?\", above the navigation links. | | `reset-password:enter-username` | Reset-password \"enter username\" step, under the prompt, above the username field. | | `unlock-account:enter-username` | Unlock-account \"enter username\" step, under the prompt, above the username field. | | `forget-username:user-email` | Forgot-username screen, under \"Enter the email address for\", above the email field. | | `reset-password:enter-password` | Reset-password \"new password\" step, under the header, above the password fields. | | `change-password:enter-password` | Same \"new password\" screen, but the authenticated app/sync-group change variant. | | `reset-password:finish` | Reset-password success screen, under the success icon/heading, above the return button. | | `change-password:finish` | Success screen for the authenticated app/sync-group change, under the heading. | | `mfa:select` | MFA method-selection step, under the prompt, above the list of MFA options. | | `mfa:enter-code` | MFA code-entry step, under the option label, above the code field. | | `mfa:enter-kba` | KBA step, under \"Please answer these security questions\", above the questions form. | | `unlock-account:finish` | Unlock-account success screen, under the success icon/heading, above the return button. |  In every case the text shows as an info-icon + paragraph block that only appears if custom text is configured for that page ID, positioned between the screen's built-in heading and its form controls. 
 
-        :param custompasswordinstruction: (required)
-        :type custompasswordinstruction: Custompasswordinstruction
+        :param custom_password_instruction: (required)
+        :type custom_password_instruction: CustomPasswordInstruction
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -236,7 +236,7 @@ class CustomPasswordInstructionsApi:
         """ # noqa: E501
 
         _param = self._create_custom_password_instructions_v1_serialize(
-            custompasswordinstruction=custompasswordinstruction,
+            custom_password_instruction=custom_password_instruction,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -245,10 +245,10 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,7 +259,7 @@ class CustomPasswordInstructionsApi:
 
     def _create_custom_password_instructions_v1_serialize(
         self,
-        custompasswordinstruction,
+        custom_password_instruction,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -288,8 +288,8 @@ class CustomPasswordInstructionsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if custompasswordinstruction is not None:
-            _body_params = custompasswordinstruction
+        if custom_password_instruction is not None:
+            _body_params = custom_password_instruction
 
 
         # set the HTTP header `Accept`
@@ -399,10 +399,10 @@ class CustomPasswordInstructionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -478,10 +478,10 @@ class CustomPasswordInstructionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -557,10 +557,10 @@ class CustomPasswordInstructionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -658,7 +658,7 @@ class CustomPasswordInstructionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Custompasswordinstruction:
+    ) -> CustomPasswordInstruction:
         """Get custom password instructions by page id
 
         This API returns the custom password instructions for the specified page ID.
@@ -702,11 +702,11 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -737,7 +737,7 @@ class CustomPasswordInstructionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Custompasswordinstruction]:
+    ) -> ApiResponse[CustomPasswordInstruction]:
         """Get custom password instructions by page id
 
         This API returns the custom password instructions for the specified page ID.
@@ -781,11 +781,11 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -860,11 +860,11 @@ class CustomPasswordInstructionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Custompasswordinstruction",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '200': "CustomPasswordInstruction",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

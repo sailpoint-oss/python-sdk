@@ -6,22 +6,34 @@
       source: |
         from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
         from sailpoint.machine_account_creation_request.api_client import ApiClient
-        from sailpoint.machine_account_creation_request.models.accountrequestasyncresult import Accountrequestasyncresult
-        from sailpoint.machine_account_creation_request.models.machineaccountcreaterequestinput import Machineaccountcreaterequestinput
+        from sailpoint.machine_account_creation_request.models.account_request_async_result import AccountRequestAsyncResult
+        from sailpoint.machine_account_creation_request.models.machine_account_create_request_input import MachineAccountCreateRequestInput
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          machineaccountcreaterequestinput = '''sailpoint.machine_account_creation_request.Machineaccountcreaterequestinput()''' # Machineaccountcreaterequestinput | 
+          machine_account_create_request_input = '''{
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }''' # MachineAccountCreateRequestInput | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Submit Machine Account Creation Request
-              new_machineaccountcreaterequestinput = Machineaccountcreaterequestinput.from_json(machineaccountcreaterequestinput)
-              results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(machineaccountcreaterequestinput=new_machineaccountcreaterequestinput)
+              new_machine_account_create_request_input = MachineAccountCreateRequestInput.from_json(machine_account_create_request_input)
+              results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(machine_account_create_request_input=new_machine_account_create_request_input)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(new_machineaccountcreaterequestinput, x_sail_point_experimental)
+              # results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(new_machine_account_create_request_input, x_sail_point_experimental)
               print("The response of MachineAccountCreationRequestApi->create_machine_account_request_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -34,7 +46,7 @@
       source: |
         from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
         from sailpoint.machine_account_creation_request.api_client import ApiClient
-        from sailpoint.machine_account_creation_request.models.accountrequestdetailsdto import Accountrequestdetailsdto
+        from sailpoint.machine_account_creation_request.models.account_request_details_dto import AccountRequestDetailsDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -61,7 +73,7 @@
       source: |
         from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
         from sailpoint.machine_account_creation_request.api_client import ApiClient
-        from sailpoint.machine_account_creation_request.models.machineaccountcreateaccessdto import Machineaccountcreateaccessdto
+        from sailpoint.machine_account_creation_request.models.machine_account_create_access_dto import MachineAccountCreateAccessDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationconfigdto import Accessrequestrecommendationconfigdto
-from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationitemdetail import Accessrequestrecommendationitemdetail
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
+from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
 
 from sailpoint.iai_access_request_recommendations.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_access_request_recommendations.api_response import ApiResponse
@@ -45,7 +45,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_ignored_item_v1(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item to ignore for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item to ignore for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -59,13 +59,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestrecommendationactionitemresponsedto:
+    ) -> AccessRequestRecommendationActionItemResponseDto:
         """Ignore access request recommendation
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item to ignore for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item to ignore for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -91,7 +91,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_ignored_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -100,12 +100,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_ignored_item_v1_with_http_info(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item to ignore for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item to ignore for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -135,13 +135,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
         """Ignore access request recommendation
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item to ignore for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item to ignore for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -167,7 +167,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_ignored_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -176,12 +176,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -197,7 +197,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_ignored_item_v1_without_preload_content(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item to ignore for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item to ignore for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -216,8 +216,8 @@ class IAIAccessRequestRecommendationsApi:
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item to ignore for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item to ignore for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -243,7 +243,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_ignored_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -252,12 +252,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -268,7 +268,7 @@ class IAIAccessRequestRecommendationsApi:
 
     def _add_access_request_recommendations_ignored_item_v1_serialize(
         self,
-        accessrequestrecommendationactionitemdto,
+        access_request_recommendation_action_item_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -297,8 +297,8 @@ class IAIAccessRequestRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessrequestrecommendationactionitemdto is not None:
-            _body_params = accessrequestrecommendationactionitemdto
+        if access_request_recommendation_action_item_dto is not None:
+            _body_params = access_request_recommendation_action_item_dto
 
 
         # set the HTTP header `Accept`
@@ -348,7 +348,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_requested_item_v1(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item that was requested for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item that was requested for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -362,13 +362,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestrecommendationactionitemresponsedto:
+    ) -> AccessRequestRecommendationActionItemResponseDto:
         """Accept access request recommendation
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item that was requested for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item that was requested for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -394,7 +394,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_requested_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -403,12 +403,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_requested_item_v1_with_http_info(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item that was requested for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item that was requested for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -438,13 +438,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
         """Accept access request recommendation
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item that was requested for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item that was requested for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -470,7 +470,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_requested_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -479,12 +479,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -500,7 +500,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_requested_item_v1_without_preload_content(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access item that was requested for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access item that was requested for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -519,8 +519,8 @@ class IAIAccessRequestRecommendationsApi:
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access item that was requested for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access item that was requested for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -546,7 +546,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_requested_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -555,12 +555,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -571,7 +571,7 @@ class IAIAccessRequestRecommendationsApi:
 
     def _add_access_request_recommendations_requested_item_v1_serialize(
         self,
-        accessrequestrecommendationactionitemdto,
+        access_request_recommendation_action_item_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -600,8 +600,8 @@ class IAIAccessRequestRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessrequestrecommendationactionitemdto is not None:
-            _body_params = accessrequestrecommendationactionitemdto
+        if access_request_recommendation_action_item_dto is not None:
+            _body_params = access_request_recommendation_action_item_dto
 
 
         # set the HTTP header `Accept`
@@ -651,7 +651,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_item_v1(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access that was viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access that was viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -665,13 +665,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestrecommendationactionitemresponsedto:
+    ) -> AccessRequestRecommendationActionItemResponseDto:
         """Mark viewed access request recommendations
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access that was viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access that was viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -697,7 +697,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -706,12 +706,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -727,7 +727,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_item_v1_with_http_info(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access that was viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access that was viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -741,13 +741,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
         """Mark viewed access request recommendations
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access that was viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access that was viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -773,7 +773,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -782,12 +782,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -803,7 +803,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_item_v1_without_preload_content(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[Accessrequestrecommendationactionitemdto, Field(description="The recommended access that was viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[AccessRequestRecommendationActionItemDto, Field(description="The recommended access that was viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -822,8 +822,8 @@ class IAIAccessRequestRecommendationsApi:
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access that was viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: Accessrequestrecommendationactionitemdto
+        :param access_request_recommendation_action_item_dto: The recommended access that was viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: AccessRequestRecommendationActionItemDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -849,7 +849,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_item_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -858,12 +858,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Accessrequestrecommendationactionitemresponsedto",
-            '400': "Errorresponsedto",
+            '201': "AccessRequestRecommendationActionItemResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -874,7 +874,7 @@ class IAIAccessRequestRecommendationsApi:
 
     def _add_access_request_recommendations_viewed_item_v1_serialize(
         self,
-        accessrequestrecommendationactionitemdto,
+        access_request_recommendation_action_item_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -903,8 +903,8 @@ class IAIAccessRequestRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessrequestrecommendationactionitemdto is not None:
-            _body_params = accessrequestrecommendationactionitemdto
+        if access_request_recommendation_action_item_dto is not None:
+            _body_params = access_request_recommendation_action_item_dto
 
 
         # set the HTTP header `Accept`
@@ -954,7 +954,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_items_v1(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[List[Accessrequestrecommendationactionitemdto], Field(description="The recommended access items that were viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[List[AccessRequestRecommendationActionItemDto], Field(description="The recommended access items that were viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -968,13 +968,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> List[AccessRequestRecommendationActionItemResponseDto]:
         """Bulk mark viewed access request recommendations
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access items that were viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: List[Accessrequestrecommendationactionitemdto]
+        :param access_request_recommendation_action_item_dto: The recommended access items that were viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: List[AccessRequestRecommendationActionItemDto]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1000,7 +1000,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_items_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1009,12 +1009,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '201': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1030,7 +1030,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_items_v1_with_http_info(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[List[Accessrequestrecommendationactionitemdto], Field(description="The recommended access items that were viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[List[AccessRequestRecommendationActionItemDto], Field(description="The recommended access items that were viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1044,13 +1044,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestrecommendationactionitemresponsedto]]:
+    ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
         """Bulk mark viewed access request recommendations
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access items that were viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: List[Accessrequestrecommendationactionitemdto]
+        :param access_request_recommendation_action_item_dto: The recommended access items that were viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: List[AccessRequestRecommendationActionItemDto]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1076,7 +1076,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_items_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1085,12 +1085,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '201': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1106,7 +1106,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def add_access_request_recommendations_viewed_items_v1_without_preload_content(
         self,
-        accessrequestrecommendationactionitemdto: Annotated[List[Accessrequestrecommendationactionitemdto], Field(description="The recommended access items that were viewed for an identity.")],
+        access_request_recommendation_action_item_dto: Annotated[List[AccessRequestRecommendationActionItemDto], Field(description="The recommended access items that were viewed for an identity.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1125,8 +1125,8 @@ class IAIAccessRequestRecommendationsApi:
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
-        :param accessrequestrecommendationactionitemdto: The recommended access items that were viewed for an identity. (required)
-        :type accessrequestrecommendationactionitemdto: List[Accessrequestrecommendationactionitemdto]
+        :param access_request_recommendation_action_item_dto: The recommended access items that were viewed for an identity. (required)
+        :type access_request_recommendation_action_item_dto: List[AccessRequestRecommendationActionItemDto]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1152,7 +1152,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._add_access_request_recommendations_viewed_items_v1_serialize(
-            accessrequestrecommendationactionitemdto=accessrequestrecommendationactionitemdto,
+            access_request_recommendation_action_item_dto=access_request_recommendation_action_item_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1161,12 +1161,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '201': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1177,7 +1177,7 @@ class IAIAccessRequestRecommendationsApi:
 
     def _add_access_request_recommendations_viewed_items_v1_serialize(
         self,
-        accessrequestrecommendationactionitemdto,
+        access_request_recommendation_action_item_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1188,7 +1188,7 @@ class IAIAccessRequestRecommendationsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Accessrequestrecommendationactionitemdto': '',
+            'AccessRequestRecommendationActionItemDto': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1207,8 +1207,8 @@ class IAIAccessRequestRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessrequestrecommendationactionitemdto is not None:
-            _body_params = accessrequestrecommendationactionitemdto
+        if access_request_recommendation_action_item_dto is not None:
+            _body_params = access_request_recommendation_action_item_dto
 
 
         # set the HTTP header `Accept`
@@ -1271,7 +1271,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestrecommendationconfigdto:
+    ) -> AccessRequestRecommendationConfigDto:
         """Get access request recommendations config
 
         This API returns the configurations for Access Request Recommender for the tenant.
@@ -1309,12 +1309,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1343,7 +1343,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestrecommendationconfigdto]:
+    ) -> ApiResponse[AccessRequestRecommendationConfigDto]:
         """Get access request recommendations config
 
         This API returns the configurations for Access Request Recommender for the tenant.
@@ -1381,12 +1381,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1453,12 +1453,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1551,7 +1551,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> List[AccessRequestRecommendationActionItemResponseDto]:
         """List ignored access request recommendations
 
         This API returns the list of ignored access request recommendations.
@@ -1604,12 +1604,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1643,7 +1643,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestrecommendationactionitemresponsedto]]:
+    ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
         """List ignored access request recommendations
 
         This API returns the list of ignored access request recommendations.
@@ -1696,12 +1696,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1788,12 +1788,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1911,7 +1911,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> List[AccessRequestRecommendationActionItemResponseDto]:
         """List accepted access request recommendations
 
         This API returns a list of requested access request recommendations.
@@ -1964,12 +1964,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2003,7 +2003,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestrecommendationactionitemresponsedto]]:
+    ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
         """List accepted access request recommendations
 
         This API returns a list of requested access request recommendations.
@@ -2056,12 +2056,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2148,12 +2148,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2273,7 +2273,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestrecommendationitemdetail]:
+    ) -> List[AccessRequestRecommendationItemDetail]:
         """Identity access request recommendations
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
@@ -2332,12 +2332,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationitemdetail]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationItemDetail]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2373,7 +2373,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestrecommendationitemdetail]]:
+    ) -> ApiResponse[List[AccessRequestRecommendationItemDetail]]:
         """Identity access request recommendations
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
@@ -2432,12 +2432,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationitemdetail]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationItemDetail]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2532,12 +2532,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationitemdetail]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationItemDetail]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2665,7 +2665,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestrecommendationactionitemresponsedto]:
+    ) -> List[AccessRequestRecommendationActionItemResponseDto]:
         """List viewed access request recommendations
 
         This API returns the list of viewed access request recommendations.
@@ -2718,12 +2718,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2757,7 +2757,7 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestrecommendationactionitemresponsedto]]:
+    ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
         """List viewed access request recommendations
 
         This API returns the list of viewed access request recommendations.
@@ -2810,12 +2810,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2902,12 +2902,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestrecommendationactionitemresponsedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestRecommendationActionItemResponseDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3007,7 +3007,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def set_access_request_recommendations_config_v1(
         self,
-        accessrequestrecommendationconfigdto: Annotated[Accessrequestrecommendationconfigdto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
+        access_request_recommendation_config_dto: Annotated[AccessRequestRecommendationConfigDto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3021,13 +3021,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestrecommendationconfigdto:
+    ) -> AccessRequestRecommendationConfigDto:
         """Update access request recommendations config
 
         This API updates the configurations for Access Request Recommender for the tenant.
 
-        :param accessrequestrecommendationconfigdto: The desired configurations for Access Request Recommender for the tenant. (required)
-        :type accessrequestrecommendationconfigdto: Accessrequestrecommendationconfigdto
+        :param access_request_recommendation_config_dto: The desired configurations for Access Request Recommender for the tenant. (required)
+        :type access_request_recommendation_config_dto: AccessRequestRecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3053,7 +3053,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_recommendations_config_v1_serialize(
-            accessrequestrecommendationconfigdto=accessrequestrecommendationconfigdto,
+            access_request_recommendation_config_dto=access_request_recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3062,12 +3062,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3083,7 +3083,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def set_access_request_recommendations_config_v1_with_http_info(
         self,
-        accessrequestrecommendationconfigdto: Annotated[Accessrequestrecommendationconfigdto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
+        access_request_recommendation_config_dto: Annotated[AccessRequestRecommendationConfigDto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3097,13 +3097,13 @@ class IAIAccessRequestRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestrecommendationconfigdto]:
+    ) -> ApiResponse[AccessRequestRecommendationConfigDto]:
         """Update access request recommendations config
 
         This API updates the configurations for Access Request Recommender for the tenant.
 
-        :param accessrequestrecommendationconfigdto: The desired configurations for Access Request Recommender for the tenant. (required)
-        :type accessrequestrecommendationconfigdto: Accessrequestrecommendationconfigdto
+        :param access_request_recommendation_config_dto: The desired configurations for Access Request Recommender for the tenant. (required)
+        :type access_request_recommendation_config_dto: AccessRequestRecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3129,7 +3129,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_recommendations_config_v1_serialize(
-            accessrequestrecommendationconfigdto=accessrequestrecommendationconfigdto,
+            access_request_recommendation_config_dto=access_request_recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3138,12 +3138,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3159,7 +3159,7 @@ class IAIAccessRequestRecommendationsApi:
     @validate_call
     def set_access_request_recommendations_config_v1_without_preload_content(
         self,
-        accessrequestrecommendationconfigdto: Annotated[Accessrequestrecommendationconfigdto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
+        access_request_recommendation_config_dto: Annotated[AccessRequestRecommendationConfigDto, Field(description="The desired configurations for Access Request Recommender for the tenant.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3178,8 +3178,8 @@ class IAIAccessRequestRecommendationsApi:
 
         This API updates the configurations for Access Request Recommender for the tenant.
 
-        :param accessrequestrecommendationconfigdto: The desired configurations for Access Request Recommender for the tenant. (required)
-        :type accessrequestrecommendationconfigdto: Accessrequestrecommendationconfigdto
+        :param access_request_recommendation_config_dto: The desired configurations for Access Request Recommender for the tenant. (required)
+        :type access_request_recommendation_config_dto: AccessRequestRecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3205,7 +3205,7 @@ class IAIAccessRequestRecommendationsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_recommendations_config_v1_serialize(
-            accessrequestrecommendationconfigdto=accessrequestrecommendationconfigdto,
+            access_request_recommendation_config_dto=access_request_recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3214,12 +3214,12 @@ class IAIAccessRequestRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestrecommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestRecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3230,7 +3230,7 @@ class IAIAccessRequestRecommendationsApi:
 
     def _set_access_request_recommendations_config_v1_serialize(
         self,
-        accessrequestrecommendationconfigdto,
+        access_request_recommendation_config_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -3259,8 +3259,8 @@ class IAIAccessRequestRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accessrequestrecommendationconfigdto is not None:
-            _body_params = accessrequestrecommendationconfigdto
+        if access_request_recommendation_config_dto is not None:
+            _body_params = access_request_recommendation_config_dto
 
 
         # set the HTTP header `Accept`

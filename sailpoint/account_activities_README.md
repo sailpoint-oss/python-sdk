@@ -71,22 +71,22 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountactivity](sailpoint/account_activities/docs/Accountactivity.md)
- - [Accountactivityapprovalstatus](sailpoint/account_activities/docs/Accountactivityapprovalstatus.md)
- - [Accountactivityitem](sailpoint/account_activities/docs/Accountactivityitem.md)
- - [Accountactivityitemoperation](sailpoint/account_activities/docs/Accountactivityitemoperation.md)
- - [Accountrequestinfo](sailpoint/account_activities/docs/Accountrequestinfo.md)
+ - [AccountActivity](sailpoint/account_activities/docs/AccountActivity.md)
+ - [AccountActivityApprovalStatus](sailpoint/account_activities/docs/AccountActivityApprovalStatus.md)
+ - [AccountActivityItem](sailpoint/account_activities/docs/AccountActivityItem.md)
+ - [AccountActivityItemOperation](sailpoint/account_activities/docs/AccountActivityItemOperation.md)
+ - [AccountRequestInfo](sailpoint/account_activities/docs/AccountRequestInfo.md)
  - [Comment](sailpoint/account_activities/docs/Comment.md)
- - [Completionstatus](sailpoint/account_activities/docs/Completionstatus.md)
- - [Errormessagedto](sailpoint/account_activities/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/account_activities/docs/Errorresponsedto.md)
- - [Executionstatus](sailpoint/account_activities/docs/Executionstatus.md)
- - [Identitysummary](sailpoint/account_activities/docs/Identitysummary.md)
+ - [CompletionStatus](sailpoint/account_activities/docs/CompletionStatus.md)
+ - [ErrorMessageDto](sailpoint/account_activities/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/account_activities/docs/ErrorResponseDto.md)
+ - [ExecutionStatus](sailpoint/account_activities/docs/ExecutionStatus.md)
+ - [IdentitySummary](sailpoint/account_activities/docs/IdentitySummary.md)
  - [ListAccountActivitiesV1401Response](sailpoint/account_activities/docs/ListAccountActivitiesV1401Response.md)
  - [ListAccountActivitiesV1429Response](sailpoint/account_activities/docs/ListAccountActivitiesV1429Response.md)
- - [Localeorigin](sailpoint/account_activities/docs/Localeorigin.md)
- - [Provisioningstate](sailpoint/account_activities/docs/Provisioningstate.md)
- - [Requestableobjecttype](sailpoint/account_activities/docs/Requestableobjecttype.md)
+ - [LocaleOrigin](sailpoint/account_activities/docs/LocaleOrigin.md)
+ - [ProvisioningState](sailpoint/account_activities/docs/ProvisioningState.md)
+ - [RequestableObjectType](sailpoint/account_activities/docs/RequestableObjectType.md)
 
 
 <a id="documentation-for-authorization"></a>

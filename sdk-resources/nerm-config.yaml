@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: sailpoint.nerm
-packageVersion: 2.0.18
+packageVersion: 2.1.0
 apiVersion:
 generateSourceCodeOnly: true
 functionPrefix:

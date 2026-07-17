@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountAllOfOwnerIdentity', 'AccountA
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **Dtotype** |  | [optional] 
+**type** | **DtoType** |  | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] 
 **name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
 }

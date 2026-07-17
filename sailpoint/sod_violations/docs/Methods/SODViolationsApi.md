@@ -47,21 +47,21 @@ This API is used to check if granting some additional accesses would cause the s
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identitywithnewaccess | [**Identitywithnewaccess**](../models/identitywithnewaccess) | True  | 
+ Body  | identity_with_new_access | [**IdentityWithNewAccess**](../models/identity-with-new-access) | True  | 
 
 ### Return type
-[**Violationprediction**](../models/violationprediction)
+[**ViolationPrediction**](../models/violation-prediction)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Violation Contexts | Violationprediction |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Violation Contexts | ViolationPrediction |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartPredictSodViolationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartPredictSodViolationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -72,21 +72,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_violations.api.sod_violations_api import SODViolationsApi
 from sailpoint.sod_violations.api_client import ApiClient
-from sailpoint.sod_violations.models.identitywithnewaccess import Identitywithnewaccess
-from sailpoint.sod_violations.models.violationprediction import Violationprediction
+from sailpoint.sod_violations.models.identity_with_new_access import IdentityWithNewAccess
+from sailpoint.sod_violations.models.violation_prediction import ViolationPrediction
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identitywithnewaccess = '''{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}''' # Identitywithnewaccess | 
+    identity_with_new_access = '''{
+          "identityId" : "2c91808568c529c60168cca6f90c1313",
+          "accessRefs" : [ {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c050861ab1"
+          }, {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c0509c1ab2"
+          } ]
+        }''' # IdentityWithNewAccess | 
 
     try:
         # Predict sod violations for identity.
-        new_identitywithnewaccess = Identitywithnewaccess.from_json(identitywithnewaccess)
-        results = SODViolationsApi(api_client).start_predict_sod_violations_v1(identitywithnewaccess=new_identitywithnewaccess)
+        new_identity_with_new_access = IdentityWithNewAccess.from_json(identity_with_new_access)
+        results = SODViolationsApi(api_client).start_predict_sod_violations_v1(identity_with_new_access=new_identity_with_new_access)
         # Below is a request that includes all optional parameters
-        # results = SODViolationsApi(api_client).start_predict_sod_violations_v1(new_identitywithnewaccess)
+        # results = SODViolationsApi(api_client).start_predict_sod_violations_v1(new_identity_with_new_access)
         print("The response of SODViolationsApi->start_predict_sod_violations_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -107,21 +116,21 @@ This API initiates a SOD policy verification asynchronously.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identitywithnewaccess | [**Identitywithnewaccess**](../models/identitywithnewaccess) | True  | 
+ Body  | identity_with_new_access | [**IdentityWithNewAccess**](../models/identity-with-new-access) | True  | 
 
 ### Return type
-[**Sodviolationcheck**](../models/sodviolationcheck)
+[**SodViolationCheck**](../models/sod-violation-check)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Request ID with a timestamp. | Sodviolationcheck |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Request ID with a timestamp. | SodViolationCheck |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartPredictSodViolationsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartPredictSodViolationsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -132,21 +141,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_violations.api.sod_violations_api import SODViolationsApi
 from sailpoint.sod_violations.api_client import ApiClient
-from sailpoint.sod_violations.models.identitywithnewaccess import Identitywithnewaccess
-from sailpoint.sod_violations.models.sodviolationcheck import Sodviolationcheck
+from sailpoint.sod_violations.models.identity_with_new_access import IdentityWithNewAccess
+from sailpoint.sod_violations.models.sod_violation_check import SodViolationCheck
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identitywithnewaccess = '''{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],"clientMetadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}''' # Identitywithnewaccess | 
+    identity_with_new_access = '''{
+          "identityId" : "2c91808568c529c60168cca6f90c1313",
+          "accessRefs" : [ {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c050861ab1"
+          }, {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c0509c1ab2"
+          } ]
+        }''' # IdentityWithNewAccess | 
 
     try:
         # Check sod violations
-        new_identitywithnewaccess = Identitywithnewaccess.from_json(identitywithnewaccess)
-        results = SODViolationsApi(api_client).start_violation_check_v1(identitywithnewaccess=new_identitywithnewaccess)
+        new_identity_with_new_access = IdentityWithNewAccess.from_json(identity_with_new_access)
+        results = SODViolationsApi(api_client).start_violation_check_v1(identity_with_new_access=new_identity_with_new_access)
         # Below is a request that includes all optional parameters
-        # results = SODViolationsApi(api_client).start_violation_check_v1(new_identitywithnewaccess)
+        # results = SODViolationsApi(api_client).start_violation_check_v1(new_identity_with_new_access)
         print("The response of SODViolationsApi->start_violation_check_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

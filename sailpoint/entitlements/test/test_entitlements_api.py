@@ -29,28 +29,28 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_create_access_model_metadata_for_entitlement_v1(self) -> None:
         """Test case for create_access_model_metadata_for_entitlement_v1
 
-        Add metadata to an entitlementv1.
+        Add metadata to an entitlement.
         """
         pass
 
     def test_delete_access_model_metadata_from_entitlement_v1(self) -> None:
         """Test case for delete_access_model_metadata_from_entitlement_v1
 
-        Remove metadata from an entitlementv1.
+        Remove metadata from an entitlement.
         """
         pass
 
     def test_get_entitlement_request_config_v1(self) -> None:
         """Test case for get_entitlement_request_config_v1
 
-        Get entitlementv1 request config
+        Get entitlement request config
         """
         pass
 
     def test_get_entitlement_v1(self) -> None:
         """Test case for get_entitlement_v1
 
-        Get an entitlementv1
+        Get an entitlement
         """
         pass
 
@@ -92,14 +92,14 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_patch_entitlement_v1(self) -> None:
         """Test case for patch_entitlement_v1
 
-        Patch an entitlementv1
+        Patch an entitlement
         """
         pass
 
     def test_put_entitlement_request_config_v1(self) -> None:
         """Test case for put_entitlement_request_config_v1
 
-        Replace entitlementv1 request config
+        Replace entitlement request config
         """
         pass
 
@@ -113,7 +113,7 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_update_entitlements_in_bulk_v1(self) -> None:
         """Test case for update_entitlements_in_bulk_v1
 
-        Bulk update an entitlementv1 list
+        Bulk update an entitlement list
         """
         pass
 

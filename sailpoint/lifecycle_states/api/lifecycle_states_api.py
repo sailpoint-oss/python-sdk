@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.lifecycle_states.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
-from sailpoint.lifecycle_states.models.lifecyclestatedeleted import Lifecyclestatedeleted
+from sailpoint.lifecycle_states.models.json_patch_operation import JsonPatchOperation
+from sailpoint.lifecycle_states.models.lifecycle_state import LifecycleState
+from sailpoint.lifecycle_states.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.lifecycle_states.models.set_lifecycle_state_v1200_response import SetLifecycleStateV1200Response
 from sailpoint.lifecycle_states.models.set_lifecycle_state_v1_request import SetLifecycleStateV1Request
 
@@ -47,7 +47,7 @@ class LifecycleStatesApi:
     def create_lifecycle_state_v1(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        lifecyclestate: Annotated[Lifecyclestate, Field(description="Lifecycle state to be created.")],
+        lifecycle_state: Annotated[LifecycleState, Field(description="Lifecycle state to be created.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,15 +60,15 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lifecyclestate:
+    ) -> LifecycleState:
         """Create lifecycle state
 
         Use this endpoint to create a lifecycle state.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param lifecyclestate: Lifecycle state to be created. (required)
-        :type lifecyclestate: Lifecyclestate
+        :param lifecycle_state: Lifecycle state to be created. (required)
+        :type lifecycle_state: LifecycleState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,7 +93,7 @@ class LifecycleStatesApi:
 
         _param = self._create_lifecycle_state_v1_serialize(
             identity_profile_id=identity_profile_id,
-            lifecyclestate=lifecyclestate,
+            lifecycle_state=lifecycle_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,12 +101,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '201': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,7 +123,7 @@ class LifecycleStatesApi:
     def create_lifecycle_state_v1_with_http_info(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        lifecyclestate: Annotated[Lifecyclestate, Field(description="Lifecycle state to be created.")],
+        lifecycle_state: Annotated[LifecycleState, Field(description="Lifecycle state to be created.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,15 +136,15 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lifecyclestate]:
+    ) -> ApiResponse[LifecycleState]:
         """Create lifecycle state
 
         Use this endpoint to create a lifecycle state.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param lifecyclestate: Lifecycle state to be created. (required)
-        :type lifecyclestate: Lifecyclestate
+        :param lifecycle_state: Lifecycle state to be created. (required)
+        :type lifecycle_state: LifecycleState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -169,7 +169,7 @@ class LifecycleStatesApi:
 
         _param = self._create_lifecycle_state_v1_serialize(
             identity_profile_id=identity_profile_id,
-            lifecyclestate=lifecyclestate,
+            lifecycle_state=lifecycle_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,12 +177,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '201': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +199,7 @@ class LifecycleStatesApi:
     def create_lifecycle_state_v1_without_preload_content(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        lifecyclestate: Annotated[Lifecyclestate, Field(description="Lifecycle state to be created.")],
+        lifecycle_state: Annotated[LifecycleState, Field(description="Lifecycle state to be created.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,8 +219,8 @@ class LifecycleStatesApi:
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param lifecyclestate: Lifecycle state to be created. (required)
-        :type lifecyclestate: Lifecyclestate
+        :param lifecycle_state: Lifecycle state to be created. (required)
+        :type lifecycle_state: LifecycleState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -245,7 +245,7 @@ class LifecycleStatesApi:
 
         _param = self._create_lifecycle_state_v1_serialize(
             identity_profile_id=identity_profile_id,
-            lifecyclestate=lifecyclestate,
+            lifecycle_state=lifecycle_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -253,12 +253,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '201': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -270,7 +270,7 @@ class LifecycleStatesApi:
     def _create_lifecycle_state_v1_serialize(
         self,
         identity_profile_id,
-        lifecyclestate,
+        lifecycle_state,
         _request_auth,
         _content_type,
         _headers,
@@ -298,8 +298,8 @@ class LifecycleStatesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if lifecyclestate is not None:
-            _body_params = lifecyclestate
+        if lifecycle_state is not None:
+            _body_params = lifecycle_state
 
 
         # set the HTTP header `Accept`
@@ -363,7 +363,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lifecyclestatedeleted:
+    ) -> LifecyclestateDeleted:
         """Delete lifecycle state
 
         Use this endpoint to delete the lifecycle state by its ID.
@@ -404,13 +404,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Lifecyclestatedeleted",
-            '400': "Errorresponsedto",
+            '202': "LifecyclestateDeleted",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -440,7 +440,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lifecyclestatedeleted]:
+    ) -> ApiResponse[LifecyclestateDeleted]:
         """Delete lifecycle state
 
         Use this endpoint to delete the lifecycle state by its ID.
@@ -481,13 +481,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Lifecyclestatedeleted",
-            '400': "Errorresponsedto",
+            '202': "LifecyclestateDeleted",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -558,13 +558,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Lifecyclestatedeleted",
-            '400': "Errorresponsedto",
+            '202': "LifecyclestateDeleted",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -656,7 +656,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lifecyclestate:
+    ) -> LifecycleState:
         """Get lifecycle state
 
         Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
@@ -697,13 +697,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -733,7 +733,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lifecyclestate]:
+    ) -> ApiResponse[LifecycleState]:
         """Get lifecycle state
 
         Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
@@ -774,13 +774,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -851,13 +851,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -952,7 +952,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Lifecyclestate]:
+    ) -> List[LifecycleState]:
         """Lists lifecyclestates
 
         Use this endpoint to list all lifecycle states by their associated identity profiles. 
@@ -1002,12 +1002,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Lifecyclestate]",
-            '400': "Errorresponsedto",
+            '200': "List[LifecycleState]",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1040,7 +1040,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Lifecyclestate]]:
+    ) -> ApiResponse[List[LifecycleState]]:
         """Lists lifecyclestates
 
         Use this endpoint to list all lifecycle states by their associated identity profiles. 
@@ -1090,12 +1090,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Lifecyclestate]",
-            '400': "Errorresponsedto",
+            '200': "List[LifecycleState]",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1178,12 +1178,12 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Lifecyclestate]",
-            '400': "Errorresponsedto",
+            '200': "List[LifecycleState]",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1334,12 +1334,12 @@ class LifecycleStatesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SetLifecycleStateV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1411,12 +1411,12 @@ class LifecycleStatesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SetLifecycleStateV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1488,12 +1488,12 @@ class LifecycleStatesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SetLifecycleStateV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1586,7 +1586,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1599,7 +1599,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lifecyclestate:
+    ) -> LifecycleState:
         """Update lifecycle state
 
         Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -1608,8 +1608,8 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param jsonpatchoperation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1635,7 +1635,7 @@ class LifecycleStatesApi:
         _param = self._update_lifecycle_states_v1_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1643,13 +1643,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1667,7 +1667,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1680,7 +1680,7 @@ class LifecycleStatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lifecyclestate]:
+    ) -> ApiResponse[LifecycleState]:
         """Update lifecycle state
 
         Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -1689,8 +1689,8 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param jsonpatchoperation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1716,7 +1716,7 @@ class LifecycleStatesApi:
         _param = self._update_lifecycle_states_v1_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1724,13 +1724,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1748,7 +1748,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1770,8 +1770,8 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param jsonpatchoperation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1797,7 +1797,7 @@ class LifecycleStatesApi:
         _param = self._update_lifecycle_states_v1_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1805,13 +1805,13 @@ class LifecycleStatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lifecyclestate",
-            '400': "Errorresponsedto",
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
             '401': "SetLifecycleStateV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "SetLifecycleStateV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1824,7 +1824,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id,
         lifecycle_state_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1834,7 +1834,7 @@ class LifecycleStatesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1855,8 +1855,8 @@ class LifecycleStatesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

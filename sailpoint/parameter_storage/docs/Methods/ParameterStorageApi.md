@@ -52,20 +52,20 @@ Add a new parameter.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | parameterstoragenewparameter | [**Parameterstoragenewparameter**](../models/parameterstoragenewparameter) |   (optional) | The parameter to add to the store.
+ Body  | parameter_storage_new_parameter | [**ParameterStorageNewParameter**](../models/parameter-storage-new-parameter) |   (optional) | The parameter to add to the store.
 
 ### Return type
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created Parameter. | Parameterstorageparameter |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created Parameter. | ParameterStorageParameter |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -76,21 +76,28 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstoragenewparameter import Parameterstoragenewparameter
-from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+from sailpoint.parameter_storage.models.parameter_storage_new_parameter import ParameterStorageNewParameter
+from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    parameterstoragenewparameter = '''sailpoint.parameter_storage.Parameterstoragenewparameter()''' # Parameterstoragenewparameter | The parameter to add to the store. (optional)
+    parameter_storage_new_parameter = '''{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b",
+          "type" : "1.1"
+        }''' # ParameterStorageNewParameter | The parameter to add to the store. (optional)
 
     try:
         # Add a new parameter.
         
         results = ParameterStorageApi(api_client).create_parameter_v1()
         # Below is a request that includes all optional parameters
-        # results = ParameterStorageApi(api_client).create_parameter_v1(new_parameterstoragenewparameter)
+        # results = ParameterStorageApi(api_client).create_parameter_v1(new_parameter_storage_new_parameter)
         print("The response of ParameterStorageApi->create_parameter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -120,13 +127,13 @@ Path   | id | **str** | True  | The ID of the parameter to be deleted.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Parameter deleted. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 409 | Conflict - Indicates that the request could not be processed because of conflict in the current state of the resource. | DeleteParameterV1409Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -171,17 +178,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | key | **str** | True  | Base64Url encoded NIST P-384 public key
 
 ### Return type
-[**Parameterstorageattestationdocument**](../models/parameterstorageattestationdocument)
+[**ParameterStorageAttestationDocument**](../models/parameter-storage-attestation-document)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Returns the attestation document. This contains the public key needed to add a parameter to the store. | Parameterstorageattestationdocument |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Returns the attestation document. This contains the public key needed to add a parameter to the store. | ParameterStorageAttestationDocument |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -192,7 +199,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstorageattestationdocument import Parameterstorageattestationdocument
+from sailpoint.parameter_storage.models.parameter_storage_attestation_document import ParameterStorageAttestationDocument
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -232,18 +239,18 @@ Path   | id | **str** | True  | The ID of the parameter which you want to fetch 
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Parameterstoragereference]**](../models/parameterstoragereference)
+[**List[ParameterStorageReference]**](../models/parameter-storage-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Return references for given parameter. | List[Parameterstoragereference] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Return references for given parameter. | List[ParameterStorageReference] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -254,7 +261,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstoragereference import Parameterstoragereference
+from sailpoint.parameter_storage.models.parameter_storage_reference import ParameterStorageReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -312,11 +319,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Returns the JSON spec in the language chosen. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -362,18 +369,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the parameter to be fetched
 
 ### Return type
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Return Parameter. | Parameterstorageparameter |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Return Parameter. | ParameterStorageParameter |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -384,7 +391,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -424,17 +431,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Parameterstorageparameter]**](../models/parameterstorageparameter)
+[**List[ParameterStorageParameter]**](../models/parameter-storage-parameter)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Search returned results. | List[Parameterstorageparameter] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Search returned results. | List[ParameterStorageParameter] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -445,7 +452,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -484,22 +491,22 @@ Update a parameter. You cannot change a parameter's type once set. Only the name
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the parameter to be updated.
- Body  | parameterstorageupdateparameter | [**Parameterstorageupdateparameter**](../models/parameterstorageupdateparameter) |   (optional) | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
+ Body  | parameter_storage_update_parameter | [**ParameterStorageUpdateParameter**](../models/parameter-storage-update-parameter) |   (optional) | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
 
 ### Return type
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated Parameter. | Parameterstorageparameter |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated Parameter. | ParameterStorageParameter |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAttestationDocumentV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 409 | Conflict - Indicates that the request could not be processed because of conflict in the current state of the resource. | DeleteParameterV1409Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAttestationDocumentV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json, application/json-patch+json
@@ -510,22 +517,34 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.parameter_storage.api_client import ApiClient
-from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
-from sailpoint.parameter_storage.models.parameterstorageupdateparameter import Parameterstorageupdateparameter
+from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
+from sailpoint.parameter_storage.models.parameter_storage_update_parameter import ParameterStorageUpdateParameter
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '58de858b-83d9-4563-9e15-7393594c684a' # str | The ID of the parameter to be updated. # str | The ID of the parameter to be updated.
-    parameterstorageupdateparameter = '''sailpoint.parameter_storage.Parameterstorageupdateparameter()''' # Parameterstorageupdateparameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
+    parameter_storage_update_parameter = '''{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }''' # ParameterStorageUpdateParameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
 
     try:
         # Update a parameter.
         
         results = ParameterStorageApi(api_client).update_parameter_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = ParameterStorageApi(api_client).update_parameter_v1(id, new_parameterstorageupdateparameter)
+        # results = ParameterStorageApi(api_client).update_parameter_v1(id, new_parameter_storage_update_parameter)
         print("The response of ParameterStorageApi->update_parameter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

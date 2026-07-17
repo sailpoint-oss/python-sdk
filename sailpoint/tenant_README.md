@@ -69,12 +69,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/tenant/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/tenant/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/tenant/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/tenant/docs/ErrorResponseDto.md)
  - [GetTenantV1401Response](sailpoint/tenant/docs/GetTenantV1401Response.md)
  - [GetTenantV1429Response](sailpoint/tenant/docs/GetTenantV1429Response.md)
  - [License](sailpoint/tenant/docs/License.md)
- - [Localeorigin](sailpoint/tenant/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/tenant/docs/LocaleOrigin.md)
  - [Product](sailpoint/tenant/docs/Product.md)
  - [Tenant](sailpoint/tenant/docs/Tenant.md)
 

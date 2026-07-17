@@ -44,19 +44,19 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration** 
 
 ### Return type
-[**List[Entitlementconnectionsearchhit]**](../models/entitlementconnectionsearchhit)
+[**List[EntitlementConnectionSearchHit]**](../models/entitlement-connection-search-hit)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlement connections for the current identity. | List[Entitlementconnectionsearchhit] |  * X-Total-Count - Included when `count=true` and available from Search.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of entitlement connections for the current identity. | List[EntitlementConnectionSearchHit] |  * X-Total-Count - Included when `count=true` and available from Search.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementConnectionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 412 | Precondition Failed - Returned in response if API/Feature not enabled for an organization. | ListEntitlementConnectionsV1412Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementConnectionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -67,7 +67,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.entitlement_connections.api_client import ApiClient
-from sailpoint.entitlement_connections.models.entitlementconnectionsearchhit import Entitlementconnectionsearchhit
+from sailpoint.entitlement_connections.models.entitlement_connection_search_hit import EntitlementConnectionSearchHit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -119,19 +119,19 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration**  Prefix a field with `-` for descending order. 
 
 ### Return type
-[**List[Entitlementconnectionsearchhit]**](../models/entitlementconnectionsearchhit)
+[**List[EntitlementConnectionSearchHit]**](../models/entitlement-connection-search-hit)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlement connections. | List[Entitlementconnectionsearchhit] |  * X-Total-Count - Included when `count=true` and available from Search.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of entitlement connections. | List[EntitlementConnectionSearchHit] |  * X-Total-Count - Included when `count=true` and available from Search.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementConnectionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 412 | Precondition Failed - Returned in response if API/Feature not enabled for an organization. | ListEntitlementConnectionsV1412Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementConnectionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -142,7 +142,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.entitlement_connections.api_client import ApiClient
-from sailpoint.entitlement_connections.models.entitlementconnectionsearchhit import Entitlementconnectionsearchhit
+from sailpoint.entitlement_connections.models.entitlement_connection_search_hit import EntitlementConnectionSearchHit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -184,22 +184,22 @@ Applies JSON Patch operations to an entitlement connection selected by `connecti
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | connection_id | **str** | True  | Connection ID (UUID with or without hyphens).
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
 
 ### Return type
-[**Entitlementconnection**](../models/entitlementconnection)
+[**EntitlementConnection**](../models/entitlement-connection)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated entitlement connection. | Entitlementconnection |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated entitlement connection. | EntitlementConnection |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementConnectionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 412 | Precondition Failed - Returned in response if API/Feature not enabled for an organization. | ListEntitlementConnectionsV1412Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementConnectionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -210,22 +210,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.entitlement_connections.api_client import ApiClient
-from sailpoint.entitlement_connections.models.entitlementconnection import Entitlementconnection
-from sailpoint.entitlement_connections.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.entitlement_connections.models.entitlement_connection import EntitlementConnection
+from sailpoint.entitlement_connections.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     connection_id = '6c692d9972f8400ca4560a68f62c4c5f' # str | Connection ID (UUID with or without hyphens). # str | Connection ID (UUID with or without hyphens).
-    jsonpatchoperation = '''[sailpoint.entitlement_connections.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | 
+    json_patch_operation = '''[sailpoint.entitlement_connections.JsonPatchOperation()]''' # List[JsonPatchOperation] | 
 
     try:
         # Update entitlement connection
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id=connection_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id=connection_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id, new_jsonpatchoperation)
+        # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id, new_json_patch_operation)
         print("The response of EntitlementConnectionsApi->patch_entitlement_connection_by_id_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -251,22 +251,22 @@ Param Type | Name | Data Type | Required  | Description
   Query | entitlement_id | **str** | True  | Entitlement ID (UUID with or without hyphens).
   Query | identity_id | **str** | True  | Identity ID (UUID with or without hyphens).
   Query | account_id | **str** | True  | Account ID (UUID with or without hyphens).
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
 
 ### Return type
-[**Entitlementconnection**](../models/entitlementconnection)
+[**EntitlementConnection**](../models/entitlement-connection)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated entitlement connection. | Entitlementconnection |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated entitlement connection. | EntitlementConnection |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementConnectionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 412 | Precondition Failed - Returned in response if API/Feature not enabled for an organization. | ListEntitlementConnectionsV1412Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementConnectionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -277,8 +277,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.entitlement_connections.api_client import ApiClient
-from sailpoint.entitlement_connections.models.entitlementconnection import Entitlementconnection
-from sailpoint.entitlement_connections.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.entitlement_connections.models.entitlement_connection import EntitlementConnection
+from sailpoint.entitlement_connections.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -287,14 +287,14 @@ with ApiClient(configuration) as api_client:
     entitlement_id = 'dcfd09e551644ad5aa162ce977862031' # str | Entitlement ID (UUID with or without hyphens). # str | Entitlement ID (UUID with or without hyphens).
     identity_id = '5470d8d4817a4207a8020bf533187da9' # str | Identity ID (UUID with or without hyphens). # str | Identity ID (UUID with or without hyphens).
     account_id = '323bfddfb3dd4197b8f10f7735307d27' # str | Account ID (UUID with or without hyphens). # str | Account ID (UUID with or without hyphens).
-    jsonpatchoperation = '''[sailpoint.entitlement_connections.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | 
+    json_patch_operation = '''[sailpoint.entitlement_connections.JsonPatchOperation()]''' # List[JsonPatchOperation] | 
 
     try:
         # Update connection by query
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id=entitlement_id, identity_id=identity_id, account_id=account_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id=entitlement_id, identity_id=identity_id, account_id=account_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id, identity_id, account_id, new_jsonpatchoperation)
+        # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id, identity_id, account_id, new_json_patch_operation)
         print("The response of EntitlementConnectionsApi->patch_entitlement_connection_by_query_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -317,20 +317,20 @@ The API returns per-item results in a 207 Multi-Status response.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlementconnectionbulkupdateitem | [**[]Entitlementconnectionbulkupdateitem**](../models/entitlementconnectionbulkupdateitem) | True  | 
+ Body  | entitlement_connection_bulk_update_item | [**[]EntitlementConnectionBulkUpdateItem**](../models/entitlement-connection-bulk-update-item) | True  | 
 
 ### Return type
-[**List[Entitlementconnectionbulkupdateresultitem]**](../models/entitlementconnectionbulkupdateresultitem)
+[**List[EntitlementConnectionBulkUpdateResultItem]**](../models/entitlement-connection-bulk-update-result-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | Per-item bulk update results. | List[Entitlementconnectionbulkupdateresultitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | Per-item bulk update results. | List[EntitlementConnectionBulkUpdateResultItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementConnectionsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementConnectionsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -341,21 +341,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.entitlement_connections.api_client import ApiClient
-from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateitem import Entitlementconnectionbulkupdateitem
-from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateresultitem import Entitlementconnectionbulkupdateresultitem
+from sailpoint.entitlement_connections.models.entitlement_connection_bulk_update_item import EntitlementConnectionBulkUpdateItem
+from sailpoint.entitlement_connections.models.entitlement_connection_bulk_update_result_item import EntitlementConnectionBulkUpdateResultItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    entitlementconnectionbulkupdateitem = '''[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]''' # List[Entitlementconnectionbulkupdateitem] | 
+    entitlement_connection_bulk_update_item = '''[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]''' # List[EntitlementConnectionBulkUpdateItem] | 
 
     try:
         # Update connections in bulk
-        new_entitlementconnectionbulkupdateitem = Entitlementconnectionbulkupdateitem.from_json(entitlementconnectionbulkupdateitem)
-        results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(entitlementconnectionbulkupdateitem=new_entitlementconnectionbulkupdateitem)
+        new_entitlement_connection_bulk_update_item = EntitlementConnectionBulkUpdateItem.from_json(entitlement_connection_bulk_update_item)
+        results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(entitlement_connection_bulk_update_item=new_entitlement_connection_bulk_update_item)
         # Below is a request that includes all optional parameters
-        # results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(new_entitlementconnectionbulkupdateitem)
+        # results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(new_entitlement_connection_bulk_update_item)
         print("The response of EntitlementConnectionsApi->update_entitlement_connections_bulk_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

@@ -36,16 +36,16 @@ class TestCreateWorkflowV1Request(unittest.TestCase):
         if include_optional:
             return CreateWorkflowV1Request(
                 name = 'Send Email',
-                owner = sailpoint.workflows.models.workflowbody_owner.workflowbody_owner(
+                owner = sailpoint.workflows.models.workflow_body_owner.WorkflowBody_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 description = 'Send an email to the identity who's attributes changed.',
-                definition = sailpoint.workflows.models.workflowdefinition.workflowdefinition(
+                definition = sailpoint.workflows.models.workflow_definition.WorkflowDefinition(
                     start = 'Send Email Test', 
                     steps = {"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"ACTION"},"success":{"type":"success"}}, ),
                 enabled = False,
-                trigger = sailpoint.workflows.models.workflowtrigger.workflowtrigger(
+                trigger = sailpoint.workflows.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
                     display_name = '', 
                     attributes = sailpoint.workflows.models.attributes.attributes(), )

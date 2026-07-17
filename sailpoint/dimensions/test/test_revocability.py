@@ -36,7 +36,7 @@ class TestRevocability(unittest.TestCase):
         if include_optional:
             return Revocability(
                 approval_schemes = [
-                    sailpoint.dimensions.models.accessprofileapprovalscheme.accessprofileapprovalscheme(
+                    sailpoint.dimensions.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                     ]

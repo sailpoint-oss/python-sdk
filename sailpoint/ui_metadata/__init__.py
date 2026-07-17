@@ -31,10 +31,10 @@ from sailpoint.ui_metadata.exceptions import ApiAttributeError
 from sailpoint.ui_metadata.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.ui_metadata.models.errormessagedto import Errormessagedto
-from sailpoint.ui_metadata.models.errorresponsedto import Errorresponsedto
+from sailpoint.ui_metadata.models.error_message_dto import ErrorMessageDto
+from sailpoint.ui_metadata.models.error_response_dto import ErrorResponseDto
 from sailpoint.ui_metadata.models.get_tenant_ui_metadata_v1401_response import GetTenantUiMetadataV1401Response
 from sailpoint.ui_metadata.models.get_tenant_ui_metadata_v1429_response import GetTenantUiMetadataV1429Response
-from sailpoint.ui_metadata.models.localeorigin import Localeorigin
-from sailpoint.ui_metadata.models.tenantuimetadataitemresponse import Tenantuimetadataitemresponse
-from sailpoint.ui_metadata.models.tenantuimetadataitemupdaterequest import Tenantuimetadataitemupdaterequest
+from sailpoint.ui_metadata.models.locale_origin import LocaleOrigin
+from sailpoint.ui_metadata.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
+from sailpoint.ui_metadata.models.tenant_ui_metadata_item_update_request import TenantUiMetadataItemUpdateRequest

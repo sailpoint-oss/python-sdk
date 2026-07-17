@@ -14,21 +14,21 @@
 
 
 # import models into model package
-from sailpoint.work_items.models.approvalitemdetails import Approvalitemdetails
-from sailpoint.work_items.models.errormessagedto import Errormessagedto
-from sailpoint.work_items.models.errorresponsedto import Errorresponsedto
-from sailpoint.work_items.models.formdetails import Formdetails
-from sailpoint.work_items.models.formitemdetails import Formitemdetails
+from sailpoint.work_items.models.approval_item_details import ApprovalItemDetails
+from sailpoint.work_items.models.error_message_dto import ErrorMessageDto
+from sailpoint.work_items.models.error_response_dto import ErrorResponseDto
+from sailpoint.work_items.models.form_details import FormDetails
+from sailpoint.work_items.models.form_item_details import FormItemDetails
 from sailpoint.work_items.models.list_work_items_v1401_response import ListWorkItemsV1401Response
 from sailpoint.work_items.models.list_work_items_v1429_response import ListWorkItemsV1429Response
-from sailpoint.work_items.models.localeorigin import Localeorigin
-from sailpoint.work_items.models.remediationitemdetails import Remediationitemdetails
-from sailpoint.work_items.models.sectiondetails import Sectiondetails
-from sailpoint.work_items.models.workitemforward import Workitemforward
-from sailpoint.work_items.models.workitems import Workitems
-from sailpoint.work_items.models.workitems_form import WorkitemsForm
-from sailpoint.work_items.models.workitemscount import Workitemscount
-from sailpoint.work_items.models.workitemssummary import Workitemssummary
-from sailpoint.work_items.models.workitemstate import Workitemstate
-from sailpoint.work_items.models.workitemstatemanualworkitems import Workitemstatemanualworkitems
-from sailpoint.work_items.models.workitemtypemanualworkitems import Workitemtypemanualworkitems
+from sailpoint.work_items.models.locale_origin import LocaleOrigin
+from sailpoint.work_items.models.remediation_item_details import RemediationItemDetails
+from sailpoint.work_items.models.section_details import SectionDetails
+from sailpoint.work_items.models.work_item_forward import WorkItemForward
+from sailpoint.work_items.models.work_item_state import WorkItemState
+from sailpoint.work_items.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
+from sailpoint.work_items.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems
+from sailpoint.work_items.models.work_items import WorkItems
+from sailpoint.work_items.models.work_items_count import WorkItemsCount
+from sailpoint.work_items.models.work_items_form import WorkItemsForm
+from sailpoint.work_items.models.work_items_summary import WorkItemsSummary

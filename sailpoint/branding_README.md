@@ -81,13 +81,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Brandingitem](sailpoint/branding/docs/Brandingitem.md)
- - [Brandingitemcreate](sailpoint/branding/docs/Brandingitemcreate.md)
- - [Errormessagedto](sailpoint/branding/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/branding/docs/Errorresponsedto.md)
+ - [BrandingItem](sailpoint/branding/docs/BrandingItem.md)
+ - [BrandingItemCreate](sailpoint/branding/docs/BrandingItemCreate.md)
+ - [ErrorMessageDto](sailpoint/branding/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/branding/docs/ErrorResponseDto.md)
  - [GetBrandingListV1401Response](sailpoint/branding/docs/GetBrandingListV1401Response.md)
  - [GetBrandingListV1429Response](sailpoint/branding/docs/GetBrandingListV1429Response.md)
- - [Localeorigin](sailpoint/branding/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/branding/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

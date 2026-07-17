@@ -27,7 +27,7 @@ from sailpoint.certification_campaigns.models.campaign2_all_of_role_composition_
 from sailpoint.certification_campaigns.models.campaign2_all_of_search_campaign_info import Campaign2AllOfSearchCampaignInfo
 from sailpoint.certification_campaigns.models.campaign2_all_of_source_owner_campaign_info import Campaign2AllOfSourceOwnerCampaignInfo
 from sailpoint.certification_campaigns.models.campaign2_all_of_sources_with_orphan_entitlements import Campaign2AllOfSourcesWithOrphanEntitlements
-from sailpoint.certification_campaigns.models.campaignalert import Campaignalert
+from sailpoint.certification_campaigns.models.campaign_alert import CampaignAlert
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -48,7 +48,7 @@ class Campaign2(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Created time of the campaign")
     total_certifications: Optional[StrictInt] = Field(default=None, description="The total number of certifications in this campaign.", alias="totalCertifications")
     completed_certifications: Optional[StrictInt] = Field(default=None, description="The number of completed certifications in this campaign.", alias="completedCertifications")
-    alerts: Optional[List[Campaignalert]] = Field(default=None, description="A list of errors and warnings that have accumulated.")
+    alerts: Optional[List[CampaignAlert]] = Field(default=None, description="A list of errors and warnings that have accumulated.")
     modified: Optional[datetime] = Field(default=None, description="Modified time of the campaign")
     filter: Optional[Campaign2AllOfFilter] = None
     sunset_comments_required: Optional[StrictBool] = Field(default=True, description="Determines if comments on sunset date changes are required.", alias="sunsetCommentsRequired")
@@ -281,7 +281,7 @@ class Campaign2(BaseModel):
             "created": obj.get("created"),
             "totalCertifications": obj.get("totalCertifications"),
             "completedCertifications": obj.get("completedCertifications"),
-            "alerts": [Campaignalert.from_dict(_item) for _item in obj["alerts"]] if obj.get("alerts") is not None else None,
+            "alerts": [CampaignAlert.from_dict(_item) for _item in obj["alerts"]] if obj.get("alerts") is not None else None,
             "modified": obj.get("modified"),
             "filter": Campaign2AllOfFilter.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
             "sunsetCommentsRequired": obj.get("sunsetCommentsRequired") if obj.get("sunsetCommentsRequired") is not None else True,

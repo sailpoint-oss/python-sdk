@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.password_policies.models.passwordpolicyv3dto import Passwordpolicyv3dto
+from sailpoint.password_policies.models.password_policy_v3_dto import PasswordPolicyV3Dto
 
 from sailpoint.password_policies.api_client import ApiClient, RequestSerialized
 from sailpoint.password_policies.api_response import ApiResponse
@@ -42,7 +42,7 @@ class PasswordPoliciesApi:
     @validate_call
     def create_password_policy_v1(
         self,
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -56,13 +56,13 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordpolicyv3dto:
+    ) -> PasswordPolicyV3Dto:
         """Create password policy
 
         This API creates the specified password policy.
 
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -88,7 +88,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_v1_serialize(
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -97,13 +97,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class PasswordPoliciesApi:
     @validate_call
     def create_password_policy_v1_with_http_info(
         self,
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -133,13 +133,13 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordpolicyv3dto]:
+    ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Create password policy
 
         This API creates the specified password policy.
 
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -165,7 +165,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_v1_serialize(
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -174,13 +174,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -196,7 +196,7 @@ class PasswordPoliciesApi:
     @validate_call
     def create_password_policy_v1_without_preload_content(
         self,
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -215,8 +215,8 @@ class PasswordPoliciesApi:
 
         This API creates the specified password policy.
 
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -242,7 +242,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_v1_serialize(
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -251,13 +251,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -268,7 +268,7 @@ class PasswordPoliciesApi:
 
     def _create_password_policy_v1_serialize(
         self,
-        passwordpolicyv3dto,
+        password_policy_v3_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -297,8 +297,8 @@ class PasswordPoliciesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if passwordpolicyv3dto is not None:
-            _body_params = passwordpolicyv3dto
+        if password_policy_v3_dto is not None:
+            _body_params = password_policy_v3_dto
 
 
         # set the HTTP header `Accept`
@@ -404,12 +404,12 @@ class PasswordPoliciesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -481,12 +481,12 @@ class PasswordPoliciesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -558,12 +558,12 @@ class PasswordPoliciesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -655,7 +655,7 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordpolicyv3dto:
+    ) -> PasswordPolicyV3Dto:
         """Get password policy by id
 
         This API returns the password policy for the specified ID.
@@ -696,13 +696,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -732,7 +732,7 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordpolicyv3dto]:
+    ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Get password policy by id
 
         This API returns the password policy for the specified ID.
@@ -773,13 +773,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -850,13 +850,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -950,7 +950,7 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Passwordpolicyv3dto]:
+    ) -> List[PasswordPolicyV3Dto]:
         """List password policies
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
@@ -997,12 +997,12 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordpolicyv3dto]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyV3Dto]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1034,7 +1034,7 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Passwordpolicyv3dto]]:
+    ) -> ApiResponse[List[PasswordPolicyV3Dto]]:
         """List password policies
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
@@ -1081,12 +1081,12 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordpolicyv3dto]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyV3Dto]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1165,12 +1165,12 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordpolicyv3dto]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyV3Dto]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1261,7 +1261,7 @@ class PasswordPoliciesApi:
     def set_password_policy_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1275,15 +1275,15 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordpolicyv3dto:
+    ) -> PasswordPolicyV3Dto:
         """Update password policy by id
 
         This API updates the specified password policy.
 
         :param id: The ID of password policy to update. (required)
         :type id: str
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1310,7 +1310,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_v1_serialize(
             id=id,
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1319,13 +1319,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1342,7 +1342,7 @@ class PasswordPoliciesApi:
     def set_password_policy_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1356,15 +1356,15 @@ class PasswordPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordpolicyv3dto]:
+    ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Update password policy by id
 
         This API updates the specified password policy.
 
         :param id: The ID of password policy to update. (required)
         :type id: str
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1391,7 +1391,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_v1_serialize(
             id=id,
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1400,13 +1400,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1423,7 +1423,7 @@ class PasswordPoliciesApi:
     def set_password_policy_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
-        passwordpolicyv3dto: Passwordpolicyv3dto,
+        password_policy_v3_dto: PasswordPolicyV3Dto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1444,8 +1444,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to update. (required)
         :type id: str
-        :param passwordpolicyv3dto: (required)
-        :type passwordpolicyv3dto: Passwordpolicyv3dto
+        :param password_policy_v3_dto: (required)
+        :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1472,7 +1472,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_v1_serialize(
             id=id,
-            passwordpolicyv3dto=passwordpolicyv3dto,
+            password_policy_v3_dto=password_policy_v3_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1481,13 +1481,13 @@ class PasswordPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordpolicyv3dto",
-            '400': "Errorresponsedto",
+            '200': "PasswordPolicyV3Dto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordPolicyByIdV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordPolicyByIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1499,7 +1499,7 @@ class PasswordPoliciesApi:
     def _set_password_policy_v1_serialize(
         self,
         id,
-        passwordpolicyv3dto,
+        password_policy_v3_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1530,8 +1530,8 @@ class PasswordPoliciesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if passwordpolicyv3dto is not None:
-            _body_params = passwordpolicyv3dto
+        if password_policy_v3_dto is not None:
+            _body_params = password_policy_v3_dto
 
 
         # set the HTTP header `Accept`

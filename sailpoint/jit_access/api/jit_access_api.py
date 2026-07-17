@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr, field_validator
 from typing import List
 from typing_extensions import Annotated
-from sailpoint.jit_access.models.jitaccessoperationrequest import Jitaccessoperationrequest
-from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
+from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
+from sailpoint.jit_access.models.jit_access_operation_request import JitAccessOperationRequest
 
 from sailpoint.jit_access.api_client import ApiClient, RequestSerialized
 from sailpoint.jit_access.api_response import ApiResponse
@@ -56,7 +56,7 @@ class JITAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jitactivationconfigresponse:
+    ) -> JITActivationConfigResponse:
         """Get JIT activation policy configuration
 
         Returns the tenant's current JIT activation policy configuration, including governed entitlement IDs, activation and extension time limits, default periods, notification settings, and whether the policy applies to future assignments.  The tenant comes from the authenticated request context (not the URL). Use **configType** to select which configuration to read. Returns **404** if that configuration has not been stored yet.  **User level:** POLICY_ADMIN (policy administrator). 
@@ -94,13 +94,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class JITAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jitactivationconfigresponse]:
+    ) -> ApiResponse[JITActivationConfigResponse]:
         """Get JIT activation policy configuration
 
         Returns the tenant's current JIT activation policy configuration, including governed entitlement IDs, activation and extension time limits, default periods, notification settings, and whether the policy applies to future assignments.  The tenant comes from the authenticated request context (not the URL). Use **configType** to select which configuration to read. Returns **404** if that configuration has not been stored yet.  **User level:** POLICY_ADMIN (policy administrator). 
@@ -167,13 +167,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,13 +240,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -322,7 +322,7 @@ class JITAccessApi:
     def patch_jit_activation_config_v1(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
-        jitaccessoperationrequest: Annotated[List[Jitaccessoperationrequest], Field(min_length=1)],
+        jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -335,15 +335,15 @@ class JITAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jitactivationconfigresponse:
+    ) -> JITActivationConfigResponse:
         """Update JIT activation policy configuration
 
         Updates the tenant's JIT activation policy configuration by applying one or more **replace** operations (same shape as JSON Patch: **op**, **path**, **value**). Use this to change entitlement lists, max/default activation and extension durations, notification recipients or template, and the apply-to-future-assignments flag.  The body must be a non-empty array. Only **replace** is supported; each **path** must be one of the values documented on the request item schema. The tenant is taken from the request context. **configType** selects which configuration to update. Returns **404** if the configuration does not exist, or **400** for an empty body, unknown **configType**, or invalid path/value.  **User level:** POLICY_ADMIN (policy administrator). 
 
         :param config_type: Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
-        :param jitaccessoperationrequest: (required)
-        :type jitaccessoperationrequest: List[Jitaccessoperationrequest]
+        :param jit_access_operation_request: (required)
+        :type jit_access_operation_request: List[JitAccessOperationRequest]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -368,7 +368,7 @@ class JITAccessApi:
 
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
-            jitaccessoperationrequest=jitaccessoperationrequest,
+            jit_access_operation_request=jit_access_operation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -376,13 +376,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -399,7 +399,7 @@ class JITAccessApi:
     def patch_jit_activation_config_v1_with_http_info(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
-        jitaccessoperationrequest: Annotated[List[Jitaccessoperationrequest], Field(min_length=1)],
+        jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -412,15 +412,15 @@ class JITAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jitactivationconfigresponse]:
+    ) -> ApiResponse[JITActivationConfigResponse]:
         """Update JIT activation policy configuration
 
         Updates the tenant's JIT activation policy configuration by applying one or more **replace** operations (same shape as JSON Patch: **op**, **path**, **value**). Use this to change entitlement lists, max/default activation and extension durations, notification recipients or template, and the apply-to-future-assignments flag.  The body must be a non-empty array. Only **replace** is supported; each **path** must be one of the values documented on the request item schema. The tenant is taken from the request context. **configType** selects which configuration to update. Returns **404** if the configuration does not exist, or **400** for an empty body, unknown **configType**, or invalid path/value.  **User level:** POLICY_ADMIN (policy administrator). 
 
         :param config_type: Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
-        :param jitaccessoperationrequest: (required)
-        :type jitaccessoperationrequest: List[Jitaccessoperationrequest]
+        :param jit_access_operation_request: (required)
+        :type jit_access_operation_request: List[JitAccessOperationRequest]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -445,7 +445,7 @@ class JITAccessApi:
 
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
-            jitaccessoperationrequest=jitaccessoperationrequest,
+            jit_access_operation_request=jit_access_operation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -453,13 +453,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -476,7 +476,7 @@ class JITAccessApi:
     def patch_jit_activation_config_v1_without_preload_content(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
-        jitaccessoperationrequest: Annotated[List[Jitaccessoperationrequest], Field(min_length=1)],
+        jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -496,8 +496,8 @@ class JITAccessApi:
 
         :param config_type: Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
-        :param jitaccessoperationrequest: (required)
-        :type jitaccessoperationrequest: List[Jitaccessoperationrequest]
+        :param jit_access_operation_request: (required)
+        :type jit_access_operation_request: List[JitAccessOperationRequest]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -522,7 +522,7 @@ class JITAccessApi:
 
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
-            jitaccessoperationrequest=jitaccessoperationrequest,
+            jit_access_operation_request=jit_access_operation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -530,13 +530,13 @@ class JITAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Jitactivationconfigresponse",
-            '400': "Errorresponsedto",
+            '200': "JITActivationConfigResponse",
+            '400': "ErrorResponseDto",
             '401': "GetJitActivationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetJitActivationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -548,7 +548,7 @@ class JITAccessApi:
     def _patch_jit_activation_config_v1_serialize(
         self,
         config_type,
-        jitaccessoperationrequest,
+        jit_access_operation_request,
         _request_auth,
         _content_type,
         _headers,
@@ -558,7 +558,7 @@ class JITAccessApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jitaccessoperationrequest': '',
+            'JitAccessOperationRequest': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -577,8 +577,8 @@ class JITAccessApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jitaccessoperationrequest is not None:
-            _body_params = jitaccessoperationrequest
+        if jit_access_operation_request is not None:
+            _body_params = jit_access_operation_request
 
 
         # set the HTTP header `Accept`

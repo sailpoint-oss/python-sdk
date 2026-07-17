@@ -19,15 +19,15 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.identity_history.models.accessitemdiff import Accessitemdiff
+from sailpoint.identity_history.models.access_item_diff import AccessItemDiff
 from sailpoint.identity_history.models.get_historical_identity_events_v1200_response_inner import GetHistoricalIdentityEventsV1200ResponseInner
-from sailpoint.identity_history.models.identitycompareresponse import Identitycompareresponse
-from sailpoint.identity_history.models.identityhistoryresponse import Identityhistoryresponse
-from sailpoint.identity_history.models.identitylistitem import Identitylistitem
-from sailpoint.identity_history.models.identitysnapshotsummaryresponse import Identitysnapshotsummaryresponse
+from sailpoint.identity_history.models.identity_compare_response import IdentityCompareResponse
+from sailpoint.identity_history.models.identity_history_response import IdentityHistoryResponse
+from sailpoint.identity_history.models.identity_list_item import IdentityListItem
+from sailpoint.identity_history.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 from sailpoint.identity_history.models.list_identity_access_items_v1200_response_inner import ListIdentityAccessItemsV1200ResponseInner
 from sailpoint.identity_history.models.list_identity_snapshot_access_items_v1200_response_inner import ListIdentitySnapshotAccessItemsV1200ResponseInner
-from sailpoint.identity_history.models.metricresponse import Metricresponse
+from sailpoint.identity_history.models.metric_response import MetricResponse
 
 from sailpoint.identity_history.api_client import ApiClient, RequestSerialized
 from sailpoint.identity_history.api_response import ApiResponse
@@ -71,7 +71,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessitemdiff]:
+    ) -> List[AccessItemDiff]:
         """Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
@@ -133,12 +133,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessitemdiff]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessItemDiff]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +175,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessitemdiff]]:
+    ) -> ApiResponse[List[AccessItemDiff]]:
         """Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
@@ -237,12 +237,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessitemdiff]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessItemDiff]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -341,12 +341,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessitemdiff]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessItemDiff]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -477,7 +477,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identitycompareresponse]:
+    ) -> List[IdentityCompareResponse]:
         """Gets a difference of count for each access item types for the given identity between 2 snapshots
 
         This method gets a difference of count for each access item types for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
@@ -536,12 +536,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycompareresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCompareResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -577,7 +577,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identitycompareresponse]]:
+    ) -> ApiResponse[List[IdentityCompareResponse]]:
         """Gets a difference of count for each access item types for the given identity between 2 snapshots
 
         This method gets a difference of count for each access item types for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
@@ -636,12 +636,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycompareresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCompareResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -736,12 +736,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycompareresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCompareResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -930,12 +930,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEventsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1031,12 +1031,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEventsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1132,12 +1132,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEventsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1261,7 +1261,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityhistoryresponse:
+    ) -> IdentityHistoryResponse:
         """Get latest snapshot of identity
 
         This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read'
@@ -1302,12 +1302,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1337,7 +1337,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityhistoryresponse]:
+    ) -> ApiResponse[IdentityHistoryResponse]:
         """Get latest snapshot of identity
 
         This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read'
@@ -1378,12 +1378,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1454,12 +1454,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1557,7 +1557,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Metricresponse]:
+    ) -> List[MetricResponse]:
         """Gets the summary for the event count for a specific identity
 
         This method gets the summary for the event count for a specific identity by month/day Requires authorization scope of 'idn:identity-history:read' 
@@ -1616,12 +1616,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Metricresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MetricResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1657,7 +1657,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Metricresponse]]:
+    ) -> ApiResponse[List[MetricResponse]]:
         """Gets the summary for the event count for a specific identity
 
         This method gets the summary for the event count for a specific identity by month/day Requires authorization scope of 'idn:identity-history:read' 
@@ -1716,12 +1716,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Metricresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MetricResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1816,12 +1816,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Metricresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[MetricResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1944,7 +1944,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityhistoryresponse:
+    ) -> IdentityHistoryResponse:
         """Gets an identity snapshot at a given date
 
         This method retrieves a specified identity snapshot at a given date Requires authorization scope of 'idn:identity-history:read' 
@@ -1988,12 +1988,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2024,7 +2024,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityhistoryresponse]:
+    ) -> ApiResponse[IdentityHistoryResponse]:
         """Gets an identity snapshot at a given date
 
         This method retrieves a specified identity snapshot at a given date Requires authorization scope of 'idn:identity-history:read' 
@@ -2068,12 +2068,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2148,12 +2148,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityhistoryresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityHistoryResponse",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2290,11 +2290,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2366,11 +2366,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2442,11 +2442,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2542,7 +2542,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identitylistitem]:
+    ) -> List[IdentityListItem]:
         """Lists all the identities
 
         This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read'
@@ -2595,12 +2595,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitylistitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityListItem]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2634,7 +2634,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identitylistitem]]:
+    ) -> ApiResponse[List[IdentityListItem]]:
         """Lists all the identities
 
         This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read'
@@ -2687,12 +2687,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitylistitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityListItem]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2779,12 +2779,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitylistitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityListItem]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2956,12 +2956,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3049,12 +3049,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3142,12 +3142,12 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListHistoricalIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3309,11 +3309,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentitySnapshotAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3393,11 +3393,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentitySnapshotAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3477,11 +3477,11 @@ class IdentityHistoryApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentitySnapshotAccessItemsV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3586,7 +3586,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identitysnapshotsummaryresponse]:
+    ) -> List[IdentitySnapshotSummaryResponse]:
         """Lists all the snapshots for the identity
 
         This method retrieves all the snapshots for the identity Requires authorization scope of 'idn:identity-history:read' 
@@ -3642,12 +3642,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitysnapshotsummaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentitySnapshotSummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3682,7 +3682,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identitysnapshotsummaryresponse]]:
+    ) -> ApiResponse[List[IdentitySnapshotSummaryResponse]]:
         """Lists all the snapshots for the identity
 
         This method retrieves all the snapshots for the identity Requires authorization scope of 'idn:identity-history:read' 
@@ -3738,12 +3738,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitysnapshotsummaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentitySnapshotSummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3834,12 +3834,12 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitysnapshotsummaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentitySnapshotSummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListHistoricalIdentitiesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

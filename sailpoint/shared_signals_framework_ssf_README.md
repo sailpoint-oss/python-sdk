@@ -47,11 +47,11 @@ configuration = sailpoint.shared_signals_framework_ssf.Configuration(
 with sailpoint.shared_signals_framework_ssf.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.shared_signals_framework_ssf.SharedSignalsFrameworkSSFApi(api_client)
-    createstreamrequest = {"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"} # Createstreamrequest | 
+    create_stream_request = {"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"} # CreateStreamRequest | 
 
     try:
         # Create stream
-        api_response = api_instance.create_stream_v1(createstreamrequest)
+        api_response = api_instance.create_stream_v1(create_stream_request)
         print("The response of SharedSignalsFrameworkSSFApi->create_stream_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -79,28 +79,28 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Authorizationscheme](sailpoint/shared_signals_framework_ssf/docs/Authorizationscheme.md)
- - [Createstreamdeliveryrequest](sailpoint/shared_signals_framework_ssf/docs/Createstreamdeliveryrequest.md)
- - [Createstreamrequest](sailpoint/shared_signals_framework_ssf/docs/Createstreamrequest.md)
- - [Deliveryrequest](sailpoint/shared_signals_framework_ssf/docs/Deliveryrequest.md)
- - [Deliveryresponse](sailpoint/shared_signals_framework_ssf/docs/Deliveryresponse.md)
- - [Errormessagedto](sailpoint/shared_signals_framework_ssf/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/shared_signals_framework_ssf/docs/Errorresponsedto.md)
+ - [AuthorizationScheme](sailpoint/shared_signals_framework_ssf/docs/AuthorizationScheme.md)
+ - [CreateStreamDeliveryRequest](sailpoint/shared_signals_framework_ssf/docs/CreateStreamDeliveryRequest.md)
+ - [CreateStreamRequest](sailpoint/shared_signals_framework_ssf/docs/CreateStreamRequest.md)
+ - [DeliveryRequest](sailpoint/shared_signals_framework_ssf/docs/DeliveryRequest.md)
+ - [DeliveryResponse](sailpoint/shared_signals_framework_ssf/docs/DeliveryResponse.md)
+ - [ErrorMessageDto](sailpoint/shared_signals_framework_ssf/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/shared_signals_framework_ssf/docs/ErrorResponseDto.md)
  - [GetSSFConfigurationV1401Response](sailpoint/shared_signals_framework_ssf/docs/GetSSFConfigurationV1401Response.md)
  - [GetSSFConfigurationV1429Response](sailpoint/shared_signals_framework_ssf/docs/GetSSFConfigurationV1429Response.md)
  - [GetStreamV1200Response](sailpoint/shared_signals_framework_ssf/docs/GetStreamV1200Response.md)
- - [Jwk](sailpoint/shared_signals_framework_ssf/docs/Jwk.md)
- - [Jwks](sailpoint/shared_signals_framework_ssf/docs/Jwks.md)
- - [Localeorigin](sailpoint/shared_signals_framework_ssf/docs/Localeorigin.md)
- - [Replacestreamconfigurationrequest](sailpoint/shared_signals_framework_ssf/docs/Replacestreamconfigurationrequest.md)
- - [ReplacestreamconfigurationrequestDelivery](sailpoint/shared_signals_framework_ssf/docs/ReplacestreamconfigurationrequestDelivery.md)
- - [Streamconfigresponse](sailpoint/shared_signals_framework_ssf/docs/Streamconfigresponse.md)
- - [Streamstatusresponse](sailpoint/shared_signals_framework_ssf/docs/Streamstatusresponse.md)
- - [Transmittermetadata](sailpoint/shared_signals_framework_ssf/docs/Transmittermetadata.md)
- - [Updatestreamconfigresponse](sailpoint/shared_signals_framework_ssf/docs/Updatestreamconfigresponse.md)
- - [Updatestreamconfigurationrequest](sailpoint/shared_signals_framework_ssf/docs/Updatestreamconfigurationrequest.md)
- - [Updatestreamstatusrequest](sailpoint/shared_signals_framework_ssf/docs/Updatestreamstatusrequest.md)
- - [Verificationrequest](sailpoint/shared_signals_framework_ssf/docs/Verificationrequest.md)
+ - [JWK](sailpoint/shared_signals_framework_ssf/docs/JWK.md)
+ - [JWKS](sailpoint/shared_signals_framework_ssf/docs/JWKS.md)
+ - [LocaleOrigin](sailpoint/shared_signals_framework_ssf/docs/LocaleOrigin.md)
+ - [ReplaceStreamConfigurationRequest](sailpoint/shared_signals_framework_ssf/docs/ReplaceStreamConfigurationRequest.md)
+ - [ReplaceStreamConfigurationRequestDelivery](sailpoint/shared_signals_framework_ssf/docs/ReplaceStreamConfigurationRequestDelivery.md)
+ - [StreamConfigResponse](sailpoint/shared_signals_framework_ssf/docs/StreamConfigResponse.md)
+ - [StreamStatusResponse](sailpoint/shared_signals_framework_ssf/docs/StreamStatusResponse.md)
+ - [TransmitterMetadata](sailpoint/shared_signals_framework_ssf/docs/TransmitterMetadata.md)
+ - [UpdateStreamConfigResponse](sailpoint/shared_signals_framework_ssf/docs/UpdateStreamConfigResponse.md)
+ - [UpdateStreamConfigurationRequest](sailpoint/shared_signals_framework_ssf/docs/UpdateStreamConfigurationRequest.md)
+ - [UpdateStreamStatusRequest](sailpoint/shared_signals_framework_ssf/docs/UpdateStreamStatusRequest.md)
+ - [VerificationRequest](sailpoint/shared_signals_framework_ssf/docs/VerificationRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

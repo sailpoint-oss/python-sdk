@@ -72,21 +72,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessitemref](sailpoint/iai_recommendations/docs/Accessitemref.md)
- - [Errormessagedto](sailpoint/iai_recommendations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/iai_recommendations/docs/Errorresponsedto.md)
- - [Featurevaluedto](sailpoint/iai_recommendations/docs/Featurevaluedto.md)
+ - [AccessItemRef](sailpoint/iai_recommendations/docs/AccessItemRef.md)
+ - [ErrorMessageDto](sailpoint/iai_recommendations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/iai_recommendations/docs/ErrorResponseDto.md)
+ - [FeatureValueDto](sailpoint/iai_recommendations/docs/FeatureValueDto.md)
  - [GetRecommendationsV1401Response](sailpoint/iai_recommendations/docs/GetRecommendationsV1401Response.md)
  - [GetRecommendationsV1429Response](sailpoint/iai_recommendations/docs/GetRecommendationsV1429Response.md)
- - [Localeorigin](sailpoint/iai_recommendations/docs/Localeorigin.md)
- - [Recommendationconfigdto](sailpoint/iai_recommendations/docs/Recommendationconfigdto.md)
- - [Recommendationrequest](sailpoint/iai_recommendations/docs/Recommendationrequest.md)
- - [Recommendationrequestdto](sailpoint/iai_recommendations/docs/Recommendationrequestdto.md)
- - [Recommendationresponse](sailpoint/iai_recommendations/docs/Recommendationresponse.md)
- - [Recommendationresponsedto](sailpoint/iai_recommendations/docs/Recommendationresponsedto.md)
- - [Recommendercalculations](sailpoint/iai_recommendations/docs/Recommendercalculations.md)
- - [RecommendercalculationsIdentityAttributesValue](sailpoint/iai_recommendations/docs/RecommendercalculationsIdentityAttributesValue.md)
- - [Translationmessage](sailpoint/iai_recommendations/docs/Translationmessage.md)
+ - [LocaleOrigin](sailpoint/iai_recommendations/docs/LocaleOrigin.md)
+ - [RecommendationConfigDto](sailpoint/iai_recommendations/docs/RecommendationConfigDto.md)
+ - [RecommendationRequest](sailpoint/iai_recommendations/docs/RecommendationRequest.md)
+ - [RecommendationRequestDto](sailpoint/iai_recommendations/docs/RecommendationRequestDto.md)
+ - [RecommendationResponse](sailpoint/iai_recommendations/docs/RecommendationResponse.md)
+ - [RecommendationResponseDto](sailpoint/iai_recommendations/docs/RecommendationResponseDto.md)
+ - [RecommenderCalculations](sailpoint/iai_recommendations/docs/RecommenderCalculations.md)
+ - [RecommenderCalculationsIdentityAttributesValue](sailpoint/iai_recommendations/docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [TranslationMessage](sailpoint/iai_recommendations/docs/TranslationMessage.md)
 
 
 <a id="documentation-for-authorization"></a>

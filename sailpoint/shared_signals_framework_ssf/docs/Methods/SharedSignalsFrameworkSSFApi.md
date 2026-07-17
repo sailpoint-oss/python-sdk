@@ -48,20 +48,20 @@ You can create a maximum of 10 SSF stream configurations for one org.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | createstreamrequest | [**Createstreamrequest**](../models/createstreamrequest) | True  | 
+ Body  | create_stream_request | [**CreateStreamRequest**](../models/create-stream-request) | True  | 
 
 ### Return type
-[**Streamconfigresponse**](../models/streamconfigresponse)
+[**StreamConfigResponse**](../models/stream-config-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Stream created. | Streamconfigresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Stream created. | StreamConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -72,21 +72,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.createstreamrequest import Createstreamrequest
-from sailpoint.shared_signals_framework_ssf.models.streamconfigresponse import Streamconfigresponse
+from sailpoint.shared_signals_framework_ssf.models.create_stream_request import CreateStreamRequest
+from sailpoint.shared_signals_framework_ssf.models.stream_config_response import StreamConfigResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createstreamrequest = '''{"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"}''' # Createstreamrequest | 
+    create_stream_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # CreateStreamRequest | 
 
     try:
         # Create stream
-        new_createstreamrequest = Createstreamrequest.from_json(createstreamrequest)
-        results = SharedSignalsFrameworkSSFApi(api_client).create_stream_v1(createstreamrequest=new_createstreamrequest)
+        new_create_stream_request = CreateStreamRequest.from_json(create_stream_request)
+        results = SharedSignalsFrameworkSSFApi(api_client).create_stream_v1(create_stream_request=new_create_stream_request)
         # Below is a request that includes all optional parameters
-        # results = SharedSignalsFrameworkSSFApi(api_client).create_stream_v1(new_createstreamrequest)
+        # results = SharedSignalsFrameworkSSFApi(api_client).create_stream_v1(new_create_stream_request)
         print("The response of SharedSignalsFrameworkSSFApi->create_stream_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -120,12 +128,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -167,17 +175,17 @@ Returns the transmitter's JSON Web Key Set (JWKS) for verifying signed delivery 
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Jwks**](../models/jwks)
+[**JWKS**](../models/jwks)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | JSON Web Key Set (RFC 7517) containing the transmitter&#39;s public keys. | Jwks |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | JSON Web Key Set (RFC 7517) containing the transmitter&#39;s public keys. | JWKS |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -188,7 +196,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.jwks import Jwks
+from sailpoint.shared_signals_framework_ssf.models.jwks import JWKS
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -221,17 +229,17 @@ Returns the SSF transmitter discovery metadata (well-known configuration).
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Transmittermetadata**](../models/transmittermetadata)
+[**TransmitterMetadata**](../models/transmitter-metadata)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | SSF transmitter configuration (issuer, jwks_uri, endpoints, authorization_schemes). | Transmittermetadata |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | SSF transmitter configuration (issuer, jwks_uri, endpoints, authorization_schemes). | TransmitterMetadata |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -242,7 +250,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.transmittermetadata import Transmittermetadata
+from sailpoint.shared_signals_framework_ssf.models.transmitter_metadata import TransmitterMetadata
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -278,18 +286,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | stream_id | **str** | True  | ID of the stream whose status to retrieve.
 
 ### Return type
-[**Streamstatusresponse**](../models/streamstatusresponse)
+[**StreamStatusResponse**](../models/stream-status-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Stream status (enabled, paused, or disabled; reason may be set when status was updated). | Streamstatusresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Stream status (enabled, paused, or disabled; reason may be set when status was updated). | StreamStatusResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -300,7 +308,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.streamstatusresponse import Streamstatusresponse
+from sailpoint.shared_signals_framework_ssf.models.stream_status_response import StreamStatusResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -349,12 +357,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Single stream (when stream_id is provided) or list of streams (when stream_id is omitted). | GetStreamV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -399,7 +407,7 @@ Verifies an SSF stream by publishing a verification event requested by a securit
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | verificationrequest | [**Verificationrequest**](../models/verificationrequest) | True  | 
+ Body  | verification_request | [**VerificationRequest**](../models/verification-request) | True  | 
 
 ### Return type
  (empty response body)
@@ -408,11 +416,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -423,20 +431,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.verificationrequest import Verificationrequest
+from sailpoint.shared_signals_framework_ssf.models.verification_request import VerificationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    verificationrequest = '''{"stream_id":"550e8400-e29b-41d4-a716-446655440000","state":"verification-challenge-state-123"}''' # Verificationrequest | 
+    verification_request = '''{
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "state" : "verification-challenge-state-123"
+        }''' # VerificationRequest | 
 
     try:
         # Verify stream
-        new_verificationrequest = Verificationrequest.from_json(verificationrequest)
-        SharedSignalsFrameworkSSFApi(api_client).send_stream_verification_v1(verificationrequest=new_verificationrequest)
+        new_verification_request = VerificationRequest.from_json(verification_request)
+        SharedSignalsFrameworkSSFApi(api_client).send_stream_verification_v1(verification_request=new_verification_request)
         # Below is a request that includes all optional parameters
-        # SharedSignalsFrameworkSSFApi(api_client).send_stream_verification_v1(new_verificationrequest)
+        # SharedSignalsFrameworkSSFApi(api_client).send_stream_verification_v1(new_verification_request)
     except Exception as e:
         print("Exception when calling SharedSignalsFrameworkSSFApi->send_stream_verification_v1: %s\n" % e)
 ```
@@ -458,21 +469,21 @@ The associated stream with the client ID (through the request OAuth 2.0 access t
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | replacestreamconfigurationrequest | [**Replacestreamconfigurationrequest**](../models/replacestreamconfigurationrequest) | True  | 
+ Body  | replace_stream_configuration_request | [**ReplaceStreamConfigurationRequest**](../models/replace-stream-configuration-request) | True  | 
 
 ### Return type
-[**Updatestreamconfigresponse**](../models/updatestreamconfigresponse)
+[**UpdateStreamConfigResponse**](../models/update-stream-config-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Replaced stream configuration (same JSON shape as PATCH/GET single stream). | Updatestreamconfigresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Replaced stream configuration (same JSON shape as PATCH/GET single stream). | UpdateStreamConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -483,21 +494,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.replacestreamconfigurationrequest import Replacestreamconfigurationrequest
-from sailpoint.shared_signals_framework_ssf.models.updatestreamconfigresponse import Updatestreamconfigresponse
+from sailpoint.shared_signals_framework_ssf.models.replace_stream_configuration_request import ReplaceStreamConfigurationRequest
+from sailpoint.shared_signals_framework_ssf.models.update_stream_config_response import UpdateStreamConfigResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    replacestreamconfigurationrequest = '''{"stream_id":"550e8400-e29b-41d4-a716-446655440000","delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Replaced stream configuration for production event delivery"}''' # Replacestreamconfigurationrequest | 
+    replace_stream_configuration_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # ReplaceStreamConfigurationRequest | 
 
     try:
         # Replace stream configuration
-        new_replacestreamconfigurationrequest = Replacestreamconfigurationrequest.from_json(replacestreamconfigurationrequest)
-        results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration_v1(replacestreamconfigurationrequest=new_replacestreamconfigurationrequest)
+        new_replace_stream_configuration_request = ReplaceStreamConfigurationRequest.from_json(replace_stream_configuration_request)
+        results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration_v1(replace_stream_configuration_request=new_replace_stream_configuration_request)
         # Below is a request that includes all optional parameters
-        # results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration_v1(new_replacestreamconfigurationrequest)
+        # results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration_v1(new_replace_stream_configuration_request)
         print("The response of SharedSignalsFrameworkSSFApi->set_stream_configuration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -521,21 +541,21 @@ The associated stream with the client ID (through the request OAuth 2.0 access t
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | updatestreamconfigurationrequest | [**Updatestreamconfigurationrequest**](../models/updatestreamconfigurationrequest) | True  | 
+ Body  | update_stream_configuration_request | [**UpdateStreamConfigurationRequest**](../models/update-stream-configuration-request) | True  | 
 
 ### Return type
-[**Updatestreamconfigresponse**](../models/updatestreamconfigresponse)
+[**UpdateStreamConfigResponse**](../models/update-stream-config-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated stream configuration (same JSON shape as GET single stream, plus updatedAt). | Updatestreamconfigresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated stream configuration (same JSON shape as GET single stream, plus updatedAt). | UpdateStreamConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -546,21 +566,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.updatestreamconfigresponse import Updatestreamconfigresponse
-from sailpoint.shared_signals_framework_ssf.models.updatestreamconfigurationrequest import Updatestreamconfigurationrequest
+from sailpoint.shared_signals_framework_ssf.models.update_stream_config_response import UpdateStreamConfigResponse
+from sailpoint.shared_signals_framework_ssf.models.update_stream_configuration_request import UpdateStreamConfigurationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    updatestreamconfigurationrequest = '''{"stream_id":"550e8400-e29b-41d4-a716-446655440000","description":"Updated production event stream configuration"}''' # Updatestreamconfigurationrequest | 
+    update_stream_configuration_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Updated production event stream configuration",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # UpdateStreamConfigurationRequest | 
 
     try:
         # Update stream configuration
-        new_updatestreamconfigurationrequest = Updatestreamconfigurationrequest.from_json(updatestreamconfigurationrequest)
-        results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration_v1(updatestreamconfigurationrequest=new_updatestreamconfigurationrequest)
+        new_update_stream_configuration_request = UpdateStreamConfigurationRequest.from_json(update_stream_configuration_request)
+        results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration_v1(update_stream_configuration_request=new_update_stream_configuration_request)
         # Below is a request that includes all optional parameters
-        # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration_v1(new_updatestreamconfigurationrequest)
+        # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration_v1(new_update_stream_configuration_request)
         print("The response of SharedSignalsFrameworkSSFApi->update_stream_configuration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -581,21 +610,21 @@ Updates the operational status (enabled, paused, disabled) with an optional reas
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | updatestreamstatusrequest | [**Updatestreamstatusrequest**](../models/updatestreamstatusrequest) | True  | 
+ Body  | update_stream_status_request | [**UpdateStreamStatusRequest**](../models/update-stream-status-request) | True  | 
 
 ### Return type
-[**Streamstatusresponse**](../models/streamstatusresponse)
+[**StreamStatusResponse**](../models/stream-status-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated stream status (same JSON shape as GET /ssf/streams/status). | Streamstatusresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated stream status (same JSON shape as GET /ssf/streams/status). | StreamStatusResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSSFConfigurationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSSFConfigurationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -606,21 +635,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.shared_signals_framework_ssf.api_client import ApiClient
-from sailpoint.shared_signals_framework_ssf.models.streamstatusresponse import Streamstatusresponse
-from sailpoint.shared_signals_framework_ssf.models.updatestreamstatusrequest import Updatestreamstatusrequest
+from sailpoint.shared_signals_framework_ssf.models.stream_status_response import StreamStatusResponse
+from sailpoint.shared_signals_framework_ssf.models.update_stream_status_request import UpdateStreamStatusRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    updatestreamstatusrequest = '''{"stream_id":"550e8400-e29b-41d4-a716-446655440000","status":"paused","reason":"manually paused"}''' # Updatestreamstatusrequest | 
+    update_stream_status_request = '''{
+          "reason" : "manually paused",
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "status" : "paused"
+        }''' # UpdateStreamStatusRequest | 
 
     try:
         # Update stream status
-        new_updatestreamstatusrequest = Updatestreamstatusrequest.from_json(updatestreamstatusrequest)
-        results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status_v1(updatestreamstatusrequest=new_updatestreamstatusrequest)
+        new_update_stream_status_request = UpdateStreamStatusRequest.from_json(update_stream_status_request)
+        results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status_v1(update_stream_status_request=new_update_stream_status_request)
         # Below is a request that includes all optional parameters
-        # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status_v1(new_updatestreamstatusrequest)
+        # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status_v1(new_update_stream_status_request)
         print("The response of SharedSignalsFrameworkSSFApi->update_stream_status_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

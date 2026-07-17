@@ -17,7 +17,7 @@ Additional data to classify the entitlement
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**[]Accessmodelmetadata**](accessmodelmetadata) |  | [optional] 
+**attributes** | [**[]AccessModelMetadata**](access-model-metadata) |  | [optional] 
 }
 
 ## Example
@@ -36,7 +36,7 @@ attributes=[
                         object_types = ["general"], 
                         description = 'Indicates the type of deployment environment of an access item.', 
                         values = [
-                            sailpoint.accounts.models.accessmodelmetadata_values_inner.accessmodelmetadata_values_inner(
+                            sailpoint.accounts.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
                                 value = 'development', 
                                 name = 'Development', 
                                 status = 'active', )

@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.custom_forms.models.errormessage import Errormessage
+from sailpoint.custom_forms.models.error_message import ErrorMessage
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class Error(BaseModel):
     Error
     """ # noqa: E501
     detail_code: Optional[StrictStr] = Field(default=None, description="DetailCode is the text of the status code returned", alias="detailCode")
-    messages: Optional[List[Errormessage]] = None
+    messages: Optional[List[ErrorMessage]] = None
     tracking_id: Optional[StrictStr] = Field(default=None, description="TrackingID is the request tracking unique identifier", alias="trackingId")
     __properties: ClassVar[List[str]] = ["detailCode", "messages", "trackingId"]
 
@@ -92,7 +92,7 @@ class Error(BaseModel):
 
         _obj = cls.model_validate({
             "detailCode": obj.get("detailCode"),
-            "messages": [Errormessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "messages": [ErrorMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "trackingId": obj.get("trackingId")
         })
         return _obj

@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field
 from typing import List
 from typing_extensions import Annotated
-from sailpoint.global_tenant_security_settings.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.global_tenant_security_settings.models.lockoutconfiguration import Lockoutconfiguration
-from sailpoint.global_tenant_security_settings.models.networkconfiguration import Networkconfiguration
-from sailpoint.global_tenant_security_settings.models.serviceproviderconfiguration import Serviceproviderconfiguration
-from sailpoint.global_tenant_security_settings.models.sessionconfiguration import Sessionconfiguration
+from sailpoint.global_tenant_security_settings.models.json_patch_operation import JsonPatchOperation
+from sailpoint.global_tenant_security_settings.models.lockout_configuration import LockoutConfiguration
+from sailpoint.global_tenant_security_settings.models.network_configuration import NetworkConfiguration
+from sailpoint.global_tenant_security_settings.models.service_provider_configuration import ServiceProviderConfiguration
+from sailpoint.global_tenant_security_settings.models.session_configuration import SessionConfiguration
 
 from sailpoint.global_tenant_security_settings.api_client import ApiClient, RequestSerialized
 from sailpoint.global_tenant_security_settings.api_response import ApiResponse
@@ -46,7 +46,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def create_auth_org_network_config_v1(
         self,
-        networkconfiguration: Annotated[Networkconfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        network_configuration: Annotated[NetworkConfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +59,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Networkconfiguration:
+    ) -> NetworkConfiguration:
         """Create security network configuration.
 
         This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
-        :param networkconfiguration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type networkconfiguration: Networkconfiguration
+        :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type network_configuration: NetworkConfiguration
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._create_auth_org_network_config_v1_serialize(
-            networkconfiguration=networkconfiguration,
+            network_configuration=network_configuration,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,13 +97,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def create_auth_org_network_config_v1_with_http_info(
         self,
-        networkconfiguration: Annotated[Networkconfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        network_configuration: Annotated[NetworkConfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,13 +132,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Networkconfiguration]:
+    ) -> ApiResponse[NetworkConfiguration]:
         """Create security network configuration.
 
         This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
-        :param networkconfiguration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type networkconfiguration: Networkconfiguration
+        :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type network_configuration: NetworkConfiguration
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +162,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._create_auth_org_network_config_v1_serialize(
-            networkconfiguration=networkconfiguration,
+            network_configuration=network_configuration,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,13 +170,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def create_auth_org_network_config_v1_without_preload_content(
         self,
-        networkconfiguration: Annotated[Networkconfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        network_configuration: Annotated[NetworkConfiguration, Field(description="Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class GlobalTenantSecuritySettingsApi:
 
         This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
-        :param networkconfiguration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type networkconfiguration: Networkconfiguration
+        :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type network_configuration: NetworkConfiguration
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._create_auth_org_network_config_v1_serialize(
-            networkconfiguration=networkconfiguration,
+            network_configuration=network_configuration,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,13 +243,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -260,7 +260,7 @@ class GlobalTenantSecuritySettingsApi:
 
     def _create_auth_org_network_config_v1_serialize(
         self,
-        networkconfiguration,
+        network_configuration,
         _request_auth,
         _content_type,
         _headers,
@@ -286,8 +286,8 @@ class GlobalTenantSecuritySettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if networkconfiguration is not None:
-            _body_params = networkconfiguration
+        if network_configuration is not None:
+            _body_params = network_configuration
 
 
         # set the HTTP header `Accept`
@@ -349,7 +349,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lockoutconfiguration:
+    ) -> LockoutConfiguration:
         """Get auth org lockout configuration.
 
         This API returns the details of an org's lockout auth configuration.
@@ -384,13 +384,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -418,7 +418,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lockoutconfiguration]:
+    ) -> ApiResponse[LockoutConfiguration]:
         """Get auth org lockout configuration.
 
         This API returns the details of an org's lockout auth configuration.
@@ -453,13 +453,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -522,13 +522,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -612,7 +612,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Networkconfiguration:
+    ) -> NetworkConfiguration:
         """Get security network configuration.
 
         This API returns the details of an org's network auth configuration.
@@ -647,13 +647,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -681,7 +681,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Networkconfiguration]:
+    ) -> ApiResponse[NetworkConfiguration]:
         """Get security network configuration.
 
         This API returns the details of an org's network auth configuration.
@@ -716,13 +716,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -785,13 +785,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -875,7 +875,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Serviceproviderconfiguration:
+    ) -> ServiceProviderConfiguration:
         """Get service provider configuration.
 
         This API returns the details of an org's service provider auth configuration.
@@ -910,13 +910,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -944,7 +944,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Serviceproviderconfiguration]:
+    ) -> ApiResponse[ServiceProviderConfiguration]:
         """Get service provider configuration.
 
         This API returns the details of an org's service provider auth configuration.
@@ -979,13 +979,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1048,13 +1048,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1138,7 +1138,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sessionconfiguration:
+    ) -> SessionConfiguration:
         """Get auth org session configuration.
 
         This API returns the details of an org's session auth configuration.
@@ -1173,13 +1173,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1207,7 +1207,7 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sessionconfiguration]:
+    ) -> ApiResponse[SessionConfiguration]:
         """Get auth org session configuration.
 
         This API returns the details of an org's session auth configuration.
@@ -1242,13 +1242,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1311,13 +1311,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1389,7 +1389,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config_v1(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1402,13 +1402,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Lockoutconfiguration:
+    ) -> LockoutConfiguration:
         """Update auth org lockout configuration
 
         This API updates an existing lockout configuration for an org using PATCH 
 
-        :param jsonpatchoperation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1432,7 +1432,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_lockout_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1440,13 +1440,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1462,7 +1462,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config_v1_with_http_info(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1475,13 +1475,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Lockoutconfiguration]:
+    ) -> ApiResponse[LockoutConfiguration]:
         """Update auth org lockout configuration
 
         This API updates an existing lockout configuration for an org using PATCH 
 
-        :param jsonpatchoperation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1505,7 +1505,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_lockout_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1513,13 +1513,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1535,7 +1535,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config_v1_without_preload_content(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1553,8 +1553,8 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing lockout configuration for an org using PATCH 
 
-        :param jsonpatchoperation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1578,7 +1578,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_lockout_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1586,13 +1586,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Lockoutconfiguration",
-            '400': "Errorresponsedto",
+            '200': "LockoutConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1603,7 +1603,7 @@ class GlobalTenantSecuritySettingsApi:
 
     def _patch_auth_org_lockout_config_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1613,7 +1613,7 @@ class GlobalTenantSecuritySettingsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1630,8 +1630,8 @@ class GlobalTenantSecuritySettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -1681,7 +1681,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_network_config_v1(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1694,13 +1694,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Networkconfiguration:
+    ) -> NetworkConfiguration:
         """Update security network configuration.
 
         This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
-        :param jsonpatchoperation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1724,7 +1724,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_network_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1732,13 +1732,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1754,7 +1754,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_network_config_v1_with_http_info(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1767,13 +1767,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Networkconfiguration]:
+    ) -> ApiResponse[NetworkConfiguration]:
         """Update security network configuration.
 
         This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
-        :param jsonpatchoperation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1797,7 +1797,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_network_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1805,13 +1805,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1827,7 +1827,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_network_config_v1_without_preload_content(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1845,8 +1845,8 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
-        :param jsonpatchoperation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1870,7 +1870,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_network_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1878,13 +1878,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Networkconfiguration",
-            '400': "Errorresponsedto",
+            '200': "NetworkConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1895,7 +1895,7 @@ class GlobalTenantSecuritySettingsApi:
 
     def _patch_auth_org_network_config_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1905,7 +1905,7 @@ class GlobalTenantSecuritySettingsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1922,8 +1922,8 @@ class GlobalTenantSecuritySettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -1973,7 +1973,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_service_provider_config_v1(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1986,13 +1986,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Serviceproviderconfiguration:
+    ) -> ServiceProviderConfiguration:
         """Update service provider configuration
 
         This API updates an existing service provider configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2016,7 +2016,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_service_provider_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2024,13 +2024,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2046,7 +2046,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_service_provider_config_v1_with_http_info(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2059,13 +2059,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Serviceproviderconfiguration]:
+    ) -> ApiResponse[ServiceProviderConfiguration]:
         """Update service provider configuration
 
         This API updates an existing service provider configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2089,7 +2089,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_service_provider_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2097,13 +2097,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2119,7 +2119,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_service_provider_config_v1_without_preload_content(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2137,8 +2137,8 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing service provider configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2162,7 +2162,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_service_provider_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2170,13 +2170,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Serviceproviderconfiguration",
-            '400': "Errorresponsedto",
+            '200': "ServiceProviderConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2187,7 +2187,7 @@ class GlobalTenantSecuritySettingsApi:
 
     def _patch_auth_org_service_provider_config_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2197,7 +2197,7 @@ class GlobalTenantSecuritySettingsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2214,8 +2214,8 @@ class GlobalTenantSecuritySettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2265,7 +2265,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config_v1(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2278,13 +2278,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sessionconfiguration:
+    ) -> SessionConfiguration:
         """Update auth org session configuration
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2308,7 +2308,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_session_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2316,13 +2316,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2338,7 +2338,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config_v1_with_http_info(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2351,13 +2351,13 @@ class GlobalTenantSecuritySettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sessionconfiguration]:
+    ) -> ApiResponse[SessionConfiguration]:
         """Update auth org session configuration
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2381,7 +2381,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_session_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2389,13 +2389,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2411,7 +2411,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config_v1_without_preload_content(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2429,8 +2429,8 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param jsonpatchoperation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2454,7 +2454,7 @@ class GlobalTenantSecuritySettingsApi:
         """ # noqa: E501
 
         _param = self._patch_auth_org_session_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2462,13 +2462,13 @@ class GlobalTenantSecuritySettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sessionconfiguration",
-            '400': "Errorresponsedto",
+            '200': "SessionConfiguration",
+            '400': "ErrorResponseDto",
             '401': "GetAuthOrgNetworkConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthOrgNetworkConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2479,7 +2479,7 @@ class GlobalTenantSecuritySettingsApi:
 
     def _patch_auth_org_session_config_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2489,7 +2489,7 @@ class GlobalTenantSecuritySettingsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2506,8 +2506,8 @@ class GlobalTenantSecuritySettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

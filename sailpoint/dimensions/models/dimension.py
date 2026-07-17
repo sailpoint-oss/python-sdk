@@ -22,10 +22,10 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.dimensions.models.accessprofileref import Accessprofileref
-from sailpoint.dimensions.models.dimensionmembershipselector import Dimensionmembershipselector
-from sailpoint.dimensions.models.entitlementref import Entitlementref
-from sailpoint.dimensions.models.ownerreference import Ownerreference
+from sailpoint.dimensions.models.access_profile_ref import AccessProfileRef
+from sailpoint.dimensions.models.dimension_membership_selector import DimensionMembershipSelector
+from sailpoint.dimensions.models.entitlement_ref import EntitlementRef
+from sailpoint.dimensions.models.owner_reference import OwnerReference
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,10 +38,10 @@ class Dimension(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Date the Dimension was created")
     modified: Optional[datetime] = Field(default=None, description="Date the Dimension was last modified.")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the Dimension")
-    owner: Optional[Ownerreference]
-    access_profiles: Optional[List[Accessprofileref]] = Field(default=None, alias="accessProfiles")
-    entitlements: Optional[List[Entitlementref]] = None
-    membership: Optional[Dimensionmembershipselector] = None
+    owner: Optional[OwnerReference]
+    access_profiles: Optional[List[AccessProfileRef]] = Field(default=None, alias="accessProfiles")
+    entitlements: Optional[List[EntitlementRef]] = None
+    membership: Optional[DimensionMembershipSelector] = None
     parent_id: Optional[StrictStr] = Field(default=None, description="The ID of the parent role. This field can be left null when creating a dimension, but if provided, it must match the role ID specified in the path variable of the API call.", alias="parentId")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "parentId"]
 
@@ -150,10 +150,10 @@ class Dimension(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner": Ownerreference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "accessProfiles": [Accessprofileref.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
-            "entitlements": [Entitlementref.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
-            "membership": Dimensionmembershipselector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,
+            "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "accessProfiles": [AccessProfileRef.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
+            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
+            "membership": DimensionMembershipSelector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,
             "parentId": obj.get("parentId")
         })
         return _obj

@@ -36,12 +36,12 @@ class TestCampaign2AllOfRoleCompositionCampaignInfo(unittest.TestCase):
         if include_optional:
             return Campaign2AllOfRoleCompositionCampaignInfo(
                 reviewer_id = '2c91808568c529c60168cca6f90c1313',
-                reviewer = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_reviewer.campaign_2_allOf_roleCompositionCampaignInfo_reviewer(
+                reviewer = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_reviewer.Campaign_2_allOf_roleCompositionCampaignInfo_reviewer(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 role_ids = ["2c90ad2a70ace7d50170acf22ca90010"],
-                remediator_ref = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_remediator_ref.campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef(
+                remediator_ref = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_remediator_ref.Campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef(
                     type = 'IDENTITY', 
                     id = '2c90ad2a70ace7d50170acf22ca90010', 
                     name = 'Role Admin', ),
@@ -50,7 +50,7 @@ class TestCampaign2AllOfRoleCompositionCampaignInfo(unittest.TestCase):
             )
         else:
             return Campaign2AllOfRoleCompositionCampaignInfo(
-                remediator_ref = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_remediator_ref.campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef(
+                remediator_ref = sailpoint.certification_campaigns.models.campaign_2_all_of_role_composition_campaign_info_remediator_ref.Campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef(
                     type = 'IDENTITY', 
                     id = '2c90ad2a70ace7d50170acf22ca90010', 
                     name = 'Role Admin', ),

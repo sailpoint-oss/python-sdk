@@ -19,19 +19,19 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.notifications.models.dkimattributes import Dkimattributes
-from sailpoint.notifications.models.domainaddress import Domainaddress
-from sailpoint.notifications.models.domainstatusdto import Domainstatusdto
-from sailpoint.notifications.models.emailstatusdto import Emailstatusdto
-from sailpoint.notifications.models.mailfromattributes import Mailfromattributes
-from sailpoint.notifications.models.mailfromattributesdto import Mailfromattributesdto
-from sailpoint.notifications.models.notificationtemplatecontext import Notificationtemplatecontext
-from sailpoint.notifications.models.preferencesdto import Preferencesdto
-from sailpoint.notifications.models.sendtestnotificationrequestdto import Sendtestnotificationrequestdto
-from sailpoint.notifications.models.templatebulkdeletedto import Templatebulkdeletedto
-from sailpoint.notifications.models.templatedto import Templatedto
-from sailpoint.notifications.models.templatedtodefault import Templatedtodefault
-from sailpoint.notifications.models.templatevariablesdto import Templatevariablesdto
+from sailpoint.notifications.models.dkim_attributes import DkimAttributes
+from sailpoint.notifications.models.domain_address import DomainAddress
+from sailpoint.notifications.models.domain_status_dto import DomainStatusDto
+from sailpoint.notifications.models.email_status_dto import EmailStatusDto
+from sailpoint.notifications.models.mail_from_attributes import MailFromAttributes
+from sailpoint.notifications.models.mail_from_attributes_dto import MailFromAttributesDto
+from sailpoint.notifications.models.notification_template_context import NotificationTemplateContext
+from sailpoint.notifications.models.preferences_dto import PreferencesDto
+from sailpoint.notifications.models.send_test_notification_request_dto import SendTestNotificationRequestDto
+from sailpoint.notifications.models.template_bulk_delete_dto import TemplateBulkDeleteDto
+from sailpoint.notifications.models.template_dto import TemplateDto
+from sailpoint.notifications.models.template_dto_default import TemplateDtoDefault
+from sailpoint.notifications.models.template_variables_dto import TemplateVariablesDto
 
 from sailpoint.notifications.api_client import ApiClient, RequestSerialized
 from sailpoint.notifications.api_response import ApiResponse
@@ -54,7 +54,7 @@ class NotificationsApi:
     @validate_call
     def create_domain_dkim_v1(
         self,
-        domainaddress: Domainaddress,
+        domain_address: DomainAddress,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,13 +67,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Domainstatusdto:
+    ) -> DomainStatusDto:
         """Verify domain address via dkim
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
-        :param domainaddress: (required)
-        :type domainaddress: Domainaddress
+        :param domain_address: (required)
+        :type domain_address: DomainAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -97,7 +97,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_domain_dkim_v1_serialize(
-            domainaddress=domainaddress,
+            domain_address=domain_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -105,13 +105,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Domainstatusdto",
-            '400': "Errorresponsedto",
+            '200': "DomainStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '405': "CreateDomainDkimV1405Response",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +127,7 @@ class NotificationsApi:
     @validate_call
     def create_domain_dkim_v1_with_http_info(
         self,
-        domainaddress: Domainaddress,
+        domain_address: DomainAddress,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,13 +140,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Domainstatusdto]:
+    ) -> ApiResponse[DomainStatusDto]:
         """Verify domain address via dkim
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
-        :param domainaddress: (required)
-        :type domainaddress: Domainaddress
+        :param domain_address: (required)
+        :type domain_address: DomainAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,7 +170,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_domain_dkim_v1_serialize(
-            domainaddress=domainaddress,
+            domain_address=domain_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -178,13 +178,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Domainstatusdto",
-            '400': "Errorresponsedto",
+            '200': "DomainStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '405': "CreateDomainDkimV1405Response",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -200,7 +200,7 @@ class NotificationsApi:
     @validate_call
     def create_domain_dkim_v1_without_preload_content(
         self,
-        domainaddress: Domainaddress,
+        domain_address: DomainAddress,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -218,8 +218,8 @@ class NotificationsApi:
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
-        :param domainaddress: (required)
-        :type domainaddress: Domainaddress
+        :param domain_address: (required)
+        :type domain_address: DomainAddress
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,7 +243,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_domain_dkim_v1_serialize(
-            domainaddress=domainaddress,
+            domain_address=domain_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,13 +251,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Domainstatusdto",
-            '400': "Errorresponsedto",
+            '200': "DomainStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '405': "CreateDomainDkimV1405Response",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -268,7 +268,7 @@ class NotificationsApi:
 
     def _create_domain_dkim_v1_serialize(
         self,
-        domainaddress,
+        domain_address,
         _request_auth,
         _content_type,
         _headers,
@@ -294,8 +294,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if domainaddress is not None:
-            _body_params = domainaddress
+        if domain_address is not None:
+            _body_params = domain_address
 
 
         # set the HTTP header `Accept`
@@ -345,7 +345,7 @@ class NotificationsApi:
     @validate_call
     def create_notification_template_v1(
         self,
-        templatedto: Templatedto,
+        template_dto: TemplateDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -358,13 +358,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Templatedto:
+    ) -> TemplateDto:
         """Create notification template
 
         This will update notification templates that are available in your tenant.  Note that you cannot create new templates in your tenant, but you can use this to create custom notifications from existing templates.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready. 
 
-        :param templatedto: (required)
-        :type templatedto: Templatedto
+        :param template_dto: (required)
+        :type template_dto: TemplateDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -388,7 +388,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_notification_template_v1_serialize(
-            templatedto=templatedto,
+            template_dto=template_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -396,12 +396,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -417,7 +417,7 @@ class NotificationsApi:
     @validate_call
     def create_notification_template_v1_with_http_info(
         self,
-        templatedto: Templatedto,
+        template_dto: TemplateDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -430,13 +430,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Templatedto]:
+    ) -> ApiResponse[TemplateDto]:
         """Create notification template
 
         This will update notification templates that are available in your tenant.  Note that you cannot create new templates in your tenant, but you can use this to create custom notifications from existing templates.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready. 
 
-        :param templatedto: (required)
-        :type templatedto: Templatedto
+        :param template_dto: (required)
+        :type template_dto: TemplateDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -460,7 +460,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_notification_template_v1_serialize(
-            templatedto=templatedto,
+            template_dto=template_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -468,12 +468,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -489,7 +489,7 @@ class NotificationsApi:
     @validate_call
     def create_notification_template_v1_without_preload_content(
         self,
-        templatedto: Templatedto,
+        template_dto: TemplateDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -507,8 +507,8 @@ class NotificationsApi:
 
         This will update notification templates that are available in your tenant.  Note that you cannot create new templates in your tenant, but you can use this to create custom notifications from existing templates.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready. 
 
-        :param templatedto: (required)
-        :type templatedto: Templatedto
+        :param template_dto: (required)
+        :type template_dto: TemplateDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -532,7 +532,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_notification_template_v1_serialize(
-            templatedto=templatedto,
+            template_dto=template_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -540,12 +540,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -556,7 +556,7 @@ class NotificationsApi:
 
     def _create_notification_template_v1_serialize(
         self,
-        templatedto,
+        template_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -582,8 +582,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if templatedto is not None:
-            _body_params = templatedto
+        if template_dto is not None:
+            _body_params = template_dto
 
 
         # set the HTTP header `Accept`
@@ -633,7 +633,7 @@ class NotificationsApi:
     @validate_call
     def create_verified_from_address_v1(
         self,
-        emailstatusdto: Emailstatusdto,
+        email_status_dto: EmailStatusDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -646,13 +646,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Emailstatusdto:
+    ) -> EmailStatusDto:
         """Create verified from address
 
         Create a new sender email address and initiate verification process.
 
-        :param emailstatusdto: (required)
-        :type emailstatusdto: Emailstatusdto
+        :param email_status_dto: (required)
+        :type email_status_dto: EmailStatusDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -676,7 +676,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_verified_from_address_v1_serialize(
-            emailstatusdto=emailstatusdto,
+            email_status_dto=email_status_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -684,12 +684,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Emailstatusdto",
-            '400': "Errorresponsedto",
+            '201': "EmailStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -705,7 +705,7 @@ class NotificationsApi:
     @validate_call
     def create_verified_from_address_v1_with_http_info(
         self,
-        emailstatusdto: Emailstatusdto,
+        email_status_dto: EmailStatusDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -718,13 +718,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Emailstatusdto]:
+    ) -> ApiResponse[EmailStatusDto]:
         """Create verified from address
 
         Create a new sender email address and initiate verification process.
 
-        :param emailstatusdto: (required)
-        :type emailstatusdto: Emailstatusdto
+        :param email_status_dto: (required)
+        :type email_status_dto: EmailStatusDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -748,7 +748,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_verified_from_address_v1_serialize(
-            emailstatusdto=emailstatusdto,
+            email_status_dto=email_status_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -756,12 +756,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Emailstatusdto",
-            '400': "Errorresponsedto",
+            '201': "EmailStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -777,7 +777,7 @@ class NotificationsApi:
     @validate_call
     def create_verified_from_address_v1_without_preload_content(
         self,
-        emailstatusdto: Emailstatusdto,
+        email_status_dto: EmailStatusDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -795,8 +795,8 @@ class NotificationsApi:
 
         Create a new sender email address and initiate verification process.
 
-        :param emailstatusdto: (required)
-        :type emailstatusdto: Emailstatusdto
+        :param email_status_dto: (required)
+        :type email_status_dto: EmailStatusDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -820,7 +820,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._create_verified_from_address_v1_serialize(
-            emailstatusdto=emailstatusdto,
+            email_status_dto=email_status_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -828,12 +828,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Emailstatusdto",
-            '400': "Errorresponsedto",
+            '201': "EmailStatusDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -844,7 +844,7 @@ class NotificationsApi:
 
     def _create_verified_from_address_v1_serialize(
         self,
-        emailstatusdto,
+        email_status_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -870,8 +870,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if emailstatusdto is not None:
-            _body_params = emailstatusdto
+        if email_status_dto is not None:
+            _body_params = email_status_dto
 
 
         # set the HTTP header `Accept`
@@ -921,7 +921,7 @@ class NotificationsApi:
     @validate_call
     def delete_notification_templates_in_bulk_v1(
         self,
-        templatebulkdeletedto: List[Templatebulkdeletedto],
+        template_bulk_delete_dto: List[TemplateBulkDeleteDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -939,8 +939,8 @@ class NotificationsApi:
 
         This lets you bulk delete templates that you previously created for your site.
 
-        :param templatebulkdeletedto: (required)
-        :type templatebulkdeletedto: List[Templatebulkdeletedto]
+        :param template_bulk_delete_dto: (required)
+        :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -964,7 +964,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._delete_notification_templates_in_bulk_v1_serialize(
-            templatebulkdeletedto=templatebulkdeletedto,
+            template_bulk_delete_dto=template_bulk_delete_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -973,11 +973,11 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -993,7 +993,7 @@ class NotificationsApi:
     @validate_call
     def delete_notification_templates_in_bulk_v1_with_http_info(
         self,
-        templatebulkdeletedto: List[Templatebulkdeletedto],
+        template_bulk_delete_dto: List[TemplateBulkDeleteDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1011,8 +1011,8 @@ class NotificationsApi:
 
         This lets you bulk delete templates that you previously created for your site.
 
-        :param templatebulkdeletedto: (required)
-        :type templatebulkdeletedto: List[Templatebulkdeletedto]
+        :param template_bulk_delete_dto: (required)
+        :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1036,7 +1036,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._delete_notification_templates_in_bulk_v1_serialize(
-            templatebulkdeletedto=templatebulkdeletedto,
+            template_bulk_delete_dto=template_bulk_delete_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1045,11 +1045,11 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1065,7 +1065,7 @@ class NotificationsApi:
     @validate_call
     def delete_notification_templates_in_bulk_v1_without_preload_content(
         self,
-        templatebulkdeletedto: List[Templatebulkdeletedto],
+        template_bulk_delete_dto: List[TemplateBulkDeleteDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1083,8 +1083,8 @@ class NotificationsApi:
 
         This lets you bulk delete templates that you previously created for your site.
 
-        :param templatebulkdeletedto: (required)
-        :type templatebulkdeletedto: List[Templatebulkdeletedto]
+        :param template_bulk_delete_dto: (required)
+        :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1108,7 +1108,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._delete_notification_templates_in_bulk_v1_serialize(
-            templatebulkdeletedto=templatebulkdeletedto,
+            template_bulk_delete_dto=template_bulk_delete_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1117,11 +1117,11 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1132,7 +1132,7 @@ class NotificationsApi:
 
     def _delete_notification_templates_in_bulk_v1_serialize(
         self,
-        templatebulkdeletedto,
+        template_bulk_delete_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1142,7 +1142,7 @@ class NotificationsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Templatebulkdeletedto': '',
+            'TemplateBulkDeleteDto': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1159,8 +1159,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if templatebulkdeletedto is not None:
-            _body_params = templatebulkdeletedto
+        if template_bulk_delete_dto is not None:
+            _body_params = template_bulk_delete_dto
 
 
         # set the HTTP header `Accept`
@@ -1262,12 +1262,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1335,12 +1335,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1408,12 +1408,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1502,7 +1502,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Dkimattributes]:
+    ) -> List[DkimAttributes]:
         """Get dkim attributes
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
@@ -1543,12 +1543,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dkimattributes]",
-            '400': "Errorresponsedto",
+            '200': "List[DkimAttributes]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1578,7 +1578,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Dkimattributes]]:
+    ) -> ApiResponse[List[DkimAttributes]]:
         """Get dkim attributes
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
@@ -1619,12 +1619,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dkimattributes]",
-            '400': "Errorresponsedto",
+            '200': "List[DkimAttributes]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1695,12 +1695,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dkimattributes]",
-            '400': "Errorresponsedto",
+            '200': "List[DkimAttributes]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1795,7 +1795,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mailfromattributes:
+    ) -> MailFromAttributes:
         """Get mail from attributes
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
@@ -1833,12 +1833,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1867,7 +1867,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mailfromattributes]:
+    ) -> ApiResponse[MailFromAttributes]:
         """Get mail from attributes
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
@@ -1905,12 +1905,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1977,12 +1977,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2070,7 +2070,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Preferencesdto:
+    ) -> PreferencesDto:
         """List notification preferences for tenant.
 
         Returns a list of notification preferences for tenant.
@@ -2108,13 +2108,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Preferencesdto",
-            '400': "Errorresponsedto",
+            '200': "PreferencesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2143,7 +2143,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Preferencesdto]:
+    ) -> ApiResponse[PreferencesDto]:
         """List notification preferences for tenant.
 
         Returns a list of notification preferences for tenant.
@@ -2181,13 +2181,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Preferencesdto",
-            '400': "Errorresponsedto",
+            '200': "PreferencesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2254,13 +2254,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Preferencesdto",
-            '400': "Errorresponsedto",
+            '200': "PreferencesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2348,7 +2348,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Templatedto:
+    ) -> TemplateDto:
         """Get notification template by id
 
         This gets a template that you have modified for your site by Id.
@@ -2386,12 +2386,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2420,7 +2420,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Templatedto]:
+    ) -> ApiResponse[TemplateDto]:
         """Get notification template by id
 
         This gets a template that you have modified for your site by Id.
@@ -2458,12 +2458,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2530,12 +2530,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatedto",
-            '400': "Errorresponsedto",
+            '200': "TemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2625,7 +2625,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Templatevariablesdto:
+    ) -> TemplateVariablesDto:
         """Get notification template variables
 
         Returns global variables and template-specific variables for a given notification template key and medium. Use these variable names in template content; they are replaced at send time with the corresponding values. Variable lists can be sorted by key, type, or description via the sorters query parameter (default ascending by key). 
@@ -2669,13 +2669,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatevariablesdto",
-            '400': "Errorresponsedto",
+            '200': "TemplateVariablesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2706,7 +2706,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Templatevariablesdto]:
+    ) -> ApiResponse[TemplateVariablesDto]:
         """Get notification template variables
 
         Returns global variables and template-specific variables for a given notification template key and medium. Use these variable names in template content; they are replaced at send time with the corresponding values. Variable lists can be sorted by key, type, or description via the sorters query parameter (default ascending by key). 
@@ -2750,13 +2750,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatevariablesdto",
-            '400': "Errorresponsedto",
+            '200': "TemplateVariablesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2831,13 +2831,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Templatevariablesdto",
-            '400': "Errorresponsedto",
+            '200': "TemplateVariablesDto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2932,7 +2932,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Notificationtemplatecontext:
+    ) -> NotificationTemplateContext:
         """Get notification template context
 
         The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
@@ -2967,12 +2967,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Notificationtemplatecontext",
-            '400': "Errorresponsedto",
+            '200': "NotificationTemplateContext",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3000,7 +3000,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Notificationtemplatecontext]:
+    ) -> ApiResponse[NotificationTemplateContext]:
         """Get notification template context
 
         The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
@@ -3035,12 +3035,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Notificationtemplatecontext",
-            '400': "Errorresponsedto",
+            '200': "NotificationTemplateContext",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3103,12 +3103,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Notificationtemplatecontext",
-            '400': "Errorresponsedto",
+            '200': "NotificationTemplateContext",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3197,7 +3197,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Emailstatusdto]:
+    ) -> List[EmailStatusDto]:
         """List from addresses
 
         Retrieve a list of sender email addresses and their verification statuses
@@ -3247,12 +3247,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Emailstatusdto]",
-            '400': "Errorresponsedto",
+            '200': "List[EmailStatusDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3285,7 +3285,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Emailstatusdto]]:
+    ) -> ApiResponse[List[EmailStatusDto]]:
         """List from addresses
 
         Retrieve a list of sender email addresses and their verification statuses
@@ -3335,12 +3335,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Emailstatusdto]",
-            '400': "Errorresponsedto",
+            '200': "List[EmailStatusDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3423,12 +3423,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Emailstatusdto]",
-            '400': "Errorresponsedto",
+            '200': "List[EmailStatusDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3540,7 +3540,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Templatedtodefault]:
+    ) -> List[TemplateDtoDefault]:
         """List notification template defaults
 
         This lists the default templates used for notifications, such as emails from IdentityNow.
@@ -3584,12 +3584,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedtodefault]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDtoDefault]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3620,7 +3620,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Templatedtodefault]]:
+    ) -> ApiResponse[List[TemplateDtoDefault]]:
         """List notification template defaults
 
         This lists the default templates used for notifications, such as emails from IdentityNow.
@@ -3664,12 +3664,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedtodefault]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDtoDefault]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3744,12 +3744,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedtodefault]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDtoDefault]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3852,7 +3852,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Templatedto]:
+    ) -> List[TemplateDto]:
         """List notification templates
 
         This lists the templates that you have modified for your site.
@@ -3899,12 +3899,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedto]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3936,7 +3936,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Templatedto]]:
+    ) -> ApiResponse[List[TemplateDto]]:
         """List notification templates
 
         This lists the templates that you have modified for your site.
@@ -3983,12 +3983,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedto]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4067,12 +4067,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Templatedto]",
-            '400': "Errorresponsedto",
+            '200': "List[TemplateDto]",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4164,7 +4164,7 @@ class NotificationsApi:
     @validate_call
     def put_mail_from_attributes_v1(
         self,
-        mailfromattributesdto: Mailfromattributesdto,
+        mail_from_attributes_dto: MailFromAttributesDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4177,13 +4177,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Mailfromattributes:
+    ) -> MailFromAttributes:
         """Change mail from domain
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
-        :param mailfromattributesdto: (required)
-        :type mailfromattributesdto: Mailfromattributesdto
+        :param mail_from_attributes_dto: (required)
+        :type mail_from_attributes_dto: MailFromAttributesDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4207,7 +4207,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._put_mail_from_attributes_v1_serialize(
-            mailfromattributesdto=mailfromattributesdto,
+            mail_from_attributes_dto=mail_from_attributes_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4215,12 +4215,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4236,7 +4236,7 @@ class NotificationsApi:
     @validate_call
     def put_mail_from_attributes_v1_with_http_info(
         self,
-        mailfromattributesdto: Mailfromattributesdto,
+        mail_from_attributes_dto: MailFromAttributesDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4249,13 +4249,13 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Mailfromattributes]:
+    ) -> ApiResponse[MailFromAttributes]:
         """Change mail from domain
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
-        :param mailfromattributesdto: (required)
-        :type mailfromattributesdto: Mailfromattributesdto
+        :param mail_from_attributes_dto: (required)
+        :type mail_from_attributes_dto: MailFromAttributesDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4279,7 +4279,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._put_mail_from_attributes_v1_serialize(
-            mailfromattributesdto=mailfromattributesdto,
+            mail_from_attributes_dto=mail_from_attributes_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4287,12 +4287,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4308,7 +4308,7 @@ class NotificationsApi:
     @validate_call
     def put_mail_from_attributes_v1_without_preload_content(
         self,
-        mailfromattributesdto: Mailfromattributesdto,
+        mail_from_attributes_dto: MailFromAttributesDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4326,8 +4326,8 @@ class NotificationsApi:
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
-        :param mailfromattributesdto: (required)
-        :type mailfromattributesdto: Mailfromattributesdto
+        :param mail_from_attributes_dto: (required)
+        :type mail_from_attributes_dto: MailFromAttributesDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4351,7 +4351,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._put_mail_from_attributes_v1_serialize(
-            mailfromattributesdto=mailfromattributesdto,
+            mail_from_attributes_dto=mail_from_attributes_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4359,12 +4359,12 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Mailfromattributes",
-            '400': "Errorresponsedto",
+            '200': "MailFromAttributes",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4375,7 +4375,7 @@ class NotificationsApi:
 
     def _put_mail_from_attributes_v1_serialize(
         self,
-        mailfromattributesdto,
+        mail_from_attributes_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -4401,8 +4401,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if mailfromattributesdto is not None:
-            _body_params = mailfromattributesdto
+        if mail_from_attributes_dto is not None:
+            _body_params = mail_from_attributes_dto
 
 
         # set the HTTP header `Accept`
@@ -4452,7 +4452,7 @@ class NotificationsApi:
     @validate_call
     def send_test_notification_v1(
         self,
-        sendtestnotificationrequestdto: Sendtestnotificationrequestdto,
+        send_test_notification_request_dto: SendTestNotificationRequestDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4470,8 +4470,8 @@ class NotificationsApi:
 
         Send a Test Notification
 
-        :param sendtestnotificationrequestdto: (required)
-        :type sendtestnotificationrequestdto: Sendtestnotificationrequestdto
+        :param send_test_notification_request_dto: (required)
+        :type send_test_notification_request_dto: SendTestNotificationRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4495,7 +4495,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._send_test_notification_v1_serialize(
-            sendtestnotificationrequestdto=sendtestnotificationrequestdto,
+            send_test_notification_request_dto=send_test_notification_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4504,12 +4504,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4525,7 +4525,7 @@ class NotificationsApi:
     @validate_call
     def send_test_notification_v1_with_http_info(
         self,
-        sendtestnotificationrequestdto: Sendtestnotificationrequestdto,
+        send_test_notification_request_dto: SendTestNotificationRequestDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4543,8 +4543,8 @@ class NotificationsApi:
 
         Send a Test Notification
 
-        :param sendtestnotificationrequestdto: (required)
-        :type sendtestnotificationrequestdto: Sendtestnotificationrequestdto
+        :param send_test_notification_request_dto: (required)
+        :type send_test_notification_request_dto: SendTestNotificationRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4568,7 +4568,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._send_test_notification_v1_serialize(
-            sendtestnotificationrequestdto=sendtestnotificationrequestdto,
+            send_test_notification_request_dto=send_test_notification_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4577,12 +4577,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4598,7 +4598,7 @@ class NotificationsApi:
     @validate_call
     def send_test_notification_v1_without_preload_content(
         self,
-        sendtestnotificationrequestdto: Sendtestnotificationrequestdto,
+        send_test_notification_request_dto: SendTestNotificationRequestDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4616,8 +4616,8 @@ class NotificationsApi:
 
         Send a Test Notification
 
-        :param sendtestnotificationrequestdto: (required)
-        :type sendtestnotificationrequestdto: Sendtestnotificationrequestdto
+        :param send_test_notification_request_dto: (required)
+        :type send_test_notification_request_dto: SendTestNotificationRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4641,7 +4641,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._send_test_notification_v1_serialize(
-            sendtestnotificationrequestdto=sendtestnotificationrequestdto,
+            send_test_notification_request_dto=send_test_notification_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4650,12 +4650,12 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetNotificationTemplateVariablesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetNotificationTemplateVariablesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4666,7 +4666,7 @@ class NotificationsApi:
 
     def _send_test_notification_v1_serialize(
         self,
-        sendtestnotificationrequestdto,
+        send_test_notification_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -4692,8 +4692,8 @@ class NotificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sendtestnotificationrequestdto is not None:
-            _body_params = sendtestnotificationrequestdto
+        if send_test_notification_request_dto is not None:
+            _body_params = send_test_notification_request_dto
 
 
         # set the HTTP header `Accept`

@@ -45,20 +45,20 @@ Approve multiple entitlement recommendations in a single request. Each item in t
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkapproveentitlementrecommendationrequest | [**Bulkapproveentitlementrecommendationrequest**](../models/bulkapproveentitlementrecommendationrequest) | True  | The list of recommendation items to approve.
+ Body  | bulk_approve_entitlement_recommendation_request | [**BulkApproveEntitlementRecommendationRequest**](../models/bulk-approve-entitlement-recommendation-request) | True  | The list of recommendation items to approve.
 
 ### Return type
-[**List[Bulkapproveentitlementrecommendationresult]**](../models/bulkapproveentitlementrecommendationresult)
+[**List[BulkApproveEntitlementRecommendationResult]**](../models/bulk-approve-entitlement-recommendation-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Per-item approval results. | List[Bulkapproveentitlementrecommendationresult] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Per-item approval results. | List[BulkApproveEntitlementRecommendationResult] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -69,21 +69,31 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationrequest import Bulkapproveentitlementrecommendationrequest
-from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationresult import Bulkapproveentitlementrecommendationresult
+from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_request import BulkApproveEntitlementRecommendationRequest
+from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_result import BulkApproveEntitlementRecommendationResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkapproveentitlementrecommendationrequest = '''sailpoint.suggested_entitlement_description.Bulkapproveentitlementrecommendationrequest()''' # Bulkapproveentitlementrecommendationrequest | The list of recommendation items to approve.
+    bulk_approve_entitlement_recommendation_request = '''{
+          "items" : [ {
+            "id" : "79db50d4-723c-4aa0-a824-83c2205d82d1",
+            "recordType" : "SED",
+            "description" : "Provides access and permissions related to the Delinea Secret Server Cloud system."
+          }, {
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "recordType" : "privilege",
+            "privilegeLevel" : "high"
+          } ]
+        }''' # BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
 
     try:
         # Bulk approve entitlement recommendations
-        new_bulkapproveentitlementrecommendationrequest = Bulkapproveentitlementrecommendationrequest.from_json(bulkapproveentitlementrecommendationrequest)
-        results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(bulkapproveentitlementrecommendationrequest=new_bulkapproveentitlementrecommendationrequest)
+        new_bulk_approve_entitlement_recommendation_request = BulkApproveEntitlementRecommendationRequest.from_json(bulk_approve_entitlement_recommendation_request)
+        results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(bulk_approve_entitlement_recommendation_request=new_bulk_approve_entitlement_recommendation_request)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulkapproveentitlementrecommendationrequest)
+        # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulk_approve_entitlement_recommendation_request)
         print("The response of SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -105,21 +115,21 @@ Create the initial auto-write settings for a tenant. Returns 409 Conflict if set
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | autowritesetting | [**Autowritesetting**](../models/autowritesetting) | True  | Auto-write settings to create
+ Body  | auto_write_setting | [**AutoWriteSetting**](../models/auto-write-setting) | True  | Auto-write settings to create
 
 ### Return type
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Auto-write settings created successfully | Autowritesettingresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Auto-write settings created successfully | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 409 | Conflict - Indicates that the request could not be processed because of conflict in the current state of the resource. | CreateAutoWriteSettingsV1409Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -130,21 +140,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.autowritesetting import Autowritesetting
-from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+from sailpoint.suggested_entitlement_description.models.auto_write_setting import AutoWriteSetting
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    autowritesetting = '''sailpoint.suggested_entitlement_description.Autowritesetting()''' # Autowritesetting | Auto-write settings to create
+    auto_write_setting = '''{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }''' # AutoWriteSetting | Auto-write settings to create
 
     try:
         # Create auto-write settings for SED
-        new_autowritesetting = Autowritesetting.from_json(autowritesetting)
-        results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(autowritesetting=new_autowritesetting)
+        new_auto_write_setting = AutoWriteSetting.from_json(auto_write_setting)
+        results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(auto_write_setting=new_auto_write_setting)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(new_autowritesetting)
+        # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(new_auto_write_setting)
         print("The response of SuggestedEntitlementDescriptionApi->create_auto_write_settings_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -165,18 +179,18 @@ Get the current auto-write configuration for the tenant, including the enabled s
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Current auto-write settings | Autowritesettingresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Current auto-write settings | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -187,7 +201,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -227,18 +241,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | batch_id | **str** | True  | Batch Id
 
 ### Return type
-[**Sedbatchstats**](../models/sedbatchstats)
+[**SedBatchStats**](../models/sed-batch-stats)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Stats of Sed batch. | Sedbatchstats |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Stats of Sed batch. | SedBatchStats |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -249,7 +263,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.sedbatchstats import Sedbatchstats
+from sailpoint.suggested_entitlement_description.models.sed_batch_stats import SedBatchStats
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -291,18 +305,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | status | **str** |   (optional) | Batch Status
 
 ### Return type
-[**List[Sedbatchrecord]**](../models/sedbatchrecord)
+[**List[SedBatchRecord]**](../models/sed-batch-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Sed Batch Records | List[Sedbatchrecord] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Sed Batch Records | List[SedBatchRecord] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -313,7 +327,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.sedbatchrecord import Sedbatchrecord
+from sailpoint.suggested_entitlement_description.models.sed_batch_record import SedBatchRecord
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -356,17 +370,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Entitlementrecommendationrecord]**](../models/entitlementrecommendationrecord)
+[**List[EntitlementRecommendationRecord]**](../models/entitlement-recommendation-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of pending entitlement recommendation records. | List[Entitlementrecommendationrecord] |  * X-Total-Count - The total number of recommendation groups available.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of pending entitlement recommendation records. | List[EntitlementRecommendationRecord] |  * X-Total-Count - The total number of recommendation groups available.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -377,7 +391,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationrecord import Entitlementrecommendationrecord
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_record import EntitlementRecommendationRecord
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -417,17 +431,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Privilegedrecommendationgroup]**](../models/privilegedrecommendationgroup)
+[**List[PrivilegedRecommendationGroup]**](../models/privileged-recommendation-group)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of privileged recommendation groups. | List[Privilegedrecommendationgroup] |  * X-Total-Count - The total number of recommendation groups available.  * X-Total-Entitlements - The total number of individual entitlement instances across all groups.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of privileged recommendation groups. | List[PrivilegedRecommendationGroup] |  * X-Total-Count - The total number of recommendation groups available.  * X-Total-Entitlements - The total number of individual entitlement instances across all groups.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -438,7 +452,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.privilegedrecommendationgroup import Privilegedrecommendationgroup
+from sailpoint.suggested_entitlement_description.models.privileged_recommendation_group import PrivilegedRecommendationGroup
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -504,12 +518,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Suggested Entitlement Details | List[Sed] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -563,21 +577,21 @@ Partially update a single entitlement recommendation record by its ID. Use this 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The unique identifier of the entitlement recommendation to update.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The patch operations to apply to the entitlement recommendation record.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The patch operations to apply to the entitlement recommendation record.
 
 ### Return type
-[**Entitlementrecommendationrecord**](../models/entitlementrecommendationrecord)
+[**EntitlementRecommendationRecord**](../models/entitlement-recommendation-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated entitlement recommendation record. | Entitlementrecommendationrecord |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated entitlement recommendation record. | EntitlementRecommendationRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -588,22 +602,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationrecord import Entitlementrecommendationrecord
-from sailpoint.suggested_entitlement_description.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_record import EntitlementRecommendationRecord
+from sailpoint.suggested_entitlement_description.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '79db50d4-723c-4aa0-a824-83c2205d82d1' # str | The unique identifier of the entitlement recommendation to update. # str | The unique identifier of the entitlement recommendation to update.
-    jsonpatchoperation = '''[sailpoint.suggested_entitlement_description.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The patch operations to apply to the entitlement recommendation record.
+    json_patch_operation = '''[sailpoint.suggested_entitlement_description.JsonPatchOperation()]''' # List[JsonPatchOperation] | The patch operations to apply to the entitlement recommendation record.
 
     try:
         # Update an entitlement recommendation
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_jsonpatchoperation)
+        # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_json_patch_operation)
         print("The response of SuggestedEntitlementDescriptionApi->patch_entitlement_recommendation_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -625,7 +639,7 @@ Patch Suggested Entitlement Description
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | id is sed id
- Body  | sedpatch | [**[]Sedpatch**](../models/sedpatch) | True  | Sed Patch Request
+ Body  | sed_patch | [**[]SedPatch**](../models/sed-patch) | True  | Sed Patch Request
 
 ### Return type
 [**Sed**](../models/sed)
@@ -634,12 +648,12 @@ Path   | id | **str** | True  | id is sed id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | detail of patched sed | Sed |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -651,21 +665,21 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
 from sailpoint.suggested_entitlement_description.models.sed import Sed
-from sailpoint.suggested_entitlement_description.models.sedpatch import Sedpatch
+from sailpoint.suggested_entitlement_description.models.sed_patch import SedPatch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ebab396f-0af1-4050-89b7-dafc63ec70e7' # str | id is sed id # str | id is sed id
-    sedpatch = '''[sailpoint.suggested_entitlement_description.Sedpatch()]''' # List[Sedpatch] | Sed Patch Request
+    sed_patch = '''[sailpoint.suggested_entitlement_description.SedPatch()]''' # List[SedPatch] | Sed Patch Request
 
     try:
         # Patch suggested entitlement description
-        new_sedpatch = Sedpatch.from_json(sedpatch)
-        results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id=id, sedpatch=new_sedpatch)
+        new_sed_patch = SedPatch.from_json(sed_patch)
+        results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id=id, sed_patch=new_sed_patch)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id, new_sedpatch)
+        # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id, new_sed_patch)
         print("The response of SuggestedEntitlementDescriptionApi->patch_sed_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -686,20 +700,20 @@ Assign a set of entitlement recommendation records to a reviewer. The assignee c
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlementrecommendationassignrequest | [**Entitlementrecommendationassignrequest**](../models/entitlementrecommendationassignrequest) | True  | The recommendation IDs and the target assignee.
+ Body  | entitlement_recommendation_assign_request | [**EntitlementRecommendationAssignRequest**](../models/entitlement-recommendation-assign-request) | True  | The recommendation IDs and the target assignee.
 
 ### Return type
-[**Entitlementrecommendationassignresult**](../models/entitlementrecommendationassignresult)
+[**EntitlementRecommendationAssignResult**](../models/entitlement-recommendation-assign-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Assignment queued successfully. Returns the batch ID for tracking. | Entitlementrecommendationassignresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Assignment queued successfully. Returns the batch ID for tracking. | EntitlementRecommendationAssignResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -710,21 +724,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignrequest import Entitlementrecommendationassignrequest
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignresult import Entitlementrecommendationassignresult
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_request import EntitlementRecommendationAssignRequest
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_result import EntitlementRecommendationAssignResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    entitlementrecommendationassignrequest = '''sailpoint.suggested_entitlement_description.Entitlementrecommendationassignrequest()''' # Entitlementrecommendationassignrequest | The recommendation IDs and the target assignee.
+    entitlement_recommendation_assign_request = '''{
+          "assignee" : {
+            "type" : "IDENTITY",
+            "value" : "2c91808a7f3b2e8a017f3c3e5f6d0099"
+          },
+          "items" : [ "79db50d4-723c-4aa0-a824-83c2205d82d1", "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
+        }''' # EntitlementRecommendationAssignRequest | The recommendation IDs and the target assignee.
 
     try:
         # Assign entitlement recommendations for review
-        new_entitlementrecommendationassignrequest = Entitlementrecommendationassignrequest.from_json(entitlementrecommendationassignrequest)
-        results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(entitlementrecommendationassignrequest=new_entitlementrecommendationassignrequest)
+        new_entitlement_recommendation_assign_request = EntitlementRecommendationAssignRequest.from_json(entitlement_recommendation_assign_request)
+        results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(entitlement_recommendation_assign_request=new_entitlement_recommendation_assign_request)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlementrecommendationassignrequest)
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlement_recommendation_assign_request)
         print("The response of SuggestedEntitlementDescriptionApi->submit_entitlement_recommendations_assignment_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -746,21 +766,21 @@ Request body takes list of SED Ids. API responses with list of SED Approval Stat
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sedapproval | [**[]Sedapproval**](../models/sedapproval) | True  | Sed Approval
+ Body  | sed_approval | [**[]SedApproval**](../models/sed-approval) | True  | Sed Approval
 
 ### Return type
-[**List[Sedapprovalstatus]**](../models/sedapprovalstatus)
+[**List[SedApprovalStatus]**](../models/sed-approval-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of SED Approval Status | List[Sedapprovalstatus] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of SED Approval Status | List[SedApprovalStatus] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -771,21 +791,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.sedapproval import Sedapproval
-from sailpoint.suggested_entitlement_description.models.sedapprovalstatus import Sedapprovalstatus
+from sailpoint.suggested_entitlement_description.models.sed_approval import SedApproval
+from sailpoint.suggested_entitlement_description.models.sed_approval_status import SedApprovalStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sedapproval = '''[sailpoint.suggested_entitlement_description.Sedapproval()]''' # List[Sedapproval] | Sed Approval
+    sed_approval = '''[sailpoint.suggested_entitlement_description.SedApproval()]''' # List[SedApproval] | Sed Approval
 
     try:
         # Submit bulk approval request
-        new_sedapproval = Sedapproval.from_json(sedapproval)
-        results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(sedapproval=new_sedapproval)
+        new_sed_approval = SedApproval.from_json(sed_approval)
+        results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(sed_approval=new_sed_approval)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(new_sedapproval)
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(new_sed_approval)
         print("The response of SuggestedEntitlementDescriptionApi->submit_sed_approval_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -808,21 +828,21 @@ Request body has an assignee, and list of SED Ids that are assigned to that assi
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sedassignment | [**Sedassignment**](../models/sedassignment) | True  | Sed Assignment Request
+ Body  | sed_assignment | [**SedAssignment**](../models/sed-assignment) | True  | Sed Assignment Request
 
 ### Return type
-[**Sedassignmentresponse**](../models/sedassignmentresponse)
+[**SedAssignmentResponse**](../models/sed-assignment-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Sed Assignment Response | Sedassignmentresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Sed Assignment Response | SedAssignmentResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -833,21 +853,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.sedassignment import Sedassignment
-from sailpoint.suggested_entitlement_description.models.sedassignmentresponse import Sedassignmentresponse
+from sailpoint.suggested_entitlement_description.models.sed_assignment import SedAssignment
+from sailpoint.suggested_entitlement_description.models.sed_assignment_response import SedAssignmentResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sedassignment = '''sailpoint.suggested_entitlement_description.Sedassignment()''' # Sedassignment | Sed Assignment Request
+    sed_assignment = '''{
+          "assignee" : {
+            "type" : "SOURCE_OWNER",
+            "value" : "016629d1-1d25-463f-97f3-c6686846650"
+          },
+          "items" : [ "016629d1-1d25-463f-97f3-0c6686846650", "016629d1-1d25-463f-97f3-0c6686846650" ]
+        }''' # SedAssignment | Sed Assignment Request
 
     try:
         # Submit sed assignment request
-        new_sedassignment = Sedassignment.from_json(sedassignment)
-        results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(sedassignment=new_sedassignment)
+        new_sed_assignment = SedAssignment.from_json(sed_assignment)
+        results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(sed_assignment=new_sed_assignment)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(new_sedassignment)
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(new_sed_assignment)
         print("The response of SuggestedEntitlementDescriptionApi->submit_sed_assignment_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -869,21 +895,21 @@ Request body has one of the following: - a list of entitlement Ids - a list of S
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sedbatchrequest | [**Sedbatchrequest**](../models/sedbatchrequest) |   (optional) | Sed Batch Request
+ Body  | sed_batch_request | [**SedBatchRequest**](../models/sed-batch-request) |   (optional) | Sed Batch Request
 
 ### Return type
-[**Sedbatchresponse**](../models/sedbatchresponse)
+[**SedBatchResponse**](../models/sed-batch-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Sed Batch Response | Sedbatchresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Sed Batch Response | SedBatchResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -894,21 +920,47 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.sedbatchrequest import Sedbatchrequest
-from sailpoint.suggested_entitlement_description.models.sedbatchresponse import Sedbatchresponse
+from sailpoint.suggested_entitlement_description.models.sed_batch_request import SedBatchRequest
+from sailpoint.suggested_entitlement_description.models.sed_batch_response import SedBatchResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sedbatchrequest = '''sailpoint.suggested_entitlement_description.Sedbatchrequest()''' # Sedbatchrequest | Sed Batch Request (optional)
+    sed_batch_request = '''{
+          "entitlements" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "seds" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "searchCriteria" : {
+            "key" : {
+              "indices" : [ "entitlements" ],
+              "query" : {
+                "query" : "status:active"
+              },
+              "textQuery" : {
+                "terms" : [ "admin", "user" ],
+                "matchAny" : true,
+                "fields" : [ "role", "name" ]
+              },
+              "searchAfter" : [ "12345", "67890" ],
+              "filters" : {
+                "status" : {
+                  "type" : "TERMS",
+                  "terms" : [ "active", "inactive" ]
+                }
+              },
+              "sort" : [ "name:asc", "createdAt:desc" ],
+              "queryType" : "TEXT",
+              "includeNested" : true
+            }
+          }
+        }''' # SedBatchRequest | Sed Batch Request (optional)
 
     try:
         # Submit sed batch request
         
         results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1()
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1(new_sedbatchrequest)
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1(new_sed_batch_request)
         print("The response of SuggestedEntitlementDescriptionApi->submit_sed_batch_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -929,21 +981,21 @@ Partially update the auto-write settings for a tenant using JSON Patch operation
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | autowritesettingpatch | [**[]Autowritesettingpatch**](../models/autowritesettingpatch) | True  | Patch operations for auto-write settings
+ Body  | auto_write_setting_patch | [**[]AutoWriteSettingPatch**](../models/auto-write-setting-patch) | True  | Patch operations for auto-write settings
 
 ### Return type
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated auto-write settings | Autowritesettingresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated auto-write settings | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAutoWriteSettingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAutoWriteSettingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -954,21 +1006,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.suggested_entitlement_description.api_client import ApiClient
-from sailpoint.suggested_entitlement_description.models.autowritesettingpatch import Autowritesettingpatch
-from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_patch import AutoWriteSettingPatch
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    autowritesettingpatch = '''[sailpoint.suggested_entitlement_description.Autowritesettingpatch()]''' # List[Autowritesettingpatch] | Patch operations for auto-write settings
+    auto_write_setting_patch = '''[sailpoint.suggested_entitlement_description.AutoWriteSettingPatch()]''' # List[AutoWriteSettingPatch] | Patch operations for auto-write settings
 
     try:
         # Update auto-write settings for SED
-        new_autowritesettingpatch = Autowritesettingpatch.from_json(autowritesettingpatch)
-        results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(autowritesettingpatch=new_autowritesettingpatch)
+        new_auto_write_setting_patch = AutoWriteSettingPatch.from_json(auto_write_setting_patch)
+        results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(auto_write_setting_patch=new_auto_write_setting_patch)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(new_autowritesettingpatch)
+        # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(new_auto_write_setting_patch)
         print("The response of SuggestedEntitlementDescriptionApi->update_auto_write_settings_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

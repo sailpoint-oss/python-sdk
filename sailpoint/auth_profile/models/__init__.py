@@ -15,12 +15,12 @@
 
 # import models into model package
 from sailpoint.auth_profile.models.array_inner import ArrayInner
-from sailpoint.auth_profile.models.authprofile import Authprofile
-from sailpoint.auth_profile.models.authprofilesummary import Authprofilesummary
-from sailpoint.auth_profile.models.errormessagedto import Errormessagedto
-from sailpoint.auth_profile.models.errorresponsedto import Errorresponsedto
+from sailpoint.auth_profile.models.auth_profile import AuthProfile
+from sailpoint.auth_profile.models.auth_profile_summary import AuthProfileSummary
+from sailpoint.auth_profile.models.error_message_dto import ErrorMessageDto
+from sailpoint.auth_profile.models.error_response_dto import ErrorResponseDto
 from sailpoint.auth_profile.models.get_profile_config_list_v1401_response import GetProfileConfigListV1401Response
 from sailpoint.auth_profile.models.get_profile_config_list_v1429_response import GetProfileConfigListV1429Response
-from sailpoint.auth_profile.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.auth_profile.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.auth_profile.models.localeorigin import Localeorigin
+from sailpoint.auth_profile.models.json_patch_operation import JsonPatchOperation
+from sailpoint.auth_profile.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.auth_profile.models.locale_origin import LocaleOrigin

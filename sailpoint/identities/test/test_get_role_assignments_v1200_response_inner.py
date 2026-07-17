@@ -45,7 +45,7 @@ class TestGetRoleAssignmentsV1200ResponseInner(unittest.TestCase):
                 remove_date = '2026-07-11T18:45:37.098Z',
                 comments = 'I'm a new Engineer and need this role to do my work',
                 assignment_source = 'UI',
-                assigner = sailpoint.identities.models.roleassignmentdto_assigner.roleassignmentdto_assigner(
+                assigner = sailpoint.identities.models.role_assignment_dto_assigner.RoleAssignmentDto_assigner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),

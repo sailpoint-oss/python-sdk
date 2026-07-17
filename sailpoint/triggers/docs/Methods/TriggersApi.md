@@ -68,7 +68,7 @@ Completes an invocation to a REQUEST_RESPONSE type trigger.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the invocation to complete.
- Body  | completeinvocation | [**Completeinvocation**](../models/completeinvocation) | True  | 
+ Body  | complete_invocation | [**CompleteInvocation**](../models/complete-invocation) | True  | 
 
 ### Return type
  (empty response body)
@@ -77,11 +77,11 @@ Path   | id | **str** | True  | The ID of the invocation to complete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -92,21 +92,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
-from sailpoint.triggers.models.completeinvocation import Completeinvocation
+from sailpoint.triggers.models.complete_invocation import CompleteInvocation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the invocation to complete. # str | The ID of the invocation to complete.
-    completeinvocation = '''{"secret":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","output":{"approved":false}}''' # Completeinvocation | 
+    complete_invocation = '''{
+          "output" : {
+            "approved" : false
+          },
+          "secret" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "error" : "Access request is denied."
+        }''' # CompleteInvocation | 
 
     try:
         # Complete trigger invocation
-        new_completeinvocation = Completeinvocation.from_json(completeinvocation)
-        TriggersApi(api_client).complete_trigger_invocation_v1(id=id, completeinvocation=new_completeinvocation)
+        new_complete_invocation = CompleteInvocation.from_json(complete_invocation)
+        TriggersApi(api_client).complete_trigger_invocation_v1(id=id, complete_invocation=new_complete_invocation)
         # Below is a request that includes all optional parameters
-        # TriggersApi(api_client).complete_trigger_invocation_v1(id, new_completeinvocation)
+        # TriggersApi(api_client).complete_trigger_invocation_v1(id, new_complete_invocation)
     except Exception as e:
         print("Exception when calling TriggersApi->complete_trigger_invocation_v1: %s\n" % e)
 ```
@@ -127,7 +133,7 @@ This API creates a new subscription to a trigger and defines trigger invocation 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | subscriptionpostrequest | [**Subscriptionpostrequest**](../models/subscriptionpostrequest) | True  | 
+ Body  | subscription_post_request | [**SubscriptionPostRequest**](../models/subscription-post-request) | True  | 
 
 ### Return type
 [**Subscription**](../models/subscription)
@@ -136,11 +142,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | New subscription to a trigger. The trigger can now be invoked by the method defined in the subscription. | Subscription |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -152,20 +158,44 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
 from sailpoint.triggers.models.subscription import Subscription
-from sailpoint.triggers.models.subscriptionpostrequest import Subscriptionpostrequest
+from sailpoint.triggers.models.subscription_post_request import SubscriptionPostRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    subscriptionpostrequest = '''{"name":"Access request subscription","description":"Access requested to site xyz","triggerId":"idn:access-requested","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}''' # Subscriptionpostrequest | 
+    subscription_post_request = '''{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "httpConfig" : {
+            "bearerTokenAuthConfig" : {
+              "bearerToken" : "bearerToken"
+            },
+            "httpAuthenticationType" : "BASIC_AUTH",
+            "httpDispatchMode" : "SYNC",
+            "basicAuthConfig" : {
+              "password" : "password",
+              "userName" : "user@example.com"
+            },
+            "url" : "https://www.example.com"
+          },
+          "triggerId" : "idn:access-requested",
+          "name" : "Access request subscription",
+          "description" : "Access requested to site xyz",
+          "eventBridgeConfig" : {
+            "awsRegion" : "us-west-1",
+            "awsAccount" : "123456789012"
+          },
+          "responseDeadline" : "PT1H",
+          "type" : "HTTP",
+          "enabled" : true
+        }''' # SubscriptionPostRequest | 
 
     try:
         # Create a subscription
-        new_subscriptionpostrequest = Subscriptionpostrequest.from_json(subscriptionpostrequest)
-        results = TriggersApi(api_client).create_subscription_v1(subscriptionpostrequest=new_subscriptionpostrequest)
+        new_subscription_post_request = SubscriptionPostRequest.from_json(subscription_post_request)
+        results = TriggersApi(api_client).create_subscription_v1(subscription_post_request=new_subscription_post_request)
         # Below is a request that includes all optional parameters
-        # results = TriggersApi(api_client).create_subscription_v1(new_subscriptionpostrequest)
+        # results = TriggersApi(api_client).create_subscription_v1(new_subscription_post_request)
         print("The response of TriggersApi->create_subscription_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -195,12 +225,12 @@ Path   | id | **str** | True  | Subscription ID
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -255,11 +285,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of subscriptions. | List[Subscription] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -318,17 +348,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed**
 
 ### Return type
-[**List[Invocationstatus]**](../models/invocationstatus)
+[**List[InvocationStatus]**](../models/invocation-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of latest invocation statuses. | List[Invocationstatus] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of latest invocation statuses. | List[InvocationStatus] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -339,7 +369,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
-from sailpoint.triggers.models.invocationstatus import Invocationstatus
+from sailpoint.triggers.models.invocation_status import InvocationStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -391,11 +421,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of triggers. | List[Trigger] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -448,7 +478,7 @@ This API updates a trigger subscription in IdentityNow, using a set of instructi
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Subscription to patch
- Body  | subscriptionpatchrequest_inner | [**[]SubscriptionpatchrequestInner**](../models/subscriptionpatchrequest-inner) | True  | 
+ Body  | subscription_patch_request_inner | [**[]SubscriptionPatchRequestInner**](../models/subscription-patch-request-inner) | True  | 
 
 ### Return type
 [**Subscription**](../models/subscription)
@@ -457,12 +487,12 @@ Path   | id | **str** | True  | ID of the Subscription to patch
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Updated subscription. | Subscription |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -474,21 +504,21 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
 from sailpoint.triggers.models.subscription import Subscription
-from sailpoint.triggers.models.subscriptionpatchrequest_inner import SubscriptionpatchrequestInner
+from sailpoint.triggers.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | ID of the Subscription to patch # str | ID of the Subscription to patch
-    subscriptionpatchrequest_inner = '''[sailpoint.triggers.SubscriptionpatchrequestInner()]''' # List[SubscriptionpatchrequestInner] | 
+    subscription_patch_request_inner = '''[sailpoint.triggers.SubscriptionPatchRequestInner()]''' # List[SubscriptionPatchRequestInner] | 
 
     try:
         # Patch a subscription
-        new_subscriptionpatchrequest_inner = SubscriptionpatchrequestInner.from_json(subscriptionpatchrequest_inner)
-        results = TriggersApi(api_client).patch_subscription_v1(id=id, subscriptionpatchrequest_inner=new_subscriptionpatchrequest_inner)
+        new_subscription_patch_request_inner = SubscriptionPatchRequestInner.from_json(subscription_patch_request_inner)
+        results = TriggersApi(api_client).patch_subscription_v1(id=id, subscription_patch_request_inner=new_subscription_patch_request_inner)
         # Below is a request that includes all optional parameters
-        # results = TriggersApi(api_client).patch_subscription_v1(id, new_subscriptionpatchrequest_inner)
+        # results = TriggersApi(api_client).patch_subscription_v1(id, new_subscription_patch_request_inner)
         print("The response of TriggersApi->patch_subscription_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -509,7 +539,7 @@ Initiate a test event for all subscribers of the specified event trigger.  If th
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | testinvocation | [**Testinvocation**](../models/testinvocation) | True  | 
+ Body  | test_invocation | [**TestInvocation**](../models/test-invocation) | True  | 
 
 ### Return type
 [**List[Invocation]**](../models/invocation)
@@ -519,11 +549,11 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Test trigger invocations that have been started for specified subscription(s). | List[Invocation] |  -  |
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -535,20 +565,29 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
 from sailpoint.triggers.models.invocation import Invocation
-from sailpoint.triggers.models.testinvocation import Testinvocation
+from sailpoint.triggers.models.test_invocation import TestInvocation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    testinvocation = '''{"triggerId":"idn:access-requested","input":{"identityId":"201327fda1c44704ac01181e963d463c"},"contentJson":{"workflowId":1234}}''' # Testinvocation | 
+    test_invocation = '''{
+          "input" : {
+            "identityId" : "201327fda1c44704ac01181e963d463c"
+          },
+          "subscriptionIds" : [ "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde" ],
+          "triggerId" : "idn:access-request-post-approval",
+          "contentJson" : {
+            "workflowId" : 1234
+          }
+        }''' # TestInvocation | 
 
     try:
         # Start a test invocation
-        new_testinvocation = Testinvocation.from_json(testinvocation)
-        results = TriggersApi(api_client).start_test_trigger_invocation_v1(testinvocation=new_testinvocation)
+        new_test_invocation = TestInvocation.from_json(test_invocation)
+        results = TriggersApi(api_client).start_test_trigger_invocation_v1(test_invocation=new_test_invocation)
         # Below is a request that includes all optional parameters
-        # results = TriggersApi(api_client).start_test_trigger_invocation_v1(new_testinvocation)
+        # results = TriggersApi(api_client).start_test_trigger_invocation_v1(new_test_invocation)
         print("The response of TriggersApi->start_test_trigger_invocation_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -571,20 +610,20 @@ Request requires a security scope of:
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | validatefilterinputdto | [**Validatefilterinputdto**](../models/validatefilterinputdto) | True  | 
+ Body  | validate_filter_input_dto | [**ValidateFilterInputDto**](../models/validate-filter-input-dto) | True  | 
 
 ### Return type
-[**Validatefilteroutputdto**](../models/validatefilteroutputdto)
+[**ValidateFilterOutputDto**](../models/validate-filter-output-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Boolean whether specified filter expression is valid against the input. | Validatefilteroutputdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Boolean whether specified filter expression is valid against the input. | ValidateFilterOutputDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -595,21 +634,26 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
-from sailpoint.triggers.models.validatefilterinputdto import Validatefilterinputdto
-from sailpoint.triggers.models.validatefilteroutputdto import Validatefilteroutputdto
+from sailpoint.triggers.models.validate_filter_input_dto import ValidateFilterInputDto
+from sailpoint.triggers.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    validatefilterinputdto = '''{"input":{"identityId":"201327fda1c44704ac01181e963d463c"},"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}''' # Validatefilterinputdto | 
+    validate_filter_input_dto = '''{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "input" : {
+            "identityId" : "201327fda1c44704ac01181e963d463c"
+          }
+        }''' # ValidateFilterInputDto | 
 
     try:
         # Validate a subscription filter
-        new_validatefilterinputdto = Validatefilterinputdto.from_json(validatefilterinputdto)
-        results = TriggersApi(api_client).test_subscription_filter_v1(validatefilterinputdto=new_validatefilterinputdto)
+        new_validate_filter_input_dto = ValidateFilterInputDto.from_json(validate_filter_input_dto)
+        results = TriggersApi(api_client).test_subscription_filter_v1(validate_filter_input_dto=new_validate_filter_input_dto)
         # Below is a request that includes all optional parameters
-        # results = TriggersApi(api_client).test_subscription_filter_v1(new_validatefilterinputdto)
+        # results = TriggersApi(api_client).test_subscription_filter_v1(new_validate_filter_input_dto)
         print("The response of TriggersApi->test_subscription_filter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -640,7 +684,7 @@ This API updates a trigger subscription in IdentityNow, using a full object repr
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Subscription ID
- Body  | subscriptionputrequest | [**Subscriptionputrequest**](../models/subscriptionputrequest) | True  | 
+ Body  | subscription_put_request | [**SubscriptionPutRequest**](../models/subscription-put-request) | True  | 
 
 ### Return type
 [**Subscription**](../models/subscription)
@@ -649,12 +693,12 @@ Path   | id | **str** | True  | Subscription ID
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Updated subscription. | Subscription |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTriggersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTriggersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -666,21 +710,44 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.triggers.api.triggers_api import TriggersApi
 from sailpoint.triggers.api_client import ApiClient
 from sailpoint.triggers.models.subscription import Subscription
-from sailpoint.triggers.models.subscriptionputrequest import Subscriptionputrequest
+from sailpoint.triggers.models.subscription_put_request import SubscriptionPutRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | Subscription ID # str | Subscription ID
-    subscriptionputrequest = '''{"name":"Access request subscription","description":"Access requested to site xyz","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}''' # Subscriptionputrequest | 
+    subscription_put_request = '''{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "httpConfig" : {
+            "bearerTokenAuthConfig" : {
+              "bearerToken" : "bearerToken"
+            },
+            "httpAuthenticationType" : "BASIC_AUTH",
+            "httpDispatchMode" : "SYNC",
+            "basicAuthConfig" : {
+              "password" : "password",
+              "userName" : "user@example.com"
+            },
+            "url" : "https://www.example.com"
+          },
+          "name" : "Access request subscription",
+          "description" : "Access requested to site xyz",
+          "eventBridgeConfig" : {
+            "awsRegion" : "us-west-1",
+            "awsAccount" : "123456789012"
+          },
+          "responseDeadline" : "PT1H",
+          "type" : "HTTP",
+          "enabled" : true
+        }''' # SubscriptionPutRequest | 
 
     try:
         # Update a subscription
-        new_subscriptionputrequest = Subscriptionputrequest.from_json(subscriptionputrequest)
-        results = TriggersApi(api_client).update_subscription_v1(id=id, subscriptionputrequest=new_subscriptionputrequest)
+        new_subscription_put_request = SubscriptionPutRequest.from_json(subscription_put_request)
+        results = TriggersApi(api_client).update_subscription_v1(id=id, subscription_put_request=new_subscription_put_request)
         # Below is a request that includes all optional parameters
-        # results = TriggersApi(api_client).update_subscription_v1(id, new_subscriptionputrequest)
+        # results = TriggersApi(api_client).update_subscription_v1(id, new_subscription_put_request)
         print("The response of TriggersApi->update_subscription_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

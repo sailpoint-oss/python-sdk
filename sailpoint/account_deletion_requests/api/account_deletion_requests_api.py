@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.account_deletion_requests.models.accountactionrequestdto import Accountactionrequestdto
-from sailpoint.account_deletion_requests.models.accountdeleterequestinput import Accountdeleterequestinput
-from sailpoint.account_deletion_requests.models.accountrequestasyncresult import Accountrequestasyncresult
+from sailpoint.account_deletion_requests.models.account_action_request_dto import AccountActionRequestDto
+from sailpoint.account_deletion_requests.models.account_delete_request_input import AccountDeleteRequestInput
+from sailpoint.account_deletion_requests.models.account_request_async_result import AccountRequestAsyncResult
 
 from sailpoint.account_deletion_requests.api_client import ApiClient, RequestSerialized
 from sailpoint.account_deletion_requests.api_response import ApiResponse
@@ -45,7 +45,7 @@ class AccountDeletionRequestsApi:
     def delete_account_request_v1(
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountdeleterequestinput: Optional[Accountdeleterequestinput] = None,
+        account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,15 +58,15 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountrequestasyncresult:
+    ) -> AccountRequestAsyncResult:
         """Delete account
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
 
         :param account_id: Account ID. (required)
         :type account_id: str
-        :param accountdeleterequestinput:
-        :type accountdeleterequestinput: Accountdeleterequestinput
+        :param account_delete_request_input:
+        :type account_delete_request_input: AccountDeleteRequestInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +91,7 @@ class AccountDeletionRequestsApi:
 
         _param = self._delete_account_request_v1_serialize(
             account_id=account_id,
-            accountdeleterequestinput=accountdeleterequestinput,
+            account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -99,13 +99,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -122,7 +122,7 @@ class AccountDeletionRequestsApi:
     def delete_account_request_v1_with_http_info(
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountdeleterequestinput: Optional[Accountdeleterequestinput] = None,
+        account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,15 +135,15 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountrequestasyncresult]:
+    ) -> ApiResponse[AccountRequestAsyncResult]:
         """Delete account
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
 
         :param account_id: Account ID. (required)
         :type account_id: str
-        :param accountdeleterequestinput:
-        :type accountdeleterequestinput: Accountdeleterequestinput
+        :param account_delete_request_input:
+        :type account_delete_request_input: AccountDeleteRequestInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -168,7 +168,7 @@ class AccountDeletionRequestsApi:
 
         _param = self._delete_account_request_v1_serialize(
             account_id=account_id,
-            accountdeleterequestinput=accountdeleterequestinput,
+            account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -176,13 +176,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +199,7 @@ class AccountDeletionRequestsApi:
     def delete_account_request_v1_without_preload_content(
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountdeleterequestinput: Optional[Accountdeleterequestinput] = None,
+        account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,8 +219,8 @@ class AccountDeletionRequestsApi:
 
         :param account_id: Account ID. (required)
         :type account_id: str
-        :param accountdeleterequestinput:
-        :type accountdeleterequestinput: Accountdeleterequestinput
+        :param account_delete_request_input:
+        :type account_delete_request_input: AccountDeleteRequestInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -245,7 +245,7 @@ class AccountDeletionRequestsApi:
 
         _param = self._delete_account_request_v1_serialize(
             account_id=account_id,
-            accountdeleterequestinput=accountdeleterequestinput,
+            account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -253,13 +253,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -271,7 +271,7 @@ class AccountDeletionRequestsApi:
     def _delete_account_request_v1_serialize(
         self,
         account_id,
-        accountdeleterequestinput,
+        account_delete_request_input,
         _request_auth,
         _content_type,
         _headers,
@@ -299,8 +299,8 @@ class AccountDeletionRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accountdeleterequestinput is not None:
-            _body_params = accountdeleterequestinput
+        if account_delete_request_input is not None:
+            _body_params = account_delete_request_input
 
 
         # set the HTTP header `Accept`
@@ -366,7 +366,7 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accountactionrequestdto]:
+    ) -> List[AccountActionRequestDto]:
         """List of Account Deletion Requests
 
         Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the \"mine\" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If \"mine\" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
@@ -413,13 +413,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactionrequestdto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActionRequestDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -451,7 +451,7 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accountactionrequestdto]]:
+    ) -> ApiResponse[List[AccountActionRequestDto]]:
         """List of Account Deletion Requests
 
         Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the \"mine\" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If \"mine\" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
@@ -498,13 +498,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactionrequestdto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActionRequestDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -583,13 +583,13 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountactionrequestdto]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountActionRequestDto]",
+            '400': "ErrorResponseDto",
             '401': "GetAccountDeletionRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccountDeletionRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

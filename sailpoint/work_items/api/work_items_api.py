@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.work_items.models.workitemforward import Workitemforward
-from sailpoint.work_items.models.workitems import Workitems
-from sailpoint.work_items.models.workitemscount import Workitemscount
-from sailpoint.work_items.models.workitemssummary import Workitemssummary
+from sailpoint.work_items.models.work_item_forward import WorkItemForward
+from sailpoint.work_items.models.work_items import WorkItems
+from sailpoint.work_items.models.work_items_count import WorkItemsCount
+from sailpoint.work_items.models.work_items_summary import WorkItemsSummary
 
 from sailpoint.work_items.api_client import ApiClient, RequestSerialized
 from sailpoint.work_items.api_response import ApiResponse
@@ -59,7 +59,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
@@ -100,13 +100,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -136,7 +136,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
@@ -177,13 +177,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -254,13 +254,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -351,7 +351,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
@@ -389,13 +389,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
@@ -462,13 +462,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -535,13 +535,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -630,7 +630,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
@@ -671,13 +671,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -707,7 +707,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
@@ -748,13 +748,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -825,13 +825,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -923,7 +923,7 @@ class WorkItemsApi:
     def forward_work_item_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        workitemforward: Workitemforward,
+        work_item_forward: WorkItemForward,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -943,8 +943,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param workitemforward: (required)
-        :type workitemforward: Workitemforward
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -969,7 +969,7 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_v1_serialize(
             id=id,
-            workitemforward=workitemforward,
+            work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -978,11 +978,11 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -999,7 +999,7 @@ class WorkItemsApi:
     def forward_work_item_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        workitemforward: Workitemforward,
+        work_item_forward: WorkItemForward,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1019,8 +1019,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param workitemforward: (required)
-        :type workitemforward: Workitemforward
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1045,7 +1045,7 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_v1_serialize(
             id=id,
-            workitemforward=workitemforward,
+            work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1054,11 +1054,11 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1075,7 +1075,7 @@ class WorkItemsApi:
     def forward_work_item_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        workitemforward: Workitemforward,
+        work_item_forward: WorkItemForward,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1095,8 +1095,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param workitemforward: (required)
-        :type workitemforward: Workitemforward
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1121,7 +1121,7 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_v1_serialize(
             id=id,
-            workitemforward=workitemforward,
+            work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1130,11 +1130,11 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1146,7 +1146,7 @@ class WorkItemsApi:
     def _forward_work_item_v1_serialize(
         self,
         id,
-        workitemforward,
+        work_item_forward,
         _request_auth,
         _content_type,
         _headers,
@@ -1174,8 +1174,8 @@ class WorkItemsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if workitemforward is not None:
-            _body_params = workitemforward
+        if work_item_forward is not None:
+            _body_params = work_item_forward
 
 
         # set the HTTP header `Accept`
@@ -1241,7 +1241,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workitems]:
+    ) -> List[WorkItems]:
         """Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
@@ -1288,12 +1288,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1325,7 +1325,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workitems]]:
+    ) -> ApiResponse[List[WorkItems]]:
         """Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
@@ -1372,12 +1372,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1456,12 +1456,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1566,7 +1566,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitemscount:
+    ) -> WorkItemsCount:
         """Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
@@ -1604,10 +1604,10 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "WorkItemsCount",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1636,7 +1636,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitemscount]:
+    ) -> ApiResponse[WorkItemsCount]:
         """Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
@@ -1674,10 +1674,10 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "WorkItemsCount",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1744,10 +1744,10 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
-            '400': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "WorkItemsCount",
+            '400': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1837,7 +1837,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitemscount:
+    ) -> WorkItemsCount:
         """Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
@@ -1875,12 +1875,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
+            '200': "WorkItemsCount",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1909,7 +1909,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitemscount]:
+    ) -> ApiResponse[WorkItemsCount]:
         """Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
@@ -1947,12 +1947,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
+            '200': "WorkItemsCount",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2019,12 +2019,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemscount",
+            '200': "WorkItemsCount",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2114,7 +2114,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
@@ -2152,12 +2152,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
+            '200': "WorkItems",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2186,7 +2186,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
@@ -2224,12 +2224,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
+            '200': "WorkItems",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2296,12 +2296,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
+            '200': "WorkItems",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2389,7 +2389,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitemssummary:
+    ) -> WorkItemsSummary:
         """Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
@@ -2427,12 +2427,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemssummary",
+            '200': "WorkItemsSummary",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2461,7 +2461,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitemssummary]:
+    ) -> ApiResponse[WorkItemsSummary]:
         """Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
@@ -2499,12 +2499,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemssummary",
+            '200': "WorkItemsSummary",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2571,12 +2571,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitemssummary",
+            '200': "WorkItemsSummary",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2669,7 +2669,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workitems]:
+    ) -> List[WorkItems]:
         """List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
@@ -2716,12 +2716,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2753,7 +2753,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workitems]]:
+    ) -> ApiResponse[List[WorkItems]]:
         """List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
@@ -2800,12 +2800,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2884,12 +2884,12 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workitems]",
+            '200': "List[WorkItems]",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2995,7 +2995,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
@@ -3036,13 +3036,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3072,7 +3072,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
@@ -3113,13 +3113,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3190,13 +3190,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3287,7 +3287,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
@@ -3325,13 +3325,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3360,7 +3360,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
@@ -3398,13 +3398,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3471,13 +3471,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3566,7 +3566,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workitems:
+    ) -> WorkItems:
         """Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
@@ -3607,13 +3607,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3643,7 +3643,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workitems]:
+    ) -> ApiResponse[WorkItems]:
         """Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
@@ -3684,13 +3684,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3761,13 +3761,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workitems",
-            '400': "Errorresponsedto",
+            '200': "WorkItems",
+            '400': "ErrorResponseDto",
             '401': "ListWorkItemsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkItemsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

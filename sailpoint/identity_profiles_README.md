@@ -47,11 +47,11 @@ configuration = sailpoint.identity_profiles.Configuration(
 with sailpoint.identity_profiles.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.identity_profiles.IdentityProfilesApi(api_client)
-    identityprofile = sailpoint.identity_profiles.Identityprofile() # Identityprofile | 
+    identity_profile = sailpoint.identity_profiles.IdentityProfile() # IdentityProfile | 
 
     try:
         # Create identity profile
-        api_response = api_instance.create_identity_profile_v1(identityprofile)
+        api_response = api_instance.create_identity_profile_v1(identity_profile)
         print("The response of IdentityProfilesApi->create_identity_profile_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -81,31 +81,31 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/identity_profiles/docs/ArrayInner.md)
- - [Basecommondto](sailpoint/identity_profiles/docs/Basecommondto.md)
- - [Errormessagedto](sailpoint/identity_profiles/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/identity_profiles/docs/Errorresponsedto.md)
- - [Identityattributeconfig](sailpoint/identity_profiles/docs/Identityattributeconfig.md)
- - [Identityattributepreview](sailpoint/identity_profiles/docs/Identityattributepreview.md)
- - [Identityattributetransform](sailpoint/identity_profiles/docs/Identityattributetransform.md)
- - [Identityexceptionreportreference](sailpoint/identity_profiles/docs/Identityexceptionreportreference.md)
- - [Identitypreviewrequest](sailpoint/identity_profiles/docs/Identitypreviewrequest.md)
- - [Identitypreviewresponse](sailpoint/identity_profiles/docs/Identitypreviewresponse.md)
- - [IdentitypreviewresponseIdentity](sailpoint/identity_profiles/docs/IdentitypreviewresponseIdentity.md)
- - [Identityprofile](sailpoint/identity_profiles/docs/Identityprofile.md)
- - [IdentityprofileAllOfAuthoritativeSource](sailpoint/identity_profiles/docs/IdentityprofileAllOfAuthoritativeSource.md)
- - [IdentityprofileAllOfOwner](sailpoint/identity_profiles/docs/IdentityprofileAllOfOwner.md)
- - [Identityprofileexportedobject](sailpoint/identity_profiles/docs/Identityprofileexportedobject.md)
- - [IdentityprofileexportedobjectSelf](sailpoint/identity_profiles/docs/IdentityprofileexportedobjectSelf.md)
- - [Importobject](sailpoint/identity_profiles/docs/Importobject.md)
- - [Jsonpatchoperation](sailpoint/identity_profiles/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/identity_profiles/docs/JsonpatchoperationValue.md)
+ - [BaseCommonDto](sailpoint/identity_profiles/docs/BaseCommonDto.md)
+ - [ErrorMessageDto](sailpoint/identity_profiles/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/identity_profiles/docs/ErrorResponseDto.md)
+ - [IdentityAttributeConfig](sailpoint/identity_profiles/docs/IdentityAttributeConfig.md)
+ - [IdentityAttributePreview](sailpoint/identity_profiles/docs/IdentityAttributePreview.md)
+ - [IdentityAttributeTransform](sailpoint/identity_profiles/docs/IdentityAttributeTransform.md)
+ - [IdentityExceptionReportReference](sailpoint/identity_profiles/docs/IdentityExceptionReportReference.md)
+ - [IdentityPreviewRequest](sailpoint/identity_profiles/docs/IdentityPreviewRequest.md)
+ - [IdentityPreviewResponse](sailpoint/identity_profiles/docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](sailpoint/identity_profiles/docs/IdentityPreviewResponseIdentity.md)
+ - [IdentityProfile](sailpoint/identity_profiles/docs/IdentityProfile.md)
+ - [IdentityProfileAllOfAuthoritativeSource](sailpoint/identity_profiles/docs/IdentityProfileAllOfAuthoritativeSource.md)
+ - [IdentityProfileAllOfOwner](sailpoint/identity_profiles/docs/IdentityProfileAllOfOwner.md)
+ - [IdentityProfileExportedObject](sailpoint/identity_profiles/docs/IdentityProfileExportedObject.md)
+ - [IdentityProfileExportedObjectSelf](sailpoint/identity_profiles/docs/IdentityProfileExportedObjectSelf.md)
+ - [ImportObject](sailpoint/identity_profiles/docs/ImportObject.md)
+ - [JsonPatchOperation](sailpoint/identity_profiles/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/identity_profiles/docs/JsonPatchOperationValue.md)
  - [ListIdentityProfilesV1401Response](sailpoint/identity_profiles/docs/ListIdentityProfilesV1401Response.md)
  - [ListIdentityProfilesV1429Response](sailpoint/identity_profiles/docs/ListIdentityProfilesV1429Response.md)
- - [Localeorigin](sailpoint/identity_profiles/docs/Localeorigin.md)
- - [Objectimportresult](sailpoint/identity_profiles/docs/Objectimportresult.md)
- - [Spconfigmessage](sailpoint/identity_profiles/docs/Spconfigmessage.md)
- - [Taskresultsimplified](sailpoint/identity_profiles/docs/Taskresultsimplified.md)
- - [Transformdefinition](sailpoint/identity_profiles/docs/Transformdefinition.md)
+ - [LocaleOrigin](sailpoint/identity_profiles/docs/LocaleOrigin.md)
+ - [ObjectImportResult](sailpoint/identity_profiles/docs/ObjectImportResult.md)
+ - [SpConfigMessage](sailpoint/identity_profiles/docs/SpConfigMessage.md)
+ - [TaskResultSimplified](sailpoint/identity_profiles/docs/TaskResultSimplified.md)
+ - [TransformDefinition](sailpoint/identity_profiles/docs/TransformDefinition.md)
 
 
 <a id="documentation-for-authorization"></a>

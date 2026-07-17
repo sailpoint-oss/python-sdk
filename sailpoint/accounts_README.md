@@ -47,11 +47,11 @@ configuration = sailpoint.accounts.Configuration(
 with sailpoint.accounts.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.accounts.AccountsApi(api_client)
-    accountattributescreate = sailpoint.accounts.Accountattributescreate() # Accountattributescreate | 
+    account_attributes_create = sailpoint.accounts.AccountAttributesCreate() # AccountAttributesCreate | 
 
     try:
         # Create account
-        api_response = api_instance.create_account_v1(accountattributescreate)
+        api_response = api_instance.create_account_v1(account_attributes_create)
         print("The response of AccountsApi->create_account_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -85,37 +85,37 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessmodelmetadata](sailpoint/accounts/docs/Accessmodelmetadata.md)
- - [AccessmodelmetadataValuesInner](sailpoint/accounts/docs/AccessmodelmetadataValuesInner.md)
+ - [AccessModelMetadata](sailpoint/accounts/docs/AccessModelMetadata.md)
+ - [AccessModelMetadataValuesInner](sailpoint/accounts/docs/AccessModelMetadataValuesInner.md)
  - [Account](sailpoint/accounts/docs/Account.md)
  - [AccountAllOfIdentity](sailpoint/accounts/docs/AccountAllOfIdentity.md)
  - [AccountAllOfOwnerIdentity](sailpoint/accounts/docs/AccountAllOfOwnerIdentity.md)
  - [AccountAllOfRecommendation](sailpoint/accounts/docs/AccountAllOfRecommendation.md)
  - [AccountAllOfSourceOwner](sailpoint/accounts/docs/AccountAllOfSourceOwner.md)
- - [Accountattributes](sailpoint/accounts/docs/Accountattributes.md)
- - [Accountattributescreate](sailpoint/accounts/docs/Accountattributescreate.md)
- - [AccountattributescreateAttributes](sailpoint/accounts/docs/AccountattributescreateAttributes.md)
- - [Accountsasyncresult](sailpoint/accounts/docs/Accountsasyncresult.md)
- - [Accounttogglerequest](sailpoint/accounts/docs/Accounttogglerequest.md)
- - [Accountunlockrequest](sailpoint/accounts/docs/Accountunlockrequest.md)
- - [Additionalownerref](sailpoint/accounts/docs/Additionalownerref.md)
- - [Basecommondto](sailpoint/accounts/docs/Basecommondto.md)
- - [Basereferencedto](sailpoint/accounts/docs/Basereferencedto.md)
- - [Bulkidentitiesaccountsresponse](sailpoint/accounts/docs/Bulkidentitiesaccountsresponse.md)
- - [Dtotype](sailpoint/accounts/docs/Dtotype.md)
+ - [AccountAttributes](sailpoint/accounts/docs/AccountAttributes.md)
+ - [AccountAttributesCreate](sailpoint/accounts/docs/AccountAttributesCreate.md)
+ - [AccountAttributesCreateAttributes](sailpoint/accounts/docs/AccountAttributesCreateAttributes.md)
+ - [AccountToggleRequest](sailpoint/accounts/docs/AccountToggleRequest.md)
+ - [AccountUnlockRequest](sailpoint/accounts/docs/AccountUnlockRequest.md)
+ - [AccountsAsyncResult](sailpoint/accounts/docs/AccountsAsyncResult.md)
+ - [AdditionalOwnerRef](sailpoint/accounts/docs/AdditionalOwnerRef.md)
+ - [BaseCommonDto](sailpoint/accounts/docs/BaseCommonDto.md)
+ - [BaseReferenceDto](sailpoint/accounts/docs/BaseReferenceDto.md)
+ - [BulkIdentitiesAccountsResponse](sailpoint/accounts/docs/BulkIdentitiesAccountsResponse.md)
+ - [DtoType](sailpoint/accounts/docs/DtoType.md)
  - [Entitlement](sailpoint/accounts/docs/Entitlement.md)
  - [EntitlementAccessModelMetadata](sailpoint/accounts/docs/EntitlementAccessModelMetadata.md)
  - [EntitlementOwner](sailpoint/accounts/docs/EntitlementOwner.md)
  - [EntitlementSource](sailpoint/accounts/docs/EntitlementSource.md)
- - [Errormessagedto](sailpoint/accounts/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/accounts/docs/Errorresponsedto.md)
- - [Identitiesaccountsbulkrequest](sailpoint/accounts/docs/Identitiesaccountsbulkrequest.md)
+ - [ErrorMessageDto](sailpoint/accounts/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/accounts/docs/ErrorResponseDto.md)
+ - [IdentitiesAccountsBulkRequest](sailpoint/accounts/docs/IdentitiesAccountsBulkRequest.md)
  - [ListAccountsV1401Response](sailpoint/accounts/docs/ListAccountsV1401Response.md)
  - [ListAccountsV1429Response](sailpoint/accounts/docs/ListAccountsV1429Response.md)
- - [Localeorigin](sailpoint/accounts/docs/Localeorigin.md)
- - [Permissiondto](sailpoint/accounts/docs/Permissiondto.md)
+ - [LocaleOrigin](sailpoint/accounts/docs/LocaleOrigin.md)
+ - [PermissionDTO](sailpoint/accounts/docs/PermissionDTO.md)
  - [Recommendation](sailpoint/accounts/docs/Recommendation.md)
- - [Taskresultdto](sailpoint/accounts/docs/Taskresultdto.md)
+ - [TaskResultDto](sailpoint/accounts/docs/TaskResultDto.md)
 
 
 <a id="documentation-for-authorization"></a>

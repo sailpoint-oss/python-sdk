@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.password_configuration.models.errormessagedto import Errormessagedto
-from sailpoint.password_configuration.models.errorresponsedto import Errorresponsedto
+from sailpoint.password_configuration.models.error_message_dto import ErrorMessageDto
+from sailpoint.password_configuration.models.error_response_dto import ErrorResponseDto
 from sailpoint.password_configuration.models.get_password_org_config_v1401_response import GetPasswordOrgConfigV1401Response
 from sailpoint.password_configuration.models.get_password_org_config_v1429_response import GetPasswordOrgConfigV1429Response
-from sailpoint.password_configuration.models.localeorigin import Localeorigin
-from sailpoint.password_configuration.models.passwordorgconfig import Passwordorgconfig
+from sailpoint.password_configuration.models.locale_origin import LocaleOrigin
+from sailpoint.password_configuration.models.password_org_config import PasswordOrgConfig

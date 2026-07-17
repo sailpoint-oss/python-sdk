@@ -52,22 +52,22 @@ Create a new SIM Integrations.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | simintegrationdetails | [**Simintegrationdetails**](../models/simintegrationdetails) | True  | DTO containing the details of the SIM integration
+ Body  | sim_integration_details | [**SimIntegrationDetails**](../models/sim-integration-details) | True  | DTO containing the details of the SIM integration
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | details of the created integration | Servicedeskintegrationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | details of the created integration | ServiceDeskIntegrationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -78,23 +78,40 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
-from sailpoint.sim_integrations.models.simintegrationdetails import Simintegrationdetails
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.sim_integrations.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    simintegrationdetails = '''sailpoint.sim_integrations.Simintegrationdetails()''' # Simintegrationdetails | DTO containing the details of the SIM integration
+    sim_integration_details = '''{
+          "cluster" : "xyzzy999",
+          "statusMap" : "{\"closed_cancelled\":\"Failed\",\"closed_complete\":\"Committed\",\"closed_incomplete\":\"Failed\",\"closed_rejected\":\"Failed\",\"in_process\":\"Queued\",\"requested\":\"Queued\"}",
+          "request" : "{\"description\":\"SailPoint Access Request,\",\"req_description\":\"The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,\",\"req_short_description\":\"SailPoint New Access Request Created from IdentityNow,\",\"short_description\":\"SailPoint Access Request $!plan.arguments.identityRequestId\"}",
+          "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "created" : "2015-05-28T14:07:17Z",
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "Integration description",
+          "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
+          "id" : "id12345",
+          "type" : "ServiceNow Service Desk",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "IDENTITY"
+          }
+        }''' # SimIntegrationDetails | DTO containing the details of the SIM integration
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create new sim integration
-        new_simintegrationdetails = Simintegrationdetails.from_json(simintegrationdetails)
-        results = SIMIntegrationsApi(api_client).create_sim_integration_v1(simintegrationdetails=new_simintegrationdetails)
+        new_sim_integration_details = SimIntegrationDetails.from_json(sim_integration_details)
+        results = SIMIntegrationsApi(api_client).create_sim_integration_v1(sim_integration_details=new_sim_integration_details)
         # Below is a request that includes all optional parameters
-        # results = SIMIntegrationsApi(api_client).create_sim_integration_v1(new_simintegrationdetails, x_sail_point_experimental)
+        # results = SIMIntegrationsApi(api_client).create_sim_integration_v1(new_sim_integration_details, x_sail_point_experimental)
         print("The response of SIMIntegrationsApi->create_sim_integration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -136,12 +153,12 @@ Path   | id | **str** | True  | The id of the integration to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | No content response |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -200,18 +217,18 @@ Path   | id | **str** | True  | The id of the integration.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The DTO containing the details of the SIM integration | Servicedeskintegrationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The DTO containing the details of the SIM integration | ServiceDeskIntegrationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -222,7 +239,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -272,18 +289,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Servicedeskintegrationdto]**](../models/servicedeskintegrationdto)
+[**List[ServiceDeskIntegrationDto]**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The DTO containing the details of the SIM integration | List[Servicedeskintegrationdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The DTO containing the details of the SIM integration | List[ServiceDeskIntegrationDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -294,7 +311,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -342,22 +359,22 @@ Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | SIM integration id
- Body  | jsonpatch | [**Jsonpatch**](../models/jsonpatch) | True  | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+ Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated DTO containing the details of the SIM integration. | Servicedeskintegrationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated DTO containing the details of the SIM integration. | ServiceDeskIntegrationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -368,8 +385,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.jsonpatch import Jsonpatch
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
+from sailpoint.sim_integrations.models.json_patch import JsonPatch
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -377,15 +394,25 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '12345' # str | SIM integration id # str | SIM integration id
-    jsonpatch = '''sailpoint.sim_integrations.Jsonpatch()''' # Jsonpatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+    json_patch = '''{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }''' # JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Patch a sim beforeprovisioningrule attribute.
-        new_jsonpatch = Jsonpatch.from_json(jsonpatch)
-        results = SIMIntegrationsApi(api_client).patch_before_provisioning_rule_v1(id=id, jsonpatch=new_jsonpatch)
+        new_json_patch = JsonPatch.from_json(json_patch)
+        results = SIMIntegrationsApi(api_client).patch_before_provisioning_rule_v1(id=id, json_patch=new_json_patch)
         # Below is a request that includes all optional parameters
-        # results = SIMIntegrationsApi(api_client).patch_before_provisioning_rule_v1(id, new_jsonpatch, x_sail_point_experimental)
+        # results = SIMIntegrationsApi(api_client).patch_before_provisioning_rule_v1(id, new_json_patch, x_sail_point_experimental)
         print("The response of SIMIntegrationsApi->patch_before_provisioning_rule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -418,22 +445,22 @@ Patch a SIM attribute given a JsonPatch object.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | SIM integration id
- Body  | jsonpatch | [**Jsonpatch**](../models/jsonpatch) | True  | The JsonPatch object that describes the changes of SIM
+ Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | The JsonPatch object that describes the changes of SIM
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated DTO containing the details of the SIM integration. | Servicedeskintegrationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated DTO containing the details of the SIM integration. | ServiceDeskIntegrationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -444,8 +471,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.jsonpatch import Jsonpatch
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
+from sailpoint.sim_integrations.models.json_patch import JsonPatch
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -453,15 +480,25 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '12345' # str | SIM integration id # str | SIM integration id
-    jsonpatch = '''sailpoint.sim_integrations.Jsonpatch()''' # Jsonpatch | The JsonPatch object that describes the changes of SIM
+    json_patch = '''{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }''' # JsonPatch | The JsonPatch object that describes the changes of SIM
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Patch a sim attribute.
-        new_jsonpatch = Jsonpatch.from_json(jsonpatch)
-        results = SIMIntegrationsApi(api_client).patch_sim_attributes_v1(id=id, jsonpatch=new_jsonpatch)
+        new_json_patch = JsonPatch.from_json(json_patch)
+        results = SIMIntegrationsApi(api_client).patch_sim_attributes_v1(id=id, json_patch=new_json_patch)
         # Below is a request that includes all optional parameters
-        # results = SIMIntegrationsApi(api_client).patch_sim_attributes_v1(id, new_jsonpatch, x_sail_point_experimental)
+        # results = SIMIntegrationsApi(api_client).patch_sim_attributes_v1(id, new_json_patch, x_sail_point_experimental)
         print("The response of SIMIntegrationsApi->patch_sim_attributes_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -494,22 +531,22 @@ Update an existing SIM integration.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The id of the integration.
- Body  | simintegrationdetails | [**Simintegrationdetails**](../models/simintegrationdetails) | True  | The full DTO of the integration containing the updated model
+ Body  | sim_integration_details | [**SimIntegrationDetails**](../models/sim-integration-details) | True  | The full DTO of the integration containing the updated model
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | details of the updated integration | Servicedeskintegrationdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | details of the updated integration | ServiceDeskIntegrationDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetSIMIntegrationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetSIMIntegrationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -520,8 +557,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.sim_integrations.api_client import ApiClient
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
-from sailpoint.sim_integrations.models.simintegrationdetails import Simintegrationdetails
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.sim_integrations.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -529,15 +566,32 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '12345' # str | The id of the integration. # str | The id of the integration.
-    simintegrationdetails = '''sailpoint.sim_integrations.Simintegrationdetails()''' # Simintegrationdetails | The full DTO of the integration containing the updated model
+    sim_integration_details = '''{
+          "cluster" : "xyzzy999",
+          "statusMap" : "{\"closed_cancelled\":\"Failed\",\"closed_complete\":\"Committed\",\"closed_incomplete\":\"Failed\",\"closed_rejected\":\"Failed\",\"in_process\":\"Queued\",\"requested\":\"Queued\"}",
+          "request" : "{\"description\":\"SailPoint Access Request,\",\"req_description\":\"The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,\",\"req_short_description\":\"SailPoint New Access Request Created from IdentityNow,\",\"short_description\":\"SailPoint Access Request $!plan.arguments.identityRequestId\"}",
+          "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "created" : "2015-05-28T14:07:17Z",
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "Integration description",
+          "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
+          "id" : "id12345",
+          "type" : "ServiceNow Service Desk",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "IDENTITY"
+          }
+        }''' # SimIntegrationDetails | The full DTO of the integration containing the updated model
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update an existing sim integration
-        new_simintegrationdetails = Simintegrationdetails.from_json(simintegrationdetails)
-        results = SIMIntegrationsApi(api_client).put_sim_integration_v1(id=id, simintegrationdetails=new_simintegrationdetails)
+        new_sim_integration_details = SimIntegrationDetails.from_json(sim_integration_details)
+        results = SIMIntegrationsApi(api_client).put_sim_integration_v1(id=id, sim_integration_details=new_sim_integration_details)
         # Below is a request that includes all optional parameters
-        # results = SIMIntegrationsApi(api_client).put_sim_integration_v1(id, new_simintegrationdetails, x_sail_point_experimental)
+        # results = SIMIntegrationsApi(api_client).put_sim_integration_v1(id, new_sim_integration_details, x_sail_point_experimental)
         print("The response of SIMIntegrationsApi->put_sim_integration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -80,15 +80,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Basecommondto](sailpoint/machine_accounts/docs/Basecommondto.md)
+ - [BaseCommonDto](sailpoint/machine_accounts/docs/BaseCommonDto.md)
  - [CreateMachineAccountSubtypeV1Request](sailpoint/machine_accounts/docs/CreateMachineAccountSubtypeV1Request.md)
- - [Errormessagedto](sailpoint/machine_accounts/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/machine_accounts/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/machine_accounts/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/machine_accounts/docs/ErrorResponseDto.md)
  - [ListMachineAccountsV1401Response](sailpoint/machine_accounts/docs/ListMachineAccountsV1401Response.md)
  - [ListMachineAccountsV1429Response](sailpoint/machine_accounts/docs/ListMachineAccountsV1429Response.md)
- - [Localeorigin](sailpoint/machine_accounts/docs/Localeorigin.md)
- - [Machineaccount](sailpoint/machine_accounts/docs/Machineaccount.md)
- - [Sourcesubtype](sailpoint/machine_accounts/docs/Sourcesubtype.md)
+ - [LocaleOrigin](sailpoint/machine_accounts/docs/LocaleOrigin.md)
+ - [MachineAccount](sailpoint/machine_accounts/docs/MachineAccount.md)
+ - [SourceSubtype](sailpoint/machine_accounts/docs/SourceSubtype.md)
 
 
 <a id="documentation-for-authorization"></a>

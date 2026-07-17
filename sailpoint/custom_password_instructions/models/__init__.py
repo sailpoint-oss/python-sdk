@@ -14,7 +14,7 @@
 
 
 # import models into model package
-from sailpoint.custom_password_instructions.models.custompasswordinstruction import Custompasswordinstruction
-from sailpoint.custom_password_instructions.models.errormessagedto import Errormessagedto
-from sailpoint.custom_password_instructions.models.errorresponsedto import Errorresponsedto
-from sailpoint.custom_password_instructions.models.localeorigin import Localeorigin
+from sailpoint.custom_password_instructions.models.custom_password_instruction import CustomPasswordInstruction
+from sailpoint.custom_password_instructions.models.error_message_dto import ErrorMessageDto
+from sailpoint.custom_password_instructions.models.error_response_dto import ErrorResponseDto
+from sailpoint.custom_password_instructions.models.locale_origin import LocaleOrigin

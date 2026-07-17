@@ -6,7 +6,7 @@
       source: |
         from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
         from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-        from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+        from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,7 +31,7 @@
       source: |
         from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
         from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-        from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+        from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -57,7 +57,7 @@
       source: |
         from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
         from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-        from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+        from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

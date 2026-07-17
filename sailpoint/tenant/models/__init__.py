@@ -14,11 +14,11 @@
 
 
 # import models into model package
-from sailpoint.tenant.models.errormessagedto import Errormessagedto
-from sailpoint.tenant.models.errorresponsedto import Errorresponsedto
+from sailpoint.tenant.models.error_message_dto import ErrorMessageDto
+from sailpoint.tenant.models.error_response_dto import ErrorResponseDto
 from sailpoint.tenant.models.get_tenant_v1401_response import GetTenantV1401Response
 from sailpoint.tenant.models.get_tenant_v1429_response import GetTenantV1429Response
 from sailpoint.tenant.models.license import License
-from sailpoint.tenant.models.localeorigin import Localeorigin
+from sailpoint.tenant.models.locale_origin import LocaleOrigin
 from sailpoint.tenant.models.product import Product
 from sailpoint.tenant.models.tenant import Tenant

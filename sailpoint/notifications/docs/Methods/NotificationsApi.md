@@ -43,21 +43,21 @@ Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | domainaddress | [**Domainaddress**](../models/domainaddress) | True  | 
+ Body  | domain_address | [**DomainAddress**](../models/domain-address) | True  | 
 
 ### Return type
-[**Domainstatusdto**](../models/domainstatusdto)
+[**DomainStatusDto**](../models/domain-status-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of DKIM tokens required for the verification process. | Domainstatusdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of DKIM tokens required for the verification process. | DomainStatusDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 405 | Method Not Allowed - indicates that the server knows the request method, but the target resource doesn&#39;t support this method. | CreateDomainDkimV1405Response |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -68,21 +68,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.domainaddress import Domainaddress
-from sailpoint.notifications.models.domainstatusdto import Domainstatusdto
+from sailpoint.notifications.models.domain_address import DomainAddress
+from sailpoint.notifications.models.domain_status_dto import DomainStatusDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    domainaddress = '''sailpoint.notifications.Domainaddress()''' # Domainaddress | 
+    domain_address = '''{
+          "domain" : "sailpoint.com"
+        }''' # DomainAddress | 
 
     try:
         # Verify domain address via dkim
-        new_domainaddress = Domainaddress.from_json(domainaddress)
-        results = NotificationsApi(api_client).create_domain_dkim_v1(domainaddress=new_domainaddress)
+        new_domain_address = DomainAddress.from_json(domain_address)
+        results = NotificationsApi(api_client).create_domain_dkim_v1(domain_address=new_domain_address)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).create_domain_dkim_v1(new_domainaddress)
+        # results = NotificationsApi(api_client).create_domain_dkim_v1(new_domain_address)
         print("The response of NotificationsApi->create_domain_dkim_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -106,20 +108,20 @@ Modify the fields you want to change and submit the POST request when ready.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | templatedto | [**Templatedto**](../models/templatedto) | True  | 
+ Body  | template_dto | [**TemplateDto**](../models/template-dto) | True  | 
 
 ### Return type
-[**Templatedto**](../models/templatedto)
+[**TemplateDto**](../models/template-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A template object for your site | Templatedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A template object for your site | TemplateDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -130,20 +132,83 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatedto import Templatedto
+from sailpoint.notifications.models.template_dto import TemplateDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    templatedto = '''sailpoint.notifications.Templatedto()''' # Templatedto | 
+    template_dto = '''{
+          "slackTemplate" : {
+            "isSubscription" : false,
+            "attachments" : "[]",
+            "blocks" : "blocks",
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "key" : "key"
+          },
+          "footer" : "footer",
+          "teamsTemplate" : {
+            "isSubscription" : false,
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "title" : "title",
+            "key" : "key",
+            "messageJSON" : "messageJSON"
+          },
+          "subject" : "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
+          "created" : "2020-01-01T00:00:00Z",
+          "description" : "Daily digest - sent if number of outstanding tasks for task owner > 0",
+          "medium" : "EMAIL",
+          "locale" : "en",
+          "body" : "Please go to the task manager",
+          "name" : "Task Manager Subscription",
+          "replyTo" : "$__global.emailFromAddress",
+          "header" : "header",
+          "modified" : "2020-01-01T00:00:00Z",
+          "from" : "$__global.emailFromAddress",
+          "id" : "c17bea3a-574d-453c-9e04-4365fbf5af0b",
+          "key" : "cloud_manual_work_item_summary"
+        }''' # TemplateDto | 
 
     try:
         # Create notification template
-        new_templatedto = Templatedto.from_json(templatedto)
-        results = NotificationsApi(api_client).create_notification_template_v1(templatedto=new_templatedto)
+        new_template_dto = TemplateDto.from_json(template_dto)
+        results = NotificationsApi(api_client).create_notification_template_v1(template_dto=new_template_dto)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).create_notification_template_v1(new_templatedto)
+        # results = NotificationsApi(api_client).create_notification_template_v1(new_template_dto)
         print("The response of NotificationsApi->create_notification_template_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -164,20 +229,20 @@ Create a new sender email address and initiate verification process.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | emailstatusdto | [**Emailstatusdto**](../models/emailstatusdto) | True  | 
+ Body  | email_status_dto | [**EmailStatusDto**](../models/email-status-dto) | True  | 
 
 ### Return type
-[**Emailstatusdto**](../models/emailstatusdto)
+[**EmailStatusDto**](../models/email-status-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | New Verified Email Status | Emailstatusdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | New Verified Email Status | EmailStatusDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -188,20 +253,26 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.emailstatusdto import Emailstatusdto
+from sailpoint.notifications.models.email_status_dto import EmailStatusDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    emailstatusdto = '''{"email":"sender@example.com"}''' # Emailstatusdto | 
+    email_status_dto = '''{
+          "isVerifiedByDomain" : false,
+          "verificationStatus" : "SUCCESS",
+          "id" : "id",
+          "region" : "us-east-1",
+          "email" : "sender@example.com"
+        }''' # EmailStatusDto | 
 
     try:
         # Create verified from address
-        new_emailstatusdto = Emailstatusdto.from_json(emailstatusdto)
-        results = NotificationsApi(api_client).create_verified_from_address_v1(emailstatusdto=new_emailstatusdto)
+        new_email_status_dto = EmailStatusDto.from_json(email_status_dto)
+        results = NotificationsApi(api_client).create_verified_from_address_v1(email_status_dto=new_email_status_dto)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).create_verified_from_address_v1(new_emailstatusdto)
+        # results = NotificationsApi(api_client).create_verified_from_address_v1(new_email_status_dto)
         print("The response of NotificationsApi->create_verified_from_address_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -222,7 +293,7 @@ This lets you bulk delete templates that you previously created for your site.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | templatebulkdeletedto | [**[]Templatebulkdeletedto**](../models/templatebulkdeletedto) | True  | 
+ Body  | template_bulk_delete_dto | [**[]TemplateBulkDeleteDto**](../models/template-bulk-delete-dto) | True  | 
 
 ### Return type
  (empty response body)
@@ -231,11 +302,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -246,20 +317,20 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatebulkdeletedto import Templatebulkdeletedto
+from sailpoint.notifications.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    templatebulkdeletedto = '''[sailpoint.notifications.Templatebulkdeletedto()]''' # List[Templatebulkdeletedto] | 
+    template_bulk_delete_dto = '''[sailpoint.notifications.TemplateBulkDeleteDto()]''' # List[TemplateBulkDeleteDto] | 
 
     try:
         # Bulk delete notification templates
-        new_templatebulkdeletedto = Templatebulkdeletedto.from_json(templatebulkdeletedto)
-        NotificationsApi(api_client).delete_notification_templates_in_bulk_v1(templatebulkdeletedto=new_templatebulkdeletedto)
+        new_template_bulk_delete_dto = TemplateBulkDeleteDto.from_json(template_bulk_delete_dto)
+        NotificationsApi(api_client).delete_notification_templates_in_bulk_v1(template_bulk_delete_dto=new_template_bulk_delete_dto)
         # Below is a request that includes all optional parameters
-        # NotificationsApi(api_client).delete_notification_templates_in_bulk_v1(new_templatebulkdeletedto)
+        # NotificationsApi(api_client).delete_notification_templates_in_bulk_v1(new_template_bulk_delete_dto)
     except Exception as e:
         print("Exception when calling NotificationsApi->delete_notification_templates_in_bulk_v1: %s\n" % e)
 ```
@@ -287,12 +358,12 @@ Path   | id | **str** | True  | Unique identifier of the verified sender address
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -338,17 +409,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Dkimattributes]**](../models/dkimattributes)
+[**List[DkimAttributes]**](../models/dkim-attributes)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of DKIM Attributes | List[Dkimattributes] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of DKIM Attributes | List[DkimAttributes] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -359,7 +430,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.dkimattributes import Dkimattributes
+from sailpoint.notifications.models.dkim_attributes import DkimAttributes
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -398,17 +469,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | identity | **str** | True  | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
 
 ### Return type
-[**Mailfromattributes**](../models/mailfromattributes)
+[**MailFromAttributes**](../models/mail-from-attributes)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | MAIL FROM Attributes object | Mailfromattributes |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | MAIL FROM Attributes object | MailFromAttributes |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -419,7 +490,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.mailfromattributes import Mailfromattributes
+from sailpoint.notifications.models.mail_from_attributes import MailFromAttributes
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -456,18 +527,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | key | **str** | True  | The key.
 
 ### Return type
-[**Preferencesdto**](../models/preferencesdto)
+[**PreferencesDto**](../models/preferences-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Return preference for the given notification key. | Preferencesdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Return preference for the given notification key. | PreferencesDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -478,7 +549,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.preferencesdto import Preferencesdto
+from sailpoint.notifications.models.preferences_dto import PreferencesDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -515,17 +586,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Id of the Notification Template
 
 ### Return type
-[**Templatedto**](../models/templatedto)
+[**TemplateDto**](../models/template-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A template object for your site | Templatedto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A template object for your site | TemplateDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -536,7 +607,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatedto import Templatedto
+from sailpoint.notifications.models.template_dto import TemplateDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -578,18 +649,18 @@ Path   | medium | **str** | True  | The notification template medium (e.g. EMAIL
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description**
 
 ### Return type
-[**Templatevariablesdto**](../models/templatevariablesdto)
+[**TemplateVariablesDto**](../models/template-variables-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Global and template-specific variables for the given key and medium. | Templatevariablesdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Global and template-specific variables for the given key and medium. | TemplateVariablesDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -600,7 +671,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatevariablesdto import Templatevariablesdto
+from sailpoint.notifications.models.template_variables_dto import TemplateVariablesDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -637,17 +708,17 @@ The notification service maintains metadata to construct the notification templa
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Notificationtemplatecontext**](../models/notificationtemplatecontext)
+[**NotificationTemplateContext**](../models/notification-template-context)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Notification template context attributes for a specific tenant. | Notificationtemplatecontext |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Notification template context attributes for a specific tenant. | NotificationTemplateContext |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -658,7 +729,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.notificationtemplatecontext import Notificationtemplatecontext
+from sailpoint.notifications.models.notification_template_context import NotificationTemplateContext
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -698,17 +769,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**
 
 ### Return type
-[**List[Emailstatusdto]**](../models/emailstatusdto)
+[**List[EmailStatusDto]**](../models/email-status-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Email Status | List[Emailstatusdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Email Status | List[EmailStatusDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -719,7 +790,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.emailstatusdto import Emailstatusdto
+from sailpoint.notifications.models.email_status_dto import EmailStatusDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -763,17 +834,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw*
 
 ### Return type
-[**List[Templatedtodefault]**](../models/templatedtodefault)
+[**List[TemplateDtoDefault]**](../models/template-dto-default)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of the default template objects | List[Templatedtodefault] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of the default template objects | List[TemplateDtoDefault] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -784,7 +855,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatedtodefault import Templatedtodefault
+from sailpoint.notifications.models.template_dto_default import TemplateDtoDefault
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -827,17 +898,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, medium**
 
 ### Return type
-[**List[Templatedto]**](../models/templatedto)
+[**List[TemplateDto]**](../models/template-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of template objects for your site | List[Templatedto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of template objects for your site | List[TemplateDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -848,7 +919,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.templatedto import Templatedto
+from sailpoint.notifications.models.template_dto import TemplateDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -886,20 +957,20 @@ Change the MAIL FROM domain of an AWS SES email identity and provide the MX and 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | mailfromattributesdto | [**Mailfromattributesdto**](../models/mailfromattributesdto) | True  | 
+ Body  | mail_from_attributes_dto | [**MailFromAttributesDto**](../models/mail-from-attributes-dto) | True  | 
 
 ### Return type
-[**Mailfromattributes**](../models/mailfromattributes)
+[**MailFromAttributes**](../models/mail-from-attributes)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | MAIL FROM Attributes required to verify the change | Mailfromattributes |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | MAIL FROM Attributes required to verify the change | MailFromAttributes |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -910,21 +981,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.mailfromattributes import Mailfromattributes
-from sailpoint.notifications.models.mailfromattributesdto import Mailfromattributesdto
+from sailpoint.notifications.models.mail_from_attributes import MailFromAttributes
+from sailpoint.notifications.models.mail_from_attributes_dto import MailFromAttributesDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    mailfromattributesdto = '''{"identity":"BobSmith@sailpoint.com","mailFromDomain":"example.sailpoint.com"}''' # Mailfromattributesdto | 
+    mail_from_attributes_dto = '''{
+          "identity" : "BobSmith@sailpoint.com",
+          "mailFromDomain" : "example.sailpoint.com"
+        }''' # MailFromAttributesDto | 
 
     try:
         # Change mail from domain
-        new_mailfromattributesdto = Mailfromattributesdto.from_json(mailfromattributesdto)
-        results = NotificationsApi(api_client).put_mail_from_attributes_v1(mailfromattributesdto=new_mailfromattributesdto)
+        new_mail_from_attributes_dto = MailFromAttributesDto.from_json(mail_from_attributes_dto)
+        results = NotificationsApi(api_client).put_mail_from_attributes_v1(mail_from_attributes_dto=new_mail_from_attributes_dto)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).put_mail_from_attributes_v1(new_mailfromattributesdto)
+        # results = NotificationsApi(api_client).put_mail_from_attributes_v1(new_mail_from_attributes_dto)
         print("The response of NotificationsApi->put_mail_from_attributes_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -945,7 +1019,7 @@ Send a Test Notification
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sendtestnotificationrequestdto | [**Sendtestnotificationrequestdto**](../models/sendtestnotificationrequestdto) | True  | 
+ Body  | send_test_notification_request_dto | [**SendTestNotificationRequestDto**](../models/send-test-notification-request-dto) | True  | 
 
 ### Return type
  (empty response body)
@@ -954,12 +1028,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -970,20 +1044,31 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.notifications.api.notifications_api import NotificationsApi
 from sailpoint.notifications.api_client import ApiClient
-from sailpoint.notifications.models.sendtestnotificationrequestdto import Sendtestnotificationrequestdto
+from sailpoint.notifications.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sendtestnotificationrequestdto = '''{"key":"cloud_manual_work_item_summary","medium":"EMAIL","context":{"numberOfPendingTasks":"4","ownerId":"201327fda1c44704ac01181e963d463c"}}''' # Sendtestnotificationrequestdto | 
+    send_test_notification_request_dto = '''{
+          "carbonCopy" : [ "cc@example.com" ],
+          "context" : {
+            "numberOfPendingTasks" : "4",
+            "taskTasks" : "tasks"
+          },
+          "blindCarbonCopy" : [ "bcc@example.com" ],
+          "medium" : "EMAIL",
+          "locale" : "en",
+          "recipientEmailList" : [ "test@example.com" ],
+          "key" : "cloud_manual_work_item_summary"
+        }''' # SendTestNotificationRequestDto | 
 
     try:
         # Send test notification
-        new_sendtestnotificationrequestdto = Sendtestnotificationrequestdto.from_json(sendtestnotificationrequestdto)
-        NotificationsApi(api_client).send_test_notification_v1(sendtestnotificationrequestdto=new_sendtestnotificationrequestdto)
+        new_send_test_notification_request_dto = SendTestNotificationRequestDto.from_json(send_test_notification_request_dto)
+        NotificationsApi(api_client).send_test_notification_v1(send_test_notification_request_dto=new_send_test_notification_request_dto)
         # Below is a request that includes all optional parameters
-        # NotificationsApi(api_client).send_test_notification_v1(new_sendtestnotificationrequestdto)
+        # NotificationsApi(api_client).send_test_notification_v1(new_send_test_notification_request_dto)
     except Exception as e:
         print("Exception when calling NotificationsApi->send_test_notification_v1: %s\n" % e)
 ```

@@ -47,11 +47,11 @@ configuration = sailpoint.password_configuration.Configuration(
 with sailpoint.password_configuration.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.password_configuration.PasswordConfigurationApi(api_client)
-    passwordorgconfig = {"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9} # Passwordorgconfig | 
+    password_org_config = {"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9} # PasswordOrgConfig | 
 
     try:
         # Create password org config
-        api_response = api_instance.create_password_org_config_v1(passwordorgconfig)
+        api_response = api_instance.create_password_org_config_v1(password_org_config)
         print("The response of PasswordConfigurationApi->create_password_org_config_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -72,12 +72,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/password_configuration/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/password_configuration/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/password_configuration/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/password_configuration/docs/ErrorResponseDto.md)
  - [GetPasswordOrgConfigV1401Response](sailpoint/password_configuration/docs/GetPasswordOrgConfigV1401Response.md)
  - [GetPasswordOrgConfigV1429Response](sailpoint/password_configuration/docs/GetPasswordOrgConfigV1429Response.md)
- - [Localeorigin](sailpoint/password_configuration/docs/Localeorigin.md)
- - [Passwordorgconfig](sailpoint/password_configuration/docs/Passwordorgconfig.md)
+ - [LocaleOrigin](sailpoint/password_configuration/docs/LocaleOrigin.md)
+ - [PasswordOrgConfig](sailpoint/password_configuration/docs/PasswordOrgConfig.md)
 
 
 <a id="documentation-for-authorization"></a>

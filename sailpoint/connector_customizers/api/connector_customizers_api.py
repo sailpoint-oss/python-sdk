@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.connector_customizers.models.connectorcustomizercreaterequest import Connectorcustomizercreaterequest
-from sailpoint.connector_customizers.models.connectorcustomizercreateresponse import Connectorcustomizercreateresponse
-from sailpoint.connector_customizers.models.connectorcustomizersresponse import Connectorcustomizersresponse
-from sailpoint.connector_customizers.models.connectorcustomizerupdaterequest import Connectorcustomizerupdaterequest
-from sailpoint.connector_customizers.models.connectorcustomizerupdateresponse import Connectorcustomizerupdateresponse
-from sailpoint.connector_customizers.models.connectorcustomizerversioncreateresponse import Connectorcustomizerversioncreateresponse
+from sailpoint.connector_customizers.models.connector_customizer_create_request import ConnectorCustomizerCreateRequest
+from sailpoint.connector_customizers.models.connector_customizer_create_response import ConnectorCustomizerCreateResponse
+from sailpoint.connector_customizers.models.connector_customizer_update_request import ConnectorCustomizerUpdateRequest
+from sailpoint.connector_customizers.models.connector_customizer_update_response import ConnectorCustomizerUpdateResponse
+from sailpoint.connector_customizers.models.connector_customizer_version_create_response import ConnectorCustomizerVersionCreateResponse
+from sailpoint.connector_customizers.models.connector_customizers_response import ConnectorCustomizersResponse
 
 from sailpoint.connector_customizers.api_client import ApiClient, RequestSerialized
 from sailpoint.connector_customizers.api_response import ApiResponse
@@ -47,7 +47,7 @@ class ConnectorCustomizersApi:
     @validate_call
     def create_connector_customizer_v1(
         self,
-        connectorcustomizercreaterequest: Annotated[Connectorcustomizercreaterequest, Field(description="Connector customizer to create.")],
+        connector_customizer_create_request: Annotated[ConnectorCustomizerCreateRequest, Field(description="Connector customizer to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,13 +60,13 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorcustomizercreateresponse:
+    ) -> ConnectorCustomizerCreateResponse:
         """Create connector customizer
 
         Create a connector customizer.
 
-        :param connectorcustomizercreaterequest: Connector customizer to create. (required)
-        :type connectorcustomizercreaterequest: Connectorcustomizercreaterequest
+        :param connector_customizer_create_request: Connector customizer to create. (required)
+        :type connector_customizer_create_request: ConnectorCustomizerCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,7 +90,7 @@ class ConnectorCustomizersApi:
         """ # noqa: E501
 
         _param = self._create_connector_customizer_v1_serialize(
-            connectorcustomizercreaterequest=connectorcustomizercreaterequest,
+            connector_customizer_create_request=connector_customizer_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -98,12 +98,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorcustomizercreateresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorCustomizerCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class ConnectorCustomizersApi:
     @validate_call
     def create_connector_customizer_v1_with_http_info(
         self,
-        connectorcustomizercreaterequest: Annotated[Connectorcustomizercreaterequest, Field(description="Connector customizer to create.")],
+        connector_customizer_create_request: Annotated[ConnectorCustomizerCreateRequest, Field(description="Connector customizer to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,13 +132,13 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorcustomizercreateresponse]:
+    ) -> ApiResponse[ConnectorCustomizerCreateResponse]:
         """Create connector customizer
 
         Create a connector customizer.
 
-        :param connectorcustomizercreaterequest: Connector customizer to create. (required)
-        :type connectorcustomizercreaterequest: Connectorcustomizercreaterequest
+        :param connector_customizer_create_request: Connector customizer to create. (required)
+        :type connector_customizer_create_request: ConnectorCustomizerCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +162,7 @@ class ConnectorCustomizersApi:
         """ # noqa: E501
 
         _param = self._create_connector_customizer_v1_serialize(
-            connectorcustomizercreaterequest=connectorcustomizercreaterequest,
+            connector_customizer_create_request=connector_customizer_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,12 +170,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorcustomizercreateresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorCustomizerCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -191,7 +191,7 @@ class ConnectorCustomizersApi:
     @validate_call
     def create_connector_customizer_v1_without_preload_content(
         self,
-        connectorcustomizercreaterequest: Annotated[Connectorcustomizercreaterequest, Field(description="Connector customizer to create.")],
+        connector_customizer_create_request: Annotated[ConnectorCustomizerCreateRequest, Field(description="Connector customizer to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,8 +209,8 @@ class ConnectorCustomizersApi:
 
         Create a connector customizer.
 
-        :param connectorcustomizercreaterequest: Connector customizer to create. (required)
-        :type connectorcustomizercreaterequest: Connectorcustomizercreaterequest
+        :param connector_customizer_create_request: Connector customizer to create. (required)
+        :type connector_customizer_create_request: ConnectorCustomizerCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,7 +234,7 @@ class ConnectorCustomizersApi:
         """ # noqa: E501
 
         _param = self._create_connector_customizer_v1_serialize(
-            connectorcustomizercreaterequest=connectorcustomizercreaterequest,
+            connector_customizer_create_request=connector_customizer_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,12 +242,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorcustomizercreateresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorCustomizerCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -258,7 +258,7 @@ class ConnectorCustomizersApi:
 
     def _create_connector_customizer_v1_serialize(
         self,
-        connectorcustomizercreaterequest,
+        connector_customizer_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -284,8 +284,8 @@ class ConnectorCustomizersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if connectorcustomizercreaterequest is not None:
-            _body_params = connectorcustomizercreaterequest
+        if connector_customizer_create_request is not None:
+            _body_params = connector_customizer_create_request
 
 
         # set the HTTP header `Accept`
@@ -348,7 +348,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorcustomizerversioncreateresponse:
+    ) -> ConnectorCustomizerVersionCreateResponse:
         """Creates a connector customizer version
 
         Creates a new version for the customizer.
@@ -386,13 +386,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerversioncreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerVersionCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +421,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorcustomizerversioncreateresponse]:
+    ) -> ApiResponse[ConnectorCustomizerVersionCreateResponse]:
         """Creates a connector customizer version
 
         Creates a new version for the customizer.
@@ -459,13 +459,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerversioncreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerVersionCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -532,13 +532,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerversioncreateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerVersionCreateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -665,12 +665,12 @@ class ConnectorCustomizersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -738,12 +738,12 @@ class ConnectorCustomizersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -811,12 +811,12 @@ class ConnectorCustomizersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -904,7 +904,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorcustomizersresponse:
+    ) -> ConnectorCustomizersResponse:
         """Get connector customizer
 
         Gets connector customizer by ID.
@@ -942,13 +942,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizersresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizersResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -977,7 +977,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorcustomizersresponse]:
+    ) -> ApiResponse[ConnectorCustomizersResponse]:
         """Get connector customizer
 
         Gets connector customizer by ID.
@@ -1015,13 +1015,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizersresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizersResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1088,13 +1088,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizersresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizersResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1183,7 +1183,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Connectorcustomizersresponse]:
+    ) -> List[ConnectorCustomizersResponse]:
         """List all connector customizers
 
         List all connector customizers.
@@ -1224,12 +1224,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorcustomizersresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorCustomizersResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1259,7 +1259,7 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Connectorcustomizersresponse]]:
+    ) -> ApiResponse[List[ConnectorCustomizersResponse]]:
         """List all connector customizers
 
         List all connector customizers.
@@ -1300,12 +1300,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorcustomizersresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorCustomizersResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1376,12 +1376,12 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorcustomizersresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorCustomizersResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1464,7 +1464,7 @@ class ConnectorCustomizersApi:
     def put_connector_customizer_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector customizer to update.")],
-        connectorcustomizerupdaterequest: Annotated[Optional[Connectorcustomizerupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_customizer_update_request: Annotated[Optional[ConnectorCustomizerUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1477,15 +1477,15 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorcustomizerupdateresponse:
+    ) -> ConnectorCustomizerUpdateResponse:
         """Update connector customizer
 
         Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 
         :param id: ID of the connector customizer to update. (required)
         :type id: str
-        :param connectorcustomizerupdaterequest: Connector rule with updated data.
-        :type connectorcustomizerupdaterequest: Connectorcustomizerupdaterequest
+        :param connector_customizer_update_request: Connector rule with updated data.
+        :type connector_customizer_update_request: ConnectorCustomizerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1510,7 +1510,7 @@ class ConnectorCustomizersApi:
 
         _param = self._put_connector_customizer_v1_serialize(
             id=id,
-            connectorcustomizerupdaterequest=connectorcustomizerupdaterequest,
+            connector_customizer_update_request=connector_customizer_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1518,13 +1518,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1541,7 +1541,7 @@ class ConnectorCustomizersApi:
     def put_connector_customizer_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector customizer to update.")],
-        connectorcustomizerupdaterequest: Annotated[Optional[Connectorcustomizerupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_customizer_update_request: Annotated[Optional[ConnectorCustomizerUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1554,15 +1554,15 @@ class ConnectorCustomizersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorcustomizerupdateresponse]:
+    ) -> ApiResponse[ConnectorCustomizerUpdateResponse]:
         """Update connector customizer
 
         Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 
         :param id: ID of the connector customizer to update. (required)
         :type id: str
-        :param connectorcustomizerupdaterequest: Connector rule with updated data.
-        :type connectorcustomizerupdaterequest: Connectorcustomizerupdaterequest
+        :param connector_customizer_update_request: Connector rule with updated data.
+        :type connector_customizer_update_request: ConnectorCustomizerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1587,7 +1587,7 @@ class ConnectorCustomizersApi:
 
         _param = self._put_connector_customizer_v1_serialize(
             id=id,
-            connectorcustomizerupdaterequest=connectorcustomizerupdaterequest,
+            connector_customizer_update_request=connector_customizer_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1595,13 +1595,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1618,7 +1618,7 @@ class ConnectorCustomizersApi:
     def put_connector_customizer_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector customizer to update.")],
-        connectorcustomizerupdaterequest: Annotated[Optional[Connectorcustomizerupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_customizer_update_request: Annotated[Optional[ConnectorCustomizerUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1638,8 +1638,8 @@ class ConnectorCustomizersApi:
 
         :param id: ID of the connector customizer to update. (required)
         :type id: str
-        :param connectorcustomizerupdaterequest: Connector rule with updated data.
-        :type connectorcustomizerupdaterequest: Connectorcustomizerupdaterequest
+        :param connector_customizer_update_request: Connector rule with updated data.
+        :type connector_customizer_update_request: ConnectorCustomizerUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1664,7 +1664,7 @@ class ConnectorCustomizersApi:
 
         _param = self._put_connector_customizer_v1_serialize(
             id=id,
-            connectorcustomizerupdaterequest=connectorcustomizerupdaterequest,
+            connector_customizer_update_request=connector_customizer_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1672,13 +1672,13 @@ class ConnectorCustomizersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorcustomizerupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorCustomizerUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListConnectorCustomizersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListConnectorCustomizersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1690,7 +1690,7 @@ class ConnectorCustomizersApi:
     def _put_connector_customizer_v1_serialize(
         self,
         id,
-        connectorcustomizerupdaterequest,
+        connector_customizer_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1718,8 +1718,8 @@ class ConnectorCustomizersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if connectorcustomizerupdaterequest is not None:
-            _body_params = connectorcustomizerupdaterequest
+        if connector_customizer_update_request is not None:
+            _body_params = connector_customizer_update_request
 
 
         # set the HTTP header `Accept`

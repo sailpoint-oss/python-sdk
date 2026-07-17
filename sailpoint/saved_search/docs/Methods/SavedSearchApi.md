@@ -47,17 +47,17 @@ Param Type | Name | Data Type | Required  | Description
  Body  | create_saved_search_v1_request | [**CreateSavedSearchV1Request**](../models/create-saved-search-v1-request) | True  | The saved search to persist.
 
 ### Return type
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | The persisted saved search. | Savedsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | The persisted saved search. | SavedSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -69,7 +69,7 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.saved_search.api.saved_search_api import SavedSearchApi
 from sailpoint.saved_search.api_client import ApiClient
 from sailpoint.saved_search.models.create_saved_search_v1_request import CreateSavedSearchV1Request
-from sailpoint.saved_search.models.savedsearch import Savedsearch
+from sailpoint.saved_search.models.saved_search import SavedSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -113,12 +113,12 @@ Path   | id | **str** | True  | ID of the requested document.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content - Indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -162,7 +162,7 @@ Executes the specified saved search.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the requested document.
- Body  | searcharguments | [**Searcharguments**](../models/searcharguments) | True  | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
+ Body  | search_arguments | [**SearchArguments**](../models/search-arguments) | True  | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
 
 ### Return type
  (empty response body)
@@ -171,12 +171,12 @@ Path   | id | **str** | True  | ID of the requested document.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -187,21 +187,31 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.saved_search.api.saved_search_api import SavedSearchApi
 from sailpoint.saved_search.api_client import ApiClient
-from sailpoint.saved_search.models.searcharguments import Searcharguments
+from sailpoint.saved_search.models.search_arguments import SearchArguments
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document. # str | ID of the requested document.
-    searcharguments = '''sailpoint.saved_search.Searcharguments()''' # Searcharguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
+    search_arguments = '''{
+          "owner" : "",
+          "recipients" : [ {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "scheduleId" : "7a724640-0c17-4ce9-a8c3-4a89738459c8"
+        }''' # SearchArguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
 
     try:
         # Execute a saved search by id
-        new_searcharguments = Searcharguments.from_json(searcharguments)
-        SavedSearchApi(api_client).execute_saved_search_v1(id=id, searcharguments=new_searcharguments)
+        new_search_arguments = SearchArguments.from_json(search_arguments)
+        SavedSearchApi(api_client).execute_saved_search_v1(id=id, search_arguments=new_search_arguments)
         # Below is a request that includes all optional parameters
-        # SavedSearchApi(api_client).execute_saved_search_v1(id, new_searcharguments)
+        # SavedSearchApi(api_client).execute_saved_search_v1(id, new_search_arguments)
     except Exception as e:
         print("Exception when calling SavedSearchApi->execute_saved_search_v1: %s\n" % e)
 ```
@@ -224,18 +234,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the requested document.
 
 ### Return type
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested saved search. | Savedsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested saved search. | SavedSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -246,7 +256,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.saved_search.api.saved_search_api import SavedSearchApi
 from sailpoint.saved_search.api_client import ApiClient
-from sailpoint.saved_search.models.savedsearch import Savedsearch
+from sailpoint.saved_search.models.saved_search import SavedSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -287,17 +297,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*
 
 ### Return type
-[**List[Savedsearch]**](../models/savedsearch)
+[**List[SavedSearch]**](../models/saved-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The list of requested saved searches. | List[Savedsearch] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The list of requested saved searches. | List[SavedSearch] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -308,7 +318,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.saved_search.api.saved_search_api import SavedSearchApi
 from sailpoint.saved_search.api_client import ApiClient
-from sailpoint.saved_search.models.savedsearch import Savedsearch
+from sailpoint.saved_search.models.saved_search import SavedSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -350,20 +360,20 @@ Updates an existing saved search.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the requested document.
- Body  | savedsearch | [**Savedsearch**](../models/savedsearch) | True  | The saved search to persist.
+ Body  | saved_search | [**SavedSearch**](../models/saved-search) | True  | The saved search to persist.
 
 ### Return type
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The persisted saved search. | Savedsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The persisted saved search. | SavedSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSavedSearchesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSavedSearchesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -374,21 +384,65 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.saved_search.api.saved_search_api import SavedSearchApi
 from sailpoint.saved_search.api_client import ApiClient
-from sailpoint.saved_search.models.savedsearch import Savedsearch
+from sailpoint.saved_search.models.saved_search import SavedSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document. # str | ID of the requested document.
-    savedsearch = '''sailpoint.saved_search.Savedsearch()''' # Savedsearch | The saved search to persist.
+    saved_search = '''{
+          "owner" : {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "created" : "2018-06-25T20:22:28.104Z",
+          "columns" : {
+            "identity" : [ {
+              "field" : "displayName",
+              "header" : "Display Name"
+            }, {
+              "field" : "e-mail",
+              "header" : "Work Email"
+            } ]
+          },
+          "query" : "@accounts(disabled:true)",
+          "description" : "Disabled accounts",
+          "orderBy" : {
+            "identity" : [ "lastName", "firstName" ],
+            "role" : [ "name" ]
+          },
+          "sort" : [ "displayName" ],
+          "filters" : {
+            "terms" : [ "account_count", "account_count" ],
+            "range" : {
+              "lower" : {
+                "inclusive" : false,
+                "value" : "1"
+              },
+              "upper" : {
+                "inclusive" : false,
+                "value" : "1"
+              }
+            },
+            "exclude" : false,
+            "type" : "RANGE"
+          },
+          "ownerId" : "2c91808568c529c60168cca6f90c1313",
+          "indices" : [ "identities" ],
+          "public" : false,
+          "name" : "Disabled accounts",
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "id" : "0de46054-fe90-434a-b84e-c6b3359d0c64",
+          "fields" : [ "disabled" ]
+        }''' # SavedSearch | The saved search to persist.
 
     try:
         # Updates an existing saved search 
-        new_savedsearch = Savedsearch.from_json(savedsearch)
-        results = SavedSearchApi(api_client).put_saved_search_v1(id=id, savedsearch=new_savedsearch)
+        new_saved_search = SavedSearch.from_json(saved_search)
+        results = SavedSearchApi(api_client).put_saved_search_v1(id=id, saved_search=new_saved_search)
         # Below is a request that includes all optional parameters
-        # results = SavedSearchApi(api_client).put_saved_search_v1(id, new_savedsearch)
+        # results = SavedSearchApi(api_client).put_saved_search_v1(id, new_saved_search)
         print("The response of SavedSearchApi->put_saved_search_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -72,12 +72,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/privilege_criteria_configuration/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/privilege_criteria_configuration/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/privilege_criteria_configuration/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/privilege_criteria_configuration/docs/ErrorResponseDto.md)
  - [GetPrivilegeCriteriaConfigV1401Response](sailpoint/privilege_criteria_configuration/docs/GetPrivilegeCriteriaConfigV1401Response.md)
  - [GetPrivilegeCriteriaConfigV1429Response](sailpoint/privilege_criteria_configuration/docs/GetPrivilegeCriteriaConfigV1429Response.md)
- - [Localeorigin](sailpoint/privilege_criteria_configuration/docs/Localeorigin.md)
- - [Privilegecriteriaconfigdto](sailpoint/privilege_criteria_configuration/docs/Privilegecriteriaconfigdto.md)
+ - [LocaleOrigin](sailpoint/privilege_criteria_configuration/docs/LocaleOrigin.md)
+ - [PrivilegeCriteriaConfigDTO](sailpoint/privilege_criteria_configuration/docs/PrivilegeCriteriaConfigDTO.md)
 
 
 <a id="documentation-for-authorization"></a>

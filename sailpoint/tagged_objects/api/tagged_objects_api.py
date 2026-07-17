@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.tagged_objects.models.bulkaddtaggedobject import Bulkaddtaggedobject
-from sailpoint.tagged_objects.models.bulkremovetaggedobject import Bulkremovetaggedobject
-from sailpoint.tagged_objects.models.bulktaggedobjectresponse import Bulktaggedobjectresponse
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.bulk_add_tagged_object import BulkAddTaggedObject
+from sailpoint.tagged_objects.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
+from sailpoint.tagged_objects.models.bulk_tagged_object_response import BulkTaggedObjectResponse
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 
 from sailpoint.tagged_objects.api_client import ApiClient, RequestSerialized
 from sailpoint.tagged_objects.api_response import ApiResponse
@@ -101,11 +101,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -177,11 +177,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -253,11 +253,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -335,7 +335,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object_v1(
         self,
-        bulkremovetaggedobject: Annotated[Bulkremovetaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -353,8 +353,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.
 
-        :param bulkremovetaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkremovetaggedobject: Bulkremovetaggedobject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -378,7 +378,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_v1_serialize(
-            bulkremovetaggedobject=bulkremovetaggedobject,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -387,11 +387,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -407,7 +407,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object_v1_with_http_info(
         self,
-        bulkremovetaggedobject: Annotated[Bulkremovetaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,8 +425,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.
 
-        :param bulkremovetaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkremovetaggedobject: Bulkremovetaggedobject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -450,7 +450,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_v1_serialize(
-            bulkremovetaggedobject=bulkremovetaggedobject,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -459,11 +459,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -479,7 +479,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object_v1_without_preload_content(
         self,
-        bulkremovetaggedobject: Annotated[Bulkremovetaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -497,8 +497,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.
 
-        :param bulkremovetaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkremovetaggedobject: Bulkremovetaggedobject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -522,7 +522,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_v1_serialize(
-            bulkremovetaggedobject=bulkremovetaggedobject,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -531,11 +531,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -546,7 +546,7 @@ class TaggedObjectsApi:
 
     def _delete_tags_to_many_object_v1_serialize(
         self,
-        bulkremovetaggedobject,
+        bulk_remove_tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -572,8 +572,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkremovetaggedobject is not None:
-            _body_params = bulkremovetaggedobject
+        if bulk_remove_tagged_object is not None:
+            _body_params = bulk_remove_tagged_object
 
 
         # set the HTTP header `Accept`
@@ -637,7 +637,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taggedobject:
+    ) -> TaggedObject:
         """Get tagged object
 
         This gets a tagged object for the specified type.
@@ -678,12 +678,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -713,7 +713,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taggedobject]:
+    ) -> ApiResponse[TaggedObject]:
         """Get tagged object
 
         This gets a tagged object for the specified type.
@@ -754,12 +754,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -830,12 +830,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -930,7 +930,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Taggedobject]:
+    ) -> List[TaggedObject]:
         """List tagged objects by type
 
         This API returns a list of all tagged objects by type.
@@ -980,12 +980,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1018,7 +1018,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Taggedobject]]:
+    ) -> ApiResponse[List[TaggedObject]]:
         """List tagged objects by type
 
         This API returns a list of all tagged objects by type.
@@ -1068,12 +1068,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1156,12 +1156,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1272,7 +1272,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Taggedobject]:
+    ) -> List[TaggedObject]:
         """List tagged objects
 
         This API returns a list of all tagged objects.
@@ -1319,12 +1319,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1356,7 +1356,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Taggedobject]]:
+    ) -> ApiResponse[List[TaggedObject]]:
         """List tagged objects
 
         This API returns a list of all tagged objects.
@@ -1403,12 +1403,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1487,12 +1487,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taggedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[TaggedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1586,7 +1586,7 @@ class TaggedObjectsApi:
         self,
         type: Annotated[StrictStr, Field(description="The type of tagged object to update.")],
         id: Annotated[StrictStr, Field(description="The ID of the object reference to update.")],
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1599,7 +1599,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taggedobject:
+    ) -> TaggedObject:
         """Update tagged object
 
         This updates a tagged object for the specified type.
@@ -1608,8 +1608,8 @@ class TaggedObjectsApi:
         :type type: str
         :param id: The ID of the object reference to update. (required)
         :type id: str
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1635,7 +1635,7 @@ class TaggedObjectsApi:
         _param = self._put_tagged_object_v1_serialize(
             type=type,
             id=id,
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1643,12 +1643,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1666,7 +1666,7 @@ class TaggedObjectsApi:
         self,
         type: Annotated[StrictStr, Field(description="The type of tagged object to update.")],
         id: Annotated[StrictStr, Field(description="The ID of the object reference to update.")],
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1679,7 +1679,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taggedobject]:
+    ) -> ApiResponse[TaggedObject]:
         """Update tagged object
 
         This updates a tagged object for the specified type.
@@ -1688,8 +1688,8 @@ class TaggedObjectsApi:
         :type type: str
         :param id: The ID of the object reference to update. (required)
         :type id: str
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1715,7 +1715,7 @@ class TaggedObjectsApi:
         _param = self._put_tagged_object_v1_serialize(
             type=type,
             id=id,
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1723,12 +1723,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1746,7 +1746,7 @@ class TaggedObjectsApi:
         self,
         type: Annotated[StrictStr, Field(description="The type of tagged object to update.")],
         id: Annotated[StrictStr, Field(description="The ID of the object reference to update.")],
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1768,8 +1768,8 @@ class TaggedObjectsApi:
         :type type: str
         :param id: The ID of the object reference to update. (required)
         :type id: str
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1795,7 +1795,7 @@ class TaggedObjectsApi:
         _param = self._put_tagged_object_v1_serialize(
             type=type,
             id=id,
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1803,12 +1803,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taggedobject",
-            '400': "Errorresponsedto",
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1821,7 +1821,7 @@ class TaggedObjectsApi:
         self,
         type,
         id,
-        taggedobject,
+        tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -1851,8 +1851,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if taggedobject is not None:
-            _body_params = taggedobject
+        if tagged_object is not None:
+            _body_params = tagged_object
 
 
         # set the HTTP header `Accept`
@@ -1902,7 +1902,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tag_to_object_v1(
         self,
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1920,8 +1920,8 @@ class TaggedObjectsApi:
 
         This adds a tag to an object.
 
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1945,7 +1945,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tag_to_object_v1_serialize(
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1954,11 +1954,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1974,7 +1974,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tag_to_object_v1_with_http_info(
         self,
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1992,8 +1992,8 @@ class TaggedObjectsApi:
 
         This adds a tag to an object.
 
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2017,7 +2017,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tag_to_object_v1_serialize(
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2026,11 +2026,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2046,7 +2046,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tag_to_object_v1_without_preload_content(
         self,
-        taggedobject: Taggedobject,
+        tagged_object: TaggedObject,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2064,8 +2064,8 @@ class TaggedObjectsApi:
 
         This adds a tag to an object.
 
-        :param taggedobject: (required)
-        :type taggedobject: Taggedobject
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2089,7 +2089,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tag_to_object_v1_serialize(
-            taggedobject=taggedobject,
+            tagged_object=tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2098,11 +2098,11 @@ class TaggedObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2113,7 +2113,7 @@ class TaggedObjectsApi:
 
     def _set_tag_to_object_v1_serialize(
         self,
-        taggedobject,
+        tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -2139,8 +2139,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if taggedobject is not None:
-            _body_params = taggedobject
+        if tagged_object is not None:
+            _body_params = tagged_object
 
 
         # set the HTTP header `Accept`
@@ -2190,7 +2190,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects_v1(
         self,
-        bulkaddtaggedobject: Annotated[Bulkaddtaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2203,13 +2203,13 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Bulktaggedobjectresponse]:
+    ) -> List[BulkTaggedObjectResponse]:
         """Tag multiple objects
 
         This API adds tags to multiple objects.
 
-        :param bulkaddtaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkaddtaggedobject: Bulkaddtaggedobject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2233,7 +2233,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_v1_serialize(
-            bulkaddtaggedobject=bulkaddtaggedobject,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2241,12 +2241,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulktaggedobjectresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkTaggedObjectResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2262,7 +2262,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects_v1_with_http_info(
         self,
-        bulkaddtaggedobject: Annotated[Bulkaddtaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2275,13 +2275,13 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Bulktaggedobjectresponse]]:
+    ) -> ApiResponse[List[BulkTaggedObjectResponse]]:
         """Tag multiple objects
 
         This API adds tags to multiple objects.
 
-        :param bulkaddtaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkaddtaggedobject: Bulkaddtaggedobject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2305,7 +2305,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_v1_serialize(
-            bulkaddtaggedobject=bulkaddtaggedobject,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2313,12 +2313,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulktaggedobjectresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkTaggedObjectResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2334,7 +2334,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects_v1_without_preload_content(
         self,
-        bulkaddtaggedobject: Annotated[Bulkaddtaggedobject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2352,8 +2352,8 @@ class TaggedObjectsApi:
 
         This API adds tags to multiple objects.
 
-        :param bulkaddtaggedobject: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulkaddtaggedobject: Bulkaddtaggedobject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2377,7 +2377,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_v1_serialize(
-            bulkaddtaggedobject=bulkaddtaggedobject,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2385,12 +2385,12 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulktaggedobjectresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkTaggedObjectResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListTaggedObjectsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTaggedObjectsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2401,7 +2401,7 @@ class TaggedObjectsApi:
 
     def _set_tags_to_many_objects_v1_serialize(
         self,
-        bulkaddtaggedobject,
+        bulk_add_tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -2427,8 +2427,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkaddtaggedobject is not None:
-            _body_params = bulkaddtaggedobject
+        if bulk_add_tagged_object is not None:
+            _body_params = bulk_add_tagged_object
 
 
         # set the HTTP header `Accept`

@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.parameter_storage.models.parameterstorageattestationdocument import Parameterstorageattestationdocument
-from sailpoint.parameter_storage.models.parameterstoragenewparameter import Parameterstoragenewparameter
-from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
-from sailpoint.parameter_storage.models.parameterstoragereference import Parameterstoragereference
-from sailpoint.parameter_storage.models.parameterstorageupdateparameter import Parameterstorageupdateparameter
+from sailpoint.parameter_storage.models.parameter_storage_attestation_document import ParameterStorageAttestationDocument
+from sailpoint.parameter_storage.models.parameter_storage_new_parameter import ParameterStorageNewParameter
+from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
+from sailpoint.parameter_storage.models.parameter_storage_reference import ParameterStorageReference
+from sailpoint.parameter_storage.models.parameter_storage_update_parameter import ParameterStorageUpdateParameter
 
 from sailpoint.parameter_storage.api_client import ApiClient, RequestSerialized
 from sailpoint.parameter_storage.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ParameterStorageApi:
     @validate_call
     def create_parameter_v1(
         self,
-        parameterstoragenewparameter: Annotated[Optional[Parameterstoragenewparameter], Field(description="The parameter to add to the store.")] = None,
+        parameter_storage_new_parameter: Annotated[Optional[ParameterStorageNewParameter], Field(description="The parameter to add to the store.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +59,13 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Parameterstorageparameter:
+    ) -> ParameterStorageParameter:
         """Add a new parameter.
 
         Add a new parameter.
 
-        :param parameterstoragenewparameter: The parameter to add to the store.
-        :type parameterstoragenewparameter: Parameterstoragenewparameter
+        :param parameter_storage_new_parameter: The parameter to add to the store.
+        :type parameter_storage_new_parameter: ParameterStorageNewParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class ParameterStorageApi:
         """ # noqa: E501
 
         _param = self._create_parameter_v1_serialize(
-            parameterstoragenewparameter=parameterstoragenewparameter,
+            parameter_storage_new_parameter=parameter_storage_new_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,12 +97,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '201': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -118,7 +118,7 @@ class ParameterStorageApi:
     @validate_call
     def create_parameter_v1_with_http_info(
         self,
-        parameterstoragenewparameter: Annotated[Optional[Parameterstoragenewparameter], Field(description="The parameter to add to the store.")] = None,
+        parameter_storage_new_parameter: Annotated[Optional[ParameterStorageNewParameter], Field(description="The parameter to add to the store.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,13 +131,13 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Parameterstorageparameter]:
+    ) -> ApiResponse[ParameterStorageParameter]:
         """Add a new parameter.
 
         Add a new parameter.
 
-        :param parameterstoragenewparameter: The parameter to add to the store.
-        :type parameterstoragenewparameter: Parameterstoragenewparameter
+        :param parameter_storage_new_parameter: The parameter to add to the store.
+        :type parameter_storage_new_parameter: ParameterStorageNewParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +161,7 @@ class ParameterStorageApi:
         """ # noqa: E501
 
         _param = self._create_parameter_v1_serialize(
-            parameterstoragenewparameter=parameterstoragenewparameter,
+            parameter_storage_new_parameter=parameter_storage_new_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,12 +169,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '201': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -190,7 +190,7 @@ class ParameterStorageApi:
     @validate_call
     def create_parameter_v1_without_preload_content(
         self,
-        parameterstoragenewparameter: Annotated[Optional[Parameterstoragenewparameter], Field(description="The parameter to add to the store.")] = None,
+        parameter_storage_new_parameter: Annotated[Optional[ParameterStorageNewParameter], Field(description="The parameter to add to the store.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,8 +208,8 @@ class ParameterStorageApi:
 
         Add a new parameter.
 
-        :param parameterstoragenewparameter: The parameter to add to the store.
-        :type parameterstoragenewparameter: Parameterstoragenewparameter
+        :param parameter_storage_new_parameter: The parameter to add to the store.
+        :type parameter_storage_new_parameter: ParameterStorageNewParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,7 +233,7 @@ class ParameterStorageApi:
         """ # noqa: E501
 
         _param = self._create_parameter_v1_serialize(
-            parameterstoragenewparameter=parameterstoragenewparameter,
+            parameter_storage_new_parameter=parameter_storage_new_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,12 +241,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '201': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class ParameterStorageApi:
 
     def _create_parameter_v1_serialize(
         self,
-        parameterstoragenewparameter,
+        parameter_storage_new_parameter,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +283,8 @@ class ParameterStorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if parameterstoragenewparameter is not None:
-            _body_params = parameterstoragenewparameter
+        if parameter_storage_new_parameter is not None:
+            _body_params = parameter_storage_new_parameter
 
 
         # set the HTTP header `Accept`
@@ -386,13 +386,13 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -460,13 +460,13 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -534,13 +534,13 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -628,7 +628,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Parameterstorageattestationdocument:
+    ) -> ParameterStorageAttestationDocument:
         """Get an attestation document.
 
         Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
@@ -666,12 +666,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageattestationdocument",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageAttestationDocument",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -700,7 +700,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Parameterstorageattestationdocument]:
+    ) -> ApiResponse[ParameterStorageAttestationDocument]:
         """Get an attestation document.
 
         Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
@@ -738,12 +738,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageattestationdocument",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageAttestationDocument",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -810,12 +810,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageattestationdocument",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageAttestationDocument",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -908,7 +908,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Parameterstoragereference]:
+    ) -> List[ParameterStorageReference]:
         """Get parameter references.
 
         Get the references for a given parameter.
@@ -955,13 +955,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstoragereference]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageReference]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -993,7 +993,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Parameterstoragereference]]:
+    ) -> ApiResponse[List[ParameterStorageReference]]:
         """Get parameter references.
 
         Get the references for a given parameter.
@@ -1040,13 +1040,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstoragereference]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageReference]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1125,13 +1125,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstoragereference]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageReference]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1273,11 +1273,11 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1345,11 +1345,11 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1417,11 +1417,11 @@ class ParameterStorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1509,7 +1509,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Parameterstorageparameter:
+    ) -> ParameterStorageParameter:
         """Get a specific parameter.
 
         Get a parameter by ID. This will only return the public fields for the parameter.
@@ -1547,13 +1547,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1582,7 +1582,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Parameterstorageparameter]:
+    ) -> ApiResponse[ParameterStorageParameter]:
         """Get a specific parameter.
 
         Get a parameter by ID. This will only return the public fields for the parameter.
@@ -1620,13 +1620,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1693,13 +1693,13 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1790,7 +1790,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Parameterstorageparameter]:
+    ) -> List[ParameterStorageParameter]:
         """Query stored parameters.
 
         Query a stored parameter.
@@ -1837,12 +1837,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstorageparameter]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageParameter]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1874,7 +1874,7 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Parameterstorageparameter]]:
+    ) -> ApiResponse[List[ParameterStorageParameter]]:
         """Query stored parameters.
 
         Query a stored parameter.
@@ -1921,12 +1921,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstorageparameter]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageParameter]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2005,12 +2005,12 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Parameterstorageparameter]",
-            '400': "Errorresponsedto",
+            '200': "List[ParameterStorageParameter]",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2103,7 +2103,7 @@ class ParameterStorageApi:
     def update_parameter_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the parameter to be updated.")],
-        parameterstorageupdateparameter: Annotated[Optional[Parameterstorageupdateparameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
+        parameter_storage_update_parameter: Annotated[Optional[ParameterStorageUpdateParameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2116,15 +2116,15 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Parameterstorageparameter:
+    ) -> ParameterStorageParameter:
         """Update a parameter.
 
         Update a parameter. You cannot change a parameter's type once set. Only the name, owner, description, public fields, and private fields can be updated. Private field updates are made via JWE AES256 encrypted blobs.
 
         :param id: The ID of the parameter to be updated. (required)
         :type id: str
-        :param parameterstorageupdateparameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
-        :type parameterstorageupdateparameter: Parameterstorageupdateparameter
+        :param parameter_storage_update_parameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
+        :type parameter_storage_update_parameter: ParameterStorageUpdateParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2149,7 +2149,7 @@ class ParameterStorageApi:
 
         _param = self._update_parameter_v1_serialize(
             id=id,
-            parameterstorageupdateparameter=parameterstorageupdateparameter,
+            parameter_storage_update_parameter=parameter_storage_update_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2157,14 +2157,14 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2181,7 +2181,7 @@ class ParameterStorageApi:
     def update_parameter_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the parameter to be updated.")],
-        parameterstorageupdateparameter: Annotated[Optional[Parameterstorageupdateparameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
+        parameter_storage_update_parameter: Annotated[Optional[ParameterStorageUpdateParameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2194,15 +2194,15 @@ class ParameterStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Parameterstorageparameter]:
+    ) -> ApiResponse[ParameterStorageParameter]:
         """Update a parameter.
 
         Update a parameter. You cannot change a parameter's type once set. Only the name, owner, description, public fields, and private fields can be updated. Private field updates are made via JWE AES256 encrypted blobs.
 
         :param id: The ID of the parameter to be updated. (required)
         :type id: str
-        :param parameterstorageupdateparameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
-        :type parameterstorageupdateparameter: Parameterstorageupdateparameter
+        :param parameter_storage_update_parameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
+        :type parameter_storage_update_parameter: ParameterStorageUpdateParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2227,7 +2227,7 @@ class ParameterStorageApi:
 
         _param = self._update_parameter_v1_serialize(
             id=id,
-            parameterstorageupdateparameter=parameterstorageupdateparameter,
+            parameter_storage_update_parameter=parameter_storage_update_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2235,14 +2235,14 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2259,7 +2259,7 @@ class ParameterStorageApi:
     def update_parameter_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the parameter to be updated.")],
-        parameterstorageupdateparameter: Annotated[Optional[Parameterstorageupdateparameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
+        parameter_storage_update_parameter: Annotated[Optional[ParameterStorageUpdateParameter], Field(description="The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2279,8 +2279,8 @@ class ParameterStorageApi:
 
         :param id: The ID of the parameter to be updated. (required)
         :type id: str
-        :param parameterstorageupdateparameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
-        :type parameterstorageupdateparameter: Parameterstorageupdateparameter
+        :param parameter_storage_update_parameter: The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
+        :type parameter_storage_update_parameter: ParameterStorageUpdateParameter
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2305,7 +2305,7 @@ class ParameterStorageApi:
 
         _param = self._update_parameter_v1_serialize(
             id=id,
-            parameterstorageupdateparameter=parameterstorageupdateparameter,
+            parameter_storage_update_parameter=parameter_storage_update_parameter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2313,14 +2313,14 @@ class ParameterStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Parameterstorageparameter",
-            '400': "Errorresponsedto",
+            '200': "ParameterStorageParameter",
+            '400': "ErrorResponseDto",
             '401': "GetAttestationDocumentV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "DeleteParameterV1409Response",
             '429': "GetAttestationDocumentV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2332,7 +2332,7 @@ class ParameterStorageApi:
     def _update_parameter_v1_serialize(
         self,
         id,
-        parameterstorageupdateparameter,
+        parameter_storage_update_parameter,
         _request_auth,
         _content_type,
         _headers,
@@ -2360,8 +2360,8 @@ class ParameterStorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if parameterstorageupdateparameter is not None:
-            _body_params = parameterstorageupdateparameter
+        if parameter_storage_update_parameter is not None:
+            _body_params = parameter_storage_update_parameter
 
 
         # set the HTTP header `Accept`

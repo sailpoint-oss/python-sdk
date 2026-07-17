@@ -31,10 +31,10 @@ from sailpoint.transforms.exceptions import ApiAttributeError
 from sailpoint.transforms.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.transforms.models.errormessagedto import Errormessagedto
-from sailpoint.transforms.models.errorresponsedto import Errorresponsedto
+from sailpoint.transforms.models.error_message_dto import ErrorMessageDto
+from sailpoint.transforms.models.error_response_dto import ErrorResponseDto
 from sailpoint.transforms.models.list_transforms_v1401_response import ListTransformsV1401Response
 from sailpoint.transforms.models.list_transforms_v1429_response import ListTransformsV1429Response
-from sailpoint.transforms.models.localeorigin import Localeorigin
+from sailpoint.transforms.models.locale_origin import LocaleOrigin
 from sailpoint.transforms.models.transform import Transform
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead

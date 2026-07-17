@@ -53,22 +53,22 @@ Creates a new custom user level for the tenant.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | userlevelrequest | [**Userlevelrequest**](../models/userlevelrequest) | True  | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+ Body  | user_level_request | [**UserLevelRequest**](../models/user-level-request) | True  | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The user level summary. | Userlevelsummarydto |  * accept-language - The locale to use for translations for the response  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The user level summary. | UserLevelSummaryDTO |  * accept-language - The locale to use for translations for the response  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -79,23 +79,49 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.userlevelrequest import Userlevelrequest
-from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+from sailpoint.custom_user_levels.models.user_level_request import UserLevelRequest
+from sailpoint.custom_user_levels.models.user_level_summary_dto import UserLevelSummaryDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    userlevelrequest = '''{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}''' # Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    user_level_request = '''{
+          "owner" : {
+            "manager" : {
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            },
+            "name" : "Alison Ferguso",
+            "alias" : "alison.ferguso",
+            "attributes" : [ {
+              "name" : "Country",
+              "value" : "US",
+              "key" : "country"
+            }, {
+              "name" : "Country",
+              "value" : "US",
+              "key" : "country"
+            } ],
+            "id" : "2c9180857182305e0171993735622948",
+            "identityState" : "ACTIVE",
+            "email" : "alison.ferguso@acme-solar.com",
+            "status" : "Active"
+          },
+          "rightSets" : [ "idn:ui-right-set-list-read-example", "idn:ui-right-set-write-example" ],
+          "name" : "Custom User Level Name",
+          "description" : "This is a description of the custom user level."
+        }''' # UserLevelRequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create a custom user level
-        new_userlevelrequest = Userlevelrequest.from_json(userlevelrequest)
-        results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(userlevelrequest=new_userlevelrequest)
+        new_user_level_request = UserLevelRequest.from_json(user_level_request)
+        results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(user_level_request=new_user_level_request)
         # Below is a request that includes all optional parameters
-        # results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(new_userlevelrequest, x_sail_point_experimental)
+        # results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(new_user_level_request, x_sail_point_experimental)
         print("The response of CustomUserLevelsApi->create_custom_user_level_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -137,12 +163,12 @@ Path   | id | **str** | True  | The unique identifier of the user level.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -201,18 +227,18 @@ Path   | id | **str** | True  | The unique identifier of the user level.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully retrieved the user level details. | Userlevelsummarydto |  * accept-language - The locale to use for translations for the response  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully retrieved the user level details. | UserLevelSummaryDTO |  * accept-language - The locale to use for translations for the response  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -223,7 +249,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+from sailpoint.custom_user_levels.models.user_level_summary_dto import UserLevelSummaryDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -277,18 +303,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Hierarchicalrightset]**](../models/hierarchicalrightset)
+[**List[HierarchicalRightSet]**](../models/hierarchical-right-set)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully retrieved the list of authorization assignable right sets. | List[Hierarchicalrightset] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  * accept-language - The locale to use for translations for the response  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully retrieved the list of authorization assignable right sets. | List[HierarchicalRightSet] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  * accept-language - The locale to use for translations for the response  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -299,7 +325,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.hierarchicalrightset import Hierarchicalrightset
+from sailpoint.custom_user_levels.models.hierarchical_right_set import HierarchicalRightSet
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -358,18 +384,18 @@ Path   | id | **str** | True  | The unique identifier of the user level.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Authuserslimresponse]**](../models/authuserslimresponse)
+[**List[AuthUserSlimResponse]**](../models/auth-user-slim-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identities associated with a user level. | List[Authuserslimresponse] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of identities associated with a user level. | List[AuthUserSlimResponse] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -380,7 +406,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.authuserslimresponse import Authuserslimresponse
+from sailpoint.custom_user_levels.models.auth_user_slim_response import AuthUserSlimResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -440,18 +466,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Userlevelsummarydto]**](../models/userlevelsummarydto)
+[**List[UserLevelSummaryDTO]**](../models/user-level-summary-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully retrieved the list of user levels. | List[Userlevelsummarydto] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  * accept-language - The locale to use for translations for the response  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully retrieved the list of user levels. | List[UserLevelSummaryDTO] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  * accept-language - The locale to use for translations for the response  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -462,7 +488,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+from sailpoint.custom_user_levels.models.user_level_summary_dto import UserLevelSummaryDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -518,18 +544,18 @@ Path   | id | **str** | True  | The unique identifier of the user level to publi
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Userlevelpublishsummary**](../models/userlevelpublishsummary)
+[**UserLevelPublishSummary**](../models/user-level-publish-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The publish status summary for current user level. | Userlevelpublishsummary |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The publish status summary for current user level. | UserLevelPublishSummary |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -540,7 +566,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.userlevelpublishsummary import Userlevelpublishsummary
+from sailpoint.custom_user_levels.models.user_level_publish_summary import UserLevelPublishSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -591,18 +617,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Authuserlevelsidentitycount]**](../models/authuserlevelsidentitycount)
+[**List[AuthUserLevelsIdentityCount]**](../models/auth-user-levels-identity-count)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of user levels along with the number of identities associated to it. | List[Authuserlevelsidentitycount] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of user levels along with the number of identities associated to it. | List[AuthUserLevelsIdentityCount] |  * X-Total-Count - Total number of user levels assigned to identities for this tenant.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -613,7 +639,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.authuserlevelsidentitycount import Authuserlevelsidentitycount
+from sailpoint.custom_user_levels.models.auth_user_levels_identity_count import AuthUserLevelsIdentityCount
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -662,22 +688,22 @@ Updates the details of a specific user level using JSON Patch.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The unique identifier of the user level.
- Body  | jsonpatch | [**Jsonpatch**](../models/jsonpatch) | True  | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+ Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully updated the user level. | Userlevelsummarydto |  * accept-language - The locale to use for translations for the response  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully updated the user level. | UserLevelSummaryDTO |  * accept-language - The locale to use for translations for the response  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListUserLevelsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListUserLevelsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -688,8 +714,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.custom_user_levels.api_client import ApiClient
-from sailpoint.custom_user_levels.models.jsonpatch import Jsonpatch
-from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+from sailpoint.custom_user_levels.models.json_patch import JsonPatch
+from sailpoint.custom_user_levels.models.user_level_summary_dto import UserLevelSummaryDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -697,15 +723,25 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '6e110911-5984-491b-be74-2707980a46a7' # str | The unique identifier of the user level. # str | The unique identifier of the user level.
-    jsonpatch = '''[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]''' # Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    json_patch = '''{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }''' # JsonPatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update a user level
-        new_jsonpatch = Jsonpatch.from_json(jsonpatch)
-        results = CustomUserLevelsApi(api_client).update_user_level_v1(id=id, jsonpatch=new_jsonpatch)
+        new_json_patch = JsonPatch.from_json(json_patch)
+        results = CustomUserLevelsApi(api_client).update_user_level_v1(id=id, json_patch=new_json_patch)
         # Below is a request that includes all optional parameters
-        # results = CustomUserLevelsApi(api_client).update_user_level_v1(id, new_jsonpatch, x_sail_point_experimental)
+        # results = CustomUserLevelsApi(api_client).update_user_level_v1(id, new_json_patch, x_sail_point_experimental)
         print("The response of CustomUserLevelsApi->update_user_level_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

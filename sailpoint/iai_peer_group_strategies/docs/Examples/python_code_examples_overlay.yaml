@@ -6,7 +6,7 @@
       source: |
         from sailpoint.iai_peer_group_strategies.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
         from sailpoint.iai_peer_group_strategies.api_client import ApiClient
-        from sailpoint.iai_peer_group_strategies.models.peergroupmember import Peergroupmember
+        from sailpoint.iai_peer_group_strategies.models.peer_group_member import PeerGroupMember
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

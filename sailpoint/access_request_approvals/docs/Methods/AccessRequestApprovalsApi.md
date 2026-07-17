@@ -52,7 +52,7 @@ Use this endpoint to approve an access request approval. Only the owner of the a
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | approval_id | **str** | True  | Approval ID.
- Body  | commentdto | [**Commentdto**](../models/commentdto) |   (optional) | Reviewer's comment.
+ Body  | comment_dto | [**CommentDto**](../models/comment-dto) |   (optional) | Reviewer's comment.
 
 ### Return type
 **object**
@@ -61,12 +61,12 @@ Path   | approval_id | **str** | True  | Approval ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -77,21 +77,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.commentdto import Commentdto
+from sailpoint.access_request_approvals.models.comment_dto import CommentDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
-    commentdto = '''sailpoint.access_request_approvals.Commentdto()''' # Commentdto | Reviewer's comment. (optional)
+    comment_dto = '''{
+          "created" : "2017-07-11T18:45:37.098Z",
+          "author" : {
+            "name" : "john.doe",
+            "id" : "2c9180847e25f377017e2ae8cae4650b",
+            "type" : "IDENTITY"
+          },
+          "comment" : "This is a comment."
+        }''' # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Approve access request approval
         
         results = AccessRequestApprovalsApi(api_client).approve_access_request_v1(approval_id=approval_id)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestApprovalsApi(api_client).approve_access_request_v1(approval_id, new_commentdto)
+        # results = AccessRequestApprovalsApi(api_client).approve_access_request_v1(approval_id, new_comment_dto)
         print("The response of AccessRequestApprovalsApi->approve_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -113,7 +121,7 @@ Use this API to forward an access request approval to a new owner. Only the owne
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | approval_id | **str** | True  | Approval ID.
- Body  | forwardapprovaldto | [**Forwardapprovaldto**](../models/forwardapprovaldto) | True  | Information about the forwarded approval.
+ Body  | forward_approval_dto | [**ForwardApprovalDto**](../models/forward-approval-dto) | True  | Information about the forwarded approval.
 
 ### Return type
 **object**
@@ -122,12 +130,12 @@ Path   | approval_id | **str** | True  | Approval ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -138,21 +146,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.forwardapprovaldto import Forwardapprovaldto
+from sailpoint.access_request_approvals.models.forward_approval_dto import ForwardApprovalDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
-    forwardapprovaldto = '''sailpoint.access_request_approvals.Forwardapprovaldto()''' # Forwardapprovaldto | Information about the forwarded approval.
+    forward_approval_dto = '''{
+          "newOwnerId" : "2c91808568c529c60168cca6f90c1314",
+          "comment" : "2c91808568c529c60168cca6f90c1313"
+        }''' # ForwardApprovalDto | Information about the forwarded approval.
 
     try:
         # Forward access request approval
-        new_forwardapprovaldto = Forwardapprovaldto.from_json(forwardapprovaldto)
-        results = AccessRequestApprovalsApi(api_client).forward_access_request_v1(approval_id=approval_id, forwardapprovaldto=new_forwardapprovaldto)
+        new_forward_approval_dto = ForwardApprovalDto.from_json(forward_approval_dto)
+        results = AccessRequestApprovalsApi(api_client).forward_access_request_v1(approval_id=approval_id, forward_approval_dto=new_forward_approval_dto)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestApprovalsApi(api_client).forward_access_request_v1(approval_id, new_forwardapprovaldto)
+        # results = AccessRequestApprovalsApi(api_client).forward_access_request_v1(approval_id, new_forward_approval_dto)
         print("The response of AccessRequestApprovalsApi->forward_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -177,17 +188,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | from_date | **str** |   (optional) | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
 
 ### Return type
-[**Approvalsummary**](../models/approvalsummary)
+[**ApprovalSummary**](../models/approval-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Number of pending, approved, rejected access request approvals. | Approvalsummary |  -  |
-400 | Client Error - Returned if the query parameter is invalid. | Errorresponsedto |  -  |
+200 | Number of pending, approved, rejected access request approvals. | ApprovalSummary |  -  |
+400 | Client Error - Returned if the query parameter is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -198,7 +209,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.approvalsummary import Approvalsummary
+from sailpoint.access_request_approvals.models.approval_summary import ApprovalSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -240,18 +251,18 @@ Path   | access_request_id | **str** | True  | Access Request ID.
   Query | count | **bool** |   (optional) (default to False) | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
 
 ### Return type
-[**List[Accessrequestapproverslistresponse]**](../models/accessrequestapproverslistresponse)
+[**List[AccessRequestApproversListResponse]**](../models/access-request-approvers-list-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Approvers. | List[Accessrequestapproverslistresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Approvers. | List[AccessRequestApproversListResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -262,7 +273,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.accessrequestapproverslistresponse import Accessrequestapproverslistresponse
+from sailpoint.access_request_approvals.models.access_request_approvers_list_response import AccessRequestApproversListResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -308,17 +319,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
 
 ### Return type
-[**List[Completedapproval]**](../models/completedapproval)
+[**List[CompletedApproval]**](../models/completed-approval)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Completed Approvals. | List[Completedapproval] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Completed Approvals. | List[CompletedApproval] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -329,7 +340,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.completedapproval import Completedapproval
+from sailpoint.access_request_approvals.models.completed_approval import CompletedApproval
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -377,17 +388,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
 
 ### Return type
-[**List[Pendingapproval]**](../models/pendingapproval)
+[**List[PendingApproval]**](../models/pending-approval)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Pending Approvals. | List[Pendingapproval] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Pending Approvals. | List[PendingApproval] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -398,7 +409,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.pendingapproval import Pendingapproval
+from sailpoint.access_request_approvals.models.pending_approval import PendingApproval
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -439,7 +450,7 @@ Use this API to reject an access request approval. Only the owner of the approva
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | approval_id | **str** | True  | Approval ID.
- Body  | commentdto | [**Commentdto**](../models/commentdto) | True  | Reviewer's comment.
+ Body  | comment_dto | [**CommentDto**](../models/comment-dto) | True  | Reviewer's comment.
 
 ### Return type
 **object**
@@ -448,12 +459,12 @@ Path   | approval_id | **str** | True  | Approval ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListPendingApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListPendingApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -464,21 +475,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_request_approvals.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.access_request_approvals.api_client import ApiClient
-from sailpoint.access_request_approvals.models.commentdto import Commentdto
+from sailpoint.access_request_approvals.models.comment_dto import CommentDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
-    commentdto = '''sailpoint.access_request_approvals.Commentdto()''' # Commentdto | Reviewer's comment.
+    comment_dto = '''{
+          "created" : "2017-07-11T18:45:37.098Z",
+          "author" : {
+            "name" : "john.doe",
+            "id" : "2c9180847e25f377017e2ae8cae4650b",
+            "type" : "IDENTITY"
+          },
+          "comment" : "This is a comment."
+        }''' # CommentDto | Reviewer's comment.
 
     try:
         # Reject access request approval
-        new_commentdto = Commentdto.from_json(commentdto)
-        results = AccessRequestApprovalsApi(api_client).reject_access_request_v1(approval_id=approval_id, commentdto=new_commentdto)
+        new_comment_dto = CommentDto.from_json(comment_dto)
+        results = AccessRequestApprovalsApi(api_client).reject_access_request_v1(approval_id=approval_id, comment_dto=new_comment_dto)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestApprovalsApi(api_client).reject_access_request_v1(approval_id, new_commentdto)
+        # results = AccessRequestApprovalsApi(api_client).reject_access_request_v1(approval_id, new_comment_dto)
         print("The response of AccessRequestApprovalsApi->reject_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

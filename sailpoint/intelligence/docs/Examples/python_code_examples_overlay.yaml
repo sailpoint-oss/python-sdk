@@ -6,7 +6,7 @@
       source: |
         from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
         from sailpoint.intelligence.api_client import ApiClient
-        from sailpoint.intelligence.models.intelidentityaggregate import Intelidentityaggregate
+        from sailpoint.intelligence.models.intel_identity_aggregate import IntelIdentityAggregate
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,7 +31,7 @@
       source: |
         from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
         from sailpoint.intelligence.api_client import ApiClient
-        from sailpoint.intelligence.models.intelaccessitemhistoryevent import Intelaccessitemhistoryevent
+        from sailpoint.intelligence.models.intel_access_item_history_event import IntelAccessItemHistoryEvent
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -59,7 +59,7 @@
       source: |
         from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
         from sailpoint.intelligence.api_client import ApiClient
-        from sailpoint.intelligence.models.intelaccessaccountwire import Intelaccessaccountwire
+        from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -87,7 +87,7 @@
       source: |
         from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
         from sailpoint.intelligence.api_client import ApiClient
-        from sailpoint.intelligence.models.intelcertificationhistoryevent import Intelcertificationhistoryevent
+        from sailpoint.intelligence.models.intel_certification_history_event import IntelCertificationHistoryEvent
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -115,7 +115,7 @@
       source: |
         from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
         from sailpoint.intelligence.api_client import ApiClient
-        from sailpoint.intelligence.models.inteloutlieraccessitem import Inteloutlieraccessitem
+        from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

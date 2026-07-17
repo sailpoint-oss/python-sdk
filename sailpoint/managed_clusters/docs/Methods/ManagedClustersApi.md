@@ -38,20 +38,20 @@ The API returns a result that includes the managed cluster ID.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | managedclusterrequest | [**Managedclusterrequest**](../models/managedclusterrequest) | True  | 
+ Body  | managed_cluster_request | [**ManagedClusterRequest**](../models/managed-cluster-request) | True  | 
 
 ### Return type
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created managed cluster. | Managedcluster |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created managed cluster. | ManagedCluster |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -62,21 +62,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.managedcluster import Managedcluster
-from sailpoint.managed_clusters.models.managedclusterrequest import Managedclusterrequest
+from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
+from sailpoint.managed_clusters.models.managed_cluster_request import ManagedClusterRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    managedclusterrequest = '''sailpoint.managed_clusters.Managedclusterrequest()''' # Managedclusterrequest | 
+    managed_cluster_request = '''{
+          "configuration" : {
+            "clusterExternalId" : "externalId",
+            "ccgVersion" : "77.0.0"
+          },
+          "name" : "Managed Cluster Name",
+          "description" : "A short description of the managed cluster.",
+          "type" : "idn"
+        }''' # ManagedClusterRequest | 
 
     try:
         # Create create managed cluster
-        new_managedclusterrequest = Managedclusterrequest.from_json(managedclusterrequest)
-        results = ManagedClustersApi(api_client).create_managed_cluster_v1(managedclusterrequest=new_managedclusterrequest)
+        new_managed_cluster_request = ManagedClusterRequest.from_json(managed_cluster_request)
+        results = ManagedClustersApi(api_client).create_managed_cluster_v1(managed_cluster_request=new_managed_cluster_request)
         # Below is a request that includes all optional parameters
-        # results = ManagedClustersApi(api_client).create_managed_cluster_v1(new_managedclusterrequest)
+        # results = ManagedClustersApi(api_client).create_managed_cluster_v1(new_managed_cluster_request)
         print("The response of ManagedClustersApi->create_managed_cluster_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -107,11 +115,11 @@ Path   | id | **str** | True  | Managed cluster ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -157,19 +165,19 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of managed cluster to get log configuration for.
 
 ### Return type
-[**Clientlogconfiguration**](../models/clientlogconfiguration)
+[**ClientLogConfiguration**](../models/client-log-configuration)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Log configuration of managed cluster for given cluster ID. | Clientlogconfiguration |  -  |
+200 | Log configuration of managed cluster for given cluster ID. | ClientLogConfiguration |  -  |
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -180,7 +188,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.clientlogconfiguration import Clientlogconfiguration
+from sailpoint.managed_clusters.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -217,18 +225,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Managed cluster ID.
 
 ### Return type
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Response with managed cluster for the given ID. | Managedcluster |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Response with managed cluster for the given ID. | ManagedCluster |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -239,7 +247,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -279,17 +287,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*
 
 ### Return type
-[**List[Managedcluster]**](../models/managedcluster)
+[**List[ManagedCluster]**](../models/managed-cluster)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Response with a list of managed clusters. | List[Managedcluster] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Response with a list of managed clusters. | List[ManagedCluster] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -300,7 +308,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -342,18 +350,18 @@ Path   | id | **str** | True  | ID of the managed cluster to update the log conf
  Body  | put_client_log_configuration_v1_request | [**PutClientLogConfigurationV1Request**](../models/put-client-log-configuration-v1-request) | True  | Client log configuration for the given managed cluster.
 
 ### Return type
-[**Clientlogconfiguration**](../models/clientlogconfiguration)
+[**ClientLogConfiguration**](../models/client-log-configuration)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Response with updated client log configuration for the given managed cluster. | Clientlogconfiguration |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Response with updated client log configuration for the given managed cluster. | ClientLogConfiguration |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -364,7 +372,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.clientlogconfiguration import Clientlogconfiguration
+from sailpoint.managed_clusters.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.managed_clusters.models.put_client_log_configuration_v1_request import PutClientLogConfigurationV1Request
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -401,21 +409,21 @@ Update an existing managed cluster.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Managed cluster ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | JSONPatch payload used to update the object.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | JSONPatch payload used to update the object.
 
 ### Return type
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated managed cluster. | Managedcluster |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated managed cluster. | ManagedCluster |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -426,22 +434,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+from sailpoint.managed_clusters.models.json_patch_operation import JsonPatchOperation
+from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c9180897de347a2017de8859e8c5039' # str | Managed cluster ID. # str | Managed cluster ID.
-    jsonpatchoperation = '''[sailpoint.managed_clusters.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | JSONPatch payload used to update the object.
+    json_patch_operation = '''[sailpoint.managed_clusters.JsonPatchOperation()]''' # List[JsonPatchOperation] | JSONPatch payload used to update the object.
 
     try:
         # Update managed cluster
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = ManagedClustersApi(api_client).update_managed_cluster_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = ManagedClustersApi(api_client).update_managed_cluster_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = ManagedClustersApi(api_client).update_managed_cluster_v1(id, new_jsonpatchoperation)
+        # results = ManagedClustersApi(api_client).update_managed_cluster_v1(id, new_json_patch_operation)
         print("The response of ManagedClustersApi->update_managed_cluster_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -466,18 +474,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of managed cluster to trigger manual upgrade.
 
 ### Return type
-[**Clustermanualupgrade**](../models/clustermanualupgrade)
+[**ClusterManualUpgrade**](../models/cluster-manual-upgrade)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Manual upgrade of managed cluster for given cluster ID. | Clustermanualupgrade |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Manual upgrade of managed cluster for given cluster ID. | ClusterManualUpgrade |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetManagedClustersV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetManagedClustersV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -488,7 +496,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.managed_clusters.api_client import ApiClient
-from sailpoint.managed_clusters.models.clustermanualupgrade import Clustermanualupgrade
+from sailpoint.managed_clusters.models.cluster_manual_upgrade import ClusterManualUpgrade
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

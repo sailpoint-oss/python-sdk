@@ -22,10 +22,10 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.workflows.models.workflow_all_of_creator import WorkflowAllOfCreator
-from sailpoint.workflows.models.workflowbody_owner import WorkflowbodyOwner
-from sailpoint.workflows.models.workflowdefinition import Workflowdefinition
-from sailpoint.workflows.models.workflowmodifiedby import Workflowmodifiedby
-from sailpoint.workflows.models.workflowtrigger import Workflowtrigger
+from sailpoint.workflows.models.workflow_body_owner import WorkflowBodyOwner
+from sailpoint.workflows.models.workflow_definition import WorkflowDefinition
+from sailpoint.workflows.models.workflow_modified_by import WorkflowModifiedBy
+from sailpoint.workflows.models.workflow_trigger import WorkflowTrigger
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,17 +34,17 @@ class Workflow(BaseModel):
     Workflow
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="The name of the workflow")
-    owner: Optional[WorkflowbodyOwner] = None
+    owner: Optional[WorkflowBodyOwner] = None
     description: Optional[StrictStr] = Field(default=None, description="Description of what the workflow accomplishes")
-    definition: Optional[Workflowdefinition] = None
+    definition: Optional[WorkflowDefinition] = None
     enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
-    trigger: Optional[Workflowtrigger] = None
+    trigger: Optional[WorkflowTrigger] = None
     id: Optional[StrictStr] = Field(default=None, description="Workflow ID. This is a UUID generated upon creation.")
     execution_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has been executed.", alias="executionCount")
     failure_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has failed during execution.", alias="failureCount")
     created: Optional[datetime] = Field(default=None, description="The date and time the workflow was created.")
     modified: Optional[datetime] = Field(default=None, description="The date and time the workflow was modified.")
-    modified_by: Optional[Workflowmodifiedby] = Field(default=None, alias="modifiedBy")
+    modified_by: Optional[WorkflowModifiedBy] = Field(default=None, alias="modifiedBy")
     creator: Optional[WorkflowAllOfCreator] = None
     __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "modified", "modifiedBy", "creator"]
 
@@ -115,17 +115,17 @@ class Workflow(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "owner": WorkflowbodyOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": WorkflowBodyOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "description": obj.get("description"),
-            "definition": Workflowdefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
+            "definition": WorkflowDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger": Workflowtrigger.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None,
+            "trigger": WorkflowTrigger.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None,
             "id": obj.get("id"),
             "executionCount": obj.get("executionCount"),
             "failureCount": obj.get("failureCount"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "modifiedBy": Workflowmodifiedby.from_dict(obj["modifiedBy"]) if obj.get("modifiedBy") is not None else None,
+            "modifiedBy": WorkflowModifiedBy.from_dict(obj["modifiedBy"]) if obj.get("modifiedBy") is not None else None,
             "creator": WorkflowAllOfCreator.from_dict(obj["creator"]) if obj.get("creator") is not None else None
         })
         return _obj

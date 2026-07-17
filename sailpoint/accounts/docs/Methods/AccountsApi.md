@@ -81,20 +81,20 @@ By providing the account ID of an existing account in the request body, this API
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accountattributescreate | [**Accountattributescreate**](../models/accountattributescreate) | True  | 
+ Body  | account_attributes_create | [**AccountAttributesCreate**](../models/account-attributes-create) | True  | 
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details. | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details. | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -105,21 +105,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountattributescreate import Accountattributescreate
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
+from sailpoint.accounts.models.account_attributes_create import AccountAttributesCreate
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accountattributescreate = '''sailpoint.accounts.Accountattributescreate()''' # Accountattributescreate | 
+    account_attributes_create = '''{
+          "attributes" : {
+            "sourceId" : "34bfcbe116c9407464af37acbaf7a4dc",
+            "city" : "Austin",
+            "displayName" : "John Doe",
+            "userName" : "jdoe",
+            "sAMAccountName" : "jDoe",
+            "mail" : "john.doe@sailpoint.com"
+          }
+        }''' # AccountAttributesCreate | 
 
     try:
         # Create account
-        new_accountattributescreate = Accountattributescreate.from_json(accountattributescreate)
-        results = AccountsApi(api_client).create_account_v1(accountattributescreate=new_accountattributescreate)
+        new_account_attributes_create = AccountAttributesCreate.from_json(account_attributes_create)
+        results = AccountsApi(api_client).create_account_v1(account_attributes_create=new_account_attributes_create)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).create_account_v1(new_accountattributescreate)
+        # results = AccountsApi(api_client).create_account_v1(new_account_attributes_create)
         print("The response of AccountsApi->create_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -149,17 +158,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The account id
 
 ### Return type
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. Returns task result details of removal request. | Taskresultdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. Returns task result details of removal request. | TaskResultDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -170,7 +179,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.taskresultdto import Taskresultdto
+from sailpoint.accounts.models.task_result_dto import TaskResultDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -210,18 +219,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Account ID.
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details. | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details. | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -232,7 +241,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -275,12 +284,12 @@ Path   | id | **str** | True  | The identity id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -325,21 +334,21 @@ This API submits a task to disable the account and returns the task ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The account id
- Body  | accounttogglerequest | [**Accounttogglerequest**](../models/accounttogglerequest) | True  | 
+ Body  | account_toggle_request | [**AccountToggleRequest**](../models/account-toggle-request) | True  | 
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -350,22 +359,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
-from sailpoint.accounts.models.accounttogglerequest import Accounttogglerequest
+from sailpoint.accounts.models.account_toggle_request import AccountToggleRequest
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id # str | The account id
-    accounttogglerequest = '''sailpoint.accounts.Accounttogglerequest()''' # Accounttogglerequest | 
+    account_toggle_request = '''{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581"
+        }''' # AccountToggleRequest | 
 
     try:
         # Disable account
-        new_accounttogglerequest = Accounttogglerequest.from_json(accounttogglerequest)
-        results = AccountsApi(api_client).disable_account_v1(id=id, accounttogglerequest=new_accounttogglerequest)
+        new_account_toggle_request = AccountToggleRequest.from_json(account_toggle_request)
+        results = AccountsApi(api_client).disable_account_v1(id=id, account_toggle_request=new_account_toggle_request)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).disable_account_v1(id, new_accounttogglerequest)
+        # results = AccountsApi(api_client).disable_account_v1(id, new_account_toggle_request)
         print("The response of AccountsApi->disable_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -386,20 +398,20 @@ This API submits tasks to disable IDN account for each identity provided in the 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identitiesaccountsbulkrequest | [**Identitiesaccountsbulkrequest**](../models/identitiesaccountsbulkrequest) | True  | 
+ Body  | identities_accounts_bulk_request | [**IdentitiesAccountsBulkRequest**](../models/identities-accounts-bulk-request) | True  | 
 
 ### Return type
-[**List[Bulkidentitiesaccountsresponse]**](../models/bulkidentitiesaccountsresponse)
+[**List[BulkIdentitiesAccountsResponse]**](../models/bulk-identities-accounts-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | Bulk response details. | List[Bulkidentitiesaccountsresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | Bulk response details. | List[BulkIdentitiesAccountsResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -410,21 +422,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.bulkidentitiesaccountsresponse import Bulkidentitiesaccountsresponse
-from sailpoint.accounts.models.identitiesaccountsbulkrequest import Identitiesaccountsbulkrequest
+from sailpoint.accounts.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
+from sailpoint.accounts.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identitiesaccountsbulkrequest = '''sailpoint.accounts.Identitiesaccountsbulkrequest()''' # Identitiesaccountsbulkrequest | 
+    identities_accounts_bulk_request = '''{
+          "identityIds" : [ "2c91808384203c2d018437e631158308", "2c9180858082150f0180893dbaf553fe" ]
+        }''' # IdentitiesAccountsBulkRequest | 
 
     try:
         # Disable idn accounts for identities
-        new_identitiesaccountsbulkrequest = Identitiesaccountsbulkrequest.from_json(identitiesaccountsbulkrequest)
-        results = AccountsApi(api_client).disable_accounts_for_identities_v1(identitiesaccountsbulkrequest=new_identitiesaccountsbulkrequest)
+        new_identities_accounts_bulk_request = IdentitiesAccountsBulkRequest.from_json(identities_accounts_bulk_request)
+        results = AccountsApi(api_client).disable_accounts_for_identities_v1(identities_accounts_bulk_request=new_identities_accounts_bulk_request)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).disable_accounts_for_identities_v1(new_identitiesaccountsbulkrequest)
+        # results = AccountsApi(api_client).disable_accounts_for_identities_v1(new_identities_accounts_bulk_request)
         print("The response of AccountsApi->disable_accounts_for_identities_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -455,12 +469,12 @@ Path   | id | **str** | True  | The identity id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -505,21 +519,21 @@ This API submits a task to enable account and returns the task ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The account id
- Body  | accounttogglerequest | [**Accounttogglerequest**](../models/accounttogglerequest) | True  | 
+ Body  | account_toggle_request | [**AccountToggleRequest**](../models/account-toggle-request) | True  | 
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -530,22 +544,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
-from sailpoint.accounts.models.accounttogglerequest import Accounttogglerequest
+from sailpoint.accounts.models.account_toggle_request import AccountToggleRequest
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id # str | The account id
-    accounttogglerequest = '''sailpoint.accounts.Accounttogglerequest()''' # Accounttogglerequest | 
+    account_toggle_request = '''{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581"
+        }''' # AccountToggleRequest | 
 
     try:
         # Enable account
-        new_accounttogglerequest = Accounttogglerequest.from_json(accounttogglerequest)
-        results = AccountsApi(api_client).enable_account_v1(id=id, accounttogglerequest=new_accounttogglerequest)
+        new_account_toggle_request = AccountToggleRequest.from_json(account_toggle_request)
+        results = AccountsApi(api_client).enable_account_v1(id=id, account_toggle_request=new_account_toggle_request)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).enable_account_v1(id, new_accounttogglerequest)
+        # results = AccountsApi(api_client).enable_account_v1(id, new_account_toggle_request)
         print("The response of AccountsApi->enable_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -566,20 +583,20 @@ This API submits tasks to enable IDN account for each identity provided in the r
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identitiesaccountsbulkrequest | [**Identitiesaccountsbulkrequest**](../models/identitiesaccountsbulkrequest) | True  | 
+ Body  | identities_accounts_bulk_request | [**IdentitiesAccountsBulkRequest**](../models/identities-accounts-bulk-request) | True  | 
 
 ### Return type
-[**List[Bulkidentitiesaccountsresponse]**](../models/bulkidentitiesaccountsresponse)
+[**List[BulkIdentitiesAccountsResponse]**](../models/bulk-identities-accounts-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | Bulk response details. | List[Bulkidentitiesaccountsresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | Bulk response details. | List[BulkIdentitiesAccountsResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -590,21 +607,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.bulkidentitiesaccountsresponse import Bulkidentitiesaccountsresponse
-from sailpoint.accounts.models.identitiesaccountsbulkrequest import Identitiesaccountsbulkrequest
+from sailpoint.accounts.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
+from sailpoint.accounts.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identitiesaccountsbulkrequest = '''sailpoint.accounts.Identitiesaccountsbulkrequest()''' # Identitiesaccountsbulkrequest | 
+    identities_accounts_bulk_request = '''{
+          "identityIds" : [ "2c91808384203c2d018437e631158308", "2c9180858082150f0180893dbaf553fe" ]
+        }''' # IdentitiesAccountsBulkRequest | 
 
     try:
         # Enable idn accounts for identities
-        new_identitiesaccountsbulkrequest = Identitiesaccountsbulkrequest.from_json(identitiesaccountsbulkrequest)
-        results = AccountsApi(api_client).enable_accounts_for_identities_v1(identitiesaccountsbulkrequest=new_identitiesaccountsbulkrequest)
+        new_identities_accounts_bulk_request = IdentitiesAccountsBulkRequest.from_json(identities_accounts_bulk_request)
+        results = AccountsApi(api_client).enable_accounts_for_identities_v1(identities_accounts_bulk_request=new_identities_accounts_bulk_request)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).enable_accounts_for_identities_v1(new_identitiesaccountsbulkrequest)
+        # results = AccountsApi(api_client).enable_accounts_for_identities_v1(new_identities_accounts_bulk_request)
         print("The response of AccountsApi->enable_accounts_for_identities_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -638,12 +657,12 @@ Path   | id | **str** | True  | The account id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | An array of account entitlements | List[Entitlement] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -701,12 +720,12 @@ Path   | id | **str** | True  | Account ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Account object. | Account |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -765,11 +784,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of account objects. | List[Account] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -826,21 +845,21 @@ This endpoint submits an account update task and returns the task ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Account ID.
- Body  | accountattributes | [**Accountattributes**](../models/accountattributes) | True  | 
+ Body  | account_attributes | [**AccountAttributes**](../models/account-attributes) | True  | 
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details. | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details. | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -851,22 +870,30 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountattributes import Accountattributes
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
+from sailpoint.accounts.models.account_attributes import AccountAttributes
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID. # str | Account ID.
-    accountattributes = '''sailpoint.accounts.Accountattributes()''' # Accountattributes | 
+    account_attributes = '''{
+          "attributes" : {
+            "city" : "Austin",
+            "displayName" : "John Doe",
+            "userName" : "jdoe",
+            "sAMAccountName" : "jDoe",
+            "mail" : "john.doe@sailpoint.com"
+          }
+        }''' # AccountAttributes | 
 
     try:
         # Update account
-        new_accountattributes = Accountattributes.from_json(accountattributes)
-        results = AccountsApi(api_client).put_account_v1(id=id, accountattributes=new_accountattributes)
+        new_account_attributes = AccountAttributes.from_json(account_attributes)
+        results = AccountsApi(api_client).put_account_v1(id=id, account_attributes=new_account_attributes)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).put_account_v1(id, new_accountattributes)
+        # results = AccountsApi(api_client).put_account_v1(id, new_account_attributes)
         print("The response of AccountsApi->put_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -890,18 +917,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The account id
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -912,7 +939,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -948,21 +975,21 @@ To use this endpoint to unlock an account that has the `forceProvisioning` optio
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The account ID.
- Body  | accountunlockrequest | [**Accountunlockrequest**](../models/accountunlockrequest) | True  | 
+ Body  | account_unlock_request | [**AccountUnlockRequest**](../models/account-unlock-request) | True  | 
 
 ### Return type
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Async task details | Accountsasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Async task details | AccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -973,22 +1000,26 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.accounts.api.accounts_api import AccountsApi
 from sailpoint.accounts.api_client import ApiClient
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
-from sailpoint.accounts.models.accountunlockrequest import Accountunlockrequest
+from sailpoint.accounts.models.account_unlock_request import AccountUnlockRequest
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID. # str | The account ID.
-    accountunlockrequest = '''sailpoint.accounts.Accountunlockrequest()''' # Accountunlockrequest | 
+    account_unlock_request = '''{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581",
+          "unlockIDNAccount" : false
+        }''' # AccountUnlockRequest | 
 
     try:
         # Unlock account
-        new_accountunlockrequest = Accountunlockrequest.from_json(accountunlockrequest)
-        results = AccountsApi(api_client).unlock_account_v1(id=id, accountunlockrequest=new_accountunlockrequest)
+        new_account_unlock_request = AccountUnlockRequest.from_json(account_unlock_request)
+        results = AccountsApi(api_client).unlock_account_v1(id=id, account_unlock_request=new_account_unlock_request)
         # Below is a request that includes all optional parameters
-        # results = AccountsApi(api_client).unlock_account_v1(id, new_accountunlockrequest)
+        # results = AccountsApi(api_client).unlock_account_v1(id, new_account_unlock_request)
         print("The response of AccountsApi->unlock_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1029,12 +1060,12 @@ Path   | id | **str** | True  | Account ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json

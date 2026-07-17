@@ -65,18 +65,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The account activity id
 
 ### Return type
-[**Accountactivity**](../models/accountactivity)
+[**AccountActivity**](../models/account-activity)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An account activity object | Accountactivity |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An account activity object | AccountActivity |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountActivitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountActivitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -87,7 +87,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.account_activities.api.account_activities_api import AccountActivitiesApi
 from sailpoint.account_activities.api_client import ApiClient
-from sailpoint.account_activities.models.accountactivity import Accountactivity
+from sailpoint.account_activities.models.account_activity import AccountActivity
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -131,17 +131,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**
 
 ### Return type
-[**List[Accountactivity]**](../models/accountactivity)
+[**List[AccountActivity]**](../models/account-activity)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of account activities | List[Accountactivity] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of account activities | List[AccountActivity] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountActivitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountActivitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -152,7 +152,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.account_activities.api.account_activities_api import AccountActivitiesApi
 from sailpoint.account_activities.api_client import ApiClient
-from sailpoint.account_activities.models.accountactivity import Accountactivity
+from sailpoint.account_activities.models.account_activity import AccountActivity
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

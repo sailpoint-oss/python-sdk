@@ -45,7 +45,7 @@ class TestEntitlementAccessModelMetadata(unittest.TestCase):
                         object_types = ["general"], 
                         description = 'Indicates the type of deployment environment of an access item.', 
                         values = [
-                            sailpoint.dimensions.models.accessmodelmetadata_values_inner.accessmodelmetadata_values_inner(
+                            sailpoint.dimensions.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
                                 value = 'development', 
                                 name = 'Development', 
                                 status = 'active', )

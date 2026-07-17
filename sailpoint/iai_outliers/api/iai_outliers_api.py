@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.iai_outliers.models.latestoutliersummary import Latestoutliersummary
+from sailpoint.iai_outliers.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.iai_outliers.models.outlier import Outlier
-from sailpoint.iai_outliers.models.outliercontributingfeature import Outliercontributingfeature
-from sailpoint.iai_outliers.models.outlierfeaturesummary import Outlierfeaturesummary
-from sailpoint.iai_outliers.models.outlierscontributingfeatureaccessitems import Outlierscontributingfeatureaccessitems
-from sailpoint.iai_outliers.models.outliersummary import Outliersummary
+from sailpoint.iai_outliers.models.outlier_contributing_feature import OutlierContributingFeature
+from sailpoint.iai_outliers.models.outlier_feature_summary import OutlierFeatureSummary
+from sailpoint.iai_outliers.models.outlier_summary import OutlierSummary
+from sailpoint.iai_outliers.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 
 from sailpoint.iai_outliers.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_outliers.api_response import ApiResponse
@@ -103,11 +103,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -179,11 +179,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -255,11 +255,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -358,7 +358,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Outliersummary]:
+    ) -> List[OutlierSummary]:
         """Iai identity outliers summary
 
         This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
@@ -411,13 +411,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliersummary]",
+            '200': "List[OutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -451,7 +451,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Outliersummary]]:
+    ) -> ApiResponse[List[OutlierSummary]]:
         """Iai identity outliers summary
 
         This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
@@ -504,13 +504,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliersummary]",
+            '200': "List[OutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -597,13 +597,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliersummary]",
+            '200': "List[OutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -779,11 +779,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Outlier]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -875,11 +875,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Outlier]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -971,11 +971,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Outlier]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1094,7 +1094,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Latestoutliersummary]:
+    ) -> List[LatestOutlierSummary]:
         """Iai identity outliers latest summary
 
         This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
@@ -1135,13 +1135,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Latestoutliersummary]",
+            '200': "List[LatestOutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1171,7 +1171,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Latestoutliersummary]]:
+    ) -> ApiResponse[List[LatestOutlierSummary]]:
         """Iai identity outliers latest summary
 
         This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
@@ -1212,13 +1212,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Latestoutliersummary]",
+            '200': "List[LatestOutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1289,13 +1289,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Latestoutliersummary]",
+            '200': "List[LatestOutlierSummary]",
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1389,7 +1389,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Outlierfeaturesummary:
+    ) -> OutlierFeatureSummary:
         """Get identity outlier contibuting feature summary
 
         This API returns a summary of a contributing feature for an identity outlier.  The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object. 
@@ -1430,13 +1430,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Outlierfeaturesummary",
-            '400': "Errorresponsedto",
+            '200': "OutlierFeatureSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1466,7 +1466,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Outlierfeaturesummary]:
+    ) -> ApiResponse[OutlierFeatureSummary]:
         """Get identity outlier contibuting feature summary
 
         This API returns a summary of a contributing feature for an identity outlier.  The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object. 
@@ -1507,13 +1507,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Outlierfeaturesummary",
-            '400': "Errorresponsedto",
+            '200': "OutlierFeatureSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1584,13 +1584,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Outlierfeaturesummary",
-            '400': "Errorresponsedto",
+            '200': "OutlierFeatureSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1687,7 +1687,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Outliercontributingfeature]:
+    ) -> List[OutlierContributingFeature]:
         """Get identity outlier's contibuting features
 
         This API returns a list of contributing feature objects for a single outlier.  The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object. 
@@ -1743,13 +1743,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliercontributingfeature]",
-            '400': "Errorresponsedto",
+            '200': "List[OutlierContributingFeature]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1784,7 +1784,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Outliercontributingfeature]]:
+    ) -> ApiResponse[List[OutlierContributingFeature]]:
         """Get identity outlier's contibuting features
 
         This API returns a list of contributing feature objects for a single outlier.  The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object. 
@@ -1840,13 +1840,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliercontributingfeature]",
-            '400': "Errorresponsedto",
+            '200': "List[OutlierContributingFeature]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1937,13 +1937,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outliercontributingfeature]",
-            '400': "Errorresponsedto",
+            '200': "List[OutlierContributingFeature]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2102,11 +2102,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2178,11 +2178,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2254,11 +2254,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2370,7 +2370,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Outlierscontributingfeatureaccessitems]:
+    ) -> List[OutliersContributingFeatureAccessItems]:
         """Gets a list of access items associated with each identity outlier contributing feature
 
         This API returns a list of the enriched access items associated with each feature filtered by the access item type.  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare. 
@@ -2429,13 +2429,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outlierscontributingfeatureaccessitems]",
-            '400': "Errorresponsedto",
+            '200': "List[OutliersContributingFeatureAccessItems]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2471,7 +2471,7 @@ class IAIOutliersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Outlierscontributingfeatureaccessitems]]:
+    ) -> ApiResponse[List[OutliersContributingFeatureAccessItems]]:
         """Gets a list of access items associated with each identity outlier contributing feature
 
         This API returns a list of the enriched access items associated with each feature filtered by the access item type.  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare. 
@@ -2530,13 +2530,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outlierscontributingfeatureaccessitems]",
-            '400': "Errorresponsedto",
+            '200': "List[OutliersContributingFeatureAccessItems]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2631,13 +2631,13 @@ class IAIOutliersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Outlierscontributingfeatureaccessitems]",
-            '400': "Errorresponsedto",
+            '200': "List[OutliersContributingFeatureAccessItems]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2799,11 +2799,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2875,11 +2875,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2951,11 +2951,11 @@ class IAIOutliersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityOutlierSnapshotsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityOutlierSnapshotsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

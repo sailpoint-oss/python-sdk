@@ -19,14 +19,14 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.identity_profiles.models.identityattributeconfig import Identityattributeconfig
-from sailpoint.identity_profiles.models.identitypreviewrequest import Identitypreviewrequest
-from sailpoint.identity_profiles.models.identitypreviewresponse import Identitypreviewresponse
-from sailpoint.identity_profiles.models.identityprofile import Identityprofile
-from sailpoint.identity_profiles.models.identityprofileexportedobject import Identityprofileexportedobject
-from sailpoint.identity_profiles.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.identity_profiles.models.objectimportresult import Objectimportresult
-from sailpoint.identity_profiles.models.taskresultsimplified import Taskresultsimplified
+from sailpoint.identity_profiles.models.identity_attribute_config import IdentityAttributeConfig
+from sailpoint.identity_profiles.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.identity_profiles.models.identity_preview_response import IdentityPreviewResponse
+from sailpoint.identity_profiles.models.identity_profile import IdentityProfile
+from sailpoint.identity_profiles.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.identity_profiles.models.json_patch_operation import JsonPatchOperation
+from sailpoint.identity_profiles.models.object_import_result import ObjectImportResult
+from sailpoint.identity_profiles.models.task_result_simplified import TaskResultSimplified
 
 from sailpoint.identity_profiles.api_client import ApiClient, RequestSerialized
 from sailpoint.identity_profiles.api_response import ApiResponse
@@ -49,7 +49,7 @@ class IdentityProfilesApi:
     @validate_call
     def create_identity_profile_v1(
         self,
-        identityprofile: Identityprofile,
+        identity_profile: IdentityProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,13 +62,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityprofile:
+    ) -> IdentityProfile:
         """Create identity profile
 
         Creates an identity profile.    
 
-        :param identityprofile: (required)
-        :type identityprofile: Identityprofile
+        :param identity_profile: (required)
+        :type identity_profile: IdentityProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,7 +92,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._create_identity_profile_v1_serialize(
-            identityprofile=identityprofile,
+            identity_profile=identity_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -100,12 +100,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityprofile",
-            '400': "Errorresponsedto",
+            '201': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class IdentityProfilesApi:
     @validate_call
     def create_identity_profile_v1_with_http_info(
         self,
-        identityprofile: Identityprofile,
+        identity_profile: IdentityProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,13 +134,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityprofile]:
+    ) -> ApiResponse[IdentityProfile]:
         """Create identity profile
 
         Creates an identity profile.    
 
-        :param identityprofile: (required)
-        :type identityprofile: Identityprofile
+        :param identity_profile: (required)
+        :type identity_profile: IdentityProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -164,7 +164,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._create_identity_profile_v1_serialize(
-            identityprofile=identityprofile,
+            identity_profile=identity_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -172,12 +172,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityprofile",
-            '400': "Errorresponsedto",
+            '201': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -193,7 +193,7 @@ class IdentityProfilesApi:
     @validate_call
     def create_identity_profile_v1_without_preload_content(
         self,
-        identityprofile: Identityprofile,
+        identity_profile: IdentityProfile,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,8 +211,8 @@ class IdentityProfilesApi:
 
         Creates an identity profile.    
 
-        :param identityprofile: (required)
-        :type identityprofile: Identityprofile
+        :param identity_profile: (required)
+        :type identity_profile: IdentityProfile
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -236,7 +236,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._create_identity_profile_v1_serialize(
-            identityprofile=identityprofile,
+            identity_profile=identity_profile,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -244,12 +244,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityprofile",
-            '400': "Errorresponsedto",
+            '201': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -260,7 +260,7 @@ class IdentityProfilesApi:
 
     def _create_identity_profile_v1_serialize(
         self,
-        identityprofile,
+        identity_profile,
         _request_auth,
         _content_type,
         _headers,
@@ -286,8 +286,8 @@ class IdentityProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identityprofile is not None:
-            _body_params = identityprofile
+        if identity_profile is not None:
+            _body_params = identity_profile
 
 
         # set the HTTP header `Accept`
@@ -350,7 +350,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultsimplified:
+    ) -> TaskResultSimplified:
         """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result.
@@ -388,13 +388,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -423,7 +423,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultsimplified]:
+    ) -> ApiResponse[TaskResultSimplified]:
         """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result.
@@ -461,13 +461,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -534,13 +534,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -628,7 +628,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultsimplified:
+    ) -> TaskResultSimplified:
         """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  The following rights are required to access this endpoint: idn:identity-profile:delete
@@ -666,12 +666,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -700,7 +700,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultsimplified]:
+    ) -> ApiResponse[TaskResultSimplified]:
         """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  The following rights are required to access this endpoint: idn:identity-profile:delete
@@ -738,12 +738,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -810,12 +810,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultsimplified",
-            '400': "Errorresponsedto",
+            '202': "TaskResultSimplified",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -921,7 +921,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identityprofileexportedobject]:
+    ) -> List[IdentityProfileExportedObject]:
         """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
@@ -971,12 +971,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofileexportedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfileExportedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1009,7 +1009,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identityprofileexportedobject]]:
+    ) -> ApiResponse[List[IdentityProfileExportedObject]]:
         """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
@@ -1059,12 +1059,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofileexportedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfileExportedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1147,12 +1147,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofileexportedobject]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfileExportedObject]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1249,7 +1249,7 @@ class IdentityProfilesApi:
     @validate_call
     def generate_identity_preview_v1(
         self,
-        identitypreviewrequest: Annotated[Identitypreviewrequest, Field(description="Identity Preview request body.")],
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1262,13 +1262,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitypreviewresponse:
+    ) -> IdentityPreviewResponse:
         """Generate identity profile preview
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param identitypreviewrequest: Identity Preview request body. (required)
-        :type identitypreviewrequest: Identitypreviewrequest
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1292,7 +1292,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_v1_serialize(
-            identitypreviewrequest=identitypreviewrequest,
+            identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1300,12 +1300,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitypreviewresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1321,7 +1321,7 @@ class IdentityProfilesApi:
     @validate_call
     def generate_identity_preview_v1_with_http_info(
         self,
-        identitypreviewrequest: Annotated[Identitypreviewrequest, Field(description="Identity Preview request body.")],
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1334,13 +1334,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitypreviewresponse]:
+    ) -> ApiResponse[IdentityPreviewResponse]:
         """Generate identity profile preview
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param identitypreviewrequest: Identity Preview request body. (required)
-        :type identitypreviewrequest: Identitypreviewrequest
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1364,7 +1364,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_v1_serialize(
-            identitypreviewrequest=identitypreviewrequest,
+            identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1372,12 +1372,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitypreviewresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1393,7 +1393,7 @@ class IdentityProfilesApi:
     @validate_call
     def generate_identity_preview_v1_without_preload_content(
         self,
-        identitypreviewrequest: Annotated[Identitypreviewrequest, Field(description="Identity Preview request body.")],
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1411,8 +1411,8 @@ class IdentityProfilesApi:
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param identitypreviewrequest: Identity Preview request body. (required)
-        :type identitypreviewrequest: Identitypreviewrequest
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1436,7 +1436,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_v1_serialize(
-            identitypreviewrequest=identitypreviewrequest,
+            identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1444,12 +1444,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitypreviewresponse",
-            '400': "Errorresponsedto",
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1460,7 +1460,7 @@ class IdentityProfilesApi:
 
     def _generate_identity_preview_v1_serialize(
         self,
-        identitypreviewrequest,
+        identity_preview_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1486,8 +1486,8 @@ class IdentityProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identitypreviewrequest is not None:
-            _body_params = identitypreviewrequest
+        if identity_preview_request is not None:
+            _body_params = identity_preview_request
 
 
         # set the HTTP header `Accept`
@@ -1550,7 +1550,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityattributeconfig:
+    ) -> IdentityAttributeConfig:
         """Get default identity attribute config
 
         This returns the default identity attribute config.
@@ -1588,13 +1588,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1623,7 +1623,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityattributeconfig]:
+    ) -> ApiResponse[IdentityAttributeConfig]:
         """Get default identity attribute config
 
         This returns the default identity attribute config.
@@ -1661,13 +1661,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1734,13 +1734,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattributeconfig",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttributeConfig",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1828,7 +1828,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityprofile:
+    ) -> IdentityProfile:
         """Get identity profile
 
         Get a single identity profile by ID.
@@ -1866,13 +1866,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1901,7 +1901,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityprofile]:
+    ) -> ApiResponse[IdentityProfile]:
         """Get identity profile
 
         Get a single identity profile by ID.
@@ -1939,13 +1939,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2012,13 +2012,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2093,7 +2093,7 @@ class IdentityProfilesApi:
     @validate_call
     def import_identity_profiles_v1(
         self,
-        identityprofileexportedobject: Annotated[List[Identityprofileexportedobject], Field(description="Previously exported Identity Profiles.")],
+        identity_profile_exported_object: Annotated[List[IdentityProfileExportedObject], Field(description="Previously exported Identity Profiles.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2106,13 +2106,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Objectimportresult:
+    ) -> ObjectImportResult:
         """Import identity profiles
 
         This imports previously exported identity profiles.
 
-        :param identityprofileexportedobject: Previously exported Identity Profiles. (required)
-        :type identityprofileexportedobject: List[Identityprofileexportedobject]
+        :param identity_profile_exported_object: Previously exported Identity Profiles. (required)
+        :type identity_profile_exported_object: List[IdentityProfileExportedObject]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2136,7 +2136,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._import_identity_profiles_v1_serialize(
-            identityprofileexportedobject=identityprofileexportedobject,
+            identity_profile_exported_object=identity_profile_exported_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2144,12 +2144,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectimportresult",
-            '400': "Errorresponsedto",
+            '200': "ObjectImportResult",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2165,7 +2165,7 @@ class IdentityProfilesApi:
     @validate_call
     def import_identity_profiles_v1_with_http_info(
         self,
-        identityprofileexportedobject: Annotated[List[Identityprofileexportedobject], Field(description="Previously exported Identity Profiles.")],
+        identity_profile_exported_object: Annotated[List[IdentityProfileExportedObject], Field(description="Previously exported Identity Profiles.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2178,13 +2178,13 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Objectimportresult]:
+    ) -> ApiResponse[ObjectImportResult]:
         """Import identity profiles
 
         This imports previously exported identity profiles.
 
-        :param identityprofileexportedobject: Previously exported Identity Profiles. (required)
-        :type identityprofileexportedobject: List[Identityprofileexportedobject]
+        :param identity_profile_exported_object: Previously exported Identity Profiles. (required)
+        :type identity_profile_exported_object: List[IdentityProfileExportedObject]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2208,7 +2208,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._import_identity_profiles_v1_serialize(
-            identityprofileexportedobject=identityprofileexportedobject,
+            identity_profile_exported_object=identity_profile_exported_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2216,12 +2216,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectimportresult",
-            '400': "Errorresponsedto",
+            '200': "ObjectImportResult",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2237,7 +2237,7 @@ class IdentityProfilesApi:
     @validate_call
     def import_identity_profiles_v1_without_preload_content(
         self,
-        identityprofileexportedobject: Annotated[List[Identityprofileexportedobject], Field(description="Previously exported Identity Profiles.")],
+        identity_profile_exported_object: Annotated[List[IdentityProfileExportedObject], Field(description="Previously exported Identity Profiles.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2255,8 +2255,8 @@ class IdentityProfilesApi:
 
         This imports previously exported identity profiles.
 
-        :param identityprofileexportedobject: Previously exported Identity Profiles. (required)
-        :type identityprofileexportedobject: List[Identityprofileexportedobject]
+        :param identity_profile_exported_object: Previously exported Identity Profiles. (required)
+        :type identity_profile_exported_object: List[IdentityProfileExportedObject]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2280,7 +2280,7 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._import_identity_profiles_v1_serialize(
-            identityprofileexportedobject=identityprofileexportedobject,
+            identity_profile_exported_object=identity_profile_exported_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2288,12 +2288,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Objectimportresult",
-            '400': "Errorresponsedto",
+            '200': "ObjectImportResult",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2304,7 +2304,7 @@ class IdentityProfilesApi:
 
     def _import_identity_profiles_v1_serialize(
         self,
-        identityprofileexportedobject,
+        identity_profile_exported_object,
         _request_auth,
         _content_type,
         _headers,
@@ -2314,7 +2314,7 @@ class IdentityProfilesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Identityprofileexportedobject': '',
+            'IdentityProfileExportedObject': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2331,8 +2331,8 @@ class IdentityProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identityprofileexportedobject is not None:
-            _body_params = identityprofileexportedobject
+        if identity_profile_exported_object is not None:
+            _body_params = identity_profile_exported_object
 
 
         # set the HTTP header `Accept`
@@ -2399,7 +2399,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identityprofile]:
+    ) -> List[IdentityProfile]:
         """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters.
@@ -2449,12 +2449,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2487,7 +2487,7 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identityprofile]]:
+    ) -> ApiResponse[List[IdentityProfile]]:
         """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters.
@@ -2537,12 +2537,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2625,12 +2625,12 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2779,12 +2779,12 @@ class IdentityProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2852,12 +2852,12 @@ class IdentityProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2925,12 +2925,12 @@ class IdentityProfilesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3006,7 +3006,7 @@ class IdentityProfilesApi:
     def update_identity_profile_v1(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3019,15 +3019,15 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityprofile:
+    ) -> IdentityProfile:
         """Update identity profile
 
         Update a specified identity profile with this PATCH request.    You cannot update these fields: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at the same time.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param jsonpatchoperation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3052,7 +3052,7 @@ class IdentityProfilesApi:
 
         _param = self._update_identity_profile_v1_serialize(
             identity_profile_id=identity_profile_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3060,13 +3060,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3083,7 +3083,7 @@ class IdentityProfilesApi:
     def update_identity_profile_v1_with_http_info(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3096,15 +3096,15 @@ class IdentityProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityprofile]:
+    ) -> ApiResponse[IdentityProfile]:
         """Update identity profile
 
         Update a specified identity profile with this PATCH request.    You cannot update these fields: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at the same time.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param jsonpatchoperation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3129,7 +3129,7 @@ class IdentityProfilesApi:
 
         _param = self._update_identity_profile_v1_serialize(
             identity_profile_id=identity_profile_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3137,13 +3137,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3160,7 +3160,7 @@ class IdentityProfilesApi:
     def update_identity_profile_v1_without_preload_content(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3180,8 +3180,8 @@ class IdentityProfilesApi:
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param jsonpatchoperation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3206,7 +3206,7 @@ class IdentityProfilesApi:
 
         _param = self._update_identity_profile_v1_serialize(
             identity_profile_id=identity_profile_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3214,13 +3214,13 @@ class IdentityProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityprofile",
-            '400': "Errorresponsedto",
+            '200': "IdentityProfile",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityProfilesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityProfilesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3232,7 +3232,7 @@ class IdentityProfilesApi:
     def _update_identity_profile_v1_serialize(
         self,
         identity_profile_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -3242,7 +3242,7 @@ class IdentityProfilesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3261,8 +3261,8 @@ class IdentityProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

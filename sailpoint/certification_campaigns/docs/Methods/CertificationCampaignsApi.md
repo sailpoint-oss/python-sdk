@@ -125,7 +125,7 @@ can complete a certification even if all items have not been completed.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Campaign ID.
- Body  | campaigncompleteoptions | [**Campaigncompleteoptions**](../models/campaigncompleteoptions) |   (optional) | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
+ Body  | campaign_complete_options | [**CampaignCompleteOptions**](../models/campaign-complete-options) |   (optional) | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
 
 ### Return type
 **object**
@@ -134,12 +134,12 @@ Path   | id | **str** | True  | Campaign ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -150,21 +150,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaigncompleteoptions import Campaigncompleteoptions
+from sailpoint.certification_campaigns.models.campaign_complete_options import CampaignCompleteOptions
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID. # str | Campaign ID.
-    campaigncompleteoptions = '''sailpoint.certification_campaigns.Campaigncompleteoptions()''' # Campaigncompleteoptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+    campaign_complete_options = '''{
+          "autoCompleteAction" : "REVOKE"
+        }''' # CampaignCompleteOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     try:
         # Complete a campaign
         
         results = CertificationCampaignsApi(api_client).complete_campaign_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).complete_campaign_v1(id, new_campaigncompleteoptions)
+        # results = CertificationCampaignsApi(api_client).complete_campaign_v1(id, new_campaign_complete_options)
         print("The response of CertificationCampaignsApi->complete_campaign_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -186,20 +188,20 @@ Use this API to create a certification campaign template based on campaign.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | campaigntemplate | [**Campaigntemplate**](../models/campaigntemplate) | True  | 
+ Body  | campaign_template | [**CampaignTemplate**](../models/campaign-template) | True  | 
 
 ### Return type
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created successfully. | Campaigntemplate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created successfully. | CampaignTemplate |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -210,20 +212,144 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaigntemplate import Campaigntemplate
+from sailpoint.certification_campaigns.models.campaign_template import CampaignTemplate
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    campaigntemplate = '''sailpoint.certification_campaigns.Campaigntemplate()''' # Campaigntemplate | 
+    campaign_template = '''{
+          "ownerRef" : {
+            "name" : "Mister Manager",
+            "id" : "2c918086676d3e0601677611dbde220f",
+            "type" : "IDENTITY",
+            "email" : "mr.manager@example.com"
+          },
+          "deadlineDuration" : "P2W",
+          "created" : "2020-03-05T22:44:00.364Z",
+          "scheduled" : false,
+          "name" : "Manager Campaign Template",
+          "description" : "Template for the annual manager campaign.",
+          "modified" : "2020-03-05T22:52:09.969Z",
+          "campaign" : {
+            "totalCertifications" : 100,
+            "sourcesWithOrphanEntitlements" : [ {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            }, {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            } ],
+            "recommendationsEnabled" : true,
+            "sunsetCommentsRequired" : true,
+            "created" : "2020-03-03T22:15:13.611Z",
+            "machineAccountCampaignInfo" : {
+              "reviewerType" : "ACCOUNT_OWNER",
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "description" : "Everyone needs to be reviewed by their manager",
+            "type" : "MANAGER",
+            "sourceOwnerCampaignInfo" : {
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "emailNotificationEnabled" : false,
+            "alerts" : [ {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            }, {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            } ],
+            "filter" : {
+              "name" : "Test Filter",
+              "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+              "type" : "CAMPAIGN_FILTER"
+            },
+            "searchCampaignInfo" : {
+              "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+              "query" : "Search Campaign query description",
+              "description" : "Search Campaign description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              },
+              "type" : "ACCESS",
+              "accessConstraints" : [ {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              } ]
+            },
+            "autoRevokeAllowed" : false,
+            "name" : "Manager Campaign",
+            "mandatoryCommentRequirement" : "NO_DECISIONS",
+            "modified" : "2020-03-03T22:20:12.674Z",
+            "roleCompositionCampaignInfo" : {
+              "remediatorRef" : {
+                "name" : "Role Admin",
+                "id" : "2c90ad2a70ace7d50170acf22ca90010",
+                "type" : "IDENTITY"
+              },
+              "reviewerId" : "2c91808568c529c60168cca6f90c1313",
+              "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "query" : "Search Query",
+              "description" : "Role Composition Description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              }
+            },
+            "completedCertifications" : 10,
+            "id" : "2c9079b270a266a60170a2779fcb0007",
+            "deadline" : "2020-03-15T10:00:01.456Z",
+            "status" : "ACTIVE",
+            "correlatedStatus" : "CORRELATED"
+          },
+          "id" : "2c9079b270a266a60170a277bb960008"
+        }''' # CampaignTemplate | 
 
     try:
         # Create a campaign template
-        new_campaigntemplate = Campaigntemplate.from_json(campaigntemplate)
-        results = CertificationCampaignsApi(api_client).create_campaign_template_v1(campaigntemplate=new_campaigntemplate)
+        new_campaign_template = CampaignTemplate.from_json(campaign_template)
+        results = CertificationCampaignsApi(api_client).create_campaign_template_v1(campaign_template=new_campaign_template)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).create_campaign_template_v1(new_campaigntemplate)
+        # results = CertificationCampaignsApi(api_client).create_campaign_template_v1(new_campaign_template)
         print("The response of CertificationCampaignsApi->create_campaign_template_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -254,11 +380,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | This response indicates that the requested campaign has been successfully accepted into the system, and its representation is returned by the API. | Campaign2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -313,12 +439,12 @@ Path   | id | **str** | True  | ID of the campaign template whose schedule is be
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -370,12 +496,12 @@ Path   | id | **str** | True  | ID of the campaign template being deleted.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -418,7 +544,7 @@ Use this API to delete certification campaigns whose IDs are specified in the pr
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | campaignsdeleterequest | [**Campaignsdeleterequest**](../models/campaignsdeleterequest) | True  | IDs of the campaigns to delete.
+ Body  | campaigns_delete_request | [**CampaignsDeleteRequest**](../models/campaigns-delete-request) | True  | IDs of the campaigns to delete.
 
 ### Return type
 **object**
@@ -427,12 +553,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -443,20 +569,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaignsdeleterequest import Campaignsdeleterequest
+from sailpoint.certification_campaigns.models.campaigns_delete_request import CampaignsDeleteRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    campaignsdeleterequest = '''sailpoint.certification_campaigns.Campaignsdeleterequest()''' # Campaignsdeleterequest | IDs of the campaigns to delete.
+    campaigns_delete_request = '''{
+          "ids" : [ "2c9180887335cee10173490db1776c26", "2c9180836a712436016a7125a90c0021" ]
+        }''' # CampaignsDeleteRequest | IDs of the campaigns to delete.
 
     try:
         # Delete campaigns
-        new_campaignsdeleterequest = Campaignsdeleterequest.from_json(campaignsdeleterequest)
-        results = CertificationCampaignsApi(api_client).delete_campaigns_v1(campaignsdeleterequest=new_campaignsdeleterequest)
+        new_campaigns_delete_request = CampaignsDeleteRequest.from_json(campaigns_delete_request)
+        results = CertificationCampaignsApi(api_client).delete_campaigns_v1(campaigns_delete_request=new_campaigns_delete_request)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).delete_campaigns_v1(new_campaignsdeleterequest)
+        # results = CertificationCampaignsApi(api_client).delete_campaigns_v1(new_campaigns_delete_request)
         print("The response of CertificationCampaignsApi->delete_campaigns_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -492,11 +620,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A list of campaign objects. By default list of SLIM campaigns is returned. | List[GetActiveCampaignsV1200ResponseInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -548,17 +676,17 @@ Use this API to fetch the configuration for certification campaign reports. The 
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Campaignreportsconfig**](../models/campaignreportsconfig)
+[**CampaignReportsConfig**](../models/campaign-reports-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Campaign report configuration. | Campaignreportsconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Campaign report configuration. | CampaignReportsConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -569,7 +697,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaignreportsconfig import Campaignreportsconfig
+from sailpoint.certification_campaigns.models.campaign_reports_config import CampaignReportsConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -606,18 +734,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the campaign whose reports are being fetched.
 
 ### Return type
-[**List[Campaignreport]**](../models/campaignreport)
+[**List[CampaignReport]**](../models/campaign-report)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Array of campaign report objects. | List[Campaignreport] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Array of campaign report objects. | List[CampaignReport] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -628,7 +756,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaignreport import Campaignreport
+from sailpoint.certification_campaigns.models.campaign_report import CampaignReport
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -673,12 +801,12 @@ Path   | id | **str** | True  | ID of the campaign template whose schedule is be
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Current schedule for the campaign template. See the [Set Campaign Template Schedule endpoint documentation](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule) for more examples. | Schedule2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -727,18 +855,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Requested campaign template's ID.
 
 ### Return type
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Data for the campaign matching the given ID. | Campaigntemplate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Data for the campaign matching the given ID. | CampaignTemplate |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -749,7 +877,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaigntemplate import Campaigntemplate
+from sailpoint.certification_campaigns.models.campaign_template import CampaignTemplate
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -793,17 +921,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw*
 
 ### Return type
-[**List[Campaigntemplate]**](../models/campaigntemplate)
+[**List[CampaignTemplate]**](../models/campaign-template)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of campaign template objects. | List[Campaigntemplate] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of campaign template objects. | List[CampaignTemplate] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -814,7 +942,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaigntemplate import Campaigntemplate
+from sailpoint.certification_campaigns.models.campaign_template import CampaignTemplate
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -864,12 +992,12 @@ Path   | id | **str** | True  | ID of the campaign to be retrieved.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Requested campaign object. | GetCampaignV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -917,21 +1045,21 @@ This API reassigns the specified certifications from one identity to another.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The certification campaign ID
- Body  | adminreviewreassign | [**Adminreviewreassign**](../models/adminreviewreassign) | True  | 
+ Body  | admin_review_reassign | [**AdminReviewReassign**](../models/admin-review-reassign) | True  | 
 
 ### Return type
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | The reassign task that has been submitted. | Certificationtask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | The reassign task that has been submitted. | CertificationTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -942,22 +1070,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.adminreviewreassign import Adminreviewreassign
-from sailpoint.certification_campaigns.models.certificationtask import Certificationtask
+from sailpoint.certification_campaigns.models.admin_review_reassign import AdminReviewReassign
+from sailpoint.certification_campaigns.models.certification_task import CertificationTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification campaign ID # str | The certification campaign ID
-    adminreviewreassign = '''sailpoint.certification_campaigns.Adminreviewreassign()''' # Adminreviewreassign | 
+    admin_review_reassign = '''{
+          "certificationIds" : [ "af3859464779471211bb8424a563abc1", "af3859464779471211bb8424a563abc2", "af3859464779471211bb8424a563abc3" ],
+          "reason" : "reassigned for some reason",
+          "reassignTo" : {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "IDENTITY"
+          }
+        }''' # AdminReviewReassign | 
 
     try:
         # Reassign certifications
-        new_adminreviewreassign = Adminreviewreassign.from_json(adminreviewreassign)
-        results = CertificationCampaignsApi(api_client).move_v1(id=id, adminreviewreassign=new_adminreviewreassign)
+        new_admin_review_reassign = AdminReviewReassign.from_json(admin_review_reassign)
+        results = CertificationCampaignsApi(api_client).move_v1(id=id, admin_review_reassign=new_admin_review_reassign)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).move_v1(id, new_adminreviewreassign)
+        # results = CertificationCampaignsApi(api_client).move_v1(id, new_admin_review_reassign)
         print("The response of CertificationCampaignsApi->move_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -980,21 +1115,21 @@ Use this API to update individual fields on a certification campaign template, u
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the campaign template being modified.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
 ### Return type
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates that the PATCH operation succeeded, and the API returns the template&#39;s new representation. | Campaigntemplate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates that the PATCH operation succeeded, and the API returns the template&#39;s new representation. | CampaignTemplate |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1005,22 +1140,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaigntemplate import Campaigntemplate
-from sailpoint.certification_campaigns.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.certification_campaigns.models.campaign_template import CampaignTemplate
+from sailpoint.certification_campaigns.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template being modified. # str | ID of the campaign template being modified.
-    jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]''' # List[Jsonpatchoperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+    json_patch_operation = '''[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]''' # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
     try:
         # Update a campaign template
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = CertificationCampaignsApi(api_client).patch_campaign_template_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = CertificationCampaignsApi(api_client).patch_campaign_template_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).patch_campaign_template_v1(id, new_jsonpatchoperation)
+        # results = CertificationCampaignsApi(api_client).patch_campaign_template_v1(id, new_json_patch_operation)
         print("The response of CertificationCampaignsApi->patch_campaign_template_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1042,20 +1177,20 @@ Use this API to overwrite the configuration for campaign reports.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | campaignreportsconfig | [**Campaignreportsconfig**](../models/campaignreportsconfig) | True  | Campaign report configuration.
+ Body  | campaign_reports_config | [**CampaignReportsConfig**](../models/campaign-reports-config) | True  | Campaign report configuration.
 
 ### Return type
-[**Campaignreportsconfig**](../models/campaignreportsconfig)
+[**CampaignReportsConfig**](../models/campaign-reports-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The persisted campaign report configuration. | Campaignreportsconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The persisted campaign report configuration. | CampaignReportsConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1066,20 +1201,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaignreportsconfig import Campaignreportsconfig
+from sailpoint.certification_campaigns.models.campaign_reports_config import CampaignReportsConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    campaignreportsconfig = '''sailpoint.certification_campaigns.Campaignreportsconfig()''' # Campaignreportsconfig | Campaign report configuration.
+    campaign_reports_config = '''{
+          "identityAttributeColumns" : [ "firstname", "lastname" ]
+        }''' # CampaignReportsConfig | Campaign report configuration.
 
     try:
         # Set campaign reports configuration
-        new_campaignreportsconfig = Campaignreportsconfig.from_json(campaignreportsconfig)
-        results = CertificationCampaignsApi(api_client).set_campaign_reports_config_v1(campaignreportsconfig=new_campaignreportsconfig)
+        new_campaign_reports_config = CampaignReportsConfig.from_json(campaign_reports_config)
+        results = CertificationCampaignsApi(api_client).set_campaign_reports_config_v1(campaign_reports_config=new_campaign_reports_config)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).set_campaign_reports_config_v1(new_campaignreportsconfig)
+        # results = CertificationCampaignsApi(api_client).set_campaign_reports_config_v1(new_campaign_reports_config)
         print("The response of CertificationCampaignsApi->set_campaign_reports_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1111,12 +1248,12 @@ Path   | id | **str** | True  | ID of the campaign template being scheduled.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1170,12 +1307,12 @@ Path   | id | **str** | True  | ID of the campaign the remediation scan is being
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1221,7 +1358,7 @@ Use this API to run a report for a certification campaign.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the campaign the report is being run for.
-Path   | type | [**Reporttype**](../models/reporttype) | True  | Type of the report to run.
+Path   | type | [**ReportType**](../models/report-type) | True  | Type of the report to run.
 
 ### Return type
 **object**
@@ -1230,12 +1367,12 @@ Path   | type | [**Reporttype**](../models/reporttype) | True  | Type of the rep
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1246,14 +1383,14 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.reporttype import Reporttype
+from sailpoint.certification_campaigns.models.report_type import ReportType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign the report is being run for. # str | ID of the campaign the report is being run for.
-    type = sailpoint.certification_campaigns.Reporttype() # Reporttype | Type of the report to run. # Reporttype | Type of the report to run.
+    type = sailpoint.certification_campaigns.ReportType() # ReportType | Type of the report to run. # ReportType | Type of the report to run.
 
     try:
         # Run campaign report
@@ -1283,7 +1420,7 @@ Use this API to submit a job to activate the certified campaign with the specifi
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Campaign ID.
- Body  | activatecampaignoptions | [**Activatecampaignoptions**](../models/activatecampaignoptions) |   (optional) | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
+ Body  | activate_campaign_options | [**ActivateCampaignOptions**](../models/activate-campaign-options) |   (optional) | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
 
 ### Return type
 **object**
@@ -1292,12 +1429,12 @@ Path   | id | **str** | True  | Campaign ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1308,21 +1445,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.activatecampaignoptions import Activatecampaignoptions
+from sailpoint.certification_campaigns.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID. # str | Campaign ID.
-    activatecampaignoptions = '''sailpoint.certification_campaigns.Activatecampaignoptions()''' # Activatecampaignoptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+    activate_campaign_options = '''{
+          "timeZone" : "-05:00"
+        }''' # ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     try:
         # Activate a campaign
         
         results = CertificationCampaignsApi(api_client).start_campaign_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).start_campaign_v1(id, new_activatecampaignoptions)
+        # results = CertificationCampaignsApi(api_client).start_campaign_v1(id, new_activate_campaign_options)
         print("The response of CertificationCampaignsApi->start_campaign_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1357,17 +1496,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the campaign template to use for generation.
 
 ### Return type
-[**Campaignreference**](../models/campaignreference)
+[**CampaignReference**](../models/campaign-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates that a campaign was successfully generated from this template, and the API returns a reference to the new campaign. | Campaignreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates that a campaign was successfully generated from this template, and the API returns a reference to the new campaign. | CampaignReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1378,7 +1517,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.campaignreference import Campaignreference
+from sailpoint.certification_campaigns.models.campaign_reference import CampaignReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1414,21 +1553,21 @@ Use this API to update individual fields on a certification campaign, using the 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the campaign template being modified.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
 ### Return type
-[**Slimcampaign**](../models/slimcampaign)
+[**SlimCampaign**](../models/slim-campaign)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates that the PATCH operation succeeded, and the API returns the campaign&#39;s new representation. | Slimcampaign |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates that the PATCH operation succeeded, and the API returns the campaign&#39;s new representation. | SlimCampaign |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1439,22 +1578,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.certification_campaigns.api_client import ApiClient
-from sailpoint.certification_campaigns.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.certification_campaigns.models.slimcampaign import Slimcampaign
+from sailpoint.certification_campaigns.models.json_patch_operation import JsonPatchOperation
+from sailpoint.certification_campaigns.models.slim_campaign import SlimCampaign
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign template being modified. # str | ID of the campaign template being modified.
-    jsonpatchoperation = '''[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]''' # List[Jsonpatchoperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+    json_patch_operation = '''[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]''' # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
     try:
         # Update a campaign
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = CertificationCampaignsApi(api_client).update_campaign_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = CertificationCampaignsApi(api_client).update_campaign_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = CertificationCampaignsApi(api_client).update_campaign_v1(id, new_jsonpatchoperation)
+        # results = CertificationCampaignsApi(api_client).update_campaign_v1(id, new_json_patch_operation)
         print("The response of CertificationCampaignsApi->update_campaign_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

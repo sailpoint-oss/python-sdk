@@ -32,7 +32,7 @@
       source: |
         from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
         from sailpoint.iai_outliers.api_client import ApiClient
-        from sailpoint.iai_outliers.models.outliersummary import Outliersummary
+        from sailpoint.iai_outliers.models.outlier_summary import OutlierSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -97,7 +97,7 @@
       source: |
         from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
         from sailpoint.iai_outliers.api_client import ApiClient
-        from sailpoint.iai_outliers.models.latestoutliersummary import Latestoutliersummary
+        from sailpoint.iai_outliers.models.latest_outlier_summary import LatestOutlierSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -125,7 +125,7 @@
       source: |
         from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
         from sailpoint.iai_outliers.api_client import ApiClient
-        from sailpoint.iai_outliers.models.outlierfeaturesummary import Outlierfeaturesummary
+        from sailpoint.iai_outliers.models.outlier_feature_summary import OutlierFeatureSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -152,7 +152,7 @@
       source: |
         from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
         from sailpoint.iai_outliers.api_client import ApiClient
-        from sailpoint.iai_outliers.models.outliercontributingfeature import Outliercontributingfeature
+        from sailpoint.iai_outliers.models.outlier_contributing_feature import OutlierContributingFeature
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -209,7 +209,7 @@
       source: |
         from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi
         from sailpoint.iai_outliers.api_client import ApiClient
-        from sailpoint.iai_outliers.models.outlierscontributingfeatureaccessitems import Outlierscontributingfeatureaccessitems
+        from sailpoint.iai_outliers.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

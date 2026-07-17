@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.public_identities.models.publicidentity import Publicidentity
+from sailpoint.public_identities.models.public_identity import PublicIdentity
 
 from sailpoint.public_identities.api_client import ApiClient, RequestSerialized
 from sailpoint.public_identities.api_response import ApiResponse
@@ -60,7 +60,7 @@ class PublicIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Publicidentity]:
+    ) -> List[PublicIdentity]:
         """Get list of public identities
 
         Get a list of public identities.  Set `add-core-filters` to `true` to exclude incomplete identities and uncorrelated accounts.
@@ -113,12 +113,12 @@ class PublicIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Publicidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[PublicIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -152,7 +152,7 @@ class PublicIdentitiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Publicidentity]]:
+    ) -> ApiResponse[List[PublicIdentity]]:
         """Get list of public identities
 
         Get a list of public identities.  Set `add-core-filters` to `true` to exclude incomplete identities and uncorrelated accounts.
@@ -205,12 +205,12 @@ class PublicIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Publicidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[PublicIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -297,12 +297,12 @@ class PublicIdentitiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Publicidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[PublicIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentitiesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentitiesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

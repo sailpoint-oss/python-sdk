@@ -57,11 +57,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | Role Propagation has been successfully terminated. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -118,17 +118,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**RolePropagationOngoingResponse**](../models/role-propagation-ongoing-response)
+[**Rolepropagationongoingresponse**](../models/rolepropagationongoingresponse)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Information of ongoing role propagation process. | RolePropagationOngoingResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Information of ongoing role propagation process. | Rolepropagationongoingresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -139,7 +139,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.role_propagation.api.role_propagation_api import RolePropagationApi
 from sailpoint.role_propagation.api_client import ApiClient
-from sailpoint.role_propagation.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
+from sailpoint.role_propagation.models.rolepropagationongoingresponse import Rolepropagationongoingresponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -188,17 +188,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+[**Rolepropagationconfigresponse**](../models/rolepropagationconfigresponse)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Role Change Propagation configuration for the tenant. | RolePropagationConfigResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Role Change Propagation configuration for the tenant. | Rolepropagationconfigresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -209,7 +209,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.role_propagation.api.role_propagation_api import RolePropagationApi
 from sailpoint.role_propagation.api_client import ApiClient
-from sailpoint.role_propagation.models.role_propagation_config_response import RolePropagationConfigResponse
+from sailpoint.role_propagation.models.rolepropagationconfigresponse import Rolepropagationconfigresponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -265,18 +265,18 @@ Path   | role_propagation_id | **str** | True  | The ID of the role propagation 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**RolePropagationStatusResponse**](../models/role-propagation-status-response)
+[**Rolepropagationstatusresponse**](../models/rolepropagationstatusresponse)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Information of the role propagation process. | RolePropagationStatusResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Information of the role propagation process. | Rolepropagationstatusresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -287,7 +287,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.role_propagation.api.role_propagation_api import RolePropagationApi
 from sailpoint.role_propagation.api_client import ApiClient
-from sailpoint.role_propagation.models.role_propagation_status_response import RolePropagationStatusResponse
+from sailpoint.role_propagation.models.rolepropagationstatusresponse import Rolepropagationstatusresponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -334,21 +334,21 @@ This endpoint enables or disables the Role Change Propagation Process for the te
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | role_propagation_config_input | [**RolePropagationConfigInput**](../models/role-propagation-config-input) | True  | 
+ Body  | rolepropagationconfiginput | [**Rolepropagationconfiginput**](../models/rolepropagationconfiginput) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+[**Rolepropagationconfigresponse**](../models/rolepropagationconfigresponse)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Role Change Propagation configuration for the tenant is successfully updated. | RolePropagationConfigResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Role Change Propagation configuration for the tenant is successfully updated. | Rolepropagationconfigresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -359,23 +359,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.role_propagation.api.role_propagation_api import RolePropagationApi
 from sailpoint.role_propagation.api_client import ApiClient
-from sailpoint.role_propagation.models.role_propagation_config_input import RolePropagationConfigInput
-from sailpoint.role_propagation.models.role_propagation_config_response import RolePropagationConfigResponse
+from sailpoint.role_propagation.models.rolepropagationconfiginput import Rolepropagationconfiginput
+from sailpoint.role_propagation.models.rolepropagationconfigresponse import Rolepropagationconfigresponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    role_propagation_config_input = '''sailpoint.role_propagation.RolePropagationConfigInput()''' # RolePropagationConfigInput | 
+    rolepropagationconfiginput = '''{
+          "enabled" : true
+        }''' # Rolepropagationconfiginput | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update Role Change Propagation Configuration
-        new_role_propagation_config_input = RolePropagationConfigInput.from_json(role_propagation_config_input)
-        results = RolePropagationApi(api_client).set_role_propagation_config_v1(role_propagation_config_input=new_role_propagation_config_input)
+        new_rolepropagationconfiginput = Rolepropagationconfiginput.from_json(rolepropagationconfiginput)
+        results = RolePropagationApi(api_client).set_role_propagation_config_v1(rolepropagationconfiginput=new_rolepropagationconfiginput)
         # Below is a request that includes all optional parameters
-        # results = RolePropagationApi(api_client).set_role_propagation_config_v1(new_role_propagation_config_input, x_sail_point_experimental)
+        # results = RolePropagationApi(api_client).set_role_propagation_config_v1(new_rolepropagationconfiginput, x_sail_point_experimental)
         print("The response of RolePropagationApi->set_role_propagation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -412,17 +414,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**RolePropagationResponse**](../models/role-propagation-response)
+[**Rolepropagationresponse**](../models/rolepropagationresponse)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Role Propagation has sucessfully started. | RolePropagationResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Role Propagation has sucessfully started. | Rolepropagationresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | StartRolePropagationV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | StartRolePropagationV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -433,7 +435,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.role_propagation.api.role_propagation_api import RolePropagationApi
 from sailpoint.role_propagation.api_client import ApiClient
-from sailpoint.role_propagation.models.role_propagation_response import RolePropagationResponse
+from sailpoint.role_propagation.models.rolepropagationresponse import Rolepropagationresponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

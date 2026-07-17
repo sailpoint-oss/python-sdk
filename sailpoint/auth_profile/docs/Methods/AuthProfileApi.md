@@ -50,17 +50,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Authprofilesummary]**](../models/authprofilesummary)
+[**List[AuthProfileSummary]**](../models/auth-profile-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Auth Profiles | List[Authprofilesummary] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Auth Profiles | List[AuthProfileSummary] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetProfileConfigListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetProfileConfigListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -71,7 +71,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.auth_profile.api.auth_profile_api import AuthProfileApi
 from sailpoint.auth_profile.api_client import ApiClient
-from sailpoint.auth_profile.models.authprofilesummary import Authprofilesummary
+from sailpoint.auth_profile.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -122,18 +122,18 @@ Path   | id | **str** | True  | ID of the Auth Profile to patch.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Authprofile**](../models/authprofile)
+[**AuthProfile**](../models/auth-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Auth Profile | Authprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Auth Profile | AuthProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetProfileConfigListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetProfileConfigListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -144,7 +144,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.auth_profile.api.auth_profile_api import AuthProfileApi
 from sailpoint.auth_profile.api_client import ApiClient
-from sailpoint.auth_profile.models.authprofile import Authprofile
+from sailpoint.auth_profile.models.auth_profile import AuthProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -193,21 +193,21 @@ This API updates an existing Auth Profile. The following fields are patchable:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Auth Profile to patch.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Authprofile**](../models/authprofile)
+[**AuthProfile**](../models/auth-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with the Auth Profile as updated. | Authprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with the Auth Profile as updated. | AuthProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetProfileConfigListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetProfileConfigListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -218,8 +218,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.auth_profile.api.auth_profile_api import AuthProfileApi
 from sailpoint.auth_profile.api_client import ApiClient
-from sailpoint.auth_profile.models.authprofile import Authprofile
-from sailpoint.auth_profile.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.auth_profile.models.auth_profile import AuthProfile
+from sailpoint.auth_profile.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -227,15 +227,15 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch. # str | ID of the Auth Profile to patch.
-    jsonpatchoperation = '''[sailpoint.auth_profile.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | 
+    json_patch_operation = '''[sailpoint.auth_profile.JsonPatchOperation()]''' # List[JsonPatchOperation] | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Patch a specified auth profile
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = AuthProfileApi(api_client).patch_profile_config_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = AuthProfileApi(api_client).patch_profile_config_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = AuthProfileApi(api_client).patch_profile_config_v1(id, new_jsonpatchoperation, x_sail_point_experimental)
+        # results = AuthProfileApi(api_client).patch_profile_config_v1(id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of AuthProfileApi->patch_profile_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -19,14 +19,14 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.apps.models.accessprofiledetails import Accessprofiledetails
-from sailpoint.apps.models.appaccountdetails import Appaccountdetails
-from sailpoint.apps.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.apps.models.sourceapp import Sourceapp
-from sailpoint.apps.models.sourceappbulkupdaterequest import Sourceappbulkupdaterequest
-from sailpoint.apps.models.sourceappcreatedto import Sourceappcreatedto
-from sailpoint.apps.models.sourceapppatchdto import Sourceapppatchdto
-from sailpoint.apps.models.userapp import Userapp
+from sailpoint.apps.models.access_profile_details import AccessProfileDetails
+from sailpoint.apps.models.app_account_details import AppAccountDetails
+from sailpoint.apps.models.json_patch_operation import JsonPatchOperation
+from sailpoint.apps.models.source_app import SourceApp
+from sailpoint.apps.models.source_app_bulk_update_request import SourceAppBulkUpdateRequest
+from sailpoint.apps.models.source_app_create_dto import SourceAppCreateDto
+from sailpoint.apps.models.source_app_patch_dto import SourceAppPatchDto
+from sailpoint.apps.models.user_app import UserApp
 
 from sailpoint.apps.api_client import ApiClient, RequestSerialized
 from sailpoint.apps.api_response import ApiResponse
@@ -49,7 +49,7 @@ class AppsApi:
     @validate_call
     def create_source_app_v1(
         self,
-        sourceappcreatedto: Sourceappcreatedto,
+        source_app_create_dto: SourceAppCreateDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -63,13 +63,13 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceapp:
+    ) -> SourceApp:
         """Create source app
 
         This endpoint creates a source app using the given source app payload
 
-        :param sourceappcreatedto: (required)
-        :type sourceappcreatedto: Sourceappcreatedto
+        :param source_app_create_dto: (required)
+        :type source_app_create_dto: SourceAppCreateDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -95,7 +95,7 @@ class AppsApi:
         """ # noqa: E501
 
         _param = self._create_source_app_v1_serialize(
-            sourceappcreatedto=sourceappcreatedto,
+            source_app_create_dto=source_app_create_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -104,12 +104,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -125,7 +125,7 @@ class AppsApi:
     @validate_call
     def create_source_app_v1_with_http_info(
         self,
-        sourceappcreatedto: Sourceappcreatedto,
+        source_app_create_dto: SourceAppCreateDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -139,13 +139,13 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceapp]:
+    ) -> ApiResponse[SourceApp]:
         """Create source app
 
         This endpoint creates a source app using the given source app payload
 
-        :param sourceappcreatedto: (required)
-        :type sourceappcreatedto: Sourceappcreatedto
+        :param source_app_create_dto: (required)
+        :type source_app_create_dto: SourceAppCreateDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -171,7 +171,7 @@ class AppsApi:
         """ # noqa: E501
 
         _param = self._create_source_app_v1_serialize(
-            sourceappcreatedto=sourceappcreatedto,
+            source_app_create_dto=source_app_create_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -180,12 +180,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -201,7 +201,7 @@ class AppsApi:
     @validate_call
     def create_source_app_v1_without_preload_content(
         self,
-        sourceappcreatedto: Sourceappcreatedto,
+        source_app_create_dto: SourceAppCreateDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -220,8 +220,8 @@ class AppsApi:
 
         This endpoint creates a source app using the given source app payload
 
-        :param sourceappcreatedto: (required)
-        :type sourceappcreatedto: Sourceappcreatedto
+        :param source_app_create_dto: (required)
+        :type source_app_create_dto: SourceAppCreateDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -247,7 +247,7 @@ class AppsApi:
         """ # noqa: E501
 
         _param = self._create_source_app_v1_serialize(
-            sourceappcreatedto=sourceappcreatedto,
+            source_app_create_dto=source_app_create_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -256,12 +256,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -272,7 +272,7 @@ class AppsApi:
 
     def _create_source_app_v1_serialize(
         self,
-        sourceappcreatedto,
+        source_app_create_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -301,8 +301,8 @@ class AppsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if sourceappcreatedto is not None:
-            _body_params = sourceappcreatedto
+        if source_app_create_dto is not None:
+            _body_params = source_app_create_dto
 
 
         # set the HTTP header `Accept`
@@ -368,7 +368,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessprofiledetails]:
+    ) -> List[AccessProfileDetails]:
         """Bulk remove access profiles from the specified source app
 
         This API returns the final list of access profiles for the specified source app after removing
@@ -415,12 +415,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -452,7 +452,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessprofiledetails]]:
+    ) -> ApiResponse[List[AccessProfileDetails]]:
         """Bulk remove access profiles from the specified source app
 
         This API returns the final list of access profiles for the specified source app after removing
@@ -499,12 +499,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -583,12 +583,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -702,7 +702,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceapp:
+    ) -> SourceApp:
         """Delete source app by id
 
         Use this API to delete a specific source app
@@ -743,12 +743,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -778,7 +778,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceapp]:
+    ) -> ApiResponse[SourceApp]:
         """Delete source app by id
 
         Use this API to delete a specific source app
@@ -819,12 +819,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -895,12 +895,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -992,7 +992,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceapp:
+    ) -> SourceApp:
         """Get source app by id
 
         This API returns a source app by its ID.
@@ -1033,13 +1033,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1069,7 +1069,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceapp]:
+    ) -> ApiResponse[SourceApp]:
         """Get source app by id
 
         This API returns a source app by its ID.
@@ -1110,13 +1110,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1187,13 +1187,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapp",
-            '400': "Errorresponsedto",
+            '200': "SourceApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1288,7 +1288,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessprofiledetails]:
+    ) -> List[AccessProfileDetails]:
         """List access profiles for the specified source app
 
         This API returns the list of access profiles for the specified source app
@@ -1338,12 +1338,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1376,7 +1376,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessprofiledetails]]:
+    ) -> ApiResponse[List[AccessProfileDetails]]:
         """List access profiles for the specified source app
 
         This API returns the list of access profiles for the specified source app
@@ -1426,12 +1426,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1514,12 +1514,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofiledetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfileDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1630,7 +1630,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourceapp]:
+    ) -> List[SourceApp]:
         """List all source apps
 
         This API returns the list of all source apps for the org.    
@@ -1683,12 +1683,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1722,7 +1722,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourceapp]]:
+    ) -> ApiResponse[List[SourceApp]]:
         """List all source apps
 
         This API returns the list of all source apps for the org.    
@@ -1775,12 +1775,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1867,12 +1867,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1989,7 +1989,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Userapp]:
+    ) -> List[UserApp]:
         """List all user apps
 
         This API returns the list of all user apps with specified filters. This API must be used with **filters** query parameter.
@@ -2039,12 +2039,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2077,7 +2077,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Userapp]]:
+    ) -> ApiResponse[List[UserApp]]:
         """List all user apps
 
         This API returns the list of all user apps with specified filters. This API must be used with **filters** query parameter.
@@ -2127,12 +2127,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2215,12 +2215,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2333,7 +2333,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourceapp]:
+    ) -> List[SourceApp]:
         """List assigned source apps
 
         This API returns the list of source apps assigned for logged in user.
@@ -2386,12 +2386,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2425,7 +2425,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourceapp]]:
+    ) -> ApiResponse[List[SourceApp]]:
         """List assigned source apps
 
         This API returns the list of source apps assigned for logged in user.
@@ -2478,12 +2478,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2570,12 +2570,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2691,7 +2691,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Appaccountdetails]:
+    ) -> List[AppAccountDetails]:
         """List available accounts for user app
 
         This API returns the list of available accounts for the specified user app. The user app needs to belong lo logged in user.
@@ -2738,12 +2738,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Appaccountdetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AppAccountDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2775,7 +2775,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Appaccountdetails]]:
+    ) -> ApiResponse[List[AppAccountDetails]]:
         """List available accounts for user app
 
         This API returns the list of available accounts for the specified user app. The user app needs to belong lo logged in user.
@@ -2822,12 +2822,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Appaccountdetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AppAccountDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2906,12 +2906,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Appaccountdetails]",
-            '400': "Errorresponsedto",
+            '200': "List[AppAccountDetails]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3017,7 +3017,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourceapp]:
+    ) -> List[SourceApp]:
         """List available source apps
 
         This API returns the list of source apps available for access request.
@@ -3070,12 +3070,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3109,7 +3109,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourceapp]]:
+    ) -> ApiResponse[List[SourceApp]]:
         """List available source apps
 
         This API returns the list of source apps available for access request.
@@ -3162,12 +3162,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3254,12 +3254,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceapp]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3376,7 +3376,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Userapp]:
+    ) -> List[UserApp]:
         """List owned user apps
 
         This API returns the list of user apps assigned to logged in user
@@ -3426,12 +3426,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3464,7 +3464,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Userapp]]:
+    ) -> ApiResponse[List[UserApp]]:
         """List owned user apps
 
         This API returns the list of user apps assigned to logged in user
@@ -3514,12 +3514,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3602,12 +3602,12 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userapp]",
-            '400': "Errorresponsedto",
+            '200': "List[UserApp]",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3703,7 +3703,7 @@ class AppsApi:
     def patch_source_app_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the source app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3717,7 +3717,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceapppatchdto:
+    ) -> SourceAppPatchDto:
         """Patch source app by id
 
         This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**. Name, description and owner can't be empty or null.
@@ -3726,8 +3726,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3753,7 +3753,7 @@ class AppsApi:
         _param = self._patch_source_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3761,13 +3761,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapppatchdto",
-            '400': "Errorresponsedto",
+            '200': "SourceAppPatchDto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3784,7 +3784,7 @@ class AppsApi:
     def patch_source_app_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the source app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3798,7 +3798,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceapppatchdto]:
+    ) -> ApiResponse[SourceAppPatchDto]:
         """Patch source app by id
 
         This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**. Name, description and owner can't be empty or null.
@@ -3807,8 +3807,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3834,7 +3834,7 @@ class AppsApi:
         _param = self._patch_source_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3842,13 +3842,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapppatchdto",
-            '400': "Errorresponsedto",
+            '200': "SourceAppPatchDto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3865,7 +3865,7 @@ class AppsApi:
     def patch_source_app_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the source app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3888,8 +3888,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3915,7 +3915,7 @@ class AppsApi:
         _param = self._patch_source_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3923,13 +3923,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceapppatchdto",
-            '400': "Errorresponsedto",
+            '200': "SourceAppPatchDto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3942,7 +3942,7 @@ class AppsApi:
         self,
         id,
         x_sail_point_experimental,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -3952,7 +3952,7 @@ class AppsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3973,8 +3973,8 @@ class AppsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -4025,7 +4025,7 @@ class AppsApi:
     def patch_user_app_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the user app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4039,7 +4039,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Userapp:
+    ) -> UserApp:
         """Patch user app by id
 
         This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **account**
@@ -4048,8 +4048,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4075,7 +4075,7 @@ class AppsApi:
         _param = self._patch_user_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4083,13 +4083,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userapp",
-            '400': "Errorresponsedto",
+            '200': "UserApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4106,7 +4106,7 @@ class AppsApi:
     def patch_user_app_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the user app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4120,7 +4120,7 @@ class AppsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Userapp]:
+    ) -> ApiResponse[UserApp]:
         """Patch user app by id
 
         This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **account**
@@ -4129,8 +4129,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4156,7 +4156,7 @@ class AppsApi:
         _param = self._patch_user_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4164,13 +4164,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userapp",
-            '400': "Errorresponsedto",
+            '200': "UserApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4187,7 +4187,7 @@ class AppsApi:
     def patch_user_app_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the user app to patch")],
-        jsonpatchoperation: Optional[List[Jsonpatchoperation]] = None,
+        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4210,8 +4210,8 @@ class AppsApi:
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param jsonpatchoperation:
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation:
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4237,7 +4237,7 @@ class AppsApi:
         _param = self._patch_user_app_v1_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4245,13 +4245,13 @@ class AppsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userapp",
-            '400': "Errorresponsedto",
+            '200': "UserApp",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4264,7 +4264,7 @@ class AppsApi:
         self,
         id,
         x_sail_point_experimental,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -4274,7 +4274,7 @@ class AppsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4295,8 +4295,8 @@ class AppsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -4346,7 +4346,7 @@ class AppsApi:
     @validate_call
     def update_source_apps_in_bulk_v1(
         self,
-        sourceappbulkupdaterequest: Optional[Sourceappbulkupdaterequest] = None,
+        source_app_bulk_update_request: Optional[SourceAppBulkUpdateRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4367,8 +4367,8 @@ class AppsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param sourceappbulkupdaterequest:
-        :type sourceappbulkupdaterequest: Sourceappbulkupdaterequest
+        :param source_app_bulk_update_request:
+        :type source_app_bulk_update_request: SourceAppBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4393,7 +4393,7 @@ class AppsApi:
 
         _param = self._update_source_apps_in_bulk_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
-            sourceappbulkupdaterequest=sourceappbulkupdaterequest,
+            source_app_bulk_update_request=source_app_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4402,12 +4402,12 @@ class AppsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4423,7 +4423,7 @@ class AppsApi:
     @validate_call
     def update_source_apps_in_bulk_v1_with_http_info(
         self,
-        sourceappbulkupdaterequest: Optional[Sourceappbulkupdaterequest] = None,
+        source_app_bulk_update_request: Optional[SourceAppBulkUpdateRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4444,8 +4444,8 @@ class AppsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param sourceappbulkupdaterequest:
-        :type sourceappbulkupdaterequest: Sourceappbulkupdaterequest
+        :param source_app_bulk_update_request:
+        :type source_app_bulk_update_request: SourceAppBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4470,7 +4470,7 @@ class AppsApi:
 
         _param = self._update_source_apps_in_bulk_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
-            sourceappbulkupdaterequest=sourceappbulkupdaterequest,
+            source_app_bulk_update_request=source_app_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4479,12 +4479,12 @@ class AppsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4500,7 +4500,7 @@ class AppsApi:
     @validate_call
     def update_source_apps_in_bulk_v1_without_preload_content(
         self,
-        sourceappbulkupdaterequest: Optional[Sourceappbulkupdaterequest] = None,
+        source_app_bulk_update_request: Optional[SourceAppBulkUpdateRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -4521,8 +4521,8 @@ class AppsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param sourceappbulkupdaterequest:
-        :type sourceappbulkupdaterequest: Sourceappbulkupdaterequest
+        :param source_app_bulk_update_request:
+        :type source_app_bulk_update_request: SourceAppBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4547,7 +4547,7 @@ class AppsApi:
 
         _param = self._update_source_apps_in_bulk_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
-            sourceappbulkupdaterequest=sourceappbulkupdaterequest,
+            source_app_bulk_update_request=source_app_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4556,12 +4556,12 @@ class AppsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSourceAppV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSourceAppV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4573,7 +4573,7 @@ class AppsApi:
     def _update_source_apps_in_bulk_v1_serialize(
         self,
         x_sail_point_experimental,
-        sourceappbulkupdaterequest,
+        source_app_bulk_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4601,8 +4601,8 @@ class AppsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if sourceappbulkupdaterequest is not None:
-            _body_params = sourceappbulkupdaterequest
+        if source_app_bulk_update_request is not None:
+            _body_params = source_app_bulk_update_request
 
 
         # set the HTTP header `Accept`

@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.roles.models.accessmodelmetadata import Accessmodelmetadata
+from sailpoint.roles.models.access_model_metadata import AccessModelMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class EntitlementAccessModelMetadata(BaseModel):
     """
     Additional data to classify the entitlement
     """ # noqa: E501
-    attributes: Optional[List[Accessmodelmetadata]] = None
+    attributes: Optional[List[AccessModelMetadata]] = None
     __properties: ClassVar[List[str]] = ["attributes"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class EntitlementAccessModelMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": [Accessmodelmetadata.from_dict(_item) for _item in obj["attributes"]] if obj.get("attributes") is not None else None
+            "attributes": [AccessModelMetadata.from_dict(_item) for _item in obj["attributes"]] if obj.get("attributes") is not None else None
         })
         return _obj
 

@@ -70,14 +70,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/classify_source/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/classify_source/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/classify_source/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/classify_source/docs/ErrorResponseDto.md)
  - [GetClassifyMachineAccountFromSourceStatusV1401Response](sailpoint/classify_source/docs/GetClassifyMachineAccountFromSourceStatusV1401Response.md)
  - [GetClassifyMachineAccountFromSourceStatusV1429Response](sailpoint/classify_source/docs/GetClassifyMachineAccountFromSourceStatusV1429Response.md)
- - [Localeorigin](sailpoint/classify_source/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/classify_source/docs/LocaleOrigin.md)
  - [SendClassifyMachineAccountFromSourceV1200Response](sailpoint/classify_source/docs/SendClassifyMachineAccountFromSourceV1200Response.md)
- - [Sourceclassificationstatus](sailpoint/classify_source/docs/Sourceclassificationstatus.md)
- - [SourceclassificationstatusAllOfCounts](sailpoint/classify_source/docs/SourceclassificationstatusAllOfCounts.md)
+ - [SourceClassificationStatus](sailpoint/classify_source/docs/SourceClassificationStatus.md)
+ - [SourceClassificationStatusAllOfCounts](sailpoint/classify_source/docs/SourceClassificationStatusAllOfCounts.md)
 
 
 <a id="documentation-for-authorization"></a>

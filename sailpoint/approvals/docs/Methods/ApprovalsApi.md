@@ -45,7 +45,7 @@ Bulk Approves specified approval requests on behalf of the caller
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkapproverequestdto | [**Bulkapproverequestdto**](../models/bulkapproverequestdto) | True  | 
+ Body  | bulk_approve_request_dto | [**BulkApproveRequestDTO**](../models/bulk-approve-request-dto) | True  | 
 
 ### Return type
 **object**
@@ -54,12 +54,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -70,20 +70,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.bulkapproverequestdto import Bulkapproverequestdto
+from sailpoint.approvals.models.bulk_approve_request_dto import BulkApproveRequestDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkapproverequestdto = '''sailpoint.approvals.Bulkapproverequestdto()''' # Bulkapproverequestdto | 
+    bulk_approve_request_dto = '''{
+          "comment" : "Bulk approved by admin for monthly review",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ],
+          "additionalAttributes" : {
+            "source" : "automation",
+            "urgency" : "high"
+          }
+        }''' # BulkApproveRequestDTO | 
 
     try:
         # Post Bulk Approve Approvals
-        new_bulkapproverequestdto = Bulkapproverequestdto.from_json(bulkapproverequestdto)
-        results = ApprovalsApi(api_client).approve_approval_in_bulk_v1(bulkapproverequestdto=new_bulkapproverequestdto)
+        new_bulk_approve_request_dto = BulkApproveRequestDto.from_json(bulk_approve_request_dto)
+        results = ApprovalsApi(api_client).approve_approval_in_bulk_v1(bulk_approve_request_dto=new_bulk_approve_request_dto)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).approve_approval_in_bulk_v1(new_bulkapproverequestdto)
+        # results = ApprovalsApi(api_client).approve_approval_in_bulk_v1(new_bulk_approve_request_dto)
         print("The response of ApprovalsApi->approve_approval_in_bulk_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -106,7 +113,7 @@ If called by an admin and the admin is not listed as an approver, the approval r
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Approval ID that correlates to an existing approval request that a user wants to approve.
- Body  | approvalapproverequest | [**Approvalapproverequest**](../models/approvalapproverequest) |   (optional) | 
+ Body  | approval_approve_request | [**ApprovalApproveRequest**](../models/approval-approve-request) |   (optional) | 
 
 ### Return type
 [**Approval2**](../models/approval2)
@@ -115,12 +122,12 @@ Path   | id | **str** | True  | Approval ID that correlates to an existing appro
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Approval object | Approval2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -132,21 +139,28 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
 from sailpoint.approvals.models.approval2 import Approval2
-from sailpoint.approvals.models.approvalapproverequest import Approvalapproverequest
+from sailpoint.approvals.models.approval_approve_request import ApprovalApproveRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to approve. # str | Approval ID that correlates to an existing approval request that a user wants to approve.
-    approvalapproverequest = '''sailpoint.approvals.Approvalapproverequest()''' # Approvalapproverequest |  (optional)
+    approval_approve_request = '''{
+          "comment" : "comment",
+          "additionalAttributes" : {
+            "additionalProp1" : "string",
+            "additionalProp2" : "string",
+            "additionalProp3" : "string"
+          }
+        }''' # ApprovalApproveRequest |  (optional)
 
     try:
         # Post Approvals Approve
         
         results = ApprovalsApi(api_client).approve_approval_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).approve_approval_v1(id, new_approvalapproverequest)
+        # results = ApprovalsApi(api_client).approve_approval_v1(id, new_approval_approve_request)
         print("The response of ApprovalsApi->approve_approval_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -170,7 +184,7 @@ Note: This endpoint does not support access request IDs. To cancel access reques
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the approval request to cancel.
- Body  | approvalcancelrequest | [**Approvalcancelrequest**](../models/approvalcancelrequest) |   (optional) | 
+ Body  | approval_cancel_request | [**ApprovalCancelRequest**](../models/approval-cancel-request) |   (optional) | 
 
 ### Return type
  (empty response body)
@@ -179,12 +193,12 @@ Path   | id | **str** | True  | ID of the approval request to cancel.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -195,21 +209,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.approvalcancelrequest import Approvalcancelrequest
+from sailpoint.approvals.models.approval_cancel_request import ApprovalCancelRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | ID of the approval request to cancel. # str | ID of the approval request to cancel.
-    approvalcancelrequest = '''sailpoint.approvals.Approvalcancelrequest()''' # Approvalcancelrequest |  (optional)
+    approval_cancel_request = '''{
+          "comment" : "Cancelled by administrator"
+        }''' # ApprovalCancelRequest |  (optional)
 
     try:
         # Post Approval Cancel
         
         ApprovalsApi(api_client).cancel_approval_by_id_v1(id=id)
         # Below is a request that includes all optional parameters
-        # ApprovalsApi(api_client).cancel_approval_by_id_v1(id, new_approvalcancelrequest)
+        # ApprovalsApi(api_client).cancel_approval_by_id_v1(id, new_approval_cancel_request)
     except Exception as e:
         print("Exception when calling ApprovalsApi->cancel_approval_by_id_v1: %s\n" % e)
 ```
@@ -230,7 +246,7 @@ Note: To bulk cancel access request approvals, please use the following:
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkcancelrequestdto | [**Bulkcancelrequestdto**](../models/bulkcancelrequestdto) | True  | 
+ Body  | bulk_cancel_request_dto | [**BulkCancelRequestDTO**](../models/bulk-cancel-request-dto) | True  | 
 
 ### Return type
 **object**
@@ -239,12 +255,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -255,20 +271,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.bulkcancelrequestdto import Bulkcancelrequestdto
+from sailpoint.approvals.models.bulk_cancel_request_dto import BulkCancelRequestDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkcancelrequestdto = '''sailpoint.approvals.Bulkcancelrequestdto()''' # Bulkcancelrequestdto | 
+    bulk_cancel_request_dto = '''{
+          "comment" : "Bulk cancellation by admin",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }''' # BulkCancelRequestDTO | 
 
     try:
         # Post Bulk Cancel Approvals
-        new_bulkcancelrequestdto = Bulkcancelrequestdto.from_json(bulkcancelrequestdto)
-        results = ApprovalsApi(api_client).cancel_approval_v1(bulkcancelrequestdto=new_bulkcancelrequestdto)
+        new_bulk_cancel_request_dto = BulkCancelRequestDto.from_json(bulk_cancel_request_dto)
+        results = ApprovalsApi(api_client).cancel_approval_v1(bulk_cancel_request_dto=new_bulk_cancel_request_dto)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).cancel_approval_v1(new_bulkcancelrequestdto)
+        # results = ApprovalsApi(api_client).cancel_approval_v1(new_bulk_cancel_request_dto)
         print("The response of ApprovalsApi->cancel_approval_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -300,12 +319,12 @@ Path   | scope | **str** | True  | The scope of the field, where [[id]]:[[scope]
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -358,11 +377,11 @@ Path   | id | **str** | True  | ID of the approval that is to be returned
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Approval object | Approval2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -410,17 +429,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]
 
 ### Return type
-[**Approvalconfig**](../models/approvalconfig)
+[**ApprovalConfig**](../models/approval-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Approval object | Approvalconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Approval object | ApprovalConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -431,7 +450,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.approvalconfig import Approvalconfig
+from sailpoint.approvals.models.approval_config import ApprovalConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -495,11 +514,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of approvals. | List[Approval2] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -557,7 +576,7 @@ Bulk reassigns specified approval requests on behalf of the caller
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkreassignrequestdto | [**Bulkreassignrequestdto**](../models/bulkreassignrequestdto) | True  | 
+ Body  | bulk_reassign_request_dto | [**BulkReassignRequestDTO**](../models/bulk-reassign-request-dto) | True  | 
 
 ### Return type
 **object**
@@ -566,12 +585,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -582,20 +601,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.bulkreassignrequestdto import Bulkreassignrequestdto
+from sailpoint.approvals.models.bulk_reassign_request_dto import BulkReassignRequestDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkreassignrequestdto = '''sailpoint.approvals.Bulkreassignrequestdto()''' # Bulkreassignrequestdto | 
+    bulk_reassign_request_dto = '''{
+          "reassignTo" : "32454251-6ce2-5d8f-df93-5ce19e295238",
+          "comment" : "Bulk reassignment by admin",
+          "reassignFrom" : "12353251-6be2-5f8f-df93-5ce19b6e5837",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }''' # BulkReassignRequestDTO | 
 
     try:
         # Post Bulk Reassign Approvals
-        new_bulkreassignrequestdto = Bulkreassignrequestdto.from_json(bulkreassignrequestdto)
-        results = ApprovalsApi(api_client).move_approval_v1(bulkreassignrequestdto=new_bulkreassignrequestdto)
+        new_bulk_reassign_request_dto = BulkReassignRequestDto.from_json(bulk_reassign_request_dto)
+        results = ApprovalsApi(api_client).move_approval_v1(bulk_reassign_request_dto=new_bulk_reassign_request_dto)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).move_approval_v1(new_bulkreassignrequestdto)
+        # results = ApprovalsApi(api_client).move_approval_v1(new_bulk_reassign_request_dto)
         print("The response of ApprovalsApi->move_approval_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -619,21 +643,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
 Path   | scope | **str** | True  | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
- Body  | approvalconfig | [**Approvalconfig**](../models/approvalconfig) | True  | 
+ Body  | approval_config | [**ApprovalConfig**](../models/approval-config) | True  | 
 
 ### Return type
-[**Approvalconfig**](../models/approvalconfig)
+[**ApprovalConfig**](../models/approval-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Verified Email Status | Approvalconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Verified Email Status | ApprovalConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -644,7 +668,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.approvalconfig import Approvalconfig
+from sailpoint.approvals.models.approval_config import ApprovalConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -652,14 +676,61 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     id = 'ACCESS_REQUEST_APPROVAL' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
     scope = 'APPROVAL_TYPE' # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-    approvalconfig = '''sailpoint.approvals.Approvalconfig()''' # Approvalconfig | 
+    approval_config = '''{
+          "timeoutConfig" : {
+            "daysUntilTimeout" : 2,
+            "enabled" : true,
+            "timeoutResult" : "EXPIRED"
+          },
+          "requiresComment" : "ALL",
+          "cronTimezone" : {
+            "offset" : "",
+            "location" : "America/New_York"
+          },
+          "fallbackApprover" : {
+            "identityID" : "fdfda352157d4cc79bb749953131b457",
+            "type" : "MANAGER_OF"
+          },
+          "reminderConfig" : {
+            "reminderCronSchedule" : "1 1 1 1 1",
+            "daysUntilFirstReminder" : 0,
+            "maxReminders" : 5,
+            "enabled" : false
+          },
+          "circumventApprovalProcess" : false,
+          "escalationConfig" : {
+            "escalationCronSchedule" : "*/5 * * * *",
+            "escalationChain" : [ {
+              "tier" : 1,
+              "identityType" : "IDENTITY",
+              "identityId" : "fdfda352157d4cc79bb749953131b457"
+            }, {
+              "tier" : 1,
+              "identityType" : "IDENTITY",
+              "identityId" : "fdfda352157d4cc79bb749953131b457"
+            } ],
+            "daysUntilFirstEscalation" : 2,
+            "enabled" : true
+          },
+          "serialChain" : [ {
+            "tier" : 1,
+            "identityType" : "IDENTITY",
+            "identityId" : "2c9180858090ea8801809a0465e829da"
+          }, {
+            "tier" : 1,
+            "identityType" : "IDENTITY",
+            "identityId" : "2c9180858090ea8801809a0465e829da"
+          } ],
+          "machineIdentityManagerAssignment" : "MACHINE_IDENTITY_OWNER",
+          "autoApprove" : "OFF"
+        }''' # ApprovalConfig | 
 
     try:
         # Put Approval Config
-        new_approvalconfig = Approvalconfig.from_json(approvalconfig)
-        results = ApprovalsApi(api_client).put_approvals_config_v1(id=id, scope=scope, approvalconfig=new_approvalconfig)
+        new_approval_config = ApprovalConfig.from_json(approval_config)
+        results = ApprovalsApi(api_client).put_approvals_config_v1(id=id, scope=scope, approval_config=new_approval_config)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).put_approvals_config_v1(id, scope, new_approvalconfig)
+        # results = ApprovalsApi(api_client).put_approvals_config_v1(id, scope, new_approval_config)
         print("The response of ApprovalsApi->put_approvals_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -680,7 +751,7 @@ Bulk reject specified approval requests on behalf of the caller
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkrejectrequestdto | [**Bulkrejectrequestdto**](../models/bulkrejectrequestdto) | True  | 
+ Body  | bulk_reject_request_dto | [**BulkRejectRequestDTO**](../models/bulk-reject-request-dto) | True  | 
 
 ### Return type
 **object**
@@ -689,12 +760,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -705,20 +776,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.bulkrejectrequestdto import Bulkrejectrequestdto
+from sailpoint.approvals.models.bulk_reject_request_dto import BulkRejectRequestDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkrejectrequestdto = '''sailpoint.approvals.Bulkrejectrequestdto()''' # Bulkrejectrequestdto | 
+    bulk_reject_request_dto = '''{
+          "comment" : "Bulk reject by admin",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }''' # BulkRejectRequestDTO | 
 
     try:
         # Post Bulk Reject Approvals
-        new_bulkrejectrequestdto = Bulkrejectrequestdto.from_json(bulkrejectrequestdto)
-        results = ApprovalsApi(api_client).reject_approval_in_bulk_v1(bulkrejectrequestdto=new_bulkrejectrequestdto)
+        new_bulk_reject_request_dto = BulkRejectRequestDto.from_json(bulk_reject_request_dto)
+        results = ApprovalsApi(api_client).reject_approval_in_bulk_v1(bulk_reject_request_dto=new_bulk_reject_request_dto)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).reject_approval_in_bulk_v1(new_bulkrejectrequestdto)
+        # results = ApprovalsApi(api_client).reject_approval_in_bulk_v1(new_bulk_reject_request_dto)
         print("The response of ApprovalsApi->reject_approval_in_bulk_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -741,7 +815,7 @@ If called by an admin and the admin is not listed as an approver, the approval r
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Approval ID that correlates to an existing approval request that a user wants to reject.
- Body  | approvalrejectrequest | [**Approvalrejectrequest**](../models/approvalrejectrequest) |   (optional) | 
+ Body  | approval_reject_request | [**ApprovalRejectRequest**](../models/approval-reject-request) |   (optional) | 
 
 ### Return type
  (empty response body)
@@ -750,12 +824,12 @@ Path   | id | **str** | True  | Approval ID that correlates to an existing appro
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -766,21 +840,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.approvalrejectrequest import Approvalrejectrequest
+from sailpoint.approvals.models.approval_reject_request import ApprovalRejectRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to reject. # str | Approval ID that correlates to an existing approval request that a user wants to reject.
-    approvalrejectrequest = '''sailpoint.approvals.Approvalrejectrequest()''' # Approvalrejectrequest |  (optional)
+    approval_reject_request = '''{
+          "comment" : "string"
+        }''' # ApprovalRejectRequest |  (optional)
 
     try:
         # Post Approvals Reject
         
         ApprovalsApi(api_client).reject_approval_v1(id=id)
         # Below is a request that includes all optional parameters
-        # ApprovalsApi(api_client).reject_approval_v1(id, new_approvalrejectrequest)
+        # ApprovalsApi(api_client).reject_approval_v1(id, new_approval_reject_request)
     except Exception as e:
         print("Exception when calling ApprovalsApi->reject_approval_v1: %s\n" % e)
 ```
@@ -800,7 +876,7 @@ Allows for the edit/addition/removal of the key/value pair additional attributes
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
- Body  | approvalattributesrequest | [**Approvalattributesrequest**](../models/approvalattributesrequest) | True  | 
+ Body  | approval_attributes_request | [**ApprovalAttributesRequest**](../models/approval-attributes-request) | True  | 
 
 ### Return type
 [**Approval2**](../models/approval2)
@@ -809,12 +885,12 @@ Path   | id | **str** | True  | Approval ID that correlates to an existing appro
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Approval object | Approval2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -826,21 +902,29 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
 from sailpoint.approvals.models.approval2 import Approval2
-from sailpoint.approvals.models.approvalattributesrequest import Approvalattributesrequest
+from sailpoint.approvals.models.approval_attributes_request import ApprovalAttributesRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to change the attributes of. # str | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
-    approvalattributesrequest = '''sailpoint.approvals.Approvalattributesrequest()''' # Approvalattributesrequest | 
+    approval_attributes_request = '''{
+          "removeAttributeKeys" : [ "string" ],
+          "comment" : "comment",
+          "additionalAttributes" : {
+            "additionalProp1" : "string",
+            "additionalProp2" : "string",
+            "additionalProp3" : "string"
+          }
+        }''' # ApprovalAttributesRequest | 
 
     try:
         # Post Approvals Attributes
-        new_approvalattributesrequest = Approvalattributesrequest.from_json(approvalattributesrequest)
-        results = ApprovalsApi(api_client).update_approvals_attributes_v1(id=id, approvalattributesrequest=new_approvalattributesrequest)
+        new_approval_attributes_request = ApprovalAttributesRequest.from_json(approval_attributes_request)
+        results = ApprovalsApi(api_client).update_approvals_attributes_v1(id=id, approval_attributes_request=new_approval_attributes_request)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).update_approvals_attributes_v1(id, new_approvalattributesrequest)
+        # results = ApprovalsApi(api_client).update_approvals_attributes_v1(id, new_approval_attributes_request)
         print("The response of ApprovalsApi->update_approvals_attributes_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -862,7 +946,7 @@ Adds comments to a specified approval request. This endpoint does not support ac
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
- Body  | approvalcommentsrequest | [**Approvalcommentsrequest**](../models/approvalcommentsrequest) | True  | 
+ Body  | approval_comments_request | [**ApprovalCommentsRequest**](../models/approval-comments-request) | True  | 
 
 ### Return type
 [**Approval2**](../models/approval2)
@@ -871,12 +955,12 @@ Path   | id | **str** | True  | Approval ID that correlates to an existing appro
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Approval object | Approval2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -888,21 +972,23 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
 from sailpoint.approvals.models.approval2 import Approval2
-from sailpoint.approvals.models.approvalcommentsrequest import Approvalcommentsrequest
+from sailpoint.approvals.models.approval_comments_request import ApprovalCommentsRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to add a comment to. # str | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
-    approvalcommentsrequest = '''sailpoint.approvals.Approvalcommentsrequest()''' # Approvalcommentsrequest | 
+    approval_comments_request = '''{
+          "comment" : "Approval comment."
+        }''' # ApprovalCommentsRequest | 
 
     try:
         # Post Approvals Comments
-        new_approvalcommentsrequest = Approvalcommentsrequest.from_json(approvalcommentsrequest)
-        results = ApprovalsApi(api_client).update_approvals_comments_v1(id=id, approvalcommentsrequest=new_approvalcommentsrequest)
+        new_approval_comments_request = ApprovalCommentsRequest.from_json(approval_comments_request)
+        results = ApprovalsApi(api_client).update_approvals_comments_v1(id=id, approval_comments_request=new_approval_comments_request)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).update_approvals_comments_v1(id, new_approvalcommentsrequest)
+        # results = ApprovalsApi(api_client).update_approvals_comments_v1(id, new_approval_comments_request)
         print("The response of ApprovalsApi->update_approvals_comments_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -924,7 +1010,7 @@ Reassigns an approval request to another identity resulting in that identity bei
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Approval ID that correlates to an existing approval request that a user wants to reassign.
- Body  | approvalreassignrequest | [**Approvalreassignrequest**](../models/approvalreassignrequest) | True  | 
+ Body  | approval_reassign_request | [**ApprovalReassignRequest**](../models/approval-reassign-request) | True  | 
 
 ### Return type
  (empty response body)
@@ -933,12 +1019,12 @@ Path   | id | **str** | True  | Approval ID that correlates to an existing appro
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetApprovalsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetApprovalsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -949,21 +1035,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.approvals.api.approvals_api import ApprovalsApi
 from sailpoint.approvals.api_client import ApiClient
-from sailpoint.approvals.models.approvalreassignrequest import Approvalreassignrequest
+from sailpoint.approvals.models.approval_reassign_request import ApprovalReassignRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to reassign. # str | Approval ID that correlates to an existing approval request that a user wants to reassign.
-    approvalreassignrequest = '''sailpoint.approvals.Approvalreassignrequest()''' # Approvalreassignrequest | 
+    approval_reassign_request = '''{
+          "reassignTo" : "152354832eb6f8f539fd738592e19ec5",
+          "comment" : "comment",
+          "reassignFrom" : "384532516be25f8fdf935ce19e295837"
+        }''' # ApprovalReassignRequest | 
 
     try:
         # Post Approvals Reassign
-        new_approvalreassignrequest = Approvalreassignrequest.from_json(approvalreassignrequest)
-        ApprovalsApi(api_client).update_approvals_reassign_v1(id=id, approvalreassignrequest=new_approvalreassignrequest)
+        new_approval_reassign_request = ApprovalReassignRequest.from_json(approval_reassign_request)
+        ApprovalsApi(api_client).update_approvals_reassign_v1(id=id, approval_reassign_request=new_approval_reassign_request)
         # Below is a request that includes all optional parameters
-        # ApprovalsApi(api_client).update_approvals_reassign_v1(id, new_approvalreassignrequest)
+        # ApprovalsApi(api_client).update_approvals_reassign_v1(id, new_approval_reassign_request)
     except Exception as e:
         print("Exception when calling ApprovalsApi->update_approvals_reassign_v1: %s\n" % e)
 ```

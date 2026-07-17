@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
 from sailpoint.classify_source.models.send_classify_machine_account_from_source_v1200_response import SendClassifyMachineAccountFromSourceV1200Response
-from sailpoint.classify_source.models.sourceclassificationstatus import Sourceclassificationstatus
+from sailpoint.classify_source.models.source_classification_status import SourceClassificationStatus
 
 from sailpoint.classify_source.api_client import ApiClient, RequestSerialized
 from sailpoint.classify_source.api_response import ApiResponse
@@ -94,11 +94,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -166,11 +166,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,11 +238,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -330,7 +330,7 @@ class ClassifySourceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceclassificationstatus:
+    ) -> SourceClassificationStatus:
         """Source accounts classification status
 
         Use this API to get the status of Machine Account Classification process for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -368,13 +368,13 @@ class ClassifySourceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceclassificationstatus",
-            '400': "Errorresponsedto",
+            '200': "SourceClassificationStatus",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -403,7 +403,7 @@ class ClassifySourceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceclassificationstatus]:
+    ) -> ApiResponse[SourceClassificationStatus]:
         """Source accounts classification status
 
         Use this API to get the status of Machine Account Classification process for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -441,13 +441,13 @@ class ClassifySourceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceclassificationstatus",
-            '400': "Errorresponsedto",
+            '200': "SourceClassificationStatus",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -514,13 +514,13 @@ class ClassifySourceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceclassificationstatus",
-            '400': "Errorresponsedto",
+            '200': "SourceClassificationStatus",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -647,11 +647,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountFromSourceV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -719,11 +719,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountFromSourceV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -791,11 +791,11 @@ class ClassifySourceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountFromSourceV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetClassifyMachineAccountFromSourceStatusV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetClassifyMachineAccountFromSourceStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

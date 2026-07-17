@@ -35,7 +35,7 @@ class TestExportFormDefinitionsByTenantV1200ResponseInnerSelf(unittest.TestCase)
         model = ExportFormDefinitionsByTenantV1200ResponseInnerSelf()
         if include_optional:
             return ExportFormDefinitionsByTenantV1200ResponseInnerSelf(
-                object = sailpoint.custom_forms.models.formdefinitionselfimportexportdto.formdefinitionselfimportexportdto(
+                object = sailpoint.custom_forms.models.form_definition_self_import_export_dto.FormDefinitionSelfImportExportDto(
                     type = 'FORM_DEFINITION', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'Temporary User Level Permissions - Requester', )

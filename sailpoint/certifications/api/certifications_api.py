@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.certifications.models.accessreviewitem import Accessreviewitem
-from sailpoint.certifications.models.certificationtask import Certificationtask
-from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
-from sailpoint.certifications.models.identityreferencewithnameandemail import Identityreferencewithnameandemail
-from sailpoint.certifications.models.permissiondto import Permissiondto
-from sailpoint.certifications.models.reviewdecision import Reviewdecision
-from sailpoint.certifications.models.reviewreassign import Reviewreassign
+from sailpoint.certifications.models.access_review_item import AccessReviewItem
+from sailpoint.certifications.models.certification_task import CertificationTask
+from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.certifications.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.certifications.models.permission_dto import PermissionDTO
+from sailpoint.certifications.models.review_decision import ReviewDecision
+from sailpoint.certifications.models.review_reassign import ReviewReassign
 
 from sailpoint.certifications.api_client import ApiClient, RequestSerialized
 from sailpoint.certifications.api_response import ApiResponse
@@ -61,7 +61,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Certificationtask:
+    ) -> CertificationTask:
         """Certification task by id
 
         This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
@@ -99,13 +99,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -134,7 +134,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Certificationtask]:
+    ) -> ApiResponse[CertificationTask]:
         """Certification task by id
 
         This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
@@ -172,13 +172,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,13 +245,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -344,7 +344,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Permissiondto]:
+    ) -> List[PermissionDTO]:
         """Permissions for entitlement certification item
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
@@ -397,13 +397,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Permissiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[PermissionDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -437,7 +437,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Permissiondto]]:
+    ) -> ApiResponse[List[PermissionDTO]]:
         """Permissions for entitlement certification item
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
@@ -490,13 +490,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Permissiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[PermissionDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -583,13 +583,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Permissiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[PermissionDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -700,7 +700,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitycertificationdto:
+    ) -> IdentityCertificationDto:
         """Identity certification by id
 
         This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
@@ -738,13 +738,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -773,7 +773,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitycertificationdto]:
+    ) -> ApiResponse[IdentityCertificationDto]:
         """Identity certification by id
 
         This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
@@ -811,13 +811,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -884,13 +884,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -982,7 +982,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Certificationtask]:
+    ) -> List[CertificationTask]:
         """List of pending certification tasks
 
         This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tasks. Any authenticated token can call this API, but only certification tasks you are authorized to review will be returned.
@@ -1032,13 +1032,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationtask]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationTask]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1071,7 +1071,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Certificationtask]]:
+    ) -> ApiResponse[List[CertificationTask]]:
         """List of pending certification tasks
 
         This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tasks. Any authenticated token can call this API, but only certification tasks you are authorized to review will be returned.
@@ -1121,13 +1121,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationtask]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationTask]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1210,13 +1210,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationtask]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationTask]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1331,7 +1331,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identityreferencewithnameandemail]:
+    ) -> List[IdentityReferenceWithNameAndEmail]:
         """List of reviewers for certification
 
         This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
@@ -1384,13 +1384,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityreferencewithnameandemail]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityReferenceWithNameAndEmail]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1424,7 +1424,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identityreferencewithnameandemail]]:
+    ) -> ApiResponse[List[IdentityReferenceWithNameAndEmail]]:
         """List of reviewers for certification
 
         This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
@@ -1477,13 +1477,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityreferencewithnameandemail]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityReferenceWithNameAndEmail]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1570,13 +1570,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityreferencewithnameandemail]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityReferenceWithNameAndEmail]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1697,7 +1697,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessreviewitem]:
+    ) -> List[AccessReviewItem]:
         """List of access review items
 
         This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
@@ -1759,13 +1759,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessreviewitem]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessReviewItem]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1802,7 +1802,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessreviewitem]]:
+    ) -> ApiResponse[List[AccessReviewItem]]:
         """List of access review items
 
         This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
@@ -1864,13 +1864,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessreviewitem]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessReviewItem]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1969,13 +1969,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessreviewitem]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessReviewItem]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2108,7 +2108,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identitycertificationdto]:
+    ) -> List[IdentityCertificationDto]:
         """List identity campaign certifications
 
         Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
@@ -2161,12 +2161,12 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycertificationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCertificationDto]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2200,7 +2200,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identitycertificationdto]]:
+    ) -> ApiResponse[List[IdentityCertificationDto]]:
         """List identity campaign certifications
 
         Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
@@ -2253,12 +2253,12 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycertificationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCertificationDto]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2345,12 +2345,12 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identitycertificationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityCertificationDto]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2453,7 +2453,7 @@ class CertificationsApi:
     def make_identity_decision_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the identity campaign certification on which to make decisions")],
-        reviewdecision: Annotated[List[Reviewdecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
+        review_decision: Annotated[List[ReviewDecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2466,15 +2466,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitycertificationdto:
+    ) -> IdentityCertificationDto:
         """Decide on a certification item
 
         The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
-        :param reviewdecision: A non-empty array of decisions to be made. (required)
-        :type reviewdecision: List[Reviewdecision]
+        :param review_decision: A non-empty array of decisions to be made. (required)
+        :type review_decision: List[ReviewDecision]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2499,7 +2499,7 @@ class CertificationsApi:
 
         _param = self._make_identity_decision_v1_serialize(
             id=id,
-            reviewdecision=reviewdecision,
+            review_decision=review_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2507,13 +2507,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2530,7 +2530,7 @@ class CertificationsApi:
     def make_identity_decision_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the identity campaign certification on which to make decisions")],
-        reviewdecision: Annotated[List[Reviewdecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
+        review_decision: Annotated[List[ReviewDecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2543,15 +2543,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitycertificationdto]:
+    ) -> ApiResponse[IdentityCertificationDto]:
         """Decide on a certification item
 
         The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
-        :param reviewdecision: A non-empty array of decisions to be made. (required)
-        :type reviewdecision: List[Reviewdecision]
+        :param review_decision: A non-empty array of decisions to be made. (required)
+        :type review_decision: List[ReviewDecision]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2576,7 +2576,7 @@ class CertificationsApi:
 
         _param = self._make_identity_decision_v1_serialize(
             id=id,
-            reviewdecision=reviewdecision,
+            review_decision=review_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2584,13 +2584,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2607,7 +2607,7 @@ class CertificationsApi:
     def make_identity_decision_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the identity campaign certification on which to make decisions")],
-        reviewdecision: Annotated[List[Reviewdecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
+        review_decision: Annotated[List[ReviewDecision], Field(min_length=1, max_length=250, description="A non-empty array of decisions to be made.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2627,8 +2627,8 @@ class CertificationsApi:
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
-        :param reviewdecision: A non-empty array of decisions to be made. (required)
-        :type reviewdecision: List[Reviewdecision]
+        :param review_decision: A non-empty array of decisions to be made. (required)
+        :type review_decision: List[ReviewDecision]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2653,7 +2653,7 @@ class CertificationsApi:
 
         _param = self._make_identity_decision_v1_serialize(
             id=id,
-            reviewdecision=reviewdecision,
+            review_decision=review_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2661,13 +2661,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2679,7 +2679,7 @@ class CertificationsApi:
     def _make_identity_decision_v1_serialize(
         self,
         id,
-        reviewdecision,
+        review_decision,
         _request_auth,
         _content_type,
         _headers,
@@ -2689,7 +2689,7 @@ class CertificationsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Reviewdecision': '',
+            'ReviewDecision': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2708,8 +2708,8 @@ class CertificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reviewdecision is not None:
-            _body_params = reviewdecision
+        if review_decision is not None:
+            _body_params = review_decision
 
 
         # set the HTTP header `Accept`
@@ -2760,7 +2760,7 @@ class CertificationsApi:
     def reassign_identity_certifications_v1(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2773,15 +2773,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitycertificationdto:
+    ) -> IdentityCertificationDto:
         """Reassign identities or items
 
         This API reassigns up to 50 identities or items in an identity campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2806,7 +2806,7 @@ class CertificationsApi:
 
         _param = self._reassign_identity_certifications_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2814,13 +2814,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2837,7 +2837,7 @@ class CertificationsApi:
     def reassign_identity_certifications_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2850,15 +2850,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitycertificationdto]:
+    ) -> ApiResponse[IdentityCertificationDto]:
         """Reassign identities or items
 
         This API reassigns up to 50 identities or items in an identity campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2883,7 +2883,7 @@ class CertificationsApi:
 
         _param = self._reassign_identity_certifications_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2891,13 +2891,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2914,7 +2914,7 @@ class CertificationsApi:
     def reassign_identity_certifications_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2934,8 +2934,8 @@ class CertificationsApi:
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2960,7 +2960,7 @@ class CertificationsApi:
 
         _param = self._reassign_identity_certifications_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2968,13 +2968,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2986,7 +2986,7 @@ class CertificationsApi:
     def _reassign_identity_certifications_v1_serialize(
         self,
         id,
-        reviewreassign,
+        review_reassign,
         _request_auth,
         _content_type,
         _headers,
@@ -3014,8 +3014,8 @@ class CertificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reviewreassign is not None:
-            _body_params = reviewreassign
+        if review_reassign is not None:
+            _body_params = review_reassign
 
 
         # set the HTTP header `Accept`
@@ -3078,7 +3078,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitycertificationdto:
+    ) -> IdentityCertificationDto:
         """Finalize identity certification decisions
 
         This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
@@ -3116,13 +3116,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3151,7 +3151,7 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitycertificationdto]:
+    ) -> ApiResponse[IdentityCertificationDto]:
         """Finalize identity certification decisions
 
         This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
@@ -3189,13 +3189,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3262,13 +3262,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertificationdto",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertificationDto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3344,7 +3344,7 @@ class CertificationsApi:
     def submit_reassign_certs_async_v1(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3357,15 +3357,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Certificationtask:
+    ) -> CertificationTask:
         """Reassign certifications asynchronously
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3390,7 +3390,7 @@ class CertificationsApi:
 
         _param = self._submit_reassign_certs_async_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3398,13 +3398,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3421,7 +3421,7 @@ class CertificationsApi:
     def submit_reassign_certs_async_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3434,15 +3434,15 @@ class CertificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Certificationtask]:
+    ) -> ApiResponse[CertificationTask]:
         """Reassign certifications asynchronously
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3467,7 +3467,7 @@ class CertificationsApi:
 
         _param = self._submit_reassign_certs_async_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3475,13 +3475,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3498,7 +3498,7 @@ class CertificationsApi:
     def submit_reassign_certs_async_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity campaign certification ID")],
-        reviewreassign: Reviewreassign,
+        review_reassign: ReviewReassign,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3518,8 +3518,8 @@ class CertificationsApi:
 
         :param id: The identity campaign certification ID (required)
         :type id: str
-        :param reviewreassign: (required)
-        :type reviewreassign: Reviewreassign
+        :param review_reassign: (required)
+        :type review_reassign: ReviewReassign
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3544,7 +3544,7 @@ class CertificationsApi:
 
         _param = self._submit_reassign_certs_async_v1_serialize(
             id=id,
-            reviewreassign=reviewreassign,
+            review_reassign=review_reassign,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3552,13 +3552,13 @@ class CertificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationtask",
-            '400': "Errorresponsedto",
+            '200': "CertificationTask",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityCertificationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityCertificationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3570,7 +3570,7 @@ class CertificationsApi:
     def _submit_reassign_certs_async_v1_serialize(
         self,
         id,
-        reviewreassign,
+        review_reassign,
         _request_auth,
         _content_type,
         _headers,
@@ -3598,8 +3598,8 @@ class CertificationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reviewreassign is not None:
-            _body_params = reviewreassign
+        if review_reassign is not None:
+            _body_params = review_reassign
 
 
         # set the HTTP header `Accept`

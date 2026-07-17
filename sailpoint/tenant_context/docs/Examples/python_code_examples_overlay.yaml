@@ -31,19 +31,23 @@
       source: |
         from sailpoint.tenant_context.api.tenant_context_api import TenantContextApi
         from sailpoint.tenant_context.api_client import ApiClient
-        from sailpoint.tenant_context.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.tenant_context.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          jsonpatchoperation = '''[{"op":"add","path":"/Key/IAS","value":"Integrated Automation System"},{"op":"replace","path":"/Key/IAS","value":"International Accounting Standards"},{"op":"remove","path":"/Key/NDR"}]''' # Jsonpatchoperation | 
+          json_patch_operation = '''{
+          "op" : "replace",
+          "path" : "/description",
+          "value" : "New description"
+        }''' # JsonPatchOperation | 
           try:
               # Update tenant context
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              TenantContextApi(api_client).patch_tenant_context_v1(jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              TenantContextApi(api_client).patch_tenant_context_v1(json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # TenantContextApi(api_client).patch_tenant_context_v1(new_jsonpatchoperation)
+              # TenantContextApi(api_client).patch_tenant_context_v1(new_json_patch_operation)
           except Exception as e:
               print("Exception when calling TenantContextApi->patch_tenant_context_v1: %s\n" % e)
 

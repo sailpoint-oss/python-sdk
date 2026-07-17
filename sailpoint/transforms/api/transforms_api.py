@@ -20,7 +20,7 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.transforms.models.transform import Transform
-from sailpoint.transforms.models.transformread import Transformread
+from sailpoint.transforms.models.transform_read import TransformRead
 
 from sailpoint.transforms.api_client import ApiClient, RequestSerialized
 from sailpoint.transforms.api_response import ApiResponse
@@ -56,7 +56,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Transformread:
+    ) -> TransformRead:
         """Create transform
 
         Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI.
@@ -94,13 +94,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Transformread",
-            '400': "Errorresponsedto",
+            '201': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Transformread]:
+    ) -> ApiResponse[TransformRead]:
         """Create transform
 
         Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI.
@@ -167,13 +167,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Transformread",
-            '400': "Errorresponsedto",
+            '201': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,13 +240,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Transformread",
-            '400': "Errorresponsedto",
+            '201': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -386,12 +386,12 @@ class TransformsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -459,12 +459,12 @@ class TransformsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -532,12 +532,12 @@ class TransformsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -625,7 +625,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Transformread:
+    ) -> TransformRead:
         """Transform by id
 
         This API returns the transform specified by the given ID.
@@ -663,13 +663,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,7 +698,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Transformread]:
+    ) -> ApiResponse[TransformRead]:
         """Transform by id
 
         This API returns the transform specified by the given ID.
@@ -736,13 +736,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -809,13 +809,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -907,7 +907,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Transformread]:
+    ) -> List[TransformRead]:
         """List transforms
 
         Gets a list of all saved transform objects.
@@ -957,13 +957,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Transformread]",
-            '400': "Errorresponsedto",
+            '200': "List[TransformRead]",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -996,7 +996,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Transformread]]:
+    ) -> ApiResponse[List[TransformRead]]:
         """List transforms
 
         Gets a list of all saved transform objects.
@@ -1046,13 +1046,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Transformread]",
-            '400': "Errorresponsedto",
+            '200': "List[TransformRead]",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1135,13 +1135,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Transformread]",
-            '400': "Errorresponsedto",
+            '200': "List[TransformRead]",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1252,7 +1252,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Transformread:
+    ) -> TransformRead:
         """Update a transform
 
         Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error.
@@ -1293,13 +1293,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1329,7 +1329,7 @@ class TransformsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Transformread]:
+    ) -> ApiResponse[TransformRead]:
         """Update a transform
 
         Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error.
@@ -1370,13 +1370,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1447,13 +1447,13 @@ class TransformsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Transformread",
-            '400': "Errorresponsedto",
+            '200': "TransformRead",
+            '400': "ErrorResponseDto",
             '401': "ListTransformsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTransformsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

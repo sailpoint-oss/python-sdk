@@ -17,9 +17,9 @@ This defines what access the segment is giving
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scope** | **Scopetype** |  | [optional] 
-**visibility** | **Scopevisibilitytype** |  | [optional] 
-**scope_filter** | [**Visibilitycriteria**](visibilitycriteria) |  | [optional] 
+**scope** | **ScopeType** |  | [optional] 
+**visibility** | **ScopeVisibilityType** |  | [optional] 
+**scope_filter** | [**VisibilityCriteria**](visibility-criteria) |  | [optional] 
 **scope_selection** | [**[]Ref**](ref) | List of Identities that are assigned to the segment | [optional] 
 }
 

@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.source_usages.models.sourceusage import Sourceusage
-from sailpoint.source_usages.models.sourceusagestatus import Sourceusagestatus
+from sailpoint.source_usages.models.source_usage import SourceUsage
+from sailpoint.source_usages.models.source_usage_status import SourceUsageStatus
 
 from sailpoint.source_usages.api_client import ApiClient, RequestSerialized
 from sailpoint.source_usages.api_response import ApiResponse
@@ -56,7 +56,7 @@ class SourceUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceusagestatus:
+    ) -> SourceUsageStatus:
         """Finds status of source usage
 
         This API returns the status of the source usage insights setup by IDN source ID.
@@ -94,12 +94,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceusagestatus",
-            '400': "Errorresponsedto",
+            '200': "SourceUsageStatus",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class SourceUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceusagestatus]:
+    ) -> ApiResponse[SourceUsageStatus]:
         """Finds status of source usage
 
         This API returns the status of the source usage insights setup by IDN source ID.
@@ -166,12 +166,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceusagestatus",
-            '400': "Errorresponsedto",
+            '200': "SourceUsageStatus",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,12 +238,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceusagestatus",
-            '400': "Errorresponsedto",
+            '200': "SourceUsageStatus",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -335,7 +335,7 @@ class SourceUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourceusage]:
+    ) -> List[SourceUsage]:
         """Returns source usage insights
 
         This API returns a summary of source usage insights for past 12 months.
@@ -385,12 +385,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -423,7 +423,7 @@ class SourceUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourceusage]]:
+    ) -> ApiResponse[List[SourceUsage]]:
         """Returns source usage insights
 
         This API returns a summary of source usage insights for past 12 months.
@@ -473,12 +473,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -561,12 +561,12 @@ class SourceUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetStatusBySourceIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetStatusBySourceIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

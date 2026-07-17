@@ -71,13 +71,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/source_usages/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/source_usages/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/source_usages/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/source_usages/docs/ErrorResponseDto.md)
  - [GetStatusBySourceIdV1401Response](sailpoint/source_usages/docs/GetStatusBySourceIdV1401Response.md)
  - [GetStatusBySourceIdV1429Response](sailpoint/source_usages/docs/GetStatusBySourceIdV1429Response.md)
- - [Localeorigin](sailpoint/source_usages/docs/Localeorigin.md)
- - [Sourceusage](sailpoint/source_usages/docs/Sourceusage.md)
- - [Sourceusagestatus](sailpoint/source_usages/docs/Sourceusagestatus.md)
+ - [LocaleOrigin](sailpoint/source_usages/docs/LocaleOrigin.md)
+ - [SourceUsage](sailpoint/source_usages/docs/SourceUsage.md)
+ - [SourceUsageStatus](sailpoint/source_usages/docs/SourceUsageStatus.md)
 
 
 <a id="documentation-for-authorization"></a>

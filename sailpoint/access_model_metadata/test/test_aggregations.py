@@ -35,19 +35,19 @@ class TestAggregations(unittest.TestCase):
         model = Aggregations()
         if include_optional:
             return Aggregations(
-                nested = sailpoint.access_model_metadata.models.nestedaggregation.nestedaggregation(
+                nested = sailpoint.access_model_metadata.models.nested_aggregation.NestedAggregation(
                     name = 'id', 
                     type = 'access', ),
-                metric = sailpoint.access_model_metadata.models.metricaggregation.metricaggregation(
+                metric = sailpoint.access_model_metadata.models.metric_aggregation.MetricAggregation(
                     name = 'Access Name Count', 
                     type = 'UNIQUE_COUNT', 
                     field = '@access.name', ),
-                filter = sailpoint.access_model_metadata.models.filteraggregation.filteraggregation(
+                filter = sailpoint.access_model_metadata.models.filter_aggregation.FilterAggregation(
                     name = 'Entitlements', 
                     type = 'TERM', 
                     field = 'access.type', 
                     value = 'ENTITLEMENT', ),
-                bucket = sailpoint.access_model_metadata.models.bucketaggregation.bucketaggregation(
+                bucket = sailpoint.access_model_metadata.models.bucket_aggregation.BucketAggregation(
                     name = 'Identity Locations', 
                     type = 'TERMS', 
                     field = 'attributes.city', 

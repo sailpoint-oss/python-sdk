@@ -6,7 +6,7 @@
       source: |
         from sailpoint.source_usages.api.source_usages_api import SourceUsagesApi
         from sailpoint.source_usages.api_client import ApiClient
-        from sailpoint.source_usages.models.sourceusagestatus import Sourceusagestatus
+        from sailpoint.source_usages.models.source_usage_status import SourceUsageStatus
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,7 +31,7 @@
       source: |
         from sailpoint.source_usages.api.source_usages_api import SourceUsagesApi
         from sailpoint.source_usages.api_client import ApiClient
-        from sailpoint.source_usages.models.sourceusage import Sourceusage
+        from sailpoint.source_usages.models.source_usage import SourceUsage
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

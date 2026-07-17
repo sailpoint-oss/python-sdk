@@ -47,11 +47,11 @@ configuration = sailpoint.governance_groups.Configuration(
 with sailpoint.governance_groups.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.governance_groups.GovernanceGroupsApi(api_client)
-    workgroupdto = sailpoint.governance_groups.Workgroupdto() # Workgroupdto | 
+    workgroup_dto = sailpoint.governance_groups.WorkgroupDto() # WorkgroupDto | 
 
     try:
         # Create a new governance group.
-        api_response = api_instance.create_workgroup_v1(workgroupdto)
+        api_response = api_instance.create_workgroup_v1(workgroup_dto)
         print("The response of GovernanceGroupsApi->create_workgroup_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -80,26 +80,26 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/governance_groups/docs/ArrayInner.md)
- - [BulkworkgroupmembersrequestInner](sailpoint/governance_groups/docs/BulkworkgroupmembersrequestInner.md)
- - [Connectedobject](sailpoint/governance_groups/docs/Connectedobject.md)
- - [Connectedobjecttype](sailpoint/governance_groups/docs/Connectedobjecttype.md)
- - [Errormessagedto](sailpoint/governance_groups/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/governance_groups/docs/Errorresponsedto.md)
- - [Jsonpatchoperation](sailpoint/governance_groups/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/governance_groups/docs/JsonpatchoperationValue.md)
+ - [BulkWorkgroupMembersRequestInner](sailpoint/governance_groups/docs/BulkWorkgroupMembersRequestInner.md)
+ - [ConnectedObject](sailpoint/governance_groups/docs/ConnectedObject.md)
+ - [ConnectedObjectType](sailpoint/governance_groups/docs/ConnectedObjectType.md)
+ - [ErrorMessageDto](sailpoint/governance_groups/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/governance_groups/docs/ErrorResponseDto.md)
+ - [JsonPatchOperation](sailpoint/governance_groups/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/governance_groups/docs/JsonPatchOperationValue.md)
  - [ListWorkgroupMembersV1200ResponseInner](sailpoint/governance_groups/docs/ListWorkgroupMembersV1200ResponseInner.md)
  - [ListWorkgroupsV1401Response](sailpoint/governance_groups/docs/ListWorkgroupsV1401Response.md)
  - [ListWorkgroupsV1429Response](sailpoint/governance_groups/docs/ListWorkgroupsV1429Response.md)
- - [Localeorigin](sailpoint/governance_groups/docs/Localeorigin.md)
- - [Ownerdto](sailpoint/governance_groups/docs/Ownerdto.md)
- - [Workgroupbulkdeleterequest](sailpoint/governance_groups/docs/Workgroupbulkdeleterequest.md)
- - [Workgroupconnectiondto](sailpoint/governance_groups/docs/Workgroupconnectiondto.md)
- - [WorkgroupconnectiondtoObject](sailpoint/governance_groups/docs/WorkgroupconnectiondtoObject.md)
- - [Workgroupdeleteitem](sailpoint/governance_groups/docs/Workgroupdeleteitem.md)
- - [Workgroupdto](sailpoint/governance_groups/docs/Workgroupdto.md)
- - [WorkgroupdtoOwner](sailpoint/governance_groups/docs/WorkgroupdtoOwner.md)
- - [Workgroupmemberadditem](sailpoint/governance_groups/docs/Workgroupmemberadditem.md)
- - [Workgroupmemberdeleteitem](sailpoint/governance_groups/docs/Workgroupmemberdeleteitem.md)
+ - [LocaleOrigin](sailpoint/governance_groups/docs/LocaleOrigin.md)
+ - [OwnerDto](sailpoint/governance_groups/docs/OwnerDto.md)
+ - [WorkgroupBulkDeleteRequest](sailpoint/governance_groups/docs/WorkgroupBulkDeleteRequest.md)
+ - [WorkgroupConnectionDto](sailpoint/governance_groups/docs/WorkgroupConnectionDto.md)
+ - [WorkgroupConnectionDtoObject](sailpoint/governance_groups/docs/WorkgroupConnectionDtoObject.md)
+ - [WorkgroupDeleteItem](sailpoint/governance_groups/docs/WorkgroupDeleteItem.md)
+ - [WorkgroupDto](sailpoint/governance_groups/docs/WorkgroupDto.md)
+ - [WorkgroupDtoOwner](sailpoint/governance_groups/docs/WorkgroupDtoOwner.md)
+ - [WorkgroupMemberAddItem](sailpoint/governance_groups/docs/WorkgroupMemberAddItem.md)
+ - [WorkgroupMemberDeleteItem](sailpoint/governance_groups/docs/WorkgroupMemberDeleteItem.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -19,31 +19,31 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
-from sailpoint.sources.models.attrsyncsourceconfig import Attrsyncsourceconfig
-from sailpoint.sources.models.connectordetail import Connectordetail
-from sailpoint.sources.models.correlationconfig import Correlationconfig
+from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
+from sailpoint.sources.models.attr_sync_source_config import AttrSyncSourceConfig
+from sailpoint.sources.models.connector_detail import ConnectorDetail
+from sailpoint.sources.models.correlation_config import CorrelationConfig
 from sailpoint.sources.models.delete_source_v1202_response import DeleteSourceV1202Response
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.sources.models.loadaccountstask import Loadaccountstask
-from sailpoint.sources.models.loadentitlementtask import Loadentitlementtask
-from sailpoint.sources.models.loaduncorrelatedaccountstask import Loaduncorrelatedaccountstask
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
+from sailpoint.sources.models.load_accounts_task import LoadAccountsTask
+from sailpoint.sources.models.load_entitlement_task import LoadEntitlementTask
+from sailpoint.sources.models.load_uncorrelated_accounts_task import LoadUncorrelatedAccountsTask
 from sailpoint.sources.models.model_schema import ModelSchema
-from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
-from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
-from sailpoint.sources.models.resourceobjectsrequest import Resourceobjectsrequest
-from sailpoint.sources.models.resourceobjectsresponse import Resourceobjectsresponse
+from sailpoint.sources.models.native_change_detection_config import NativeChangeDetectionConfig
+from sailpoint.sources.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
+from sailpoint.sources.models.resource_objects_request import ResourceObjectsRequest
+from sailpoint.sources.models.resource_objects_response import ResourceObjectsResponse
 from sailpoint.sources.models.schedule3 import Schedule3
 from sailpoint.sources.models.source import Source
-from sailpoint.sources.models.sourceconnectionsdto import Sourceconnectionsdto
-from sailpoint.sources.models.sourceentitlementrequestconfig import Sourceentitlementrequestconfig
-from sailpoint.sources.models.sourcehealthdto import Sourcehealthdto
-from sailpoint.sources.models.sourcesyncjob import Sourcesyncjob
-from sailpoint.sources.models.statusresponse import Statusresponse
-from sailpoint.sources.models.taskresultdto import Taskresultdto
-from sailpoint.sources.models.usagetype import Usagetype
+from sailpoint.sources.models.source_connections_dto import SourceConnectionsDto
+from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
+from sailpoint.sources.models.source_health_dto import SourceHealthDto
+from sailpoint.sources.models.source_sync_job import SourceSyncJob
+from sailpoint.sources.models.status_response import StatusResponse
+from sailpoint.sources.models.task_result_dto import TaskResultDto
+from sailpoint.sources.models.usage_type import UsageType
 
 from sailpoint.sources.api_client import ApiClient, RequestSerialized
 from sailpoint.sources.api_response import ApiResponse
@@ -67,7 +67,7 @@ class SourcesApi:
     def create_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -80,15 +80,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov1:
+    ) -> ProvisioningPolicyDto:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -113,7 +113,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,13 +121,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -144,7 +144,7 @@ class SourcesApi:
     def create_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -157,15 +157,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov1]:
+    ) -> ApiResponse[ProvisioningPolicyDto]:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -190,7 +190,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -198,13 +198,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -221,7 +221,7 @@ class SourcesApi:
     def create_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -241,8 +241,8 @@ class SourcesApi:
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -267,7 +267,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -275,13 +275,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -293,7 +293,7 @@ class SourcesApi:
     def _create_provisioning_policy_v1_serialize(
         self,
         source_id,
-        provisioningpolicydtov1,
+        provisioning_policy_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -321,8 +321,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydtov1 is not None:
-            _body_params = provisioningpolicydtov1
+        if provisioning_policy_dto is not None:
+            _body_params = provisioning_policy_dto
 
 
         # set the HTTP header `Accept`
@@ -373,7 +373,7 @@ class SourcesApi:
     def create_provisioning_policy_v2(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -388,15 +388,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov2:
+    ) -> ProvisioningPolicyDtoV2:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id. Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param use_default_fields: If passed as true, then it uses default fields from the connector template.
         :type use_default_fields: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -425,7 +425,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v2_serialize(
             source_id=source_id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             use_default_fields=use_default_fields,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -435,13 +435,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -458,7 +458,7 @@ class SourcesApi:
     def create_provisioning_policy_v2_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -473,15 +473,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov2]:
+    ) -> ApiResponse[ProvisioningPolicyDtoV2]:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id. Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param use_default_fields: If passed as true, then it uses default fields from the connector template.
         :type use_default_fields: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -510,7 +510,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v2_serialize(
             source_id=source_id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             use_default_fields=use_default_fields,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -520,13 +520,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -543,7 +543,7 @@ class SourcesApi:
     def create_provisioning_policy_v2_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -565,8 +565,8 @@ class SourcesApi:
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param use_default_fields: If passed as true, then it uses default fields from the connector template.
         :type use_default_fields: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -595,7 +595,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v2_serialize(
             source_id=source_id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             use_default_fields=use_default_fields,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -605,13 +605,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '201': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -623,7 +623,7 @@ class SourcesApi:
     def _create_provisioning_policy_v2_serialize(
         self,
         source_id,
-        provisioningpolicydtov2,
+        provisioning_policy_dto_v2,
         use_default_fields,
         x_sail_point_experimental,
         _request_auth,
@@ -659,8 +659,8 @@ class SourcesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydtov2 is not None:
-            _body_params = provisioningpolicydtov2
+        if provisioning_policy_dto_v2 is not None:
+            _body_params = provisioning_policy_dto_v2
 
 
         # set the HTTP header `Accept`
@@ -766,11 +766,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -842,11 +842,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -918,11 +918,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1069,11 +1069,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1145,11 +1145,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1221,11 +1221,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1372,11 +1372,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1448,11 +1448,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1524,11 +1524,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1634,7 +1634,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultdto:
+    ) -> TaskResultDto:
         """Remove all accounts in source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
@@ -1672,12 +1672,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1706,7 +1706,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultdto]:
+    ) -> ApiResponse[TaskResultDto]:
         """Remove all accounts in source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
@@ -1744,12 +1744,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1816,12 +1816,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1948,12 +1948,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2021,12 +2021,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2094,12 +2094,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2175,7 +2175,7 @@ class SourcesApi:
     def delete_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2196,7 +2196,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2230,12 +2230,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2252,7 +2252,7 @@ class SourcesApi:
     def delete_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2273,7 +2273,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2307,12 +2307,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2329,7 +2329,7 @@ class SourcesApi:
     def delete_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2350,7 +2350,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2384,12 +2384,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2527,12 +2527,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2608,12 +2608,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2689,12 +2689,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2830,12 +2830,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2906,12 +2906,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2982,12 +2982,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3120,12 +3120,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3196,12 +3196,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3272,12 +3272,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3407,12 +3407,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "DeleteSourceV1202Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3480,12 +3480,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "DeleteSourceV1202Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3553,12 +3553,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "DeleteSourceV1202Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3646,7 +3646,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountdeleteconfigdto:
+    ) -> AccountDeleteConfigDto:
         """Human Account Deletion Approval Config
 
         The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object. 
@@ -3684,13 +3684,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3719,7 +3719,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountdeleteconfigdto]:
+    ) -> ApiResponse[AccountDeleteConfigDto]:
         """Human Account Deletion Approval Config
 
         The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object. 
@@ -3757,13 +3757,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3830,13 +3830,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3963,12 +3963,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4036,12 +4036,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4109,12 +4109,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4203,7 +4203,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Correlationconfig:
+    ) -> CorrelationConfig:
         """Get source correlation configuration
 
         This API returns the existing correlation configuration for a source specified by the given ID.
@@ -4241,13 +4241,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4276,7 +4276,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Correlationconfig]:
+    ) -> ApiResponse[CorrelationConfig]:
         """Get source correlation configuration
 
         This API returns the existing correlation configuration for a source specified by the given ID.
@@ -4314,13 +4314,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4387,13 +4387,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4524,12 +4524,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4601,12 +4601,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4678,12 +4678,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4777,7 +4777,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountdeleteconfigdto:
+    ) -> AccountDeleteConfigDto:
         """Machine Account Deletion Approval Config
 
         Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
@@ -4815,13 +4815,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4850,7 +4850,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountdeleteconfigdto]:
+    ) -> ApiResponse[AccountDeleteConfigDto]:
         """Machine Account Deletion Approval Config
 
         Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
@@ -4888,13 +4888,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4961,13 +4961,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5055,7 +5055,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nativechangedetectionconfig:
+    ) -> NativeChangeDetectionConfig:
         """Native change detection configuration
 
         This API returns the existing native change detection configuration for a source specified by the given ID.
@@ -5093,13 +5093,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5128,7 +5128,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nativechangedetectionconfig]:
+    ) -> ApiResponse[NativeChangeDetectionConfig]:
         """Native change detection configuration
 
         This API returns the existing native change detection configuration for a source specified by the given ID.
@@ -5166,13 +5166,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5239,13 +5239,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5321,7 +5321,7 @@ class SourcesApi:
     def get_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5334,7 +5334,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov1:
+    ) -> ProvisioningPolicyDto:
         """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
@@ -5342,7 +5342,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5375,13 +5375,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5398,7 +5398,7 @@ class SourcesApi:
     def get_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5411,7 +5411,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov1]:
+    ) -> ApiResponse[ProvisioningPolicyDto]:
         """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
@@ -5419,7 +5419,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5452,13 +5452,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5475,7 +5475,7 @@ class SourcesApi:
     def get_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5496,7 +5496,7 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
+        :type usage_type: UsageType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5529,13 +5529,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5628,7 +5628,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov2:
+    ) -> ProvisioningPolicyDtoV2:
         """Get provisioning policy by ID
 
         This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
@@ -5672,13 +5672,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5709,7 +5709,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov2]:
+    ) -> ApiResponse[ProvisioningPolicyDtoV2]:
         """Get provisioning policy by ID
 
         This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
@@ -5753,13 +5753,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5834,13 +5834,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5935,7 +5935,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attrsyncsourceconfig:
+    ) -> AttrSyncSourceConfig:
         """Attribute sync config
 
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
@@ -5976,13 +5976,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6012,7 +6012,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attrsyncsourceconfig]:
+    ) -> ApiResponse[AttrSyncSourceConfig]:
         """Attribute sync config
 
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
@@ -6053,13 +6053,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6130,13 +6130,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6228,7 +6228,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectordetail:
+    ) -> ConnectorDetail:
         """Gets source config with language-translations
 
         Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
@@ -6269,13 +6269,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6305,7 +6305,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectordetail]:
+    ) -> ApiResponse[ConnectorDetail]:
         """Gets source config with language-translations
 
         Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
@@ -6346,13 +6346,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6423,13 +6423,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectordetail",
-            '400': "Errorresponsedto",
+            '200': "ConnectorDetail",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6522,7 +6522,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceconnectionsdto:
+    ) -> SourceConnectionsDto:
         """Get source connections by id
 
         Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
@@ -6560,13 +6560,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceconnectionsdto",
-            '400': "Errorresponsedto",
+            '200': "SourceConnectionsDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6595,7 +6595,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceconnectionsdto]:
+    ) -> ApiResponse[SourceConnectionsDto]:
         """Get source connections by id
 
         Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
@@ -6633,13 +6633,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceconnectionsdto",
-            '400': "Errorresponsedto",
+            '200': "SourceConnectionsDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6706,13 +6706,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceconnectionsdto",
-            '400': "Errorresponsedto",
+            '200': "SourceConnectionsDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6801,7 +6801,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceentitlementrequestconfig:
+    ) -> SourceEntitlementRequestConfig:
         """Get source entitlement request configuration
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
@@ -6842,12 +6842,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6877,7 +6877,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceentitlementrequestconfig]:
+    ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Get source entitlement request configuration
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
@@ -6918,12 +6918,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6994,12 +6994,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7090,7 +7090,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcehealthdto:
+    ) -> SourceHealthDto:
         """Fetches source health by id
 
         This endpoint fetches source health by source's id
@@ -7128,13 +7128,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcehealthdto",
-            '400': "Errorresponsedto",
+            '200': "SourceHealthDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7163,7 +7163,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcehealthdto]:
+    ) -> ApiResponse[SourceHealthDto]:
         """Fetches source health by id
 
         This endpoint fetches source health by source's id
@@ -7201,13 +7201,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcehealthdto",
-            '400': "Errorresponsedto",
+            '200': "SourceHealthDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7274,13 +7274,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcehealthdto",
-            '400': "Errorresponsedto",
+            '200': "SourceHealthDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7411,12 +7411,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7488,12 +7488,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7565,12 +7565,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7700,12 +7700,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Schedule3]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7773,12 +7773,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Schedule3]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7846,12 +7846,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Schedule3]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7982,12 +7982,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8059,12 +8059,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8136,12 +8136,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8279,12 +8279,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ModelSchema]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8360,12 +8360,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ModelSchema]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8441,12 +8441,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ModelSchema]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8583,12 +8583,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8656,12 +8656,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8729,12 +8729,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8865,11 +8865,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8941,11 +8941,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9017,11 +9017,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9127,7 +9127,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Loadaccountstask:
+    ) -> LoadAccountsTask:
         """Account aggregation
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
@@ -9171,12 +9171,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9207,7 +9207,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Loadaccountstask]:
+    ) -> ApiResponse[LoadAccountsTask]:
         """Account aggregation
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
@@ -9251,12 +9251,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9331,12 +9331,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9486,11 +9486,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9562,11 +9562,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9638,11 +9638,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9793,11 +9793,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9873,11 +9873,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9953,11 +9953,11 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10067,7 +10067,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Loadentitlementtask:
+    ) -> LoadEntitlementTask:
         """Entitlement aggregation
 
         Starts an entitlement aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body.  You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -10108,12 +10108,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadentitlementtask",
-            '400': "Errorresponsedto",
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10143,7 +10143,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Loadentitlementtask]:
+    ) -> ApiResponse[LoadEntitlementTask]:
         """Entitlement aggregation
 
         Starts an entitlement aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body.  You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -10184,12 +10184,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadentitlementtask",
-            '400': "Errorresponsedto",
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10260,12 +10260,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loadentitlementtask",
-            '400': "Errorresponsedto",
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10370,7 +10370,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Loaduncorrelatedaccountstask:
+    ) -> LoadUncorrelatedAccountsTask:
         """Process uncorrelated accounts
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
@@ -10411,12 +10411,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loaduncorrelatedaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadUncorrelatedAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10446,7 +10446,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Loaduncorrelatedaccountstask]:
+    ) -> ApiResponse[LoadUncorrelatedAccountsTask]:
         """Process uncorrelated accounts
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
@@ -10487,12 +10487,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loaduncorrelatedaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadUncorrelatedAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10563,12 +10563,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Loaduncorrelatedaccountstask",
-            '400': "Errorresponsedto",
+            '202': "LoadUncorrelatedAccountsTask",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10675,7 +10675,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[PasswordpolicyholdersdtoInner]:
+    ) -> List[PasswordPolicyHoldersDtoInner]:
         """Get Password Policy for source
 
         This API can be used to get Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
@@ -10722,13 +10722,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10760,7 +10760,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[PasswordpolicyholdersdtoInner]]:
+    ) -> ApiResponse[List[PasswordPolicyHoldersDtoInner]]:
         """Get Password Policy for source
 
         This API can be used to get Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
@@ -10807,13 +10807,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10892,13 +10892,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11003,7 +11003,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Provisioningpolicydtov1]:
+    ) -> List[ProvisioningPolicyDto]:
         """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -11047,13 +11047,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11084,7 +11084,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Provisioningpolicydtov1]]:
+    ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -11128,13 +11128,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11209,13 +11209,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11317,7 +11317,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Provisioningpolicydtov2]:
+    ) -> List[ProvisioningPolicyDtoV2]:
         """Lists Provisioning Policies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -11367,13 +11367,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov2]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDtoV2]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11406,7 +11406,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Provisioningpolicydtov2]]:
+    ) -> ApiResponse[List[ProvisioningPolicyDtoV2]]:
         """Lists Provisioning Policies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -11456,13 +11456,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov2]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDtoV2]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11545,13 +11545,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov2]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDtoV2]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11720,12 +11720,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Source]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11817,12 +11817,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Source]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11914,12 +11914,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Source]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12039,7 +12039,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Statusresponse:
+    ) -> StatusResponse:
         """Ping cluster for source connector
 
         This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
@@ -12077,13 +12077,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12112,7 +12112,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Statusresponse]:
+    ) -> ApiResponse[StatusResponse]:
         """Ping cluster for source connector
 
         This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
@@ -12150,13 +12150,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12223,13 +12223,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12305,7 +12305,7 @@ class SourcesApi:
     def put_correlation_config_v1(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        correlationconfig: Correlationconfig,
+        correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12318,15 +12318,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Correlationconfig:
+    ) -> CorrelationConfig:
         """Update source correlation configuration
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
-        :param correlationconfig: (required)
-        :type correlationconfig: Correlationconfig
+        :param correlation_config: (required)
+        :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12351,7 +12351,7 @@ class SourcesApi:
 
         _param = self._put_correlation_config_v1_serialize(
             id=id,
-            correlationconfig=correlationconfig,
+            correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12359,13 +12359,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12382,7 +12382,7 @@ class SourcesApi:
     def put_correlation_config_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        correlationconfig: Correlationconfig,
+        correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12395,15 +12395,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Correlationconfig]:
+    ) -> ApiResponse[CorrelationConfig]:
         """Update source correlation configuration
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
-        :param correlationconfig: (required)
-        :type correlationconfig: Correlationconfig
+        :param correlation_config: (required)
+        :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12428,7 +12428,7 @@ class SourcesApi:
 
         _param = self._put_correlation_config_v1_serialize(
             id=id,
-            correlationconfig=correlationconfig,
+            correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12436,13 +12436,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12459,7 +12459,7 @@ class SourcesApi:
     def put_correlation_config_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        correlationconfig: Correlationconfig,
+        correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12479,8 +12479,8 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param correlationconfig: (required)
-        :type correlationconfig: Correlationconfig
+        :param correlation_config: (required)
+        :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12505,7 +12505,7 @@ class SourcesApi:
 
         _param = self._put_correlation_config_v1_serialize(
             id=id,
-            correlationconfig=correlationconfig,
+            correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12513,13 +12513,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Correlationconfig",
-            '400': "Errorresponsedto",
+            '200': "CorrelationConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12531,7 +12531,7 @@ class SourcesApi:
     def _put_correlation_config_v1_serialize(
         self,
         id,
-        correlationconfig,
+        correlation_config,
         _request_auth,
         _content_type,
         _headers,
@@ -12559,8 +12559,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if correlationconfig is not None:
-            _body_params = correlationconfig
+        if correlation_config is not None:
+            _body_params = correlation_config
 
 
         # set the HTTP header `Accept`
@@ -12611,7 +12611,7 @@ class SourcesApi:
     def put_native_change_detection_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The source id")],
-        nativechangedetectionconfig: Nativechangedetectionconfig,
+        native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12624,15 +12624,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nativechangedetectionconfig:
+    ) -> NativeChangeDetectionConfig:
         """Update native change detection configuration
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param source_id: The source id (required)
         :type source_id: str
-        :param nativechangedetectionconfig: (required)
-        :type nativechangedetectionconfig: Nativechangedetectionconfig
+        :param native_change_detection_config: (required)
+        :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12657,7 +12657,7 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_v1_serialize(
             source_id=source_id,
-            nativechangedetectionconfig=nativechangedetectionconfig,
+            native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12665,13 +12665,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12688,7 +12688,7 @@ class SourcesApi:
     def put_native_change_detection_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The source id")],
-        nativechangedetectionconfig: Nativechangedetectionconfig,
+        native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12701,15 +12701,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nativechangedetectionconfig]:
+    ) -> ApiResponse[NativeChangeDetectionConfig]:
         """Update native change detection configuration
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param source_id: The source id (required)
         :type source_id: str
-        :param nativechangedetectionconfig: (required)
-        :type nativechangedetectionconfig: Nativechangedetectionconfig
+        :param native_change_detection_config: (required)
+        :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12734,7 +12734,7 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_v1_serialize(
             source_id=source_id,
-            nativechangedetectionconfig=nativechangedetectionconfig,
+            native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12742,13 +12742,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12765,7 +12765,7 @@ class SourcesApi:
     def put_native_change_detection_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The source id")],
-        nativechangedetectionconfig: Nativechangedetectionconfig,
+        native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12785,8 +12785,8 @@ class SourcesApi:
 
         :param source_id: The source id (required)
         :type source_id: str
-        :param nativechangedetectionconfig: (required)
-        :type nativechangedetectionconfig: Nativechangedetectionconfig
+        :param native_change_detection_config: (required)
+        :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12811,7 +12811,7 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_v1_serialize(
             source_id=source_id,
-            nativechangedetectionconfig=nativechangedetectionconfig,
+            native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12819,13 +12819,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nativechangedetectionconfig",
-            '400': "Errorresponsedto",
+            '200': "NativeChangeDetectionConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12837,7 +12837,7 @@ class SourcesApi:
     def _put_native_change_detection_config_v1_serialize(
         self,
         source_id,
-        nativechangedetectionconfig,
+        native_change_detection_config,
         _request_auth,
         _content_type,
         _headers,
@@ -12865,8 +12865,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nativechangedetectionconfig is not None:
-            _body_params = nativechangedetectionconfig
+        if native_change_detection_config is not None:
+            _body_params = native_change_detection_config
 
 
         # set the HTTP header `Accept`
@@ -12917,8 +12917,8 @@ class SourcesApi:
     def put_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12931,7 +12931,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov1:
+    ) -> ProvisioningPolicyDto:
         """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -12939,9 +12939,9 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :type usage_type: UsageType
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12967,7 +12967,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12975,13 +12975,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12998,8 +12998,8 @@ class SourcesApi:
     def put_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13012,7 +13012,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov1]:
+    ) -> ApiResponse[ProvisioningPolicyDto]:
         """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -13020,9 +13020,9 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :type usage_type: UsageType
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13048,7 +13048,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13056,13 +13056,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13079,8 +13079,8 @@ class SourcesApi:
     def put_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydtov1: Provisioningpolicydtov1,
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        provisioning_policy_dto: ProvisioningPolicyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -13101,9 +13101,9 @@ class SourcesApi:
         :param source_id: The Source ID. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: Provisioningpolicydtov1
+        :type usage_type: UsageType
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: ProvisioningPolicyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -13129,7 +13129,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -13137,13 +13137,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13156,7 +13156,7 @@ class SourcesApi:
         self,
         source_id,
         usage_type,
-        provisioningpolicydtov1,
+        provisioning_policy_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -13186,8 +13186,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydtov1 is not None:
-            _body_params = provisioningpolicydtov1
+        if provisioning_policy_dto is not None:
+            _body_params = provisioning_policy_dto
 
 
         # set the HTTP header `Accept`
@@ -13239,7 +13239,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13253,7 +13253,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov2:
+    ) -> ProvisioningPolicyDtoV2:
         """Update provisioning policy by ID
 
         This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -13262,8 +13262,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13291,7 +13291,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13300,13 +13300,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13324,7 +13324,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13338,7 +13338,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov2]:
+    ) -> ApiResponse[ProvisioningPolicyDtoV2]:
         """Update provisioning policy by ID
 
         This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -13347,8 +13347,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13376,7 +13376,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13385,13 +13385,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13409,7 +13409,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        provisioningpolicydtov2: Provisioningpolicydtov2,
+        provisioning_policy_dto_v2: ProvisioningPolicyDtoV2,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13432,8 +13432,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param provisioningpolicydtov2: (required)
-        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param provisioning_policy_dto_v2: (required)
+        :type provisioning_policy_dto_v2: ProvisioningPolicyDtoV2
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13461,7 +13461,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            provisioningpolicydtov2=provisioningpolicydtov2,
+            provisioning_policy_dto_v2=provisioning_policy_dto_v2,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13470,13 +13470,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13489,7 +13489,7 @@ class SourcesApi:
         self,
         source_id,
         id,
-        provisioningpolicydtov2,
+        provisioning_policy_dto_v2,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -13522,8 +13522,8 @@ class SourcesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydtov2 is not None:
-            _body_params = provisioningpolicydtov2
+        if provisioning_policy_dto_v2 is not None:
+            _body_params = provisioning_policy_dto_v2
 
 
         # set the HTTP header `Accept`
@@ -13574,7 +13574,7 @@ class SourcesApi:
     def put_source_attr_sync_config_v1(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        attrsyncsourceconfig: Attrsyncsourceconfig,
+        attr_sync_source_config: AttrSyncSourceConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13588,15 +13588,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attrsyncsourceconfig:
+    ) -> AttrSyncSourceConfig:
         """Update attribute sync config
 
         Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
         :param id: The source id (required)
         :type id: str
-        :param attrsyncsourceconfig: (required)
-        :type attrsyncsourceconfig: Attrsyncsourceconfig
+        :param attr_sync_source_config: (required)
+        :type attr_sync_source_config: AttrSyncSourceConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13623,7 +13623,7 @@ class SourcesApi:
 
         _param = self._put_source_attr_sync_config_v1_serialize(
             id=id,
-            attrsyncsourceconfig=attrsyncsourceconfig,
+            attr_sync_source_config=attr_sync_source_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13632,13 +13632,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13655,7 +13655,7 @@ class SourcesApi:
     def put_source_attr_sync_config_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        attrsyncsourceconfig: Attrsyncsourceconfig,
+        attr_sync_source_config: AttrSyncSourceConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13669,15 +13669,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attrsyncsourceconfig]:
+    ) -> ApiResponse[AttrSyncSourceConfig]:
         """Update attribute sync config
 
         Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
         :param id: The source id (required)
         :type id: str
-        :param attrsyncsourceconfig: (required)
-        :type attrsyncsourceconfig: Attrsyncsourceconfig
+        :param attr_sync_source_config: (required)
+        :type attr_sync_source_config: AttrSyncSourceConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13704,7 +13704,7 @@ class SourcesApi:
 
         _param = self._put_source_attr_sync_config_v1_serialize(
             id=id,
-            attrsyncsourceconfig=attrsyncsourceconfig,
+            attr_sync_source_config=attr_sync_source_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13713,13 +13713,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13736,7 +13736,7 @@ class SourcesApi:
     def put_source_attr_sync_config_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        attrsyncsourceconfig: Attrsyncsourceconfig,
+        attr_sync_source_config: AttrSyncSourceConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -13757,8 +13757,8 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param attrsyncsourceconfig: (required)
-        :type attrsyncsourceconfig: Attrsyncsourceconfig
+        :param attr_sync_source_config: (required)
+        :type attr_sync_source_config: AttrSyncSourceConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -13785,7 +13785,7 @@ class SourcesApi:
 
         _param = self._put_source_attr_sync_config_v1_serialize(
             id=id,
-            attrsyncsourceconfig=attrsyncsourceconfig,
+            attr_sync_source_config=attr_sync_source_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13794,13 +13794,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attrsyncsourceconfig",
-            '400': "Errorresponsedto",
+            '200': "AttrSyncSourceConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13812,7 +13812,7 @@ class SourcesApi:
     def _put_source_attr_sync_config_v1_serialize(
         self,
         id,
-        attrsyncsourceconfig,
+        attr_sync_source_config,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -13843,8 +13843,8 @@ class SourcesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if attrsyncsourceconfig is not None:
-            _body_params = attrsyncsourceconfig
+        if attr_sync_source_config is not None:
+            _body_params = attr_sync_source_config
 
 
         # set the HTTP header `Accept`
@@ -13954,12 +13954,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14035,12 +14035,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14116,12 +14116,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14271,12 +14271,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14348,12 +14348,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14425,12 +14425,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14522,7 +14522,7 @@ class SourcesApi:
     def search_resource_objects_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the Source")],
-        resourceobjectsrequest: Resourceobjectsrequest,
+        resource_objects_request: ResourceObjectsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14535,15 +14535,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Resourceobjectsresponse:
+    ) -> ResourceObjectsResponse:
         """Peek source connector's resource objects
 
         Retrieves a sample of data returned from account and group aggregation requests.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
-        :param resourceobjectsrequest: (required)
-        :type resourceobjectsrequest: Resourceobjectsrequest
+        :param resource_objects_request: (required)
+        :type resource_objects_request: ResourceObjectsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14568,7 +14568,7 @@ class SourcesApi:
 
         _param = self._search_resource_objects_v1_serialize(
             source_id=source_id,
-            resourceobjectsrequest=resourceobjectsrequest,
+            resource_objects_request=resource_objects_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14576,13 +14576,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Resourceobjectsresponse",
-            '400': "Errorresponsedto",
+            '200': "ResourceObjectsResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14599,7 +14599,7 @@ class SourcesApi:
     def search_resource_objects_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the Source")],
-        resourceobjectsrequest: Resourceobjectsrequest,
+        resource_objects_request: ResourceObjectsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14612,15 +14612,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Resourceobjectsresponse]:
+    ) -> ApiResponse[ResourceObjectsResponse]:
         """Peek source connector's resource objects
 
         Retrieves a sample of data returned from account and group aggregation requests.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
-        :param resourceobjectsrequest: (required)
-        :type resourceobjectsrequest: Resourceobjectsrequest
+        :param resource_objects_request: (required)
+        :type resource_objects_request: ResourceObjectsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14645,7 +14645,7 @@ class SourcesApi:
 
         _param = self._search_resource_objects_v1_serialize(
             source_id=source_id,
-            resourceobjectsrequest=resourceobjectsrequest,
+            resource_objects_request=resource_objects_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14653,13 +14653,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Resourceobjectsresponse",
-            '400': "Errorresponsedto",
+            '200': "ResourceObjectsResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14676,7 +14676,7 @@ class SourcesApi:
     def search_resource_objects_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the Source")],
-        resourceobjectsrequest: Resourceobjectsrequest,
+        resource_objects_request: ResourceObjectsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14696,8 +14696,8 @@ class SourcesApi:
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
-        :param resourceobjectsrequest: (required)
-        :type resourceobjectsrequest: Resourceobjectsrequest
+        :param resource_objects_request: (required)
+        :type resource_objects_request: ResourceObjectsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14722,7 +14722,7 @@ class SourcesApi:
 
         _param = self._search_resource_objects_v1_serialize(
             source_id=source_id,
-            resourceobjectsrequest=resourceobjectsrequest,
+            resource_objects_request=resource_objects_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14730,13 +14730,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Resourceobjectsresponse",
-            '400': "Errorresponsedto",
+            '200': "ResourceObjectsResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14748,7 +14748,7 @@ class SourcesApi:
     def _search_resource_objects_v1_serialize(
         self,
         source_id,
-        resourceobjectsrequest,
+        resource_objects_request,
         _request_auth,
         _content_type,
         _headers,
@@ -14776,8 +14776,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if resourceobjectsrequest is not None:
-            _body_params = resourceobjectsrequest
+        if resource_objects_request is not None:
+            _body_params = resource_objects_request
 
 
         # set the HTTP header `Accept`
@@ -14841,7 +14841,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesyncjob:
+    ) -> SourceSyncJob:
         """Synchronize single source attributes.
 
         This end-point performs attribute synchronization for a selected source.
@@ -14882,13 +14882,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sourcesyncjob",
-            '400': "Errorresponsedto",
+            '202': "SourceSyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -14918,7 +14918,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesyncjob]:
+    ) -> ApiResponse[SourceSyncJob]:
         """Synchronize single source attributes.
 
         This end-point performs attribute synchronization for a selected source.
@@ -14959,13 +14959,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sourcesyncjob",
-            '400': "Errorresponsedto",
+            '202': "SourceSyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15036,13 +15036,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sourcesyncjob",
-            '400': "Errorresponsedto",
+            '202': "SourceSyncJob",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15133,7 +15133,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Statusresponse:
+    ) -> StatusResponse:
         """Test configuration for source connector
 
         This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
@@ -15171,13 +15171,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15206,7 +15206,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Statusresponse]:
+    ) -> ApiResponse[StatusResponse]:
         """Test configuration for source connector
 
         This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
@@ -15244,13 +15244,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15317,13 +15317,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15411,7 +15411,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Statusresponse:
+    ) -> StatusResponse:
         """Check connection for source connector.
 
         This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
@@ -15449,13 +15449,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15484,7 +15484,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Statusresponse]:
+    ) -> ApiResponse[StatusResponse]:
         """Check connection for source connector.
 
         This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
@@ -15522,13 +15522,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15595,13 +15595,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Statusresponse",
-            '400': "Errorresponsedto",
+            '200': "StatusResponse",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15677,7 +15677,7 @@ class SourcesApi:
     def update_account_deletion_approval_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15690,15 +15690,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountdeleteconfigdto:
+    ) -> AccountDeleteConfigDto:
         """Human Account Deletion Approval Config
 
         Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration. 
 
         :param source_id: Human account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15723,7 +15723,7 @@ class SourcesApi:
 
         _param = self._update_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15731,13 +15731,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15754,7 +15754,7 @@ class SourcesApi:
     def update_account_deletion_approval_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15767,15 +15767,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountdeleteconfigdto]:
+    ) -> ApiResponse[AccountDeleteConfigDto]:
         """Human Account Deletion Approval Config
 
         Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration. 
 
         :param source_id: Human account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15800,7 +15800,7 @@ class SourcesApi:
 
         _param = self._update_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15808,13 +15808,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15831,7 +15831,7 @@ class SourcesApi:
     def update_account_deletion_approval_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15851,8 +15851,8 @@ class SourcesApi:
 
         :param source_id: Human account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15877,7 +15877,7 @@ class SourcesApi:
 
         _param = self._update_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15885,13 +15885,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -15903,7 +15903,7 @@ class SourcesApi:
     def _update_account_deletion_approval_config_v1_serialize(
         self,
         source_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -15913,7 +15913,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -15932,8 +15932,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -15984,7 +15984,7 @@ class SourcesApi:
     def update_machine_account_deletion_approval_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15997,15 +15997,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountdeleteconfigdto:
+    ) -> AccountDeleteConfigDto:
         """Machine Account Deletion Approval Config
 
         Use this endpoint to update the machine account deletion approval configuration for a specific source. The update is performed using a JSON Patch payload, which allows partial modifications to the approval config. This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion. The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body. 
 
         :param source_id: machine account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16030,7 +16030,7 @@ class SourcesApi:
 
         _param = self._update_machine_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16038,13 +16038,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16061,7 +16061,7 @@ class SourcesApi:
     def update_machine_account_deletion_approval_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16074,15 +16074,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountdeleteconfigdto]:
+    ) -> ApiResponse[AccountDeleteConfigDto]:
         """Machine Account Deletion Approval Config
 
         Use this endpoint to update the machine account deletion approval configuration for a specific source. The update is performed using a JSON Patch payload, which allows partial modifications to the approval config. This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion. The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body. 
 
         :param source_id: machine account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16107,7 +16107,7 @@ class SourcesApi:
 
         _param = self._update_machine_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16115,13 +16115,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16138,7 +16138,7 @@ class SourcesApi:
     def update_machine_account_deletion_approval_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16158,8 +16158,8 @@ class SourcesApi:
 
         :param source_id: machine account source ID. (required)
         :type source_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16184,7 +16184,7 @@ class SourcesApi:
 
         _param = self._update_machine_account_deletion_approval_config_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16192,13 +16192,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountdeleteconfigdto",
-            '400': "Errorresponsedto",
+            '200': "AccountDeleteConfigDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16210,7 +16210,7 @@ class SourcesApi:
     def _update_machine_account_deletion_approval_config_v1_serialize(
         self,
         source_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -16220,7 +16220,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -16239,8 +16239,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -16291,7 +16291,7 @@ class SourcesApi:
     def update_password_policy_holders_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner],
+        password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16304,15 +16304,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[PasswordpolicyholdersdtoInner]:
+    ) -> List[PasswordPolicyHoldersDtoInner]:
         """Update password policy
 
         This API can be used to set up or update Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param passwordpolicyholdersdto_inner: (required)
-        :type passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner]
+        :param password_policy_holders_dto_inner: (required)
+        :type password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16337,7 +16337,7 @@ class SourcesApi:
 
         _param = self._update_password_policy_holders_v1_serialize(
             source_id=source_id,
-            passwordpolicyholdersdto_inner=passwordpolicyholdersdto_inner,
+            password_policy_holders_dto_inner=password_policy_holders_dto_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16345,13 +16345,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16368,7 +16368,7 @@ class SourcesApi:
     def update_password_policy_holders_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner],
+        password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16381,15 +16381,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[PasswordpolicyholdersdtoInner]]:
+    ) -> ApiResponse[List[PasswordPolicyHoldersDtoInner]]:
         """Update password policy
 
         This API can be used to set up or update Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param passwordpolicyholdersdto_inner: (required)
-        :type passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner]
+        :param password_policy_holders_dto_inner: (required)
+        :type password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16414,7 +16414,7 @@ class SourcesApi:
 
         _param = self._update_password_policy_holders_v1_serialize(
             source_id=source_id,
-            passwordpolicyholdersdto_inner=passwordpolicyholdersdto_inner,
+            password_policy_holders_dto_inner=password_policy_holders_dto_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16422,13 +16422,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16445,7 +16445,7 @@ class SourcesApi:
     def update_password_policy_holders_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner],
+        password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16465,8 +16465,8 @@ class SourcesApi:
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param passwordpolicyholdersdto_inner: (required)
-        :type passwordpolicyholdersdto_inner: List[PasswordpolicyholdersdtoInner]
+        :param password_policy_holders_dto_inner: (required)
+        :type password_policy_holders_dto_inner: List[PasswordPolicyHoldersDtoInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16491,7 +16491,7 @@ class SourcesApi:
 
         _param = self._update_password_policy_holders_v1_serialize(
             source_id=source_id,
-            passwordpolicyholdersdto_inner=passwordpolicyholdersdto_inner,
+            password_policy_holders_dto_inner=password_policy_holders_dto_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16499,13 +16499,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PasswordpolicyholdersdtoInner]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordPolicyHoldersDtoInner]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16517,7 +16517,7 @@ class SourcesApi:
     def _update_password_policy_holders_v1_serialize(
         self,
         source_id,
-        passwordpolicyholdersdto_inner,
+        password_policy_holders_dto_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -16527,7 +16527,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'PasswordpolicyholdersdtoInner': '',
+            'PasswordPolicyHoldersDtoInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -16546,8 +16546,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordpolicyholdersdto_inner is not None:
-            _body_params = passwordpolicyholdersdto_inner
+        if password_policy_holders_dto_inner is not None:
+            _body_params = password_policy_holders_dto_inner
 
 
         # set the HTTP header `Accept`
@@ -16598,7 +16598,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydtov1: List[Provisioningpolicydtov1],
+        provisioning_policy_dto: List[ProvisioningPolicyDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16611,15 +16611,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Provisioningpolicydtov1]:
+    ) -> List[ProvisioningPolicyDto]:
         """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: List[ProvisioningPolicyDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16644,7 +16644,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16652,13 +16652,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16675,7 +16675,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydtov1: List[Provisioningpolicydtov1],
+        provisioning_policy_dto: List[ProvisioningPolicyDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16688,15 +16688,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Provisioningpolicydtov1]]:
+    ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: List[ProvisioningPolicyDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16721,7 +16721,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16729,13 +16729,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16752,7 +16752,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydtov1: List[Provisioningpolicydtov1],
+        provisioning_policy_dto: List[ProvisioningPolicyDto],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16772,8 +16772,8 @@ class SourcesApi:
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydtov1: (required)
-        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
+        :param provisioning_policy_dto: (required)
+        :type provisioning_policy_dto: List[ProvisioningPolicyDto]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16798,7 +16798,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydtov1=provisioningpolicydtov1,
+            provisioning_policy_dto=provisioning_policy_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16806,13 +16806,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydtov1]",
-            '400': "Errorresponsedto",
+            '200': "List[ProvisioningPolicyDto]",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16824,7 +16824,7 @@ class SourcesApi:
     def _update_provisioning_policies_in_bulk_v1_serialize(
         self,
         source_id,
-        provisioningpolicydtov1,
+        provisioning_policy_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -16834,7 +16834,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Provisioningpolicydtov1': '',
+            'ProvisioningPolicyDto': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -16853,8 +16853,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydtov1 is not None:
-            _body_params = provisioningpolicydtov1
+        if provisioning_policy_dto is not None:
+            _body_params = provisioning_policy_dto
 
 
         # set the HTTP header `Accept`
@@ -16905,8 +16905,8 @@ class SourcesApi:
     def update_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16919,7 +16919,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov1:
+    ) -> ProvisioningPolicyDto:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -16927,9 +16927,9 @@ class SourcesApi:
         :param source_id: The Source id. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :type usage_type: UsageType
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16955,7 +16955,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16963,13 +16963,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -16986,8 +16986,8 @@ class SourcesApi:
     def update_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17000,7 +17000,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov1]:
+    ) -> ApiResponse[ProvisioningPolicyDto]:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -17008,9 +17008,9 @@ class SourcesApi:
         :param source_id: The Source id. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :type usage_type: UsageType
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17036,7 +17036,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17044,13 +17044,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17067,8 +17067,8 @@ class SourcesApi:
     def update_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        usage_type: Annotated[UsageType, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17089,9 +17089,9 @@ class SourcesApi:
         :param source_id: The Source id. (required)
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
-        :type usage_type: Usagetype
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :type usage_type: UsageType
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17117,7 +17117,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17125,13 +17125,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov1",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17144,7 +17144,7 @@ class SourcesApi:
         self,
         source_id,
         usage_type,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -17154,7 +17154,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -17175,8 +17175,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -17228,7 +17228,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17242,7 +17242,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydtov2:
+    ) -> ProvisioningPolicyDtoV2:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -17251,8 +17251,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17280,7 +17280,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17289,13 +17289,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17313,7 +17313,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17327,7 +17327,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydtov2]:
+    ) -> ApiResponse[ProvisioningPolicyDtoV2]:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -17336,8 +17336,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17365,7 +17365,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17374,13 +17374,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17398,7 +17398,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17421,8 +17421,8 @@ class SourcesApi:
         :type source_id: str
         :param id: The provisioning policy ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17450,7 +17450,7 @@ class SourcesApi:
         _param = self._update_provisioning_policy_v2_serialize(
             source_id=source_id,
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17459,13 +17459,13 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydtov2",
-            '400': "Errorresponsedto",
+            '200': "ProvisioningPolicyDtoV2",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17478,7 +17478,7 @@ class SourcesApi:
         self,
         source_id,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -17489,7 +17489,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -17512,8 +17512,8 @@ class SourcesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -17564,7 +17564,7 @@ class SourcesApi:
     def update_source_entitlement_request_config_v1(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        sourceentitlementrequestconfig: Sourceentitlementrequestconfig,
+        source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17578,15 +17578,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourceentitlementrequestconfig:
+    ) -> SourceEntitlementRequestConfig:
         """Update source entitlement request configuration
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param id: The Source id (required)
         :type id: str
-        :param sourceentitlementrequestconfig: (required)
-        :type sourceentitlementrequestconfig: Sourceentitlementrequestconfig
+        :param source_entitlement_request_config: (required)
+        :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17613,7 +17613,7 @@ class SourcesApi:
 
         _param = self._update_source_entitlement_request_config_v1_serialize(
             id=id,
-            sourceentitlementrequestconfig=sourceentitlementrequestconfig,
+            source_entitlement_request_config=source_entitlement_request_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17622,12 +17622,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17644,7 +17644,7 @@ class SourcesApi:
     def update_source_entitlement_request_config_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        sourceentitlementrequestconfig: Sourceentitlementrequestconfig,
+        source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17658,15 +17658,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourceentitlementrequestconfig]:
+    ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Update source entitlement request configuration
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param id: The Source id (required)
         :type id: str
-        :param sourceentitlementrequestconfig: (required)
-        :type sourceentitlementrequestconfig: Sourceentitlementrequestconfig
+        :param source_entitlement_request_config: (required)
+        :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17693,7 +17693,7 @@ class SourcesApi:
 
         _param = self._update_source_entitlement_request_config_v1_serialize(
             id=id,
-            sourceentitlementrequestconfig=sourceentitlementrequestconfig,
+            source_entitlement_request_config=source_entitlement_request_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17702,12 +17702,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17724,7 +17724,7 @@ class SourcesApi:
     def update_source_entitlement_request_config_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        sourceentitlementrequestconfig: Sourceentitlementrequestconfig,
+        source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -17745,8 +17745,8 @@ class SourcesApi:
 
         :param id: The Source id (required)
         :type id: str
-        :param sourceentitlementrequestconfig: (required)
-        :type sourceentitlementrequestconfig: Sourceentitlementrequestconfig
+        :param source_entitlement_request_config: (required)
+        :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -17773,7 +17773,7 @@ class SourcesApi:
 
         _param = self._update_source_entitlement_request_config_v1_serialize(
             id=id,
-            sourceentitlementrequestconfig=sourceentitlementrequestconfig,
+            source_entitlement_request_config=source_entitlement_request_config,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -17782,12 +17782,12 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourceentitlementrequestconfig",
-            '400': "Errorresponsedto",
+            '200': "SourceEntitlementRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17799,7 +17799,7 @@ class SourcesApi:
     def _update_source_entitlement_request_config_v1_serialize(
         self,
         id,
-        sourceentitlementrequestconfig,
+        source_entitlement_request_config,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -17830,8 +17830,8 @@ class SourcesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if sourceentitlementrequestconfig is not None:
-            _body_params = sourceentitlementrequestconfig
+        if source_entitlement_request_config is not None:
+            _body_params = source_entitlement_request_config
 
 
         # set the HTTP header `Accept`
@@ -17883,7 +17883,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schedule.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17905,8 +17905,8 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schedule. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17932,7 +17932,7 @@ class SourcesApi:
         _param = self._update_source_schedule_v1_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17941,12 +17941,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -17964,7 +17964,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schedule.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17986,8 +17986,8 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schedule. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18013,7 +18013,7 @@ class SourcesApi:
         _param = self._update_source_schedule_v1_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18022,12 +18022,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18045,7 +18045,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schedule.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18067,8 +18067,8 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schedule. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18094,7 +18094,7 @@ class SourcesApi:
         _param = self._update_source_schedule_v1_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18103,12 +18103,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule3",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18121,7 +18121,7 @@ class SourcesApi:
         self,
         source_id,
         schedule_type,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -18131,7 +18131,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -18152,8 +18152,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -18205,7 +18205,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schema_id: Annotated[StrictStr, Field(description="The Schema id.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18227,8 +18227,8 @@ class SourcesApi:
         :type source_id: str
         :param schema_id: The Schema id. (required)
         :type schema_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18254,7 +18254,7 @@ class SourcesApi:
         _param = self._update_source_schema_v1_serialize(
             source_id=source_id,
             schema_id=schema_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18263,12 +18263,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18286,7 +18286,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schema_id: Annotated[StrictStr, Field(description="The Schema id.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18308,8 +18308,8 @@ class SourcesApi:
         :type source_id: str
         :param schema_id: The Schema id. (required)
         :type schema_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18335,7 +18335,7 @@ class SourcesApi:
         _param = self._update_source_schema_v1_serialize(
             source_id=source_id,
             schema_id=schema_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18344,12 +18344,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18367,7 +18367,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schema_id: Annotated[StrictStr, Field(description="The Schema id.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18389,8 +18389,8 @@ class SourcesApi:
         :type source_id: str
         :param schema_id: The Schema id. (required)
         :type schema_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the schema. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18416,7 +18416,7 @@ class SourcesApi:
         _param = self._update_source_schema_v1_serialize(
             source_id=source_id,
             schema_id=schema_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18425,12 +18425,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ModelSchema",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18443,7 +18443,7 @@ class SourcesApi:
         self,
         source_id,
         schema_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -18453,7 +18453,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -18474,8 +18474,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -18526,7 +18526,7 @@ class SourcesApi:
     def update_source_v1(
         self,
         id: Annotated[StrictStr, Field(description="Source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18546,8 +18546,8 @@ class SourcesApi:
 
         :param id: Source ID. (required)
         :type id: str
-        :param jsonpatchoperation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18572,7 +18572,7 @@ class SourcesApi:
 
         _param = self._update_source_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18581,12 +18581,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18603,7 +18603,7 @@ class SourcesApi:
     def update_source_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18623,8 +18623,8 @@ class SourcesApi:
 
         :param id: Source ID. (required)
         :type id: str
-        :param jsonpatchoperation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18649,7 +18649,7 @@ class SourcesApi:
 
         _param = self._update_source_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18658,12 +18658,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18680,7 +18680,7 @@ class SourcesApi:
     def update_source_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -18700,8 +18700,8 @@ class SourcesApi:
 
         :param id: Source ID. (required)
         :type id: str
-        :param jsonpatchoperation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -18726,7 +18726,7 @@ class SourcesApi:
 
         _param = self._update_source_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -18735,12 +18735,12 @@ class SourcesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Source",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSourcesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSourcesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -18752,7 +18752,7 @@ class SourcesApi:
     def _update_source_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -18762,7 +18762,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -18781,8 +18781,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

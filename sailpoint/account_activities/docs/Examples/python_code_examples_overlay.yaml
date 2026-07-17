@@ -6,7 +6,7 @@
       source: |
         from sailpoint.account_activities.api.account_activities_api import AccountActivitiesApi
         from sailpoint.account_activities.api_client import ApiClient
-        from sailpoint.account_activities.models.accountactivity import Accountactivity
+        from sailpoint.account_activities.models.account_activity import AccountActivity
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,7 +31,7 @@
       source: |
         from sailpoint.account_activities.api.account_activities_api import AccountActivitiesApi
         from sailpoint.account_activities.api_client import ApiClient
-        from sailpoint.account_activities.models.accountactivity import Accountactivity
+        from sailpoint.account_activities.models.account_activity import AccountActivity
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

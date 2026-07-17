@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.configuration_hub.models.deployresponse import Deployresponse
+from sailpoint.configuration_hub.models.deploy_response import DeployResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ListDeploysV1200Response(BaseModel):
     """
     ListDeploysV1200Response
     """ # noqa: E501
-    items: Optional[List[Deployresponse]] = Field(default=None, description="list of deployments")
+    items: Optional[List[DeployResponse]] = Field(default=None, description="list of deployments")
     __properties: ClassVar[List[str]] = ["items"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class ListDeploysV1200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "items": [Deployresponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "items": [DeployResponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
         })
         return _obj
 

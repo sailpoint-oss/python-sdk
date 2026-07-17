@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from sailpoint.machine_identities.models.basereferencedto import Basereferencedto
+from sailpoint.machine_identities.models.base_reference_dto import BaseReferenceDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class MachineIdentityDtoOwners(BaseModel):
     The owner configuration associated to the machine identity
     """ # noqa: E501
     primary_identity: Dict[str, Any] = Field(description="Defines the identity which is selected as the primary owner", alias="primaryIdentity")
-    secondary_identities: List[Basereferencedto] = Field(description="Defines the identities which are selected as secondary owners", alias="secondaryIdentities")
+    secondary_identities: List[BaseReferenceDto] = Field(description="Defines the identities which are selected as secondary owners", alias="secondaryIdentities")
     __properties: ClassVar[List[str]] = ["primaryIdentity", "secondaryIdentities"]
 
     model_config = ConfigDict(
@@ -91,7 +91,7 @@ class MachineIdentityDtoOwners(BaseModel):
 
         _obj = cls.model_validate({
             "primaryIdentity": obj.get("primaryIdentity"),
-            "secondaryIdentities": [Basereferencedto.from_dict(_item) for _item in obj["secondaryIdentities"]] if obj.get("secondaryIdentities") is not None else None
+            "secondaryIdentities": [BaseReferenceDto.from_dict(_item) for _item in obj["secondaryIdentities"]] if obj.get("secondaryIdentities") is not None else None
         })
         return _obj
 

@@ -71,9 +71,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/machine_account_classify/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/machine_account_classify/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/machine_account_classify/docs/Localeorigin.md)
+ - [ErrorMessageDto](sailpoint/machine_account_classify/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/machine_account_classify/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/machine_account_classify/docs/LocaleOrigin.md)
  - [SendClassifyMachineAccountV1200Response](sailpoint/machine_account_classify/docs/SendClassifyMachineAccountV1200Response.md)
  - [SendClassifyMachineAccountV1401Response](sailpoint/machine_account_classify/docs/SendClassifyMachineAccountV1401Response.md)
  - [SendClassifyMachineAccountV1429Response](sailpoint/machine_account_classify/docs/SendClassifyMachineAccountV1429Response.md)

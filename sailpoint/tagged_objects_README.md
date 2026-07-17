@@ -76,16 +76,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Bulkaddtaggedobject](sailpoint/tagged_objects/docs/Bulkaddtaggedobject.md)
- - [Bulkremovetaggedobject](sailpoint/tagged_objects/docs/Bulkremovetaggedobject.md)
- - [Bulktaggedobjectresponse](sailpoint/tagged_objects/docs/Bulktaggedobjectresponse.md)
- - [Errormessagedto](sailpoint/tagged_objects/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/tagged_objects/docs/Errorresponsedto.md)
+ - [BulkAddTaggedObject](sailpoint/tagged_objects/docs/BulkAddTaggedObject.md)
+ - [BulkRemoveTaggedObject](sailpoint/tagged_objects/docs/BulkRemoveTaggedObject.md)
+ - [BulkTaggedObjectResponse](sailpoint/tagged_objects/docs/BulkTaggedObjectResponse.md)
+ - [ErrorMessageDto](sailpoint/tagged_objects/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/tagged_objects/docs/ErrorResponseDto.md)
  - [ListTaggedObjectsV1401Response](sailpoint/tagged_objects/docs/ListTaggedObjectsV1401Response.md)
  - [ListTaggedObjectsV1429Response](sailpoint/tagged_objects/docs/ListTaggedObjectsV1429Response.md)
- - [Localeorigin](sailpoint/tagged_objects/docs/Localeorigin.md)
- - [Taggedobject](sailpoint/tagged_objects/docs/Taggedobject.md)
- - [Taggedobjectdto](sailpoint/tagged_objects/docs/Taggedobjectdto.md)
+ - [LocaleOrigin](sailpoint/tagged_objects/docs/LocaleOrigin.md)
+ - [TaggedObject](sailpoint/tagged_objects/docs/TaggedObject.md)
+ - [TaggedObjectDto](sailpoint/tagged_objects/docs/TaggedObjectDto.md)
 
 
 <a id="documentation-for-authorization"></a>

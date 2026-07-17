@@ -47,11 +47,11 @@ configuration = sailpoint.jit_activations.Configuration(
 with sailpoint.jit_activations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.jit_activations.JITActivationsApi(api_client)
-    jitactivationactivaterequest = sailpoint.jit_activations.Jitactivationactivaterequest() # Jitactivationactivaterequest | 
+    jit_activation_activate_request = sailpoint.jit_activations.JitActivationActivateRequest() # JitActivationActivateRequest | 
 
     try:
         # Start JIT activation workflow
-        api_response = api_instance.start_activate_workflow_v1(jitactivationactivaterequest)
+        api_response = api_instance.start_activate_workflow_v1(jit_activation_activate_request)
         print("The response of JITActivationsApi->start_activate_workflow_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -72,16 +72,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Activationworkflowstatus](sailpoint/jit_activations/docs/Activationworkflowstatus.md)
- - [Errormessagedto](sailpoint/jit_activations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/jit_activations/docs/Errorresponsedto.md)
- - [Jitactivationactivaterequest](sailpoint/jit_activations/docs/Jitactivationactivaterequest.md)
- - [Jitactivationactivateresponse](sailpoint/jit_activations/docs/Jitactivationactivateresponse.md)
- - [Jitactivationdeactivaterequest](sailpoint/jit_activations/docs/Jitactivationdeactivaterequest.md)
- - [Jitactivationdeactivateresponse](sailpoint/jit_activations/docs/Jitactivationdeactivateresponse.md)
- - [Jitactivationextendrequest](sailpoint/jit_activations/docs/Jitactivationextendrequest.md)
- - [Jitactivationextendresponse](sailpoint/jit_activations/docs/Jitactivationextendresponse.md)
- - [Localeorigin](sailpoint/jit_activations/docs/Localeorigin.md)
+ - [ActivationWorkflowStatus](sailpoint/jit_activations/docs/ActivationWorkflowStatus.md)
+ - [ErrorMessageDto](sailpoint/jit_activations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/jit_activations/docs/ErrorResponseDto.md)
+ - [JitActivationActivateRequest](sailpoint/jit_activations/docs/JitActivationActivateRequest.md)
+ - [JitActivationActivateResponse](sailpoint/jit_activations/docs/JitActivationActivateResponse.md)
+ - [JitActivationDeactivateRequest](sailpoint/jit_activations/docs/JitActivationDeactivateRequest.md)
+ - [JitActivationDeactivateResponse](sailpoint/jit_activations/docs/JitActivationDeactivateResponse.md)
+ - [JitActivationExtendRequest](sailpoint/jit_activations/docs/JitActivationExtendRequest.md)
+ - [JitActivationExtendResponse](sailpoint/jit_activations/docs/JitActivationExtendResponse.md)
+ - [LocaleOrigin](sailpoint/jit_activations/docs/LocaleOrigin.md)
  - [StartActivateWorkflowV1401Response](sailpoint/jit_activations/docs/StartActivateWorkflowV1401Response.md)
  - [StartActivateWorkflowV1429Response](sailpoint/jit_activations/docs/StartActivateWorkflowV1429Response.md)
 

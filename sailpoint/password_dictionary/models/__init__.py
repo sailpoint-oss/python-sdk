@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.password_dictionary.models.errormessagedto import Errormessagedto
-from sailpoint.password_dictionary.models.errorresponsedto import Errorresponsedto
+from sailpoint.password_dictionary.models.error_message_dto import ErrorMessageDto
+from sailpoint.password_dictionary.models.error_response_dto import ErrorResponseDto
 from sailpoint.password_dictionary.models.get_password_dictionary_v1401_response import GetPasswordDictionaryV1401Response
 from sailpoint.password_dictionary.models.get_password_dictionary_v1429_response import GetPasswordDictionaryV1429Response
-from sailpoint.password_dictionary.models.localeorigin import Localeorigin
+from sailpoint.password_dictionary.models.locale_origin import LocaleOrigin
 from sailpoint.password_dictionary.models.put_password_dictionary_v1_request import PutPasswordDictionaryV1Request

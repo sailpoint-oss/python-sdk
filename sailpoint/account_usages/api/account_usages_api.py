@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.account_usages.models.accountusage import Accountusage
+from sailpoint.account_usages.models.account_usage import AccountUsage
 
 from sailpoint.account_usages.api_client import ApiClient, RequestSerialized
 from sailpoint.account_usages.api_response import ApiResponse
@@ -59,7 +59,7 @@ class AccountUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accountusage]:
+    ) -> List[AccountUsage]:
         """Returns account usage insights
 
         This API returns a summary of account usage insights for past 12 months.
@@ -109,12 +109,12 @@ class AccountUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountusage]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetUsagesByAccountIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetUsagesByAccountIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -147,7 +147,7 @@ class AccountUsagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accountusage]]:
+    ) -> ApiResponse[List[AccountUsage]]:
         """Returns account usage insights
 
         This API returns a summary of account usage insights for past 12 months.
@@ -197,12 +197,12 @@ class AccountUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountusage]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetUsagesByAccountIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetUsagesByAccountIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -285,12 +285,12 @@ class AccountUsagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accountusage]",
-            '400': "Errorresponsedto",
+            '200': "List[AccountUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetUsagesByAccountIdV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetUsagesByAccountIdV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

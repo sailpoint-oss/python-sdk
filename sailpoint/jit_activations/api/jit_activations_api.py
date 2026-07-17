@@ -16,12 +16,12 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from sailpoint.jit_activations.models.jitactivationactivaterequest import Jitactivationactivaterequest
-from sailpoint.jit_activations.models.jitactivationactivateresponse import Jitactivationactivateresponse
-from sailpoint.jit_activations.models.jitactivationdeactivaterequest import Jitactivationdeactivaterequest
-from sailpoint.jit_activations.models.jitactivationdeactivateresponse import Jitactivationdeactivateresponse
-from sailpoint.jit_activations.models.jitactivationextendrequest import Jitactivationextendrequest
-from sailpoint.jit_activations.models.jitactivationextendresponse import Jitactivationextendresponse
+from sailpoint.jit_activations.models.jit_activation_activate_request import JitActivationActivateRequest
+from sailpoint.jit_activations.models.jit_activation_activate_response import JitActivationActivateResponse
+from sailpoint.jit_activations.models.jit_activation_deactivate_request import JitActivationDeactivateRequest
+from sailpoint.jit_activations.models.jit_activation_deactivate_response import JitActivationDeactivateResponse
+from sailpoint.jit_activations.models.jit_activation_extend_request import JitActivationExtendRequest
+from sailpoint.jit_activations.models.jit_activation_extend_response import JitActivationExtendResponse
 
 from sailpoint.jit_activations.api_client import ApiClient, RequestSerialized
 from sailpoint.jit_activations.api_response import ApiResponse
@@ -44,7 +44,7 @@ class JITActivationsApi:
     @validate_call
     def start_activate_workflow_v1(
         self,
-        jitactivationactivaterequest: Jitactivationactivaterequest,
+        jit_activation_activate_request: JitActivationActivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,13 +57,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jitactivationactivateresponse:
+    ) -> JitActivationActivateResponse:
         """Start JIT activation workflow
 
         Starts a JIT Privileged (JIT P) activation workflow for the given entitlement connection and duration. The service performs quick validation; the workflow performs additional validation.  The response is returned with HTTP 202 Accepted while the workflow initializes. 
 
-        :param jitactivationactivaterequest: (required)
-        :type jitactivationactivaterequest: Jitactivationactivaterequest
+        :param jit_activation_activate_request: (required)
+        :type jit_activation_activate_request: JitActivationActivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +87,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_activate_workflow_v1_serialize(
-            jitactivationactivaterequest=jitactivationactivaterequest,
+            jit_activation_activate_request=jit_activation_activate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,12 +95,12 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationActivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -116,7 +116,7 @@ class JITActivationsApi:
     @validate_call
     def start_activate_workflow_v1_with_http_info(
         self,
-        jitactivationactivaterequest: Jitactivationactivaterequest,
+        jit_activation_activate_request: JitActivationActivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,13 +129,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jitactivationactivateresponse]:
+    ) -> ApiResponse[JitActivationActivateResponse]:
         """Start JIT activation workflow
 
         Starts a JIT Privileged (JIT P) activation workflow for the given entitlement connection and duration. The service performs quick validation; the workflow performs additional validation.  The response is returned with HTTP 202 Accepted while the workflow initializes. 
 
-        :param jitactivationactivaterequest: (required)
-        :type jitactivationactivaterequest: Jitactivationactivaterequest
+        :param jit_activation_activate_request: (required)
+        :type jit_activation_activate_request: JitActivationActivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +159,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_activate_workflow_v1_serialize(
-            jitactivationactivaterequest=jitactivationactivaterequest,
+            jit_activation_activate_request=jit_activation_activate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,12 +167,12 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationActivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -188,7 +188,7 @@ class JITActivationsApi:
     @validate_call
     def start_activate_workflow_v1_without_preload_content(
         self,
-        jitactivationactivaterequest: Jitactivationactivaterequest,
+        jit_activation_activate_request: JitActivationActivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,8 +206,8 @@ class JITActivationsApi:
 
         Starts a JIT Privileged (JIT P) activation workflow for the given entitlement connection and duration. The service performs quick validation; the workflow performs additional validation.  The response is returned with HTTP 202 Accepted while the workflow initializes. 
 
-        :param jitactivationactivaterequest: (required)
-        :type jitactivationactivaterequest: Jitactivationactivaterequest
+        :param jit_activation_activate_request: (required)
+        :type jit_activation_activate_request: JitActivationActivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,7 +231,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_activate_workflow_v1_serialize(
-            jitactivationactivaterequest=jitactivationactivaterequest,
+            jit_activation_activate_request=jit_activation_activate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -239,12 +239,12 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationActivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -255,7 +255,7 @@ class JITActivationsApi:
 
     def _start_activate_workflow_v1_serialize(
         self,
-        jitactivationactivaterequest,
+        jit_activation_activate_request,
         _request_auth,
         _content_type,
         _headers,
@@ -281,8 +281,8 @@ class JITActivationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jitactivationactivaterequest is not None:
-            _body_params = jitactivationactivaterequest
+        if jit_activation_activate_request is not None:
+            _body_params = jit_activation_activate_request
 
 
         # set the HTTP header `Accept`
@@ -332,7 +332,7 @@ class JITActivationsApi:
     @validate_call
     def start_deactivate_workflow_v1(
         self,
-        jitactivationdeactivaterequest: Jitactivationdeactivaterequest,
+        jit_activation_deactivate_request: JitActivationDeactivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,13 +345,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jitactivationdeactivateresponse:
+    ) -> JitActivationDeactivateResponse:
         """Deactivate JIT activation workflow
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to deactivate.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationdeactivaterequest: (required)
-        :type jitactivationdeactivaterequest: Jitactivationdeactivaterequest
+        :param jit_activation_deactivate_request: (required)
+        :type jit_activation_deactivate_request: JitActivationDeactivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,7 +375,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_deactivate_workflow_v1_serialize(
-            jitactivationdeactivaterequest=jitactivationdeactivaterequest,
+            jit_activation_deactivate_request=jit_activation_deactivate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -383,13 +383,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationdeactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationDeactivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -405,7 +405,7 @@ class JITActivationsApi:
     @validate_call
     def start_deactivate_workflow_v1_with_http_info(
         self,
-        jitactivationdeactivaterequest: Jitactivationdeactivaterequest,
+        jit_activation_deactivate_request: JitActivationDeactivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -418,13 +418,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jitactivationdeactivateresponse]:
+    ) -> ApiResponse[JitActivationDeactivateResponse]:
         """Deactivate JIT activation workflow
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to deactivate.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationdeactivaterequest: (required)
-        :type jitactivationdeactivaterequest: Jitactivationdeactivaterequest
+        :param jit_activation_deactivate_request: (required)
+        :type jit_activation_deactivate_request: JitActivationDeactivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -448,7 +448,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_deactivate_workflow_v1_serialize(
-            jitactivationdeactivaterequest=jitactivationdeactivaterequest,
+            jit_activation_deactivate_request=jit_activation_deactivate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,13 +456,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationdeactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationDeactivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -478,7 +478,7 @@ class JITActivationsApi:
     @validate_call
     def start_deactivate_workflow_v1_without_preload_content(
         self,
-        jitactivationdeactivaterequest: Jitactivationdeactivaterequest,
+        jit_activation_deactivate_request: JitActivationDeactivateRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -496,8 +496,8 @@ class JITActivationsApi:
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to deactivate.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationdeactivaterequest: (required)
-        :type jitactivationdeactivaterequest: Jitactivationdeactivaterequest
+        :param jit_activation_deactivate_request: (required)
+        :type jit_activation_deactivate_request: JitActivationDeactivateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -521,7 +521,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_deactivate_workflow_v1_serialize(
-            jitactivationdeactivaterequest=jitactivationdeactivaterequest,
+            jit_activation_deactivate_request=jit_activation_deactivate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -529,13 +529,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationdeactivateresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationDeactivateResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -546,7 +546,7 @@ class JITActivationsApi:
 
     def _start_deactivate_workflow_v1_serialize(
         self,
-        jitactivationdeactivaterequest,
+        jit_activation_deactivate_request,
         _request_auth,
         _content_type,
         _headers,
@@ -572,8 +572,8 @@ class JITActivationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jitactivationdeactivaterequest is not None:
-            _body_params = jitactivationdeactivaterequest
+        if jit_activation_deactivate_request is not None:
+            _body_params = jit_activation_deactivate_request
 
 
         # set the HTTP header `Accept`
@@ -623,7 +623,7 @@ class JITActivationsApi:
     @validate_call
     def start_extend_workflow_v1(
         self,
-        jitactivationextendrequest: Jitactivationextendrequest,
+        jit_activation_extend_request: JitActivationExtendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -636,13 +636,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Jitactivationextendresponse:
+    ) -> JitActivationExtendResponse:
         """Extend JIT activation workflow
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to extend the activation period by the requested number of minutes.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationextendrequest: (required)
-        :type jitactivationextendrequest: Jitactivationextendrequest
+        :param jit_activation_extend_request: (required)
+        :type jit_activation_extend_request: JitActivationExtendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -666,7 +666,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_extend_workflow_v1_serialize(
-            jitactivationextendrequest=jitactivationextendrequest,
+            jit_activation_extend_request=jit_activation_extend_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -674,13 +674,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationextendresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationExtendResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -696,7 +696,7 @@ class JITActivationsApi:
     @validate_call
     def start_extend_workflow_v1_with_http_info(
         self,
-        jitactivationextendrequest: Jitactivationextendrequest,
+        jit_activation_extend_request: JitActivationExtendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -709,13 +709,13 @@ class JITActivationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Jitactivationextendresponse]:
+    ) -> ApiResponse[JitActivationExtendResponse]:
         """Extend JIT activation workflow
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to extend the activation period by the requested number of minutes.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationextendrequest: (required)
-        :type jitactivationextendrequest: Jitactivationextendrequest
+        :param jit_activation_extend_request: (required)
+        :type jit_activation_extend_request: JitActivationExtendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -739,7 +739,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_extend_workflow_v1_serialize(
-            jitactivationextendrequest=jitactivationextendrequest,
+            jit_activation_extend_request=jit_activation_extend_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -747,13 +747,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationextendresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationExtendResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -769,7 +769,7 @@ class JITActivationsApi:
     @validate_call
     def start_extend_workflow_v1_without_preload_content(
         self,
-        jitactivationextendrequest: Jitactivationextendrequest,
+        jit_activation_extend_request: JitActivationExtendRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -787,8 +787,8 @@ class JITActivationsApi:
 
         Sends a signal to a running JIT Privileged (JIT P) activation workflow to extend the activation period by the requested number of minutes.  This request cannot be applied to a workflow that does not exist or whose execution has already completed. The client receives an error response in those cases.  The response is returned with HTTP 202 Accepted after the signal is sent. 
 
-        :param jitactivationextendrequest: (required)
-        :type jitactivationextendrequest: Jitactivationextendrequest
+        :param jit_activation_extend_request: (required)
+        :type jit_activation_extend_request: JitActivationExtendRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -812,7 +812,7 @@ class JITActivationsApi:
         """ # noqa: E501
 
         _param = self._start_extend_workflow_v1_serialize(
-            jitactivationextendrequest=jitactivationextendrequest,
+            jit_activation_extend_request=jit_activation_extend_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -820,13 +820,13 @@ class JITActivationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Jitactivationextendresponse",
-            '400': "Errorresponsedto",
+            '202': "JitActivationExtendResponse",
+            '400': "ErrorResponseDto",
             '401': "StartActivateWorkflowV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartActivateWorkflowV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -837,7 +837,7 @@ class JITActivationsApi:
 
     def _start_extend_workflow_v1_serialize(
         self,
-        jitactivationextendrequest,
+        jit_activation_extend_request,
         _request_auth,
         _content_type,
         _headers,
@@ -863,8 +863,8 @@ class JITActivationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jitactivationextendrequest is not None:
-            _body_params = jitactivationextendrequest
+        if jit_activation_extend_request is not None:
+            _body_params = jit_activation_extend_request
 
 
         # set the HTTP header `Accept`

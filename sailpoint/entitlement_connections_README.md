@@ -80,20 +80,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/entitlement_connections/docs/ArrayInner.md)
- - [Entitlementconnection](sailpoint/entitlement_connections/docs/Entitlementconnection.md)
- - [Entitlementconnectionbulkupdateitem](sailpoint/entitlement_connections/docs/Entitlementconnectionbulkupdateitem.md)
- - [Entitlementconnectionbulkupdateresultitem](sailpoint/entitlement_connections/docs/Entitlementconnectionbulkupdateresultitem.md)
- - [Entitlementconnectionsearchhit](sailpoint/entitlement_connections/docs/Entitlementconnectionsearchhit.md)
- - [Entitlementconnectionsearchhitentitlement](sailpoint/entitlement_connections/docs/Entitlementconnectionsearchhitentitlement.md)
- - [EntitlementconnectionsearchhitentitlementPrivilegeLevel](sailpoint/entitlement_connections/docs/EntitlementconnectionsearchhitentitlementPrivilegeLevel.md)
- - [Errormessagedto](sailpoint/entitlement_connections/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/entitlement_connections/docs/Errorresponsedto.md)
- - [Jsonpatchoperation](sailpoint/entitlement_connections/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/entitlement_connections/docs/JsonpatchoperationValue.md)
+ - [EntitlementConnection](sailpoint/entitlement_connections/docs/EntitlementConnection.md)
+ - [EntitlementConnectionBulkUpdateItem](sailpoint/entitlement_connections/docs/EntitlementConnectionBulkUpdateItem.md)
+ - [EntitlementConnectionBulkUpdateResultItem](sailpoint/entitlement_connections/docs/EntitlementConnectionBulkUpdateResultItem.md)
+ - [EntitlementConnectionSearchHit](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHit.md)
+ - [EntitlementConnectionSearchHitEntitlement](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHitEntitlement.md)
+ - [EntitlementConnectionSearchHitEntitlementPrivilegeLevel](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md)
+ - [ErrorMessageDto](sailpoint/entitlement_connections/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/entitlement_connections/docs/ErrorResponseDto.md)
+ - [JsonPatchOperation](sailpoint/entitlement_connections/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/entitlement_connections/docs/JsonPatchOperationValue.md)
  - [ListEntitlementConnectionsV1401Response](sailpoint/entitlement_connections/docs/ListEntitlementConnectionsV1401Response.md)
  - [ListEntitlementConnectionsV1412Response](sailpoint/entitlement_connections/docs/ListEntitlementConnectionsV1412Response.md)
  - [ListEntitlementConnectionsV1429Response](sailpoint/entitlement_connections/docs/ListEntitlementConnectionsV1429Response.md)
- - [Localeorigin](sailpoint/entitlement_connections/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/entitlement_connections/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

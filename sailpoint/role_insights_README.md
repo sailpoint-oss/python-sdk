@@ -80,17 +80,17 @@ Class | Method | HTTP request | Description
 
  - [CreateRoleInsightRequestsV1401Response](sailpoint/role_insights/docs/CreateRoleInsightRequestsV1401Response.md)
  - [CreateRoleInsightRequestsV1429Response](sailpoint/role_insights/docs/CreateRoleInsightRequestsV1429Response.md)
- - [Errormessagedto](sailpoint/role_insights/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/role_insights/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/role_insights/docs/Localeorigin.md)
- - [Roleinsight](sailpoint/role_insights/docs/Roleinsight.md)
- - [Roleinsightsentitlement](sailpoint/role_insights/docs/Roleinsightsentitlement.md)
- - [Roleinsightsentitlementchanges](sailpoint/role_insights/docs/Roleinsightsentitlementchanges.md)
- - [Roleinsightsidentities](sailpoint/role_insights/docs/Roleinsightsidentities.md)
- - [Roleinsightsinsight](sailpoint/role_insights/docs/Roleinsightsinsight.md)
- - [Roleinsightsresponse](sailpoint/role_insights/docs/Roleinsightsresponse.md)
- - [Roleinsightsrole](sailpoint/role_insights/docs/Roleinsightsrole.md)
- - [Roleinsightssummary](sailpoint/role_insights/docs/Roleinsightssummary.md)
+ - [ErrorMessageDto](sailpoint/role_insights/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/role_insights/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/role_insights/docs/LocaleOrigin.md)
+ - [RoleInsight](sailpoint/role_insights/docs/RoleInsight.md)
+ - [RoleInsightsEntitlement](sailpoint/role_insights/docs/RoleInsightsEntitlement.md)
+ - [RoleInsightsEntitlementChanges](sailpoint/role_insights/docs/RoleInsightsEntitlementChanges.md)
+ - [RoleInsightsIdentities](sailpoint/role_insights/docs/RoleInsightsIdentities.md)
+ - [RoleInsightsInsight](sailpoint/role_insights/docs/RoleInsightsInsight.md)
+ - [RoleInsightsResponse](sailpoint/role_insights/docs/RoleInsightsResponse.md)
+ - [RoleInsightsRole](sailpoint/role_insights/docs/RoleInsightsRole.md)
+ - [RoleInsightsSummary](sailpoint/role_insights/docs/RoleInsightsSummary.md)
 
 
 <a id="documentation-for-authorization"></a>

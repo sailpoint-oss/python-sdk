@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.iai_peer_group_strategies.models.peergroupmember import Peergroupmember
+from sailpoint.iai_peer_group_strategies.models.peer_group_member import PeerGroupMember
 
 from sailpoint.iai_peer_group_strategies.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_peer_group_strategies.api_response import ApiResponse
@@ -59,7 +59,7 @@ class IAIPeerGroupStrategiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Peergroupmember]:
+    ) -> List[PeerGroupMember]:
         """(Deprecated) Identity outliers list
 
         -- Deprecated : See 'IAI Outliers' This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.
@@ -110,12 +110,12 @@ class IAIPeerGroupStrategiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Peergroupmember]",
-            '400': "Errorresponsedto",
+            '200': "List[PeerGroupMember]",
+            '400': "ErrorResponseDto",
             '401': "GetPeerGroupOutliersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPeerGroupOutliersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -148,7 +148,7 @@ class IAIPeerGroupStrategiesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Peergroupmember]]:
+    ) -> ApiResponse[List[PeerGroupMember]]:
         """(Deprecated) Identity outliers list
 
         -- Deprecated : See 'IAI Outliers' This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.
@@ -199,12 +199,12 @@ class IAIPeerGroupStrategiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Peergroupmember]",
-            '400': "Errorresponsedto",
+            '200': "List[PeerGroupMember]",
+            '400': "ErrorResponseDto",
             '401': "GetPeerGroupOutliersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPeerGroupOutliersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -288,12 +288,12 @@ class IAIPeerGroupStrategiesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Peergroupmember]",
-            '400': "Errorresponsedto",
+            '200': "List[PeerGroupMember]",
+            '400': "ErrorResponseDto",
             '401': "GetPeerGroupOutliersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPeerGroupOutliersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

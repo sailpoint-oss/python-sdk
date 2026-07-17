@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Reassignment', 'Reassignment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_from** | [**Certificationreference**](certificationreference) |  | [optional] 
+**var_from** | [**CertificationReference**](certification-reference) |  | [optional] 
 **comment** | **str** | The comment entered when the Certification was reassigned | [optional] 
 }
 

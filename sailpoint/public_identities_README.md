@@ -75,15 +75,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Dtotype](sailpoint/public_identities/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/public_identities/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/public_identities/docs/Errorresponsedto.md)
+ - [DtoType](sailpoint/public_identities/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/public_identities/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/public_identities/docs/ErrorResponseDto.md)
  - [GetPublicIdentitiesV1401Response](sailpoint/public_identities/docs/GetPublicIdentitiesV1401Response.md)
  - [GetPublicIdentitiesV1429Response](sailpoint/public_identities/docs/GetPublicIdentitiesV1429Response.md)
- - [Identityreference](sailpoint/public_identities/docs/Identityreference.md)
- - [Localeorigin](sailpoint/public_identities/docs/Localeorigin.md)
- - [Publicidentity](sailpoint/public_identities/docs/Publicidentity.md)
- - [PublicidentityAttributesInner](sailpoint/public_identities/docs/PublicidentityAttributesInner.md)
+ - [IdentityReference](sailpoint/public_identities/docs/IdentityReference.md)
+ - [LocaleOrigin](sailpoint/public_identities/docs/LocaleOrigin.md)
+ - [PublicIdentity](sailpoint/public_identities/docs/PublicIdentity.md)
+ - [PublicIdentityAttributesInner](sailpoint/public_identities/docs/PublicIdentityAttributesInner.md)
 
 
 <a id="documentation-for-authorization"></a>

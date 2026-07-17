@@ -47,12 +47,12 @@ configuration = sailpoint.iai_access_request_recommendations.Configuration(
 with sailpoint.iai_access_request_recommendations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.iai_access_request_recommendations.IAIAccessRequestRecommendationsApi(api_client)
-    accessrequestrecommendationactionitemdto = sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto() # Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
+    access_request_recommendation_action_item_dto = sailpoint.iai_access_request_recommendations.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Ignore access request recommendation
-        api_response = api_instance.add_access_request_recommendations_ignored_item_v1(accessrequestrecommendationactionitemdto, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.add_access_request_recommendations_ignored_item_v1(access_request_recommendation_action_item_dto, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_ignored_item_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -80,20 +80,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessrecommendationmessage](sailpoint/iai_access_request_recommendations/docs/Accessrecommendationmessage.md)
- - [Accessrequestrecommendationactionitemdto](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationactionitemdto.md)
- - [Accessrequestrecommendationactionitemresponsedto](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationactionitemresponsedto.md)
- - [Accessrequestrecommendationconfigdto](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationconfigdto.md)
- - [Accessrequestrecommendationitem](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationitem.md)
- - [Accessrequestrecommendationitemdetail](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationitemdetail.md)
- - [AccessrequestrecommendationitemdetailAccess](sailpoint/iai_access_request_recommendations/docs/AccessrequestrecommendationitemdetailAccess.md)
- - [Accessrequestrecommendationitemtype](sailpoint/iai_access_request_recommendations/docs/Accessrequestrecommendationitemtype.md)
- - [Errormessagedto](sailpoint/iai_access_request_recommendations/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/iai_access_request_recommendations/docs/Errorresponsedto.md)
+ - [AccessRecommendationMessage](sailpoint/iai_access_request_recommendations/docs/AccessRecommendationMessage.md)
+ - [AccessRequestRecommendationActionItemDto](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationActionItemDto.md)
+ - [AccessRequestRecommendationActionItemResponseDto](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationActionItemResponseDto.md)
+ - [AccessRequestRecommendationConfigDto](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationConfigDto.md)
+ - [AccessRequestRecommendationItem](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationItem.md)
+ - [AccessRequestRecommendationItemDetail](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationItemDetail.md)
+ - [AccessRequestRecommendationItemDetailAccess](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationItemDetailAccess.md)
+ - [AccessRequestRecommendationItemType](sailpoint/iai_access_request_recommendations/docs/AccessRequestRecommendationItemType.md)
+ - [ErrorMessageDto](sailpoint/iai_access_request_recommendations/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/iai_access_request_recommendations/docs/ErrorResponseDto.md)
  - [GetAccessRequestRecommendationsV1401Response](sailpoint/iai_access_request_recommendations/docs/GetAccessRequestRecommendationsV1401Response.md)
  - [GetAccessRequestRecommendationsV1429Response](sailpoint/iai_access_request_recommendations/docs/GetAccessRequestRecommendationsV1429Response.md)
- - [Localeorigin](sailpoint/iai_access_request_recommendations/docs/Localeorigin.md)
- - [Translationmessage](sailpoint/iai_access_request_recommendations/docs/Translationmessage.md)
+ - [LocaleOrigin](sailpoint/iai_access_request_recommendations/docs/LocaleOrigin.md)
+ - [TranslationMessage](sailpoint/iai_access_request_recommendations/docs/TranslationMessage.md)
 
 
 <a id="documentation-for-authorization"></a>

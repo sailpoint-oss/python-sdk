@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.auth_profile.models.authprofile import Authprofile
-from sailpoint.auth_profile.models.authprofilesummary import Authprofilesummary
-from sailpoint.auth_profile.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.auth_profile.models.auth_profile import AuthProfile
+from sailpoint.auth_profile.models.auth_profile_summary import AuthProfileSummary
+from sailpoint.auth_profile.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.auth_profile.api_client import ApiClient, RequestSerialized
 from sailpoint.auth_profile.api_response import ApiResponse
@@ -57,7 +57,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Authprofilesummary]:
+    ) -> List[AuthProfileSummary]:
         """Get list of auth profiles
 
         This API returns a list of auth profiles.
@@ -95,12 +95,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authprofilesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthProfileSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Authprofilesummary]]:
+    ) -> ApiResponse[List[AuthProfileSummary]]:
         """Get list of auth profiles
 
         This API returns a list of auth profiles.
@@ -167,12 +167,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authprofilesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthProfileSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,12 +239,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authprofilesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthProfileSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -333,7 +333,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Authprofile:
+    ) -> AuthProfile:
         """Get auth profile
 
         This API returns auth profile information.
@@ -374,13 +374,13 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -410,7 +410,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Authprofile]:
+    ) -> ApiResponse[AuthProfile]:
         """Get auth profile
 
         This API returns auth profile information.
@@ -451,13 +451,13 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -528,13 +528,13 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -613,7 +613,7 @@ class AuthProfileApi:
     def patch_profile_config_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -627,15 +627,15 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Authprofile:
+    ) -> AuthProfile:
         """Patch a specified auth profile
 
         This API updates an existing Auth Profile. The following fields are patchable: **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -662,7 +662,7 @@ class AuthProfileApi:
 
         _param = self._patch_profile_config_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -671,12 +671,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -693,7 +693,7 @@ class AuthProfileApi:
     def patch_profile_config_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -707,15 +707,15 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Authprofile]:
+    ) -> ApiResponse[AuthProfile]:
         """Patch a specified auth profile
 
         This API updates an existing Auth Profile. The following fields are patchable: **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -742,7 +742,7 @@ class AuthProfileApi:
 
         _param = self._patch_profile_config_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -751,12 +751,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -773,7 +773,7 @@ class AuthProfileApi:
     def patch_profile_config_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -794,8 +794,8 @@ class AuthProfileApi:
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -822,7 +822,7 @@ class AuthProfileApi:
 
         _param = self._patch_profile_config_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -831,12 +831,12 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authprofile",
-            '400': "Errorresponsedto",
+            '200': "AuthProfile",
+            '400': "ErrorResponseDto",
             '401': "GetProfileConfigListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetProfileConfigListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -848,7 +848,7 @@ class AuthProfileApi:
     def _patch_profile_config_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -859,7 +859,7 @@ class AuthProfileApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -880,8 +880,8 @@ class AuthProfileApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

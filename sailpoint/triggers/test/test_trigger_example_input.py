@@ -37,13 +37,13 @@ class TestTriggerExampleInput(unittest.TestCase):
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.triggers.models.accessitemrequestedfordto.accessitemrequestedfordto(
+                    sailpoint.triggers.models.access_item_requested_for_dto.AccessItemRequestedForDto(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
                     ],
                 requested_items = [
-                    sailpoint.triggers.models.accessrequestpreapproval_requested_items_inner.accessrequestpreapproval_requestedItems_inner(
+                    sailpoint.triggers.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
                         name = 'Engineering Access', 
                         description = 'Access to engineering database', 
@@ -51,12 +51,12 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = 'Add', 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = sailpoint.triggers.models.accessitemrequesterdto.accessitemrequesterdto(
+                requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 requested_items_status = [
-                    sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner.accessrequestpostapproval_requestedItemsStatus_inner(
+                    sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
                         name = 'Engineering Access', 
                         description = 'Access to engineering database', 
@@ -65,22 +65,22 @@ class TestTriggerExampleInput(unittest.TestCase):
                         comment = 'William needs this access to do his job.', 
                         client_metadata = {"applicationName":"My application"}, 
                         approval_info = [
-                            sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner_approval_info_inner.accessrequestpostapproval_requestedItemsStatus_inner_approvalInfo_inner(
+                            sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                                 approval_comment = 'This access looks good.  Approved.', 
                                 approval_decision = 'APPROVED', 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner_approval_info_inner_approver.accessrequestpostapproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
+                                approver = sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
                                     type = 'IDENTITY', ), )
                             ], )
                     ],
-                source = sailpoint.triggers.models.accountsourcereference.accountsourcereference(
+                source = sailpoint.triggers.models.account_source_reference.AccountSourceReference(
                     id = '2c918082814e693601816e09471b29b6', 
                     name = 'Active Directory', 
                     alias = 'AD', 
-                    owner = sailpoint.triggers.models.accountsourcereference_owner.accountsourcereference_owner(
+                    owner = sailpoint.triggers.models.account_source_reference_owner.AccountSourceReference_owner(
                         id = 'owner-123', 
                         name = 'owner-name', ), 
-                    governance_group = sailpoint.triggers.models.accountsourcereference_governance_group.accountsourcereference_governanceGroup(
+                    governance_group = sailpoint.triggers.models.account_source_reference_governance_group.AccountSourceReference_governanceGroup(
                         id = 'group-456', 
                         name = 'governance-group-name', ), ),
                 status = 'Success',
@@ -92,17 +92,17 @@ class TestTriggerExampleInput(unittest.TestCase):
                 warnings = [
                     'Notification Skipped due to invalid email'
                     ],
-                stats = sailpoint.triggers.models.accountscollectedforaggregation_stats.accountscollectedforaggregation_stats(
+                stats = sailpoint.triggers.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
                     added = 4, 
                     removed = 3, ),
-                identity = sailpoint.triggers.models.identitydeleted_identity.identitydeleted_identity(
+                identity = sailpoint.triggers.models.identity_deleted_identity.IdentityDeleted_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                account = sailpoint.triggers.models.accountv2.accountv2(
+                account = sailpoint.triggers.models.account_v2.AccountV2(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     name = 'john.doe', 
                     native_identity = 'CN=John Doe,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
@@ -112,38 +112,38 @@ class TestTriggerExampleInput(unittest.TestCase):
                     origin = 'Active Directory', 
                     attributes = {"firstname":"John","lastname":"Doe"}, ),
                 changes = [
-                    sailpoint.triggers.models.identityattributeschanged_changes_inner.identityattributeschanged_changes_inner(
+                    sailpoint.triggers.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
                         old_value = sales, 
                         new_value = marketing, )
                     ],
                 attributes = {firstname=John, lastname=Doe, email=john.doe@gmail.com, department=Sales, displayName=John Doe, created=2020-04-27T16:48:33.597Z, employeeNumber=E009, uid=E009, inactive=true, phone=null, identificationNumber=E009},
                 entitlement_count = 0,
-                event = sailpoint.triggers.models.accountupdated_event.accountupdated_event(
+                event = sailpoint.triggers.models.account_updated_event.AccountUpdated_event(
                     type = 'ACCOUNT_UPDATED_V2', 
                     cause = 'AGGREGATION', ),
                 account_change_types = [
                     'ATTRIBUTES_CHANGED'
                     ],
                 single_value_attribute_changes = [
-                    sailpoint.triggers.models.machineidentityupdated_single_value_attribute_changes_inner.machineidentityupdated_singleValueAttributeChanges_inner(
+                    sailpoint.triggers.models.machine_identity_updated_single_value_attribute_changes_inner.MachineIdentityUpdated_singleValueAttributeChanges_inner(
                         name = 'displayName', 
                         old_value = John Doe, 
                         new_value = John A. Doe, )
                     ],
                 multi_value_attribute_changes = [
-                    sailpoint.triggers.models.accountupdated_multi_value_attribute_changes_inner.accountupdated_multiValueAttributeChanges_inner(
+                    sailpoint.triggers.models.account_updated_multi_value_attribute_changes_inner.AccountUpdated_multiValueAttributeChanges_inner(
                         name = 'memberOf', 
                         added_values = ["CN=Sales,OU=Groups,DC=acme,DC=com","CN=AllEmployees,OU=Groups,DC=acme,DC=com"], 
                         removed_values = ["CN=AllEmployees,OU=Groups,DC=acme,DC=com","CN=Contractors,OU=Groups,DC=acme,DC=com"], )
                     ],
                 entitlement_changes = [
-                    sailpoint.triggers.models.accountupdated_entitlement_changes_inner.accountupdated_entitlementChanges_inner(
+                    sailpoint.triggers.models.account_updated_entitlement_changes_inner.AccountUpdated_entitlementChanges_inner(
                         attribute_name = 'roles', 
                         added = [{"id":"2c9180835d2e5168015d32f890ca1581","name":"Admin","owner":{"id":"2c9180835d2e5168015d32f890ca1581","name":"Owner Name","type":"Primary"},"value":"Admin"},{"id":"2c9180835d2e5168015d32f890ca1582","name":"User","owner":{"id":"2c9180835d2e5168015d32f890ca1582","name":"Owner Name 2","type":"Secondary"},"value":"User"}], 
                         removed = [{"id":"2c9180835d2e5168015d32f890ca1583","name":"Group","owner":{"id":"2c9180835d2e5168015d32f890ca1583","name":"Owner Name 3","type":"Primary"},"value":"Group"}], )
                     ],
-                campaign = sailpoint.triggers.models.campaigngenerated_campaign.campaigngenerated_campaign(
+                campaign = sailpoint.triggers.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
                     description = 'Audit access for all employees.', 
@@ -151,18 +151,18 @@ class TestTriggerExampleInput(unittest.TestCase):
                     modified = '2021-02-17T03:04:45.815Z', 
                     deadline = '2021-02-18T03:04:45.815Z', 
                     type = 'MANAGER', 
-                    campaign_owner = sailpoint.triggers.models.campaigngenerated_campaign_campaign_owner.campaigngenerated_campaign_campaignOwner(
+                    campaign_owner = sailpoint.triggers.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
                         display_name = 'John Snow', 
                         email = 'john.snow@example.com', ), 
                     status = 'STAGED', ),
-                certification = sailpoint.triggers.models.certificationsignedoff_certification.certificationsignedoff_certification(
+                certification = sailpoint.triggers.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
                     modified = '2020-02-16T03:06:45.815Z', ),
                 event_type = 'MACHINE_IDENTITY_DELETED',
-                machine_identity = sailpoint.triggers.models.machineidentitydeleted_machine_identity.machineidentitydeleted_machineIdentity(
+                machine_identity = sailpoint.triggers.models.machine_identity_deleted_machine_identity.MachineIdentityDeleted_machineIdentity(
                     id = '8cd6c945-0057-4a6e-ad65-9cbf3b3c71b6', 
                     name = 'TestName', 
                     created = '2025-08-08T12:42:21.491666Z', 
@@ -186,7 +186,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         ], 
                     exists_on_source = 'NOT_APPLICABLE', ),
                 machine_identity_change_types = [ATTRIBUTES_CHANGED, USER_ENTITLEMENTS_ADDED, USER_ENTITLEMENTS_REMOVED, OWNERS_ADDED, OWNERS_REMOVED],
-                user_entitlement_changes = sailpoint.triggers.models.machineidentityupdated_user_entitlement_changes.machineidentityupdated_userEntitlementChanges(
+                user_entitlement_changes = sailpoint.triggers.models.machine_identity_updated_user_entitlement_changes.MachineIdentityUpdated_userEntitlementChanges(
                     attribute_name = 'userEntitlements', 
                     added = [
                         {"entitlementId":"2509f650c20a3ab5956be70f6f136fbc","displayName":"CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local","source":{"type":"SOURCE","id":"7443d0ffb1304bbcbdf4c07b5c09d4f2","name":"ODS-AD-Source"}}
@@ -194,7 +194,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                     removed = [
                         {"entitlementId":"2509f650c20a3ab5956be70f6f136fbc","displayName":"CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local","source":{"type":"SOURCE","id":"7443d0ffb1304bbcbdf4c07b5c09d4f2","name":"ODS-AD-Source"}}
                         ], ),
-                owner_changes = sailpoint.triggers.models.machineidentityupdated_owner_changes.machineidentityupdated_ownerChanges(
+                owner_changes = sailpoint.triggers.models.machine_identity_updated_owner_changes.MachineIdentityUpdated_ownerChanges(
                     attribute_name = 'owners', 
                     added = [
                         {"type":"IDENTITY","id":"84d8c1b819144608b8b8bc3b84ddbb7b","name":"Jerrie admin3cf084","isPrimary":true}
@@ -205,17 +205,17 @@ class TestTriggerExampleInput(unittest.TestCase):
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 action = 'IdentityRefresh',
-                recipient = sailpoint.triggers.models.provisioningcompleted_recipient.provisioningcompleted_recipient(
+                recipient = sailpoint.triggers.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                requester = sailpoint.triggers.models.provisioningcompleted_requester.provisioningcompleted_requester(
+                requester = sailpoint.triggers.models.provisioning_completed_requester.ProvisioningCompleted_requester(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 account_requests = [
-                    sailpoint.triggers.models.provisioningcompleted_account_requests_inner.provisioningcompleted_accountRequests_inner(
-                        source = sailpoint.triggers.models.provisioningcompleted_account_requests_inner_source.provisioningcompleted_accountRequests_inner_source(
+                    sailpoint.triggers.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
+                        source = sailpoint.triggers.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
@@ -225,7 +225,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         provisioning_target = 'Corp AD', 
                         ticket_id = '72619262', 
                         attribute_requests = [
-                            sailpoint.triggers.models.provisioningcompleted_account_requests_inner_attribute_requests_inner.provisioningcompleted_accountRequests_inner_attributeRequests_inner(
+                            sailpoint.triggers.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
                                 attribute_value = 'CN=jedi,DC=starwars,DC=com', 
                                 operation = 'Add', )
@@ -236,20 +236,20 @@ class TestTriggerExampleInput(unittest.TestCase):
                 owner_name = 'Cloud Support',
                 query = 'modified:[now-7y/d TO now]',
                 search_name = 'Modified Activity',
-                search_results = sailpoint.triggers.models.savedsearchcomplete_search_results.savedsearchcomplete_searchResults(
-                    account = sailpoint.triggers.models.savedsearchcomplete_search_results_account.savedsearchcomplete_searchResults_Account(
+                search_results = sailpoint.triggers.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
+                    account = sailpoint.triggers.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
                         count = '3', 
                         noun = 'accounts', 
                         preview = [
                             []
                             ], ), 
-                    entitlement = sailpoint.triggers.models.savedsearchcomplete_search_results_entitlement.savedsearchcomplete_searchResults_Entitlement(
+                    entitlement = sailpoint.triggers.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
                         count = '2', 
                         noun = 'entitlements', 
                         preview = [
                             []
                             ], ), 
-                    identity = sailpoint.triggers.models.savedsearchcomplete_search_results_identity.savedsearchcomplete_searchResults_Identity(
+                    identity = sailpoint.triggers.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
                         count = '2', 
                         noun = 'identities', 
                         preview = [
@@ -267,21 +267,21 @@ class TestTriggerExampleInput(unittest.TestCase):
                 type = 'DIRECT_CONNECT',
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
-                actor = sailpoint.triggers.models.sourceupdated_actor.sourceupdated_actor(
+                actor = sailpoint.triggers.models.source_updated_actor.SourceUpdated_actor(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 deleted = '2021-03-29T22:01:50.474Z',
                 modified = '2021-03-29T22:01:50.474Z',
-                application = sailpoint.triggers.models.vaclusterstatuschangeevent_application.vaclusterstatuschangeevent_application(
+                application = sailpoint.triggers.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
                     id = '2c9180866166b5b0016167c32ef31a66', 
                     name = 'Production VA Cluster', 
                     attributes = { }, ),
-                health_check_result = sailpoint.triggers.models.vaclusterstatuschangeevent_health_check_result.vaclusterstatuschangeevent_healthCheckResult(
+                health_check_result = sailpoint.triggers.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = 'Succeeded', ),
-                previous_health_check_result = sailpoint.triggers.models.vaclusterstatuschangeevent_previous_health_check_result.vaclusterstatuschangeevent_previousHealthCheckResult(
+                previous_health_check_result = sailpoint.triggers.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = 'Failed', )
@@ -290,13 +290,13 @@ class TestTriggerExampleInput(unittest.TestCase):
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.triggers.models.accessitemrequestedfordto.accessitemrequestedfordto(
+                    sailpoint.triggers.models.access_item_requested_for_dto.AccessItemRequestedForDto(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
                     ],
                 requested_items = [
-                    sailpoint.triggers.models.accessrequestpreapproval_requested_items_inner.accessrequestpreapproval_requestedItems_inner(
+                    sailpoint.triggers.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
                         name = 'Engineering Access', 
                         description = 'Access to engineering database', 
@@ -304,12 +304,12 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = 'Add', 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = sailpoint.triggers.models.accessitemrequesterdto.accessitemrequesterdto(
+                requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 requested_items_status = [
-                    sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner.accessrequestpostapproval_requestedItemsStatus_inner(
+                    sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
                         name = 'Engineering Access', 
                         description = 'Access to engineering database', 
@@ -318,22 +318,22 @@ class TestTriggerExampleInput(unittest.TestCase):
                         comment = 'William needs this access to do his job.', 
                         client_metadata = {"applicationName":"My application"}, 
                         approval_info = [
-                            sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner_approval_info_inner.accessrequestpostapproval_requestedItemsStatus_inner_approvalInfo_inner(
+                            sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                                 approval_comment = 'This access looks good.  Approved.', 
                                 approval_decision = 'APPROVED', 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.triggers.models.accessrequestpostapproval_requested_items_status_inner_approval_info_inner_approver.accessrequestpostapproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
+                                approver = sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
                                     type = 'IDENTITY', ), )
                             ], )
                     ],
-                source = sailpoint.triggers.models.accountsourcereference.accountsourcereference(
+                source = sailpoint.triggers.models.account_source_reference.AccountSourceReference(
                     id = '2c918082814e693601816e09471b29b6', 
                     name = 'Active Directory', 
                     alias = 'AD', 
-                    owner = sailpoint.triggers.models.accountsourcereference_owner.accountsourcereference_owner(
+                    owner = sailpoint.triggers.models.account_source_reference_owner.AccountSourceReference_owner(
                         id = 'owner-123', 
                         name = 'owner-name', ), 
-                    governance_group = sailpoint.triggers.models.accountsourcereference_governance_group.accountsourcereference_governanceGroup(
+                    governance_group = sailpoint.triggers.models.account_source_reference_governance_group.AccountSourceReference_governanceGroup(
                         id = 'group-456', 
                         name = 'governance-group-name', ), ),
                 status = 'Success',
@@ -345,17 +345,17 @@ class TestTriggerExampleInput(unittest.TestCase):
                 warnings = [
                     'Notification Skipped due to invalid email'
                     ],
-                stats = sailpoint.triggers.models.accountscollectedforaggregation_stats.accountscollectedforaggregation_stats(
+                stats = sailpoint.triggers.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
                     added = 4, 
                     removed = 3, ),
-                identity = sailpoint.triggers.models.identitydeleted_identity.identitydeleted_identity(
+                identity = sailpoint.triggers.models.identity_deleted_identity.IdentityDeleted_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                account = sailpoint.triggers.models.accountv2.accountv2(
+                account = sailpoint.triggers.models.account_v2.AccountV2(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     name = 'john.doe', 
                     native_identity = 'CN=John Doe,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
@@ -365,37 +365,37 @@ class TestTriggerExampleInput(unittest.TestCase):
                     origin = 'Active Directory', 
                     attributes = {"firstname":"John","lastname":"Doe"}, ),
                 changes = [
-                    sailpoint.triggers.models.identityattributeschanged_changes_inner.identityattributeschanged_changes_inner(
+                    sailpoint.triggers.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
                         old_value = sales, 
                         new_value = marketing, )
                     ],
                 attributes = {firstname=John, lastname=Doe, email=john.doe@gmail.com, department=Sales, displayName=John Doe, created=2020-04-27T16:48:33.597Z, employeeNumber=E009, uid=E009, inactive=true, phone=null, identificationNumber=E009},
-                event = sailpoint.triggers.models.accountupdated_event.accountupdated_event(
+                event = sailpoint.triggers.models.account_updated_event.AccountUpdated_event(
                     type = 'ACCOUNT_UPDATED_V2', 
                     cause = 'AGGREGATION', ),
                 account_change_types = [
                     'ATTRIBUTES_CHANGED'
                     ],
                 single_value_attribute_changes = [
-                    sailpoint.triggers.models.machineidentityupdated_single_value_attribute_changes_inner.machineidentityupdated_singleValueAttributeChanges_inner(
+                    sailpoint.triggers.models.machine_identity_updated_single_value_attribute_changes_inner.MachineIdentityUpdated_singleValueAttributeChanges_inner(
                         name = 'displayName', 
                         old_value = John Doe, 
                         new_value = John A. Doe, )
                     ],
                 multi_value_attribute_changes = [
-                    sailpoint.triggers.models.accountupdated_multi_value_attribute_changes_inner.accountupdated_multiValueAttributeChanges_inner(
+                    sailpoint.triggers.models.account_updated_multi_value_attribute_changes_inner.AccountUpdated_multiValueAttributeChanges_inner(
                         name = 'memberOf', 
                         added_values = ["CN=Sales,OU=Groups,DC=acme,DC=com","CN=AllEmployees,OU=Groups,DC=acme,DC=com"], 
                         removed_values = ["CN=AllEmployees,OU=Groups,DC=acme,DC=com","CN=Contractors,OU=Groups,DC=acme,DC=com"], )
                     ],
                 entitlement_changes = [
-                    sailpoint.triggers.models.accountupdated_entitlement_changes_inner.accountupdated_entitlementChanges_inner(
+                    sailpoint.triggers.models.account_updated_entitlement_changes_inner.AccountUpdated_entitlementChanges_inner(
                         attribute_name = 'roles', 
                         added = [{"id":"2c9180835d2e5168015d32f890ca1581","name":"Admin","owner":{"id":"2c9180835d2e5168015d32f890ca1581","name":"Owner Name","type":"Primary"},"value":"Admin"},{"id":"2c9180835d2e5168015d32f890ca1582","name":"User","owner":{"id":"2c9180835d2e5168015d32f890ca1582","name":"Owner Name 2","type":"Secondary"},"value":"User"}], 
                         removed = [{"id":"2c9180835d2e5168015d32f890ca1583","name":"Group","owner":{"id":"2c9180835d2e5168015d32f890ca1583","name":"Owner Name 3","type":"Primary"},"value":"Group"}], )
                     ],
-                campaign = sailpoint.triggers.models.campaigngenerated_campaign.campaigngenerated_campaign(
+                campaign = sailpoint.triggers.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
                     description = 'Audit access for all employees.', 
@@ -403,18 +403,18 @@ class TestTriggerExampleInput(unittest.TestCase):
                     modified = '2021-02-17T03:04:45.815Z', 
                     deadline = '2021-02-18T03:04:45.815Z', 
                     type = 'MANAGER', 
-                    campaign_owner = sailpoint.triggers.models.campaigngenerated_campaign_campaign_owner.campaigngenerated_campaign_campaignOwner(
+                    campaign_owner = sailpoint.triggers.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
                         display_name = 'John Snow', 
                         email = 'john.snow@example.com', ), 
                     status = 'STAGED', ),
-                certification = sailpoint.triggers.models.certificationsignedoff_certification.certificationsignedoff_certification(
+                certification = sailpoint.triggers.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
                     modified = '2020-02-16T03:06:45.815Z', ),
                 event_type = 'MACHINE_IDENTITY_DELETED',
-                machine_identity = sailpoint.triggers.models.machineidentitydeleted_machine_identity.machineidentitydeleted_machineIdentity(
+                machine_identity = sailpoint.triggers.models.machine_identity_deleted_machine_identity.MachineIdentityDeleted_machineIdentity(
                     id = '8cd6c945-0057-4a6e-ad65-9cbf3b3c71b6', 
                     name = 'TestName', 
                     created = '2025-08-08T12:42:21.491666Z', 
@@ -438,7 +438,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         ], 
                     exists_on_source = 'NOT_APPLICABLE', ),
                 machine_identity_change_types = [ATTRIBUTES_CHANGED, USER_ENTITLEMENTS_ADDED, USER_ENTITLEMENTS_REMOVED, OWNERS_ADDED, OWNERS_REMOVED],
-                user_entitlement_changes = sailpoint.triggers.models.machineidentityupdated_user_entitlement_changes.machineidentityupdated_userEntitlementChanges(
+                user_entitlement_changes = sailpoint.triggers.models.machine_identity_updated_user_entitlement_changes.MachineIdentityUpdated_userEntitlementChanges(
                     attribute_name = 'userEntitlements', 
                     added = [
                         {"entitlementId":"2509f650c20a3ab5956be70f6f136fbc","displayName":"CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local","source":{"type":"SOURCE","id":"7443d0ffb1304bbcbdf4c07b5c09d4f2","name":"ODS-AD-Source"}}
@@ -446,7 +446,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                     removed = [
                         {"entitlementId":"2509f650c20a3ab5956be70f6f136fbc","displayName":"CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local","source":{"type":"SOURCE","id":"7443d0ffb1304bbcbdf4c07b5c09d4f2","name":"ODS-AD-Source"}}
                         ], ),
-                owner_changes = sailpoint.triggers.models.machineidentityupdated_owner_changes.machineidentityupdated_ownerChanges(
+                owner_changes = sailpoint.triggers.models.machine_identity_updated_owner_changes.MachineIdentityUpdated_ownerChanges(
                     attribute_name = 'owners', 
                     added = [
                         {"type":"IDENTITY","id":"84d8c1b819144608b8b8bc3b84ddbb7b","name":"Jerrie admin3cf084","isPrimary":true}
@@ -456,13 +456,13 @@ class TestTriggerExampleInput(unittest.TestCase):
                         ], ),
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
-                recipient = sailpoint.triggers.models.provisioningcompleted_recipient.provisioningcompleted_recipient(
+                recipient = sailpoint.triggers.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
                 account_requests = [
-                    sailpoint.triggers.models.provisioningcompleted_account_requests_inner.provisioningcompleted_accountRequests_inner(
-                        source = sailpoint.triggers.models.provisioningcompleted_account_requests_inner_source.provisioningcompleted_accountRequests_inner_source(
+                    sailpoint.triggers.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
+                        source = sailpoint.triggers.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
@@ -472,7 +472,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         provisioning_target = 'Corp AD', 
                         ticket_id = '72619262', 
                         attribute_requests = [
-                            sailpoint.triggers.models.provisioningcompleted_account_requests_inner_attribute_requests_inner.provisioningcompleted_accountRequests_inner_attributeRequests_inner(
+                            sailpoint.triggers.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
                                 attribute_value = 'CN=jedi,DC=starwars,DC=com', 
                                 operation = 'Add', )
@@ -483,20 +483,20 @@ class TestTriggerExampleInput(unittest.TestCase):
                 owner_name = 'Cloud Support',
                 query = 'modified:[now-7y/d TO now]',
                 search_name = 'Modified Activity',
-                search_results = sailpoint.triggers.models.savedsearchcomplete_search_results.savedsearchcomplete_searchResults(
-                    account = sailpoint.triggers.models.savedsearchcomplete_search_results_account.savedsearchcomplete_searchResults_Account(
+                search_results = sailpoint.triggers.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
+                    account = sailpoint.triggers.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
                         count = '3', 
                         noun = 'accounts', 
                         preview = [
                             []
                             ], ), 
-                    entitlement = sailpoint.triggers.models.savedsearchcomplete_search_results_entitlement.savedsearchcomplete_searchResults_Entitlement(
+                    entitlement = sailpoint.triggers.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
                         count = '2', 
                         noun = 'entitlements', 
                         preview = [
                             []
                             ], ), 
-                    identity = sailpoint.triggers.models.savedsearchcomplete_search_results_identity.savedsearchcomplete_searchResults_Identity(
+                    identity = sailpoint.triggers.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
                         count = '2', 
                         noun = 'identities', 
                         preview = [
@@ -513,21 +513,21 @@ class TestTriggerExampleInput(unittest.TestCase):
                 type = 'DIRECT_CONNECT',
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
-                actor = sailpoint.triggers.models.sourceupdated_actor.sourceupdated_actor(
+                actor = sailpoint.triggers.models.source_updated_actor.SourceUpdated_actor(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 deleted = '2021-03-29T22:01:50.474Z',
                 modified = '2021-03-29T22:01:50.474Z',
-                application = sailpoint.triggers.models.vaclusterstatuschangeevent_application.vaclusterstatuschangeevent_application(
+                application = sailpoint.triggers.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
                     id = '2c9180866166b5b0016167c32ef31a66', 
                     name = 'Production VA Cluster', 
                     attributes = { }, ),
-                health_check_result = sailpoint.triggers.models.vaclusterstatuschangeevent_health_check_result.vaclusterstatuschangeevent_healthCheckResult(
+                health_check_result = sailpoint.triggers.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = 'Succeeded', ),
-                previous_health_check_result = sailpoint.triggers.models.vaclusterstatuschangeevent_previous_health_check_result.vaclusterstatuschangeevent_previousHealthCheckResult(
+                previous_health_check_result = sailpoint.triggers.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = 'Failed', ),

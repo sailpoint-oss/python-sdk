@@ -20,9 +20,9 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.triggers.models.eventbridgeconfig import Eventbridgeconfig
-from sailpoint.triggers.models.httpconfig import Httpconfig
-from sailpoint.triggers.models.subscriptiontype import Subscriptiontype
+from sailpoint.triggers.models.event_bridge_config import EventBridgeConfig
+from sailpoint.triggers.models.http_config import HttpConfig
+from sailpoint.triggers.models.subscription_type import SubscriptionType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,10 +35,10 @@ class Subscription(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Subscription description.")
     trigger_id: StrictStr = Field(description="ID of trigger subscribed to.", alias="triggerId")
     trigger_name: StrictStr = Field(description="Trigger name of trigger subscribed to.", alias="triggerName")
-    type: Subscriptiontype
+    type: SubscriptionType
     response_deadline: Optional[StrictStr] = Field(default='PT1H', description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.", alias="responseDeadline")
-    http_config: Optional[Httpconfig] = Field(default=None, alias="httpConfig")
-    event_bridge_config: Optional[Eventbridgeconfig] = Field(default=None, alias="eventBridgeConfig")
+    http_config: Optional[HttpConfig] = Field(default=None, alias="httpConfig")
+    event_bridge_config: Optional[EventBridgeConfig] = Field(default=None, alias="eventBridgeConfig")
     enabled: StrictBool = Field(description="Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.")
     filter: Optional[StrictStr] = Field(default=None, description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "triggerId", "triggerName", "type", "responseDeadline", "httpConfig", "eventBridgeConfig", "enabled", "filter"]
@@ -107,8 +107,8 @@ class Subscription(BaseModel):
             "triggerName": obj.get("triggerName"),
             "type": obj.get("type"),
             "responseDeadline": obj.get("responseDeadline") if obj.get("responseDeadline") is not None else 'PT1H',
-            "httpConfig": Httpconfig.from_dict(obj["httpConfig"]) if obj.get("httpConfig") is not None else None,
-            "eventBridgeConfig": Eventbridgeconfig.from_dict(obj["eventBridgeConfig"]) if obj.get("eventBridgeConfig") is not None else None,
+            "httpConfig": HttpConfig.from_dict(obj["httpConfig"]) if obj.get("httpConfig") is not None else None,
+            "eventBridgeConfig": EventBridgeConfig.from_dict(obj["eventBridgeConfig"]) if obj.get("eventBridgeConfig") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
             "filter": obj.get("filter")
         })

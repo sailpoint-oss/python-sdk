@@ -47,11 +47,11 @@ configuration = sailpoint.managed_clusters.Configuration(
 with sailpoint.managed_clusters.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.managed_clusters.ManagedClustersApi(api_client)
-    managedclusterrequest = sailpoint.managed_clusters.Managedclusterrequest() # Managedclusterrequest | 
+    managed_cluster_request = sailpoint.managed_clusters.ManagedClusterRequest() # ManagedClusterRequest | 
 
     try:
         # Create create managed cluster
-        api_response = api_instance.create_managed_cluster_v1(managedclusterrequest)
+        api_response = api_instance.create_managed_cluster_v1(managed_cluster_request)
         print("The response of ManagedClustersApi->create_managed_cluster_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -78,36 +78,36 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/managed_clusters/docs/ArrayInner.md)
- - [Clientlogconfiguration](sailpoint/managed_clusters/docs/Clientlogconfiguration.md)
- - [Clientlogconfigurationdurationminutes](sailpoint/managed_clusters/docs/Clientlogconfigurationdurationminutes.md)
- - [Clientlogconfigurationexpiration](sailpoint/managed_clusters/docs/Clientlogconfigurationexpiration.md)
- - [Clustermanualupgrade](sailpoint/managed_clusters/docs/Clustermanualupgrade.md)
- - [ClustermanualupgradeJobsInner](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInner.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfiguration](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfiguration.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfigurationCcg](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfigurationCcg.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfigurationCharon](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfigurationCharon.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfigurationOtelAgent](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfigurationRelay](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfigurationRelay.md)
- - [ClustermanualupgradeJobsInnerManagedProcessConfigurationToolbox](sailpoint/managed_clusters/docs/ClustermanualupgradeJobsInnerManagedProcessConfigurationToolbox.md)
- - [Errormessagedto](sailpoint/managed_clusters/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/managed_clusters/docs/Errorresponsedto.md)
+ - [ClientLogConfiguration](sailpoint/managed_clusters/docs/ClientLogConfiguration.md)
+ - [ClientLogConfigurationDurationMinutes](sailpoint/managed_clusters/docs/ClientLogConfigurationDurationMinutes.md)
+ - [ClientLogConfigurationExpiration](sailpoint/managed_clusters/docs/ClientLogConfigurationExpiration.md)
+ - [ClusterManualUpgrade](sailpoint/managed_clusters/docs/ClusterManualUpgrade.md)
+ - [ClusterManualUpgradeJobsInner](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInner.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfiguration](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfiguration.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox](sailpoint/managed_clusters/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox.md)
+ - [ErrorMessageDto](sailpoint/managed_clusters/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/managed_clusters/docs/ErrorResponseDto.md)
  - [GetManagedClustersV1401Response](sailpoint/managed_clusters/docs/GetManagedClustersV1401Response.md)
  - [GetManagedClustersV1429Response](sailpoint/managed_clusters/docs/GetManagedClustersV1429Response.md)
- - [Jsonpatchoperation](sailpoint/managed_clusters/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/managed_clusters/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/managed_clusters/docs/Localeorigin.md)
- - [Managedclienttype](sailpoint/managed_clusters/docs/Managedclienttype.md)
- - [Managedcluster](sailpoint/managed_clusters/docs/Managedcluster.md)
- - [ManagedclusterUpdatePreferences](sailpoint/managed_clusters/docs/ManagedclusterUpdatePreferences.md)
- - [Managedclusterattributes](sailpoint/managed_clusters/docs/Managedclusterattributes.md)
- - [Managedclusterencryptionconfig](sailpoint/managed_clusters/docs/Managedclusterencryptionconfig.md)
- - [Managedclusterkeypair](sailpoint/managed_clusters/docs/Managedclusterkeypair.md)
- - [Managedclusterqueue](sailpoint/managed_clusters/docs/Managedclusterqueue.md)
- - [Managedclusterredis](sailpoint/managed_clusters/docs/Managedclusterredis.md)
- - [Managedclusterrequest](sailpoint/managed_clusters/docs/Managedclusterrequest.md)
- - [Managedclustertypes](sailpoint/managed_clusters/docs/Managedclustertypes.md)
+ - [JsonPatchOperation](sailpoint/managed_clusters/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/managed_clusters/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/managed_clusters/docs/LocaleOrigin.md)
+ - [ManagedClientType](sailpoint/managed_clusters/docs/ManagedClientType.md)
+ - [ManagedCluster](sailpoint/managed_clusters/docs/ManagedCluster.md)
+ - [ManagedClusterAttributes](sailpoint/managed_clusters/docs/ManagedClusterAttributes.md)
+ - [ManagedClusterEncryptionConfig](sailpoint/managed_clusters/docs/ManagedClusterEncryptionConfig.md)
+ - [ManagedClusterKeyPair](sailpoint/managed_clusters/docs/ManagedClusterKeyPair.md)
+ - [ManagedClusterQueue](sailpoint/managed_clusters/docs/ManagedClusterQueue.md)
+ - [ManagedClusterRedis](sailpoint/managed_clusters/docs/ManagedClusterRedis.md)
+ - [ManagedClusterRequest](sailpoint/managed_clusters/docs/ManagedClusterRequest.md)
+ - [ManagedClusterTypes](sailpoint/managed_clusters/docs/ManagedClusterTypes.md)
+ - [ManagedClusterUpdatePreferences](sailpoint/managed_clusters/docs/ManagedClusterUpdatePreferences.md)
  - [PutClientLogConfigurationV1Request](sailpoint/managed_clusters/docs/PutClientLogConfigurationV1Request.md)
- - [Standardlevel](sailpoint/managed_clusters/docs/Standardlevel.md)
+ - [StandardLevel](sailpoint/managed_clusters/docs/StandardLevel.md)
 
 
 <a id="documentation-for-authorization"></a>

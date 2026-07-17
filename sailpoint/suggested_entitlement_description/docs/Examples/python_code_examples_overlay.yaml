@@ -6,20 +6,30 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationrequest import Bulkapproveentitlementrecommendationrequest
-        from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationresult import Bulkapproveentitlementrecommendationresult
+        from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_request import BulkApproveEntitlementRecommendationRequest
+        from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_result import BulkApproveEntitlementRecommendationResult
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          bulkapproveentitlementrecommendationrequest = '''sailpoint.suggested_entitlement_description.Bulkapproveentitlementrecommendationrequest()''' # Bulkapproveentitlementrecommendationrequest | The list of recommendation items to approve.
+          bulk_approve_entitlement_recommendation_request = '''{
+          "items" : [ {
+            "id" : "79db50d4-723c-4aa0-a824-83c2205d82d1",
+            "recordType" : "SED",
+            "description" : "Provides access and permissions related to the Delinea Secret Server Cloud system."
+          }, {
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "recordType" : "privilege",
+            "privilegeLevel" : "high"
+          } ]
+        }''' # BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
           try:
               # Bulk approve entitlement recommendations
-              new_bulkapproveentitlementrecommendationrequest = Bulkapproveentitlementrecommendationrequest.from_json(bulkapproveentitlementrecommendationrequest)
-              results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(bulkapproveentitlementrecommendationrequest=new_bulkapproveentitlementrecommendationrequest)
+              new_bulk_approve_entitlement_recommendation_request = BulkApproveEntitlementRecommendationRequest.from_json(bulk_approve_entitlement_recommendation_request)
+              results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(bulk_approve_entitlement_recommendation_request=new_bulk_approve_entitlement_recommendation_request)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulkapproveentitlementrecommendationrequest)
+              # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulk_approve_entitlement_recommendation_request)
               print("The response of SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -33,20 +43,24 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.autowritesetting import Autowritesetting
-        from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+        from sailpoint.suggested_entitlement_description.models.auto_write_setting import AutoWriteSetting
+        from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          autowritesetting = '''sailpoint.suggested_entitlement_description.Autowritesetting()''' # Autowritesetting | Auto-write settings to create
+          auto_write_setting = '''{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }''' # AutoWriteSetting | Auto-write settings to create
           try:
               # Create auto-write settings for SED
-              new_autowritesetting = Autowritesetting.from_json(autowritesetting)
-              results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(autowritesetting=new_autowritesetting)
+              new_auto_write_setting = AutoWriteSetting.from_json(auto_write_setting)
+              results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(auto_write_setting=new_auto_write_setting)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(new_autowritesetting)
+              # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings_v1(new_auto_write_setting)
               print("The response of SuggestedEntitlementDescriptionApi->create_auto_write_settings_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -59,7 +73,7 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+        from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -83,7 +97,7 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.sedbatchstats import Sedbatchstats
+        from sailpoint.suggested_entitlement_description.models.sed_batch_stats import SedBatchStats
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -108,7 +122,7 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.sedbatchrecord import Sedbatchrecord
+        from sailpoint.suggested_entitlement_description.models.sed_batch_record import SedBatchRecord
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -138,7 +152,7 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.entitlementrecommendationrecord import Entitlementrecommendationrecord
+        from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_record import EntitlementRecommendationRecord
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -165,7 +179,7 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.privilegedrecommendationgroup import Privilegedrecommendationgroup
+        from sailpoint.suggested_entitlement_description.models.privileged_recommendation_group import PrivilegedRecommendationGroup
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -225,21 +239,21 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.entitlementrecommendationrecord import Entitlementrecommendationrecord
-        from sailpoint.suggested_entitlement_description.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_record import EntitlementRecommendationRecord
+        from sailpoint.suggested_entitlement_description.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = '79db50d4-723c-4aa0-a824-83c2205d82d1' # str | The unique identifier of the entitlement recommendation to update. # str | The unique identifier of the entitlement recommendation to update.
-          jsonpatchoperation = '''[sailpoint.suggested_entitlement_description.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The patch operations to apply to the entitlement recommendation record.
+          json_patch_operation = '''[sailpoint.suggested_entitlement_description.JsonPatchOperation()]''' # List[JsonPatchOperation] | The patch operations to apply to the entitlement recommendation record.
           try:
               # Update an entitlement recommendation
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id=id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_jsonpatchoperation)
+              # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_json_patch_operation)
               print("The response of SuggestedEntitlementDescriptionApi->patch_entitlement_recommendation_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -253,20 +267,20 @@
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
         from sailpoint.suggested_entitlement_description.models.sed import Sed
-        from sailpoint.suggested_entitlement_description.models.sedpatch import Sedpatch
+        from sailpoint.suggested_entitlement_description.models.sed_patch import SedPatch
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'ebab396f-0af1-4050-89b7-dafc63ec70e7' # str | id is sed id # str | id is sed id
-          sedpatch = '''[sailpoint.suggested_entitlement_description.Sedpatch()]''' # List[Sedpatch] | Sed Patch Request
+          sed_patch = '''[sailpoint.suggested_entitlement_description.SedPatch()]''' # List[SedPatch] | Sed Patch Request
           try:
               # Patch suggested entitlement description
-              new_sedpatch = Sedpatch.from_json(sedpatch)
-              results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id=id, sedpatch=new_sedpatch)
+              new_sed_patch = SedPatch.from_json(sed_patch)
+              results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id=id, sed_patch=new_sed_patch)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id, new_sedpatch)
+              # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed_v1(id, new_sed_patch)
               print("The response of SuggestedEntitlementDescriptionApi->patch_sed_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -279,20 +293,26 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignrequest import Entitlementrecommendationassignrequest
-        from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignresult import Entitlementrecommendationassignresult
+        from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_request import EntitlementRecommendationAssignRequest
+        from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_result import EntitlementRecommendationAssignResult
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          entitlementrecommendationassignrequest = '''sailpoint.suggested_entitlement_description.Entitlementrecommendationassignrequest()''' # Entitlementrecommendationassignrequest | The recommendation IDs and the target assignee.
+          entitlement_recommendation_assign_request = '''{
+          "assignee" : {
+            "type" : "IDENTITY",
+            "value" : "2c91808a7f3b2e8a017f3c3e5f6d0099"
+          },
+          "items" : [ "79db50d4-723c-4aa0-a824-83c2205d82d1", "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
+        }''' # EntitlementRecommendationAssignRequest | The recommendation IDs and the target assignee.
           try:
               # Assign entitlement recommendations for review
-              new_entitlementrecommendationassignrequest = Entitlementrecommendationassignrequest.from_json(entitlementrecommendationassignrequest)
-              results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(entitlementrecommendationassignrequest=new_entitlementrecommendationassignrequest)
+              new_entitlement_recommendation_assign_request = EntitlementRecommendationAssignRequest.from_json(entitlement_recommendation_assign_request)
+              results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(entitlement_recommendation_assign_request=new_entitlement_recommendation_assign_request)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlementrecommendationassignrequest)
+              # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlement_recommendation_assign_request)
               print("The response of SuggestedEntitlementDescriptionApi->submit_entitlement_recommendations_assignment_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -305,20 +325,20 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.sedapproval import Sedapproval
-        from sailpoint.suggested_entitlement_description.models.sedapprovalstatus import Sedapprovalstatus
+        from sailpoint.suggested_entitlement_description.models.sed_approval import SedApproval
+        from sailpoint.suggested_entitlement_description.models.sed_approval_status import SedApprovalStatus
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          sedapproval = '''[sailpoint.suggested_entitlement_description.Sedapproval()]''' # List[Sedapproval] | Sed Approval
+          sed_approval = '''[sailpoint.suggested_entitlement_description.SedApproval()]''' # List[SedApproval] | Sed Approval
           try:
               # Submit bulk approval request
-              new_sedapproval = Sedapproval.from_json(sedapproval)
-              results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(sedapproval=new_sedapproval)
+              new_sed_approval = SedApproval.from_json(sed_approval)
+              results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(sed_approval=new_sed_approval)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(new_sedapproval)
+              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_approval_v1(new_sed_approval)
               print("The response of SuggestedEntitlementDescriptionApi->submit_sed_approval_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -332,20 +352,26 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.sedassignment import Sedassignment
-        from sailpoint.suggested_entitlement_description.models.sedassignmentresponse import Sedassignmentresponse
+        from sailpoint.suggested_entitlement_description.models.sed_assignment import SedAssignment
+        from sailpoint.suggested_entitlement_description.models.sed_assignment_response import SedAssignmentResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          sedassignment = '''sailpoint.suggested_entitlement_description.Sedassignment()''' # Sedassignment | Sed Assignment Request
+          sed_assignment = '''{
+          "assignee" : {
+            "type" : "SOURCE_OWNER",
+            "value" : "016629d1-1d25-463f-97f3-c6686846650"
+          },
+          "items" : [ "016629d1-1d25-463f-97f3-0c6686846650", "016629d1-1d25-463f-97f3-0c6686846650" ]
+        }''' # SedAssignment | Sed Assignment Request
           try:
               # Submit sed assignment request
-              new_sedassignment = Sedassignment.from_json(sedassignment)
-              results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(sedassignment=new_sedassignment)
+              new_sed_assignment = SedAssignment.from_json(sed_assignment)
+              results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(sed_assignment=new_sed_assignment)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(new_sedassignment)
+              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_assignment_v1(new_sed_assignment)
               print("The response of SuggestedEntitlementDescriptionApi->submit_sed_assignment_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -358,20 +384,46 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.sedbatchrequest import Sedbatchrequest
-        from sailpoint.suggested_entitlement_description.models.sedbatchresponse import Sedbatchresponse
+        from sailpoint.suggested_entitlement_description.models.sed_batch_request import SedBatchRequest
+        from sailpoint.suggested_entitlement_description.models.sed_batch_response import SedBatchResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          sedbatchrequest = '''sailpoint.suggested_entitlement_description.Sedbatchrequest()''' # Sedbatchrequest | Sed Batch Request (optional)
+          sed_batch_request = '''{
+          "entitlements" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "seds" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "searchCriteria" : {
+            "key" : {
+              "indices" : [ "entitlements" ],
+              "query" : {
+                "query" : "status:active"
+              },
+              "textQuery" : {
+                "terms" : [ "admin", "user" ],
+                "matchAny" : true,
+                "fields" : [ "role", "name" ]
+              },
+              "searchAfter" : [ "12345", "67890" ],
+              "filters" : {
+                "status" : {
+                  "type" : "TERMS",
+                  "terms" : [ "active", "inactive" ]
+                }
+              },
+              "sort" : [ "name:asc", "createdAt:desc" ],
+              "queryType" : "TEXT",
+              "includeNested" : true
+            }
+          }
+        }''' # SedBatchRequest | Sed Batch Request (optional)
           try:
               # Submit sed batch request
               
               results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1()
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1(new_sedbatchrequest)
+              # results = SuggestedEntitlementDescriptionApi(api_client).submit_sed_batch_request_v1(new_sed_batch_request)
               print("The response of SuggestedEntitlementDescriptionApi->submit_sed_batch_request_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -384,20 +436,20 @@
       source: |
         from sailpoint.suggested_entitlement_description.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
         from sailpoint.suggested_entitlement_description.api_client import ApiClient
-        from sailpoint.suggested_entitlement_description.models.autowritesettingpatch import Autowritesettingpatch
-        from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
+        from sailpoint.suggested_entitlement_description.models.auto_write_setting_patch import AutoWriteSettingPatch
+        from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          autowritesettingpatch = '''[sailpoint.suggested_entitlement_description.Autowritesettingpatch()]''' # List[Autowritesettingpatch] | Patch operations for auto-write settings
+          auto_write_setting_patch = '''[sailpoint.suggested_entitlement_description.AutoWriteSettingPatch()]''' # List[AutoWriteSettingPatch] | Patch operations for auto-write settings
           try:
               # Update auto-write settings for SED
-              new_autowritesettingpatch = Autowritesettingpatch.from_json(autowritesettingpatch)
-              results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(autowritesettingpatch=new_autowritesettingpatch)
+              new_auto_write_setting_patch = AutoWriteSettingPatch.from_json(auto_write_setting_patch)
+              results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(auto_write_setting_patch=new_auto_write_setting_patch)
               # Below is a request that includes all optional parameters
-              # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(new_autowritesettingpatch)
+              # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings_v1(new_auto_write_setting_patch)
               print("The response of SuggestedEntitlementDescriptionApi->update_auto_write_settings_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

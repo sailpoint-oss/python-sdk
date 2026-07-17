@@ -6,7 +6,7 @@
       source: |
         from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi
         from sailpoint.public_identities.api_client import ApiClient
-        from sailpoint.public_identities.models.publicidentity import Publicidentity
+        from sailpoint.public_identities.models.public_identity import PublicIdentity
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

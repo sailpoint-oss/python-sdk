@@ -149,21 +149,21 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id
- Body  | provisioningpolicydtov1 | [**Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
+ Body  | provisioning_policy_dto | [**ProvisioningPolicyDto**](../models/provisioning-policy-dto) | True  | 
 
 ### Return type
-[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created ProvisioningPolicyDto object | Provisioningpolicydtov1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created ProvisioningPolicyDto object | ProvisioningPolicyDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -174,21 +174,60 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
-    provisioningpolicydtov1 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov1 | 
+    provisioning_policy_dto = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDto | 
 
     try:
         # Create provisioning policy
-        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-        results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
+        new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+        results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioning_policy_dto=new_provisioning_policy_dto)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).create_provisioning_policy_v1(source_id, new_provisioningpolicydto)
+        # results = SourcesApi(api_client).create_provisioning_policy_v1(source_id, new_provisioning_policy_dto)
         print("The response of SourcesApi->create_provisioning_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -225,23 +264,23 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id
- Body  | provisioningpolicydtov2 | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) | True  | 
+ Body  | provisioning_policy_dto_v2 | [**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2) | True  | 
   Query | use_default_fields | **bool** |   (optional) (default to False) | If passed as true, then it uses default fields from the connector template.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created ProvisioningPolicyDtoV2 object | Provisioningpolicydtov2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created ProvisioningPolicyDtoV2 object | ProvisioningPolicyDtoV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -252,7 +291,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -260,16 +299,57 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
-    provisioningpolicydtov2 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov2 | 
+    provisioning_policy_dto_v2 = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDtoV2 | 
     use_default_fields = False # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False)
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create provisioning policy
-        new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
-        results = SourcesApi(api_client).create_provisioning_policy_v2(source_id=source_id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+        new_provisioning_policy_dto_v2 = ProvisioningPolicyDtoV2.from_json(provisioning_policy_dto_v2)
+        results = SourcesApi(api_client).create_provisioning_policy_v2(source_id=source_id, provisioning_policy_dto_v2=new_provisioning_policy_dto_v2)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).create_provisioning_policy_v2(source_id, new_provisioningpolicydtov2, use_default_fields, x_sail_point_experimental)
+        # results = SourcesApi(api_client).create_provisioning_policy_v2(source_id, new_provisioning_policy_dto_v2, use_default_fields, x_sail_point_experimental)
         print("The response of SourcesApi->create_provisioning_policy_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -301,11 +381,11 @@ Path   | source_id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | The schedule was successfully created on the specified source. | Schedule3 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -362,11 +442,11 @@ Path   | source_id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | The schema was successfully created on the specified source. | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -422,11 +502,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Created Source object. Any passwords will only show the the encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based services, per IdentityNow security design. | Source |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -443,7 +523,89 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    source = '''sailpoint.sources.Source()''' # Source | 
+    source = '''{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }''' # Source | 
     provision_as_csv = false # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
     try:
@@ -481,17 +643,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The source id
 
 ### Return type
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted. Returns task result details of removal request. | Taskresultdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted. Returns task result details of removal request. | TaskResultDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -502,7 +664,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.taskresultdto import Taskresultdto
+from sailpoint.sources.models.task_result_dto import TaskResultDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -545,12 +707,12 @@ Path   | source_id | **str** | True  | The source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -593,7 +755,7 @@ Deletes the provisioning policy with the specified usage on an application.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source ID.
-Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+Path   | usage_type | [**UsageType**](../models/usage-type) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
 ### Return type
  (empty response body)
@@ -602,12 +764,12 @@ Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -618,14 +780,14 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.usagetype import Usagetype
+from sailpoint.sources.models.usage_type import UsageType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-    usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
     try:
         # Delete provisioning policy by usagetype
@@ -673,12 +835,12 @@ Path   | id | **str** | True  | The provisioning policy ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -733,12 +895,12 @@ Path   | schedule_type | **str** | True  | The Schedule type.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -791,12 +953,12 @@ Path   | schema_id | **str** | True  | The Schema id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -849,12 +1011,12 @@ Path   | id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | DeleteSourceV1202Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -903,18 +1065,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source id
 
 ### Return type
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with a AccountDeleteConfigDto for human account deletion approval config by sourceId. | Accountdeleteconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with a AccountDeleteConfigDto for human account deletion approval config by sourceId. | AccountDeleteConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -925,7 +1087,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
+from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -969,12 +1131,12 @@ Path   | id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Successfully downloaded the file |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1019,18 +1181,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The source id
 
 ### Return type
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Correlation configuration for a source | Correlationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Correlation configuration for a source | CorrelationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1041,7 +1203,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.correlationconfig import Correlationconfig
+from sailpoint.sources.models.correlation_config import CorrelationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1087,12 +1249,12 @@ Path   | id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Successfully downloaded the file |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1138,18 +1300,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | source id.
 
 ### Return type
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with a AccountDeleteConfigDto for machine account deletion approval config by sourceId. | Accountdeleteconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with a AccountDeleteConfigDto for machine account deletion approval config by sourceId. | AccountDeleteConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1160,7 +1322,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
+from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1197,18 +1359,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The source id
 
 ### Return type
-[**Nativechangedetectionconfig**](../models/nativechangedetectionconfig)
+[**NativeChangeDetectionConfig**](../models/native-change-detection-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Native change detection configuration for a source | Nativechangedetectionconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Native change detection configuration for a source | NativeChangeDetectionConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1219,7 +1381,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
+from sailpoint.sources.models.native_change_detection_config import NativeChangeDetectionConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1254,21 +1416,21 @@ This end-point retrieves the ProvisioningPolicy with the specified usage on the 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source ID.
-Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+Path   | usage_type | [**UsageType**](../models/usage-type) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
 ### Return type
-[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested ProvisioningPolicyDto was successfully retrieved. | Provisioningpolicydtov1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested ProvisioningPolicyDto was successfully retrieved. | ProvisioningPolicyDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1279,15 +1441,15 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-from sailpoint.sources.models.usagetype import Usagetype
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.sources.models.usage_type import UsageType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-    usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
     try:
         # Get provisioning policy by usagetype
@@ -1331,18 +1493,18 @@ Path   | id | **str** | True  | The provisioning policy ID.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested ProvisioningPolicyDtoV2 was successfully retrieved. | Provisioningpolicydtov2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested ProvisioningPolicyDtoV2 was successfully retrieved. | ProvisioningPolicyDtoV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1353,7 +1515,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1405,18 +1567,18 @@ Path   | id | **str** | True  | The source id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Attrsyncsourceconfig**](../models/attrsyncsourceconfig)
+[**AttrSyncSourceConfig**](../models/attr-sync-source-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Attribute synchronization configuration for a source | Attrsyncsourceconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Attribute synchronization configuration for a source | AttrSyncSourceConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1427,7 +1589,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.attrsyncsourceconfig import Attrsyncsourceconfig
+from sailpoint.sources.models.attr_sync_source_config import AttrSyncSourceConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1467,18 +1629,18 @@ Path   | id | **str** | True  | The Source id
   Query | locale | **str** |   (optional) | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
 ### Return type
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Connector Detail object | Connectordetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Connector Detail object | ConnectorDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1489,7 +1651,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.connectordetail import Connectordetail
+from sailpoint.sources.models.connector_detail import ConnectorDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1527,18 +1689,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | Source ID.
 
 ### Return type
-[**Sourceconnectionsdto**](../models/sourceconnectionsdto)
+[**SourceConnectionsDto**](../models/source-connections-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Source Connections object. | Sourceconnectionsdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Source Connections object. | SourceConnectionsDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1549,7 +1711,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.sourceconnectionsdto import Sourceconnectionsdto
+from sailpoint.sources.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1602,17 +1764,17 @@ Path   | id | **str** | True  | The Source id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig)
+[**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Source Entitlement Request Configuration Details. | Sourceentitlementrequestconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Source Entitlement Request Configuration Details. | SourceEntitlementRequestConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1623,7 +1785,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.sourceentitlementrequestconfig import Sourceentitlementrequestconfig
+from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1662,18 +1824,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source id.
 
 ### Return type
-[**Sourcehealthdto**](../models/sourcehealthdto)
+[**SourceHealthDto**](../models/source-health-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Fetched source health successfully | Sourcehealthdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Fetched source health successfully | SourceHealthDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1684,7 +1846,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.sourcehealthdto import Sourcehealthdto
+from sailpoint.sources.models.source_health_dto import SourceHealthDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1729,12 +1891,12 @@ Path   | schedule_type | **str** | True  | The Schedule type.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The requested Schedule was successfully retrieved. | Schedule3 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1797,12 +1959,12 @@ Path   | source_id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The schedules were successfully retrieved. | List[Schedule3] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1859,12 +2021,12 @@ Path   | schema_id | **str** | True  | The Schema id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The requested Schema was successfully retrieved. | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1921,12 +2083,12 @@ Path   | source_id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The schemas were successfully retrieved. | List[ModelSchema] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1983,12 +2145,12 @@ Path   | id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Source object. | Source |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2049,11 +2211,11 @@ Path   | id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Successfully uploaded the file | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2106,17 +2268,17 @@ Path   | id | **str** | True  | Source Id
    | disable_optimization | **str** |   (optional) | Use this flag to reprocess every account whether or not the data has changed.
 
 ### Return type
-[**Loadaccountstask**](../models/loadaccountstask)
+[**LoadAccountsTask**](../models/load-accounts-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Aggregate Accounts Task | Loadaccountstask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Aggregate Accounts Task | LoadAccountsTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2127,7 +2289,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.loadaccountstask import Loadaccountstask
+from sailpoint.sources.models.load_accounts_task import LoadAccountsTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2173,11 +2335,11 @@ Path   | source_id | **str** | True  | The Source id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Uploaded the file successfully and sent all post-upload events | Source |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2240,11 +2402,11 @@ Path   | id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Successfully uploaded the file | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2298,17 +2460,17 @@ Path   | source_id | **str** | True  | Source Id
    | file | **bytearray** |   (optional) | The CSV file containing the source entitlements to aggregate.
 
 ### Return type
-[**Loadentitlementtask**](../models/loadentitlementtask)
+[**LoadEntitlementTask**](../models/load-entitlement-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Aggregate Entitlements Task | Loadentitlementtask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Aggregate Entitlements Task | LoadEntitlementTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2319,7 +2481,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.loadentitlementtask import Loadentitlementtask
+from sailpoint.sources.models.load_entitlement_task import LoadEntitlementTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2358,17 +2520,17 @@ Path   | id | **str** | True  | Source Id
    | file | **bytearray** |   (optional) | 
 
 ### Return type
-[**Loaduncorrelatedaccountstask**](../models/loaduncorrelatedaccountstask)
+[**LoadUncorrelatedAccountsTask**](../models/load-uncorrelated-accounts-task)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Uncorrelated Accounts Task | Loaduncorrelatedaccountstask |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Uncorrelated Accounts Task | LoadUncorrelatedAccountsTask |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -2379,7 +2541,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.loaduncorrelatedaccountstask import Loaduncorrelatedaccountstask
+from sailpoint.sources.models.load_uncorrelated_accounts_task import LoadUncorrelatedAccountsTask
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2422,18 +2584,18 @@ Path   | source_id | **str** | True  | The Source id
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[PasswordpolicyholdersdtoInner]**](../models/passwordpolicyholdersdto-inner)
+[**List[PasswordPolicyHoldersDtoInner]**](../models/password-policy-holders-dto-inner)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Password Policies | List[PasswordpolicyholdersdtoInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Password Policies | List[PasswordPolicyHoldersDtoInner] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2444,7 +2606,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
+from sailpoint.sources.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2487,18 +2649,18 @@ Path   | source_id | **str** | True  | The Source id
   Query | limit | **int** |   (optional) (default to 250) | Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 
 ### Return type
-[**List[Provisioningpolicydtov1]**](../models/provisioningpolicydtov1)
+[**List[ProvisioningPolicyDto]**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of ProvisioningPolicyDto objects | List[Provisioningpolicydtov1] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of ProvisioningPolicyDto objects | List[ProvisioningPolicyDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2509,7 +2671,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2564,18 +2726,18 @@ Path   | source_id | **str** | True  | The Source id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Provisioningpolicydtov2]**](../models/provisioningpolicydtov2)
+[**List[ProvisioningPolicyDtoV2]**](../models/provisioning-policy-dto-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of ProvisioningPolicyDto objects | List[Provisioningpolicydtov2] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of ProvisioningPolicyDto objects | List[ProvisioningPolicyDtoV2] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2586,7 +2748,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2641,12 +2803,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Source objects | List[Source] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2701,18 +2863,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The ID of the Source
 
 ### Return type
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The result of pinging connection with the source connector. | Statusresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The result of pinging connection with the source connector. | StatusResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -2723,7 +2885,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.statusresponse import Statusresponse
+from sailpoint.sources.models.status_response import StatusResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2758,21 +2920,21 @@ Replaces the correlation configuration for the source specified by the given ID 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The source id
- Body  | correlationconfig | [**Correlationconfig**](../models/correlationconfig) | True  | 
+ Body  | correlation_config | [**CorrelationConfig**](../models/correlation-config) | True  | 
 
 ### Return type
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated correlation configuration for a source | Correlationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated correlation configuration for a source | CorrelationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -2783,21 +2945,41 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.correlationconfig import Correlationconfig
+from sailpoint.sources.models.correlation_config import CorrelationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-    correlationconfig = '''sailpoint.sources.Correlationconfig()''' # Correlationconfig | 
+    correlation_config = '''{
+          "attributeAssignments" : [ {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          }, {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          } ],
+          "name" : "Source [source] Account Correlation",
+          "id" : "2c9180835d191a86015d28455b4a2329"
+        }''' # CorrelationConfig | 
 
     try:
         # Update source correlation configuration
-        new_correlationconfig = Correlationconfig.from_json(correlationconfig)
-        results = SourcesApi(api_client).put_correlation_config_v1(id=id, correlationconfig=new_correlationconfig)
+        new_correlation_config = CorrelationConfig.from_json(correlation_config)
+        results = SourcesApi(api_client).put_correlation_config_v1(id=id, correlation_config=new_correlation_config)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).put_correlation_config_v1(id, new_correlationconfig)
+        # results = SourcesApi(api_client).put_correlation_config_v1(id, new_correlation_config)
         print("The response of SourcesApi->put_correlation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -2819,21 +3001,21 @@ Replaces the native change detection configuration for the source specified by t
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The source id
- Body  | nativechangedetectionconfig | [**Nativechangedetectionconfig**](../models/nativechangedetectionconfig) | True  | 
+ Body  | native_change_detection_config | [**NativeChangeDetectionConfig**](../models/native-change-detection-config) | True  | 
 
 ### Return type
-[**Nativechangedetectionconfig**](../models/nativechangedetectionconfig)
+[**NativeChangeDetectionConfig**](../models/native-change-detection-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated native change detection configuration for a source | Nativechangedetectionconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated native change detection configuration for a source | NativeChangeDetectionConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -2844,21 +3026,28 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
+from sailpoint.sources.models.native_change_detection_config import NativeChangeDetectionConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-    nativechangedetectionconfig = '''sailpoint.sources.Nativechangedetectionconfig()''' # Nativechangedetectionconfig | 
+    native_change_detection_config = '''{
+          "selectedEntitlements" : [ "memberOf", "memberOfSharedMailbox" ],
+          "operations" : [ "ACCOUNT_UPDATED", "ACCOUNT_DELETED" ],
+          "selectedNonEntitlementAttributes" : [ "lastName", "phoneNumber", "objectType", "servicePrincipalName" ],
+          "allNonEntitlementAttributes" : false,
+          "allEntitlements" : false,
+          "enabled" : true
+        }''' # NativeChangeDetectionConfig | 
 
     try:
         # Update native change detection configuration
-        new_nativechangedetectionconfig = Nativechangedetectionconfig.from_json(nativechangedetectionconfig)
-        results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id=source_id, nativechangedetectionconfig=new_nativechangedetectionconfig)
+        new_native_change_detection_config = NativeChangeDetectionConfig.from_json(native_change_detection_config)
+        results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id=source_id, native_change_detection_config=new_native_change_detection_config)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id, new_nativechangedetectionconfig)
+        # results = SourcesApi(api_client).put_native_change_detection_config_v1(source_id, new_native_change_detection_config)
         print("The response of SourcesApi->put_native_change_detection_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -2882,22 +3071,22 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source ID.
-Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
- Body  | provisioningpolicydtov1 | [**Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
+Path   | usage_type | [**UsageType**](../models/usage-type) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+ Body  | provisioning_policy_dto | [**ProvisioningPolicyDto**](../models/provisioning-policy-dto) | True  | 
 
 ### Return type
-[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDto was successfully replaced. | Provisioningpolicydtov1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The ProvisioningPolicyDto was successfully replaced. | ProvisioningPolicyDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -2908,23 +3097,62 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-from sailpoint.sources.models.usagetype import Usagetype
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.sources.models.usage_type import UsageType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
-    usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    provisioningpolicydtov1 = '''sailpoint.sources.Provisioningpolicydtov1()''' # Provisioningpolicydtov1 | 
+    usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    provisioning_policy_dto = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDto | 
 
     try:
         # Update provisioning policy by usagetype
-        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-        results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioningpolicydtov1=new_provisioningpolicydto)
+        new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+        results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioning_policy_dto=new_provisioning_policy_dto)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).put_provisioning_policy_v1(source_id, usage_type, new_provisioningpolicydto)
+        # results = SourcesApi(api_client).put_provisioning_policy_v1(source_id, usage_type, new_provisioning_policy_dto)
         print("The response of SourcesApi->put_provisioning_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -2960,22 +3188,22 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source ID.
 Path   | id | **str** | True  | The provisioning policy ID.
- Body  | provisioningpolicydtov2 | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) | True  | 
+ Body  | provisioning_policy_dto_v2 | [**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDto was successfully replaced. | Provisioningpolicydtov2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The ProvisioningPolicyDto was successfully replaced. | ProvisioningPolicyDtoV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -2986,7 +3214,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2995,15 +3223,56 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
-    provisioningpolicydtov2 = '''sailpoint.sources.Provisioningpolicydtov2()''' # Provisioningpolicydtov2 | 
+    provisioning_policy_dto_v2 = '''{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }''' # ProvisioningPolicyDtoV2 | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update provisioning policy by ID
-        new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
-        results = SourcesApi(api_client).put_provisioning_policy_v2(source_id=source_id, id=id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+        new_provisioning_policy_dto_v2 = ProvisioningPolicyDtoV2.from_json(provisioning_policy_dto_v2)
+        results = SourcesApi(api_client).put_provisioning_policy_v2(source_id=source_id, id=id, provisioning_policy_dto_v2=new_provisioning_policy_dto_v2)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).put_provisioning_policy_v2(source_id, id, new_provisioningpolicydtov2, x_sail_point_experimental)
+        # results = SourcesApi(api_client).put_provisioning_policy_v2(source_id, id, new_provisioning_policy_dto_v2, x_sail_point_experimental)
         print("The response of SourcesApi->put_provisioning_policy_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3037,22 +3306,22 @@ Replaces the attribute synchronization configuration for the source specified by
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The source id
- Body  | attrsyncsourceconfig | [**Attrsyncsourceconfig**](../models/attrsyncsourceconfig) | True  | 
+ Body  | attr_sync_source_config | [**AttrSyncSourceConfig**](../models/attr-sync-source-config) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Attrsyncsourceconfig**](../models/attrsyncsourceconfig)
+[**AttrSyncSourceConfig**](../models/attr-sync-source-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated attribute synchronization configuration for a source | Attrsyncsourceconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated attribute synchronization configuration for a source | AttrSyncSourceConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3063,7 +3332,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.attrsyncsourceconfig import Attrsyncsourceconfig
+from sailpoint.sources.models.attr_sync_source_config import AttrSyncSourceConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3071,15 +3340,32 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id # str | The source id
-    attrsyncsourceconfig = '''sailpoint.sources.Attrsyncsourceconfig()''' # Attrsyncsourceconfig | 
+    attr_sync_source_config = '''{
+          "attributes" : [ {
+            "name" : "email",
+            "displayName" : "Email",
+            "enabled" : true,
+            "target" : "mail"
+          }, {
+            "name" : "firstname",
+            "displayName" : "First Name",
+            "enabled" : false,
+            "target" : "givenName"
+          } ],
+          "source" : {
+            "name" : "HR Active Directory",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "SOURCE"
+          }
+        }''' # AttrSyncSourceConfig | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update attribute sync config
-        new_attrsyncsourceconfig = Attrsyncsourceconfig.from_json(attrsyncsourceconfig)
-        results = SourcesApi(api_client).put_source_attr_sync_config_v1(id=id, attrsyncsourceconfig=new_attrsyncsourceconfig)
+        new_attr_sync_source_config = AttrSyncSourceConfig.from_json(attr_sync_source_config)
+        results = SourcesApi(api_client).put_source_attr_sync_config_v1(id=id, attr_sync_source_config=new_attr_sync_source_config)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).put_source_attr_sync_config_v1(id, new_attrsyncsourceconfig, x_sail_point_experimental)
+        # results = SourcesApi(api_client).put_source_attr_sync_config_v1(id, new_attr_sync_source_config, x_sail_point_experimental)
         print("The response of SourcesApi->put_source_attr_sync_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3121,12 +3407,12 @@ Path   | schema_id | **str** | True  | The Schema id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The Schema was successfully replaced. | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3195,12 +3481,12 @@ Path   | id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Updated Source object. Any passwords will only show the the encrypted cipher-text so that they aren&#39;t decryptable in Identity Security Cloud (ISC) cloud-based services, per ISC security design. | Source |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3218,7 +3504,89 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
-    source = '''sailpoint.sources.Source()''' # Source | 
+    source = '''{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }''' # Source | 
 
     try:
         # Update source (full)
@@ -3247,21 +3615,21 @@ Retrieves a sample of data returned from account and group aggregation requests.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The ID of the Source
- Body  | resourceobjectsrequest | [**Resourceobjectsrequest**](../models/resourceobjectsrequest) | True  | 
+ Body  | resource_objects_request | [**ResourceObjectsRequest**](../models/resource-objects-request) | True  | 
 
 ### Return type
-[**Resourceobjectsresponse**](../models/resourceobjectsresponse)
+[**ResourceObjectsResponse**](../models/resource-objects-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of resource objects that was fetched from the source connector. | Resourceobjectsresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of resource objects that was fetched from the source connector. | ResourceObjectsResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3272,22 +3640,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.resourceobjectsrequest import Resourceobjectsrequest
-from sailpoint.sources.models.resourceobjectsresponse import Resourceobjectsresponse
+from sailpoint.sources.models.resource_objects_request import ResourceObjectsRequest
+from sailpoint.sources.models.resource_objects_response import ResourceObjectsResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source # str | The ID of the Source
-    resourceobjectsrequest = '''sailpoint.sources.Resourceobjectsrequest()''' # Resourceobjectsrequest | 
+    resource_objects_request = '''{
+          "maxCount" : 100,
+          "objectType" : "group"
+        }''' # ResourceObjectsRequest | 
 
     try:
         # Peek source connector's resource objects
-        new_resourceobjectsrequest = Resourceobjectsrequest.from_json(resourceobjectsrequest)
-        results = SourcesApi(api_client).search_resource_objects_v1(source_id=source_id, resourceobjectsrequest=new_resourceobjectsrequest)
+        new_resource_objects_request = ResourceObjectsRequest.from_json(resource_objects_request)
+        results = SourcesApi(api_client).search_resource_objects_v1(source_id=source_id, resource_objects_request=new_resource_objects_request)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).search_resource_objects_v1(source_id, new_resourceobjectsrequest)
+        # results = SourcesApi(api_client).search_resource_objects_v1(source_id, new_resource_objects_request)
         print("The response of SourcesApi->search_resource_objects_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3323,18 +3694,18 @@ Path   | id | **str** | True  | The Source id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourcesyncjob**](../models/sourcesyncjob)
+[**SourceSyncJob**](../models/source-sync-job)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | A Source Sync job | Sourcesyncjob |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | A Source Sync job | SourceSyncJob |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -3345,7 +3716,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.sourcesyncjob import Sourcesyncjob
+from sailpoint.sources.models.source_sync_job import SourceSyncJob
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3384,18 +3755,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The ID of the Source
 
 ### Return type
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The result of testing source connector configuration with response from it. | Statusresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The result of testing source connector configuration with response from it. | StatusResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -3406,7 +3777,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.statusresponse import Statusresponse
+from sailpoint.sources.models.status_response import StatusResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3443,18 +3814,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The ID of the Source.
 
 ### Return type
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The result of checking connection to the source connector with response from it. | Statusresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The result of checking connection to the source connector with response from it. | StatusResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -3465,7 +3836,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.statusresponse import Statusresponse
+from sailpoint.sources.models.status_response import StatusResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3501,21 +3872,21 @@ Updates the approval configuration for deleting human accounts for a specific so
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Human account source ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the object.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the object.
 
 ### Return type
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates the PATCH operation succeeded and the API returns the updated AccountDeleteConfigDto object. | Accountdeleteconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates the PATCH operation succeeded and the API returns the updated AccountDeleteConfigDto object. | AccountDeleteConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -3526,22 +3897,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '00eebcf881994e419d72e757fd30dc0e' # str | Human account source ID. # str | Human account source ID.
-    jsonpatchoperation = '''[sailpoint.sources.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+    json_patch_operation = '''[sailpoint.sources.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Human Account Deletion Approval Config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id=source_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_account_deletion_approval_config_v1(source_id, new_json_patch_operation)
         print("The response of SourcesApi->update_account_deletion_approval_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3567,21 +3938,21 @@ The endpoint expects the source ID as a path parameter and a valid JSON Patch ar
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | machine account source ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the object.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the object.
 
 ### Return type
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates the PATCH operation succeeded and the API returns the updated AccountDeleteConfigDto object. | Accountdeleteconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates the PATCH operation succeeded and the API returns the updated AccountDeleteConfigDto object. | AccountDeleteConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -3592,22 +3963,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.accountdeleteconfigdto import Accountdeleteconfigdto
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.account_delete_config_dto import AccountDeleteConfigDto
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account source ID. # str | machine account source ID.
-    jsonpatchoperation = '''[sailpoint.sources.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+    json_patch_operation = '''[sailpoint.sources.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Machine Account Deletion Approval Config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id=source_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_machine_account_deletion_approval_config_v1(source_id, new_json_patch_operation)
         print("The response of SourcesApi->update_machine_account_deletion_approval_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3631,21 +4002,21 @@ Source must support PASSWORD feature.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id
- Body  | passwordpolicyholdersdto_inner | [**[]PasswordpolicyholdersdtoInner**](../models/passwordpolicyholdersdto-inner) | True  | 
+ Body  | password_policy_holders_dto_inner | [**[]PasswordPolicyHoldersDtoInner**](../models/password-policy-holders-dto-inner) | True  | 
 
 ### Return type
-[**List[PasswordpolicyholdersdtoInner]**](../models/passwordpolicyholdersdto-inner)
+[**List[PasswordPolicyHoldersDtoInner]**](../models/password-policy-holders-dto-inner)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated Password Policies | List[PasswordpolicyholdersdtoInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated Password Policies | List[PasswordPolicyHoldersDtoInner] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3656,21 +4027,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
+from sailpoint.sources.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-    passwordpolicyholdersdto_inner = '''[sailpoint.sources.PasswordpolicyholdersdtoInner()]''' # List[PasswordpolicyholdersdtoInner] | 
+    password_policy_holders_dto_inner = '''[sailpoint.sources.PasswordPolicyHoldersDtoInner()]''' # List[PasswordPolicyHoldersDtoInner] | 
 
     try:
         # Update password policy
-        new_passwordpolicyholdersdto_inner = PasswordpolicyholdersdtoInner.from_json(passwordpolicyholdersdto_inner)
-        results = SourcesApi(api_client).update_password_policy_holders_v1(source_id=source_id, passwordpolicyholdersdto_inner=new_passwordpolicyholdersdto_inner)
+        new_password_policy_holders_dto_inner = PasswordPolicyHoldersDtoInner.from_json(password_policy_holders_dto_inner)
+        results = SourcesApi(api_client).update_password_policy_holders_v1(source_id=source_id, password_policy_holders_dto_inner=new_password_policy_holders_dto_inner)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_password_policy_holders_v1(source_id, new_passwordpolicyholdersdto_inner)
+        # results = SourcesApi(api_client).update_password_policy_holders_v1(source_id, new_password_policy_holders_dto_inner)
         print("The response of SourcesApi->update_password_policy_holders_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -3693,21 +4064,21 @@ This end-point updates a list of provisioning policies on the specified source i
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
- Body  | provisioningpolicydtov1 | [**[]Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
+ Body  | provisioning_policy_dto | [**[]ProvisioningPolicyDto**](../models/provisioning-policy-dto) | True  | 
 
 ### Return type
-[**List[Provisioningpolicydtov1]**](../models/provisioningpolicydtov1)
+[**List[ProvisioningPolicyDto]**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of the ProvisioningPolicyDto was successfully replaced. | List[Provisioningpolicydtov1] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of the ProvisioningPolicyDto was successfully replaced. | List[ProvisioningPolicyDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3718,21 +4089,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
-    provisioningpolicydtov1 = '''[sailpoint.sources.Provisioningpolicydtov1()]''' # List[Provisioningpolicydtov1] | 
+    provisioning_policy_dto = '''[sailpoint.sources.ProvisioningPolicyDto()]''' # List[ProvisioningPolicyDto] | 
 
     try:
         # Bulk update provisioning policies
-        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
-        results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
+        new_provisioning_policy_dto = ProvisioningPolicyDto.from_json(provisioning_policy_dto)
+        results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioning_policy_dto=new_provisioning_policy_dto)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id, new_provisioningpolicydto)
+        # results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id, new_provisioning_policy_dto)
         print("The response of SourcesApi->update_provisioning_policies_in_bulk_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -3757,22 +4128,22 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
-Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schema.
+Path   | usage_type | [**UsageType**](../models/usage-type) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the schema.
 
 ### Return type
-[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDto was successfully updated. | Provisioningpolicydtov1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The ProvisioningPolicyDto was successfully updated. | ProvisioningPolicyDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -3783,24 +4154,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
-from sailpoint.sources.models.usagetype import Usagetype
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.sources.models.usage_type import UsageType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
-    usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    jsonpatchoperation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+    usage_type = sailpoint.sources.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    json_patch_operation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
 
     try:
         # Partial update of provisioning policy
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_provisioning_policy_v1(source_id, usage_type, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_provisioning_policy_v1(source_id, usage_type, new_json_patch_operation)
         print("The response of SourcesApi->update_provisioning_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3836,22 +4207,22 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
 Path   | id | **str** | True  | The provisioning policy ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schema.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the schema.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDtoV2 was successfully updated. | Provisioningpolicydtov2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The ProvisioningPolicyDtoV2 was successfully updated. | ProvisioningPolicyDtoV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -3862,8 +4233,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
+from sailpoint.sources.models.provisioning_policy_dto_v2 import ProvisioningPolicyDtoV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3872,15 +4243,15 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
     id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
-    jsonpatchoperation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+    json_patch_operation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Partial update of provisioning policy
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_provisioning_policy_v2(source_id=source_id, id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_provisioning_policy_v2(source_id=source_id, id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_provisioning_policy_v2(source_id, id, new_jsonpatchoperation, x_sail_point_experimental)
+        # results = SourcesApi(api_client).update_provisioning_policy_v2(source_id, id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of SourcesApi->update_provisioning_policy_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3917,21 +4288,21 @@ Access request to any entitlements in the source should follow this configuratio
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The Source id
- Body  | sourceentitlementrequestconfig | [**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig) | True  | 
+ Body  | source_entitlement_request_config | [**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig)
+[**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Source Entitlement Request Configuration Details. | Sourceentitlementrequestconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Source Entitlement Request Configuration Details. | SourceEntitlementRequestConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -3942,7 +4313,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.sourceentitlementrequestconfig import Sourceentitlementrequestconfig
+from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -3950,15 +4321,42 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-    sourceentitlementrequestconfig = '''{"accessRequestConfig":{"approvalSchemes":[]}}''' # Sourceentitlementrequestconfig | 
+    source_entitlement_request_config = '''{
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "reauthorizationRequired" : false,
+            "requestCommentRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 5,
+              "timeUnit" : "DAYS"
+            }
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          }
+        }''' # SourceEntitlementRequestConfig | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update source entitlement request configuration
-        new_sourceentitlementrequestconfig = Sourceentitlementrequestconfig.from_json(sourceentitlementrequestconfig)
-        results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, sourceentitlementrequestconfig=new_sourceentitlementrequestconfig)
+        new_source_entitlement_request_config = SourceEntitlementRequestConfig.from_json(source_entitlement_request_config)
+        results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, source_entitlement_request_config=new_source_entitlement_request_config)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_sourceentitlementrequestconfig, x_sail_point_experimental)
+        # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config, x_sail_point_experimental)
         print("The response of SourcesApi->update_source_entitlement_request_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -3986,7 +4384,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
 Path   | schedule_type | **str** | True  | The Schedule type.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schedule.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the schedule.
 
 ### Return type
 [**Schedule3**](../models/schedule3)
@@ -3995,12 +4393,12 @@ Path   | schedule_type | **str** | True  | The Schedule type.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The Schedule was successfully updated. | Schedule3 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -4011,7 +4409,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
 from sailpoint.sources.models.schedule3 import Schedule3
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -4020,14 +4418,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
     schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type. # str | The Schedule type.
-    jsonpatchoperation = '''[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schedule.
+    json_patch_operation = '''[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schedule.
 
     try:
         # Update source schedule (partial)
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_source_schedule_v1(source_id=source_id, schedule_type=schedule_type, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_source_schedule_v1(source_id=source_id, schedule_type=schedule_type, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_source_schedule_v1(source_id, schedule_type, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_source_schedule_v1(source_id, schedule_type, new_json_patch_operation)
         print("The response of SourcesApi->update_source_schedule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -4079,7 +4477,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
 Path   | schema_id | **str** | True  | The Schema id.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schema.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the schema.
 
 ### Return type
 [**ModelSchema**](../models/model-schema)
@@ -4088,12 +4486,12 @@ Path   | schema_id | **str** | True  | The Schema id.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The Schema was successfully updated. | ModelSchema |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -4104,7 +4502,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
 from sailpoint.sources.models.model_schema import ModelSchema
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -4113,14 +4511,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id. # str | The Schema id.
-    jsonpatchoperation = '''[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+    json_patch_operation = '''[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
 
     try:
         # Update source schema (partial)
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_source_schema_v1(source_id=source_id, schema_id=schema_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_source_schema_v1(source_id=source_id, schema_id=schema_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_source_schema_v1(source_id, schema_id, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_source_schema_v1(source_id, schema_id, new_json_patch_operation)
         print("The response of SourcesApi->update_source_schema_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -4157,7 +4555,7 @@ Attempts to modify these fields will result in a 400 error.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Source ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
 ### Return type
 [**Source**](../models/source)
@@ -4166,12 +4564,12 @@ Path   | id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Updated Source object. Any passwords will only show the the encrypted cipher-text so that they aren&#39;t decryptable in Identity Security Cloud (ISC) cloud-based services, per ISC security design. | Source |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -4182,7 +4580,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.json_patch_operation import JsonPatchOperation
 from sailpoint.sources.models.source import Source
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -4190,14 +4588,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
-    jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"new description"}]''' # List[Jsonpatchoperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+    json_patch_operation = '''[{"op":"replace","path":"/description","value":"new description"}]''' # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
     try:
         # Update source (partial)
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SourcesApi(api_client).update_source_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SourcesApi(api_client).update_source_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_source_v1(id, new_jsonpatchoperation)
+        # results = SourcesApi(api_client).update_source_v1(id, new_json_patch_operation)
         print("The response of SourcesApi->update_source_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

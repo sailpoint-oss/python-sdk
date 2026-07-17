@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from typing import List
 from sailpoint.tenant_context.models.get_tenant_context_v1200_response_inner import GetTenantContextV1200ResponseInner
-from sailpoint.tenant_context.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.tenant_context.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.tenant_context.api_client import ApiClient, RequestSerialized
 from sailpoint.tenant_context.api_response import ApiResponse
@@ -89,11 +89,11 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetTenantContextV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -157,11 +157,11 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetTenantContextV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -225,11 +225,11 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetTenantContextV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -301,7 +301,7 @@ class TenantContextApi:
     @validate_call
     def patch_tenant_context_v1(
         self,
-        jsonpatchoperation: Jsonpatchoperation,
+        json_patch_operation: JsonPatchOperation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -319,8 +319,8 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: Jsonpatchoperation
+        :param json_patch_operation: (required)
+        :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -344,7 +344,7 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -353,12 +353,12 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -374,7 +374,7 @@ class TenantContextApi:
     @validate_call
     def patch_tenant_context_v1_with_http_info(
         self,
-        jsonpatchoperation: Jsonpatchoperation,
+        json_patch_operation: JsonPatchOperation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -392,8 +392,8 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: Jsonpatchoperation
+        :param json_patch_operation: (required)
+        :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -417,7 +417,7 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -426,12 +426,12 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -447,7 +447,7 @@ class TenantContextApi:
     @validate_call
     def patch_tenant_context_v1_without_preload_content(
         self,
-        jsonpatchoperation: Jsonpatchoperation,
+        json_patch_operation: JsonPatchOperation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -465,8 +465,8 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: Jsonpatchoperation
+        :param json_patch_operation: (required)
+        :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -490,7 +490,7 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -499,12 +499,12 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantContextV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantContextV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -515,7 +515,7 @@ class TenantContextApi:
 
     def _patch_tenant_context_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -541,8 +541,8 @@ class TenantContextApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

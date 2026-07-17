@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.multi_host_integration.models.multihostintegrations import Multihostintegrations
-from sailpoint.multi_host_integration.models.multihostintegrationsaggscheduleupdate import Multihostintegrationsaggscheduleupdate
-from sailpoint.multi_host_integration.models.multihostintegrationscreate import Multihostintegrationscreate
-from sailpoint.multi_host_integration.models.multihostintegrationscreatesources import Multihostintegrationscreatesources
-from sailpoint.multi_host_integration.models.multihostintegrationtemplatetype import Multihostintegrationtemplatetype
-from sailpoint.multi_host_integration.models.multihostsources import Multihostsources
-from sailpoint.multi_host_integration.models.sourcecreationerrors import Sourcecreationerrors
+from sailpoint.multi_host_integration.models.multi_host_integration_template_type import MultiHostIntegrationTemplateType
+from sailpoint.multi_host_integration.models.multi_host_integrations import MultiHostIntegrations
+from sailpoint.multi_host_integration.models.multi_host_integrations_agg_schedule_update import MultiHostIntegrationsAggScheduleUpdate
+from sailpoint.multi_host_integration.models.multi_host_integrations_create import MultiHostIntegrationsCreate
+from sailpoint.multi_host_integration.models.multi_host_integrations_create_sources import MultiHostIntegrationsCreateSources
+from sailpoint.multi_host_integration.models.multi_host_sources import MultiHostSources
+from sailpoint.multi_host_integration.models.source_creation_errors import SourceCreationErrors
 from sailpoint.multi_host_integration.models.test_source_connection_multihost_v1200_response import TestSourceConnectionMultihostV1200Response
 from sailpoint.multi_host_integration.models.update_multi_host_sources_v1_request_inner import UpdateMultiHostSourcesV1RequestInner
 
@@ -50,7 +50,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_multi_host_integration_v1(
         self,
-        multihostintegrationscreate: Annotated[Multihostintegrationscreate, Field(description="The specifics of the Multi-Host Integration to create")],
+        multi_host_integrations_create: Annotated[MultiHostIntegrationsCreate, Field(description="The specifics of the Multi-Host Integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,13 +63,13 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Multihostintegrations:
+    ) -> MultiHostIntegrations:
         """Create multi-host integration
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multihostintegrationscreate: The specifics of the Multi-Host Integration to create (required)
-        :type multihostintegrationscreate: Multihostintegrationscreate
+        :param multi_host_integrations_create: The specifics of the Multi-Host Integration to create (required)
+        :type multi_host_integrations_create: MultiHostIntegrationsCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,7 +93,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_multi_host_integration_v1_serialize(
-            multihostintegrationscreate=multihostintegrationscreate,
+            multi_host_integrations_create=multi_host_integrations_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,13 +101,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '201': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,7 +123,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_multi_host_integration_v1_with_http_info(
         self,
-        multihostintegrationscreate: Annotated[Multihostintegrationscreate, Field(description="The specifics of the Multi-Host Integration to create")],
+        multi_host_integrations_create: Annotated[MultiHostIntegrationsCreate, Field(description="The specifics of the Multi-Host Integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,13 +136,13 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Multihostintegrations]:
+    ) -> ApiResponse[MultiHostIntegrations]:
         """Create multi-host integration
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multihostintegrationscreate: The specifics of the Multi-Host Integration to create (required)
-        :type multihostintegrationscreate: Multihostintegrationscreate
+        :param multi_host_integrations_create: The specifics of the Multi-Host Integration to create (required)
+        :type multi_host_integrations_create: MultiHostIntegrationsCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,7 +166,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_multi_host_integration_v1_serialize(
-            multihostintegrationscreate=multihostintegrationscreate,
+            multi_host_integrations_create=multi_host_integrations_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,13 +174,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '201': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -196,7 +196,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_multi_host_integration_v1_without_preload_content(
         self,
-        multihostintegrationscreate: Annotated[Multihostintegrationscreate, Field(description="The specifics of the Multi-Host Integration to create")],
+        multi_host_integrations_create: Annotated[MultiHostIntegrationsCreate, Field(description="The specifics of the Multi-Host Integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,8 +214,8 @@ class MultiHostIntegrationApi:
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multihostintegrationscreate: The specifics of the Multi-Host Integration to create (required)
-        :type multihostintegrationscreate: Multihostintegrationscreate
+        :param multi_host_integrations_create: The specifics of the Multi-Host Integration to create (required)
+        :type multi_host_integrations_create: MultiHostIntegrationsCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,7 +239,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_multi_host_integration_v1_serialize(
-            multihostintegrationscreate=multihostintegrationscreate,
+            multi_host_integrations_create=multi_host_integrations_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,13 +247,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '201': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -264,7 +264,7 @@ class MultiHostIntegrationApi:
 
     def _create_multi_host_integration_v1_serialize(
         self,
-        multihostintegrationscreate,
+        multi_host_integrations_create,
         _request_auth,
         _content_type,
         _headers,
@@ -290,8 +290,8 @@ class MultiHostIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if multihostintegrationscreate is not None:
-            _body_params = multihostintegrationscreate
+        if multi_host_integrations_create is not None:
+            _body_params = multi_host_integrations_create
 
 
         # set the HTTP header `Accept`
@@ -342,7 +342,7 @@ class MultiHostIntegrationApi:
     def create_sources_within_multi_host_v1(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
-        multihostintegrationscreatesources: Annotated[List[Multihostintegrationscreatesources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
+        multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,8 +362,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration. (required)
         :type multihost_id: str
-        :param multihostintegrationscreatesources: The specifics of the sources to create within Multi-Host Integration. (required)
-        :type multihostintegrationscreatesources: List[Multihostintegrationscreatesources]
+        :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
+        :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -388,7 +388,7 @@ class MultiHostIntegrationApi:
 
         _param = self._create_sources_within_multi_host_v1_serialize(
             multihost_id=multihost_id,
-            multihostintegrationscreatesources=multihostintegrationscreatesources,
+            multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -397,12 +397,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -419,7 +419,7 @@ class MultiHostIntegrationApi:
     def create_sources_within_multi_host_v1_with_http_info(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
-        multihostintegrationscreatesources: Annotated[List[Multihostintegrationscreatesources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
+        multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -439,8 +439,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration. (required)
         :type multihost_id: str
-        :param multihostintegrationscreatesources: The specifics of the sources to create within Multi-Host Integration. (required)
-        :type multihostintegrationscreatesources: List[Multihostintegrationscreatesources]
+        :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
+        :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -465,7 +465,7 @@ class MultiHostIntegrationApi:
 
         _param = self._create_sources_within_multi_host_v1_serialize(
             multihost_id=multihost_id,
-            multihostintegrationscreatesources=multihostintegrationscreatesources,
+            multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,12 +474,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -496,7 +496,7 @@ class MultiHostIntegrationApi:
     def create_sources_within_multi_host_v1_without_preload_content(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
-        multihostintegrationscreatesources: Annotated[List[Multihostintegrationscreatesources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
+        multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -516,8 +516,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration. (required)
         :type multihost_id: str
-        :param multihostintegrationscreatesources: The specifics of the sources to create within Multi-Host Integration. (required)
-        :type multihostintegrationscreatesources: List[Multihostintegrationscreatesources]
+        :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
+        :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -542,7 +542,7 @@ class MultiHostIntegrationApi:
 
         _param = self._create_sources_within_multi_host_v1_serialize(
             multihost_id=multihost_id,
-            multihostintegrationscreatesources=multihostintegrationscreatesources,
+            multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -551,12 +551,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -568,7 +568,7 @@ class MultiHostIntegrationApi:
     def _create_sources_within_multi_host_v1_serialize(
         self,
         multihost_id,
-        multihostintegrationscreatesources,
+        multi_host_integrations_create_sources,
         _request_auth,
         _content_type,
         _headers,
@@ -578,7 +578,7 @@ class MultiHostIntegrationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Multihostintegrationscreatesources': '',
+            'MultiHostIntegrationsCreateSources': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -597,8 +597,8 @@ class MultiHostIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if multihostintegrationscreatesources is not None:
-            _body_params = multihostintegrationscreatesources
+        if multi_host_integrations_create_sources is not None:
+            _body_params = multi_host_integrations_create_sources
 
 
         # set the HTTP header `Accept`
@@ -704,12 +704,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -781,12 +781,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -858,12 +858,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1007,12 +1007,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1080,12 +1080,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1153,12 +1153,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1248,7 +1248,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Multihostintegrationsaggscheduleupdate]:
+    ) -> List[MultiHostIntegrationsAggScheduleUpdate]:
         """List account-aggregation-groups by multi-host id
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID. A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -1292,13 +1292,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1329,7 +1329,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Multihostintegrationsaggscheduleupdate]]:
+    ) -> ApiResponse[List[MultiHostIntegrationsAggScheduleUpdate]]:
         """List account-aggregation-groups by multi-host id
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID. A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -1373,13 +1373,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1454,13 +1454,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1560,7 +1560,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Multihostintegrationsaggscheduleupdate]:
+    ) -> List[MultiHostIntegrationsAggScheduleUpdate]:
         """List entitlement-aggregation-groups by integration id
 
         This API will return array of aggregation groups within provided Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -1604,13 +1604,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1641,7 +1641,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Multihostintegrationsaggscheduleupdate]]:
+    ) -> ApiResponse[List[MultiHostIntegrationsAggScheduleUpdate]]:
         """List entitlement-aggregation-groups by integration id
 
         This API will return array of aggregation groups within provided Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -1685,13 +1685,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1766,13 +1766,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationsaggscheduleupdate]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationsAggScheduleUpdate]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1875,7 +1875,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Multihostintegrations]:
+    ) -> List[MultiHostIntegrations]:
         """List all existing multi-host integrations
 
         Get a list of Multi-Host Integrations.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -1928,13 +1928,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrations]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrations]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1968,7 +1968,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Multihostintegrations]]:
+    ) -> ApiResponse[List[MultiHostIntegrations]]:
         """List all existing multi-host integrations
 
         Get a list of Multi-Host Integrations.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -2021,13 +2021,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrations]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrations]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2114,13 +2114,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrations]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrations]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2235,7 +2235,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Multihostintegrations:
+    ) -> MultiHostIntegrations:
         """Get multi-host integration by id
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
@@ -2273,13 +2273,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '200': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2308,7 +2308,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Multihostintegrations]:
+    ) -> ApiResponse[MultiHostIntegrations]:
         """Get multi-host integration by id
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
@@ -2346,13 +2346,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '200': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2419,13 +2419,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Multihostintegrations",
-            '400': "Errorresponsedto",
+            '200': "MultiHostIntegrations",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2513,7 +2513,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourcecreationerrors]:
+    ) -> List[SourceCreationErrors]:
         """List multi-host source creation errors
 
         Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -2551,13 +2551,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcecreationerrors]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2586,7 +2586,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourcecreationerrors]]:
+    ) -> ApiResponse[List[SourceCreationErrors]]:
         """List multi-host source creation errors
 
         Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -2624,13 +2624,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcecreationerrors]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2697,13 +2697,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcecreationerrors]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2790,7 +2790,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Multihostintegrationtemplatetype]:
+    ) -> List[MultiHostIntegrationTemplateType]:
         """List multi-host integration types
 
         This API endpoint returns the current list of supported Multi-Host Integration types.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -2825,13 +2825,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2859,7 +2859,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Multihostintegrationtemplatetype]]:
+    ) -> ApiResponse[List[MultiHostIntegrationTemplateType]]:
         """List multi-host integration types
 
         This API endpoint returns the current list of supported Multi-Host Integration types.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -2894,13 +2894,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2963,13 +2963,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3059,7 +3059,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Multihostsources]:
+    ) -> List[MultiHostSources]:
         """List sources within multi-host integration
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -3112,13 +3112,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostsources]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostSources]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3152,7 +3152,7 @@ class MultiHostIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Multihostsources]]:
+    ) -> ApiResponse[List[MultiHostSources]]:
         """List sources within multi-host integration
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
@@ -3205,13 +3205,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostsources]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostSources]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3298,13 +3298,13 @@ class MultiHostIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Multihostsources]",
-            '400': "Errorresponsedto",
+            '200': "List[MultiHostSources]",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3456,12 +3456,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3529,12 +3529,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3602,12 +3602,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3738,12 +3738,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestSourceConnectionMultihostV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3815,12 +3815,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestSourceConnectionMultihostV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3892,12 +3892,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestSourceConnectionMultihostV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4031,12 +4031,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4108,12 +4108,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4185,12 +4185,12 @@ class MultiHostIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMultiHostIntegrationsListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMultiHostIntegrationsListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

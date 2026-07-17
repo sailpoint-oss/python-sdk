@@ -47,19 +47,19 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** | True  | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*
 
 ### Return type
-[**Intelidentityaggregate**](../models/intelidentityaggregate)
+[**IntelIdentityAggregate**](../models/intel-identity-aggregate)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Exactly one identity matched. | Intelidentityaggregate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Exactly one identity matched. | IntelIdentityAggregate |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
-409 | Multiple identities matched the filter. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+409 | Multiple identities matched the filter. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -70,7 +70,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
 from sailpoint.intelligence.api_client import ApiClient
-from sailpoint.intelligence.models.intelidentityaggregate import Intelidentityaggregate
+from sailpoint.intelligence.models.intel_identity_aggregate import IntelIdentityAggregate
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -113,17 +113,17 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
 
 ### Return type
-[**List[Intelaccessitemhistoryevent]**](../models/intelaccessitemhistoryevent)
+[**List[IntelAccessItemHistoryEvent]**](../models/intel-access-item-history-event)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of access-item history events. | List[Intelaccessitemhistoryevent] |  -  |
-400 | Invalid path or query parameters. | Errorresponsedto |  -  |
+200 | One page of access-item history events. | List[IntelAccessItemHistoryEvent] |  -  |
+400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
-500 | Internal or upstream server failure. | Errorresponsedto |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -134,7 +134,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
 from sailpoint.intelligence.api_client import ApiClient
-from sailpoint.intelligence.models.intelaccessitemhistoryevent import Intelaccessitemhistoryevent
+from sailpoint.intelligence.models.intel_access_item_history_event import IntelAccessItemHistoryEvent
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -179,17 +179,17 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
 
 ### Return type
-[**List[Intelaccessaccountwire]**](../models/intelaccessaccountwire)
+[**List[IntelAccessAccountWire]**](../models/intel-access-account-wire)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of accounts. | List[Intelaccessaccountwire] |  -  |
-400 | Invalid path or query parameters. | Errorresponsedto |  -  |
+200 | One page of accounts. | List[IntelAccessAccountWire] |  -  |
+400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
-500 | Internal or upstream server failure. | Errorresponsedto |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -200,7 +200,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
 from sailpoint.intelligence.api_client import ApiClient
-from sailpoint.intelligence.models.intelaccessaccountwire import Intelaccessaccountwire
+from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -246,17 +246,17 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
 
 ### Return type
-[**List[Intelcertificationhistoryevent]**](../models/intelcertificationhistoryevent)
+[**List[IntelCertificationHistoryEvent]**](../models/intel-certification-history-event)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of certification history events. | List[Intelcertificationhistoryevent] |  -  |
-400 | Invalid path or query parameters. | Errorresponsedto |  -  |
+200 | One page of certification history events. | List[IntelCertificationHistoryEvent] |  -  |
+400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
-500 | Internal or upstream server failure. | Errorresponsedto |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -267,7 +267,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
 from sailpoint.intelligence.api_client import ApiClient
-from sailpoint.intelligence.models.intelcertificationhistoryevent import Intelcertificationhistoryevent
+from sailpoint.intelligence.models.intel_certification_history_event import IntelCertificationHistoryEvent
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -314,17 +314,17 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
 
 ### Return type
-[**List[Inteloutlieraccessitem]**](../models/inteloutlieraccessitem)
+[**List[IntelOutlierAccessItem]**](../models/intel-outlier-access-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of rare access items. | List[Inteloutlieraccessitem] |  -  |
-400 | Invalid path or query parameters. | Errorresponsedto |  -  |
+200 | One page of rare access items. | List[IntelOutlierAccessItem] |  -  |
+400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
-500 | Internal or upstream server failure. | Errorresponsedto |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -335,7 +335,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
 from sailpoint.intelligence.api_client import ApiClient
-from sailpoint.intelligence.models.inteloutlieraccessitem import Inteloutlieraccessitem
+from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

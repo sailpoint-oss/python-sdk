@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.access_model_metadata.models.accessmodelmetadatabulkupdateresponse import Accessmodelmetadatabulkupdateresponse
-from sailpoint.access_model_metadata.models.attributedto import Attributedto
-from sailpoint.access_model_metadata.models.attributevaluedto import Attributevaluedto
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdatefilterrequest import Entitlementattributebulkupdatefilterrequest
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdateidsrequest import Entitlementattributebulkupdateidsrequest
-from sailpoint.access_model_metadata.models.entitlementattributebulkupdatequeryrequest import Entitlementattributebulkupdatequeryrequest
-from sailpoint.access_model_metadata.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.access_model_metadata.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.access_model_metadata.models.attribute_dto import AttributeDTO
+from sailpoint.access_model_metadata.models.attribute_value_dto import AttributeValueDTO
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_filter_request import EntitlementAttributeBulkUpdateFilterRequest
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
+from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
+from sailpoint.access_model_metadata.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.access_model_metadata.api_client import ApiClient, RequestSerialized
 from sailpoint.access_model_metadata.api_response import ApiResponse
@@ -48,7 +48,7 @@ class AccessModelMetadataApi:
     @validate_call
     def create_access_model_metadata_attribute_v1(
         self,
-        attributedto: Annotated[Attributedto, Field(description="Attribute to create")],
+        attribute_dto: Annotated[AttributeDTO, Field(description="Attribute to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,13 +61,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributedto:
+    ) -> AttributeDTO:
         """Create access model metadata attribute
 
         Create a new Access Model Metadata Attribute. 
 
-        :param attributedto: Attribute to create (required)
-        :type attributedto: Attributedto
+        :param attribute_dto: Attribute to create (required)
+        :type attribute_dto: AttributeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +91,7 @@ class AccessModelMetadataApi:
         """ # noqa: E501
 
         _param = self._create_access_model_metadata_attribute_v1_serialize(
-            attributedto=attributedto,
+            attribute_dto=attribute_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -99,12 +99,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -120,7 +120,7 @@ class AccessModelMetadataApi:
     @validate_call
     def create_access_model_metadata_attribute_v1_with_http_info(
         self,
-        attributedto: Annotated[Attributedto, Field(description="Attribute to create")],
+        attribute_dto: Annotated[AttributeDTO, Field(description="Attribute to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,13 +133,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributedto]:
+    ) -> ApiResponse[AttributeDTO]:
         """Create access model metadata attribute
 
         Create a new Access Model Metadata Attribute. 
 
-        :param attributedto: Attribute to create (required)
-        :type attributedto: Attributedto
+        :param attribute_dto: Attribute to create (required)
+        :type attribute_dto: AttributeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +163,7 @@ class AccessModelMetadataApi:
         """ # noqa: E501
 
         _param = self._create_access_model_metadata_attribute_v1_serialize(
-            attributedto=attributedto,
+            attribute_dto=attribute_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -171,12 +171,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class AccessModelMetadataApi:
     @validate_call
     def create_access_model_metadata_attribute_v1_without_preload_content(
         self,
-        attributedto: Annotated[Attributedto, Field(description="Attribute to create")],
+        attribute_dto: Annotated[AttributeDTO, Field(description="Attribute to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class AccessModelMetadataApi:
 
         Create a new Access Model Metadata Attribute. 
 
-        :param attributedto: Attribute to create (required)
-        :type attributedto: Attributedto
+        :param attribute_dto: Attribute to create (required)
+        :type attribute_dto: AttributeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class AccessModelMetadataApi:
         """ # noqa: E501
 
         _param = self._create_access_model_metadata_attribute_v1_serialize(
-            attributedto=attributedto,
+            attribute_dto=attribute_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,12 +243,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,7 +259,7 @@ class AccessModelMetadataApi:
 
     def _create_access_model_metadata_attribute_v1_serialize(
         self,
-        attributedto,
+        attribute_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -285,8 +285,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if attributedto is not None:
-            _body_params = attributedto
+        if attribute_dto is not None:
+            _body_params = attribute_dto
 
 
         # set the HTTP header `Accept`
@@ -337,7 +337,7 @@ class AccessModelMetadataApi:
     def create_access_model_metadata_attribute_value_v1(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        attributevaluedto: Annotated[Attributevaluedto, Field(description="Attribute value to create")],
+        attribute_value_dto: Annotated[AttributeValueDTO, Field(description="Attribute value to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -350,15 +350,15 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributevaluedto:
+    ) -> AttributeValueDTO:
         """Create access model metadata value
 
         Create a new value for an existing Access Model Metadata Attribute.     
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param attributevaluedto: Attribute value to create (required)
-        :type attributevaluedto: Attributevaluedto
+        :param attribute_value_dto: Attribute value to create (required)
+        :type attribute_value_dto: AttributeValueDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -383,7 +383,7 @@ class AccessModelMetadataApi:
 
         _param = self._create_access_model_metadata_attribute_value_v1_serialize(
             key=key,
-            attributevaluedto=attributevaluedto,
+            attribute_value_dto=attribute_value_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -391,13 +391,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -414,7 +414,7 @@ class AccessModelMetadataApi:
     def create_access_model_metadata_attribute_value_v1_with_http_info(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        attributevaluedto: Annotated[Attributevaluedto, Field(description="Attribute value to create")],
+        attribute_value_dto: Annotated[AttributeValueDTO, Field(description="Attribute value to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -427,15 +427,15 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributevaluedto]:
+    ) -> ApiResponse[AttributeValueDTO]:
         """Create access model metadata value
 
         Create a new value for an existing Access Model Metadata Attribute.     
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param attributevaluedto: Attribute value to create (required)
-        :type attributevaluedto: Attributevaluedto
+        :param attribute_value_dto: Attribute value to create (required)
+        :type attribute_value_dto: AttributeValueDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -460,7 +460,7 @@ class AccessModelMetadataApi:
 
         _param = self._create_access_model_metadata_attribute_value_v1_serialize(
             key=key,
-            attributevaluedto=attributevaluedto,
+            attribute_value_dto=attribute_value_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -468,13 +468,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -491,7 +491,7 @@ class AccessModelMetadataApi:
     def create_access_model_metadata_attribute_value_v1_without_preload_content(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        attributevaluedto: Annotated[Attributevaluedto, Field(description="Attribute value to create")],
+        attribute_value_dto: Annotated[AttributeValueDTO, Field(description="Attribute value to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,8 +511,8 @@ class AccessModelMetadataApi:
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param attributevaluedto: Attribute value to create (required)
-        :type attributevaluedto: Attributevaluedto
+        :param attribute_value_dto: Attribute value to create (required)
+        :type attribute_value_dto: AttributeValueDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -537,7 +537,7 @@ class AccessModelMetadataApi:
 
         _param = self._create_access_model_metadata_attribute_value_v1_serialize(
             key=key,
-            attributevaluedto=attributevaluedto,
+            attribute_value_dto=attribute_value_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -545,13 +545,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '201': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -563,7 +563,7 @@ class AccessModelMetadataApi:
     def _create_access_model_metadata_attribute_value_v1_serialize(
         self,
         key,
-        attributevaluedto,
+        attribute_value_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -591,8 +591,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if attributevaluedto is not None:
-            _body_params = attributevaluedto
+        if attribute_value_dto is not None:
+            _body_params = attribute_value_dto
 
 
         # set the HTTP header `Accept`
@@ -655,7 +655,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributedto:
+    ) -> AttributeDTO:
         """Get access model metadata attribute
 
         Get single Access Model Metadata Attribute
@@ -693,13 +693,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -728,7 +728,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributedto]:
+    ) -> ApiResponse[AttributeDTO]:
         """Get access model metadata attribute
 
         Get single Access Model Metadata Attribute
@@ -766,13 +766,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -839,13 +839,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -934,7 +934,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributevaluedto:
+    ) -> AttributeValueDTO:
         """Get access model metadata value
 
         Get single Access Model Metadata Attribute Value
@@ -975,13 +975,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1011,7 +1011,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributevaluedto]:
+    ) -> ApiResponse[AttributeValueDTO]:
         """Get access model metadata value
 
         Get single Access Model Metadata Attribute Value
@@ -1052,13 +1052,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1129,13 +1129,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1229,7 +1229,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Attributedto]:
+    ) -> List[AttributeDTO]:
         """List access model metadata attributes
 
         Get a list of Access Model Metadata Attributes
@@ -1276,13 +1276,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1314,7 +1314,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Attributedto]]:
+    ) -> ApiResponse[List[AttributeDTO]]:
         """List access model metadata attributes
 
         Get a list of Access Model Metadata Attributes
@@ -1361,13 +1361,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1446,13 +1446,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1559,7 +1559,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Attributevaluedto]:
+    ) -> List[AttributeValueDTO]:
         """List access model metadata values
 
         Get a list of Access Model Metadata Attribute Values
@@ -1603,13 +1603,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributevaluedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeValueDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1640,7 +1640,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Attributevaluedto]]:
+    ) -> ApiResponse[List[AttributeValueDTO]]:
         """List access model metadata values
 
         Get a list of Access Model Metadata Attribute Values
@@ -1684,13 +1684,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributevaluedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeValueDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1765,13 +1765,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Attributevaluedto]",
-            '400': "Errorresponsedto",
+            '200': "List[AttributeValueDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1857,7 +1857,7 @@ class AccessModelMetadataApi:
     def update_access_model_metadata_attribute_v1(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1870,15 +1870,15 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributedto:
+    ) -> AttributeDTO:
         """Update access model metadata attribute
 
         Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **values** 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1903,7 +1903,7 @@ class AccessModelMetadataApi:
 
         _param = self._update_access_model_metadata_attribute_v1_serialize(
             key=key,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1911,13 +1911,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1934,7 +1934,7 @@ class AccessModelMetadataApi:
     def update_access_model_metadata_attribute_v1_with_http_info(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1947,15 +1947,15 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributedto]:
+    ) -> ApiResponse[AttributeDTO]:
         """Update access model metadata attribute
 
         Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **values** 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1980,7 +1980,7 @@ class AccessModelMetadataApi:
 
         _param = self._update_access_model_metadata_attribute_v1_serialize(
             key=key,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,13 +1988,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2011,7 +2011,7 @@ class AccessModelMetadataApi:
     def update_access_model_metadata_attribute_v1_without_preload_content(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2031,8 +2031,8 @@ class AccessModelMetadataApi:
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2057,7 +2057,7 @@ class AccessModelMetadataApi:
 
         _param = self._update_access_model_metadata_attribute_v1_serialize(
             key=key,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2065,13 +2065,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2083,7 +2083,7 @@ class AccessModelMetadataApi:
     def _update_access_model_metadata_attribute_v1_serialize(
         self,
         key,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2093,7 +2093,7 @@ class AccessModelMetadataApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2112,8 +2112,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2165,7 +2165,7 @@ class AccessModelMetadataApi:
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2178,7 +2178,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Attributevaluedto:
+    ) -> AttributeValueDTO:
         """Update access model metadata value
 
         Update an existing Access Model Metadata Attribute Value.     The following fields are patchable: **name** 
@@ -2187,8 +2187,8 @@ class AccessModelMetadataApi:
         :type key: str
         :param value: Technical name of the Attribute value. (required)
         :type value: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2214,7 +2214,7 @@ class AccessModelMetadataApi:
         _param = self._update_access_model_metadata_attribute_value_v1_serialize(
             key=key,
             value=value,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2222,13 +2222,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2246,7 +2246,7 @@ class AccessModelMetadataApi:
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2259,7 +2259,7 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Attributevaluedto]:
+    ) -> ApiResponse[AttributeValueDTO]:
         """Update access model metadata value
 
         Update an existing Access Model Metadata Attribute Value.     The following fields are patchable: **name** 
@@ -2268,8 +2268,8 @@ class AccessModelMetadataApi:
         :type key: str
         :param value: Technical name of the Attribute value. (required)
         :type value: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2295,7 +2295,7 @@ class AccessModelMetadataApi:
         _param = self._update_access_model_metadata_attribute_value_v1_serialize(
             key=key,
             value=value,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2303,13 +2303,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2327,7 +2327,7 @@ class AccessModelMetadataApi:
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="JSON Patch array to apply")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSON Patch array to apply")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2349,8 +2349,8 @@ class AccessModelMetadataApi:
         :type key: str
         :param value: Technical name of the Attribute value. (required)
         :type value: str
-        :param jsonpatchoperation: JSON Patch array to apply (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: JSON Patch array to apply (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2376,7 +2376,7 @@ class AccessModelMetadataApi:
         _param = self._update_access_model_metadata_attribute_value_v1_serialize(
             key=key,
             value=value,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2384,13 +2384,13 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Attributevaluedto",
-            '400': "Errorresponsedto",
+            '200': "AttributeValueDTO",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2403,7 +2403,7 @@ class AccessModelMetadataApi:
         self,
         key,
         value,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2413,7 +2413,7 @@ class AccessModelMetadataApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2434,8 +2434,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2485,7 +2485,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_filter_v1(
         self,
-        entitlementattributebulkupdatefilterrequest: Annotated[Entitlementattributebulkupdatefilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_filter_request: Annotated[EntitlementAttributeBulkUpdateFilterRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2498,13 +2498,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessmodelmetadatabulkupdateresponse:
+    ) -> AccessModelMetadataBulkUpdateResponse:
         """(Deprecated) Metadata Attribute update by filter
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
-        :param entitlementattributebulkupdatefilterrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatefilterrequest: Entitlementattributebulkupdatefilterrequest
+        :param entitlement_attribute_bulk_update_filter_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_filter_request: EntitlementAttributeBulkUpdateFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2529,7 +2529,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_v1_serialize(
-            entitlementattributebulkupdatefilterrequest=entitlementattributebulkupdatefilterrequest,
+            entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2537,12 +2537,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2558,7 +2558,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_filter_v1_with_http_info(
         self,
-        entitlementattributebulkupdatefilterrequest: Annotated[Entitlementattributebulkupdatefilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_filter_request: Annotated[EntitlementAttributeBulkUpdateFilterRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2571,13 +2571,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessmodelmetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
         """(Deprecated) Metadata Attribute update by filter
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
-        :param entitlementattributebulkupdatefilterrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatefilterrequest: Entitlementattributebulkupdatefilterrequest
+        :param entitlement_attribute_bulk_update_filter_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_filter_request: EntitlementAttributeBulkUpdateFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2602,7 +2602,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_v1_serialize(
-            entitlementattributebulkupdatefilterrequest=entitlementattributebulkupdatefilterrequest,
+            entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2610,12 +2610,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2631,7 +2631,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_filter_v1_without_preload_content(
         self,
-        entitlementattributebulkupdatefilterrequest: Annotated[Entitlementattributebulkupdatefilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_filter_request: Annotated[EntitlementAttributeBulkUpdateFilterRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2649,8 +2649,8 @@ class AccessModelMetadataApi:
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
-        :param entitlementattributebulkupdatefilterrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatefilterrequest: Entitlementattributebulkupdatefilterrequest
+        :param entitlement_attribute_bulk_update_filter_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_filter_request: EntitlementAttributeBulkUpdateFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2675,7 +2675,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_v1_serialize(
-            entitlementattributebulkupdatefilterrequest=entitlementattributebulkupdatefilterrequest,
+            entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2683,12 +2683,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2699,7 +2699,7 @@ class AccessModelMetadataApi:
 
     def _update_access_model_metadata_by_filter_v1_serialize(
         self,
-        entitlementattributebulkupdatefilterrequest,
+        entitlement_attribute_bulk_update_filter_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2725,8 +2725,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if entitlementattributebulkupdatefilterrequest is not None:
-            _body_params = entitlementattributebulkupdatefilterrequest
+        if entitlement_attribute_bulk_update_filter_request is not None:
+            _body_params = entitlement_attribute_bulk_update_filter_request
 
 
         # set the HTTP header `Accept`
@@ -2776,7 +2776,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_ids_v1(
         self,
-        entitlementattributebulkupdateidsrequest: Annotated[Entitlementattributebulkupdateidsrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_ids_request: Annotated[EntitlementAttributeBulkUpdateIdsRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2789,13 +2789,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessmodelmetadatabulkupdateresponse:
+    ) -> AccessModelMetadataBulkUpdateResponse:
         """(Deprecated) Metadata Attribute update by ids
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
-        :param entitlementattributebulkupdateidsrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdateidsrequest: Entitlementattributebulkupdateidsrequest
+        :param entitlement_attribute_bulk_update_ids_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_ids_request: EntitlementAttributeBulkUpdateIdsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2820,7 +2820,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_v1_serialize(
-            entitlementattributebulkupdateidsrequest=entitlementattributebulkupdateidsrequest,
+            entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2828,12 +2828,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2849,7 +2849,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_ids_v1_with_http_info(
         self,
-        entitlementattributebulkupdateidsrequest: Annotated[Entitlementattributebulkupdateidsrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_ids_request: Annotated[EntitlementAttributeBulkUpdateIdsRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2862,13 +2862,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessmodelmetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
         """(Deprecated) Metadata Attribute update by ids
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
-        :param entitlementattributebulkupdateidsrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdateidsrequest: Entitlementattributebulkupdateidsrequest
+        :param entitlement_attribute_bulk_update_ids_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_ids_request: EntitlementAttributeBulkUpdateIdsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2893,7 +2893,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_v1_serialize(
-            entitlementattributebulkupdateidsrequest=entitlementattributebulkupdateidsrequest,
+            entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2901,12 +2901,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2922,7 +2922,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_ids_v1_without_preload_content(
         self,
-        entitlementattributebulkupdateidsrequest: Annotated[Entitlementattributebulkupdateidsrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_ids_request: Annotated[EntitlementAttributeBulkUpdateIdsRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2940,8 +2940,8 @@ class AccessModelMetadataApi:
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
-        :param entitlementattributebulkupdateidsrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdateidsrequest: Entitlementattributebulkupdateidsrequest
+        :param entitlement_attribute_bulk_update_ids_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_ids_request: EntitlementAttributeBulkUpdateIdsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2966,7 +2966,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_v1_serialize(
-            entitlementattributebulkupdateidsrequest=entitlementattributebulkupdateidsrequest,
+            entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2974,12 +2974,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2990,7 +2990,7 @@ class AccessModelMetadataApi:
 
     def _update_access_model_metadata_by_ids_v1_serialize(
         self,
-        entitlementattributebulkupdateidsrequest,
+        entitlement_attribute_bulk_update_ids_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3016,8 +3016,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if entitlementattributebulkupdateidsrequest is not None:
-            _body_params = entitlementattributebulkupdateidsrequest
+        if entitlement_attribute_bulk_update_ids_request is not None:
+            _body_params = entitlement_attribute_bulk_update_ids_request
 
 
         # set the HTTP header `Accept`
@@ -3067,7 +3067,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_query_v1(
         self,
-        entitlementattributebulkupdatequeryrequest: Annotated[Entitlementattributebulkupdatequeryrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_query_request: Annotated[EntitlementAttributeBulkUpdateQueryRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3080,13 +3080,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessmodelmetadatabulkupdateresponse:
+    ) -> AccessModelMetadataBulkUpdateResponse:
         """(Deprecated) Metadata Attribute update by query
 
         Bulk update Access Model Metadata Attribute Values using a query
 
-        :param entitlementattributebulkupdatequeryrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatequeryrequest: Entitlementattributebulkupdatequeryrequest
+        :param entitlement_attribute_bulk_update_query_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_query_request: EntitlementAttributeBulkUpdateQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3111,7 +3111,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_v1_serialize(
-            entitlementattributebulkupdatequeryrequest=entitlementattributebulkupdatequeryrequest,
+            entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3119,12 +3119,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3140,7 +3140,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_query_v1_with_http_info(
         self,
-        entitlementattributebulkupdatequeryrequest: Annotated[Entitlementattributebulkupdatequeryrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_query_request: Annotated[EntitlementAttributeBulkUpdateQueryRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3153,13 +3153,13 @@ class AccessModelMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessmodelmetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
         """(Deprecated) Metadata Attribute update by query
 
         Bulk update Access Model Metadata Attribute Values using a query
 
-        :param entitlementattributebulkupdatequeryrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatequeryrequest: Entitlementattributebulkupdatequeryrequest
+        :param entitlement_attribute_bulk_update_query_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_query_request: EntitlementAttributeBulkUpdateQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3184,7 +3184,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_v1_serialize(
-            entitlementattributebulkupdatequeryrequest=entitlementattributebulkupdatequeryrequest,
+            entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3192,12 +3192,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3213,7 +3213,7 @@ class AccessModelMetadataApi:
     @validate_call
     def update_access_model_metadata_by_query_v1_without_preload_content(
         self,
-        entitlementattributebulkupdatequeryrequest: Annotated[Entitlementattributebulkupdatequeryrequest, Field(description="Attribute metadata bulk update request body.")],
+        entitlement_attribute_bulk_update_query_request: Annotated[EntitlementAttributeBulkUpdateQueryRequest, Field(description="Attribute metadata bulk update request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3231,8 +3231,8 @@ class AccessModelMetadataApi:
 
         Bulk update Access Model Metadata Attribute Values using a query
 
-        :param entitlementattributebulkupdatequeryrequest: Attribute metadata bulk update request body. (required)
-        :type entitlementattributebulkupdatequeryrequest: Entitlementattributebulkupdatequeryrequest
+        :param entitlement_attribute_bulk_update_query_request: Attribute metadata bulk update request body. (required)
+        :type entitlement_attribute_bulk_update_query_request: EntitlementAttributeBulkUpdateQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3257,7 +3257,7 @@ class AccessModelMetadataApi:
         warnings.warn("POST /access-model-metadata/v1/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_v1_serialize(
-            entitlementattributebulkupdatequeryrequest=entitlementattributebulkupdatequeryrequest,
+            entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3265,12 +3265,12 @@ class AccessModelMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessmodelmetadatabulkupdateresponse",
-            '400': "Errorresponsedto",
+            '200': "AccessModelMetadataBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttributeV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttributeV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3281,7 +3281,7 @@ class AccessModelMetadataApi:
 
     def _update_access_model_metadata_by_query_v1_serialize(
         self,
-        entitlementattributebulkupdatequeryrequest,
+        entitlement_attribute_bulk_update_query_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3307,8 +3307,8 @@ class AccessModelMetadataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if entitlementattributebulkupdatequeryrequest is not None:
-            _body_params = entitlementattributebulkupdatequeryrequest
+        if entitlement_attribute_bulk_update_query_request is not None:
+            _body_params = entitlement_attribute_bulk_update_query_request
 
 
         # set the HTTP header `Accept`

@@ -47,12 +47,12 @@ configuration = sailpoint.search_attribute_configuration.Configuration(
 with sailpoint.search_attribute_configuration.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.search_attribute_configuration.SearchAttributeConfigurationApi(api_client)
-    searchattributeconfig = {"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}} # Searchattributeconfig | 
+    search_attribute_config = {"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}} # SearchAttributeConfig | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create extended search attributes
-        api_response = api_instance.create_search_attribute_config_v1(searchattributeconfig, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_search_attribute_config_v1(search_attribute_config, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of SearchAttributeConfigurationApi->create_search_attribute_config_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -76,14 +76,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/search_attribute_configuration/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/search_attribute_configuration/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/search_attribute_configuration/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/search_attribute_configuration/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/search_attribute_configuration/docs/ErrorResponseDto.md)
  - [GetSearchAttributeConfigV1401Response](sailpoint/search_attribute_configuration/docs/GetSearchAttributeConfigV1401Response.md)
  - [GetSearchAttributeConfigV1429Response](sailpoint/search_attribute_configuration/docs/GetSearchAttributeConfigV1429Response.md)
- - [Jsonpatchoperation](sailpoint/search_attribute_configuration/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/search_attribute_configuration/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/search_attribute_configuration/docs/Localeorigin.md)
- - [Searchattributeconfig](sailpoint/search_attribute_configuration/docs/Searchattributeconfig.md)
+ - [JsonPatchOperation](sailpoint/search_attribute_configuration/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/search_attribute_configuration/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/search_attribute_configuration/docs/LocaleOrigin.md)
+ - [SearchAttributeConfig](sailpoint/search_attribute_configuration/docs/SearchAttributeConfig.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -68,7 +68,7 @@ class TestGetHistoricalIdentityEventsV1200ResponseInner(unittest.TestCase):
                     requester_id = '2c91808a77ff216301782327a50f09bf', 
                     requester_name = 'Bing C', 
                     items = [{"operation":"Add","accessItemType":"role","name":"Role-1","decision":"APPROVED","description":"The role descrition","sourceId":"8a80828f643d484f01643e14202e206f","sourceName":"Source1","approvalInfos":[{"name":"John Snow","id":"8a80828f643d484f01643e14202e2000","status":"Approved"}]}], ),
-                account = sailpoint.identity_history.models.accountstatuschanged_account.accountstatuschanged_account(
+                account = sailpoint.identity_history.models.account_status_changed_account.AccountStatusChanged_account(
                     id = '2c91808a77ff216301782327a50f09bf', 
                     native_identity = 'dr.arden.ogahn.d', 
                     display_name = 'Adam Archer', 
@@ -76,7 +76,7 @@ class TestGetHistoricalIdentityEventsV1200ResponseInner(unittest.TestCase):
                     source_name = 'JDBC Entitlements Source', 
                     entitlement_count = 2, 
                     access_type = 'account', ),
-                status_change = sailpoint.identity_history.models.accountstatuschanged_status_change.accountstatuschanged_statusChange(
+                status_change = sailpoint.identity_history.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
                     previous_status = 'enabled', 
                     new_status = 'disabled', )
             )
@@ -105,7 +105,7 @@ class TestGetHistoricalIdentityEventsV1200ResponseInner(unittest.TestCase):
                     requester_id = '2c91808a77ff216301782327a50f09bf', 
                     requester_name = 'Bing C', 
                     items = [{"operation":"Add","accessItemType":"role","name":"Role-1","decision":"APPROVED","description":"The role descrition","sourceId":"8a80828f643d484f01643e14202e206f","sourceName":"Source1","approvalInfos":[{"name":"John Snow","id":"8a80828f643d484f01643e14202e2000","status":"Approved"}]}], ),
-                account = sailpoint.identity_history.models.accountstatuschanged_account.accountstatuschanged_account(
+                account = sailpoint.identity_history.models.account_status_changed_account.AccountStatusChanged_account(
                     id = '2c91808a77ff216301782327a50f09bf', 
                     native_identity = 'dr.arden.ogahn.d', 
                     display_name = 'Adam Archer', 
@@ -113,7 +113,7 @@ class TestGetHistoricalIdentityEventsV1200ResponseInner(unittest.TestCase):
                     source_name = 'JDBC Entitlements Source', 
                     entitlement_count = 2, 
                     access_type = 'account', ),
-                status_change = sailpoint.identity_history.models.accountstatuschanged_status_change.accountstatuschanged_statusChange(
+                status_change = sailpoint.identity_history.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
                     previous_status = 'enabled', 
                     new_status = 'disabled', ),
         )

@@ -6,7 +6,7 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
+        from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -30,7 +30,7 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.kbaquestion import Kbaquestion
+        from sailpoint.mfa_configuration.models.kba_question import KbaQuestion
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -56,7 +56,7 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+        from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -80,19 +80,29 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.mfaduoconfig import Mfaduoconfig
+        from sailpoint.mfa_configuration.models.mfa_duo_config import MfaDuoConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          mfaduoconfig = '''{"mfaMethod":"duo-web","enabled":true,"host":"www.example.com","accessKey":"qw123Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email","configProperties":{"skey":"12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B","ikey":"Q123WE45R6TY7890ZXCV"}}''' # Mfaduoconfig | 
+          mfa_duo_config = '''{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "configProperties" : {
+            "skey" : "qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x",
+            "ikey" : "Q123WE45R6TY7890ZXCV"
+          },
+          "mfaMethod" : "duo-web",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }''' # MfaDuoConfig | 
           try:
               # Set duo mfa configuration
-              new_mfaduoconfig = Mfaduoconfig.from_json(mfaduoconfig)
-              results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(mfaduoconfig=new_mfaduoconfig)
+              new_mfa_duo_config = MfaDuoConfig.from_json(mfa_duo_config)
+              results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(mfa_duo_config=new_mfa_duo_config)
               # Below is a request that includes all optional parameters
-              # results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(new_mfaduoconfig)
+              # results = MFAConfigurationApi(api_client).set_mfa_duo_config_v1(new_mfa_duo_config)
               print("The response of MFAConfigurationApi->set_mfa_duo_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -105,19 +115,25 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.mfaoktaconfig import Mfaoktaconfig
+        from sailpoint.mfa_configuration.models.mfa_okta_config import MfaOktaConfig
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          mfaoktaconfig = '''{"mfaMethod":"okta-verify","enabled":true,"host":"www.example.com","accessKey":"dk778Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email"}''' # Mfaoktaconfig | 
+          mfa_okta_config = '''{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "mfaMethod" : "okta-verify",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }''' # MfaOktaConfig | 
           try:
               # Set okta mfa configuration
-              new_mfaoktaconfig = Mfaoktaconfig.from_json(mfaoktaconfig)
-              results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(mfaoktaconfig=new_mfaoktaconfig)
+              new_mfa_okta_config = MfaOktaConfig.from_json(mfa_okta_config)
+              results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(mfa_okta_config=new_mfa_okta_config)
               # Below is a request that includes all optional parameters
-              # results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(new_mfaoktaconfig)
+              # results = MFAConfigurationApi(api_client).set_mfa_okta_config_v1(new_mfa_okta_config)
               print("The response of MFAConfigurationApi->set_mfa_okta_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -130,20 +146,20 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.kbaanswerrequestitem import Kbaanswerrequestitem
-        from sailpoint.mfa_configuration.models.kbaanswerresponseitem import Kbaanswerresponseitem
+        from sailpoint.mfa_configuration.models.kba_answer_request_item import KbaAnswerRequestItem
+        from sailpoint.mfa_configuration.models.kba_answer_response_item import KbaAnswerResponseItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          kbaanswerrequestitem = '''[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]''' # List[Kbaanswerrequestitem] | 
+          kba_answer_request_item = '''[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]''' # List[KbaAnswerRequestItem] | 
           try:
               # Set mfa kba configuration
-              new_kbaanswerrequestitem = Kbaanswerrequestitem.from_json(kbaanswerrequestitem)
-              results = MFAConfigurationApi(api_client).set_mfakba_config_v1(kbaanswerrequestitem=new_kbaanswerrequestitem)
+              new_kba_answer_request_item = KbaAnswerRequestItem.from_json(kba_answer_request_item)
+              results = MFAConfigurationApi(api_client).set_mfakba_config_v1(kba_answer_request_item=new_kba_answer_request_item)
               # Below is a request that includes all optional parameters
-              # results = MFAConfigurationApi(api_client).set_mfakba_config_v1(new_kbaanswerrequestitem)
+              # results = MFAConfigurationApi(api_client).set_mfakba_config_v1(new_kba_answer_request_item)
               print("The response of MFAConfigurationApi->set_mfakba_config_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -157,7 +173,7 @@
       source: |
         from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
         from sailpoint.mfa_configuration.api_client import ApiClient
-        from sailpoint.mfa_configuration.models.mfaconfigtestresponse import Mfaconfigtestresponse
+        from sailpoint.mfa_configuration.models.mfa_config_test_response import MfaConfigTestResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

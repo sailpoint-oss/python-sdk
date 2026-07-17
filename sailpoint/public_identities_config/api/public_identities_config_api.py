@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from sailpoint.public_identities_config.models.publicidentityconfig import Publicidentityconfig
+from sailpoint.public_identities_config.models.public_identity_config import PublicIdentityConfig
 
 from sailpoint.public_identities_config.api_client import ApiClient, RequestSerialized
 from sailpoint.public_identities_config.api_response import ApiResponse
@@ -51,7 +51,7 @@ class PublicIdentitiesConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Publicidentityconfig:
+    ) -> PublicIdentityConfig:
         """Get the public identities configuration
 
         Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
@@ -86,12 +86,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class PublicIdentitiesConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Publicidentityconfig]:
+    ) -> ApiResponse[PublicIdentityConfig]:
         """Get the public identities configuration
 
         Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
@@ -154,12 +154,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -222,12 +222,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -299,7 +299,7 @@ class PublicIdentitiesConfigApi:
     @validate_call
     def update_public_identity_config_v1(
         self,
-        publicidentityconfig: Publicidentityconfig,
+        public_identity_config: PublicIdentityConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -312,13 +312,13 @@ class PublicIdentitiesConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Publicidentityconfig:
+    ) -> PublicIdentityConfig:
         """Update the public identities configuration
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
-        :param publicidentityconfig: (required)
-        :type publicidentityconfig: Publicidentityconfig
+        :param public_identity_config: (required)
+        :type public_identity_config: PublicIdentityConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -342,7 +342,7 @@ class PublicIdentitiesConfigApi:
         """ # noqa: E501
 
         _param = self._update_public_identity_config_v1_serialize(
-            publicidentityconfig=publicidentityconfig,
+            public_identity_config=public_identity_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -350,12 +350,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -371,7 +371,7 @@ class PublicIdentitiesConfigApi:
     @validate_call
     def update_public_identity_config_v1_with_http_info(
         self,
-        publicidentityconfig: Publicidentityconfig,
+        public_identity_config: PublicIdentityConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -384,13 +384,13 @@ class PublicIdentitiesConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Publicidentityconfig]:
+    ) -> ApiResponse[PublicIdentityConfig]:
         """Update the public identities configuration
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
-        :param publicidentityconfig: (required)
-        :type publicidentityconfig: Publicidentityconfig
+        :param public_identity_config: (required)
+        :type public_identity_config: PublicIdentityConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -414,7 +414,7 @@ class PublicIdentitiesConfigApi:
         """ # noqa: E501
 
         _param = self._update_public_identity_config_v1_serialize(
-            publicidentityconfig=publicidentityconfig,
+            public_identity_config=public_identity_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -422,12 +422,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -443,7 +443,7 @@ class PublicIdentitiesConfigApi:
     @validate_call
     def update_public_identity_config_v1_without_preload_content(
         self,
-        publicidentityconfig: Publicidentityconfig,
+        public_identity_config: PublicIdentityConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -461,8 +461,8 @@ class PublicIdentitiesConfigApi:
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
-        :param publicidentityconfig: (required)
-        :type publicidentityconfig: Publicidentityconfig
+        :param public_identity_config: (required)
+        :type public_identity_config: PublicIdentityConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -486,7 +486,7 @@ class PublicIdentitiesConfigApi:
         """ # noqa: E501
 
         _param = self._update_public_identity_config_v1_serialize(
-            publicidentityconfig=publicidentityconfig,
+            public_identity_config=public_identity_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -494,12 +494,12 @@ class PublicIdentitiesConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Publicidentityconfig",
-            '400': "Errorresponsedto",
+            '200': "PublicIdentityConfig",
+            '400': "ErrorResponseDto",
             '401': "GetPublicIdentityConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPublicIdentityConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -510,7 +510,7 @@ class PublicIdentitiesConfigApi:
 
     def _update_public_identity_config_v1_serialize(
         self,
-        publicidentityconfig,
+        public_identity_config,
         _request_auth,
         _content_type,
         _headers,
@@ -536,8 +536,8 @@ class PublicIdentitiesConfigApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if publicidentityconfig is not None:
-            _body_params = publicidentityconfig
+        if public_identity_config is not None:
+            _body_params = public_identity_config
 
 
         # set the HTTP header `Accept`

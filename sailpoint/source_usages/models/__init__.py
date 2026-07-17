@@ -14,10 +14,10 @@
 
 
 # import models into model package
-from sailpoint.source_usages.models.errormessagedto import Errormessagedto
-from sailpoint.source_usages.models.errorresponsedto import Errorresponsedto
+from sailpoint.source_usages.models.error_message_dto import ErrorMessageDto
+from sailpoint.source_usages.models.error_response_dto import ErrorResponseDto
 from sailpoint.source_usages.models.get_status_by_source_id_v1401_response import GetStatusBySourceIdV1401Response
 from sailpoint.source_usages.models.get_status_by_source_id_v1429_response import GetStatusBySourceIdV1429Response
-from sailpoint.source_usages.models.localeorigin import Localeorigin
-from sailpoint.source_usages.models.sourceusage import Sourceusage
-from sailpoint.source_usages.models.sourceusagestatus import Sourceusagestatus
+from sailpoint.source_usages.models.locale_origin import LocaleOrigin
+from sailpoint.source_usages.models.source_usage import SourceUsage
+from sailpoint.source_usages.models.source_usage_status import SourceUsageStatus

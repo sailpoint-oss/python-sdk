@@ -1,0 +1,52 @@
+---
+id: requested-for-dto-ref
+title: RequestedForDtoRef
+pagination_label: RequestedForDtoRef
+sidebar_label: RequestedForDtoRef
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'RequestedForDtoRef', 'RequestedForDtoRef'] 
+slug: /tools/sdk/python/access-requests/models/requested-for-dto-ref
+tags: ['SDK', 'Software Development Kit', 'RequestedForDtoRef', 'RequestedForDtoRef']
+---
+
+# RequestedForDtoRef
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**identity_id** | **str** | The identity id for which the access is requested | [required]
+**requested_items** | [**[]RequestedItemDtoRef**](requested-item-dto-ref) | the details for the access items that are requested for the identity | [required]
+}
+
+## Example
+
+```python
+from sailpoint.access_requests.models.requested_for_dto_ref import RequestedForDtoRef
+
+requested_for_dto_ref = RequestedForDtoRef(
+identity_id='cb89bc2f1ee6445fbea12224c526ba3a',
+requested_items=[
+                    sailpoint.access_requests.models.requested_item_dto_ref.RequestedItemDtoRef(
+                        type = 'ACCESS_PROFILE', 
+                        id = '2c9180835d2e5168015d32f890ca1581', 
+                        comment = 'Requesting access profile for John Doe', 
+                        client_metadata = {"requestedAppName":"test-app","requestedAppId":"2c91808f7892918f0178b78da4a305a1"}, 
+                        start_date = '2020-06-12T21:22:23Z', 
+                        remove_date = '2020-07-11T21:23:15Z', 
+                        account_selection = [
+                            sailpoint.access_requests.models.source_item_ref.SourceItemRef(
+                                source_id = 'cb89bc2f1ee6445fbea12224c526ba3a', 
+                                accounts = [
+                                    sailpoint.access_requests.models.account_item_ref.AccountItemRef(
+                                        account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
+                                        native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
+                                    ], )
+                            ], )
+                    ]
+)
+
+```
+[[Back to top]](#) 
+

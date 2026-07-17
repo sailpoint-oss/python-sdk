@@ -39,11 +39,11 @@ class TestRequestability(unittest.TestCase):
                 denial_comments_required = True,
                 reauthorization_required = True,
                 require_end_date = True,
-                max_permitted_access_duration = sailpoint.dimensions.models.accessduration.accessduration(
+                max_permitted_access_duration = sailpoint.dimensions.models.access_duration.AccessDuration(
                     value = 6, 
                     time_unit = 'MONTHS', ),
                 approval_schemes = [
-                    sailpoint.dimensions.models.accessprofileapprovalscheme.accessprofileapprovalscheme(
+                    sailpoint.dimensions.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                     ]

@@ -47,12 +47,12 @@ configuration = sailpoint.password_policies.Configuration(
 with sailpoint.password_policies.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.password_policies.PasswordPoliciesApi(api_client)
-    passwordpolicyv3dto = {"description":"New Password Policy with high requirements to password complexity.","id":null,"name":"High security Password Policy","dateCreated":1639056206564,"lastUpdated":1662385430753,"firstExpirationReminder":90,"accountIdMinWordLength":3,"accountNameMinWordLength":3,"maxLength":0,"maxRepeatedChars":4,"minAlpha":1,"minCharacterTypes":-1,"minLength":8,"minLower":0,"minNumeric":1,"minSpecial":0,"minUpper":0,"passwordExpiration":90,"defaultPolicy":false,"enablePasswdExpiration":false,"requireStrongAuthn":false,"requireStrongAuthOffNetwork":false,"requireStrongAuthUntrustedGeographies":false,"useAccountAttributes":false,"useDictionary":false,"useIdentityAttributes":false,"validateAgainstAccountId":true,"validateAgainstAccountName":true,"sourceIds":["2c91808382ffee0b01830de154f14034","2c91808582ffee0c01830de36511405f"]} # Passwordpolicyv3dto | 
+    password_policy_v3_dto = {"description":"New Password Policy with high requirements to password complexity.","id":null,"name":"High security Password Policy","dateCreated":1639056206564,"lastUpdated":1662385430753,"firstExpirationReminder":90,"accountIdMinWordLength":3,"accountNameMinWordLength":3,"maxLength":0,"maxRepeatedChars":4,"minAlpha":1,"minCharacterTypes":-1,"minLength":8,"minLower":0,"minNumeric":1,"minSpecial":0,"minUpper":0,"passwordExpiration":90,"defaultPolicy":false,"enablePasswdExpiration":false,"requireStrongAuthn":false,"requireStrongAuthOffNetwork":false,"requireStrongAuthUntrustedGeographies":false,"useAccountAttributes":false,"useDictionary":false,"useIdentityAttributes":false,"validateAgainstAccountId":true,"validateAgainstAccountName":true,"sourceIds":["2c91808382ffee0b01830de154f14034","2c91808582ffee0c01830de36511405f"]} # PasswordPolicyV3Dto | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create password policy
-        api_response = api_instance.create_password_policy_v1(passwordpolicyv3dto, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_password_policy_v1(password_policy_v3_dto, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of PasswordPoliciesApi->create_password_policy_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -75,12 +75,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/password_policies/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/password_policies/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/password_policies/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/password_policies/docs/ErrorResponseDto.md)
  - [GetPasswordPolicyByIdV1401Response](sailpoint/password_policies/docs/GetPasswordPolicyByIdV1401Response.md)
  - [GetPasswordPolicyByIdV1429Response](sailpoint/password_policies/docs/GetPasswordPolicyByIdV1429Response.md)
- - [Localeorigin](sailpoint/password_policies/docs/Localeorigin.md)
- - [Passwordpolicyv3dto](sailpoint/password_policies/docs/Passwordpolicyv3dto.md)
+ - [LocaleOrigin](sailpoint/password_policies/docs/LocaleOrigin.md)
+ - [PasswordPolicyV3Dto](sailpoint/password_policies/docs/PasswordPolicyV3Dto.md)
 
 
 <a id="documentation-for-authorization"></a>

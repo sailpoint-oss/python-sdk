@@ -19,31 +19,31 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from sailpoint.workflows.models.workflowlibraryaction import Workflowlibraryaction
-from sailpoint.workflows.models.workflowlibraryoperator import Workflowlibraryoperator
-from sailpoint.workflows.models.workflowlibrarytrigger import Workflowlibrarytrigger
+from sailpoint.workflows.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.workflows.models.workflow_library_operator import WorkflowLibraryOperator
+from sailpoint.workflows.models.workflow_library_trigger import WorkflowLibraryTrigger
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-LISTCOMPLETEWORKFLOWLIBRARYV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["Workflowlibraryaction", "Workflowlibraryoperator", "Workflowlibrarytrigger"]
+LISTCOMPLETEWORKFLOWLIBRARYV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["WorkflowLibraryAction", "WorkflowLibraryOperator", "WorkflowLibraryTrigger"]
 
 class ListCompleteWorkflowLibraryV1200ResponseInner(BaseModel):
     """
     ListCompleteWorkflowLibraryV1200ResponseInner
     """
 
-    # data type: Workflowlibraryaction
-    anyof_schema_1_validator: Optional[Workflowlibraryaction] = None
-    # data type: Workflowlibrarytrigger
-    anyof_schema_2_validator: Optional[Workflowlibrarytrigger] = None
-    # data type: Workflowlibraryoperator
-    anyof_schema_3_validator: Optional[Workflowlibraryoperator] = None
+    # data type: WorkflowLibraryAction
+    anyof_schema_1_validator: Optional[WorkflowLibraryAction] = None
+    # data type: WorkflowLibraryTrigger
+    anyof_schema_2_validator: Optional[WorkflowLibraryTrigger] = None
+    # data type: WorkflowLibraryOperator
+    anyof_schema_3_validator: Optional[WorkflowLibraryOperator] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Workflowlibraryaction, Workflowlibraryoperator, Workflowlibrarytrigger]] = None
+        actual_instance: Optional[Union[WorkflowLibraryAction, WorkflowLibraryOperator, WorkflowLibraryTrigger]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Workflowlibraryaction", "Workflowlibraryoperator", "Workflowlibrarytrigger" }
+    any_of_schemas: Set[str] = { "WorkflowLibraryAction", "WorkflowLibraryOperator", "WorkflowLibraryTrigger" }
 
     model_config = {
         "validate_assignment": True,
@@ -64,27 +64,27 @@ class ListCompleteWorkflowLibraryV1200ResponseInner(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = ListCompleteWorkflowLibraryV1200ResponseInner.model_construct()
         error_messages = []
-        # validate data type: Workflowlibraryaction
-        if not isinstance(v, Workflowlibraryaction):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Workflowlibraryaction`")
+        # validate data type: WorkflowLibraryAction
+        if not isinstance(v, WorkflowLibraryAction):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WorkflowLibraryAction`")
         else:
             return v
 
-        # validate data type: Workflowlibrarytrigger
-        if not isinstance(v, Workflowlibrarytrigger):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Workflowlibrarytrigger`")
+        # validate data type: WorkflowLibraryTrigger
+        if not isinstance(v, WorkflowLibraryTrigger):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WorkflowLibraryTrigger`")
         else:
             return v
 
-        # validate data type: Workflowlibraryoperator
-        if not isinstance(v, Workflowlibraryoperator):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Workflowlibraryoperator`")
+        # validate data type: WorkflowLibraryOperator
+        if not isinstance(v, WorkflowLibraryOperator):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WorkflowLibraryOperator`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in ListCompleteWorkflowLibraryV1200ResponseInner with anyOf schemas: Workflowlibraryaction, Workflowlibraryoperator, Workflowlibrarytrigger. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in ListCompleteWorkflowLibraryV1200ResponseInner with anyOf schemas: WorkflowLibraryAction, WorkflowLibraryOperator, WorkflowLibraryTrigger. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -97,28 +97,28 @@ class ListCompleteWorkflowLibraryV1200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[Workflowlibraryaction] = None
+        # anyof_schema_1_validator: Optional[WorkflowLibraryAction] = None
         try:
-            instance.actual_instance = Workflowlibraryaction.from_json(json_str)
+            instance.actual_instance = WorkflowLibraryAction.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[Workflowlibrarytrigger] = None
+        # anyof_schema_2_validator: Optional[WorkflowLibraryTrigger] = None
         try:
-            instance.actual_instance = Workflowlibrarytrigger.from_json(json_str)
+            instance.actual_instance = WorkflowLibraryTrigger.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[Workflowlibraryoperator] = None
+        # anyof_schema_3_validator: Optional[WorkflowLibraryOperator] = None
         try:
-            instance.actual_instance = Workflowlibraryoperator.from_json(json_str)
+            instance.actual_instance = WorkflowLibraryOperator.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ListCompleteWorkflowLibraryV1200ResponseInner with anyOf schemas: Workflowlibraryaction, Workflowlibraryoperator, Workflowlibrarytrigger. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ListCompleteWorkflowLibraryV1200ResponseInner with anyOf schemas: WorkflowLibraryAction, WorkflowLibraryOperator, WorkflowLibraryTrigger. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -132,7 +132,7 @@ class ListCompleteWorkflowLibraryV1200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Workflowlibraryaction, Workflowlibraryoperator, Workflowlibrarytrigger]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], WorkflowLibraryAction, WorkflowLibraryOperator, WorkflowLibraryTrigger]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

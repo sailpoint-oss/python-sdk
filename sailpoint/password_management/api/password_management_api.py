@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.password_management.models.passwordchangerequest import Passwordchangerequest
-from sailpoint.password_management.models.passwordchangeresponse import Passwordchangeresponse
-from sailpoint.password_management.models.passworddigittoken import Passworddigittoken
-from sailpoint.password_management.models.passworddigittokenreset import Passworddigittokenreset
-from sailpoint.password_management.models.passwordinfo import Passwordinfo
-from sailpoint.password_management.models.passwordinfoquerydto import Passwordinfoquerydto
-from sailpoint.password_management.models.passwordstatus import Passwordstatus
+from sailpoint.password_management.models.password_change_request import PasswordChangeRequest
+from sailpoint.password_management.models.password_change_response import PasswordChangeResponse
+from sailpoint.password_management.models.password_digit_token import PasswordDigitToken
+from sailpoint.password_management.models.password_digit_token_reset import PasswordDigitTokenReset
+from sailpoint.password_management.models.password_info import PasswordInfo
+from sailpoint.password_management.models.password_info_query_dto import PasswordInfoQueryDTO
+from sailpoint.password_management.models.password_status import PasswordStatus
 
 from sailpoint.password_management.api_client import ApiClient, RequestSerialized
 from sailpoint.password_management.api_response import ApiResponse
@@ -48,7 +48,7 @@ class PasswordManagementApi:
     @validate_call
     def create_digit_token_v1(
         self,
-        passworddigittokenreset: Passworddigittokenreset,
+        password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -62,13 +62,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passworddigittoken:
+    ) -> PasswordDigitToken:
         """Generate a digit token
 
         This API is used to generate a digit token for password management. Requires authorization scope of \"idn:password-digit-token:create\".
 
-        :param passworddigittokenreset: (required)
-        :type passworddigittokenreset: Passworddigittokenreset
+        :param password_digit_token_reset: (required)
+        :type password_digit_token_reset: PasswordDigitTokenReset
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -94,7 +94,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._create_digit_token_v1_serialize(
-            passworddigittokenreset=passworddigittokenreset,
+            password_digit_token_reset=password_digit_token_reset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -103,12 +103,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passworddigittoken",
-            '400': "Errorresponsedto",
+            '200': "PasswordDigitToken",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -124,7 +124,7 @@ class PasswordManagementApi:
     @validate_call
     def create_digit_token_v1_with_http_info(
         self,
-        passworddigittokenreset: Passworddigittokenreset,
+        password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -138,13 +138,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passworddigittoken]:
+    ) -> ApiResponse[PasswordDigitToken]:
         """Generate a digit token
 
         This API is used to generate a digit token for password management. Requires authorization scope of \"idn:password-digit-token:create\".
 
-        :param passworddigittokenreset: (required)
-        :type passworddigittokenreset: Passworddigittokenreset
+        :param password_digit_token_reset: (required)
+        :type password_digit_token_reset: PasswordDigitTokenReset
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -170,7 +170,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._create_digit_token_v1_serialize(
-            passworddigittokenreset=passworddigittokenreset,
+            password_digit_token_reset=password_digit_token_reset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -179,12 +179,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passworddigittoken",
-            '400': "Errorresponsedto",
+            '200': "PasswordDigitToken",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -200,7 +200,7 @@ class PasswordManagementApi:
     @validate_call
     def create_digit_token_v1_without_preload_content(
         self,
-        passworddigittokenreset: Passworddigittokenreset,
+        password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -219,8 +219,8 @@ class PasswordManagementApi:
 
         This API is used to generate a digit token for password management. Requires authorization scope of \"idn:password-digit-token:create\".
 
-        :param passworddigittokenreset: (required)
-        :type passworddigittokenreset: Passworddigittokenreset
+        :param password_digit_token_reset: (required)
+        :type password_digit_token_reset: PasswordDigitTokenReset
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -246,7 +246,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._create_digit_token_v1_serialize(
-            passworddigittokenreset=passworddigittokenreset,
+            password_digit_token_reset=password_digit_token_reset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -255,12 +255,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passworddigittoken",
-            '400': "Errorresponsedto",
+            '200': "PasswordDigitToken",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -271,7 +271,7 @@ class PasswordManagementApi:
 
     def _create_digit_token_v1_serialize(
         self,
-        passworddigittokenreset,
+        password_digit_token_reset,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -300,8 +300,8 @@ class PasswordManagementApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if passworddigittokenreset is not None:
-            _body_params = passworddigittokenreset
+        if password_digit_token_reset is not None:
+            _body_params = password_digit_token_reset
 
 
         # set the HTTP header `Accept`
@@ -364,7 +364,7 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordstatus:
+    ) -> PasswordStatus:
         """Get password change request status
 
         This API returns the status of a password change request.
@@ -402,13 +402,13 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordstatus",
-            '400': "Errorresponsedto",
+            '200': "PasswordStatus",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -437,7 +437,7 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordstatus]:
+    ) -> ApiResponse[PasswordStatus]:
         """Get password change request status
 
         This API returns the status of a password change request.
@@ -475,13 +475,13 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordstatus",
-            '400': "Errorresponsedto",
+            '200': "PasswordStatus",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -548,13 +548,13 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordstatus",
-            '400': "Errorresponsedto",
+            '200': "PasswordStatus",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -629,7 +629,7 @@ class PasswordManagementApi:
     @validate_call
     def query_password_info_v1(
         self,
-        passwordinfoquerydto: Passwordinfoquerydto,
+        password_info_query_dto: PasswordInfoQueryDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -642,13 +642,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordinfo:
+    ) -> PasswordInfo:
         """Query password info
 
         This API is used to query password related information.  
 
-        :param passwordinfoquerydto: (required)
-        :type passwordinfoquerydto: Passwordinfoquerydto
+        :param password_info_query_dto: (required)
+        :type password_info_query_dto: PasswordInfoQueryDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -672,7 +672,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._query_password_info_v1_serialize(
-            passwordinfoquerydto=passwordinfoquerydto,
+            password_info_query_dto=password_info_query_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -680,12 +680,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordinfo",
-            '400': "Errorresponsedto",
+            '200': "PasswordInfo",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -701,7 +701,7 @@ class PasswordManagementApi:
     @validate_call
     def query_password_info_v1_with_http_info(
         self,
-        passwordinfoquerydto: Passwordinfoquerydto,
+        password_info_query_dto: PasswordInfoQueryDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -714,13 +714,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordinfo]:
+    ) -> ApiResponse[PasswordInfo]:
         """Query password info
 
         This API is used to query password related information.  
 
-        :param passwordinfoquerydto: (required)
-        :type passwordinfoquerydto: Passwordinfoquerydto
+        :param password_info_query_dto: (required)
+        :type password_info_query_dto: PasswordInfoQueryDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -744,7 +744,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._query_password_info_v1_serialize(
-            passwordinfoquerydto=passwordinfoquerydto,
+            password_info_query_dto=password_info_query_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -752,12 +752,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordinfo",
-            '400': "Errorresponsedto",
+            '200': "PasswordInfo",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -773,7 +773,7 @@ class PasswordManagementApi:
     @validate_call
     def query_password_info_v1_without_preload_content(
         self,
-        passwordinfoquerydto: Passwordinfoquerydto,
+        password_info_query_dto: PasswordInfoQueryDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -791,8 +791,8 @@ class PasswordManagementApi:
 
         This API is used to query password related information.  
 
-        :param passwordinfoquerydto: (required)
-        :type passwordinfoquerydto: Passwordinfoquerydto
+        :param password_info_query_dto: (required)
+        :type password_info_query_dto: PasswordInfoQueryDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -816,7 +816,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._query_password_info_v1_serialize(
-            passwordinfoquerydto=passwordinfoquerydto,
+            password_info_query_dto=password_info_query_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -824,12 +824,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordinfo",
-            '400': "Errorresponsedto",
+            '200': "PasswordInfo",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -840,7 +840,7 @@ class PasswordManagementApi:
 
     def _query_password_info_v1_serialize(
         self,
-        passwordinfoquerydto,
+        password_info_query_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -866,8 +866,8 @@ class PasswordManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordinfoquerydto is not None:
-            _body_params = passwordinfoquerydto
+        if password_info_query_dto is not None:
+            _body_params = password_info_query_dto
 
 
         # set the HTTP header `Accept`
@@ -917,7 +917,7 @@ class PasswordManagementApi:
     @validate_call
     def set_password_v1(
         self,
-        passwordchangerequest: Passwordchangerequest,
+        password_change_request: PasswordChangeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,13 +930,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordchangeresponse:
+    ) -> PasswordChangeResponse:
         """Set identity's password
 
         This API is used to set a password for an identity.   An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their ISC user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or [\"authorization_code\" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).  >**Note: If you want to set an identity's source account password, you must enable `PASSWORD` as one of the source's features. You can use the [PATCH Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source) to add the `PASSWORD` feature.**  To generate the encryptedPassword (RSA encrypted using publicKey) for the request body, run the following command:  ```bash echo -n \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem -pubin | base64 ```  In this example, myPassword is the plain text password being set and encrypted, and public_key.pem is the path to the public key file. You can retrieve the required publicKey, along with other information like identityId, sourceId, publicKeyId, accounts, and policies, using the Query Password Info endpoint.  To successfully run this command, you must have OpenSSL installed on your machine. If OpenSSL is unavailable, consider using the Virtual Appliance (VA), which has OpenSSL pre-installed and configured.  If you are using a Windows machine, refer to this [guide](https://tecadmin.net/install-openssl-on-windows/) for instructions on installing OpenSSL.  You can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status) to check the password change request status. To do so, you must provide the `requestId` from your earlier request to set the password.  
 
-        :param passwordchangerequest: (required)
-        :type passwordchangerequest: Passwordchangerequest
+        :param password_change_request: (required)
+        :type password_change_request: PasswordChangeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,7 +960,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._set_password_v1_serialize(
-            passwordchangerequest=passwordchangerequest,
+            password_change_request=password_change_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -968,12 +968,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Passwordchangeresponse",
-            '400': "Errorresponsedto",
+            '202': "PasswordChangeResponse",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -989,7 +989,7 @@ class PasswordManagementApi:
     @validate_call
     def set_password_v1_with_http_info(
         self,
-        passwordchangerequest: Passwordchangerequest,
+        password_change_request: PasswordChangeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1002,13 +1002,13 @@ class PasswordManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordchangeresponse]:
+    ) -> ApiResponse[PasswordChangeResponse]:
         """Set identity's password
 
         This API is used to set a password for an identity.   An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their ISC user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or [\"authorization_code\" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).  >**Note: If you want to set an identity's source account password, you must enable `PASSWORD` as one of the source's features. You can use the [PATCH Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source) to add the `PASSWORD` feature.**  To generate the encryptedPassword (RSA encrypted using publicKey) for the request body, run the following command:  ```bash echo -n \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem -pubin | base64 ```  In this example, myPassword is the plain text password being set and encrypted, and public_key.pem is the path to the public key file. You can retrieve the required publicKey, along with other information like identityId, sourceId, publicKeyId, accounts, and policies, using the Query Password Info endpoint.  To successfully run this command, you must have OpenSSL installed on your machine. If OpenSSL is unavailable, consider using the Virtual Appliance (VA), which has OpenSSL pre-installed and configured.  If you are using a Windows machine, refer to this [guide](https://tecadmin.net/install-openssl-on-windows/) for instructions on installing OpenSSL.  You can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status) to check the password change request status. To do so, you must provide the `requestId` from your earlier request to set the password.  
 
-        :param passwordchangerequest: (required)
-        :type passwordchangerequest: Passwordchangerequest
+        :param password_change_request: (required)
+        :type password_change_request: PasswordChangeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1032,7 +1032,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._set_password_v1_serialize(
-            passwordchangerequest=passwordchangerequest,
+            password_change_request=password_change_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1040,12 +1040,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Passwordchangeresponse",
-            '400': "Errorresponsedto",
+            '202': "PasswordChangeResponse",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1061,7 +1061,7 @@ class PasswordManagementApi:
     @validate_call
     def set_password_v1_without_preload_content(
         self,
-        passwordchangerequest: Passwordchangerequest,
+        password_change_request: PasswordChangeRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1079,8 +1079,8 @@ class PasswordManagementApi:
 
         This API is used to set a password for an identity.   An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their ISC user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or [\"authorization_code\" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).  >**Note: If you want to set an identity's source account password, you must enable `PASSWORD` as one of the source's features. You can use the [PATCH Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source) to add the `PASSWORD` feature.**  To generate the encryptedPassword (RSA encrypted using publicKey) for the request body, run the following command:  ```bash echo -n \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem -pubin | base64 ```  In this example, myPassword is the plain text password being set and encrypted, and public_key.pem is the path to the public key file. You can retrieve the required publicKey, along with other information like identityId, sourceId, publicKeyId, accounts, and policies, using the Query Password Info endpoint.  To successfully run this command, you must have OpenSSL installed on your machine. If OpenSSL is unavailable, consider using the Virtual Appliance (VA), which has OpenSSL pre-installed and configured.  If you are using a Windows machine, refer to this [guide](https://tecadmin.net/install-openssl-on-windows/) for instructions on installing OpenSSL.  You can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status) to check the password change request status. To do so, you must provide the `requestId` from your earlier request to set the password.  
 
-        :param passwordchangerequest: (required)
-        :type passwordchangerequest: Passwordchangerequest
+        :param password_change_request: (required)
+        :type password_change_request: PasswordChangeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1104,7 +1104,7 @@ class PasswordManagementApi:
         """ # noqa: E501
 
         _param = self._set_password_v1_serialize(
-            passwordchangerequest=passwordchangerequest,
+            password_change_request=password_change_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1112,12 +1112,12 @@ class PasswordManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Passwordchangeresponse",
-            '400': "Errorresponsedto",
+            '202': "PasswordChangeResponse",
+            '400': "ErrorResponseDto",
             '401': "QueryPasswordInfoV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "QueryPasswordInfoV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1128,7 +1128,7 @@ class PasswordManagementApi:
 
     def _set_password_v1_serialize(
         self,
-        passwordchangerequest,
+        password_change_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1154,8 +1154,8 @@ class PasswordManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordchangerequest is not None:
-            _body_params = passwordchangerequest
+        if password_change_request is not None:
+            _body_params = password_change_request
 
 
         # set the HTTP header `Accept`

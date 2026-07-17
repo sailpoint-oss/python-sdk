@@ -31,15 +31,15 @@ from sailpoint.launchers.exceptions import ApiAttributeError
 from sailpoint.launchers.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.launchers.models.errormessagedto import Errormessagedto
-from sailpoint.launchers.models.errorresponsedto import Errorresponsedto
+from sailpoint.launchers.models.error_message_dto import ErrorMessageDto
+from sailpoint.launchers.models.error_response_dto import ErrorResponseDto
 from sailpoint.launchers.models.get_launchers_v1200_response import GetLaunchersV1200Response
 from sailpoint.launchers.models.get_launchers_v1401_response import GetLaunchersV1401Response
 from sailpoint.launchers.models.get_launchers_v1429_response import GetLaunchersV1429Response
 from sailpoint.launchers.models.launcher import Launcher
 from sailpoint.launchers.models.launcher_owner import LauncherOwner
 from sailpoint.launchers.models.launcher_reference import LauncherReference
-from sailpoint.launchers.models.launcherrequest import Launcherrequest
-from sailpoint.launchers.models.launcherrequest_reference import LauncherrequestReference
-from sailpoint.launchers.models.localeorigin import Localeorigin
+from sailpoint.launchers.models.launcher_request import LauncherRequest
+from sailpoint.launchers.models.launcher_request_reference import LauncherRequestReference
+from sailpoint.launchers.models.locale_origin import LocaleOrigin
 from sailpoint.launchers.models.start_launcher_v1200_response import StartLauncherV1200Response

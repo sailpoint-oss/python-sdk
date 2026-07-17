@@ -17,23 +17,23 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from sailpoint.shared_signals_framework_ssf.models.streamconfigresponse import Streamconfigresponse
+from sailpoint.shared_signals_framework_ssf.models.stream_config_response import StreamConfigResponse
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-GETSTREAMV1200RESPONSE_ONE_OF_SCHEMAS = ["List[Streamconfigresponse]", "Streamconfigresponse"]
+GETSTREAMV1200RESPONSE_ONE_OF_SCHEMAS = ["List[StreamConfigResponse]", "StreamConfigResponse"]
 
 class GetStreamV1200Response(BaseModel):
     """
     GetStreamV1200Response
     """
-    # data type: Streamconfigresponse
-    oneof_schema_1_validator: Optional[Streamconfigresponse] = None
-    # data type: List[Streamconfigresponse]
-    oneof_schema_2_validator: Optional[List[Streamconfigresponse]] = None
-    actual_instance: Optional[Union[List[Streamconfigresponse], Streamconfigresponse]] = None
-    one_of_schemas: Set[str] = { "List[Streamconfigresponse]", "Streamconfigresponse" }
+    # data type: StreamConfigResponse
+    oneof_schema_1_validator: Optional[StreamConfigResponse] = None
+    # data type: List[StreamConfigResponse]
+    oneof_schema_2_validator: Optional[List[StreamConfigResponse]] = None
+    actual_instance: Optional[Union[List[StreamConfigResponse], StreamConfigResponse]] = None
+    one_of_schemas: Set[str] = { "List[StreamConfigResponse]", "StreamConfigResponse" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -56,12 +56,12 @@ class GetStreamV1200Response(BaseModel):
         instance = GetStreamV1200Response.model_construct()
         error_messages = []
         match = 0
-        # validate data type: Streamconfigresponse
-        if not isinstance(v, Streamconfigresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Streamconfigresponse`")
+        # validate data type: StreamConfigResponse
+        if not isinstance(v, StreamConfigResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `StreamConfigResponse`")
         else:
             match += 1
-        # validate data type: List[Streamconfigresponse]
+        # validate data type: List[StreamConfigResponse]
         try:
             instance.oneof_schema_2_validator = v
             match += 1
@@ -69,10 +69,10 @@ class GetStreamV1200Response(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in GetStreamV1200Response with oneOf schemas: List[Streamconfigresponse], Streamconfigresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in GetStreamV1200Response with oneOf schemas: List[StreamConfigResponse], StreamConfigResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in GetStreamV1200Response with oneOf schemas: List[Streamconfigresponse], Streamconfigresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in GetStreamV1200Response with oneOf schemas: List[StreamConfigResponse], StreamConfigResponse. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -87,13 +87,13 @@ class GetStreamV1200Response(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into Streamconfigresponse
+        # deserialize data into StreamConfigResponse
         try:
-            instance.actual_instance = Streamconfigresponse.from_json(json_str)
+            instance.actual_instance = StreamConfigResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into List[Streamconfigresponse]
+        # deserialize data into List[StreamConfigResponse]
         try:
             # validation
             instance.oneof_schema_2_validator = json.loads(json_str)
@@ -105,10 +105,10 @@ class GetStreamV1200Response(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into GetStreamV1200Response with oneOf schemas: List[Streamconfigresponse], Streamconfigresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into GetStreamV1200Response with oneOf schemas: List[StreamConfigResponse], StreamConfigResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetStreamV1200Response with oneOf schemas: List[Streamconfigresponse], Streamconfigresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetStreamV1200Response with oneOf schemas: List[StreamConfigResponse], StreamConfigResponse. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -122,7 +122,7 @@ class GetStreamV1200Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], List[Streamconfigresponse], Streamconfigresponse]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], List[StreamConfigResponse], StreamConfigResponse]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

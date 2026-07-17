@@ -95,11 +95,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Role created | Role |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -116,7 +116,192 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    role = '''sailpoint.roles.Role()''' # Role | 
+    role = '''{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "dimensional" : false,
+          "privilegeLevel" : "High",
+          "created" : "2021-03-01T22:32:58.104Z",
+          "dimensionRefs" : [ {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          }, {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          } ],
+          "description" : "Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.",
+          "membership" : {
+            "identities" : [ {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }, {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            } ],
+            "criteria" : {
+              "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+              "children" : [ {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              }, {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              } ],
+              "operation" : "EQUALS",
+              "key" : {
+                "sourceId" : "2c9180867427f3a301745aec18211519",
+                "property" : "attribute.email",
+                "type" : "ACCOUNT"
+              }
+            },
+            "type" : "IDENTITY_LIST"
+          },
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
+          "enabled" : true,
+          "revocationRequestConfig" : {
+            "commentsRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : false
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "legacyMembershipInfo" : {
+            "type" : "IDENTITY_LIST"
+          },
+          "accessRequestConfig" : {
+            "dimensionSchema" : {
+              "dimensionAttributes" : [ {
+                "displayName" : "City",
+                "name" : "city",
+                "derived" : true
+              }, {
+                "displayName" : "City",
+                "name" : "city",
+                "derived" : true
+              } ]
+            },
+            "commentsRequired" : true,
+            "reauthorizationRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "formDefinitionId" : "78258e80-e9e2-4e1a-a11f-ce0b7c62f25d",
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
+          },
+          "accessProfiles" : [ {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          }, {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          } ],
+          "name" : "Role 2567",
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c918086749d78830174a1a40e121518",
+          "requestable" : true
+        }''' # Role | 
 
     try:
         # Create a role
@@ -147,20 +332,20 @@ A user with ROLE_SUBADMIN authority can only call this endpoint if all roles inc
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | rolebulkdeleterequest | [**Rolebulkdeleterequest**](../models/rolebulkdeleterequest) | True  | 
+ Body  | role_bulk_delete_request | [**RoleBulkDeleteRequest**](../models/role-bulk-delete-request) | True  | 
 
 ### Return type
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returns an object with the id of the task performing the delete operation. | Taskresultdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Returns an object with the id of the task performing the delete operation. | TaskResultDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -171,21 +356,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolebulkdeleterequest import Rolebulkdeleterequest
-from sailpoint.roles.models.taskresultdto import Taskresultdto
+from sailpoint.roles.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from sailpoint.roles.models.task_result_dto import TaskResultDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    rolebulkdeleterequest = '''{"roleIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}''' # Rolebulkdeleterequest | 
+    role_bulk_delete_request = '''{
+          "roleIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
+        }''' # RoleBulkDeleteRequest | 
 
     try:
         # Delete role(s)
-        new_rolebulkdeleterequest = Rolebulkdeleterequest.from_json(rolebulkdeleterequest)
-        results = RolesApi(api_client).delete_bulk_roles_v1(rolebulkdeleterequest=new_rolebulkdeleterequest)
+        new_role_bulk_delete_request = RoleBulkDeleteRequest.from_json(role_bulk_delete_request)
+        results = RolesApi(api_client).delete_bulk_roles_v1(role_bulk_delete_request=new_role_bulk_delete_request)
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).delete_bulk_roles_v1(new_rolebulkdeleterequest)
+        # results = RolesApi(api_client).delete_bulk_roles_v1(new_role_bulk_delete_request)
         print("The response of RolesApi->delete_bulk_roles_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -217,11 +404,11 @@ Path   | attribute_value | **str** | True  | Technical name of the Attribute Val
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Request accepted |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -276,11 +463,11 @@ Path   | id | **str** | True  | ID of the Role
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -327,17 +514,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The Id of the bulk update task.
 
 ### Return type
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | return if bulk update status could be found. | Rolebulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | return if bulk update status could be found. | RoleBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -348,7 +535,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolebulkupdateresponse import Rolebulkupdateresponse
+from sailpoint.roles.models.role_bulk_update_response import RoleBulkUpdateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -382,17 +569,17 @@ This API returns a list of all unfinished bulk update process status of the tena
 This endpoint does not need any parameter. 
 
 ### Return type
-[**List[Rolegetallbulkupdateresponse]**](../models/rolegetallbulkupdateresponse)
+[**List[RoleGetAllBulkUpdateResponse]**](../models/role-get-all-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | successfully get the status of all unfinished bulk updates request. | List[Rolegetallbulkupdateresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | successfully get the status of all unfinished bulk updates request. | List[RoleGetAllBulkUpdateResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -403,7 +590,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolegetallbulkupdateresponse import Rolegetallbulkupdateresponse
+from sailpoint.roles.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -445,17 +632,17 @@ Path   | id | **str** | True  | ID of the Role for which the assigned Identities
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**
 
 ### Return type
-[**List[Roleidentity]**](../models/roleidentity)
+[**List[RoleIdentity]**](../models/role-identity)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Identities assigned the Role | List[Roleidentity] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Identities assigned the Role | List[RoleIdentity] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -466,7 +653,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.roleidentity import Roleidentity
+from sailpoint.roles.models.role_identity import RoleIdentity
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -532,11 +719,11 @@ Path   | id | **str** | True  | Containing role's ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Entitlements | List[Entitlement] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -599,11 +786,11 @@ Path   | id | **str** | True  | ID of the Role
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of all Roles | Role |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -666,11 +853,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Roles | List[Role] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -745,7 +932,7 @@ When you use this API to modify a role's membership identities, you can only mod
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Role to patch
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
 
 ### Return type
 [**Role**](../models/role)
@@ -754,11 +941,11 @@ Path   | id | **str** | True  | ID of the Role to patch
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with the Role as updated. | Role |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -769,7 +956,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.roles.models.json_patch_operation import JsonPatchOperation
 from sailpoint.roles.models.role import Role
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -777,14 +964,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121e121518' # str | ID of the Role to patch # str | ID of the Role to patch
-    jsonpatchoperation = '''[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]''' # List[Jsonpatchoperation] | 
+    json_patch_operation = '''[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]''' # List[JsonPatchOperation] | 
 
     try:
         # Patch a specified role
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = RolesApi(api_client).patch_role_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = RolesApi(api_client).patch_role_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).patch_role_v1(id, new_jsonpatchoperation)
+        # results = RolesApi(api_client).patch_role_v1(id, new_json_patch_operation)
         print("The response of RolesApi->patch_role_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -813,7 +1000,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
   Query | for_segment_ids | **str** |   (optional) | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
   Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
- Body  | rolelistfilterdto | [**Rolelistfilterdto**](../models/rolelistfilterdto) |   (optional) | 
+ Body  | role_list_filter_dto | [**RoleListFilterDTO**](../models/role-list-filter-dto) |   (optional) | 
 
 ### Return type
 [**List[Role]**](../models/role)
@@ -822,11 +1009,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with A list of Roles | List[Role] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -838,7 +1025,7 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
 from sailpoint.roles.models.role import Role
-from sailpoint.roles.models.rolelistfilterdto import Rolelistfilterdto
+from sailpoint.roles.models.role_list_filter_dto import RoleListFilterDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -851,14 +1038,20 @@ with ApiClient(configuration) as api_client:
     sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
     for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
     include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
-    rolelistfilterdto = '''{"filters":"dimensional eq false","ammKeyValues":[{"attribute":"iscFederalClassifications","values":["secret"]}]}''' # Rolelistfilterdto |  (optional)
+    role_list_filter_dto = '''{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "dimensional eq false"
+        }''' # RoleListFilterDTO |  (optional)
 
     try:
         # Filter roles by metadata
         
         results = RolesApi(api_client).search_roles_by_filter_v1()
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).search_roles_by_filter_v1(for_subadmin, limit, offset, count, sorters, for_segment_ids, include_unsegmented, new_rolelistfilterdto)
+        # results = RolesApi(api_client).search_roles_by_filter_v1(for_subadmin, limit, offset, count, sorters, for_segment_ids, include_unsegmented, new_role_list_filter_dto)
         print("The response of RolesApi->search_roles_by_filter_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -891,11 +1084,11 @@ Path   | attribute_value | **str** | True  | Technical name of the Attribute Val
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with the Role as updated. | Role |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -945,20 +1138,20 @@ Custom metadata update, including add, replace need suit licensed.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | rolemetadatabulkupdatebyfilterrequest | [**Rolemetadatabulkupdatebyfilterrequest**](../models/rolemetadatabulkupdatebyfilterrequest) | True  | 
+ Body  | role_metadata_bulk_update_by_filter_request | [**RoleMetadataBulkUpdateByFilterRequest**](../models/role-metadata-bulk-update-by-filter-request) | True  | 
 
 ### Return type
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if bulk update request created | Rolebulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -969,21 +1162,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolebulkupdateresponse import Rolebulkupdateresponse
-from sailpoint.roles.models.rolemetadatabulkupdatebyfilterrequest import Rolemetadatabulkupdatebyfilterrequest
+from sailpoint.roles.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.roles.models.role_metadata_bulk_update_by_filter_request import RoleMetadataBulkUpdateByFilterRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    rolemetadatabulkupdatebyfilterrequest = '''{"operation":"ADD","replaceScope":"ALL","filters":"requestable eq false","values":[{"attribute":"iscFederalClassifications","values":["topSecret"]}]}''' # Rolemetadatabulkupdatebyfilterrequest | 
+    role_metadata_bulk_update_by_filter_request = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : " requestable eq false",
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }''' # RoleMetadataBulkUpdateByFilterRequest | 
 
     try:
         # Bulk-update roles' metadata by filters
-        new_rolemetadatabulkupdatebyfilterrequest = Rolemetadatabulkupdatebyfilterrequest.from_json(rolemetadatabulkupdatebyfilterrequest)
-        results = RolesApi(api_client).update_roles_metadata_by_filter_v1(rolemetadatabulkupdatebyfilterrequest=new_rolemetadatabulkupdatebyfilterrequest)
+        new_role_metadata_bulk_update_by_filter_request = RoleMetadataBulkUpdateByFilterRequest.from_json(role_metadata_bulk_update_by_filter_request)
+        results = RolesApi(api_client).update_roles_metadata_by_filter_v1(role_metadata_bulk_update_by_filter_request=new_role_metadata_bulk_update_by_filter_request)
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).update_roles_metadata_by_filter_v1(new_rolemetadatabulkupdatebyfilterrequest)
+        # results = RolesApi(api_client).update_roles_metadata_by_filter_v1(new_role_metadata_bulk_update_by_filter_request)
         print("The response of RolesApi->update_roles_metadata_by_filter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1007,20 +1208,20 @@ Custom metadata update, including add, replace need suit licensed.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | rolemetadatabulkupdatebyidrequest | [**Rolemetadatabulkupdatebyidrequest**](../models/rolemetadatabulkupdatebyidrequest) | True  | 
+ Body  | role_metadata_bulk_update_by_id_request | [**RoleMetadataBulkUpdateByIdRequest**](../models/role-metadata-bulk-update-by-id-request) | True  | 
 
 ### Return type
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if bulk update request created | Rolebulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1031,21 +1232,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolebulkupdateresponse import Rolebulkupdateresponse
-from sailpoint.roles.models.rolemetadatabulkupdatebyidrequest import Rolemetadatabulkupdatebyidrequest
+from sailpoint.roles.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.roles.models.role_metadata_bulk_update_by_id_request import RoleMetadataBulkUpdateByIdRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    rolemetadatabulkupdatebyidrequest = '''sailpoint.roles.Rolemetadatabulkupdatebyidrequest()''' # Rolemetadatabulkupdatebyidrequest | 
+    role_metadata_bulk_update_by_id_request = '''{
+          "roles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }''' # RoleMetadataBulkUpdateByIdRequest | 
 
     try:
         # Bulk-update roles' metadata by id
-        new_rolemetadatabulkupdatebyidrequest = Rolemetadatabulkupdatebyidrequest.from_json(rolemetadatabulkupdatebyidrequest)
-        results = RolesApi(api_client).update_roles_metadata_by_ids_v1(rolemetadatabulkupdatebyidrequest=new_rolemetadatabulkupdatebyidrequest)
+        new_role_metadata_bulk_update_by_id_request = RoleMetadataBulkUpdateByIdRequest.from_json(role_metadata_bulk_update_by_id_request)
+        results = RolesApi(api_client).update_roles_metadata_by_ids_v1(role_metadata_bulk_update_by_id_request=new_role_metadata_bulk_update_by_id_request)
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).update_roles_metadata_by_ids_v1(new_rolemetadatabulkupdatebyidrequest)
+        # results = RolesApi(api_client).update_roles_metadata_by_ids_v1(new_role_metadata_bulk_update_by_id_request)
         print("The response of RolesApi->update_roles_metadata_by_ids_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1069,20 +1278,20 @@ Custom metadata update, including add, replace need suit licensed.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | rolemetadatabulkupdatebyqueryrequest | [**Rolemetadatabulkupdatebyqueryrequest**](../models/rolemetadatabulkupdatebyqueryrequest) | True  | 
+ Body  | role_metadata_bulk_update_by_query_request | [**RoleMetadataBulkUpdateByQueryRequest**](../models/role-metadata-bulk-update-by-query-request) | True  | 
 
 ### Return type
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if bulk update request created | Rolebulkupdateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1093,21 +1302,44 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.roles.api.roles_api import RolesApi
 from sailpoint.roles.api_client import ApiClient
-from sailpoint.roles.models.rolebulkupdateresponse import Rolebulkupdateresponse
-from sailpoint.roles.models.rolemetadatabulkupdatebyqueryrequest import Rolemetadatabulkupdatebyqueryrequest
+from sailpoint.roles.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.roles.models.role_metadata_bulk_update_by_query_request import RoleMetadataBulkUpdateByQueryRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    rolemetadatabulkupdatebyqueryrequest = '''{"example of a success update":{"query":{"indices":["roles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},"operation":"REPLACE","replaceScope":"ALL","values":[{"attribute":"iscFederalClassifications","values":["secret"]}]}}''' # Rolemetadatabulkupdatebyqueryrequest | 
+    role_metadata_bulk_update_by_query_request = '''{
+          "query" : {
+            "query\"" : {
+              "indices" : [ "roles" ],
+              "queryType" : "TEXT",
+              "textQuery" : {
+                "terms" : [ "test123" ],
+                "fields" : [ "id" ],
+                "matchAny" : false,
+                "contains" : true
+              },
+              "includeNested" : false
+            }
+          },
+          "values" : [ {
+            "attributeValue" : [ "topSecret" ],
+            "attributeKey" : "iscFederalClassifications"
+          }, {
+            "attributeValue" : [ "topSecret" ],
+            "attributeKey" : "iscFederalClassifications"
+          } ],
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }''' # RoleMetadataBulkUpdateByQueryRequest | 
 
     try:
         # Bulk-update roles' metadata by query
-        new_rolemetadatabulkupdatebyqueryrequest = Rolemetadatabulkupdatebyqueryrequest.from_json(rolemetadatabulkupdatebyqueryrequest)
-        results = RolesApi(api_client).update_roles_metadata_by_query_v1(rolemetadatabulkupdatebyqueryrequest=new_rolemetadatabulkupdatebyqueryrequest)
+        new_role_metadata_bulk_update_by_query_request = RoleMetadataBulkUpdateByQueryRequest.from_json(role_metadata_bulk_update_by_query_request)
+        results = RolesApi(api_client).update_roles_metadata_by_query_v1(role_metadata_bulk_update_by_query_request=new_role_metadata_bulk_update_by_query_request)
         # Below is a request that includes all optional parameters
-        # results = RolesApi(api_client).update_roles_metadata_by_query_v1(new_rolemetadatabulkupdatebyqueryrequest)
+        # results = RolesApi(api_client).update_roles_metadata_by_query_v1(new_role_metadata_bulk_update_by_query_request)
         print("The response of RolesApi->update_roles_metadata_by_query_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

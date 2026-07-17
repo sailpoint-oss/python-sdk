@@ -7,7 +7,7 @@
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
         from sailpoint.machine_accounts.models.create_machine_account_subtype_v1_request import CreateMachineAccountSubtypeV1Request
-        from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+        from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -60,7 +60,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+        from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -87,7 +87,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+        from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -115,7 +115,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.machineaccount import Machineaccount
+        from sailpoint.machine_accounts.models.machine_account import MachineAccount
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -142,7 +142,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+        from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -175,7 +175,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.machineaccount import Machineaccount
+        from sailpoint.machine_accounts.models.machine_account import MachineAccount
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -207,7 +207,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+        from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -236,7 +236,7 @@
       source: |
         from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.machine_accounts.api_client import ApiClient
-        from sailpoint.machine_accounts.models.machineaccount import Machineaccount
+        from sailpoint.machine_accounts.models.machine_account import MachineAccount
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

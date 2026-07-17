@@ -72,14 +72,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/auth_users/docs/ArrayInner.md)
- - [Authuser](sailpoint/auth_users/docs/Authuser.md)
- - [Errormessagedto](sailpoint/auth_users/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/auth_users/docs/Errorresponsedto.md)
+ - [AuthUser](sailpoint/auth_users/docs/AuthUser.md)
+ - [ErrorMessageDto](sailpoint/auth_users/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/auth_users/docs/ErrorResponseDto.md)
  - [GetAuthUserV1401Response](sailpoint/auth_users/docs/GetAuthUserV1401Response.md)
  - [GetAuthUserV1429Response](sailpoint/auth_users/docs/GetAuthUserV1429Response.md)
- - [Jsonpatchoperation](sailpoint/auth_users/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/auth_users/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/auth_users/docs/Localeorigin.md)
+ - [JsonPatchOperation](sailpoint/auth_users/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/auth_users/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/auth_users/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

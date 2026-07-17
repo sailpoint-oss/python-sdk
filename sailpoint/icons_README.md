@@ -71,9 +71,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/icons/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/icons/docs/Errorresponsedto.md)
- - [Localeorigin](sailpoint/icons/docs/Localeorigin.md)
+ - [ErrorMessageDto](sailpoint/icons/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/icons/docs/ErrorResponseDto.md)
+ - [LocaleOrigin](sailpoint/icons/docs/LocaleOrigin.md)
  - [SetIconV1200Response](sailpoint/icons/docs/SetIconV1200Response.md)
  - [SetIconV1401Response](sailpoint/icons/docs/SetIconV1401Response.md)
  - [SetIconV1429Response](sailpoint/icons/docs/SetIconV1429Response.md)

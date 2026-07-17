@@ -31,9 +31,9 @@ from sailpoint.password_sync_groups.exceptions import ApiAttributeError
 from sailpoint.password_sync_groups.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.password_sync_groups.models.errormessagedto import Errormessagedto
-from sailpoint.password_sync_groups.models.errorresponsedto import Errorresponsedto
+from sailpoint.password_sync_groups.models.error_message_dto import ErrorMessageDto
+from sailpoint.password_sync_groups.models.error_response_dto import ErrorResponseDto
 from sailpoint.password_sync_groups.models.get_password_sync_groups_v1401_response import GetPasswordSyncGroupsV1401Response
 from sailpoint.password_sync_groups.models.get_password_sync_groups_v1429_response import GetPasswordSyncGroupsV1429Response
-from sailpoint.password_sync_groups.models.localeorigin import Localeorigin
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.locale_origin import LocaleOrigin
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup

@@ -47,11 +47,11 @@ configuration = sailpoint.parameter_storage.Configuration(
 with sailpoint.parameter_storage.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.parameter_storage.ParameterStorageApi(api_client)
-    parameterstoragenewparameter = sailpoint.parameter_storage.Parameterstoragenewparameter() # Parameterstoragenewparameter | The parameter to add to the store. (optional)
+    parameter_storage_new_parameter = sailpoint.parameter_storage.ParameterStorageNewParameter() # ParameterStorageNewParameter | The parameter to add to the store. (optional)
 
     try:
         # Add a new parameter.
-        api_response = api_instance.create_parameter_v1(parameterstoragenewparameter=parameterstoragenewparameter)
+        api_response = api_instance.create_parameter_v1(parameter_storage_new_parameter=parameter_storage_new_parameter)
         print("The response of ParameterStorageApi->create_parameter_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -78,17 +78,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [DeleteParameterV1409Response](sailpoint/parameter_storage/docs/DeleteParameterV1409Response.md)
- - [Errormessagedto](sailpoint/parameter_storage/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/parameter_storage/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/parameter_storage/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/parameter_storage/docs/ErrorResponseDto.md)
  - [GetAttestationDocumentV1401Response](sailpoint/parameter_storage/docs/GetAttestationDocumentV1401Response.md)
  - [GetAttestationDocumentV1429Response](sailpoint/parameter_storage/docs/GetAttestationDocumentV1429Response.md)
- - [Localeorigin](sailpoint/parameter_storage/docs/Localeorigin.md)
- - [Parameterstorageattestationdocument](sailpoint/parameter_storage/docs/Parameterstorageattestationdocument.md)
- - [Parameterstoragejsonpatch](sailpoint/parameter_storage/docs/Parameterstoragejsonpatch.md)
- - [Parameterstoragenewparameter](sailpoint/parameter_storage/docs/Parameterstoragenewparameter.md)
- - [Parameterstorageparameter](sailpoint/parameter_storage/docs/Parameterstorageparameter.md)
- - [Parameterstoragereference](sailpoint/parameter_storage/docs/Parameterstoragereference.md)
- - [Parameterstorageupdateparameter](sailpoint/parameter_storage/docs/Parameterstorageupdateparameter.md)
+ - [LocaleOrigin](sailpoint/parameter_storage/docs/LocaleOrigin.md)
+ - [ParameterStorageAttestationDocument](sailpoint/parameter_storage/docs/ParameterStorageAttestationDocument.md)
+ - [ParameterStorageJsonPatch](sailpoint/parameter_storage/docs/ParameterStorageJsonPatch.md)
+ - [ParameterStorageNewParameter](sailpoint/parameter_storage/docs/ParameterStorageNewParameter.md)
+ - [ParameterStorageParameter](sailpoint/parameter_storage/docs/ParameterStorageParameter.md)
+ - [ParameterStorageReference](sailpoint/parameter_storage/docs/ParameterStorageReference.md)
+ - [ParameterStorageUpdateParameter](sailpoint/parameter_storage/docs/ParameterStorageUpdateParameter.md)
 
 
 <a id="documentation-for-authorization"></a>

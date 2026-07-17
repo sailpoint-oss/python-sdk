@@ -74,13 +74,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/transforms/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/transforms/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/transforms/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/transforms/docs/ErrorResponseDto.md)
  - [ListTransformsV1401Response](sailpoint/transforms/docs/ListTransformsV1401Response.md)
  - [ListTransformsV1429Response](sailpoint/transforms/docs/ListTransformsV1429Response.md)
- - [Localeorigin](sailpoint/transforms/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/transforms/docs/LocaleOrigin.md)
  - [Transform](sailpoint/transforms/docs/Transform.md)
- - [Transformread](sailpoint/transforms/docs/Transformread.md)
+ - [TransformRead](sailpoint/transforms/docs/TransformRead.md)
 
 
 <a id="documentation-for-authorization"></a>

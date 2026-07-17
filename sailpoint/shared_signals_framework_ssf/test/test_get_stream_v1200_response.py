@@ -38,7 +38,7 @@ class TestGetStreamV1200Response(unittest.TestCase):
                 stream_id = '550e8400-e29b-41d4-a716-446655440000',
                 iss = 'https://tenant.sailpoint.com',
                 aud = 'https://receiver.example.com',
-                delivery = sailpoint.shared_signals_framework_ssf.models.deliveryresponse.deliveryresponse(
+                delivery = sailpoint.shared_signals_framework_ssf.models.delivery_response.DeliveryResponse(
                     method = 'urn:ietf:rfc:8935', 
                     endpoint_url = 'https://receiver.example.com/ssf/events', ),
                 events_supported = [https://schemas.openid.net/secevent/caep/event-type/{event-type}],

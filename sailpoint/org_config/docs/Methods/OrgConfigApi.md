@@ -32,18 +32,18 @@ Get the current organization's configuration settings, only external accessible 
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Orgconfig**](../models/orgconfig)
+[**OrgConfig**](../models/org-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | Orgconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | OrgConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -54,7 +54,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.org_config.api.org_config_api import OrgConfigApi
 from sailpoint.org_config.api_client import ApiClient
-from sailpoint.org_config.models.orgconfig import Orgconfig
+from sailpoint.org_config.models.org_config import OrgConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -110,11 +110,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Request successful. | List[str] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -163,21 +163,21 @@ Patch the current organization's configuration, using http://jsonpatch.com/ synt
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
-[**Orgconfig**](../models/orgconfig)
+[**OrgConfig**](../models/org-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully patched org config. | Orgconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Successfully patched org config. | OrgConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -188,21 +188,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.org_config.api.org_config_api import OrgConfigApi
 from sailpoint.org_config.api_client import ApiClient
-from sailpoint.org_config.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.org_config.models.orgconfig import Orgconfig
+from sailpoint.org_config.models.json_patch_operation import JsonPatchOperation
+from sailpoint.org_config.models.org_config import OrgConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    jsonpatchoperation = '''[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]''' # List[Jsonpatchoperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = '''[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]''' # List[JsonPatchOperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Patch org config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = OrgConfigApi(api_client).patch_org_config_v1(jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = OrgConfigApi(api_client).patch_org_config_v1(json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = OrgConfigApi(api_client).patch_org_config_v1(new_jsonpatchoperation)
+        # results = OrgConfigApi(api_client).patch_org_config_v1(new_json_patch_operation)
         print("The response of OrgConfigApi->patch_org_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

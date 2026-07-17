@@ -47,11 +47,11 @@ configuration = sailpoint.certification_campaign_filters.Configuration(
 with sailpoint.certification_campaign_filters.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.certification_campaign_filters.CertificationCampaignFiltersApi(api_client)
-    campaignfilterdetails = sailpoint.certification_campaign_filters.Campaignfilterdetails() # Campaignfilterdetails | 
+    campaign_filter_details = sailpoint.certification_campaign_filters.CampaignFilterDetails() # CampaignFilterDetails | 
 
     try:
         # Create campaign filter
-        api_response = api_instance.create_campaign_filter_v1(campaignfilterdetails)
+        api_response = api_instance.create_campaign_filter_v1(campaign_filter_details)
         print("The response of CertificationCampaignFiltersApi->create_campaign_filter_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,15 +74,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Campaignfilterdetails](sailpoint/certification_campaign_filters/docs/Campaignfilterdetails.md)
- - [CampaignfilterdetailsCriteriaListInner](sailpoint/certification_campaign_filters/docs/CampaignfilterdetailsCriteriaListInner.md)
- - [Criteriatype](sailpoint/certification_campaign_filters/docs/Criteriatype.md)
- - [Errormessagedto](sailpoint/certification_campaign_filters/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/certification_campaign_filters/docs/Errorresponsedto.md)
+ - [CampaignFilterDetails](sailpoint/certification_campaign_filters/docs/CampaignFilterDetails.md)
+ - [CampaignFilterDetailsCriteriaListInner](sailpoint/certification_campaign_filters/docs/CampaignFilterDetailsCriteriaListInner.md)
+ - [CriteriaType](sailpoint/certification_campaign_filters/docs/CriteriaType.md)
+ - [ErrorMessageDto](sailpoint/certification_campaign_filters/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/certification_campaign_filters/docs/ErrorResponseDto.md)
  - [ListCampaignFiltersV1200Response](sailpoint/certification_campaign_filters/docs/ListCampaignFiltersV1200Response.md)
  - [ListCampaignFiltersV1401Response](sailpoint/certification_campaign_filters/docs/ListCampaignFiltersV1401Response.md)
  - [ListCampaignFiltersV1429Response](sailpoint/certification_campaign_filters/docs/ListCampaignFiltersV1429Response.md)
- - [Localeorigin](sailpoint/certification_campaign_filters/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/certification_campaign_filters/docs/LocaleOrigin.md)
  - [Operation](sailpoint/certification_campaign_filters/docs/Operation.md)
 
 

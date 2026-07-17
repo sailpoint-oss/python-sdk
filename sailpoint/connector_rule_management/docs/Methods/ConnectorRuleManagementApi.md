@@ -40,20 +40,20 @@ Create a connector rule from the available types.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | connectorrulecreaterequest | [**Connectorrulecreaterequest**](../models/connectorrulecreaterequest) | True  | Connector rule to create.
+ Body  | connector_rule_create_request | [**ConnectorRuleCreateRequest**](../models/connector-rule-create-request) | True  | Connector rule to create.
 
 ### Return type
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created connector rule. | Connectorruleresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created connector rule. | ConnectorRuleResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -64,21 +64,46 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.connector_rule_management.api_client import ApiClient
-from sailpoint.connector_rule_management.models.connectorrulecreaterequest import Connectorrulecreaterequest
-from sailpoint.connector_rule_management.models.connectorruleresponse import Connectorruleresponse
+from sailpoint.connector_rule_management.models.connector_rule_create_request import ConnectorRuleCreateRequest
+from sailpoint.connector_rule_management.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    connectorrulecreaterequest = '''sailpoint.connector_rule_management.Connectorrulecreaterequest()''' # Connectorrulecreaterequest | Connector rule to create.
+    connector_rule_create_request = '''{
+          "sourceCode" : {
+            "version" : "1.0",
+            "script" : "return \"Mr. \" + firstName;"
+          },
+          "signature" : {
+            "output" : {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            },
+            "input" : [ {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            }, {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            } ]
+          },
+          "name" : "WebServiceBeforeOperationRule",
+          "description" : "This rule does that",
+          "attributes" : { },
+          "type" : "BuildMap"
+        }''' # ConnectorRuleCreateRequest | Connector rule to create.
 
     try:
         # Create connector rule
-        new_connectorrulecreaterequest = Connectorrulecreaterequest.from_json(connectorrulecreaterequest)
-        results = ConnectorRuleManagementApi(api_client).create_connector_rule_v1(connectorrulecreaterequest=new_connectorrulecreaterequest)
+        new_connector_rule_create_request = ConnectorRuleCreateRequest.from_json(connector_rule_create_request)
+        results = ConnectorRuleManagementApi(api_client).create_connector_rule_v1(connector_rule_create_request=new_connector_rule_create_request)
         # Below is a request that includes all optional parameters
-        # results = ConnectorRuleManagementApi(api_client).create_connector_rule_v1(new_connectorrulecreaterequest)
+        # results = ConnectorRuleManagementApi(api_client).create_connector_rule_v1(new_connector_rule_create_request)
         print("The response of ConnectorRuleManagementApi->create_connector_rule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -108,12 +133,12 @@ Path   | id | **str** | True  | ID of the connector rule to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -160,17 +185,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Connectorruleresponse]**](../models/connectorruleresponse)
+[**List[ConnectorRuleResponse]**](../models/connector-rule-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of connector rules. | List[Connectorruleresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of connector rules. | List[ConnectorRuleResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -181,7 +206,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.connector_rule_management.api_client import ApiClient
-from sailpoint.connector_rule_management.models.connectorruleresponse import Connectorruleresponse
+from sailpoint.connector_rule_management.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -221,18 +246,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the connector rule to get.
 
 ### Return type
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Connector rule with the given ID. | Connectorruleresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Connector rule with the given ID. | ConnectorRuleResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -243,7 +268,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.connector_rule_management.api_client import ApiClient
-from sailpoint.connector_rule_management.models.connectorruleresponse import Connectorruleresponse
+from sailpoint.connector_rule_management.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -278,21 +303,21 @@ Update an existing connector rule with the one provided in the request body. The
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the connector rule to update.
- Body  | connectorruleupdaterequest | [**Connectorruleupdaterequest**](../models/connectorruleupdaterequest) |   (optional) | Connector rule with updated data.
+ Body  | connector_rule_update_request | [**ConnectorRuleUpdateRequest**](../models/connector-rule-update-request) |   (optional) | Connector rule with updated data.
 
 ### Return type
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated connector rule. | Connectorruleresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated connector rule. | ConnectorRuleResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -303,22 +328,48 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.connector_rule_management.api_client import ApiClient
-from sailpoint.connector_rule_management.models.connectorruleresponse import Connectorruleresponse
-from sailpoint.connector_rule_management.models.connectorruleupdaterequest import Connectorruleupdaterequest
+from sailpoint.connector_rule_management.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.connector_rule_management.models.connector_rule_update_request import ConnectorRuleUpdateRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | ID of the connector rule to update. # str | ID of the connector rule to update.
-    connectorruleupdaterequest = '''sailpoint.connector_rule_management.Connectorruleupdaterequest()''' # Connectorruleupdaterequest | Connector rule with updated data. (optional)
+    connector_rule_update_request = '''{
+          "sourceCode" : {
+            "version" : "1.0",
+            "script" : "return \"Mr. \" + firstName;"
+          },
+          "signature" : {
+            "output" : {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            },
+            "input" : [ {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            }, {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            } ]
+          },
+          "name" : "WebServiceBeforeOperationRule",
+          "description" : "This rule does that",
+          "attributes" : { },
+          "id" : "8113d48c0b914f17b4c6072d4dcb9dfe",
+          "type" : "BuildMap"
+        }''' # ConnectorRuleUpdateRequest | Connector rule with updated data. (optional)
 
     try:
         # Update connector rule
         
         results = ConnectorRuleManagementApi(api_client).put_connector_rule_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = ConnectorRuleManagementApi(api_client).put_connector_rule_v1(id, new_connectorruleupdaterequest)
+        # results = ConnectorRuleManagementApi(api_client).put_connector_rule_v1(id, new_connector_rule_update_request)
         print("The response of ConnectorRuleManagementApi->put_connector_rule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -339,20 +390,20 @@ Detect issues within the connector rule's code to fix and list them.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sourcecode | [**Sourcecode**](../models/sourcecode) | True  | Code to validate.
+ Body  | source_code | [**SourceCode**](../models/source-code) | True  | Code to validate.
 
 ### Return type
-[**Connectorrulevalidationresponse**](../models/connectorrulevalidationresponse)
+[**ConnectorRuleValidationResponse**](../models/connector-rule-validation-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the code&#39;s eligibility as a connector rule. | Connectorrulevalidationresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the code&#39;s eligibility as a connector rule. | ConnectorRuleValidationResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetConnectorRuleListV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetConnectorRuleListV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -363,21 +414,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.connector_rule_management.api_client import ApiClient
-from sailpoint.connector_rule_management.models.connectorrulevalidationresponse import Connectorrulevalidationresponse
-from sailpoint.connector_rule_management.models.sourcecode import Sourcecode
+from sailpoint.connector_rule_management.models.connector_rule_validation_response import ConnectorRuleValidationResponse
+from sailpoint.connector_rule_management.models.source_code import SourceCode
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sourcecode = '''sailpoint.connector_rule_management.Sourcecode()''' # Sourcecode | Code to validate.
+    source_code = '''{
+          "version" : "1.0",
+          "script" : "return \"Mr. \" + firstName;"
+        }''' # SourceCode | Code to validate.
 
     try:
         # Validate connector rule
-        new_sourcecode = Sourcecode.from_json(sourcecode)
-        results = ConnectorRuleManagementApi(api_client).test_connector_rule_v1(sourcecode=new_sourcecode)
+        new_source_code = SourceCode.from_json(source_code)
+        results = ConnectorRuleManagementApi(api_client).test_connector_rule_v1(source_code=new_source_code)
         # Below is a request that includes all optional parameters
-        # results = ConnectorRuleManagementApi(api_client).test_connector_rule_v1(new_sourcecode)
+        # results = ConnectorRuleManagementApi(api_client).test_connector_rule_v1(new_source_code)
         print("The response of ConnectorRuleManagementApi->test_connector_rule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

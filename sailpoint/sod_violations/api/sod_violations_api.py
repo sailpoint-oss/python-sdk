@@ -16,9 +16,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from sailpoint.sod_violations.models.identitywithnewaccess import Identitywithnewaccess
-from sailpoint.sod_violations.models.sodviolationcheck import Sodviolationcheck
-from sailpoint.sod_violations.models.violationprediction import Violationprediction
+from sailpoint.sod_violations.models.identity_with_new_access import IdentityWithNewAccess
+from sailpoint.sod_violations.models.sod_violation_check import SodViolationCheck
+from sailpoint.sod_violations.models.violation_prediction import ViolationPrediction
 
 from sailpoint.sod_violations.api_client import ApiClient, RequestSerialized
 from sailpoint.sod_violations.api_response import ApiResponse
@@ -41,7 +41,7 @@ class SODViolationsApi:
     @validate_call
     def start_predict_sod_violations_v1(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +54,13 @@ class SODViolationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Violationprediction:
+    ) -> ViolationPrediction:
         """Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_predict_sod_violations_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,13 +92,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Violationprediction",
-            '400': "Errorresponsedto",
+            '200': "ViolationPrediction",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -114,7 +114,7 @@ class SODViolationsApi:
     @validate_call
     def start_predict_sod_violations_v1_with_http_info(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,13 +127,13 @@ class SODViolationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Violationprediction]:
+    ) -> ApiResponse[ViolationPrediction]:
         """Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,7 +157,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_predict_sod_violations_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -165,13 +165,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Violationprediction",
-            '400': "Errorresponsedto",
+            '200': "ViolationPrediction",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -187,7 +187,7 @@ class SODViolationsApi:
     @validate_call
     def start_predict_sod_violations_v1_without_preload_content(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +205,8 @@ class SODViolationsApi:
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +230,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_predict_sod_violations_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,13 +238,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Violationprediction",
-            '400': "Errorresponsedto",
+            '200': "ViolationPrediction",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -255,7 +255,7 @@ class SODViolationsApi:
 
     def _start_predict_sod_violations_v1_serialize(
         self,
-        identitywithnewaccess,
+        identity_with_new_access,
         _request_auth,
         _content_type,
         _headers,
@@ -281,8 +281,8 @@ class SODViolationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identitywithnewaccess is not None:
-            _body_params = identitywithnewaccess
+        if identity_with_new_access is not None:
+            _body_params = identity_with_new_access
 
 
         # set the HTTP header `Accept`
@@ -332,7 +332,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check_v1(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,13 +345,13 @@ class SODViolationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sodviolationcheck:
+    ) -> SodViolationCheck:
         """Check sod violations
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,7 +375,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -383,13 +383,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sodviolationcheck",
-            '400': "Errorresponsedto",
+            '202': "SodViolationCheck",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -405,7 +405,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check_v1_with_http_info(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -418,13 +418,13 @@ class SODViolationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sodviolationcheck]:
+    ) -> ApiResponse[SodViolationCheck]:
         """Check sod violations
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -448,7 +448,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,13 +456,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sodviolationcheck",
-            '400': "Errorresponsedto",
+            '202': "SodViolationCheck",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -478,7 +478,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check_v1_without_preload_content(
         self,
-        identitywithnewaccess: Identitywithnewaccess,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -496,8 +496,8 @@ class SODViolationsApi:
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identitywithnewaccess: (required)
-        :type identitywithnewaccess: Identitywithnewaccess
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -521,7 +521,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_v1_serialize(
-            identitywithnewaccess=identitywithnewaccess,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -529,13 +529,13 @@ class SODViolationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sodviolationcheck",
-            '400': "Errorresponsedto",
+            '202': "SodViolationCheck",
+            '400': "ErrorResponseDto",
             '401': "StartPredictSodViolationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartPredictSodViolationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -546,7 +546,7 @@ class SODViolationsApi:
 
     def _start_violation_check_v1_serialize(
         self,
-        identitywithnewaccess,
+        identity_with_new_access,
         _request_auth,
         _content_type,
         _headers,
@@ -572,8 +572,8 @@ class SODViolationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identitywithnewaccess is not None:
-            _body_params = identitywithnewaccess
+        if identity_with_new_access is not None:
+            _body_params = identity_with_new_access
 
 
         # set the HTTP header `Accept`

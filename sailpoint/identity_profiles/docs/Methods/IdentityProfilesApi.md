@@ -48,20 +48,20 @@ Creates an identity profile.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identityprofile | [**Identityprofile**](../models/identityprofile) | True  | 
+ Body  | identity_profile | [**IdentityProfile**](../models/identity-profile) | True  | 
 
 ### Return type
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created identity profile. | Identityprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created identity profile. | IdentityProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -72,20 +72,68 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofile import Identityprofile
+from sailpoint.identity_profiles.models.identity_profile import IdentityProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identityprofile = '''sailpoint.identity_profiles.Identityprofile()''' # Identityprofile | 
+    identity_profile = '''{
+          "owner" : {
+            "name" : "William Wilson",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "IDENTITY"
+          },
+          "identityExceptionReportReference" : {
+            "reportName" : "My annual report",
+            "taskResultId" : "2b838de9-db9b-abcf-e646-d4f274ad4238"
+          },
+          "authoritativeSource" : {
+            "name" : "HR Active Directory",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "SOURCE"
+          },
+          "hasTimeBasedAttr" : true,
+          "created" : "2015-05-28T14:07:17Z",
+          "description" : "My custom flat file profile",
+          "identityRefreshRequired" : true,
+          "identityCount" : 8,
+          "priority" : 10,
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          },
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "id" : "id12345"
+        }''' # IdentityProfile | 
 
     try:
         # Create identity profile
-        new_identityprofile = Identityprofile.from_json(identityprofile)
-        results = IdentityProfilesApi(api_client).create_identity_profile_v1(identityprofile=new_identityprofile)
+        new_identity_profile = IdentityProfile.from_json(identity_profile)
+        results = IdentityProfilesApi(api_client).create_identity_profile_v1(identity_profile=new_identity_profile)
         # Below is a request that includes all optional parameters
-        # results = IdentityProfilesApi(api_client).create_identity_profile_v1(new_identityprofile)
+        # results = IdentityProfilesApi(api_client).create_identity_profile_v1(new_identity_profile)
         print("The response of IdentityProfilesApi->create_identity_profile_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -110,18 +158,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | identity_profile_id | **str** | True  | Identity profile ID.
 
 ### Return type
-[**Taskresultsimplified**](../models/taskresultsimplified)
+[**TaskResultSimplified**](../models/task-result-simplified)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted - Returns a TaskResult object referencing the bulk delete job created. | Taskresultsimplified |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted - Returns a TaskResult object referencing the bulk delete job created. | TaskResultSimplified |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -132,7 +180,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.taskresultsimplified import Taskresultsimplified
+from sailpoint.identity_profiles.models.task_result_simplified import TaskResultSimplified
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -173,17 +221,17 @@ Param Type | Name | Data Type | Required  | Description
  Body  | request_body | **[]str** | True  | Identity Profile bulk delete request body.
 
 ### Return type
-[**Taskresultsimplified**](../models/taskresultsimplified)
+[**TaskResultSimplified**](../models/task-result-simplified)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Accepted - Returns a TaskResult object referencing the bulk delete job created. | Taskresultsimplified |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Accepted - Returns a TaskResult object referencing the bulk delete job created. | TaskResultSimplified |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -194,7 +242,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.taskresultsimplified import Taskresultsimplified
+from sailpoint.identity_profiles.models.task_result_simplified import TaskResultSimplified
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -235,17 +283,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority**
 
 ### Return type
-[**List[Identityprofileexportedobject]**](../models/identityprofileexportedobject)
+[**List[IdentityProfileExportedObject]**](../models/identity-profile-exported-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of export objects with identity profiles. | List[Identityprofileexportedobject] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of export objects with identity profiles. | List[IdentityProfileExportedObject] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -256,7 +304,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofileexportedobject import Identityprofileexportedobject
+from sailpoint.identity_profiles.models.identity_profile_exported_object import IdentityProfileExportedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -295,20 +343,20 @@ This generates a non-persisted IdentityDetails object that will represent as the
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identitypreviewrequest | [**Identitypreviewrequest**](../models/identitypreviewrequest) | True  | Identity Preview request body.
+ Body  | identity_preview_request | [**IdentityPreviewRequest**](../models/identity-preview-request) | True  | Identity Preview request body.
 
 ### Return type
-[**Identitypreviewresponse**](../models/identitypreviewresponse)
+[**IdentityPreviewResponse**](../models/identity-preview-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Object representing the preview object with all of the identity attributes using the current mappings. | Identitypreviewresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Object representing the preview object with all of the identity attributes using the current mappings. | IdentityPreviewResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -319,21 +367,47 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identitypreviewrequest import Identitypreviewrequest
-from sailpoint.identity_profiles.models.identitypreviewresponse import Identitypreviewresponse
+from sailpoint.identity_profiles.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.identity_profiles.models.identity_preview_response import IdentityPreviewResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identitypreviewrequest = '''sailpoint.identity_profiles.Identitypreviewrequest()''' # Identitypreviewrequest | Identity Preview request body.
+    identity_preview_request = '''{
+          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          }
+        }''' # IdentityPreviewRequest | Identity Preview request body.
 
     try:
         # Generate identity profile preview
-        new_identitypreviewrequest = Identitypreviewrequest.from_json(identitypreviewrequest)
-        results = IdentityProfilesApi(api_client).generate_identity_preview_v1(identitypreviewrequest=new_identitypreviewrequest)
+        new_identity_preview_request = IdentityPreviewRequest.from_json(identity_preview_request)
+        results = IdentityProfilesApi(api_client).generate_identity_preview_v1(identity_preview_request=new_identity_preview_request)
         # Below is a request that includes all optional parameters
-        # results = IdentityProfilesApi(api_client).generate_identity_preview_v1(new_identitypreviewrequest)
+        # results = IdentityProfilesApi(api_client).generate_identity_preview_v1(new_identity_preview_request)
         print("The response of IdentityProfilesApi->generate_identity_preview_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -357,18 +431,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | identity_profile_id | **str** | True  | The Identity Profile ID.
 
 ### Return type
-[**Identityattributeconfig**](../models/identityattributeconfig)
+[**IdentityAttributeConfig**](../models/identity-attribute-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An Identity Attribute Config object. | Identityattributeconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An Identity Attribute Config object. | IdentityAttributeConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -379,7 +453,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityattributeconfig import Identityattributeconfig
+from sailpoint.identity_profiles.models.identity_attribute_config import IdentityAttributeConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -416,18 +490,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | identity_profile_id | **str** | True  | Identity profile ID.
 
 ### Return type
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Identity profile object. | Identityprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Identity profile object. | IdentityProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -438,7 +512,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofile import Identityprofile
+from sailpoint.identity_profiles.models.identity_profile import IdentityProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -472,20 +546,20 @@ This imports previously exported identity profiles.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identityprofileexportedobject | [**[]Identityprofileexportedobject**](../models/identityprofileexportedobject) | True  | Previously exported Identity Profiles.
+ Body  | identity_profile_exported_object | [**[]IdentityProfileExportedObject**](../models/identity-profile-exported-object) | True  | Previously exported Identity Profiles.
 
 ### Return type
-[**Objectimportresult**](../models/objectimportresult)
+[**ObjectImportResult**](../models/object-import-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The result of importing Identity Profiles. | Objectimportresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The result of importing Identity Profiles. | ObjectImportResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -496,21 +570,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofileexportedobject import Identityprofileexportedobject
-from sailpoint.identity_profiles.models.objectimportresult import Objectimportresult
+from sailpoint.identity_profiles.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.identity_profiles.models.object_import_result import ObjectImportResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    identityprofileexportedobject = '''[sailpoint.identity_profiles.Identityprofileexportedobject()]''' # List[Identityprofileexportedobject] | Previously exported Identity Profiles.
+    identity_profile_exported_object = '''[sailpoint.identity_profiles.IdentityProfileExportedObject()]''' # List[IdentityProfileExportedObject] | Previously exported Identity Profiles.
 
     try:
         # Import identity profiles
-        new_identityprofileexportedobject = Identityprofileexportedobject.from_json(identityprofileexportedobject)
-        results = IdentityProfilesApi(api_client).import_identity_profiles_v1(identityprofileexportedobject=new_identityprofileexportedobject)
+        new_identity_profile_exported_object = IdentityProfileExportedObject.from_json(identity_profile_exported_object)
+        results = IdentityProfilesApi(api_client).import_identity_profiles_v1(identity_profile_exported_object=new_identity_profile_exported_object)
         # Below is a request that includes all optional parameters
-        # results = IdentityProfilesApi(api_client).import_identity_profiles_v1(new_identityprofileexportedobject)
+        # results = IdentityProfilesApi(api_client).import_identity_profiles_v1(new_identity_profile_exported_object)
         print("The response of IdentityProfilesApi->import_identity_profiles_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -538,17 +612,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**
 
 ### Return type
-[**List[Identityprofile]**](../models/identityprofile)
+[**List[IdentityProfile]**](../models/identity-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identity profiles. | List[Identityprofile] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of identity profiles. | List[IdentityProfile] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -559,7 +633,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofile import Identityprofile
+from sailpoint.identity_profiles.models.identity_profile import IdentityProfile
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -611,12 +685,12 @@ Path   | identity_profile_id | **str** | True  | The Identity Profile ID to be p
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -669,21 +743,21 @@ You cannot update these fields:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_profile_id | **str** | True  | Identity profile ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated identity profile. | Identityprofile |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated identity profile. | IdentityProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentityProfilesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentityProfilesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -694,22 +768,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.identity_profiles.api_client import ApiClient
-from sailpoint.identity_profiles.models.identityprofile import Identityprofile
-from sailpoint.identity_profiles.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.identity_profiles.models.identity_profile import IdentityProfile
+from sailpoint.identity_profiles.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity profile ID. # str | Identity profile ID.
-    jsonpatchoperation = '''[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]''' # List[Jsonpatchoperation] | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = '''[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]''' # List[JsonPatchOperation] | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Update identity profile
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = IdentityProfilesApi(api_client).update_identity_profile_v1(identity_profile_id=identity_profile_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = IdentityProfilesApi(api_client).update_identity_profile_v1(identity_profile_id=identity_profile_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = IdentityProfilesApi(api_client).update_identity_profile_v1(identity_profile_id, new_jsonpatchoperation)
+        # results = IdentityProfilesApi(api_client).update_identity_profile_v1(identity_profile_id, new_json_patch_operation)
         print("The response of IdentityProfilesApi->update_identity_profile_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

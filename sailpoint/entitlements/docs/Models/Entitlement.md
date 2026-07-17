@@ -1,48 +1,48 @@
 ---
-id: entitlementv1
-title: Entitlementv1
-pagination_label: Entitlementv1
-sidebar_label: Entitlementv1
+id: entitlement
+title: Entitlement
+pagination_label: Entitlement
+sidebar_label: Entitlement
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Entitlementv1', 'Entitlementv1'] 
-slug: /tools/sdk/python/entitlements/models/entitlementv1
-tags: ['SDK', 'Software Development Kit', 'Entitlementv1', 'Entitlementv1']
+keywords: ['python', 'Python', 'sdk', 'Entitlement', 'Entitlement'] 
+slug: /tools/sdk/python/entitlements/models/entitlement
+tags: ['SDK', 'Software Development Kit', 'Entitlement', 'Entitlement']
 ---
 
-# Entitlementv1
+# Entitlement
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The entitlementv1 id | [optional] 
-**name** | **str** | The entitlementv1 name | [optional] 
-**attribute** | **str** | The entitlementv1 attribute name | [optional] 
-**value** | **str** | The value of the entitlementv1 | [optional] 
-**source_schema_object_type** | **str** | The object type of the entitlementv1 from the source schema | [optional] 
-**description** | **str** | The description of the entitlementv1 | [optional] 
-**privileged** | **bool** | True if the entitlementv1 is privileged | [optional] [default to False]
-**cloud_governed** | **bool** | True if the entitlementv1 is cloud governed | [optional] [default to False]
-**requestable** | **bool** | True if the entitlementv1 is able to be directly requested | [optional] [default to False]
-**owner** | [**Entitlementv2Owner**](entitlementv2-owner) |  | [optional] 
-**additional_owners** | [**[]Additionalownerref**](additionalownerref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
-**manually_updated_fields** | **map[string]object** | A map of entitlementv1 fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
-**access_model_metadata** | [**Entitlementv2AccessModelMetadata**](entitlementv2-access-model-metadata) |  | [optional] 
-**created** | **datetime** | Time when the entitlementv1 was created | [optional] 
-**modified** | **datetime** | Time when the entitlementv1 was last modified | [optional] 
+**id** | **str** | The entitlement id | [optional] 
+**name** | **str** | The entitlement name | [optional] 
+**attribute** | **str** | The entitlement attribute name | [optional] 
+**value** | **str** | The value of the entitlement | [optional] 
+**source_schema_object_type** | **str** | The object type of the entitlement from the source schema | [optional] 
+**description** | **str** | The description of the entitlement | [optional] 
+**privileged** | **bool** | True if the entitlement is privileged | [optional] [default to False]
+**cloud_governed** | **bool** | True if the entitlement is cloud governed | [optional] [default to False]
+**requestable** | **bool** | True if the entitlement is able to be directly requested | [optional] [default to False]
+**owner** | [**EntitlementV2Owner**](entitlement-v2-owner) |  | [optional] 
+**additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
+**manually_updated_fields** | **map[string]object** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
+**access_model_metadata** | [**EntitlementV2AccessModelMetadata**](entitlement-v2-access-model-metadata) |  | [optional] 
+**created** | **datetime** | Time when the entitlement was created | [optional] 
+**modified** | **datetime** | Time when the entitlement was last modified | [optional] 
 **source** | [**EntitlementSource**](entitlement-source) |  | [optional] 
 **attributes** | **map[string]object** | A map of free-form key-value pairs from the source system | [optional] 
-**segments** | **[]str** | List of IDs of segments, if any, to which this Entitlementv1 is assigned. | [optional] 
-**direct_permissions** | [**[]Permissiondto**](permissiondto) |  | [optional] 
+**segments** | **[]str** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
+**direct_permissions** | [**[]PermissionDTO**](permission-dto) |  | [optional] 
 }
 
 ## Example
 
 ```python
-from sailpoint.entitlements.models.entitlementv1 import Entitlementv1
+from sailpoint.entitlements.models.entitlement import Entitlement
 
-entitlementv1 = Entitlementv1(
+entitlement = Entitlement(
 id='2c91808874ff91550175097daaec161c',
 name='PayrollControls',
 attribute='memberOf',
@@ -52,18 +52,18 @@ description='Grants the ability to access and manage payroll-related controls an
 privileged=True,
 cloud_governed=True,
 requestable=True,
-owner=sailpoint.entitlements.models.entitlementv2_owner.entitlementv2_owner(
+owner=sailpoint.entitlements.models.entitlement_v2_owner.EntitlementV2_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
 additional_owners=[
-                    sailpoint.entitlements.models.additionalownerref.additionalownerref(
+                    sailpoint.entitlements.models.additional_owner_ref.AdditionalOwnerRef(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'support', )
                     ],
 manually_updated_fields={"DISPLAY_NAME":true,"DESCRIPTION":true},
-access_model_metadata=sailpoint.entitlements.models.entitlementv2_access_model_metadata.entitlementv2_accessModelMetadata(
+access_model_metadata=sailpoint.entitlements.models.entitlement_v2_access_model_metadata.EntitlementV2_accessModelMetadata(
                     attributes = [
                         sailpoint.entitlements.models.access_model_metadata.Access Model Metadata(
                             key = 'iscCsp', 
@@ -74,7 +74,7 @@ access_model_metadata=sailpoint.entitlements.models.entitlementv2_access_model_m
                             object_types = ["general"], 
                             description = 'Indicates the type of deployment environment of an access item.', 
                             values = [
-                                sailpoint.entitlements.models.accessmodelmetadata_values_inner.accessmodelmetadata_values_inner(
+                                sailpoint.entitlements.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
                                     value = 'development', 
                                     name = 'Development', 
                                     status = 'active', )
@@ -82,7 +82,7 @@ access_model_metadata=sailpoint.entitlements.models.entitlementv2_access_model_m
                         ], ),
 created='2020-10-08T18:33:52.029Z',
 modified='2020-10-08T18:33:52.029Z',
-source=sailpoint.entitlements.models.entitlement_source.entitlement_source(
+source=sailpoint.entitlements.models.entitlement_source.Entitlement_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),

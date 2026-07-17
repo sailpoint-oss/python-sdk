@@ -47,11 +47,11 @@ configuration = sailpoint.managed_clients.Configuration(
 with sailpoint.managed_clients.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.managed_clients.ManagedClientsApi(api_client)
-    managedclientrequest = sailpoint.managed_clients.Managedclientrequest() # Managedclientrequest | 
+    managed_client_request = sailpoint.managed_clients.ManagedClientRequest() # ManagedClientRequest | 
 
     try:
         # Create managed client
-        api_response = api_instance.create_managed_client_v1(managedclientrequest)
+        api_response = api_instance.create_managed_client_v1(managed_client_request)
         print("The response of ManagedClientsApi->create_managed_client_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -77,23 +77,23 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/managed_clients/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/managed_clients/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/managed_clients/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/managed_clients/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/managed_clients/docs/ErrorResponseDto.md)
  - [GetManagedClientsV1401Response](sailpoint/managed_clients/docs/GetManagedClientsV1401Response.md)
  - [GetManagedClientsV1429Response](sailpoint/managed_clients/docs/GetManagedClientsV1429Response.md)
- - [Healthevent](sailpoint/managed_clients/docs/Healthevent.md)
- - [Healthindicatorcategory](sailpoint/managed_clients/docs/Healthindicatorcategory.md)
- - [Jsonpatchoperation](sailpoint/managed_clients/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/managed_clients/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/managed_clients/docs/Localeorigin.md)
- - [Managedclient](sailpoint/managed_clients/docs/Managedclient.md)
- - [Managedclienthealthindicators](sailpoint/managed_clients/docs/Managedclienthealthindicators.md)
- - [ManagedclienthealthindicatorsBody](sailpoint/managed_clients/docs/ManagedclienthealthindicatorsBody.md)
- - [ManagedclienthealthindicatorsBodyHealthIndicators](sailpoint/managed_clients/docs/ManagedclienthealthindicatorsBodyHealthIndicators.md)
- - [Managedclientrequest](sailpoint/managed_clients/docs/Managedclientrequest.md)
- - [Managedclientstatus](sailpoint/managed_clients/docs/Managedclientstatus.md)
- - [Managedclientstatuscode](sailpoint/managed_clients/docs/Managedclientstatuscode.md)
- - [Managedclienttype](sailpoint/managed_clients/docs/Managedclienttype.md)
+ - [HealthEvent](sailpoint/managed_clients/docs/HealthEvent.md)
+ - [HealthIndicatorCategory](sailpoint/managed_clients/docs/HealthIndicatorCategory.md)
+ - [JsonPatchOperation](sailpoint/managed_clients/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/managed_clients/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/managed_clients/docs/LocaleOrigin.md)
+ - [ManagedClient](sailpoint/managed_clients/docs/ManagedClient.md)
+ - [ManagedClientHealthIndicators](sailpoint/managed_clients/docs/ManagedClientHealthIndicators.md)
+ - [ManagedClientHealthIndicatorsBody](sailpoint/managed_clients/docs/ManagedClientHealthIndicatorsBody.md)
+ - [ManagedClientHealthIndicatorsBodyHealthIndicators](sailpoint/managed_clients/docs/ManagedClientHealthIndicatorsBodyHealthIndicators.md)
+ - [ManagedClientRequest](sailpoint/managed_clients/docs/ManagedClientRequest.md)
+ - [ManagedClientStatus](sailpoint/managed_clients/docs/ManagedClientStatus.md)
+ - [ManagedClientStatusCode](sailpoint/managed_clients/docs/ManagedClientStatusCode.md)
+ - [ManagedClientType](sailpoint/managed_clients/docs/ManagedClientType.md)
 
 
 <a id="documentation-for-authorization"></a>

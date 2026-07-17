@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.custom_forms.models.errormessage import Errormessage
+from sailpoint.custom_forms.models.error_message import ErrorMessage
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class SearchFormDefinitionsByTenantV1400Response(BaseModel):
     SearchFormDefinitionsByTenantV1400Response
     """ # noqa: E501
     detail_code: Optional[StrictStr] = Field(default=None, alias="detailCode")
-    messages: Optional[List[Errormessage]] = None
+    messages: Optional[List[ErrorMessage]] = None
     status_code: Optional[StrictInt] = Field(default=None, alias="statusCode")
     tracking_id: Optional[StrictStr] = Field(default=None, alias="trackingId")
     __properties: ClassVar[List[str]] = ["detailCode", "messages", "statusCode", "trackingId"]
@@ -93,7 +93,7 @@ class SearchFormDefinitionsByTenantV1400Response(BaseModel):
 
         _obj = cls.model_validate({
             "detailCode": obj.get("detailCode"),
-            "messages": [Errormessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "messages": [ErrorMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "statusCode": obj.get("statusCode"),
             "trackingId": obj.get("trackingId")
         })

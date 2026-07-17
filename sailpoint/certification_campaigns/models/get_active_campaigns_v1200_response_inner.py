@@ -20,12 +20,12 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
 from sailpoint.certification_campaigns.models.campaign2 import Campaign2
-from sailpoint.certification_campaigns.models.slimcampaign import Slimcampaign
+from sailpoint.certification_campaigns.models.slim_campaign import SlimCampaign
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-GETACTIVECAMPAIGNSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["Campaign2", "Slimcampaign"]
+GETACTIVECAMPAIGNSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["Campaign2", "SlimCampaign"]
 
 class GetActiveCampaignsV1200ResponseInner(BaseModel):
     """
@@ -34,13 +34,13 @@ class GetActiveCampaignsV1200ResponseInner(BaseModel):
 
     # data type: Campaign2
     anyof_schema_1_validator: Optional[Campaign2] = None
-    # data type: Slimcampaign
-    anyof_schema_2_validator: Optional[Slimcampaign] = None
+    # data type: SlimCampaign
+    anyof_schema_2_validator: Optional[SlimCampaign] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Campaign2, Slimcampaign]] = None
+        actual_instance: Optional[Union[Campaign2, SlimCampaign]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Campaign2", "Slimcampaign" }
+    any_of_schemas: Set[str] = { "Campaign2", "SlimCampaign" }
 
     model_config = {
         "validate_assignment": True,
@@ -67,15 +67,15 @@ class GetActiveCampaignsV1200ResponseInner(BaseModel):
         else:
             return v
 
-        # validate data type: Slimcampaign
-        if not isinstance(v, Slimcampaign):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Slimcampaign`")
+        # validate data type: SlimCampaign
+        if not isinstance(v, SlimCampaign):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SlimCampaign`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in GetActiveCampaignsV1200ResponseInner with anyOf schemas: Campaign2, Slimcampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetActiveCampaignsV1200ResponseInner with anyOf schemas: Campaign2, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -94,16 +94,16 @@ class GetActiveCampaignsV1200ResponseInner(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[Slimcampaign] = None
+        # anyof_schema_2_validator: Optional[SlimCampaign] = None
         try:
-            instance.actual_instance = Slimcampaign.from_json(json_str)
+            instance.actual_instance = SlimCampaign.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaignsV1200ResponseInner with anyOf schemas: Campaign2, Slimcampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaignsV1200ResponseInner with anyOf schemas: Campaign2, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +117,7 @@ class GetActiveCampaignsV1200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Campaign2, Slimcampaign]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], Campaign2, SlimCampaign]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

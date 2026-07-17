@@ -70,15 +70,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Dtotype](sailpoint/public_identities_config/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/public_identities_config/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/public_identities_config/docs/Errorresponsedto.md)
+ - [DtoType](sailpoint/public_identities_config/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/public_identities_config/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/public_identities_config/docs/ErrorResponseDto.md)
  - [GetPublicIdentityConfigV1401Response](sailpoint/public_identities_config/docs/GetPublicIdentityConfigV1401Response.md)
  - [GetPublicIdentityConfigV1429Response](sailpoint/public_identities_config/docs/GetPublicIdentityConfigV1429Response.md)
- - [Identityreference](sailpoint/public_identities_config/docs/Identityreference.md)
- - [Localeorigin](sailpoint/public_identities_config/docs/Localeorigin.md)
- - [Publicidentityattributeconfig](sailpoint/public_identities_config/docs/Publicidentityattributeconfig.md)
- - [Publicidentityconfig](sailpoint/public_identities_config/docs/Publicidentityconfig.md)
+ - [IdentityReference](sailpoint/public_identities_config/docs/IdentityReference.md)
+ - [LocaleOrigin](sailpoint/public_identities_config/docs/LocaleOrigin.md)
+ - [PublicIdentityAttributeConfig](sailpoint/public_identities_config/docs/PublicIdentityAttributeConfig.md)
+ - [PublicIdentityConfig](sailpoint/public_identities_config/docs/PublicIdentityConfig.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -27,10 +27,10 @@ Name | Type | Description | Notes
 from sailpoint.saved_search.models.range import Range
 
 range = Range(
-lower=sailpoint.saved_search.models.bound.bound(
+lower=sailpoint.saved_search.models.bound.Bound(
                     value = '1', 
                     inclusive = False, ),
-upper=sailpoint.saved_search.models.bound.bound(
+upper=sailpoint.saved_search.models.bound.Bound(
                     value = '1', 
                     inclusive = False, )
 )

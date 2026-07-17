@@ -20,17 +20,17 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.roles.models.entitlement import Entitlement
-from sailpoint.roles.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.roles.models.json_patch_operation import JsonPatchOperation
 from sailpoint.roles.models.role import Role
-from sailpoint.roles.models.rolebulkdeleterequest import Rolebulkdeleterequest
-from sailpoint.roles.models.rolebulkupdateresponse import Rolebulkupdateresponse
-from sailpoint.roles.models.rolegetallbulkupdateresponse import Rolegetallbulkupdateresponse
-from sailpoint.roles.models.roleidentity import Roleidentity
-from sailpoint.roles.models.rolelistfilterdto import Rolelistfilterdto
-from sailpoint.roles.models.rolemetadatabulkupdatebyfilterrequest import Rolemetadatabulkupdatebyfilterrequest
-from sailpoint.roles.models.rolemetadatabulkupdatebyidrequest import Rolemetadatabulkupdatebyidrequest
-from sailpoint.roles.models.rolemetadatabulkupdatebyqueryrequest import Rolemetadatabulkupdatebyqueryrequest
-from sailpoint.roles.models.taskresultdto import Taskresultdto
+from sailpoint.roles.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from sailpoint.roles.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.roles.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
+from sailpoint.roles.models.role_identity import RoleIdentity
+from sailpoint.roles.models.role_list_filter_dto import RoleListFilterDTO
+from sailpoint.roles.models.role_metadata_bulk_update_by_filter_request import RoleMetadataBulkUpdateByFilterRequest
+from sailpoint.roles.models.role_metadata_bulk_update_by_id_request import RoleMetadataBulkUpdateByIdRequest
+from sailpoint.roles.models.role_metadata_bulk_update_by_query_request import RoleMetadataBulkUpdateByQueryRequest
+from sailpoint.roles.models.task_result_dto import TaskResultDto
 
 from sailpoint.roles.api_client import ApiClient, RequestSerialized
 from sailpoint.roles.api_response import ApiResponse
@@ -105,11 +105,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -177,11 +177,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -249,11 +249,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -341,7 +341,7 @@ class RolesApi:
     @validate_call
     def delete_bulk_roles_v1(
         self,
-        rolebulkdeleterequest: Rolebulkdeleterequest,
+        role_bulk_delete_request: RoleBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -354,13 +354,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultdto:
+    ) -> TaskResultDto:
         """Delete role(s)
 
         This endpoint initiates a bulk deletion of one or more roles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A user with ROLE_SUBADMIN authority can only call this endpoint if all roles included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
-        :param rolebulkdeleterequest: (required)
-        :type rolebulkdeleterequest: Rolebulkdeleterequest
+        :param role_bulk_delete_request: (required)
+        :type role_bulk_delete_request: RoleBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -384,7 +384,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._delete_bulk_roles_v1_serialize(
-            rolebulkdeleterequest=rolebulkdeleterequest,
+            role_bulk_delete_request=role_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -392,12 +392,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -413,7 +413,7 @@ class RolesApi:
     @validate_call
     def delete_bulk_roles_v1_with_http_info(
         self,
-        rolebulkdeleterequest: Rolebulkdeleterequest,
+        role_bulk_delete_request: RoleBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -426,13 +426,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultdto]:
+    ) -> ApiResponse[TaskResultDto]:
         """Delete role(s)
 
         This endpoint initiates a bulk deletion of one or more roles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A user with ROLE_SUBADMIN authority can only call this endpoint if all roles included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
-        :param rolebulkdeleterequest: (required)
-        :type rolebulkdeleterequest: Rolebulkdeleterequest
+        :param role_bulk_delete_request: (required)
+        :type role_bulk_delete_request: RoleBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -456,7 +456,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._delete_bulk_roles_v1_serialize(
-            rolebulkdeleterequest=rolebulkdeleterequest,
+            role_bulk_delete_request=role_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -464,12 +464,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -485,7 +485,7 @@ class RolesApi:
     @validate_call
     def delete_bulk_roles_v1_without_preload_content(
         self,
-        rolebulkdeleterequest: Rolebulkdeleterequest,
+        role_bulk_delete_request: RoleBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -503,8 +503,8 @@ class RolesApi:
 
         This endpoint initiates a bulk deletion of one or more roles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A user with ROLE_SUBADMIN authority can only call this endpoint if all roles included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
-        :param rolebulkdeleterequest: (required)
-        :type rolebulkdeleterequest: Rolebulkdeleterequest
+        :param role_bulk_delete_request: (required)
+        :type role_bulk_delete_request: RoleBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -528,7 +528,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._delete_bulk_roles_v1_serialize(
-            rolebulkdeleterequest=rolebulkdeleterequest,
+            role_bulk_delete_request=role_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -536,12 +536,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -552,7 +552,7 @@ class RolesApi:
 
     def _delete_bulk_roles_v1_serialize(
         self,
-        rolebulkdeleterequest,
+        role_bulk_delete_request,
         _request_auth,
         _content_type,
         _headers,
@@ -578,8 +578,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if rolebulkdeleterequest is not None:
-            _body_params = rolebulkdeleterequest
+        if role_bulk_delete_request is not None:
+            _body_params = role_bulk_delete_request
 
 
         # set the HTTP header `Accept`
@@ -689,11 +689,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -769,11 +769,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -849,11 +849,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -986,11 +986,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1058,11 +1058,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1130,11 +1130,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1222,7 +1222,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Rolebulkupdateresponse:
+    ) -> RoleBulkUpdateResponse:
         """Get bulk-update status by id
 
          This API initial a request for one bulk update's status by bulk update Id returns the status of the bulk update process. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. 
@@ -1260,12 +1260,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1294,7 +1294,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Rolebulkupdateresponse]:
+    ) -> ApiResponse[RoleBulkUpdateResponse]:
         """Get bulk-update status by id
 
          This API initial a request for one bulk update's status by bulk update Id returns the status of the bulk update process. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. 
@@ -1332,12 +1332,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1404,12 +1404,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1496,7 +1496,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Rolegetallbulkupdateresponse]:
+    ) -> List[RoleGetAllBulkUpdateResponse]:
         """Get bulk-update statuses
 
         This API returns a list of all unfinished bulk update process status of the tenant.
@@ -1531,12 +1531,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Rolegetallbulkupdateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1564,7 +1564,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Rolegetallbulkupdateresponse]]:
+    ) -> ApiResponse[List[RoleGetAllBulkUpdateResponse]]:
         """Get bulk-update statuses
 
         This API returns a list of all unfinished bulk update process status of the tenant.
@@ -1599,12 +1599,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Rolegetallbulkupdateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1667,12 +1667,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Rolegetallbulkupdateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1762,7 +1762,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleidentity]:
+    ) -> List[RoleIdentity]:
         """List identities assigned a role
 
 
@@ -1814,12 +1814,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleIdentity]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1853,7 +1853,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleidentity]]:
+    ) -> ApiResponse[List[RoleIdentity]]:
         """List identities assigned a role
 
 
@@ -1905,12 +1905,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleIdentity]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1996,12 +1996,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleIdentity]",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2177,11 +2177,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2273,11 +2273,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2369,11 +2369,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2528,11 +2528,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2600,11 +2600,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2672,11 +2672,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2831,11 +2831,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2931,11 +2931,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3031,11 +3031,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3148,7 +3148,7 @@ class RolesApi:
     def patch_role_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Role to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3168,8 +3168,8 @@ class RolesApi:
 
         :param id: ID of the Role to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3194,7 +3194,7 @@ class RolesApi:
 
         _param = self._patch_role_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3203,11 +3203,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3224,7 +3224,7 @@ class RolesApi:
     def patch_role_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Role to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3244,8 +3244,8 @@ class RolesApi:
 
         :param id: ID of the Role to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3270,7 +3270,7 @@ class RolesApi:
 
         _param = self._patch_role_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3279,11 +3279,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3300,7 +3300,7 @@ class RolesApi:
     def patch_role_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Role to patch")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3320,8 +3320,8 @@ class RolesApi:
 
         :param id: ID of the Role to patch (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3346,7 +3346,7 @@ class RolesApi:
 
         _param = self._patch_role_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3355,11 +3355,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3371,7 +3371,7 @@ class RolesApi:
     def _patch_role_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -3381,7 +3381,7 @@ class RolesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3400,8 +3400,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -3458,7 +3458,7 @@ class RolesApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
         for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
-        rolelistfilterdto: Optional[Rolelistfilterdto] = None,
+        role_list_filter_dto: Optional[RoleListFilterDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3490,8 +3490,8 @@ class RolesApi:
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
         :type include_unsegmented: bool
-        :param rolelistfilterdto:
-        :type rolelistfilterdto: Rolelistfilterdto
+        :param role_list_filter_dto:
+        :type role_list_filter_dto: RoleListFilterDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3522,7 +3522,7 @@ class RolesApi:
             sorters=sorters,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
-            rolelistfilterdto=rolelistfilterdto,
+            role_list_filter_dto=role_list_filter_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3531,11 +3531,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3558,7 +3558,7 @@ class RolesApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
         for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
-        rolelistfilterdto: Optional[Rolelistfilterdto] = None,
+        role_list_filter_dto: Optional[RoleListFilterDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3590,8 +3590,8 @@ class RolesApi:
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
         :type include_unsegmented: bool
-        :param rolelistfilterdto:
-        :type rolelistfilterdto: Rolelistfilterdto
+        :param role_list_filter_dto:
+        :type role_list_filter_dto: RoleListFilterDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3622,7 +3622,7 @@ class RolesApi:
             sorters=sorters,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
-            rolelistfilterdto=rolelistfilterdto,
+            role_list_filter_dto=role_list_filter_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3631,11 +3631,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3658,7 +3658,7 @@ class RolesApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
         for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
-        rolelistfilterdto: Optional[Rolelistfilterdto] = None,
+        role_list_filter_dto: Optional[RoleListFilterDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3690,8 +3690,8 @@ class RolesApi:
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
         :type include_unsegmented: bool
-        :param rolelistfilterdto:
-        :type rolelistfilterdto: Rolelistfilterdto
+        :param role_list_filter_dto:
+        :type role_list_filter_dto: RoleListFilterDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3722,7 +3722,7 @@ class RolesApi:
             sorters=sorters,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
-            rolelistfilterdto=rolelistfilterdto,
+            role_list_filter_dto=role_list_filter_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3731,11 +3731,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3753,7 +3753,7 @@ class RolesApi:
         sorters,
         for_segment_ids,
         include_unsegmented,
-        rolelistfilterdto,
+        role_list_filter_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -3807,8 +3807,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if rolelistfilterdto is not None:
-            _body_params = rolelistfilterdto
+        if role_list_filter_dto is not None:
+            _body_params = role_list_filter_dto
 
 
         # set the HTTP header `Accept`
@@ -3918,11 +3918,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3998,11 +3998,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4078,11 +4078,11 @@ class RolesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4163,7 +4163,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_filter_v1(
         self,
-        rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest,
+        role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4176,13 +4176,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Rolebulkupdateresponse:
+    ) -> RoleBulkUpdateResponse:
         """Bulk-update roles' metadata by filters
 
         This API initiates a bulk update of metadata for one or more Roles by filter. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyfilterrequest: (required)
-        :type rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest
+        :param role_metadata_bulk_update_by_filter_request: (required)
+        :type role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4206,7 +4206,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_filter_v1_serialize(
-            rolemetadatabulkupdatebyfilterrequest=rolemetadatabulkupdatebyfilterrequest,
+            role_metadata_bulk_update_by_filter_request=role_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4214,12 +4214,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4235,7 +4235,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_filter_v1_with_http_info(
         self,
-        rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest,
+        role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4248,13 +4248,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Rolebulkupdateresponse]:
+    ) -> ApiResponse[RoleBulkUpdateResponse]:
         """Bulk-update roles' metadata by filters
 
         This API initiates a bulk update of metadata for one or more Roles by filter. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyfilterrequest: (required)
-        :type rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest
+        :param role_metadata_bulk_update_by_filter_request: (required)
+        :type role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4278,7 +4278,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_filter_v1_serialize(
-            rolemetadatabulkupdatebyfilterrequest=rolemetadatabulkupdatebyfilterrequest,
+            role_metadata_bulk_update_by_filter_request=role_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4286,12 +4286,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4307,7 +4307,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_filter_v1_without_preload_content(
         self,
-        rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest,
+        role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4325,8 +4325,8 @@ class RolesApi:
 
         This API initiates a bulk update of metadata for one or more Roles by filter. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyfilterrequest: (required)
-        :type rolemetadatabulkupdatebyfilterrequest: Rolemetadatabulkupdatebyfilterrequest
+        :param role_metadata_bulk_update_by_filter_request: (required)
+        :type role_metadata_bulk_update_by_filter_request: RoleMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4350,7 +4350,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_filter_v1_serialize(
-            rolemetadatabulkupdatebyfilterrequest=rolemetadatabulkupdatebyfilterrequest,
+            role_metadata_bulk_update_by_filter_request=role_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4358,12 +4358,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4374,7 +4374,7 @@ class RolesApi:
 
     def _update_roles_metadata_by_filter_v1_serialize(
         self,
-        rolemetadatabulkupdatebyfilterrequest,
+        role_metadata_bulk_update_by_filter_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4400,8 +4400,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if rolemetadatabulkupdatebyfilterrequest is not None:
-            _body_params = rolemetadatabulkupdatebyfilterrequest
+        if role_metadata_bulk_update_by_filter_request is not None:
+            _body_params = role_metadata_bulk_update_by_filter_request
 
 
         # set the HTTP header `Accept`
@@ -4451,7 +4451,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_ids_v1(
         self,
-        rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest,
+        role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4464,13 +4464,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Rolebulkupdateresponse:
+    ) -> RoleBulkUpdateResponse:
         """Bulk-update roles' metadata by id
 
         This API initiates a bulk update of metadata for one or more Roles by a list of Role Ids. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum role count in a single update request is 3000. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyidrequest: (required)
-        :type rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest
+        :param role_metadata_bulk_update_by_id_request: (required)
+        :type role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4494,7 +4494,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_ids_v1_serialize(
-            rolemetadatabulkupdatebyidrequest=rolemetadatabulkupdatebyidrequest,
+            role_metadata_bulk_update_by_id_request=role_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4502,12 +4502,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4523,7 +4523,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_ids_v1_with_http_info(
         self,
-        rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest,
+        role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4536,13 +4536,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Rolebulkupdateresponse]:
+    ) -> ApiResponse[RoleBulkUpdateResponse]:
         """Bulk-update roles' metadata by id
 
         This API initiates a bulk update of metadata for one or more Roles by a list of Role Ids. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum role count in a single update request is 3000. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyidrequest: (required)
-        :type rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest
+        :param role_metadata_bulk_update_by_id_request: (required)
+        :type role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4566,7 +4566,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_ids_v1_serialize(
-            rolemetadatabulkupdatebyidrequest=rolemetadatabulkupdatebyidrequest,
+            role_metadata_bulk_update_by_id_request=role_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4574,12 +4574,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4595,7 +4595,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_ids_v1_without_preload_content(
         self,
-        rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest,
+        role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4613,8 +4613,8 @@ class RolesApi:
 
         This API initiates a bulk update of metadata for one or more Roles by a list of Role Ids. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum role count in a single update request is 3000. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyidrequest: (required)
-        :type rolemetadatabulkupdatebyidrequest: Rolemetadatabulkupdatebyidrequest
+        :param role_metadata_bulk_update_by_id_request: (required)
+        :type role_metadata_bulk_update_by_id_request: RoleMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4638,7 +4638,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_ids_v1_serialize(
-            rolemetadatabulkupdatebyidrequest=rolemetadatabulkupdatebyidrequest,
+            role_metadata_bulk_update_by_id_request=role_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4646,12 +4646,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4662,7 +4662,7 @@ class RolesApi:
 
     def _update_roles_metadata_by_ids_v1_serialize(
         self,
-        rolemetadatabulkupdatebyidrequest,
+        role_metadata_bulk_update_by_id_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4688,8 +4688,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if rolemetadatabulkupdatebyidrequest is not None:
-            _body_params = rolemetadatabulkupdatebyidrequest
+        if role_metadata_bulk_update_by_id_request is not None:
+            _body_params = role_metadata_bulk_update_by_id_request
 
 
         # set the HTTP header `Accept`
@@ -4739,7 +4739,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_query_v1(
         self,
-        rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest,
+        role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4752,13 +4752,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Rolebulkupdateresponse:
+    ) -> RoleBulkUpdateResponse:
         """Bulk-update roles' metadata by query
 
         This API initiates a bulk update of metadata for one or more Roles by query. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyqueryrequest: (required)
-        :type rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest
+        :param role_metadata_bulk_update_by_query_request: (required)
+        :type role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4782,7 +4782,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_query_v1_serialize(
-            rolemetadatabulkupdatebyqueryrequest=rolemetadatabulkupdatebyqueryrequest,
+            role_metadata_bulk_update_by_query_request=role_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4790,12 +4790,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4811,7 +4811,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_query_v1_with_http_info(
         self,
-        rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest,
+        role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4824,13 +4824,13 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Rolebulkupdateresponse]:
+    ) -> ApiResponse[RoleBulkUpdateResponse]:
         """Bulk-update roles' metadata by query
 
         This API initiates a bulk update of metadata for one or more Roles by query. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyqueryrequest: (required)
-        :type rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest
+        :param role_metadata_bulk_update_by_query_request: (required)
+        :type role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4854,7 +4854,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_query_v1_serialize(
-            rolemetadatabulkupdatebyqueryrequest=rolemetadatabulkupdatebyqueryrequest,
+            role_metadata_bulk_update_by_query_request=role_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4862,12 +4862,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4883,7 +4883,7 @@ class RolesApi:
     @validate_call
     def update_roles_metadata_by_query_v1_without_preload_content(
         self,
-        rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest,
+        role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4901,8 +4901,8 @@ class RolesApi:
 
         This API initiates a bulk update of metadata for one or more Roles by query. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum metadata value count for a single role is 25. Custom metadata update, including add, replace need suit licensed.
 
-        :param rolemetadatabulkupdatebyqueryrequest: (required)
-        :type rolemetadatabulkupdatebyqueryrequest: Rolemetadatabulkupdatebyqueryrequest
+        :param role_metadata_bulk_update_by_query_request: (required)
+        :type role_metadata_bulk_update_by_query_request: RoleMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4926,7 +4926,7 @@ class RolesApi:
         """ # noqa: E501
 
         _param = self._update_roles_metadata_by_query_v1_serialize(
-            rolemetadatabulkupdatebyqueryrequest=rolemetadatabulkupdatebyqueryrequest,
+            role_metadata_bulk_update_by_query_request=role_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4934,12 +4934,12 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Rolebulkupdateresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleBulkUpdateResponse",
+            '400': "ErrorResponseDto",
             '401': "ListRolesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListRolesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4950,7 +4950,7 @@ class RolesApi:
 
     def _update_roles_metadata_by_query_v1_serialize(
         self,
-        rolemetadatabulkupdatebyqueryrequest,
+        role_metadata_bulk_update_by_query_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4976,8 +4976,8 @@ class RolesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if rolemetadatabulkupdatebyqueryrequest is not None:
-            _body_params = rolemetadatabulkupdatebyqueryrequest
+        if role_metadata_bulk_update_by_query_request is not None:
+            _body_params = role_metadata_bulk_update_by_query_request
 
 
         # set the HTTP header `Accept`

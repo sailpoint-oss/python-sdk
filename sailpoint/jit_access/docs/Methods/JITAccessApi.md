@@ -40,18 +40,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | config_type | **str** | True  | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
 
 ### Return type
-[**Jitactivationconfigresponse**](../models/jitactivationconfigresponse)
+[**JITActivationConfigResponse**](../models/jit-activation-config-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Current JIT activation policy configuration, including limits, entitlements in scope, and notification-related fields. | Jitactivationconfigresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Current JIT activation policy configuration, including limits, entitlements in scope, and notification-related fields. | JITActivationConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetJitActivationConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetJitActivationConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -62,7 +62,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.jit_access.api.jit_access_api import JITAccessApi
 from sailpoint.jit_access.api_client import ApiClient
-from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
+from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -102,21 +102,21 @@ The body must be a non-empty array. Only **replace** is supported; each **path**
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | config_type | **str** | True  | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
- Body  | jitaccessoperationrequest | [**[]Jitaccessoperationrequest**](../models/jitaccessoperationrequest) | True  | 
+ Body  | jit_access_operation_request | [**[]JitAccessOperationRequest**](../models/jit-access-operation-request) | True  | 
 
 ### Return type
-[**Jitactivationconfigresponse**](../models/jitactivationconfigresponse)
+[**JITActivationConfigResponse**](../models/jit-activation-config-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Full JIT activation policy configuration after applying all requested replace operations. | Jitactivationconfigresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Full JIT activation policy configuration after applying all requested replace operations. | JITActivationConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetJitActivationConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetJitActivationConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -127,22 +127,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.jit_access.api.jit_access_api import JITAccessApi
 from sailpoint.jit_access.api_client import ApiClient
-from sailpoint.jit_access.models.jitaccessoperationrequest import Jitaccessoperationrequest
-from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
+from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
+from sailpoint.jit_access.models.jit_access_operation_request import JitAccessOperationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     config_type = 'policy' # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
-    jitaccessoperationrequest = '''[sailpoint.jit_access.Jitaccessoperationrequest()]''' # List[Jitaccessoperationrequest] | 
+    jit_access_operation_request = '''[sailpoint.jit_access.JitAccessOperationRequest()]''' # List[JitAccessOperationRequest] | 
 
     try:
         # Update JIT activation policy configuration
-        new_jitaccessoperationrequest = Jitaccessoperationrequest.from_json(jitaccessoperationrequest)
-        results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type=config_type, jitaccessoperationrequest=new_jitaccessoperationrequest)
+        new_jit_access_operation_request = JitAccessOperationRequest.from_json(jit_access_operation_request)
+        results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type=config_type, jit_access_operation_request=new_jit_access_operation_request)
         # Below is a request that includes all optional parameters
-        # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jitaccessoperationrequest)
+        # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jit_access_operation_request)
         print("The response of JITAccessApi->patch_jit_activation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

@@ -48,11 +48,11 @@ with sailpoint.account_deletion_requests.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.account_deletion_requests.AccountDeletionRequestsApi(api_client)
     account_id = 'ef38f94347e94562b5bb8424a56498d8' # str | Account ID.
-    accountdeleterequestinput = {"comments":"I requested this account deletion."} # Accountdeleterequestinput |  (optional)
+    account_delete_request_input = {"comments":"I requested this account deletion."} # AccountDeleteRequestInput |  (optional)
 
     try:
         # Delete account
-        api_response = api_instance.delete_account_request_v1(account_id, accountdeleterequestinput=accountdeleterequestinput)
+        api_response = api_instance.delete_account_request_v1(account_id, account_delete_request_input=account_delete_request_input)
         print("The response of AccountDeletionRequestsApi->delete_account_request_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -72,26 +72,26 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountactionrequestdto](sailpoint/account_deletion_requests/docs/Accountactionrequestdto.md)
- - [AccountactionrequestdtoAccountDetails](sailpoint/account_deletion_requests/docs/AccountactionrequestdtoAccountDetails.md)
- - [AccountactionrequestdtoCorrelatedIdentity](sailpoint/account_deletion_requests/docs/AccountactionrequestdtoCorrelatedIdentity.md)
- - [AccountactionrequestdtoRequester](sailpoint/account_deletion_requests/docs/AccountactionrequestdtoRequester.md)
- - [Accountdeleterequestinput](sailpoint/account_deletion_requests/docs/Accountdeleterequestinput.md)
- - [Accountdetails](sailpoint/account_deletion_requests/docs/Accountdetails.md)
- - [Accountrequestasyncresult](sailpoint/account_deletion_requests/docs/Accountrequestasyncresult.md)
- - [Accountrequestphase](sailpoint/account_deletion_requests/docs/Accountrequestphase.md)
- - [Accountrequestphasestate](sailpoint/account_deletion_requests/docs/Accountrequestphasestate.md)
- - [Approvaldetails](sailpoint/account_deletion_requests/docs/Approvaldetails.md)
- - [Approverdto](sailpoint/account_deletion_requests/docs/Approverdto.md)
- - [Approverreference](sailpoint/account_deletion_requests/docs/Approverreference.md)
- - [Basereferencedto](sailpoint/account_deletion_requests/docs/Basereferencedto.md)
- - [Dtotype](sailpoint/account_deletion_requests/docs/Dtotype.md)
- - [Errormessagedto](sailpoint/account_deletion_requests/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/account_deletion_requests/docs/Errorresponsedto.md)
+ - [AccountActionRequestDto](sailpoint/account_deletion_requests/docs/AccountActionRequestDto.md)
+ - [AccountActionRequestDtoAccountDetails](sailpoint/account_deletion_requests/docs/AccountActionRequestDtoAccountDetails.md)
+ - [AccountActionRequestDtoCorrelatedIdentity](sailpoint/account_deletion_requests/docs/AccountActionRequestDtoCorrelatedIdentity.md)
+ - [AccountActionRequestDtoRequester](sailpoint/account_deletion_requests/docs/AccountActionRequestDtoRequester.md)
+ - [AccountDeleteRequestInput](sailpoint/account_deletion_requests/docs/AccountDeleteRequestInput.md)
+ - [AccountDetails](sailpoint/account_deletion_requests/docs/AccountDetails.md)
+ - [AccountRequestAsyncResult](sailpoint/account_deletion_requests/docs/AccountRequestAsyncResult.md)
+ - [AccountRequestPhase](sailpoint/account_deletion_requests/docs/AccountRequestPhase.md)
+ - [AccountRequestPhaseState](sailpoint/account_deletion_requests/docs/AccountRequestPhaseState.md)
+ - [ApprovalDetails](sailpoint/account_deletion_requests/docs/ApprovalDetails.md)
+ - [ApproverDto](sailpoint/account_deletion_requests/docs/ApproverDto.md)
+ - [ApproverReference](sailpoint/account_deletion_requests/docs/ApproverReference.md)
+ - [BaseReferenceDto](sailpoint/account_deletion_requests/docs/BaseReferenceDto.md)
+ - [DtoType](sailpoint/account_deletion_requests/docs/DtoType.md)
+ - [ErrorMessageDto](sailpoint/account_deletion_requests/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/account_deletion_requests/docs/ErrorResponseDto.md)
  - [GetAccountDeletionRequestsV1401Response](sailpoint/account_deletion_requests/docs/GetAccountDeletionRequestsV1401Response.md)
  - [GetAccountDeletionRequestsV1429Response](sailpoint/account_deletion_requests/docs/GetAccountDeletionRequestsV1429Response.md)
- - [Identityreference](sailpoint/account_deletion_requests/docs/Identityreference.md)
- - [Localeorigin](sailpoint/account_deletion_requests/docs/Localeorigin.md)
+ - [IdentityReference](sailpoint/account_deletion_requests/docs/IdentityReference.md)
+ - [LocaleOrigin](sailpoint/account_deletion_requests/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

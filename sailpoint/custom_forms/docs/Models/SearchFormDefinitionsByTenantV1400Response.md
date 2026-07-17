@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'SearchFormDefinitionsByTenantV1400Res
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **detail_code** | **str** |  | [optional] 
-**messages** | [**[]Errormessage**](errormessage) |  | [optional] 
+**messages** | [**[]ErrorMessage**](error-message) |  | [optional] 
 **status_code** | **int** |  | [optional] 
 **tracking_id** | **str** |  | [optional] 
 }

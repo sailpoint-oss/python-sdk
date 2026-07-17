@@ -35,20 +35,20 @@ This creates an OAuth client.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | createoauthclientrequest | [**Createoauthclientrequest**](../models/createoauthclientrequest) | True  | 
+ Body  | create_o_auth_client_request | [**CreateOAuthClientRequest**](../models/create-o-auth-client-request) | True  | 
 
 ### Return type
-[**Createoauthclientresponse**](../models/createoauthclientresponse)
+[**CreateOAuthClientResponse**](../models/create-o-auth-client-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | Createoauthclientresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | CreateOAuthClientResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListOauthClientsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListOauthClientsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -59,21 +59,37 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.oauth_clients.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.oauth_clients.api_client import ApiClient
-from sailpoint.oauth_clients.models.createoauthclientrequest import Createoauthclientrequest
-from sailpoint.oauth_clients.models.createoauthclientresponse import Createoauthclientresponse
+from sailpoint.oauth_clients.models.create_o_auth_client_request import CreateOAuthClientRequest
+from sailpoint.oauth_clients.models.create_o_auth_client_response import CreateOAuthClientResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    createoauthclientrequest = '''sailpoint.oauth_clients.Createoauthclientrequest()''' # Createoauthclientrequest | 
+    create_o_auth_client_request = '''{
+          "internal" : false,
+          "businessName" : "Acme-Solar",
+          "description" : "An API client used for the authorization_code, refresh_token, and client_credentials flows",
+          "refreshTokenValiditySeconds" : 86400,
+          "type" : "CONFIDENTIAL",
+          "redirectUris" : [ "http://localhost:12345" ],
+          "enabled" : true,
+          "accessType" : "OFFLINE",
+          "grantTypes" : [ "AUTHORIZATION_CODE", "CLIENT_CREDENTIALS", "REFRESH_TOKEN" ],
+          "strongAuthSupported" : false,
+          "homepageUrl" : "http://localhost:12345",
+          "accessTokenValiditySeconds" : 750,
+          "scope" : [ "demo:api-client-scope:first", "demo:api-client-scope:second" ],
+          "name" : "Demo API Client",
+          "claimsSupported" : false
+        }''' # CreateOAuthClientRequest | 
 
     try:
         # Create oauth client
-        new_createoauthclientrequest = Createoauthclientrequest.from_json(createoauthclientrequest)
-        results = OAuthClientsApi(api_client).create_oauth_client_v1(createoauthclientrequest=new_createoauthclientrequest)
+        new_create_o_auth_client_request = CreateOAuthClientRequest.from_json(create_o_auth_client_request)
+        results = OAuthClientsApi(api_client).create_oauth_client_v1(create_o_auth_client_request=new_create_o_auth_client_request)
         # Below is a request that includes all optional parameters
-        # results = OAuthClientsApi(api_client).create_oauth_client_v1(new_createoauthclientrequest)
+        # results = OAuthClientsApi(api_client).create_oauth_client_v1(new_create_o_auth_client_request)
         print("The response of OAuthClientsApi->create_oauth_client_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -103,12 +119,12 @@ Path   | id | **str** | True  | The OAuth client id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListOauthClientsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListOauthClientsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -153,18 +169,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The OAuth client id
 
 ### Return type
-[**Getoauthclientresponse**](../models/getoauthclientresponse)
+[**GetOAuthClientResponse**](../models/get-o-auth-client-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | Getoauthclientresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | GetOAuthClientResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListOauthClientsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListOauthClientsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -175,7 +191,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.oauth_clients.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.oauth_clients.api_client import ApiClient
-from sailpoint.oauth_clients.models.getoauthclientresponse import Getoauthclientresponse
+from sailpoint.oauth_clients.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -212,17 +228,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*
 
 ### Return type
-[**List[Getoauthclientresponse]**](../models/getoauthclientresponse)
+[**List[GetOAuthClientResponse]**](../models/get-o-auth-client-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of OAuth clients. | List[Getoauthclientresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of OAuth clients. | List[GetOAuthClientResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListOauthClientsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListOauthClientsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -233,7 +249,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.oauth_clients.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.oauth_clients.api_client import ApiClient
-from sailpoint.oauth_clients.models.getoauthclientresponse import Getoauthclientresponse
+from sailpoint.oauth_clients.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -269,21 +285,21 @@ This performs a targeted update to the field(s) of an OAuth client.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The OAuth client id
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
 ### Return type
-[**Getoauthclientresponse**](../models/getoauthclientresponse)
+[**GetOAuthClientResponse**](../models/get-o-auth-client-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Indicates the PATCH operation succeeded, and returns the OAuth client&#39;s new representation. | Getoauthclientresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Indicates the PATCH operation succeeded, and returns the OAuth client&#39;s new representation. | GetOAuthClientResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListOauthClientsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListOauthClientsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -294,22 +310,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.oauth_clients.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.oauth_clients.api_client import ApiClient
-from sailpoint.oauth_clients.models.getoauthclientresponse import Getoauthclientresponse
-from sailpoint.oauth_clients.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.oauth_clients.models.get_o_auth_client_response import GetOAuthClientResponse
+from sailpoint.oauth_clients.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The OAuth client id # str | The OAuth client id
-    jsonpatchoperation = '''[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]''' # List[Jsonpatchoperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+    json_patch_operation = '''[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
     try:
         # Patch oauth client
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = OAuthClientsApi(api_client).patch_oauth_client_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = OAuthClientsApi(api_client).patch_oauth_client_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = OAuthClientsApi(api_client).patch_oauth_client_v1(id, new_jsonpatchoperation)
+        # results = OAuthClientsApi(api_client).patch_oauth_client_v1(id, new_json_patch_operation)
         print("The response of OAuthClientsApi->patch_oauth_client_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

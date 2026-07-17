@@ -71,14 +71,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/tenant_context/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/tenant_context/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/tenant_context/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/tenant_context/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/tenant_context/docs/ErrorResponseDto.md)
  - [GetTenantContextV1200ResponseInner](sailpoint/tenant_context/docs/GetTenantContextV1200ResponseInner.md)
  - [GetTenantContextV1401Response](sailpoint/tenant_context/docs/GetTenantContextV1401Response.md)
  - [GetTenantContextV1429Response](sailpoint/tenant_context/docs/GetTenantContextV1429Response.md)
- - [Jsonpatchoperation](sailpoint/tenant_context/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/tenant_context/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/tenant_context/docs/Localeorigin.md)
+ - [JsonPatchOperation](sailpoint/tenant_context/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/tenant_context/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/tenant_context/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

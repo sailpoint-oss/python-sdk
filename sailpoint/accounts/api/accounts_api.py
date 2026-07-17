@@ -20,15 +20,15 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.accounts.models.account import Account
-from sailpoint.accounts.models.accountattributes import Accountattributes
-from sailpoint.accounts.models.accountattributescreate import Accountattributescreate
-from sailpoint.accounts.models.accountsasyncresult import Accountsasyncresult
-from sailpoint.accounts.models.accounttogglerequest import Accounttogglerequest
-from sailpoint.accounts.models.accountunlockrequest import Accountunlockrequest
-from sailpoint.accounts.models.bulkidentitiesaccountsresponse import Bulkidentitiesaccountsresponse
+from sailpoint.accounts.models.account_attributes import AccountAttributes
+from sailpoint.accounts.models.account_attributes_create import AccountAttributesCreate
+from sailpoint.accounts.models.account_toggle_request import AccountToggleRequest
+from sailpoint.accounts.models.account_unlock_request import AccountUnlockRequest
+from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.accounts.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
 from sailpoint.accounts.models.entitlement import Entitlement
-from sailpoint.accounts.models.identitiesaccountsbulkrequest import Identitiesaccountsbulkrequest
-from sailpoint.accounts.models.taskresultdto import Taskresultdto
+from sailpoint.accounts.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
+from sailpoint.accounts.models.task_result_dto import TaskResultDto
 
 from sailpoint.accounts.api_client import ApiClient, RequestSerialized
 from sailpoint.accounts.api_response import ApiResponse
@@ -51,7 +51,7 @@ class AccountsApi:
     @validate_call
     def create_account_v1(
         self,
-        accountattributescreate: Accountattributescreate,
+        account_attributes_create: AccountAttributesCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,13 +64,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Create account
 
         Submit an account creation task - the API then returns the task ID.    You must include the `sourceId` where the account will be created in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
-        :param accountattributescreate: (required)
-        :type accountattributescreate: Accountattributescreate
+        :param account_attributes_create: (required)
+        :type account_attributes_create: AccountAttributesCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +94,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._create_account_v1_serialize(
-            accountattributescreate=accountattributescreate,
+            account_attributes_create=account_attributes_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -102,12 +102,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,7 +123,7 @@ class AccountsApi:
     @validate_call
     def create_account_v1_with_http_info(
         self,
-        accountattributescreate: Accountattributescreate,
+        account_attributes_create: AccountAttributesCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,13 +136,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Create account
 
         Submit an account creation task - the API then returns the task ID.    You must include the `sourceId` where the account will be created in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
-        :param accountattributescreate: (required)
-        :type accountattributescreate: Accountattributescreate
+        :param account_attributes_create: (required)
+        :type account_attributes_create: AccountAttributesCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,7 +166,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._create_account_v1_serialize(
-            accountattributescreate=accountattributescreate,
+            account_attributes_create=account_attributes_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,12 +174,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -195,7 +195,7 @@ class AccountsApi:
     @validate_call
     def create_account_v1_without_preload_content(
         self,
-        accountattributescreate: Accountattributescreate,
+        account_attributes_create: AccountAttributesCreate,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,8 +213,8 @@ class AccountsApi:
 
         Submit an account creation task - the API then returns the task ID.    You must include the `sourceId` where the account will be created in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
-        :param accountattributescreate: (required)
-        :type accountattributescreate: Accountattributescreate
+        :param account_attributes_create: (required)
+        :type account_attributes_create: AccountAttributesCreate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -238,7 +238,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._create_account_v1_serialize(
-            accountattributescreate=accountattributescreate,
+            account_attributes_create=account_attributes_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -246,12 +246,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -262,7 +262,7 @@ class AccountsApi:
 
     def _create_account_v1_serialize(
         self,
-        accountattributescreate,
+        account_attributes_create,
         _request_auth,
         _content_type,
         _headers,
@@ -288,8 +288,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accountattributescreate is not None:
-            _body_params = accountattributescreate
+        if account_attributes_create is not None:
+            _body_params = account_attributes_create
 
 
         # set the HTTP header `Accept`
@@ -352,7 +352,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultdto:
+    ) -> TaskResultDto:
         """Remove account
 
         Use this endpoint to remove accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
@@ -390,12 +390,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultdto]:
+    ) -> ApiResponse[TaskResultDto]:
         """Remove account
 
         Use this endpoint to remove accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
@@ -462,12 +462,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -534,12 +534,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -627,7 +627,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Delete account
 
         Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  >**NOTE: You can only delete accounts from sources of the \"DelimitedFile\" type.**
@@ -665,13 +665,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -700,7 +700,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Delete account
 
         Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  >**NOTE: You can only delete accounts from sources of the \"DelimitedFile\" type.**
@@ -738,13 +738,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -811,13 +811,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -944,12 +944,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1017,12 +1017,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1090,12 +1090,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1171,7 +1171,7 @@ class AccountsApi:
     def disable_account_v1(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1184,15 +1184,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Disable account
 
         This API submits a task to disable the account and returns the task ID.      
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1217,7 +1217,7 @@ class AccountsApi:
 
         _param = self._disable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1225,13 +1225,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1248,7 +1248,7 @@ class AccountsApi:
     def disable_account_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1261,15 +1261,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Disable account
 
         This API submits a task to disable the account and returns the task ID.      
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1294,7 +1294,7 @@ class AccountsApi:
 
         _param = self._disable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1302,13 +1302,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1325,7 +1325,7 @@ class AccountsApi:
     def disable_account_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1345,8 +1345,8 @@ class AccountsApi:
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1371,7 +1371,7 @@ class AccountsApi:
 
         _param = self._disable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1379,13 +1379,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1397,7 +1397,7 @@ class AccountsApi:
     def _disable_account_v1_serialize(
         self,
         id,
-        accounttogglerequest,
+        account_toggle_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1425,8 +1425,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accounttogglerequest is not None:
-            _body_params = accounttogglerequest
+        if account_toggle_request is not None:
+            _body_params = account_toggle_request
 
 
         # set the HTTP header `Accept`
@@ -1476,7 +1476,7 @@ class AccountsApi:
     @validate_call
     def disable_accounts_for_identities_v1(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1489,13 +1489,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Bulkidentitiesaccountsresponse]:
+    ) -> List[BulkIdentitiesAccountsResponse]:
         """Disable idn accounts for identities
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1519,7 +1519,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1527,12 +1527,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1548,7 +1548,7 @@ class AccountsApi:
     @validate_call
     def disable_accounts_for_identities_v1_with_http_info(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1561,13 +1561,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Bulkidentitiesaccountsresponse]]:
+    ) -> ApiResponse[List[BulkIdentitiesAccountsResponse]]:
         """Disable idn accounts for identities
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1591,7 +1591,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1599,12 +1599,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1620,7 +1620,7 @@ class AccountsApi:
     @validate_call
     def disable_accounts_for_identities_v1_without_preload_content(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1638,8 +1638,8 @@ class AccountsApi:
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1663,7 +1663,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1671,12 +1671,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1687,7 +1687,7 @@ class AccountsApi:
 
     def _disable_accounts_for_identities_v1_serialize(
         self,
-        identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1713,8 +1713,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identitiesaccountsbulkrequest is not None:
-            _body_params = identitiesaccountsbulkrequest
+        if identities_accounts_bulk_request is not None:
+            _body_params = identities_accounts_bulk_request
 
 
         # set the HTTP header `Accept`
@@ -1816,12 +1816,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1889,12 +1889,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1962,12 +1962,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2043,7 +2043,7 @@ class AccountsApi:
     def enable_account_v1(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2056,15 +2056,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Enable account
 
         This API submits a task to enable account and returns the task ID.      
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2089,7 +2089,7 @@ class AccountsApi:
 
         _param = self._enable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2097,13 +2097,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2120,7 +2120,7 @@ class AccountsApi:
     def enable_account_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2133,15 +2133,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Enable account
 
         This API submits a task to enable account and returns the task ID.      
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2166,7 +2166,7 @@ class AccountsApi:
 
         _param = self._enable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2174,13 +2174,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2197,7 +2197,7 @@ class AccountsApi:
     def enable_account_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        accounttogglerequest: Accounttogglerequest,
+        account_toggle_request: AccountToggleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2217,8 +2217,8 @@ class AccountsApi:
 
         :param id: The account id (required)
         :type id: str
-        :param accounttogglerequest: (required)
-        :type accounttogglerequest: Accounttogglerequest
+        :param account_toggle_request: (required)
+        :type account_toggle_request: AccountToggleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2243,7 +2243,7 @@ class AccountsApi:
 
         _param = self._enable_account_v1_serialize(
             id=id,
-            accounttogglerequest=accounttogglerequest,
+            account_toggle_request=account_toggle_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2251,13 +2251,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2269,7 +2269,7 @@ class AccountsApi:
     def _enable_account_v1_serialize(
         self,
         id,
-        accounttogglerequest,
+        account_toggle_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2297,8 +2297,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accounttogglerequest is not None:
-            _body_params = accounttogglerequest
+        if account_toggle_request is not None:
+            _body_params = account_toggle_request
 
 
         # set the HTTP header `Accept`
@@ -2348,7 +2348,7 @@ class AccountsApi:
     @validate_call
     def enable_accounts_for_identities_v1(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2361,13 +2361,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Bulkidentitiesaccountsresponse]:
+    ) -> List[BulkIdentitiesAccountsResponse]:
         """Enable idn accounts for identities
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2391,7 +2391,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2399,12 +2399,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2420,7 +2420,7 @@ class AccountsApi:
     @validate_call
     def enable_accounts_for_identities_v1_with_http_info(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2433,13 +2433,13 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Bulkidentitiesaccountsresponse]]:
+    ) -> ApiResponse[List[BulkIdentitiesAccountsResponse]]:
         """Enable idn accounts for identities
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2463,7 +2463,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2471,12 +2471,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2492,7 +2492,7 @@ class AccountsApi:
     @validate_call
     def enable_accounts_for_identities_v1_without_preload_content(
         self,
-        identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2510,8 +2510,8 @@ class AccountsApi:
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param identitiesaccountsbulkrequest: (required)
-        :type identitiesaccountsbulkrequest: Identitiesaccountsbulkrequest
+        :param identities_accounts_bulk_request: (required)
+        :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2535,7 +2535,7 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_v1_serialize(
-            identitiesaccountsbulkrequest=identitiesaccountsbulkrequest,
+            identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2543,12 +2543,12 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[Bulkidentitiesaccountsresponse]",
-            '400': "Errorresponsedto",
+            '207': "List[BulkIdentitiesAccountsResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2559,7 +2559,7 @@ class AccountsApi:
 
     def _enable_accounts_for_identities_v1_serialize(
         self,
-        identitiesaccountsbulkrequest,
+        identities_accounts_bulk_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2585,8 +2585,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identitiesaccountsbulkrequest is not None:
-            _body_params = identitiesaccountsbulkrequest
+        if identities_accounts_bulk_request is not None:
+            _body_params = identities_accounts_bulk_request
 
 
         # set the HTTP header `Accept`
@@ -2700,12 +2700,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2785,12 +2785,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2870,12 +2870,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3017,12 +3017,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Account",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3090,12 +3090,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Account",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3163,12 +3163,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Account",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3315,11 +3315,11 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Account]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3407,11 +3407,11 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Account]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3499,11 +3499,11 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Account]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3606,7 +3606,7 @@ class AccountsApi:
     def put_account_v1(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountattributes: Accountattributes,
+        account_attributes: AccountAttributes,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3619,15 +3619,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Update account
 
         Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.   >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
         :param id: Account ID. (required)
         :type id: str
-        :param accountattributes: (required)
-        :type accountattributes: Accountattributes
+        :param account_attributes: (required)
+        :type account_attributes: AccountAttributes
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3652,7 +3652,7 @@ class AccountsApi:
 
         _param = self._put_account_v1_serialize(
             id=id,
-            accountattributes=accountattributes,
+            account_attributes=account_attributes,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3660,13 +3660,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3683,7 +3683,7 @@ class AccountsApi:
     def put_account_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountattributes: Accountattributes,
+        account_attributes: AccountAttributes,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3696,15 +3696,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Update account
 
         Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.   >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
         :param id: Account ID. (required)
         :type id: str
-        :param accountattributes: (required)
-        :type accountattributes: Accountattributes
+        :param account_attributes: (required)
+        :type account_attributes: AccountAttributes
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3729,7 +3729,7 @@ class AccountsApi:
 
         _param = self._put_account_v1_serialize(
             id=id,
-            accountattributes=accountattributes,
+            account_attributes=account_attributes,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3737,13 +3737,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3760,7 +3760,7 @@ class AccountsApi:
     def put_account_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        accountattributes: Accountattributes,
+        account_attributes: AccountAttributes,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3780,8 +3780,8 @@ class AccountsApi:
 
         :param id: Account ID. (required)
         :type id: str
-        :param accountattributes: (required)
-        :type accountattributes: Accountattributes
+        :param account_attributes: (required)
+        :type account_attributes: AccountAttributes
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3806,7 +3806,7 @@ class AccountsApi:
 
         _param = self._put_account_v1_serialize(
             id=id,
-            accountattributes=accountattributes,
+            account_attributes=account_attributes,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3814,13 +3814,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3832,7 +3832,7 @@ class AccountsApi:
     def _put_account_v1_serialize(
         self,
         id,
-        accountattributes,
+        account_attributes,
         _request_auth,
         _content_type,
         _headers,
@@ -3860,8 +3860,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accountattributes is not None:
-            _body_params = accountattributes
+        if account_attributes is not None:
+            _body_params = account_attributes
 
 
         # set the HTTP header `Accept`
@@ -3924,7 +3924,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Reload account
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.      
@@ -3962,13 +3962,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3997,7 +3997,7 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Reload account
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.      
@@ -4035,13 +4035,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4108,13 +4108,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4190,7 +4190,7 @@ class AccountsApi:
     def unlock_account_v1(
         self,
         id: Annotated[StrictStr, Field(description="The account ID.")],
-        accountunlockrequest: Accountunlockrequest,
+        account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4203,15 +4203,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsasyncresult:
+    ) -> AccountsAsyncResult:
         """Unlock account
 
         This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
 
         :param id: The account ID. (required)
         :type id: str
-        :param accountunlockrequest: (required)
-        :type accountunlockrequest: Accountunlockrequest
+        :param account_unlock_request: (required)
+        :type account_unlock_request: AccountUnlockRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4236,7 +4236,7 @@ class AccountsApi:
 
         _param = self._unlock_account_v1_serialize(
             id=id,
-            accountunlockrequest=accountunlockrequest,
+            account_unlock_request=account_unlock_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4244,13 +4244,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4267,7 +4267,7 @@ class AccountsApi:
     def unlock_account_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account ID.")],
-        accountunlockrequest: Accountunlockrequest,
+        account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4280,15 +4280,15 @@ class AccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsasyncresult]:
+    ) -> ApiResponse[AccountsAsyncResult]:
         """Unlock account
 
         This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
 
         :param id: The account ID. (required)
         :type id: str
-        :param accountunlockrequest: (required)
-        :type accountunlockrequest: Accountunlockrequest
+        :param account_unlock_request: (required)
+        :type account_unlock_request: AccountUnlockRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4313,7 +4313,7 @@ class AccountsApi:
 
         _param = self._unlock_account_v1_serialize(
             id=id,
-            accountunlockrequest=accountunlockrequest,
+            account_unlock_request=account_unlock_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4321,13 +4321,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4344,7 +4344,7 @@ class AccountsApi:
     def unlock_account_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account ID.")],
-        accountunlockrequest: Accountunlockrequest,
+        account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4364,8 +4364,8 @@ class AccountsApi:
 
         :param id: The account ID. (required)
         :type id: str
-        :param accountunlockrequest: (required)
-        :type accountunlockrequest: Accountunlockrequest
+        :param account_unlock_request: (required)
+        :type account_unlock_request: AccountUnlockRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4390,7 +4390,7 @@ class AccountsApi:
 
         _param = self._unlock_account_v1_serialize(
             id=id,
-            accountunlockrequest=accountunlockrequest,
+            account_unlock_request=account_unlock_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4398,13 +4398,13 @@ class AccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountsasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountsAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4416,7 +4416,7 @@ class AccountsApi:
     def _unlock_account_v1_serialize(
         self,
         id,
-        accountunlockrequest,
+        account_unlock_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4444,8 +4444,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accountunlockrequest is not None:
-            _body_params = accountunlockrequest
+        if account_unlock_request is not None:
+            _body_params = account_unlock_request
 
 
         # set the HTTP header `Accept`
@@ -4551,12 +4551,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4628,12 +4628,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4705,12 +4705,12 @@ class AccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.password_sync_groups.models.passwordsyncgroup import Passwordsyncgroup
+from sailpoint.password_sync_groups.models.password_sync_group import PasswordSyncGroup
 
 from sailpoint.password_sync_groups.api_client import ApiClient, RequestSerialized
 from sailpoint.password_sync_groups.api_response import ApiResponse
@@ -42,7 +42,7 @@ class PasswordSyncGroupsApi:
     @validate_call
     def create_password_sync_group_v1(
         self,
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,13 +55,13 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordsyncgroup:
+    ) -> PasswordSyncGroup:
         """Create password sync group
 
         This API creates a password sync group based on the specifications provided.
 
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,7 +85,7 @@ class PasswordSyncGroupsApi:
         """ # noqa: E501
 
         _param = self._create_password_sync_group_v1_serialize(
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -93,12 +93,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -114,7 +114,7 @@ class PasswordSyncGroupsApi:
     @validate_call
     def create_password_sync_group_v1_with_http_info(
         self,
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,13 +127,13 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordsyncgroup]:
+    ) -> ApiResponse[PasswordSyncGroup]:
         """Create password sync group
 
         This API creates a password sync group based on the specifications provided.
 
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,7 +157,7 @@ class PasswordSyncGroupsApi:
         """ # noqa: E501
 
         _param = self._create_password_sync_group_v1_serialize(
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -165,12 +165,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -186,7 +186,7 @@ class PasswordSyncGroupsApi:
     @validate_call
     def create_password_sync_group_v1_without_preload_content(
         self,
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -204,8 +204,8 @@ class PasswordSyncGroupsApi:
 
         This API creates a password sync group based on the specifications provided.
 
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -229,7 +229,7 @@ class PasswordSyncGroupsApi:
         """ # noqa: E501
 
         _param = self._create_password_sync_group_v1_serialize(
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -237,12 +237,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -253,7 +253,7 @@ class PasswordSyncGroupsApi:
 
     def _create_password_sync_group_v1_serialize(
         self,
-        passwordsyncgroup,
+        password_sync_group,
         _request_auth,
         _content_type,
         _headers,
@@ -279,8 +279,8 @@ class PasswordSyncGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordsyncgroup is not None:
-            _body_params = passwordsyncgroup
+        if password_sync_group is not None:
+            _body_params = password_sync_group
 
 
         # set the HTTP header `Accept`
@@ -382,11 +382,11 @@ class PasswordSyncGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -454,11 +454,11 @@ class PasswordSyncGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -526,11 +526,11 @@ class PasswordSyncGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -618,7 +618,7 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordsyncgroup:
+    ) -> PasswordSyncGroup:
         """Get password sync group by id
 
         This API returns the sync group for the specified ID.
@@ -656,13 +656,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -691,7 +691,7 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordsyncgroup]:
+    ) -> ApiResponse[PasswordSyncGroup]:
         """Get password sync group by id
 
         This API returns the sync group for the specified ID.
@@ -729,13 +729,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -802,13 +802,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -898,7 +898,7 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Passwordsyncgroup]:
+    ) -> List[PasswordSyncGroup]:
         """Get password sync group list
 
         This API returns a list of password sync groups.
@@ -942,12 +942,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordsyncgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordSyncGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -978,7 +978,7 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Passwordsyncgroup]]:
+    ) -> ApiResponse[List[PasswordSyncGroup]]:
         """Get password sync group list
 
         This API returns a list of password sync groups.
@@ -1022,12 +1022,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordsyncgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordSyncGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1102,12 +1102,12 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Passwordsyncgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PasswordSyncGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1195,7 +1195,7 @@ class PasswordSyncGroupsApi:
     def update_password_sync_group_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password sync group to update.")],
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1208,15 +1208,15 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Passwordsyncgroup:
+    ) -> PasswordSyncGroup:
         """Update password sync group by id
 
         This API updates the specified password sync group.
 
         :param id: The ID of password sync group to update. (required)
         :type id: str
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1241,7 +1241,7 @@ class PasswordSyncGroupsApi:
 
         _param = self._update_password_sync_group_v1_serialize(
             id=id,
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1249,13 +1249,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1272,7 +1272,7 @@ class PasswordSyncGroupsApi:
     def update_password_sync_group_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password sync group to update.")],
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1285,15 +1285,15 @@ class PasswordSyncGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Passwordsyncgroup]:
+    ) -> ApiResponse[PasswordSyncGroup]:
         """Update password sync group by id
 
         This API updates the specified password sync group.
 
         :param id: The ID of password sync group to update. (required)
         :type id: str
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1318,7 +1318,7 @@ class PasswordSyncGroupsApi:
 
         _param = self._update_password_sync_group_v1_serialize(
             id=id,
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1326,13 +1326,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1349,7 +1349,7 @@ class PasswordSyncGroupsApi:
     def update_password_sync_group_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password sync group to update.")],
-        passwordsyncgroup: Passwordsyncgroup,
+        password_sync_group: PasswordSyncGroup,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1369,8 +1369,8 @@ class PasswordSyncGroupsApi:
 
         :param id: The ID of password sync group to update. (required)
         :type id: str
-        :param passwordsyncgroup: (required)
-        :type passwordsyncgroup: Passwordsyncgroup
+        :param password_sync_group: (required)
+        :type password_sync_group: PasswordSyncGroup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1395,7 +1395,7 @@ class PasswordSyncGroupsApi:
 
         _param = self._update_password_sync_group_v1_serialize(
             id=id,
-            passwordsyncgroup=passwordsyncgroup,
+            password_sync_group=password_sync_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1403,13 +1403,13 @@ class PasswordSyncGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Passwordsyncgroup",
-            '400': "Errorresponsedto",
+            '200': "PasswordSyncGroup",
+            '400': "ErrorResponseDto",
             '401': "GetPasswordSyncGroupsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetPasswordSyncGroupsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1421,7 +1421,7 @@ class PasswordSyncGroupsApi:
     def _update_password_sync_group_v1_serialize(
         self,
         id,
-        passwordsyncgroup,
+        password_sync_group,
         _request_auth,
         _content_type,
         _headers,
@@ -1449,8 +1449,8 @@ class PasswordSyncGroupsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if passwordsyncgroup is not None:
-            _body_params = passwordsyncgroup
+        if password_sync_group is not None:
+            _body_params = password_sync_group
 
 
         # set the HTTP header `Accept`

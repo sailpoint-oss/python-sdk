@@ -6,20 +6,28 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.managedcluster import Managedcluster
-        from sailpoint.managed_clusters.models.managedclusterrequest import Managedclusterrequest
+        from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
+        from sailpoint.managed_clusters.models.managed_cluster_request import ManagedClusterRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          managedclusterrequest = '''sailpoint.managed_clusters.Managedclusterrequest()''' # Managedclusterrequest | 
+          managed_cluster_request = '''{
+          "configuration" : {
+            "clusterExternalId" : "externalId",
+            "ccgVersion" : "77.0.0"
+          },
+          "name" : "Managed Cluster Name",
+          "description" : "A short description of the managed cluster.",
+          "type" : "idn"
+        }''' # ManagedClusterRequest | 
           try:
               # Create create managed cluster
-              new_managedclusterrequest = Managedclusterrequest.from_json(managedclusterrequest)
-              results = ManagedClustersApi(api_client).create_managed_cluster_v1(managedclusterrequest=new_managedclusterrequest)
+              new_managed_cluster_request = ManagedClusterRequest.from_json(managed_cluster_request)
+              results = ManagedClustersApi(api_client).create_managed_cluster_v1(managed_cluster_request=new_managed_cluster_request)
               # Below is a request that includes all optional parameters
-              # results = ManagedClustersApi(api_client).create_managed_cluster_v1(new_managedclusterrequest)
+              # results = ManagedClustersApi(api_client).create_managed_cluster_v1(new_managed_cluster_request)
               print("The response of ManagedClustersApi->create_managed_cluster_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -55,7 +63,7 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.clientlogconfiguration import Clientlogconfiguration
+        from sailpoint.managed_clusters.models.client_log_configuration import ClientLogConfiguration
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -80,7 +88,7 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+        from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -105,7 +113,7 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+        from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -134,7 +142,7 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.clientlogconfiguration import Clientlogconfiguration
+        from sailpoint.managed_clusters.models.client_log_configuration import ClientLogConfiguration
         from sailpoint.managed_clusters.models.put_client_log_configuration_v1_request import PutClientLogConfigurationV1Request
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -161,21 +169,21 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.managed_clusters.models.managedcluster import Managedcluster
+        from sailpoint.managed_clusters.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.managed_clusters.models.managed_cluster import ManagedCluster
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = '2c9180897de347a2017de8859e8c5039' # str | Managed cluster ID. # str | Managed cluster ID.
-          jsonpatchoperation = '''[sailpoint.managed_clusters.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | JSONPatch payload used to update the object.
+          json_patch_operation = '''[sailpoint.managed_clusters.JsonPatchOperation()]''' # List[JsonPatchOperation] | JSONPatch payload used to update the object.
           try:
               # Update managed cluster
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = ManagedClustersApi(api_client).update_managed_cluster_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = ManagedClustersApi(api_client).update_managed_cluster_v1(id=id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = ManagedClustersApi(api_client).update_managed_cluster_v1(id, new_jsonpatchoperation)
+              # results = ManagedClustersApi(api_client).update_managed_cluster_v1(id, new_json_patch_operation)
               print("The response of ManagedClustersApi->update_managed_cluster_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -188,7 +196,7 @@
       source: |
         from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi
         from sailpoint.managed_clusters.api_client import ApiClient
-        from sailpoint.managed_clusters.models.clustermanualupgrade import Clustermanualupgrade
+        from sailpoint.managed_clusters.models.cluster_manual_upgrade import ClusterManualUpgrade
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

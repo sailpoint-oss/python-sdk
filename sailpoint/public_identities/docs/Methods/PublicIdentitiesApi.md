@@ -39,17 +39,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
 
 ### Return type
-[**List[Publicidentity]**](../models/publicidentity)
+[**List[PublicIdentity]**](../models/public-identity)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of public identity objects. | List[Publicidentity] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of public identity objects. | List[PublicIdentity] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPublicIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPublicIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -60,7 +60,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi
 from sailpoint.public_identities.api_client import ApiClient
-from sailpoint.public_identities.models.publicidentity import Publicidentity
+from sailpoint.public_identities.models.public_identity import PublicIdentity
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

@@ -47,11 +47,11 @@ configuration = sailpoint.personal_access_tokens.Configuration(
 with sailpoint.personal_access_tokens.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.personal_access_tokens.PersonalAccessTokensApi(api_client)
-    createpersonalaccesstokenrequest = sailpoint.personal_access_tokens.Createpersonalaccesstokenrequest() # Createpersonalaccesstokenrequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
+    create_personal_access_token_request = sailpoint.personal_access_tokens.CreatePersonalAccessTokenRequest() # CreatePersonalAccessTokenRequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
     try:
         # Create personal access token
-        api_response = api_instance.create_personal_access_token_v1(createpersonalaccesstokenrequest)
+        api_response = api_instance.create_personal_access_token_v1(create_personal_access_token_request)
         print("The response of PersonalAccessTokensApi->create_personal_access_token_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,17 +74,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/personal_access_tokens/docs/ArrayInner.md)
- - [Createpersonalaccesstokenrequest](sailpoint/personal_access_tokens/docs/Createpersonalaccesstokenrequest.md)
- - [Createpersonalaccesstokenresponse](sailpoint/personal_access_tokens/docs/Createpersonalaccesstokenresponse.md)
- - [Errormessagedto](sailpoint/personal_access_tokens/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/personal_access_tokens/docs/Errorresponsedto.md)
- - [Getpersonalaccesstokenresponse](sailpoint/personal_access_tokens/docs/Getpersonalaccesstokenresponse.md)
- - [Jsonpatchoperation](sailpoint/personal_access_tokens/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/personal_access_tokens/docs/JsonpatchoperationValue.md)
+ - [CreatePersonalAccessTokenRequest](sailpoint/personal_access_tokens/docs/CreatePersonalAccessTokenRequest.md)
+ - [CreatePersonalAccessTokenResponse](sailpoint/personal_access_tokens/docs/CreatePersonalAccessTokenResponse.md)
+ - [ErrorMessageDto](sailpoint/personal_access_tokens/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/personal_access_tokens/docs/ErrorResponseDto.md)
+ - [GetPersonalAccessTokenResponse](sailpoint/personal_access_tokens/docs/GetPersonalAccessTokenResponse.md)
+ - [JsonPatchOperation](sailpoint/personal_access_tokens/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/personal_access_tokens/docs/JsonPatchOperationValue.md)
  - [ListPersonalAccessTokensV1401Response](sailpoint/personal_access_tokens/docs/ListPersonalAccessTokensV1401Response.md)
  - [ListPersonalAccessTokensV1429Response](sailpoint/personal_access_tokens/docs/ListPersonalAccessTokensV1429Response.md)
- - [Localeorigin](sailpoint/personal_access_tokens/docs/Localeorigin.md)
- - [Patowner](sailpoint/personal_access_tokens/docs/Patowner.md)
+ - [LocaleOrigin](sailpoint/personal_access_tokens/docs/LocaleOrigin.md)
+ - [PatOwner](sailpoint/personal_access_tokens/docs/PatOwner.md)
 
 
 <a id="documentation-for-authorization"></a>

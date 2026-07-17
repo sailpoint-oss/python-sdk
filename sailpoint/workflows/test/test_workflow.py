@@ -36,16 +36,16 @@ class TestWorkflow(unittest.TestCase):
         if include_optional:
             return Workflow(
                 name = 'Send Email',
-                owner = sailpoint.workflows.models.workflowbody_owner.workflowbody_owner(
+                owner = sailpoint.workflows.models.workflow_body_owner.WorkflowBody_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 description = 'Send an email to the identity who's attributes changed.',
-                definition = sailpoint.workflows.models.workflowdefinition.workflowdefinition(
+                definition = sailpoint.workflows.models.workflow_definition.WorkflowDefinition(
                     start = 'Send Email Test', 
                     steps = {"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"ACTION"},"success":{"type":"success"}}, ),
                 enabled = False,
-                trigger = sailpoint.workflows.models.workflowtrigger.workflowtrigger(
+                trigger = sailpoint.workflows.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
                     display_name = '', 
                     attributes = sailpoint.workflows.models.attributes.attributes(), ),
@@ -54,11 +54,11 @@ class TestWorkflow(unittest.TestCase):
                 failure_count = 0,
                 created = '2022-01-10T16:06:16.636381447Z',
                 modified = '2023-12-05T15:18:27.699132301Z',
-                modified_by = sailpoint.workflows.models.workflowmodifiedby.workflowmodifiedby(
+                modified_by = sailpoint.workflows.models.workflow_modified_by.WorkflowModifiedBy(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Thomas Edison', ),
-                creator = sailpoint.workflows.models.workflow_all_of_creator.workflow_allOf_creator(
+                creator = sailpoint.workflows.models.workflow_all_of_creator.Workflow_allOf_creator(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', )

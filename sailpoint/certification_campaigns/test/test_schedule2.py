@@ -36,15 +36,15 @@ class TestSchedule2(unittest.TestCase):
         if include_optional:
             return Schedule2(
                 type = 'WEEKLY',
-                months = sailpoint.certification_campaigns.models.schedule_2_months.schedule_2_months(
+                months = sailpoint.certification_campaigns.models.schedule_2_months.Schedule_2_months(
                     type = 'LIST', 
                     values = ["1"], 
                     interval = 2, ),
-                days = sailpoint.certification_campaigns.models.schedule_2_days.schedule_2_days(
+                days = sailpoint.certification_campaigns.models.schedule_2_days.Schedule_2_days(
                     type = 'LIST', 
                     values = ["1"], 
                     interval = 2, ),
-                hours = sailpoint.certification_campaigns.models.schedule_2_hours.schedule_2_hours(
+                hours = sailpoint.certification_campaigns.models.schedule_2_hours.Schedule_2_hours(
                     type = 'LIST', 
                     values = ["1"], 
                     interval = 2, ),
@@ -54,7 +54,7 @@ class TestSchedule2(unittest.TestCase):
         else:
             return Schedule2(
                 type = 'WEEKLY',
-                hours = sailpoint.certification_campaigns.models.schedule_2_hours.schedule_2_hours(
+                hours = sailpoint.certification_campaigns.models.schedule_2_hours.Schedule_2_hours(
                     type = 'LIST', 
                     values = ["1"], 
                     interval = 2, ),

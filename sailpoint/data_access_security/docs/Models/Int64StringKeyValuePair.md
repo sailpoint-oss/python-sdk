@@ -1,0 +1,35 @@
+---
+id: int64-string-key-value-pair
+title: Int64StringKeyValuePair
+pagination_label: Int64StringKeyValuePair
+sidebar_label: Int64StringKeyValuePair
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'Int64StringKeyValuePair', 'Int64StringKeyValuePair'] 
+slug: /tools/sdk/python/data-access-security/models/int64-string-key-value-pair
+tags: ['SDK', 'Software Development Kit', 'Int64StringKeyValuePair', 'Int64StringKeyValuePair']
+---
+
+# Int64StringKeyValuePair
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**key** | **int** | The key for the tag or pair. | [optional] 
+**value** | **str** | The value for the tag or pair. | [optional] 
+}
+
+## Example
+
+```python
+from sailpoint.data_access_security.models.int64_string_key_value_pair import Int64StringKeyValuePair
+
+int64_string_key_value_pair = Int64StringKeyValuePair(
+key=1,
+value='Confidential'
+)
+
+```
+[[Back to top]](#) 
+

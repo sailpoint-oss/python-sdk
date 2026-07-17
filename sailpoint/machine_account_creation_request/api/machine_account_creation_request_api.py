@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.machine_account_creation_request.models.accountrequestasyncresult import Accountrequestasyncresult
-from sailpoint.machine_account_creation_request.models.accountrequestdetailsdto import Accountrequestdetailsdto
-from sailpoint.machine_account_creation_request.models.machineaccountcreateaccessdto import Machineaccountcreateaccessdto
-from sailpoint.machine_account_creation_request.models.machineaccountcreaterequestinput import Machineaccountcreaterequestinput
+from sailpoint.machine_account_creation_request.models.account_request_async_result import AccountRequestAsyncResult
+from sailpoint.machine_account_creation_request.models.account_request_details_dto import AccountRequestDetailsDto
+from sailpoint.machine_account_creation_request.models.machine_account_create_access_dto import MachineAccountCreateAccessDto
+from sailpoint.machine_account_creation_request.models.machine_account_create_request_input import MachineAccountCreateRequestInput
 
 from sailpoint.machine_account_creation_request.api_client import ApiClient, RequestSerialized
 from sailpoint.machine_account_creation_request.api_response import ApiResponse
@@ -45,7 +45,7 @@ class MachineAccountCreationRequestApi:
     @validate_call
     def create_machine_account_request_v1(
         self,
-        machineaccountcreaterequestinput: Machineaccountcreaterequestinput,
+        machine_account_create_request_input: MachineAccountCreateRequestInput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -59,13 +59,13 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountrequestasyncresult:
+    ) -> AccountRequestAsyncResult:
         """Submit Machine Account Creation Request
 
         Initiates machine account creation request for the specified subtype. This method validates the input data, processes the machine account creation request, and generates an asynchronous result containing a tracking ID.   >**NOTE: You can only request a machine accounts on subtype for which you have a create machine account entitlement provisioned.** 
 
-        :param machineaccountcreaterequestinput: (required)
-        :type machineaccountcreaterequestinput: Machineaccountcreaterequestinput
+        :param machine_account_create_request_input: (required)
+        :type machine_account_create_request_input: MachineAccountCreateRequestInput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -91,7 +91,7 @@ class MachineAccountCreationRequestApi:
         """ # noqa: E501
 
         _param = self._create_machine_account_request_v1_serialize(
-            machineaccountcreaterequestinput=machineaccountcreaterequestinput,
+            machine_account_create_request_input=machine_account_create_request_input,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -100,13 +100,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -122,7 +122,7 @@ class MachineAccountCreationRequestApi:
     @validate_call
     def create_machine_account_request_v1_with_http_info(
         self,
-        machineaccountcreaterequestinput: Machineaccountcreaterequestinput,
+        machine_account_create_request_input: MachineAccountCreateRequestInput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -136,13 +136,13 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountrequestasyncresult]:
+    ) -> ApiResponse[AccountRequestAsyncResult]:
         """Submit Machine Account Creation Request
 
         Initiates machine account creation request for the specified subtype. This method validates the input data, processes the machine account creation request, and generates an asynchronous result containing a tracking ID.   >**NOTE: You can only request a machine accounts on subtype for which you have a create machine account entitlement provisioned.** 
 
-        :param machineaccountcreaterequestinput: (required)
-        :type machineaccountcreaterequestinput: Machineaccountcreaterequestinput
+        :param machine_account_create_request_input: (required)
+        :type machine_account_create_request_input: MachineAccountCreateRequestInput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -168,7 +168,7 @@ class MachineAccountCreationRequestApi:
         """ # noqa: E501
 
         _param = self._create_machine_account_request_v1_serialize(
-            machineaccountcreaterequestinput=machineaccountcreaterequestinput,
+            machine_account_create_request_input=machine_account_create_request_input,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -177,13 +177,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +199,7 @@ class MachineAccountCreationRequestApi:
     @validate_call
     def create_machine_account_request_v1_without_preload_content(
         self,
-        machineaccountcreaterequestinput: Machineaccountcreaterequestinput,
+        machine_account_create_request_input: MachineAccountCreateRequestInput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -218,8 +218,8 @@ class MachineAccountCreationRequestApi:
 
         Initiates machine account creation request for the specified subtype. This method validates the input data, processes the machine account creation request, and generates an asynchronous result containing a tracking ID.   >**NOTE: You can only request a machine accounts on subtype for which you have a create machine account entitlement provisioned.** 
 
-        :param machineaccountcreaterequestinput: (required)
-        :type machineaccountcreaterequestinput: Machineaccountcreaterequestinput
+        :param machine_account_create_request_input: (required)
+        :type machine_account_create_request_input: MachineAccountCreateRequestInput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -245,7 +245,7 @@ class MachineAccountCreationRequestApi:
         """ # noqa: E501
 
         _param = self._create_machine_account_request_v1_serialize(
-            machineaccountcreaterequestinput=machineaccountcreaterequestinput,
+            machine_account_create_request_input=machine_account_create_request_input,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -254,13 +254,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accountrequestasyncresult",
-            '400': "Errorresponsedto",
+            '202': "AccountRequestAsyncResult",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -271,7 +271,7 @@ class MachineAccountCreationRequestApi:
 
     def _create_machine_account_request_v1_serialize(
         self,
-        machineaccountcreaterequestinput,
+        machine_account_create_request_input,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -300,8 +300,8 @@ class MachineAccountCreationRequestApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if machineaccountcreaterequestinput is not None:
-            _body_params = machineaccountcreaterequestinput
+        if machine_account_create_request_input is not None:
+            _body_params = machine_account_create_request_input
 
 
         # set the HTTP header `Accept`
@@ -365,7 +365,7 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountrequestdetailsdto:
+    ) -> AccountRequestDetailsDto:
         """Get Machine Account Creation Request
 
         Retrieves a account request details for machine account creation. This allows the user to view all details for given account request.
@@ -406,13 +406,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountrequestdetailsdto",
-            '400': "Errorresponsedto",
+            '200': "AccountRequestDetailsDto",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -442,7 +442,7 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountrequestdetailsdto]:
+    ) -> ApiResponse[AccountRequestDetailsDto]:
         """Get Machine Account Creation Request
 
         Retrieves a account request details for machine account creation. This allows the user to view all details for given account request.
@@ -483,13 +483,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountrequestdetailsdto",
-            '400': "Errorresponsedto",
+            '200': "AccountRequestDetailsDto",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -560,13 +560,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountrequestdetailsdto",
-            '400': "Errorresponsedto",
+            '200': "AccountRequestDetailsDto",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -659,7 +659,7 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Machineaccountcreateaccessdto]:
+    ) -> List[MachineAccountCreateAccessDto]:
         """Machine Account Create Access
 
         This endpoint retrieves the list of sources and subtypes for which logged in user has the entitlement to create a machine account. The response includes a list of object detailing the source, subtype and entitlement details which enables the clients to understand if they can submit the request to create a machine account for the given subtype.
@@ -703,13 +703,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccountcreateaccessdto]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccountCreateAccessDto]",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -740,7 +740,7 @@ class MachineAccountCreationRequestApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Machineaccountcreateaccessdto]]:
+    ) -> ApiResponse[List[MachineAccountCreateAccessDto]]:
         """Machine Account Create Access
 
         This endpoint retrieves the list of sources and subtypes for which logged in user has the entitlement to create a machine account. The response includes a list of object detailing the source, subtype and entitlement details which enables the clients to understand if they can submit the request to create a machine account for the given subtype.
@@ -784,13 +784,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccountcreateaccessdto]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccountCreateAccessDto]",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -865,13 +865,13 @@ class MachineAccountCreationRequestApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccountcreateaccessdto]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccountCreateAccessDto]",
+            '400': "ErrorResponseDto",
             '401': "CreateMachineAccountRequestV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "CreateMachineAccountRequestV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.ui_metadata.models.tenantuimetadataitemresponse import Tenantuimetadataitemresponse
-from sailpoint.ui_metadata.models.tenantuimetadataitemupdaterequest import Tenantuimetadataitemupdaterequest
+from sailpoint.ui_metadata.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
+from sailpoint.ui_metadata.models.tenant_ui_metadata_item_update_request import TenantUiMetadataItemUpdateRequest
 
 from sailpoint.ui_metadata.api_client import ApiClient, RequestSerialized
 from sailpoint.ui_metadata.api_response import ApiResponse
@@ -56,7 +56,7 @@ class UIMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Tenantuimetadataitemresponse:
+    ) -> TenantUiMetadataItemResponse:
         """Get a tenant ui metadata
 
         This API endpoint retrieves UI metadata configured for your tenant.
@@ -94,13 +94,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class UIMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Tenantuimetadataitemresponse]:
+    ) -> ApiResponse[TenantUiMetadataItemResponse]:
         """Get a tenant ui metadata
 
         This API endpoint retrieves UI metadata configured for your tenant.
@@ -167,13 +167,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,13 +240,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -321,7 +321,7 @@ class UIMetadataApi:
     @validate_call
     def set_tenant_ui_metadata_v1(
         self,
-        tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest,
+        tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -335,13 +335,13 @@ class UIMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Tenantuimetadataitemresponse:
+    ) -> TenantUiMetadataItemResponse:
         """Update tenant ui metadata
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
-        :param tenantuimetadataitemupdaterequest: (required)
-        :type tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest
+        :param tenant_ui_metadata_item_update_request: (required)
+        :type tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -367,7 +367,7 @@ class UIMetadataApi:
         """ # noqa: E501
 
         _param = self._set_tenant_ui_metadata_v1_serialize(
-            tenantuimetadataitemupdaterequest=tenantuimetadataitemupdaterequest,
+            tenant_ui_metadata_item_update_request=tenant_ui_metadata_item_update_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -376,13 +376,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -398,7 +398,7 @@ class UIMetadataApi:
     @validate_call
     def set_tenant_ui_metadata_v1_with_http_info(
         self,
-        tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest,
+        tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -412,13 +412,13 @@ class UIMetadataApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Tenantuimetadataitemresponse]:
+    ) -> ApiResponse[TenantUiMetadataItemResponse]:
         """Update tenant ui metadata
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
-        :param tenantuimetadataitemupdaterequest: (required)
-        :type tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest
+        :param tenant_ui_metadata_item_update_request: (required)
+        :type tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -444,7 +444,7 @@ class UIMetadataApi:
         """ # noqa: E501
 
         _param = self._set_tenant_ui_metadata_v1_serialize(
-            tenantuimetadataitemupdaterequest=tenantuimetadataitemupdaterequest,
+            tenant_ui_metadata_item_update_request=tenant_ui_metadata_item_update_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -453,13 +453,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -475,7 +475,7 @@ class UIMetadataApi:
     @validate_call
     def set_tenant_ui_metadata_v1_without_preload_content(
         self,
-        tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest,
+        tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -494,8 +494,8 @@ class UIMetadataApi:
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
-        :param tenantuimetadataitemupdaterequest: (required)
-        :type tenantuimetadataitemupdaterequest: Tenantuimetadataitemupdaterequest
+        :param tenant_ui_metadata_item_update_request: (required)
+        :type tenant_ui_metadata_item_update_request: TenantUiMetadataItemUpdateRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -521,7 +521,7 @@ class UIMetadataApi:
         """ # noqa: E501
 
         _param = self._set_tenant_ui_metadata_v1_serialize(
-            tenantuimetadataitemupdaterequest=tenantuimetadataitemupdaterequest,
+            tenant_ui_metadata_item_update_request=tenant_ui_metadata_item_update_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -530,13 +530,13 @@ class UIMetadataApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantuimetadataitemresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantUiMetadataItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetTenantUiMetadataV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantUiMetadataV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -547,7 +547,7 @@ class UIMetadataApi:
 
     def _set_tenant_ui_metadata_v1_serialize(
         self,
-        tenantuimetadataitemupdaterequest,
+        tenant_ui_metadata_item_update_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -576,8 +576,8 @@ class UIMetadataApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if tenantuimetadataitemupdaterequest is not None:
-            _body_params = tenantuimetadataitemupdaterequest
+        if tenant_ui_metadata_item_update_request is not None:
+            _body_params = tenant_ui_metadata_item_update_request
 
 
         # set the HTTP header `Accept`

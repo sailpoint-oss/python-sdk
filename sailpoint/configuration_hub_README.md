@@ -47,11 +47,11 @@ configuration = sailpoint.configuration_hub.Configuration(
 with sailpoint.configuration_hub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.configuration_hub.ConfigurationHubApi(api_client)
-    deployrequest = {"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"} # Deployrequest | The deploy request body.
+    deploy_request = {"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"} # DeployRequest | The deploy request body.
 
     try:
         # Create a deploy
-        api_response = api_instance.create_deploy_v1(deployrequest)
+        api_response = api_instance.create_deploy_v1(deploy_request)
         print("The response of ConfigurationHubApi->create_deploy_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -89,37 +89,37 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Approvalcomment](sailpoint/configuration_hub/docs/Approvalcomment.md)
+ - [ApprovalComment](sailpoint/configuration_hub/docs/ApprovalComment.md)
  - [ArrayInner](sailpoint/configuration_hub/docs/ArrayInner.md)
- - [Backupoptions](sailpoint/configuration_hub/docs/Backupoptions.md)
- - [Backupresponse](sailpoint/configuration_hub/docs/Backupresponse.md)
+ - [BackupOptions](sailpoint/configuration_hub/docs/BackupOptions.md)
+ - [BackupResponse](sailpoint/configuration_hub/docs/BackupResponse.md)
  - [CreateUploadedConfigurationV1Request](sailpoint/configuration_hub/docs/CreateUploadedConfigurationV1Request.md)
- - [Deployrequest](sailpoint/configuration_hub/docs/Deployrequest.md)
- - [Deployresponse](sailpoint/configuration_hub/docs/Deployresponse.md)
- - [Draftresponse](sailpoint/configuration_hub/docs/Draftresponse.md)
- - [Errormessagedto](sailpoint/configuration_hub/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/configuration_hub/docs/Errorresponsedto.md)
+ - [DeployRequest](sailpoint/configuration_hub/docs/DeployRequest.md)
+ - [DeployResponse](sailpoint/configuration_hub/docs/DeployResponse.md)
+ - [DraftResponse](sailpoint/configuration_hub/docs/DraftResponse.md)
+ - [ErrorMessageDto](sailpoint/configuration_hub/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/configuration_hub/docs/ErrorResponseDto.md)
  - [GetObjectMappingsV1401Response](sailpoint/configuration_hub/docs/GetObjectMappingsV1401Response.md)
  - [GetObjectMappingsV1429Response](sailpoint/configuration_hub/docs/GetObjectMappingsV1429Response.md)
- - [Jsonpatch](sailpoint/configuration_hub/docs/Jsonpatch.md)
- - [Jsonpatchoperation](sailpoint/configuration_hub/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/configuration_hub/docs/JsonpatchoperationValue.md)
+ - [JsonPatch](sailpoint/configuration_hub/docs/JsonPatch.md)
+ - [JsonPatchOperation](sailpoint/configuration_hub/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/configuration_hub/docs/JsonPatchOperationValue.md)
  - [ListDeploysV1200Response](sailpoint/configuration_hub/docs/ListDeploysV1200Response.md)
- - [Localeorigin](sailpoint/configuration_hub/docs/Localeorigin.md)
- - [Objectexportimportnames](sailpoint/configuration_hub/docs/Objectexportimportnames.md)
- - [Objectmappingbulkcreaterequest](sailpoint/configuration_hub/docs/Objectmappingbulkcreaterequest.md)
- - [Objectmappingbulkcreateresponse](sailpoint/configuration_hub/docs/Objectmappingbulkcreateresponse.md)
- - [Objectmappingbulkpatchrequest](sailpoint/configuration_hub/docs/Objectmappingbulkpatchrequest.md)
- - [Objectmappingbulkpatchresponse](sailpoint/configuration_hub/docs/Objectmappingbulkpatchresponse.md)
- - [Objectmappingrequest](sailpoint/configuration_hub/docs/Objectmappingrequest.md)
- - [Objectmappingresponse](sailpoint/configuration_hub/docs/Objectmappingresponse.md)
- - [Scheduledactionpayload](sailpoint/configuration_hub/docs/Scheduledactionpayload.md)
- - [ScheduledactionpayloadContent](sailpoint/configuration_hub/docs/ScheduledactionpayloadContent.md)
- - [ScheduledactionpayloadContentBackupOptions](sailpoint/configuration_hub/docs/ScheduledactionpayloadContentBackupOptions.md)
- - [Scheduledactionresponse](sailpoint/configuration_hub/docs/Scheduledactionresponse.md)
- - [ScheduledactionresponseContent](sailpoint/configuration_hub/docs/ScheduledactionresponseContent.md)
- - [ScheduledactionresponseContentBackupOptions](sailpoint/configuration_hub/docs/ScheduledactionresponseContentBackupOptions.md)
- - [ScheduledactionresponseContentBackupOptionsObjectOptionsValue](sailpoint/configuration_hub/docs/ScheduledactionresponseContentBackupOptionsObjectOptionsValue.md)
+ - [LocaleOrigin](sailpoint/configuration_hub/docs/LocaleOrigin.md)
+ - [ObjectExportImportNames](sailpoint/configuration_hub/docs/ObjectExportImportNames.md)
+ - [ObjectMappingBulkCreateRequest](sailpoint/configuration_hub/docs/ObjectMappingBulkCreateRequest.md)
+ - [ObjectMappingBulkCreateResponse](sailpoint/configuration_hub/docs/ObjectMappingBulkCreateResponse.md)
+ - [ObjectMappingBulkPatchRequest](sailpoint/configuration_hub/docs/ObjectMappingBulkPatchRequest.md)
+ - [ObjectMappingBulkPatchResponse](sailpoint/configuration_hub/docs/ObjectMappingBulkPatchResponse.md)
+ - [ObjectMappingRequest](sailpoint/configuration_hub/docs/ObjectMappingRequest.md)
+ - [ObjectMappingResponse](sailpoint/configuration_hub/docs/ObjectMappingResponse.md)
+ - [ScheduledActionPayload](sailpoint/configuration_hub/docs/ScheduledActionPayload.md)
+ - [ScheduledActionPayloadContent](sailpoint/configuration_hub/docs/ScheduledActionPayloadContent.md)
+ - [ScheduledActionPayloadContentBackupOptions](sailpoint/configuration_hub/docs/ScheduledActionPayloadContentBackupOptions.md)
+ - [ScheduledActionResponse](sailpoint/configuration_hub/docs/ScheduledActionResponse.md)
+ - [ScheduledActionResponseContent](sailpoint/configuration_hub/docs/ScheduledActionResponseContent.md)
+ - [ScheduledActionResponseContentBackupOptions](sailpoint/configuration_hub/docs/ScheduledActionResponseContentBackupOptions.md)
+ - [ScheduledActionResponseContentBackupOptionsObjectOptionsValue](sailpoint/configuration_hub/docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md)
 
 
 <a id="documentation-for-authorization"></a>

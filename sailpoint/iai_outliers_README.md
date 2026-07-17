@@ -79,21 +79,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/iai_outliers/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/iai_outliers/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/iai_outliers/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/iai_outliers/docs/ErrorResponseDto.md)
  - [GetIdentityOutlierSnapshotsV1401Response](sailpoint/iai_outliers/docs/GetIdentityOutlierSnapshotsV1401Response.md)
  - [GetIdentityOutlierSnapshotsV1429Response](sailpoint/iai_outliers/docs/GetIdentityOutlierSnapshotsV1429Response.md)
- - [Latestoutliersummary](sailpoint/iai_outliers/docs/Latestoutliersummary.md)
- - [Localeorigin](sailpoint/iai_outliers/docs/Localeorigin.md)
+ - [LatestOutlierSummary](sailpoint/iai_outliers/docs/LatestOutlierSummary.md)
+ - [LocaleOrigin](sailpoint/iai_outliers/docs/LocaleOrigin.md)
  - [Outlier](sailpoint/iai_outliers/docs/Outlier.md)
- - [Outliercontributingfeature](sailpoint/iai_outliers/docs/Outliercontributingfeature.md)
- - [Outlierfeaturesummary](sailpoint/iai_outliers/docs/Outlierfeaturesummary.md)
- - [OutlierfeaturesummaryOutlierFeatureDisplayValuesInner](sailpoint/iai_outliers/docs/OutlierfeaturesummaryOutlierFeatureDisplayValuesInner.md)
- - [Outlierfeaturetranslation](sailpoint/iai_outliers/docs/Outlierfeaturetranslation.md)
- - [Outlierscontributingfeatureaccessitems](sailpoint/iai_outliers/docs/Outlierscontributingfeatureaccessitems.md)
- - [Outliersummary](sailpoint/iai_outliers/docs/Outliersummary.md)
- - [Outliervaluetype](sailpoint/iai_outliers/docs/Outliervaluetype.md)
- - [Translationmessage](sailpoint/iai_outliers/docs/Translationmessage.md)
+ - [OutlierContributingFeature](sailpoint/iai_outliers/docs/OutlierContributingFeature.md)
+ - [OutlierFeatureSummary](sailpoint/iai_outliers/docs/OutlierFeatureSummary.md)
+ - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](sailpoint/iai_outliers/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
+ - [OutlierFeatureTranslation](sailpoint/iai_outliers/docs/OutlierFeatureTranslation.md)
+ - [OutlierSummary](sailpoint/iai_outliers/docs/OutlierSummary.md)
+ - [OutlierValueType](sailpoint/iai_outliers/docs/OutlierValueType.md)
+ - [OutliersContributingFeatureAccessItems](sailpoint/iai_outliers/docs/OutliersContributingFeatureAccessItems.md)
+ - [TranslationMessage](sailpoint/iai_outliers/docs/TranslationMessage.md)
 
 
 <a id="documentation-for-authorization"></a>

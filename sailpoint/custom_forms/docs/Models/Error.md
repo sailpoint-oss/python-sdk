@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Error', 'Error']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **detail_code** | **str** | DetailCode is the text of the status code returned | [optional] 
-**messages** | [**[]Errormessage**](errormessage) |  | [optional] 
+**messages** | [**[]ErrorMessage**](error-message) |  | [optional] 
 **tracking_id** | **str** | TrackingID is the request tracking unique identifier | [optional] 
 }
 

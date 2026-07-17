@@ -74,12 +74,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountusage](sailpoint/account_usages/docs/Accountusage.md)
- - [Errormessagedto](sailpoint/account_usages/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/account_usages/docs/Errorresponsedto.md)
+ - [AccountUsage](sailpoint/account_usages/docs/AccountUsage.md)
+ - [ErrorMessageDto](sailpoint/account_usages/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/account_usages/docs/ErrorResponseDto.md)
  - [GetUsagesByAccountIdV1401Response](sailpoint/account_usages/docs/GetUsagesByAccountIdV1401Response.md)
  - [GetUsagesByAccountIdV1429Response](sailpoint/account_usages/docs/GetUsagesByAccountIdV1429Response.md)
- - [Localeorigin](sailpoint/account_usages/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/account_usages/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

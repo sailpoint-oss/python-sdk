@@ -40,7 +40,7 @@ This API endpoint allows approving pending access requests in bulk. Maximum of 5
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkapproveaccessrequest | [**Bulkapproveaccessrequest**](../models/bulkapproveaccessrequest) | True  | 
+ Body  | bulk_approve_access_request | [**BulkApproveAccessRequest**](../models/bulk-approve-access-request) | True  | 
 
 ### Return type
 **object**
@@ -49,12 +49,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -65,20 +65,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.bulkapproveaccessrequest import Bulkapproveaccessrequest
+from sailpoint.access_requests.models.bulk_approve_access_request import BulkApproveAccessRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkapproveaccessrequest = '''{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I approve these request items"}''' # Bulkapproveaccessrequest | 
+    bulk_approve_access_request = '''{
+          "comment" : "I approve these request items",
+          "approvalIds" : [ "2c9180835d2e5168015d32f890ca1581", "2c9180835d2e5168015d32f890ca1582" ]
+        }''' # BulkApproveAccessRequest | 
 
     try:
         # Bulk approve access request
-        new_bulkapproveaccessrequest = Bulkapproveaccessrequest.from_json(bulkapproveaccessrequest)
-        results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(bulkapproveaccessrequest=new_bulkapproveaccessrequest)
+        new_bulk_approve_access_request = BulkApproveAccessRequest.from_json(bulk_approve_access_request)
+        results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(bulk_approve_access_request=new_bulk_approve_access_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(new_bulkapproveaccessrequest)
+        # results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(new_bulk_approve_access_request)
         print("The response of AccessRequestsApi->approve_bulk_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -100,7 +103,7 @@ Only ORG_ADMIN or users with rights "idn:access-request-administration:write" ca
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkcancelaccessrequest | [**Bulkcancelaccessrequest**](../models/bulkcancelaccessrequest) | True  | 
+ Body  | bulk_cancel_access_request | [**BulkCancelAccessRequest**](../models/bulk-cancel-access-request) | True  | 
 
 ### Return type
 **object**
@@ -109,12 +112,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -125,20 +128,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.bulkcancelaccessrequest import Bulkcancelaccessrequest
+from sailpoint.access_requests.models.bulk_cancel_access_request import BulkCancelAccessRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkcancelaccessrequest = '''{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I requested this role by mistake."}''' # Bulkcancelaccessrequest | 
+    bulk_cancel_access_request = '''{
+          "accessRequestIds" : [ "2c9180835d2e5168015d32f890ca1581", "2c9180835d2e5168015d32f890ca1582" ],
+          "comment" : "I requested this role by mistake."
+        }''' # BulkCancelAccessRequest | 
 
     try:
         # Bulk cancel access request
-        new_bulkcancelaccessrequest = Bulkcancelaccessrequest.from_json(bulkcancelaccessrequest)
-        results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(bulkcancelaccessrequest=new_bulkcancelaccessrequest)
+        new_bulk_cancel_access_request = BulkCancelAccessRequest.from_json(bulk_cancel_access_request)
+        results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(bulk_cancel_access_request=new_bulk_cancel_access_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(new_bulkcancelaccessrequest)
+        # results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(new_bulk_cancel_access_request)
         print("The response of AccessRequestsApi->cancel_access_request_in_bulk_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -160,7 +166,7 @@ In addition to users with ORG_ADMIN, any user who originally submitted the acces
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | cancelaccessrequest | [**Cancelaccessrequest**](../models/cancelaccessrequest) | True  | 
+ Body  | cancel_access_request | [**CancelAccessRequest**](../models/cancel-access-request) | True  | 
 
 ### Return type
 **object**
@@ -169,12 +175,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -185,20 +191,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.cancelaccessrequest import Cancelaccessrequest
+from sailpoint.access_requests.models.cancel_access_request import CancelAccessRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    cancelaccessrequest = '''{"accountActivityId":"2c91808568c529c60168cca6f90c1313","comment":"I requested this role by mistake."}''' # Cancelaccessrequest | 
+    cancel_access_request = '''{
+          "accountActivityId" : "2c9180835d2e5168015d32f890ca1581",
+          "comment" : "I requested this role by mistake."
+        }''' # CancelAccessRequest | 
 
     try:
         # Cancel access request
-        new_cancelaccessrequest = Cancelaccessrequest.from_json(cancelaccessrequest)
-        results = AccessRequestsApi(api_client).cancel_access_request_v1(cancelaccessrequest=new_cancelaccessrequest)
+        new_cancel_access_request = CancelAccessRequest.from_json(cancel_access_request)
+        results = AccessRequestsApi(api_client).cancel_access_request_v1(cancel_access_request=new_cancel_access_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).cancel_access_request_v1(new_cancelaccessrequest)
+        # results = AccessRequestsApi(api_client).cancel_access_request_v1(new_cancel_access_request)
         print("The response of AccessRequestsApi->cancel_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -230,7 +239,7 @@ This API triggers the [Provisioning Completed event trigger](https://developer.s
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | closeaccessrequest | [**Closeaccessrequest**](../models/closeaccessrequest) | True  | 
+ Body  | close_access_request | [**CloseAccessRequest**](../models/close-access-request) | True  | 
 
 ### Return type
 **object**
@@ -239,11 +248,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -254,20 +263,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.closeaccessrequest import Closeaccessrequest
+from sailpoint.access_requests.models.close_access_request import CloseAccessRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    closeaccessrequest = '''{"accessRequestIds":["2c90ad2a70ace7d50170acf22ca90010"],"executionStatus":"Terminated","completionStatus":"Failure","message":"The IdentityNow Administrator manually closed this request."}''' # Closeaccessrequest | 
+    close_access_request = '''{
+          "executionStatus" : "Terminated",
+          "accessRequestIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+          "completionStatus" : "Failure",
+          "message" : "The IdentityNow Administrator manually closed this request."
+        }''' # CloseAccessRequest | 
 
     try:
         # Close access request
-        new_closeaccessrequest = Closeaccessrequest.from_json(closeaccessrequest)
-        results = AccessRequestsApi(api_client).close_access_request_v1(closeaccessrequest=new_closeaccessrequest)
+        new_close_access_request = CloseAccessRequest.from_json(close_access_request)
+        results = AccessRequestsApi(api_client).close_access_request_v1(close_access_request=new_close_access_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).close_access_request_v1(new_closeaccessrequest)
+        # results = AccessRequestsApi(api_client).close_access_request_v1(new_close_access_request)
         print("The response of AccessRequestsApi->close_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -338,20 +352,20 @@ __REVOKE_ACCESS__
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequest | [**Accessrequest**](../models/accessrequest) | True  | 
+ Body  | access_request | [**AccessRequest**](../models/access-request) | True  | 
 
 ### Return type
-[**Accessrequestresponse**](../models/accessrequestresponse)
+[**AccessRequestResponse**](../models/access-request-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Access Request Response. | Accessrequestresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Access Request Response. | AccessRequestResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -362,21 +376,176 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequest import Accessrequest
-from sailpoint.access_requests.models.accessrequestresponse import Accessrequestresponse
+from sailpoint.access_requests.models.access_request import AccessRequest
+from sailpoint.access_requests.models.access_request_response import AccessRequestResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessrequest = '''sailpoint.access_requests.Accessrequest()''' # Accessrequest | 
+    access_request = '''{
+          "requestedFor" : "2c918084660f45d6016617daa9210584",
+          "clientMetadata" : {
+            "requestedAppId" : "2c91808f7892918f0178b78da4a305a1",
+            "requestedAppName" : "test-app"
+          },
+          "requestType" : "GRANT_ACCESS",
+          "requestedItems" : [ {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          } ],
+          "requestedForWithRequestedItems" : [ {
+            "identityId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+            "requestedItems" : [ {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            }, {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            } ]
+          }, {
+            "identityId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+            "requestedItems" : [ {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            }, {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            } ]
+          } ]
+        }''' # AccessRequest | 
 
     try:
         # Submit access request
-        new_accessrequest = Accessrequest.from_json(accessrequest)
-        results = AccessRequestsApi(api_client).create_access_request_v1(accessrequest=new_accessrequest)
+        new_access_request = AccessRequest.from_json(access_request)
+        results = AccessRequestsApi(api_client).create_access_request_v1(access_request=new_access_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).create_access_request_v1(new_accessrequest)
+        # results = AccessRequestsApi(api_client).create_access_request_v1(new_access_request)
         print("The response of AccessRequestsApi->create_access_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -400,17 +569,17 @@ This endpoint returns the current access-request configuration.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Accessrequestconfigv1**](../models/accessrequestconfigv1)
+[**AccessRequestConfig**](../models/access-request-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Access Request Configuration Details. | Accessrequestconfigv1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Access Request Configuration Details. | AccessRequestConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -421,7 +590,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
+from sailpoint.access_requests.models.access_request_config import AccessRequestConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -454,17 +623,17 @@ This endpoint returns the current access-request configuration.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
+[**AccessRequestConfig2**](../models/access-request-config2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Access Request Configuration Details. | Accessrequestconfigv2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Access Request Configuration Details. | AccessRequestConfig2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -475,7 +644,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+from sailpoint.access_requests.models.access_request_config2 import AccessRequestConfig2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -512,18 +681,18 @@ Path   | identity_id | **str** | True  | The identity ID.
 Path   | entitlement_id | **str** | True  | The entitlement ID
 
 ### Return type
-[**Identityentitlementdetails**](../models/identityentitlementdetails)
+[**IdentityEntitlementDetails**](../models/identity-entitlement-details)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Entitlement and Account Reference | Identityentitlementdetails |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Entitlement and Account Reference | IdentityEntitlementDetails |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -534,7 +703,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.identityentitlementdetails import Identityentitlementdetails
+from sailpoint.access_requests.models.identity_entitlement_details import IdentityEntitlementDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -583,17 +752,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | request_state | **str** |   (optional) | Filter the results by the state of the request. The only valid value is *EXECUTING*.
 
 ### Return type
-[**List[Requesteditemstatus]**](../models/requesteditemstatus)
+[**List[RequestedItemStatus]**](../models/requested-item-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of requested item statuses. | List[Requesteditemstatus] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of requested item statuses. | List[RequestedItemStatus] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -604,7 +773,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
+from sailpoint.access_requests.models.requested_item_status import RequestedItemStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -673,17 +842,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | request_state | **str** |   (optional) | Filter the results by the state of the request. The only valid value is *EXECUTING*.
 
 ### Return type
-[**List[Accessrequestadminitemstatus]**](../models/accessrequestadminitemstatus)
+[**List[AccessRequestAdminItemStatus]**](../models/access-request-admin-item-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of requested item statuses. | List[Accessrequestadminitemstatus] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of requested item statuses. | List[AccessRequestAdminItemStatus] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -694,7 +863,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequestadminitemstatus import Accessrequestadminitemstatus
+from sailpoint.access_requests.models.access_request_admin_item_status import AccessRequestAdminItemStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -754,21 +923,21 @@ Used to fetch accountSelection for the AccessRequest prior to submitting for asy
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accountsselectionrequest | [**Accountsselectionrequest**](../models/accountsselectionrequest) | True  | 
+ Body  | accounts_selection_request | [**AccountsSelectionRequest**](../models/accounts-selection-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accountsselectionresponse**](../models/accountsselectionresponse)
+[**AccountsSelectionResponse**](../models/accounts-selection-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Accounts Selection Response | Accountsselectionresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Accounts Selection Response | AccountsSelectionResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -779,23 +948,91 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accountsselectionrequest import Accountsselectionrequest
-from sailpoint.access_requests.models.accountsselectionresponse import Accountsselectionresponse
+from sailpoint.access_requests.models.accounts_selection_request import AccountsSelectionRequest
+from sailpoint.access_requests.models.accounts_selection_response import AccountsSelectionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    accountsselectionrequest = '''sailpoint.access_requests.Accountsselectionrequest()''' # Accountsselectionrequest | 
+    accounts_selection_request = '''{
+          "requestedFor" : "2c918084660f45d6016617daa9210584",
+          "clientMetadata" : {
+            "requestedAppId" : "2c91808f7892918f0178b78da4a305a1",
+            "requestedAppName" : "test-app"
+          },
+          "requestType" : "GRANT_ACCESS",
+          "requestedItems" : [ {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          } ]
+        }''' # AccountsSelectionRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get accounts selections for identity
-        new_accountsselectionrequest = Accountsselectionrequest.from_json(accountsselectionrequest)
-        results = AccessRequestsApi(api_client).load_account_selections_v1(accountsselectionrequest=new_accountsselectionrequest)
+        new_accounts_selection_request = AccountsSelectionRequest.from_json(accounts_selection_request)
+        results = AccessRequestsApi(api_client).load_account_selections_v1(accounts_selection_request=new_accounts_selection_request)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).load_account_selections_v1(new_accountsselectionrequest, x_sail_point_experimental)
+        # results = AccessRequestsApi(api_client).load_account_selections_v1(new_accounts_selection_request, x_sail_point_experimental)
         print("The response of AccessRequestsApi->load_account_selections_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -819,20 +1056,20 @@ This endpoint replaces the current access-request configuration.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestconfigv1 | [**Accessrequestconfigv1**](../models/accessrequestconfigv1) | True  | 
+ Body  | access_request_config | [**AccessRequestConfig**](../models/access-request-config) | True  | 
 
 ### Return type
-[**Accessrequestconfigv1**](../models/accessrequestconfigv1)
+[**AccessRequestConfig**](../models/access-request-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Access Request Configuration Details. | Accessrequestconfigv1 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Access Request Configuration Details. | AccessRequestConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -843,20 +1080,67 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
+from sailpoint.access_requests.models.access_request_config import AccessRequestConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessrequestconfigv1 = '''sailpoint.access_requests.Accessrequestconfigv1()''' # Accessrequestconfigv1 | 
+    access_request_config = '''{
+          "requestOnBehalfOfConfig" : {
+            "allowRequestOnBehalfOfEmployeeByManager" : true,
+            "allowRequestOnBehalfOfAnyoneByAnyone" : true
+          },
+          "approvalReminderAndEscalationConfig" : {
+            "fallbackApproverRef" : {
+              "name" : "Alison Ferguso",
+              "id" : "5168015d32f890ca15812c9180835d2e",
+              "type" : "IDENTITY",
+              "email" : "alison.ferguso@identitysoon.com"
+            },
+            "maxReminders" : 1,
+            "daysUntilEscalation" : 0,
+            "daysBetweenReminders" : 0
+          },
+          "autoApprovalEnabled" : true,
+          "entitlementRequestConfig" : {
+            "accessRequestConfig" : {
+              "denialCommentRequired" : false,
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ],
+              "reauthorizationRequired" : false,
+              "requestCommentRequired" : true,
+              "requireEndDate" : true,
+              "maxPermittedAccessDuration" : {
+                "value" : 5,
+                "timeUnit" : "DAYS"
+              }
+            },
+            "revocationRequestConfig" : {
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ]
+            }
+          },
+          "reauthorizationEnabled" : true,
+          "approvalsMustBeExternal" : true
+        }''' # AccessRequestConfig | 
 
     try:
         # Update access request configuration
-        new_accessrequestconfig = Accessrequestconfigv1.from_json(accessrequestconfigv1)
-        results = AccessRequestsApi(api_client).set_access_request_config_v1(accessrequestconfigv1=new_accessrequestconfig)
+        new_access_request_config = AccessRequestConfig.from_json(access_request_config)
+        results = AccessRequestsApi(api_client).set_access_request_config_v1(access_request_config=new_access_request_config)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).set_access_request_config_v1(new_accessrequestconfig)
+        # results = AccessRequestsApi(api_client).set_access_request_config_v1(new_access_request_config)
         print("The response of AccessRequestsApi->set_access_request_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -877,20 +1161,20 @@ This endpoint replaces the current access-request configuration.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessrequestconfigv2 | [**Accessrequestconfigv2**](../models/accessrequestconfigv2) | True  | 
+ Body  | access_request_config2 | [**AccessRequestConfig2**](../models/access-request-config2) | True  | 
 
 ### Return type
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
+[**AccessRequestConfig2**](../models/access-request-config2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Access Request Configuration Details. | Accessrequestconfigv2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Access Request Configuration Details. | AccessRequestConfig2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -901,20 +1185,20 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
 from sailpoint.access_requests.api_client import ApiClient
-from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+from sailpoint.access_requests.models.access_request_config2 import AccessRequestConfig2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessrequestconfigv2 = '''sailpoint.access_requests.Accessrequestconfigv2()''' # Accessrequestconfigv2 | 
+    access_request_config2 = '''sailpoint.access_requests.AccessRequestConfig2()''' # AccessRequestConfig2 | 
 
     try:
         # Update access request configuration
-        new_accessrequestconfigv2 = Accessrequestconfigv2.from_json(accessrequestconfigv2)
-        results = AccessRequestsApi(api_client).set_access_request_config_v2(accessrequestconfigv2=new_accessrequestconfigv2)
+        new_access_request_config2 = AccessRequestConfig2.from_json(access_request_config2)
+        results = AccessRequestsApi(api_client).set_access_request_config_v2(access_request_config2=new_access_request_config2)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_accessrequestconfigv2)
+        # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_access_request_config2)
         print("The response of AccessRequestsApi->set_access_request_config_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

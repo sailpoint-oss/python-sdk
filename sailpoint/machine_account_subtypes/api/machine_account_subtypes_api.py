@@ -20,9 +20,9 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.machine_account_subtypes.models.create_source_subtype_v1_request import CreateSourceSubtypeV1Request
-from sailpoint.machine_account_subtypes.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.machine_account_subtypes.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.json_patch_operation import JsonPatchOperation
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 
 from sailpoint.machine_account_subtypes.api_client import ApiClient, RequestSerialized
 from sailpoint.machine_account_subtypes.api_response import ApiResponse
@@ -59,7 +59,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtypewithsource:
+    ) -> SourceSubtypeWithSource:
         """Create subtype
 
         Create a new machine account subtype.
@@ -100,12 +100,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -135,7 +135,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtypewithsource]:
+    ) -> ApiResponse[SourceSubtypeWithSource]:
         """Create subtype
 
         Create a new machine account subtype.
@@ -176,12 +176,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -252,12 +252,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -404,11 +404,11 @@ class MachineAccountSubtypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -480,11 +480,11 @@ class MachineAccountSubtypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -556,11 +556,11 @@ class MachineAccountSubtypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -652,7 +652,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineaccountsubtypeconfigdto:
+    ) -> MachineAccountSubtypeConfigDto:
         """Machine Subtype Approval Config
 
         This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
@@ -693,13 +693,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -729,7 +729,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineaccountsubtypeconfigdto]:
+    ) -> ApiResponse[MachineAccountSubtypeConfigDto]:
         """Machine Subtype Approval Config
 
         This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
@@ -770,13 +770,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -847,13 +847,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -945,7 +945,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtypewithsource:
+    ) -> SourceSubtypeWithSource:
         """Get subtype by ID
 
         Get a machine account subtype by subtype ID.
@@ -986,13 +986,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1022,7 +1022,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtypewithsource]:
+    ) -> ApiResponse[SourceSubtypeWithSource]:
         """Get subtype by ID
 
         Get a machine account subtype by subtype ID.
@@ -1063,13 +1063,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1140,13 +1140,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1242,7 +1242,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourcesubtypewithsource]:
+    ) -> List[SourceSubtypeWithSource]:
         """Retrieve all subtypes
 
         Get all machine account subtypes.
@@ -1295,12 +1295,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1334,7 +1334,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourcesubtypewithsource]]:
+    ) -> ApiResponse[List[SourceSubtypeWithSource]]:
         """Retrieve all subtypes
 
         Get all machine account subtypes.
@@ -1387,12 +1387,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1479,12 +1479,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1598,7 +1598,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourcesubtypewithsource]:
+    ) -> List[SourceSubtypeWithSource]:
         """Bulk Retrieve of Source Subtypes
 
         This endpoint retrieves the subtypes for given subtypeIds.
@@ -1639,13 +1639,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1675,7 +1675,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourcesubtypewithsource]]:
+    ) -> ApiResponse[List[SourceSubtypeWithSource]]:
         """Bulk Retrieve of Source Subtypes
 
         This endpoint retrieves the subtypes for given subtypeIds.
@@ -1716,13 +1716,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1793,13 +1793,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtypewithsource]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1906,7 +1906,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtypewithsource:
+    ) -> SourceSubtypeWithSource:
         """Patch subtype by ID
 
         Update fields of a machine account subtype by subtype ID. Patchable fields only include: `displayName`, `description`.
@@ -1950,12 +1950,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1986,7 +1986,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtypewithsource]:
+    ) -> ApiResponse[SourceSubtypeWithSource]:
         """Patch subtype by ID
 
         Update fields of a machine account subtype by subtype ID. Patchable fields only include: `displayName`, `description`.
@@ -2030,12 +2030,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2110,12 +2110,12 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtypewithsource",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtypeWithSource",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2211,7 +2211,7 @@ class MachineAccountSubtypesApi:
     def update_machine_account_subtype_approval_config_v1(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2225,7 +2225,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineaccountsubtypeconfigdto:
+    ) -> MachineAccountSubtypeConfigDto:
         """Machine Subtype Approval Config
 
         Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
@@ -2234,8 +2234,8 @@ class MachineAccountSubtypesApi:
         :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2261,7 +2261,7 @@ class MachineAccountSubtypesApi:
         _param = self._update_machine_account_subtype_approval_config_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2269,13 +2269,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2292,7 +2292,7 @@ class MachineAccountSubtypesApi:
     def update_machine_account_subtype_approval_config_v1_with_http_info(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2306,7 +2306,7 @@ class MachineAccountSubtypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineaccountsubtypeconfigdto]:
+    ) -> ApiResponse[MachineAccountSubtypeConfigDto]:
         """Machine Subtype Approval Config
 
         Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
@@ -2315,8 +2315,8 @@ class MachineAccountSubtypesApi:
         :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2342,7 +2342,7 @@ class MachineAccountSubtypesApi:
         _param = self._update_machine_account_subtype_approval_config_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2350,13 +2350,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2373,7 +2373,7 @@ class MachineAccountSubtypesApi:
     def update_machine_account_subtype_approval_config_v1_without_preload_content(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2396,8 +2396,8 @@ class MachineAccountSubtypesApi:
         :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2423,7 +2423,7 @@ class MachineAccountSubtypesApi:
         _param = self._update_machine_account_subtype_approval_config_v1_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2431,13 +2431,13 @@ class MachineAccountSubtypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccountsubtypeconfigdto",
-            '400': "Errorresponsedto",
+            '200': "MachineAccountSubtypeConfigDto",
+            '400': "ErrorResponseDto",
             '401': "LoadBulkSourceSubtypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "LoadBulkSourceSubtypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2450,7 +2450,7 @@ class MachineAccountSubtypesApi:
         self,
         x_sail_point_experimental,
         subtype_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2460,7 +2460,7 @@ class MachineAccountSubtypesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2481,8 +2481,8 @@ class MachineAccountSubtypesApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

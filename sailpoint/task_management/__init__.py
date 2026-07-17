@@ -32,17 +32,17 @@ from sailpoint.task_management.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.task_management.models.array_inner import ArrayInner
-from sailpoint.task_management.models.errormessagedto import Errormessagedto
-from sailpoint.task_management.models.errorresponsedto import Errorresponsedto
+from sailpoint.task_management.models.error_message_dto import ErrorMessageDto
+from sailpoint.task_management.models.error_response_dto import ErrorResponseDto
 from sailpoint.task_management.models.get_task_status_v1401_response import GetTaskStatusV1401Response
 from sailpoint.task_management.models.get_task_status_v1429_response import GetTaskStatusV1429Response
-from sailpoint.task_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.task_management.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.task_management.models.localeorigin import Localeorigin
-from sailpoint.task_management.models.localizedmessage import Localizedmessage
+from sailpoint.task_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.task_management.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.task_management.models.locale_origin import LocaleOrigin
+from sailpoint.task_management.models.localized_message import LocalizedMessage
 from sailpoint.task_management.models.target import Target
-from sailpoint.task_management.models.taskdefinitionsummary import Taskdefinitionsummary
-from sailpoint.task_management.models.taskreturndetails import Taskreturndetails
-from sailpoint.task_management.models.taskstatus import Taskstatus
-from sailpoint.task_management.models.taskstatusmessage import Taskstatusmessage
-from sailpoint.task_management.models.taskstatusmessage_parameters_inner import TaskstatusmessageParametersInner
+from sailpoint.task_management.models.task_definition_summary import TaskDefinitionSummary
+from sailpoint.task_management.models.task_return_details import TaskReturnDetails
+from sailpoint.task_management.models.task_status import TaskStatus
+from sailpoint.task_management.models.task_status_message import TaskStatusMessage
+from sailpoint.task_management.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner

@@ -20,15 +20,15 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.search.models.aggregationtype import Aggregationtype
+from sailpoint.search.models.aggregation_type import AggregationType
 from sailpoint.search.models.filter import Filter
 from sailpoint.search.models.index import Index
 from sailpoint.search.models.query import Query
-from sailpoint.search.models.queryresultfilter import Queryresultfilter
-from sailpoint.search.models.querytype import Querytype
-from sailpoint.search.models.searchaggregationspecification import Searchaggregationspecification
-from sailpoint.search.models.textquery import Textquery
-from sailpoint.search.models.typeaheadquery import Typeaheadquery
+from sailpoint.search.models.query_result_filter import QueryResultFilter
+from sailpoint.search.models.query_type import QueryType
+from sailpoint.search.models.search_aggregation_specification import SearchAggregationSpecification
+from sailpoint.search.models.text_query import TextQuery
+from sailpoint.search.models.type_ahead_query import TypeAheadQuery
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,18 +37,18 @@ class Search(BaseModel):
     Search
     """ # noqa: E501
     indices: Optional[List[Union[Index, str]]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
-    query_type: Optional[Union[Querytype, str]] = Field(default=Querytype.SAILPOINT, alias="queryType")
+    query_type: Optional[Union[QueryType, str]] = Field(default=QueryType.SAILPOINT, alias="queryType")
     query_version: Optional[Any] = Field(default=None, alias="queryVersion")
     query: Optional[Query] = None
     query_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.", alias="queryDsl")
-    text_query: Optional[Textquery] = Field(default=None, alias="textQuery")
-    type_ahead_query: Optional[Typeaheadquery] = Field(default=None, alias="typeAheadQuery")
+    text_query: Optional[TextQuery] = Field(default=None, alias="textQuery")
+    type_ahead_query: Optional[TypeAheadQuery] = Field(default=None, alias="typeAheadQuery")
     include_nested: Optional[StrictBool] = Field(default=True, description="Indicates whether nested objects from returned search results should be included.", alias="includeNested")
-    query_result_filter: Optional[Queryresultfilter] = Field(default=None, alias="queryResultFilter")
-    aggregation_type: Optional[Union[Aggregationtype, str]] = Field(default=Aggregationtype.DSL, alias="aggregationType")
+    query_result_filter: Optional[QueryResultFilter] = Field(default=None, alias="queryResultFilter")
+    aggregation_type: Optional[Union[AggregationType, str]] = Field(default=AggregationType.DSL, alias="aggregationType")
     aggregations_version: Optional[Any] = Field(default=None, alias="aggregationsVersion")
     aggregations_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.", alias="aggregationsDsl")
-    aggregations: Optional[Searchaggregationspecification] = None
+    aggregations: Optional[SearchAggregationSpecification] = None
     sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. Use + or - to specify the sort direction.")
     search_after: Optional[List[StrictStr]] = Field(default=None, description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\"displayName\", \"id\"].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \"John Doe\", then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\"John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]", alias="searchAfter")
     filters: Optional[Dict[str, Filter]] = Field(default=None, description="The filters to be applied for each filtered field name.")
@@ -128,18 +128,18 @@ class Search(BaseModel):
 
         _obj = cls.model_validate({
             "indices": obj.get("indices"),
-            "queryType": obj.get("queryType") if obj.get("queryType") is not None else Querytype.SAILPOINT,
+            "queryType": obj.get("queryType") if obj.get("queryType") is not None else QueryType.SAILPOINT,
             "queryVersion": obj.get("queryVersion"),
             "query": Query.from_dict(obj["query"]) if obj.get("query") is not None else None,
             "queryDsl": obj.get("queryDsl"),
-            "textQuery": Textquery.from_dict(obj["textQuery"]) if obj.get("textQuery") is not None else None,
-            "typeAheadQuery": Typeaheadquery.from_dict(obj["typeAheadQuery"]) if obj.get("typeAheadQuery") is not None else None,
+            "textQuery": TextQuery.from_dict(obj["textQuery"]) if obj.get("textQuery") is not None else None,
+            "typeAheadQuery": TypeAheadQuery.from_dict(obj["typeAheadQuery"]) if obj.get("typeAheadQuery") is not None else None,
             "includeNested": obj.get("includeNested") if obj.get("includeNested") is not None else True,
-            "queryResultFilter": Queryresultfilter.from_dict(obj["queryResultFilter"]) if obj.get("queryResultFilter") is not None else None,
-            "aggregationType": obj.get("aggregationType") if obj.get("aggregationType") is not None else Aggregationtype.DSL,
+            "queryResultFilter": QueryResultFilter.from_dict(obj["queryResultFilter"]) if obj.get("queryResultFilter") is not None else None,
+            "aggregationType": obj.get("aggregationType") if obj.get("aggregationType") is not None else AggregationType.DSL,
             "aggregationsVersion": obj.get("aggregationsVersion"),
             "aggregationsDsl": obj.get("aggregationsDsl"),
-            "aggregations": Searchaggregationspecification.from_dict(obj["aggregations"]) if obj.get("aggregations") is not None else None,
+            "aggregations": SearchAggregationSpecification.from_dict(obj["aggregations"]) if obj.get("aggregations") is not None else None,
             "sort": obj.get("sort"),
             "searchAfter": obj.get("searchAfter"),
             "filters": dict(

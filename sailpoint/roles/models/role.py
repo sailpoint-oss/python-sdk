@@ -22,15 +22,15 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.roles.models.accessprofileref import Accessprofileref
-from sailpoint.roles.models.additionalownerref import Additionalownerref
-from sailpoint.roles.models.attributedtolist import Attributedtolist
-from sailpoint.roles.models.dimensionref import Dimensionref
-from sailpoint.roles.models.entitlementref import Entitlementref
-from sailpoint.roles.models.ownerreference import Ownerreference
-from sailpoint.roles.models.requestabilityforrole import Requestabilityforrole
-from sailpoint.roles.models.revocabilityforrole import Revocabilityforrole
-from sailpoint.roles.models.rolemembershipselector import Rolemembershipselector
+from sailpoint.roles.models.access_profile_ref import AccessProfileRef
+from sailpoint.roles.models.additional_owner_ref import AdditionalOwnerRef
+from sailpoint.roles.models.attribute_dto_list import AttributeDTOList
+from sailpoint.roles.models.dimension_ref import DimensionRef
+from sailpoint.roles.models.entitlement_ref import EntitlementRef
+from sailpoint.roles.models.owner_reference import OwnerReference
+from sailpoint.roles.models.requestability_for_role import RequestabilityForRole
+from sailpoint.roles.models.revocability_for_role import RevocabilityForRole
+from sailpoint.roles.models.role_membership_selector import RoleMembershipSelector
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -43,20 +43,20 @@ class Role(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Date the Role was created")
     modified: Optional[datetime] = Field(default=None, description="Date the Role was last modified.")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the Role")
-    owner: Optional[Ownerreference]
-    additional_owners: Optional[List[Additionalownerref]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
-    access_profiles: Optional[List[Accessprofileref]] = Field(default=None, alias="accessProfiles")
-    entitlements: Optional[List[Entitlementref]] = None
-    membership: Optional[Rolemembershipselector] = None
+    owner: Optional[OwnerReference]
+    additional_owners: Optional[List[AdditionalOwnerRef]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
+    access_profiles: Optional[List[AccessProfileRef]] = Field(default=None, alias="accessProfiles")
+    entitlements: Optional[List[EntitlementRef]] = None
+    membership: Optional[RoleMembershipSelector] = None
     legacy_membership_info: Optional[Dict[str, Any]] = Field(default=None, description="This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.", alias="legacyMembershipInfo")
     enabled: Optional[StrictBool] = Field(default=False, description="Whether the Role is enabled or not.")
     requestable: Optional[StrictBool] = Field(default=False, description="Whether the Role can be the target of access requests.")
-    access_request_config: Optional[Requestabilityforrole] = Field(default=None, alias="accessRequestConfig")
-    revocation_request_config: Optional[Revocabilityforrole] = Field(default=None, alias="revocationRequestConfig")
+    access_request_config: Optional[RequestabilityForRole] = Field(default=None, alias="accessRequestConfig")
+    revocation_request_config: Optional[RevocabilityForRole] = Field(default=None, alias="revocationRequestConfig")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Role is assigned.")
     dimensional: Optional[StrictBool] = Field(default=False, description="Whether the Role is dimensional.")
-    dimension_refs: Optional[List[Dimensionref]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
-    access_model_metadata: Optional[Attributedtolist] = Field(default=None, alias="accessModelMetadata")
+    dimension_refs: Optional[List[DimensionRef]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
+    access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the role, if applicable.", alias="privilegeLevel")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "additionalOwners", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata", "privilegeLevel"]
 
@@ -213,20 +213,20 @@ class Role(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner": Ownerreference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "additionalOwners": [Additionalownerref.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None,
-            "accessProfiles": [Accessprofileref.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
-            "entitlements": [Entitlementref.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
-            "membership": Rolemembershipselector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,
+            "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "additionalOwners": [AdditionalOwnerRef.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None,
+            "accessProfiles": [AccessProfileRef.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
+            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
+            "membership": RoleMembershipSelector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,
             "legacyMembershipInfo": obj.get("legacyMembershipInfo"),
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
-            "accessRequestConfig": Requestabilityforrole.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
-            "revocationRequestConfig": Revocabilityforrole.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
+            "accessRequestConfig": RequestabilityForRole.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
+            "revocationRequestConfig": RevocabilityForRole.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
             "segments": obj.get("segments"),
             "dimensional": obj.get("dimensional") if obj.get("dimensional") is not None else False,
-            "dimensionRefs": [Dimensionref.from_dict(_item) for _item in obj["dimensionRefs"]] if obj.get("dimensionRefs") is not None else None,
-            "accessModelMetadata": Attributedtolist.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
+            "dimensionRefs": [DimensionRef.from_dict(_item) for _item in obj["dimensionRefs"]] if obj.get("dimensionRefs") is not None else None,
+            "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
             "privilegeLevel": obj.get("privilegeLevel")
         })
         return _obj

@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.access_request_approvals.models.accessrequestapproverslistresponse import Accessrequestapproverslistresponse
-from sailpoint.access_request_approvals.models.approvalsummary import Approvalsummary
-from sailpoint.access_request_approvals.models.commentdto import Commentdto
-from sailpoint.access_request_approvals.models.completedapproval import Completedapproval
-from sailpoint.access_request_approvals.models.forwardapprovaldto import Forwardapprovaldto
-from sailpoint.access_request_approvals.models.pendingapproval import Pendingapproval
+from sailpoint.access_request_approvals.models.access_request_approvers_list_response import AccessRequestApproversListResponse
+from sailpoint.access_request_approvals.models.approval_summary import ApprovalSummary
+from sailpoint.access_request_approvals.models.comment_dto import CommentDto
+from sailpoint.access_request_approvals.models.completed_approval import CompletedApproval
+from sailpoint.access_request_approvals.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.access_request_approvals.models.pending_approval import PendingApproval
 
 from sailpoint.access_request_approvals.api_client import ApiClient, RequestSerialized
 from sailpoint.access_request_approvals.api_response import ApiResponse
@@ -48,7 +48,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request_v1(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Optional[Commentdto], Field(description="Reviewer's comment.")] = None,
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,8 +68,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment.
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment.
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +94,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._approve_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,12 +103,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -125,7 +125,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request_v1_with_http_info(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Optional[Commentdto], Field(description="Reviewer's comment.")] = None,
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,8 +145,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment.
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment.
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,7 +171,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._approve_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -180,12 +180,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -202,7 +202,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request_v1_without_preload_content(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Optional[Commentdto], Field(description="Reviewer's comment.")] = None,
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -222,8 +222,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment.
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment.
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -248,7 +248,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._approve_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,12 +257,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -274,7 +274,7 @@ class AccessRequestApprovalsApi:
     def _approve_access_request_v1_serialize(
         self,
         approval_id,
-        commentdto,
+        comment_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -302,8 +302,8 @@ class AccessRequestApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if commentdto is not None:
-            _body_params = commentdto
+        if comment_dto is not None:
+            _body_params = comment_dto
 
 
         # set the HTTP header `Accept`
@@ -354,7 +354,7 @@ class AccessRequestApprovalsApi:
     def forward_access_request_v1(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        forwardapprovaldto: Annotated[Forwardapprovaldto, Field(description="Information about the forwarded approval.")],
+        forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -374,8 +374,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param forwardapprovaldto: Information about the forwarded approval. (required)
-        :type forwardapprovaldto: Forwardapprovaldto
+        :param forward_approval_dto: Information about the forwarded approval. (required)
+        :type forward_approval_dto: ForwardApprovalDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,7 +400,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._forward_access_request_v1_serialize(
             approval_id=approval_id,
-            forwardapprovaldto=forwardapprovaldto,
+            forward_approval_dto=forward_approval_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -409,12 +409,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -431,7 +431,7 @@ class AccessRequestApprovalsApi:
     def forward_access_request_v1_with_http_info(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        forwardapprovaldto: Annotated[Forwardapprovaldto, Field(description="Information about the forwarded approval.")],
+        forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -451,8 +451,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param forwardapprovaldto: Information about the forwarded approval. (required)
-        :type forwardapprovaldto: Forwardapprovaldto
+        :param forward_approval_dto: Information about the forwarded approval. (required)
+        :type forward_approval_dto: ForwardApprovalDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -477,7 +477,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._forward_access_request_v1_serialize(
             approval_id=approval_id,
-            forwardapprovaldto=forwardapprovaldto,
+            forward_approval_dto=forward_approval_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -486,12 +486,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -508,7 +508,7 @@ class AccessRequestApprovalsApi:
     def forward_access_request_v1_without_preload_content(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        forwardapprovaldto: Annotated[Forwardapprovaldto, Field(description="Information about the forwarded approval.")],
+        forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -528,8 +528,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param forwardapprovaldto: Information about the forwarded approval. (required)
-        :type forwardapprovaldto: Forwardapprovaldto
+        :param forward_approval_dto: Information about the forwarded approval. (required)
+        :type forward_approval_dto: ForwardApprovalDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -554,7 +554,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._forward_access_request_v1_serialize(
             approval_id=approval_id,
-            forwardapprovaldto=forwardapprovaldto,
+            forward_approval_dto=forward_approval_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -563,12 +563,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -580,7 +580,7 @@ class AccessRequestApprovalsApi:
     def _forward_access_request_v1_serialize(
         self,
         approval_id,
-        forwardapprovaldto,
+        forward_approval_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -608,8 +608,8 @@ class AccessRequestApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if forwardapprovaldto is not None:
-            _body_params = forwardapprovaldto
+        if forward_approval_dto is not None:
+            _body_params = forward_approval_dto
 
 
         # set the HTTP header `Accept`
@@ -673,7 +673,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Approvalsummary:
+    ) -> ApprovalSummary:
         """Get access requests approvals number
 
         Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
@@ -714,12 +714,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalsummary",
-            '400': "Errorresponsedto",
+            '200': "ApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -749,7 +749,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Approvalsummary]:
+    ) -> ApiResponse[ApprovalSummary]:
         """Get access requests approvals number
 
         Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
@@ -790,12 +790,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalsummary",
-            '400': "Errorresponsedto",
+            '200': "ApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -866,12 +866,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalsummary",
-            '400': "Errorresponsedto",
+            '200': "ApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -969,7 +969,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestapproverslistresponse]:
+    ) -> List[AccessRequestApproversListResponse]:
         """Access request approvers
 
         This API endpoint returns the list of approvers for the given access request id. 
@@ -1016,13 +1016,13 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestapproverslistresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestApproversListResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1054,7 +1054,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestapproverslistresponse]]:
+    ) -> ApiResponse[List[AccessRequestApproversListResponse]]:
         """Access request approvers
 
         This API endpoint returns the list of approvers for the given access request id. 
@@ -1101,13 +1101,13 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestapproverslistresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestApproversListResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1186,13 +1186,13 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestapproverslistresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestApproversListResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1300,7 +1300,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Completedapproval]:
+    ) -> List[CompletedApproval]:
         """Completed access request approvals list
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
@@ -1353,12 +1353,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Completedapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[CompletedApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1392,7 +1392,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Completedapproval]]:
+    ) -> ApiResponse[List[CompletedApproval]]:
         """Completed access request approvals list
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
@@ -1445,12 +1445,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Completedapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[CompletedApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1537,12 +1537,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Completedapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[CompletedApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1662,7 +1662,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Pendingapproval]:
+    ) -> List[PendingApproval]:
         """Pending access request approvals list
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.
@@ -1715,12 +1715,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Pendingapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[PendingApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1754,7 +1754,7 @@ class AccessRequestApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Pendingapproval]]:
+    ) -> ApiResponse[List[PendingApproval]]:
         """Pending access request approvals list
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.
@@ -1807,12 +1807,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Pendingapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[PendingApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1899,12 +1899,12 @@ class AccessRequestApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Pendingapproval]",
-            '400': "Errorresponsedto",
+            '200': "List[PendingApproval]",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2007,7 +2007,7 @@ class AccessRequestApprovalsApi:
     def reject_access_request_v1(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Commentdto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2027,8 +2027,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment. (required)
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment. (required)
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2053,7 +2053,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._reject_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2062,12 +2062,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2084,7 +2084,7 @@ class AccessRequestApprovalsApi:
     def reject_access_request_v1_with_http_info(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Commentdto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2104,8 +2104,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment. (required)
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment. (required)
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2130,7 +2130,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._reject_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2139,12 +2139,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2161,7 +2161,7 @@ class AccessRequestApprovalsApi:
     def reject_access_request_v1_without_preload_content(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        commentdto: Annotated[Commentdto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2181,8 +2181,8 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param commentdto: Reviewer's comment. (required)
-        :type commentdto: Commentdto
+        :param comment_dto: Reviewer's comment. (required)
+        :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2207,7 +2207,7 @@ class AccessRequestApprovalsApi:
 
         _param = self._reject_access_request_v1_serialize(
             approval_id=approval_id,
-            commentdto=commentdto,
+            comment_dto=comment_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2216,12 +2216,12 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPendingApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPendingApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2233,7 +2233,7 @@ class AccessRequestApprovalsApi:
     def _reject_access_request_v1_serialize(
         self,
         approval_id,
-        commentdto,
+        comment_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2261,8 +2261,8 @@ class AccessRequestApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if commentdto is not None:
-            _body_params = commentdto
+        if comment_dto is not None:
+            _body_params = comment_dto
 
 
         # set the HTTP header `Accept`

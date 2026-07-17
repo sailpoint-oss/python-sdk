@@ -21,9 +21,9 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.data_segmentation.models.ref import Ref
-from sailpoint.data_segmentation.models.scopetype import Scopetype
-from sailpoint.data_segmentation.models.scopevisibilitytype import Scopevisibilitytype
-from sailpoint.data_segmentation.models.visibilitycriteria import Visibilitycriteria
+from sailpoint.data_segmentation.models.scope_type import ScopeType
+from sailpoint.data_segmentation.models.scope_visibility_type import ScopeVisibilityType
+from sailpoint.data_segmentation.models.visibility_criteria import VisibilityCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,9 +31,9 @@ class Scope(BaseModel):
     """
     This defines what access the segment is giving
     """ # noqa: E501
-    scope: Optional[Union[Scopetype, str]] = None
-    visibility: Optional[Union[Scopevisibilitytype, str]] = None
-    scope_filter: Optional[Visibilitycriteria] = Field(default=None, alias="scopeFilter")
+    scope: Optional[Union[ScopeType, str]] = None
+    visibility: Optional[Union[ScopeVisibilityType, str]] = None
+    scope_filter: Optional[VisibilityCriteria] = Field(default=None, alias="scopeFilter")
     scope_selection: Optional[List[Ref]] = Field(default=None, description="List of Identities that are assigned to the segment", alias="scopeSelection")
     __properties: ClassVar[List[str]] = ["scope", "visibility", "scopeFilter", "scopeSelection"]
 
@@ -100,7 +100,7 @@ class Scope(BaseModel):
         _obj = cls.model_validate({
             "scope": obj.get("scope"),
             "visibility": obj.get("visibility"),
-            "scopeFilter": Visibilitycriteria.from_dict(obj["scopeFilter"]) if obj.get("scopeFilter") is not None else None,
+            "scopeFilter": VisibilityCriteria.from_dict(obj["scopeFilter"]) if obj.get("scopeFilter") is not None else None,
             "scopeSelection": [Ref.from_dict(_item) for _item in obj["scopeSelection"]] if obj.get("scopeSelection") is not None else None
         })
         return _obj

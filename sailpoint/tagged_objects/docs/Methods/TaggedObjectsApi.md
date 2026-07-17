@@ -98,11 +98,11 @@ Path   | id | **str** | True  | The ID of the object to delete tags from.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -145,7 +145,7 @@ This API removes tags from multiple objects.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkremovetaggedobject | [**Bulkremovetaggedobject**](../models/bulkremovetaggedobject) | True  | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+ Body  | bulk_remove_tagged_object | [**BulkRemoveTaggedObject**](../models/bulk-remove-tagged-object) | True  | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
 ### Return type
  (empty response body)
@@ -154,11 +154,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -169,20 +169,31 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.bulkremovetaggedobject import Bulkremovetaggedobject
+from sailpoint.tagged_objects.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkremovetaggedobject = '''sailpoint.tagged_objects.Bulkremovetaggedobject()''' # Bulkremovetaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulk_remove_tagged_object = '''{
+          "objectRefs" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }''' # BulkRemoveTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Remove tags from multiple objects
-        new_bulkremovetaggedobject = Bulkremovetaggedobject.from_json(bulkremovetaggedobject)
-        TaggedObjectsApi(api_client).delete_tags_to_many_object_v1(bulkremovetaggedobject=new_bulkremovetaggedobject)
+        new_bulk_remove_tagged_object = BulkRemoveTaggedObject.from_json(bulk_remove_tagged_object)
+        TaggedObjectsApi(api_client).delete_tags_to_many_object_v1(bulk_remove_tagged_object=new_bulk_remove_tagged_object)
         # Below is a request that includes all optional parameters
-        # TaggedObjectsApi(api_client).delete_tags_to_many_object_v1(new_bulkremovetaggedobject)
+        # TaggedObjectsApi(api_client).delete_tags_to_many_object_v1(new_bulk_remove_tagged_object)
     except Exception as e:
         print("Exception when calling TaggedObjectsApi->delete_tags_to_many_object_v1: %s\n" % e)
 ```
@@ -205,17 +216,17 @@ Path   | type | **str** | True  | The type of tagged object to retrieve.
 Path   | id | **str** | True  | The ID of the object reference to retrieve.
 
 ### Return type
-[**Taggedobject**](../models/taggedobject)
+[**TaggedObject**](../models/tagged-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Tagged object by type and ID. | Taggedobject |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Tagged object by type and ID. | TaggedObject |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -226,7 +237,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -268,17 +279,17 @@ Path   | type | **str** | True  | The type of tagged object to retrieve.
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq*
 
 ### Return type
-[**List[Taggedobject]**](../models/taggedobject)
+[**List[TaggedObject]**](../models/tagged-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of all tagged objects for specified type. | List[Taggedobject] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of all tagged objects for specified type. | List[TaggedObject] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -289,7 +300,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -334,17 +345,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in*
 
 ### Return type
-[**List[Taggedobject]**](../models/taggedobject)
+[**List[TaggedObject]**](../models/tagged-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of all tagged objects. | List[Taggedobject] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of all tagged objects. | List[TaggedObject] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -355,7 +366,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -395,20 +406,20 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | type | **str** | True  | The type of tagged object to update.
 Path   | id | **str** | True  | The ID of the object reference to update.
- Body  | taggedobject | [**Taggedobject**](../models/taggedobject) | True  | 
+ Body  | tagged_object | [**TaggedObject**](../models/tagged-object) | True  | 
 
 ### Return type
-[**Taggedobject**](../models/taggedobject)
+[**TaggedObject**](../models/tagged-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Tagged object by type and ID. | Taggedobject |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Tagged object by type and ID. | TaggedObject |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -419,7 +430,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -427,14 +438,21 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     type = 'ROLE' # str | The type of tagged object to update. # str | The type of tagged object to update.
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to update. # str | The ID of the object reference to update.
-    taggedobject = '''sailpoint.tagged_objects.Taggedobject()''' # Taggedobject | 
+    tagged_object = '''{
+          "objectRef" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }''' # TaggedObject | 
 
     try:
         # Update tagged object
-        new_taggedobject = Taggedobject.from_json(taggedobject)
-        results = TaggedObjectsApi(api_client).put_tagged_object_v1(type=type, id=id, taggedobject=new_taggedobject)
+        new_tagged_object = TaggedObject.from_json(tagged_object)
+        results = TaggedObjectsApi(api_client).put_tagged_object_v1(type=type, id=id, tagged_object=new_tagged_object)
         # Below is a request that includes all optional parameters
-        # results = TaggedObjectsApi(api_client).put_tagged_object_v1(type, id, new_taggedobject)
+        # results = TaggedObjectsApi(api_client).put_tagged_object_v1(type, id, new_tagged_object)
         print("The response of TaggedObjectsApi->put_tagged_object_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -455,7 +473,7 @@ This adds a tag to an object.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | taggedobject | [**Taggedobject**](../models/taggedobject) | True  | 
+ Body  | tagged_object | [**TaggedObject**](../models/tagged-object) | True  | 
 
 ### Return type
  (empty response body)
@@ -464,11 +482,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Created. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -479,20 +497,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    taggedobject = '''sailpoint.tagged_objects.Taggedobject()''' # Taggedobject | 
+    tagged_object = '''{
+          "objectRef" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }''' # TaggedObject | 
 
     try:
         # Add tag to object
-        new_taggedobject = Taggedobject.from_json(taggedobject)
-        TaggedObjectsApi(api_client).set_tag_to_object_v1(taggedobject=new_taggedobject)
+        new_tagged_object = TaggedObject.from_json(tagged_object)
+        TaggedObjectsApi(api_client).set_tag_to_object_v1(tagged_object=new_tagged_object)
         # Below is a request that includes all optional parameters
-        # TaggedObjectsApi(api_client).set_tag_to_object_v1(new_taggedobject)
+        # TaggedObjectsApi(api_client).set_tag_to_object_v1(new_tagged_object)
     except Exception as e:
         print("Exception when calling TaggedObjectsApi->set_tag_to_object_v1: %s\n" % e)
 ```
@@ -511,20 +536,20 @@ This API adds tags to multiple objects.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | bulkaddtaggedobject | [**Bulkaddtaggedobject**](../models/bulkaddtaggedobject) | True  | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+ Body  | bulk_add_tagged_object | [**BulkAddTaggedObject**](../models/bulk-add-tagged-object) | True  | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
 ### Return type
-[**List[Bulktaggedobjectresponse]**](../models/bulktaggedobjectresponse)
+[**List[BulkTaggedObjectResponse]**](../models/bulk-tagged-object-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Request succeeded. | List[Bulktaggedobjectresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Request succeeded. | List[BulkTaggedObjectResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListTaggedObjectsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListTaggedObjectsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -535,21 +560,33 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tagged_objects.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.tagged_objects.api_client import ApiClient
-from sailpoint.tagged_objects.models.bulkaddtaggedobject import Bulkaddtaggedobject
-from sailpoint.tagged_objects.models.bulktaggedobjectresponse import Bulktaggedobjectresponse
+from sailpoint.tagged_objects.models.bulk_add_tagged_object import BulkAddTaggedObject
+from sailpoint.tagged_objects.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    bulkaddtaggedobject = '''sailpoint.tagged_objects.Bulkaddtaggedobject()''' # Bulkaddtaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulk_add_tagged_object = '''{
+          "objectRefs" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "operation" : "MERGE",
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }''' # BulkAddTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Tag multiple objects
-        new_bulkaddtaggedobject = Bulkaddtaggedobject.from_json(bulkaddtaggedobject)
-        results = TaggedObjectsApi(api_client).set_tags_to_many_objects_v1(bulkaddtaggedobject=new_bulkaddtaggedobject)
+        new_bulk_add_tagged_object = BulkAddTaggedObject.from_json(bulk_add_tagged_object)
+        results = TaggedObjectsApi(api_client).set_tags_to_many_objects_v1(bulk_add_tagged_object=new_bulk_add_tagged_object)
         # Below is a request that includes all optional parameters
-        # results = TaggedObjectsApi(api_client).set_tags_to_many_objects_v1(new_bulkaddtaggedobject)
+        # results = TaggedObjectsApi(api_client).set_tags_to_many_objects_v1(new_bulk_add_tagged_object)
         print("The response of TaggedObjectsApi->set_tags_to_many_objects_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

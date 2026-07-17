@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.org_config.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.org_config.models.orgconfig import Orgconfig
+from sailpoint.org_config.models.json_patch_operation import JsonPatchOperation
+from sailpoint.org_config.models.org_config import OrgConfig
 
 from sailpoint.org_config.api_client import ApiClient, RequestSerialized
 from sailpoint.org_config.api_response import ApiResponse
@@ -55,7 +55,7 @@ class OrgConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Orgconfig:
+    ) -> OrgConfig:
         """Get org config settings
 
         Get the current organization's configuration settings, only external accessible properties.
@@ -90,13 +90,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -124,7 +124,7 @@ class OrgConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Orgconfig]:
+    ) -> ApiResponse[OrgConfig]:
         """Get org config settings
 
         Get the current organization's configuration settings, only external accessible properties.
@@ -159,13 +159,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -228,13 +228,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -370,11 +370,11 @@ class OrgConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -454,11 +454,11 @@ class OrgConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -538,11 +538,11 @@ class OrgConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -632,7 +632,7 @@ class OrgConfigApi:
     @validate_call
     def patch_org_config_v1(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -645,13 +645,13 @@ class OrgConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Orgconfig:
+    ) -> OrgConfig:
         """Patch org config
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -675,7 +675,7 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -683,13 +683,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -705,7 +705,7 @@ class OrgConfigApi:
     @validate_call
     def patch_org_config_v1_with_http_info(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -718,13 +718,13 @@ class OrgConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Orgconfig]:
+    ) -> ApiResponse[OrgConfig]:
         """Patch org config
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -748,7 +748,7 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -756,13 +756,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -778,7 +778,7 @@ class OrgConfigApi:
     @validate_call
     def patch_org_config_v1_without_preload_content(
         self,
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,8 +796,8 @@ class OrgConfigApi:
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -821,7 +821,7 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_v1_serialize(
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -829,13 +829,13 @@ class OrgConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Orgconfig",
-            '400': "Errorresponsedto",
+            '200': "OrgConfig",
+            '400': "ErrorResponseDto",
             '401': "GetOrgConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetOrgConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -846,7 +846,7 @@ class OrgConfigApi:
 
     def _patch_org_config_v1_serialize(
         self,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -856,7 +856,7 @@ class OrgConfigApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -873,8 +873,8 @@ class OrgConfigApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

@@ -19,26 +19,26 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.suggested_entitlement_description.models.autowritesetting import Autowritesetting
-from sailpoint.suggested_entitlement_description.models.autowritesettingpatch import Autowritesettingpatch
-from sailpoint.suggested_entitlement_description.models.autowritesettingresponse import Autowritesettingresponse
-from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationrequest import Bulkapproveentitlementrecommendationrequest
-from sailpoint.suggested_entitlement_description.models.bulkapproveentitlementrecommendationresult import Bulkapproveentitlementrecommendationresult
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignrequest import Entitlementrecommendationassignrequest
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationassignresult import Entitlementrecommendationassignresult
-from sailpoint.suggested_entitlement_description.models.entitlementrecommendationrecord import Entitlementrecommendationrecord
-from sailpoint.suggested_entitlement_description.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.suggested_entitlement_description.models.privilegedrecommendationgroup import Privilegedrecommendationgroup
+from sailpoint.suggested_entitlement_description.models.auto_write_setting import AutoWriteSetting
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_patch import AutoWriteSettingPatch
+from sailpoint.suggested_entitlement_description.models.auto_write_setting_response import AutoWriteSettingResponse
+from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_request import BulkApproveEntitlementRecommendationRequest
+from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement_recommendation_result import BulkApproveEntitlementRecommendationResult
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_request import EntitlementRecommendationAssignRequest
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_assign_result import EntitlementRecommendationAssignResult
+from sailpoint.suggested_entitlement_description.models.entitlement_recommendation_record import EntitlementRecommendationRecord
+from sailpoint.suggested_entitlement_description.models.json_patch_operation import JsonPatchOperation
+from sailpoint.suggested_entitlement_description.models.privileged_recommendation_group import PrivilegedRecommendationGroup
 from sailpoint.suggested_entitlement_description.models.sed import Sed
-from sailpoint.suggested_entitlement_description.models.sedapproval import Sedapproval
-from sailpoint.suggested_entitlement_description.models.sedapprovalstatus import Sedapprovalstatus
-from sailpoint.suggested_entitlement_description.models.sedassignment import Sedassignment
-from sailpoint.suggested_entitlement_description.models.sedassignmentresponse import Sedassignmentresponse
-from sailpoint.suggested_entitlement_description.models.sedbatchrecord import Sedbatchrecord
-from sailpoint.suggested_entitlement_description.models.sedbatchrequest import Sedbatchrequest
-from sailpoint.suggested_entitlement_description.models.sedbatchresponse import Sedbatchresponse
-from sailpoint.suggested_entitlement_description.models.sedbatchstats import Sedbatchstats
-from sailpoint.suggested_entitlement_description.models.sedpatch import Sedpatch
+from sailpoint.suggested_entitlement_description.models.sed_approval import SedApproval
+from sailpoint.suggested_entitlement_description.models.sed_approval_status import SedApprovalStatus
+from sailpoint.suggested_entitlement_description.models.sed_assignment import SedAssignment
+from sailpoint.suggested_entitlement_description.models.sed_assignment_response import SedAssignmentResponse
+from sailpoint.suggested_entitlement_description.models.sed_batch_record import SedBatchRecord
+from sailpoint.suggested_entitlement_description.models.sed_batch_request import SedBatchRequest
+from sailpoint.suggested_entitlement_description.models.sed_batch_response import SedBatchResponse
+from sailpoint.suggested_entitlement_description.models.sed_batch_stats import SedBatchStats
+from sailpoint.suggested_entitlement_description.models.sed_patch import SedPatch
 
 from sailpoint.suggested_entitlement_description.api_client import ApiClient, RequestSerialized
 from sailpoint.suggested_entitlement_description.api_response import ApiResponse
@@ -61,7 +61,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def approve_bulk_entitlement_recommendations_v1(
         self,
-        bulkapproveentitlementrecommendationrequest: Annotated[Bulkapproveentitlementrecommendationrequest, Field(description="The list of recommendation items to approve.")],
+        bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,13 +74,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Bulkapproveentitlementrecommendationresult]:
+    ) -> List[BulkApproveEntitlementRecommendationResult]:
         """Bulk approve entitlement recommendations
 
         Approve multiple entitlement recommendations in a single request. Each item in the request must include the recommendation ID and, depending on the record type, either an approved description (SED items) or an approved privilege level (privilege items). Returns a per-item result indicating success or failure.
 
-        :param bulkapproveentitlementrecommendationrequest: The list of recommendation items to approve. (required)
-        :type bulkapproveentitlementrecommendationrequest: Bulkapproveentitlementrecommendationrequest
+        :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
+        :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,7 +104,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
-            bulkapproveentitlementrecommendationrequest=bulkapproveentitlementrecommendationrequest,
+            bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,12 +112,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulkapproveentitlementrecommendationresult]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkApproveEntitlementRecommendationResult]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -133,7 +133,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def approve_bulk_entitlement_recommendations_v1_with_http_info(
         self,
-        bulkapproveentitlementrecommendationrequest: Annotated[Bulkapproveentitlementrecommendationrequest, Field(description="The list of recommendation items to approve.")],
+        bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,13 +146,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Bulkapproveentitlementrecommendationresult]]:
+    ) -> ApiResponse[List[BulkApproveEntitlementRecommendationResult]]:
         """Bulk approve entitlement recommendations
 
         Approve multiple entitlement recommendations in a single request. Each item in the request must include the recommendation ID and, depending on the record type, either an approved description (SED items) or an approved privilege level (privilege items). Returns a per-item result indicating success or failure.
 
-        :param bulkapproveentitlementrecommendationrequest: The list of recommendation items to approve. (required)
-        :type bulkapproveentitlementrecommendationrequest: Bulkapproveentitlementrecommendationrequest
+        :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
+        :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -176,7 +176,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
-            bulkapproveentitlementrecommendationrequest=bulkapproveentitlementrecommendationrequest,
+            bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,12 +184,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulkapproveentitlementrecommendationresult]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkApproveEntitlementRecommendationResult]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -205,7 +205,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def approve_bulk_entitlement_recommendations_v1_without_preload_content(
         self,
-        bulkapproveentitlementrecommendationrequest: Annotated[Bulkapproveentitlementrecommendationrequest, Field(description="The list of recommendation items to approve.")],
+        bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,8 +223,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Approve multiple entitlement recommendations in a single request. Each item in the request must include the recommendation ID and, depending on the record type, either an approved description (SED items) or an approved privilege level (privilege items). Returns a per-item result indicating success or failure.
 
-        :param bulkapproveentitlementrecommendationrequest: The list of recommendation items to approve. (required)
-        :type bulkapproveentitlementrecommendationrequest: Bulkapproveentitlementrecommendationrequest
+        :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
+        :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -248,7 +248,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
-            bulkapproveentitlementrecommendationrequest=bulkapproveentitlementrecommendationrequest,
+            bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -256,12 +256,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Bulkapproveentitlementrecommendationresult]",
-            '400': "Errorresponsedto",
+            '200': "List[BulkApproveEntitlementRecommendationResult]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -272,7 +272,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _approve_bulk_entitlement_recommendations_v1_serialize(
         self,
-        bulkapproveentitlementrecommendationrequest,
+        bulk_approve_entitlement_recommendation_request,
         _request_auth,
         _content_type,
         _headers,
@@ -298,8 +298,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkapproveentitlementrecommendationrequest is not None:
-            _body_params = bulkapproveentitlementrecommendationrequest
+        if bulk_approve_entitlement_recommendation_request is not None:
+            _body_params = bulk_approve_entitlement_recommendation_request
 
 
         # set the HTTP header `Accept`
@@ -349,7 +349,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def create_auto_write_settings_v1(
         self,
-        autowritesetting: Annotated[Autowritesetting, Field(description="Auto-write settings to create")],
+        auto_write_setting: Annotated[AutoWriteSetting, Field(description="Auto-write settings to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,13 +362,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Autowritesettingresponse:
+    ) -> AutoWriteSettingResponse:
         """Create auto-write settings for SED
 
         Create the initial auto-write settings for a tenant. Returns 409 Conflict if settings already exist. Use PATCH to update existing settings.
 
-        :param autowritesetting: Auto-write settings to create (required)
-        :type autowritesetting: Autowritesetting
+        :param auto_write_setting: Auto-write settings to create (required)
+        :type auto_write_setting: AutoWriteSetting
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -392,7 +392,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._create_auto_write_settings_v1_serialize(
-            autowritesetting=autowritesetting,
+            auto_write_setting=auto_write_setting,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,13 +400,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '201': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '409': "CreateAutoWriteSettingsV1409Response",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -422,7 +422,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def create_auto_write_settings_v1_with_http_info(
         self,
-        autowritesetting: Annotated[Autowritesetting, Field(description="Auto-write settings to create")],
+        auto_write_setting: Annotated[AutoWriteSetting, Field(description="Auto-write settings to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -435,13 +435,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Autowritesettingresponse]:
+    ) -> ApiResponse[AutoWriteSettingResponse]:
         """Create auto-write settings for SED
 
         Create the initial auto-write settings for a tenant. Returns 409 Conflict if settings already exist. Use PATCH to update existing settings.
 
-        :param autowritesetting: Auto-write settings to create (required)
-        :type autowritesetting: Autowritesetting
+        :param auto_write_setting: Auto-write settings to create (required)
+        :type auto_write_setting: AutoWriteSetting
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -465,7 +465,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._create_auto_write_settings_v1_serialize(
-            autowritesetting=autowritesetting,
+            auto_write_setting=auto_write_setting,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -473,13 +473,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '201': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '409': "CreateAutoWriteSettingsV1409Response",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -495,7 +495,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def create_auto_write_settings_v1_without_preload_content(
         self,
-        autowritesetting: Annotated[Autowritesetting, Field(description="Auto-write settings to create")],
+        auto_write_setting: Annotated[AutoWriteSetting, Field(description="Auto-write settings to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -513,8 +513,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Create the initial auto-write settings for a tenant. Returns 409 Conflict if settings already exist. Use PATCH to update existing settings.
 
-        :param autowritesetting: Auto-write settings to create (required)
-        :type autowritesetting: Autowritesetting
+        :param auto_write_setting: Auto-write settings to create (required)
+        :type auto_write_setting: AutoWriteSetting
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -538,7 +538,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._create_auto_write_settings_v1_serialize(
-            autowritesetting=autowritesetting,
+            auto_write_setting=auto_write_setting,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -546,13 +546,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '201': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '409': "CreateAutoWriteSettingsV1409Response",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -563,7 +563,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _create_auto_write_settings_v1_serialize(
         self,
-        autowritesetting,
+        auto_write_setting,
         _request_auth,
         _content_type,
         _headers,
@@ -589,8 +589,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if autowritesetting is not None:
-            _body_params = autowritesetting
+        if auto_write_setting is not None:
+            _body_params = auto_write_setting
 
 
         # set the HTTP header `Accept`
@@ -652,7 +652,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Autowritesettingresponse:
+    ) -> AutoWriteSettingResponse:
         """Get auto-write settings for SED
 
         Get the current auto-write configuration for the tenant, including the enabled state and source include/exclude lists.
@@ -687,13 +687,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -721,7 +721,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Autowritesettingresponse]:
+    ) -> ApiResponse[AutoWriteSettingResponse]:
         """Get auto-write settings for SED
 
         Get the current auto-write configuration for the tenant, including the enabled state and source include/exclude lists.
@@ -756,13 +756,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -825,13 +825,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -916,7 +916,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sedbatchstats:
+    ) -> SedBatchStats:
         """Submit sed batch stats request
 
         'Submit Sed Batch Stats Request.   Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats  of the batchId.' 
@@ -954,13 +954,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchstats",
-            '400': "Errorresponsedto",
+            '200': "SedBatchStats",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -989,7 +989,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sedbatchstats]:
+    ) -> ApiResponse[SedBatchStats]:
         """Submit sed batch stats request
 
         'Submit Sed Batch Stats Request.   Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats  of the batchId.' 
@@ -1027,13 +1027,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchstats",
-            '400': "Errorresponsedto",
+            '200': "SedBatchStats",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1100,13 +1100,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchstats",
-            '400': "Errorresponsedto",
+            '200': "SedBatchStats",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1198,7 +1198,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sedbatchrecord]:
+    ) -> List[SedBatchRecord]:
         """List Sed Batch Record
 
         List Sed Batches. API responses with Sed Batch Records
@@ -1248,13 +1248,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedbatchrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[SedBatchRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1287,7 +1287,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sedbatchrecord]]:
+    ) -> ApiResponse[List[SedBatchRecord]]:
         """List Sed Batch Record
 
         List Sed Batches. API responses with Sed Batch Records
@@ -1337,13 +1337,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedbatchrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[SedBatchRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1426,13 +1426,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedbatchrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[SedBatchRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1543,7 +1543,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlementrecommendationrecord]:
+    ) -> List[EntitlementRecommendationRecord]:
         """List pending entitlement recommendation approvals
 
         Returns a list of entitlement recommendations (SED and/or privilege) that are currently awaiting review or approval. Each record includes the recommendation type, entitlement details, and any AI-generated suggestions.
@@ -1584,12 +1584,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementrecommendationrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementRecommendationRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1619,7 +1619,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlementrecommendationrecord]]:
+    ) -> ApiResponse[List[EntitlementRecommendationRecord]]:
         """List pending entitlement recommendation approvals
 
         Returns a list of entitlement recommendations (SED and/or privilege) that are currently awaiting review or approval. Each record includes the recommendation type, entitlement details, and any AI-generated suggestions.
@@ -1660,12 +1660,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementrecommendationrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementRecommendationRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1736,12 +1736,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlementrecommendationrecord]",
-            '400': "Errorresponsedto",
+            '200': "List[EntitlementRecommendationRecord]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1837,7 +1837,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Privilegedrecommendationgroup]:
+    ) -> List[PrivilegedRecommendationGroup]:
         """List privileged entitlement recommendations
 
         Returns a list of privileged entitlement recommendation groups. Each group aggregates individual entitlement instances that share the same entitlement name and connector type, along with a recommendation score and instance count.
@@ -1878,12 +1878,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegedrecommendationgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegedRecommendationGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1913,7 +1913,7 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Privilegedrecommendationgroup]]:
+    ) -> ApiResponse[List[PrivilegedRecommendationGroup]]:
         """List privileged entitlement recommendations
 
         Returns a list of privileged entitlement recommendation groups. Each group aggregates individual entitlement instances that share the same entitlement name and connector type, along with a recommendation score and instance count.
@@ -1954,12 +1954,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegedrecommendationgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegedRecommendationGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2030,12 +2030,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegedrecommendationgroup]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegedRecommendationGroup]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2197,12 +2197,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Sed]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2298,12 +2298,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Sed]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2399,12 +2399,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Sed]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2517,7 +2517,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_entitlement_recommendation_v1(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2530,15 +2530,15 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlementrecommendationrecord:
+    ) -> EntitlementRecommendationRecord:
         """Update an entitlement recommendation
 
         Partially update a single entitlement recommendation record by its ID. Use this endpoint to update the status, description, or privilege level of a specific SED or privilege recommendation.
 
         :param id: The unique identifier of the entitlement recommendation to update. (required)
         :type id: str
-        :param jsonpatchoperation: The patch operations to apply to the entitlement recommendation record. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2563,7 +2563,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2571,13 +2571,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementrecommendationrecord",
-            '400': "Errorresponsedto",
+            '200': "EntitlementRecommendationRecord",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2594,7 +2594,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_entitlement_recommendation_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2607,15 +2607,15 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlementrecommendationrecord]:
+    ) -> ApiResponse[EntitlementRecommendationRecord]:
         """Update an entitlement recommendation
 
         Partially update a single entitlement recommendation record by its ID. Use this endpoint to update the status, description, or privilege level of a specific SED or privilege recommendation.
 
         :param id: The unique identifier of the entitlement recommendation to update. (required)
         :type id: str
-        :param jsonpatchoperation: The patch operations to apply to the entitlement recommendation record. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2640,7 +2640,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2648,13 +2648,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementrecommendationrecord",
-            '400': "Errorresponsedto",
+            '200': "EntitlementRecommendationRecord",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2671,7 +2671,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_entitlement_recommendation_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2691,8 +2691,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: The unique identifier of the entitlement recommendation to update. (required)
         :type id: str
-        :param jsonpatchoperation: The patch operations to apply to the entitlement recommendation record. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2717,7 +2717,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2725,13 +2725,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlementrecommendationrecord",
-            '400': "Errorresponsedto",
+            '200': "EntitlementRecommendationRecord",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2743,7 +2743,7 @@ class SuggestedEntitlementDescriptionApi:
     def _patch_entitlement_recommendation_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2753,7 +2753,7 @@ class SuggestedEntitlementDescriptionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2772,8 +2772,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2824,7 +2824,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_sed_v1(
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
-        sedpatch: Annotated[List[Sedpatch], Field(description="Sed Patch Request")],
+        sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2844,8 +2844,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param sedpatch: Sed Patch Request (required)
-        :type sedpatch: List[Sedpatch]
+        :param sed_patch: Sed Patch Request (required)
+        :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2870,7 +2870,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_v1_serialize(
             id=id,
-            sedpatch=sedpatch,
+            sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2879,12 +2879,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Sed",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2901,7 +2901,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_sed_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
-        sedpatch: Annotated[List[Sedpatch], Field(description="Sed Patch Request")],
+        sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2921,8 +2921,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param sedpatch: Sed Patch Request (required)
-        :type sedpatch: List[Sedpatch]
+        :param sed_patch: Sed Patch Request (required)
+        :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2947,7 +2947,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_v1_serialize(
             id=id,
-            sedpatch=sedpatch,
+            sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2956,12 +2956,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Sed",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2978,7 +2978,7 @@ class SuggestedEntitlementDescriptionApi:
     def patch_sed_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
-        sedpatch: Annotated[List[Sedpatch], Field(description="Sed Patch Request")],
+        sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2998,8 +2998,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param sedpatch: Sed Patch Request (required)
-        :type sedpatch: List[Sedpatch]
+        :param sed_patch: Sed Patch Request (required)
+        :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3024,7 +3024,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_v1_serialize(
             id=id,
-            sedpatch=sedpatch,
+            sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3033,12 +3033,12 @@ class SuggestedEntitlementDescriptionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Sed",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3050,7 +3050,7 @@ class SuggestedEntitlementDescriptionApi:
     def _patch_sed_v1_serialize(
         self,
         id,
-        sedpatch,
+        sed_patch,
         _request_auth,
         _content_type,
         _headers,
@@ -3060,7 +3060,7 @@ class SuggestedEntitlementDescriptionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Sedpatch': '',
+            'SedPatch': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3079,8 +3079,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sedpatch is not None:
-            _body_params = sedpatch
+        if sed_patch is not None:
+            _body_params = sed_patch
 
 
         # set the HTTP header `Accept`
@@ -3130,7 +3130,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_entitlement_recommendations_assignment_v1(
         self,
-        entitlementrecommendationassignrequest: Annotated[Entitlementrecommendationassignrequest, Field(description="The recommendation IDs and the target assignee.")],
+        entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3143,13 +3143,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlementrecommendationassignresult:
+    ) -> EntitlementRecommendationAssignResult:
         """Assign entitlement recommendations for review
 
         Assign a set of entitlement recommendation records to a reviewer. The assignee can be a specific identity, a governance group, or a role-based assignee such as source owner or entitlement owner. Returns a batch ID that can be used to track the assignment.
 
-        :param entitlementrecommendationassignrequest: The recommendation IDs and the target assignee. (required)
-        :type entitlementrecommendationassignrequest: Entitlementrecommendationassignrequest
+        :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
+        :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3173,7 +3173,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
-            entitlementrecommendationassignrequest=entitlementrecommendationassignrequest,
+            entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3181,12 +3181,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Entitlementrecommendationassignresult",
-            '400': "Errorresponsedto",
+            '202': "EntitlementRecommendationAssignResult",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3202,7 +3202,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_entitlement_recommendations_assignment_v1_with_http_info(
         self,
-        entitlementrecommendationassignrequest: Annotated[Entitlementrecommendationassignrequest, Field(description="The recommendation IDs and the target assignee.")],
+        entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3215,13 +3215,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlementrecommendationassignresult]:
+    ) -> ApiResponse[EntitlementRecommendationAssignResult]:
         """Assign entitlement recommendations for review
 
         Assign a set of entitlement recommendation records to a reviewer. The assignee can be a specific identity, a governance group, or a role-based assignee such as source owner or entitlement owner. Returns a batch ID that can be used to track the assignment.
 
-        :param entitlementrecommendationassignrequest: The recommendation IDs and the target assignee. (required)
-        :type entitlementrecommendationassignrequest: Entitlementrecommendationassignrequest
+        :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
+        :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3245,7 +3245,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
-            entitlementrecommendationassignrequest=entitlementrecommendationassignrequest,
+            entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3253,12 +3253,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Entitlementrecommendationassignresult",
-            '400': "Errorresponsedto",
+            '202': "EntitlementRecommendationAssignResult",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3274,7 +3274,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_entitlement_recommendations_assignment_v1_without_preload_content(
         self,
-        entitlementrecommendationassignrequest: Annotated[Entitlementrecommendationassignrequest, Field(description="The recommendation IDs and the target assignee.")],
+        entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3292,8 +3292,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Assign a set of entitlement recommendation records to a reviewer. The assignee can be a specific identity, a governance group, or a role-based assignee such as source owner or entitlement owner. Returns a batch ID that can be used to track the assignment.
 
-        :param entitlementrecommendationassignrequest: The recommendation IDs and the target assignee. (required)
-        :type entitlementrecommendationassignrequest: Entitlementrecommendationassignrequest
+        :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
+        :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3317,7 +3317,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
-            entitlementrecommendationassignrequest=entitlementrecommendationassignrequest,
+            entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3325,12 +3325,12 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Entitlementrecommendationassignresult",
-            '400': "Errorresponsedto",
+            '202': "EntitlementRecommendationAssignResult",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3341,7 +3341,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_entitlement_recommendations_assignment_v1_serialize(
         self,
-        entitlementrecommendationassignrequest,
+        entitlement_recommendation_assign_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3367,8 +3367,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if entitlementrecommendationassignrequest is not None:
-            _body_params = entitlementrecommendationassignrequest
+        if entitlement_recommendation_assign_request is not None:
+            _body_params = entitlement_recommendation_assign_request
 
 
         # set the HTTP header `Accept`
@@ -3418,7 +3418,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_approval_v1(
         self,
-        sedapproval: Annotated[List[Sedapproval], Field(description="Sed Approval")],
+        sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3431,13 +3431,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sedapprovalstatus]:
+    ) -> List[SedApprovalStatus]:
         """Submit bulk approval request
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param sedapproval: Sed Approval (required)
-        :type sedapproval: List[Sedapproval]
+        :param sed_approval: Sed Approval (required)
+        :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3461,7 +3461,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_v1_serialize(
-            sedapproval=sedapproval,
+            sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3469,13 +3469,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedapprovalstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[SedApprovalStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3491,7 +3491,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_approval_v1_with_http_info(
         self,
-        sedapproval: Annotated[List[Sedapproval], Field(description="Sed Approval")],
+        sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3504,13 +3504,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sedapprovalstatus]]:
+    ) -> ApiResponse[List[SedApprovalStatus]]:
         """Submit bulk approval request
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param sedapproval: Sed Approval (required)
-        :type sedapproval: List[Sedapproval]
+        :param sed_approval: Sed Approval (required)
+        :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3534,7 +3534,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_v1_serialize(
-            sedapproval=sedapproval,
+            sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3542,13 +3542,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedapprovalstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[SedApprovalStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3564,7 +3564,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_approval_v1_without_preload_content(
         self,
-        sedapproval: Annotated[List[Sedapproval], Field(description="Sed Approval")],
+        sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3582,8 +3582,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param sedapproval: Sed Approval (required)
-        :type sedapproval: List[Sedapproval]
+        :param sed_approval: Sed Approval (required)
+        :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3607,7 +3607,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_v1_serialize(
-            sedapproval=sedapproval,
+            sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3615,13 +3615,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sedapprovalstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[SedApprovalStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3632,7 +3632,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_approval_v1_serialize(
         self,
-        sedapproval,
+        sed_approval,
         _request_auth,
         _content_type,
         _headers,
@@ -3642,7 +3642,7 @@ class SuggestedEntitlementDescriptionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Sedapproval': '',
+            'SedApproval': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3659,8 +3659,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sedapproval is not None:
-            _body_params = sedapproval
+        if sed_approval is not None:
+            _body_params = sed_approval
 
 
         # set the HTTP header `Accept`
@@ -3710,7 +3710,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_assignment_v1(
         self,
-        sedassignment: Annotated[Sedassignment, Field(description="Sed Assignment Request")],
+        sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3723,13 +3723,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sedassignmentresponse:
+    ) -> SedAssignmentResponse:
         """Submit sed assignment request
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param sedassignment: Sed Assignment Request (required)
-        :type sedassignment: Sedassignment
+        :param sed_assignment: Sed Assignment Request (required)
+        :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3753,7 +3753,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_v1_serialize(
-            sedassignment=sedassignment,
+            sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3761,13 +3761,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sedassignmentresponse",
-            '400': "Errorresponsedto",
+            '202': "SedAssignmentResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3783,7 +3783,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_assignment_v1_with_http_info(
         self,
-        sedassignment: Annotated[Sedassignment, Field(description="Sed Assignment Request")],
+        sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3796,13 +3796,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sedassignmentresponse]:
+    ) -> ApiResponse[SedAssignmentResponse]:
         """Submit sed assignment request
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param sedassignment: Sed Assignment Request (required)
-        :type sedassignment: Sedassignment
+        :param sed_assignment: Sed Assignment Request (required)
+        :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3826,7 +3826,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_v1_serialize(
-            sedassignment=sedassignment,
+            sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3834,13 +3834,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sedassignmentresponse",
-            '400': "Errorresponsedto",
+            '202': "SedAssignmentResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3856,7 +3856,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_assignment_v1_without_preload_content(
         self,
-        sedassignment: Annotated[Sedassignment, Field(description="Sed Assignment Request")],
+        sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3874,8 +3874,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param sedassignment: Sed Assignment Request (required)
-        :type sedassignment: Sedassignment
+        :param sed_assignment: Sed Assignment Request (required)
+        :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3899,7 +3899,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_v1_serialize(
-            sedassignment=sedassignment,
+            sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3907,13 +3907,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Sedassignmentresponse",
-            '400': "Errorresponsedto",
+            '202': "SedAssignmentResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3924,7 +3924,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_assignment_v1_serialize(
         self,
-        sedassignment,
+        sed_assignment,
         _request_auth,
         _content_type,
         _headers,
@@ -3950,8 +3950,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sedassignment is not None:
-            _body_params = sedassignment
+        if sed_assignment is not None:
+            _body_params = sed_assignment
 
 
         # set the HTTP header `Accept`
@@ -4001,7 +4001,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_batch_request_v1(
         self,
-        sedbatchrequest: Annotated[Optional[Sedbatchrequest], Field(description="Sed Batch Request")] = None,
+        sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4014,13 +4014,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sedbatchresponse:
+    ) -> SedBatchResponse:
         """Submit sed batch request
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 
-        :param sedbatchrequest: Sed Batch Request
-        :type sedbatchrequest: Sedbatchrequest
+        :param sed_batch_request: Sed Batch Request
+        :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4044,7 +4044,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_v1_serialize(
-            sedbatchrequest=sedbatchrequest,
+            sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4052,13 +4052,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchresponse",
-            '400': "Errorresponsedto",
+            '200': "SedBatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4074,7 +4074,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_batch_request_v1_with_http_info(
         self,
-        sedbatchrequest: Annotated[Optional[Sedbatchrequest], Field(description="Sed Batch Request")] = None,
+        sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4087,13 +4087,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sedbatchresponse]:
+    ) -> ApiResponse[SedBatchResponse]:
         """Submit sed batch request
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 
-        :param sedbatchrequest: Sed Batch Request
-        :type sedbatchrequest: Sedbatchrequest
+        :param sed_batch_request: Sed Batch Request
+        :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4117,7 +4117,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_v1_serialize(
-            sedbatchrequest=sedbatchrequest,
+            sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4125,13 +4125,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchresponse",
-            '400': "Errorresponsedto",
+            '200': "SedBatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4147,7 +4147,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def submit_sed_batch_request_v1_without_preload_content(
         self,
-        sedbatchrequest: Annotated[Optional[Sedbatchrequest], Field(description="Sed Batch Request")] = None,
+        sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4165,8 +4165,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 
-        :param sedbatchrequest: Sed Batch Request
-        :type sedbatchrequest: Sedbatchrequest
+        :param sed_batch_request: Sed Batch Request
+        :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4190,7 +4190,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_v1_serialize(
-            sedbatchrequest=sedbatchrequest,
+            sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4198,13 +4198,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sedbatchresponse",
-            '400': "Errorresponsedto",
+            '200': "SedBatchResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4215,7 +4215,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_batch_request_v1_serialize(
         self,
-        sedbatchrequest,
+        sed_batch_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4241,8 +4241,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sedbatchrequest is not None:
-            _body_params = sedbatchrequest
+        if sed_batch_request is not None:
+            _body_params = sed_batch_request
 
 
         # set the HTTP header `Accept`
@@ -4292,7 +4292,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def update_auto_write_settings_v1(
         self,
-        autowritesettingpatch: Annotated[List[Autowritesettingpatch], Field(description="Patch operations for auto-write settings")],
+        auto_write_setting_patch: Annotated[List[AutoWriteSettingPatch], Field(description="Patch operations for auto-write settings")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4305,13 +4305,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Autowritesettingresponse:
+    ) -> AutoWriteSettingResponse:
         """Update auto-write settings for SED
 
         Partially update the auto-write settings for a tenant using JSON Patch operations. Only the \"replace\" operation is supported. Returns 404 if no settings exist yet - use POST to create them first.
 
-        :param autowritesettingpatch: Patch operations for auto-write settings (required)
-        :type autowritesettingpatch: List[Autowritesettingpatch]
+        :param auto_write_setting_patch: Patch operations for auto-write settings (required)
+        :type auto_write_setting_patch: List[AutoWriteSettingPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4335,7 +4335,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._update_auto_write_settings_v1_serialize(
-            autowritesettingpatch=autowritesettingpatch,
+            auto_write_setting_patch=auto_write_setting_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4343,13 +4343,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4365,7 +4365,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def update_auto_write_settings_v1_with_http_info(
         self,
-        autowritesettingpatch: Annotated[List[Autowritesettingpatch], Field(description="Patch operations for auto-write settings")],
+        auto_write_setting_patch: Annotated[List[AutoWriteSettingPatch], Field(description="Patch operations for auto-write settings")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4378,13 +4378,13 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Autowritesettingresponse]:
+    ) -> ApiResponse[AutoWriteSettingResponse]:
         """Update auto-write settings for SED
 
         Partially update the auto-write settings for a tenant using JSON Patch operations. Only the \"replace\" operation is supported. Returns 404 if no settings exist yet - use POST to create them first.
 
-        :param autowritesettingpatch: Patch operations for auto-write settings (required)
-        :type autowritesettingpatch: List[Autowritesettingpatch]
+        :param auto_write_setting_patch: Patch operations for auto-write settings (required)
+        :type auto_write_setting_patch: List[AutoWriteSettingPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4408,7 +4408,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._update_auto_write_settings_v1_serialize(
-            autowritesettingpatch=autowritesettingpatch,
+            auto_write_setting_patch=auto_write_setting_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4416,13 +4416,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4438,7 +4438,7 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def update_auto_write_settings_v1_without_preload_content(
         self,
-        autowritesettingpatch: Annotated[List[Autowritesettingpatch], Field(description="Patch operations for auto-write settings")],
+        auto_write_setting_patch: Annotated[List[AutoWriteSettingPatch], Field(description="Patch operations for auto-write settings")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4456,8 +4456,8 @@ class SuggestedEntitlementDescriptionApi:
 
         Partially update the auto-write settings for a tenant using JSON Patch operations. Only the \"replace\" operation is supported. Returns 404 if no settings exist yet - use POST to create them first.
 
-        :param autowritesettingpatch: Patch operations for auto-write settings (required)
-        :type autowritesettingpatch: List[Autowritesettingpatch]
+        :param auto_write_setting_patch: Patch operations for auto-write settings (required)
+        :type auto_write_setting_patch: List[AutoWriteSettingPatch]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4481,7 +4481,7 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._update_auto_write_settings_v1_serialize(
-            autowritesettingpatch=autowritesettingpatch,
+            auto_write_setting_patch=auto_write_setting_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4489,13 +4489,13 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Autowritesettingresponse",
-            '400': "Errorresponsedto",
+            '200': "AutoWriteSettingResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAutoWriteSettingsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAutoWriteSettingsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4506,7 +4506,7 @@ class SuggestedEntitlementDescriptionApi:
 
     def _update_auto_write_settings_v1_serialize(
         self,
-        autowritesettingpatch,
+        auto_write_setting_patch,
         _request_auth,
         _content_type,
         _headers,
@@ -4516,7 +4516,7 @@ class SuggestedEntitlementDescriptionApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Autowritesettingpatch': '',
+            'AutoWriteSettingPatch': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4533,8 +4533,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if autowritesettingpatch is not None:
-            _body_params = autowritesettingpatch
+        if auto_write_setting_patch is not None:
+            _body_params = auto_write_setting_patch
 
 
         # set the HTTP header `Accept`

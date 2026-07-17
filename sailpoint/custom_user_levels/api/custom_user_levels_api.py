@@ -19,13 +19,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.custom_user_levels.models.authuserlevelsidentitycount import Authuserlevelsidentitycount
-from sailpoint.custom_user_levels.models.authuserslimresponse import Authuserslimresponse
-from sailpoint.custom_user_levels.models.hierarchicalrightset import Hierarchicalrightset
-from sailpoint.custom_user_levels.models.jsonpatch import Jsonpatch
-from sailpoint.custom_user_levels.models.userlevelpublishsummary import Userlevelpublishsummary
-from sailpoint.custom_user_levels.models.userlevelrequest import Userlevelrequest
-from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+from sailpoint.custom_user_levels.models.auth_user_levels_identity_count import AuthUserLevelsIdentityCount
+from sailpoint.custom_user_levels.models.auth_user_slim_response import AuthUserSlimResponse
+from sailpoint.custom_user_levels.models.hierarchical_right_set import HierarchicalRightSet
+from sailpoint.custom_user_levels.models.json_patch import JsonPatch
+from sailpoint.custom_user_levels.models.user_level_publish_summary import UserLevelPublishSummary
+from sailpoint.custom_user_levels.models.user_level_request import UserLevelRequest
+from sailpoint.custom_user_levels.models.user_level_summary_dto import UserLevelSummaryDTO
 
 from sailpoint.custom_user_levels.api_client import ApiClient, RequestSerialized
 from sailpoint.custom_user_levels.api_response import ApiResponse
@@ -48,7 +48,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level_v1(
         self,
-        userlevelrequest: Annotated[Userlevelrequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -62,13 +62,13 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Userlevelsummarydto:
+    ) -> UserLevelSummaryDTO:
         """Create a custom user level
 
         Creates a new custom user level for the tenant.
 
-        :param userlevelrequest: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type userlevelrequest: Userlevelrequest
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type user_level_request: UserLevelRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -94,7 +94,7 @@ class CustomUserLevelsApi:
         """ # noqa: E501
 
         _param = self._create_custom_user_level_v1_serialize(
-            userlevelrequest=userlevelrequest,
+            user_level_request=user_level_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -103,13 +103,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -125,7 +125,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level_v1_with_http_info(
         self,
-        userlevelrequest: Annotated[Userlevelrequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -139,13 +139,13 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Userlevelsummarydto]:
+    ) -> ApiResponse[UserLevelSummaryDTO]:
         """Create a custom user level
 
         Creates a new custom user level for the tenant.
 
-        :param userlevelrequest: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type userlevelrequest: Userlevelrequest
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type user_level_request: UserLevelRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -171,7 +171,7 @@ class CustomUserLevelsApi:
         """ # noqa: E501
 
         _param = self._create_custom_user_level_v1_serialize(
-            userlevelrequest=userlevelrequest,
+            user_level_request=user_level_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -180,13 +180,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -202,7 +202,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level_v1_without_preload_content(
         self,
-        userlevelrequest: Annotated[Userlevelrequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -221,8 +221,8 @@ class CustomUserLevelsApi:
 
         Creates a new custom user level for the tenant.
 
-        :param userlevelrequest: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type userlevelrequest: Userlevelrequest
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type user_level_request: UserLevelRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -248,7 +248,7 @@ class CustomUserLevelsApi:
         """ # noqa: E501
 
         _param = self._create_custom_user_level_v1_serialize(
-            userlevelrequest=userlevelrequest,
+            user_level_request=user_level_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -257,13 +257,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -274,7 +274,7 @@ class CustomUserLevelsApi:
 
     def _create_custom_user_level_v1_serialize(
         self,
-        userlevelrequest,
+        user_level_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -303,8 +303,8 @@ class CustomUserLevelsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if userlevelrequest is not None:
-            _body_params = userlevelrequest
+        if user_level_request is not None:
+            _body_params = user_level_request
 
 
         # set the HTTP header `Accept`
@@ -410,12 +410,12 @@ class CustomUserLevelsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -487,12 +487,12 @@ class CustomUserLevelsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -564,12 +564,12 @@ class CustomUserLevelsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -661,7 +661,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Userlevelsummarydto:
+    ) -> UserLevelSummaryDTO:
         """Retrieve a user level
 
         Fetches the details of a specific user level by its ID.
@@ -702,13 +702,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -738,7 +738,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Userlevelsummarydto]:
+    ) -> ApiResponse[UserLevelSummaryDTO]:
         """Retrieve a user level
 
         Fetches the details of a specific user level by its ID.
@@ -779,13 +779,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -856,13 +856,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -957,7 +957,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Hierarchicalrightset]:
+    ) -> List[HierarchicalRightSet]:
         """List all uiAssignable right sets
 
         Retrieves a list of authorization assignable right sets for the tenant.
@@ -1007,13 +1007,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Hierarchicalrightset]",
-            '400': "Errorresponsedto",
+            '200': "List[HierarchicalRightSet]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1046,7 +1046,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Hierarchicalrightset]]:
+    ) -> ApiResponse[List[HierarchicalRightSet]]:
         """List all uiAssignable right sets
 
         Retrieves a list of authorization assignable right sets for the tenant.
@@ -1096,13 +1096,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Hierarchicalrightset]",
-            '400': "Errorresponsedto",
+            '200': "List[HierarchicalRightSet]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1185,13 +1185,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Hierarchicalrightset]",
-            '400': "Errorresponsedto",
+            '200': "List[HierarchicalRightSet]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1304,7 +1304,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Authuserslimresponse]:
+    ) -> List[AuthUserSlimResponse]:
         """List user level identities
 
         List of identities associated with a user level.
@@ -1357,13 +1357,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserslimresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserSlimResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1397,7 +1397,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Authuserslimresponse]]:
+    ) -> ApiResponse[List[AuthUserSlimResponse]]:
         """List user level identities
 
         List of identities associated with a user level.
@@ -1450,13 +1450,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserslimresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserSlimResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1543,13 +1543,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserslimresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserSlimResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1665,7 +1665,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Userlevelsummarydto]:
+    ) -> List[UserLevelSummaryDTO]:
         """List user levels
 
         Retrieves a list of user levels for the tenant.
@@ -1718,13 +1718,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userlevelsummarydto]",
-            '400': "Errorresponsedto",
+            '200': "List[UserLevelSummaryDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1758,7 +1758,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Userlevelsummarydto]]:
+    ) -> ApiResponse[List[UserLevelSummaryDTO]]:
         """List user levels
 
         Retrieves a list of user levels for the tenant.
@@ -1811,13 +1811,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userlevelsummarydto]",
-            '400': "Errorresponsedto",
+            '200': "List[UserLevelSummaryDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1904,13 +1904,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Userlevelsummarydto]",
-            '400': "Errorresponsedto",
+            '200': "List[UserLevelSummaryDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2024,7 +2024,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Userlevelpublishsummary:
+    ) -> UserLevelPublishSummary:
         """Publish a custom user level
 
         Publishes a custom user level for the tenant, making it active and available.
@@ -2065,13 +2065,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelpublishsummary",
-            '400': "Errorresponsedto",
+            '200': "UserLevelPublishSummary",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2101,7 +2101,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Userlevelpublishsummary]:
+    ) -> ApiResponse[UserLevelPublishSummary]:
         """Publish a custom user level
 
         Publishes a custom user level for the tenant, making it active and available.
@@ -2142,13 +2142,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelpublishsummary",
-            '400': "Errorresponsedto",
+            '200': "UserLevelPublishSummary",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2219,13 +2219,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelpublishsummary",
-            '400': "Errorresponsedto",
+            '200': "UserLevelPublishSummary",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2317,7 +2317,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Authuserlevelsidentitycount]:
+    ) -> List[AuthUserLevelsIdentityCount]:
         """Count user levels identities
 
         List of user levels along with the number of identities associated to it.
@@ -2358,13 +2358,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserlevelsidentitycount]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserLevelsIdentityCount]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2394,7 +2394,7 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Authuserlevelsidentitycount]]:
+    ) -> ApiResponse[List[AuthUserLevelsIdentityCount]]:
         """Count user levels identities
 
         List of user levels along with the number of identities associated to it.
@@ -2435,13 +2435,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserlevelsidentitycount]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserLevelsIdentityCount]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2512,13 +2512,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Authuserlevelsidentitycount]",
-            '400': "Errorresponsedto",
+            '200': "List[AuthUserLevelsIdentityCount]",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2611,7 +2611,7 @@ class CustomUserLevelsApi:
     def update_user_level_v1(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2625,15 +2625,15 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Userlevelsummarydto:
+    ) -> UserLevelSummaryDTO:
         """Update a user level
 
         Updates the details of a specific user level using JSON Patch.
 
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param jsonpatch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2660,7 +2660,7 @@ class CustomUserLevelsApi:
 
         _param = self._update_user_level_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2669,13 +2669,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2692,7 +2692,7 @@ class CustomUserLevelsApi:
     def update_user_level_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2706,15 +2706,15 @@ class CustomUserLevelsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Userlevelsummarydto]:
+    ) -> ApiResponse[UserLevelSummaryDTO]:
         """Update a user level
 
         Updates the details of a specific user level using JSON Patch.
 
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param jsonpatch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2741,7 +2741,7 @@ class CustomUserLevelsApi:
 
         _param = self._update_user_level_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2750,13 +2750,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2773,7 +2773,7 @@ class CustomUserLevelsApi:
     def update_user_level_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2794,8 +2794,8 @@ class CustomUserLevelsApi:
 
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param jsonpatch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2822,7 +2822,7 @@ class CustomUserLevelsApi:
 
         _param = self._update_user_level_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2831,13 +2831,13 @@ class CustomUserLevelsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Userlevelsummarydto",
-            '400': "Errorresponsedto",
+            '200': "UserLevelSummaryDTO",
+            '400': "ErrorResponseDto",
             '401': "ListUserLevelsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListUserLevelsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2849,7 +2849,7 @@ class CustomUserLevelsApi:
     def _update_user_level_v1_serialize(
         self,
         id,
-        jsonpatch,
+        json_patch,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2880,8 +2880,8 @@ class CustomUserLevelsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatch is not None:
-            _body_params = jsonpatch
+        if json_patch is not None:
+            _body_params = json_patch
 
 
         # set the HTTP header `Accept`

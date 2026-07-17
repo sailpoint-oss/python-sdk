@@ -47,22 +47,22 @@ and generates an asynchronous result containing a tracking ID.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | machineaccountcreaterequestinput | [**Machineaccountcreaterequestinput**](../models/machineaccountcreaterequestinput) | True  | 
+ Body  | machine_account_create_request_input | [**MachineAccountCreateRequestInput**](../models/machine-account-create-request-input) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Accountrequestasyncresult**](../models/accountrequestasyncresult)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Machine account creation request result. | Accountrequestasyncresult |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Machine account creation request result. | AccountRequestAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | CreateMachineAccountRequestV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | CreateMachineAccountRequestV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -73,23 +73,35 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
 from sailpoint.machine_account_creation_request.api_client import ApiClient
-from sailpoint.machine_account_creation_request.models.accountrequestasyncresult import Accountrequestasyncresult
-from sailpoint.machine_account_creation_request.models.machineaccountcreaterequestinput import Machineaccountcreaterequestinput
+from sailpoint.machine_account_creation_request.models.account_request_async_result import AccountRequestAsyncResult
+from sailpoint.machine_account_creation_request.models.machine_account_create_request_input import MachineAccountCreateRequestInput
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    machineaccountcreaterequestinput = '''sailpoint.machine_account_creation_request.Machineaccountcreaterequestinput()''' # Machineaccountcreaterequestinput | 
+    machine_account_create_request_input = '''{
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }''' # MachineAccountCreateRequestInput | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Submit Machine Account Creation Request
-        new_machineaccountcreaterequestinput = Machineaccountcreaterequestinput.from_json(machineaccountcreaterequestinput)
-        results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(machineaccountcreaterequestinput=new_machineaccountcreaterequestinput)
+        new_machine_account_create_request_input = MachineAccountCreateRequestInput.from_json(machine_account_create_request_input)
+        results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(machine_account_create_request_input=new_machine_account_create_request_input)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(new_machineaccountcreaterequestinput, x_sail_point_experimental)
+        # results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v1(new_machine_account_create_request_input, x_sail_point_experimental)
         print("The response of MachineAccountCreationRequestApi->create_machine_account_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -125,18 +137,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | account_request_id | **str** | True  | Account Request ID
 
 ### Return type
-[**Accountrequestdetailsdto**](../models/accountrequestdetailsdto)
+[**AccountRequestDetailsDto**](../models/account-request-details-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Account Request Details object | Accountrequestdetailsdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Account Request Details object | AccountRequestDetailsDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | CreateMachineAccountRequestV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | CreateMachineAccountRequestV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -147,7 +159,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
 from sailpoint.machine_account_creation_request.api_client import ApiClient
-from sailpoint.machine_account_creation_request.models.accountrequestdetailsdto import Accountrequestdetailsdto
+from sailpoint.machine_account_creation_request.models.account_request_details_dto import AccountRequestDetailsDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -200,18 +212,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int** |   (optional) (default to 250) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 
 ### Return type
-[**List[Machineaccountcreateaccessdto]**](../models/machineaccountcreateaccessdto)
+[**List[MachineAccountCreateAccessDto]**](../models/machine-account-create-access-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of source and the subtypes. | List[Machineaccountcreateaccessdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of source and the subtypes. | List[MachineAccountCreateAccessDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | CreateMachineAccountRequestV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | CreateMachineAccountRequestV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -222,7 +234,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
 from sailpoint.machine_account_creation_request.api_client import ApiClient
-from sailpoint.machine_account_creation_request.models.machineaccountcreateaccessdto import Machineaccountcreateaccessdto
+from sailpoint.machine_account_creation_request.models.machine_account_create_access_dto import MachineAccountCreateAccessDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.certification_summaries.models.accesssummary import Accesssummary
-from sailpoint.certification_summaries.models.certificationidentitysummary import Certificationidentitysummary
-from sailpoint.certification_summaries.models.identitycertdecisionsummary import Identitycertdecisionsummary
+from sailpoint.certification_summaries.models.access_summary import AccessSummary
+from sailpoint.certification_summaries.models.certification_identity_summary import CertificationIdentitySummary
+from sailpoint.certification_summaries.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 
 from sailpoint.certification_summaries.api_client import ApiClient, RequestSerialized
 from sailpoint.certification_summaries.api_response import ApiResponse
@@ -63,7 +63,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accesssummary]:
+    ) -> List[AccessSummary]:
         """Access summaries
 
         This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
@@ -119,13 +119,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accesssummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -160,7 +160,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accesssummary]]:
+    ) -> ApiResponse[List[AccessSummary]]:
         """Access summaries
 
         This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
@@ -216,13 +216,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accesssummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -313,13 +313,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accesssummary]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -436,7 +436,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identitycertdecisionsummary:
+    ) -> IdentityCertDecisionSummary:
         """Summary of certification decisions
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
@@ -477,13 +477,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertdecisionsummary",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertDecisionSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -513,7 +513,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identitycertdecisionsummary]:
+    ) -> ApiResponse[IdentityCertDecisionSummary]:
         """Summary of certification decisions
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
@@ -554,13 +554,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertdecisionsummary",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertDecisionSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -631,13 +631,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identitycertdecisionsummary",
-            '400': "Errorresponsedto",
+            '200': "IdentityCertDecisionSummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -735,7 +735,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Certificationidentitysummary]:
+    ) -> List[CertificationIdentitySummary]:
         """Identity summaries for campaign certification
 
         This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
@@ -788,13 +788,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationidentitysummary]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationIdentitySummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -828,7 +828,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Certificationidentitysummary]]:
+    ) -> ApiResponse[List[CertificationIdentitySummary]]:
         """Identity summaries for campaign certification
 
         This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
@@ -881,13 +881,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationidentitysummary]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationIdentitySummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -974,13 +974,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Certificationidentitysummary]",
-            '400': "Errorresponsedto",
+            '200': "List[CertificationIdentitySummary]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1094,7 +1094,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Certificationidentitysummary:
+    ) -> CertificationIdentitySummary:
         """Summary for identity
 
         This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
@@ -1135,13 +1135,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationidentitysummary",
-            '400': "Errorresponsedto",
+            '200': "CertificationIdentitySummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1171,7 +1171,7 @@ class CertificationSummariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Certificationidentitysummary]:
+    ) -> ApiResponse[CertificationIdentitySummary]:
         """Summary for identity
 
         This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
@@ -1212,13 +1212,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationidentitysummary",
-            '400': "Errorresponsedto",
+            '200': "CertificationIdentitySummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1289,13 +1289,13 @@ class CertificationSummariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Certificationidentitysummary",
-            '400': "Errorresponsedto",
+            '200': "CertificationIdentitySummary",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityDecisionSummaryV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetIdentityDecisionSummaryV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

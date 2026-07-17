@@ -22,21 +22,21 @@ from typing_extensions import Annotated
 from sailpoint.workflows.models.create_external_execute_workflow_v1200_response import CreateExternalExecuteWorkflowV1200Response
 from sailpoint.workflows.models.create_external_execute_workflow_v1_request import CreateExternalExecuteWorkflowV1Request
 from sailpoint.workflows.models.create_workflow_v1_request import CreateWorkflowV1Request
-from sailpoint.workflows.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.workflows.models.json_patch_operation import JsonPatchOperation
 from sailpoint.workflows.models.list_complete_workflow_library_v1200_response_inner import ListCompleteWorkflowLibraryV1200ResponseInner
 from sailpoint.workflows.models.test_external_execute_workflow_v1200_response import TestExternalExecuteWorkflowV1200Response
 from sailpoint.workflows.models.test_external_execute_workflow_v1_request import TestExternalExecuteWorkflowV1Request
 from sailpoint.workflows.models.test_workflow_v1200_response import TestWorkflowV1200Response
 from sailpoint.workflows.models.test_workflow_v1_request import TestWorkflowV1Request
 from sailpoint.workflows.models.workflow import Workflow
-from sailpoint.workflows.models.workflowbody import Workflowbody
-from sailpoint.workflows.models.workflowexecution import Workflowexecution
-from sailpoint.workflows.models.workflowexecutionevent import Workflowexecutionevent
-from sailpoint.workflows.models.workflowexecutionhistory import Workflowexecutionhistory
-from sailpoint.workflows.models.workflowlibraryaction import Workflowlibraryaction
-from sailpoint.workflows.models.workflowlibraryoperator import Workflowlibraryoperator
-from sailpoint.workflows.models.workflowlibrarytrigger import Workflowlibrarytrigger
-from sailpoint.workflows.models.workflowoauthclient import Workflowoauthclient
+from sailpoint.workflows.models.workflow_body import WorkflowBody
+from sailpoint.workflows.models.workflow_execution import WorkflowExecution
+from sailpoint.workflows.models.workflow_execution_event import WorkflowExecutionEvent
+from sailpoint.workflows.models.workflow_execution_history import WorkflowExecutionHistory
+from sailpoint.workflows.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.workflows.models.workflow_library_operator import WorkflowLibraryOperator
+from sailpoint.workflows.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.workflows.models.workflow_o_auth_client import WorkflowOAuthClient
 
 from sailpoint.workflows.api_client import ApiClient, RequestSerialized
 from sailpoint.workflows.api_response import ApiResponse
@@ -111,12 +111,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -184,12 +184,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,12 +257,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -393,11 +393,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,11 +469,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -545,11 +545,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -653,7 +653,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workflowoauthclient:
+    ) -> WorkflowOAuthClient:
         """Generate external trigger oauth client
 
         Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.
@@ -691,12 +691,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowoauthclient",
-            '400': "Errorresponsedto",
+            '200': "WorkflowOAuthClient",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -725,7 +725,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workflowoauthclient]:
+    ) -> ApiResponse[WorkflowOAuthClient]:
         """Generate external trigger oauth client
 
         Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.
@@ -763,12 +763,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowoauthclient",
-            '400': "Errorresponsedto",
+            '200': "WorkflowOAuthClient",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -835,12 +835,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowoauthclient",
-            '400': "Errorresponsedto",
+            '200': "WorkflowOAuthClient",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -967,11 +967,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1039,11 +1039,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1111,11 +1111,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1255,11 +1255,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1327,11 +1327,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1399,11 +1399,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1491,7 +1491,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowexecutionevent]:
+    ) -> List[WorkflowExecutionEvent]:
         """Get workflow execution history
 
         Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
@@ -1529,13 +1529,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecutionevent]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecutionEvent]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1564,7 +1564,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowexecutionevent]]:
+    ) -> ApiResponse[List[WorkflowExecutionEvent]]:
         """Get workflow execution history
 
         Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
@@ -1602,13 +1602,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecutionevent]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecutionEvent]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1675,13 +1675,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecutionevent]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecutionEvent]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1769,7 +1769,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Workflowexecutionhistory:
+    ) -> WorkflowExecutionHistory:
         """Get updated workflow execution history
 
         Gets a workflow execution history, trigger input, and workflow definition of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
@@ -1807,13 +1807,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowexecutionhistory",
-            '400': "Errorresponsedto",
+            '200': "WorkflowExecutionHistory",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1842,7 +1842,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Workflowexecutionhistory]:
+    ) -> ApiResponse[WorkflowExecutionHistory]:
         """Get updated workflow execution history
 
         Gets a workflow execution history, trigger input, and workflow definition of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
@@ -1880,13 +1880,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowexecutionhistory",
-            '400': "Errorresponsedto",
+            '200': "WorkflowExecutionHistory",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1953,13 +1953,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workflowexecutionhistory",
-            '400': "Errorresponsedto",
+            '200': "WorkflowExecutionHistory",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2047,7 +2047,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowexecution]:
+    ) -> List[WorkflowExecution]:
         """Get workflow execution
 
         Use this API to get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a \"404 Not Found\" response.
@@ -2085,13 +2085,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2120,7 +2120,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowexecution]]:
+    ) -> ApiResponse[List[WorkflowExecution]]:
         """Get workflow execution
 
         Use this API to get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a \"404 Not Found\" response.
@@ -2158,13 +2158,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2231,13 +2231,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2328,7 +2328,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowexecution]:
+    ) -> List[WorkflowExecution]:
         """(Deprecated) List workflow executions
 
         [Deprecated] This endpoint will be removed in July 2028. Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following: 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 2. Get your workflow ID from the response. 3. You can then do either of the following:    - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - Paginate through results with the `offset` parameter.   For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.   Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
@@ -2376,13 +2376,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2414,7 +2414,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowexecution]]:
+    ) -> ApiResponse[List[WorkflowExecution]]:
         """(Deprecated) List workflow executions
 
         [Deprecated] This endpoint will be removed in July 2028. Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following: 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 2. Get your workflow ID from the response. 3. You can then do either of the following:    - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - Paginate through results with the `offset` parameter.   For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.   Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
@@ -2462,13 +2462,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2548,13 +2548,13 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowexecution]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowExecution]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2696,12 +2696,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2769,12 +2769,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2842,12 +2842,12 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2978,11 +2978,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListCompleteWorkflowLibraryV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3054,11 +3054,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListCompleteWorkflowLibraryV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3130,11 +3130,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListCompleteWorkflowLibraryV1200ResponseInner]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3231,7 +3231,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowlibraryaction]:
+    ) -> List[WorkflowLibraryAction]:
         """List workflow library actions
 
         This lists the workflow actions available to you.
@@ -3275,12 +3275,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryaction]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryAction]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3311,7 +3311,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowlibraryaction]]:
+    ) -> ApiResponse[List[WorkflowLibraryAction]]:
         """List workflow library actions
 
         This lists the workflow actions available to you.
@@ -3355,12 +3355,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryaction]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryAction]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3435,12 +3435,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryaction]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryAction]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3539,7 +3539,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowlibraryoperator]:
+    ) -> List[WorkflowLibraryOperator]:
         """List workflow library operators
 
         This lists the workflow operators available to you
@@ -3574,12 +3574,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryoperator]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryOperator]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3607,7 +3607,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowlibraryoperator]]:
+    ) -> ApiResponse[List[WorkflowLibraryOperator]]:
         """List workflow library operators
 
         This lists the workflow operators available to you
@@ -3642,12 +3642,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryoperator]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryOperator]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3710,12 +3710,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibraryoperator]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryOperator]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3802,7 +3802,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Workflowlibrarytrigger]:
+    ) -> List[WorkflowLibraryTrigger]:
         """List workflow library triggers
 
         This lists the workflow triggers available to you
@@ -3846,12 +3846,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibrarytrigger]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryTrigger]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3882,7 +3882,7 @@ class WorkflowsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Workflowlibrarytrigger]]:
+    ) -> ApiResponse[List[WorkflowLibraryTrigger]]:
         """List workflow library triggers
 
         This lists the workflow triggers available to you
@@ -3926,12 +3926,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibrarytrigger]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryTrigger]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4006,12 +4006,12 @@ class WorkflowsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Workflowlibrarytrigger]",
-            '400': "Errorresponsedto",
+            '200': "List[WorkflowLibraryTrigger]",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4146,11 +4146,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Workflow]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4214,11 +4214,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Workflow]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4282,11 +4282,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Workflow]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4359,7 +4359,7 @@ class WorkflowsApi:
     def patch_workflow_v1(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4379,8 +4379,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4405,7 +4405,7 @@ class WorkflowsApi:
 
         _param = self._patch_workflow_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4414,11 +4414,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4435,7 +4435,7 @@ class WorkflowsApi:
     def patch_workflow_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4455,8 +4455,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4481,7 +4481,7 @@ class WorkflowsApi:
 
         _param = self._patch_workflow_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4490,11 +4490,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4511,7 +4511,7 @@ class WorkflowsApi:
     def patch_workflow_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4531,8 +4531,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4557,7 +4557,7 @@ class WorkflowsApi:
 
         _param = self._patch_workflow_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4566,11 +4566,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4582,7 +4582,7 @@ class WorkflowsApi:
     def _patch_workflow_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -4592,7 +4592,7 @@ class WorkflowsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4611,8 +4611,8 @@ class WorkflowsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -4663,7 +4663,7 @@ class WorkflowsApi:
     def put_workflow_v1(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        workflowbody: Workflowbody,
+        workflow_body: WorkflowBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4683,8 +4683,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param workflowbody: (required)
-        :type workflowbody: Workflowbody
+        :param workflow_body: (required)
+        :type workflow_body: WorkflowBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4709,7 +4709,7 @@ class WorkflowsApi:
 
         _param = self._put_workflow_v1_serialize(
             id=id,
-            workflowbody=workflowbody,
+            workflow_body=workflow_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4718,11 +4718,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4739,7 +4739,7 @@ class WorkflowsApi:
     def put_workflow_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        workflowbody: Workflowbody,
+        workflow_body: WorkflowBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4759,8 +4759,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param workflowbody: (required)
-        :type workflowbody: Workflowbody
+        :param workflow_body: (required)
+        :type workflow_body: WorkflowBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4785,7 +4785,7 @@ class WorkflowsApi:
 
         _param = self._put_workflow_v1_serialize(
             id=id,
-            workflowbody=workflowbody,
+            workflow_body=workflow_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4794,11 +4794,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4815,7 +4815,7 @@ class WorkflowsApi:
     def put_workflow_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Id of the Workflow")],
-        workflowbody: Workflowbody,
+        workflow_body: WorkflowBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4835,8 +4835,8 @@ class WorkflowsApi:
 
         :param id: Id of the Workflow (required)
         :type id: str
-        :param workflowbody: (required)
-        :type workflowbody: Workflowbody
+        :param workflow_body: (required)
+        :type workflow_body: WorkflowBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4861,7 +4861,7 @@ class WorkflowsApi:
 
         _param = self._put_workflow_v1_serialize(
             id=id,
-            workflowbody=workflowbody,
+            workflow_body=workflow_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4870,11 +4870,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workflow",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4886,7 +4886,7 @@ class WorkflowsApi:
     def _put_workflow_v1_serialize(
         self,
         id,
-        workflowbody,
+        workflow_body,
         _request_auth,
         _content_type,
         _headers,
@@ -4914,8 +4914,8 @@ class WorkflowsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if workflowbody is not None:
-            _body_params = workflowbody
+        if workflow_body is not None:
+            _body_params = workflow_body
 
 
         # set the HTTP header `Accept`
@@ -5021,11 +5021,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5097,11 +5097,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5173,11 +5173,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestExternalExecuteWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5324,11 +5324,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5400,11 +5400,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5476,11 +5476,11 @@ class WorkflowsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TestWorkflowV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListWorkflowsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListWorkflowsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

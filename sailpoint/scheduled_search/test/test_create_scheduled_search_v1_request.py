@@ -40,7 +40,7 @@ class TestCreateScheduledSearchV1Request(unittest.TestCase):
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                schedule = sailpoint.scheduled_search.models.schedule.schedule(
+                schedule = sailpoint.scheduled_search.models.schedule.Schedule(
                     type = 'WEEKLY', 
                     months = null, 
                     days = null, 
@@ -48,7 +48,7 @@ class TestCreateScheduledSearchV1Request(unittest.TestCase):
                     expiration = '2018-06-25T20:22:28.104Z', 
                     time_zone_id = 'America/Chicago', ),
                 recipients = [
-                    sailpoint.scheduled_search.models.searchschedule_recipients_inner.searchschedule_recipients_inner(
+                    sailpoint.scheduled_search.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
                         id = '2c9180867624cbd7017642d8c8c81f67', )
                     ],
@@ -59,7 +59,7 @@ class TestCreateScheduledSearchV1Request(unittest.TestCase):
         else:
             return CreateScheduledSearchV1Request(
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
-                schedule = sailpoint.scheduled_search.models.schedule.schedule(
+                schedule = sailpoint.scheduled_search.models.schedule.Schedule(
                     type = 'WEEKLY', 
                     months = null, 
                     days = null, 
@@ -67,7 +67,7 @@ class TestCreateScheduledSearchV1Request(unittest.TestCase):
                     expiration = '2018-06-25T20:22:28.104Z', 
                     time_zone_id = 'America/Chicago', ),
                 recipients = [
-                    sailpoint.scheduled_search.models.searchschedule_recipients_inner.searchschedule_recipients_inner(
+                    sailpoint.scheduled_search.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
                         id = '2c9180867624cbd7017642d8c8c81f67', )
                     ],

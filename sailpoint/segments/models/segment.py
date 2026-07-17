@@ -21,7 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.segments.models.ownerreferencesegments import Ownerreferencesegments
+from sailpoint.segments.models.owner_reference_segments import OwnerReferenceSegments
 from sailpoint.segments.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,7 +35,7 @@ class Segment(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The time when the segment is created.")
     modified: Optional[datetime] = Field(default=None, description="The time when the segment is modified.")
     description: Optional[StrictStr] = Field(default=None, description="The segment's optional description.")
-    owner: Optional[Ownerreferencesegments] = None
+    owner: Optional[OwnerReferenceSegments] = None
     visibility_criteria: Optional[SegmentVisibilityCriteria] = Field(default=None, alias="visibilityCriteria")
     active: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is currently active. Inactive segments have no effect.")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "visibilityCriteria", "active"]
@@ -107,7 +107,7 @@ class Segment(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner": Ownerreferencesegments.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": OwnerReferenceSegments.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "visibilityCriteria": SegmentVisibilityCriteria.from_dict(obj["visibilityCriteria"]) if obj.get("visibilityCriteria") is not None else None,
             "active": obj.get("active") if obj.get("active") is not None else False
         })

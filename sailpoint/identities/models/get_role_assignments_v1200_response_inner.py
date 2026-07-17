@@ -19,28 +19,28 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from sailpoint.identities.models.roleassignmentdto import Roleassignmentdto
-from sailpoint.identities.models.roleassignmentref import Roleassignmentref
+from sailpoint.identities.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.identities.models.role_assignment_ref import RoleAssignmentRef
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-GETROLEASSIGNMENTSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["Roleassignmentdto", "Roleassignmentref"]
+GETROLEASSIGNMENTSV1200RESPONSEINNER_ANY_OF_SCHEMAS = ["RoleAssignmentDto", "RoleAssignmentRef"]
 
 class GetRoleAssignmentsV1200ResponseInner(BaseModel):
     """
     GetRoleAssignmentsV1200ResponseInner
     """
 
-    # data type: Roleassignmentref
-    anyof_schema_1_validator: Optional[Roleassignmentref] = None
-    # data type: Roleassignmentdto
-    anyof_schema_2_validator: Optional[Roleassignmentdto] = None
+    # data type: RoleAssignmentRef
+    anyof_schema_1_validator: Optional[RoleAssignmentRef] = None
+    # data type: RoleAssignmentDto
+    anyof_schema_2_validator: Optional[RoleAssignmentDto] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Roleassignmentdto, Roleassignmentref]] = None
+        actual_instance: Optional[Union[RoleAssignmentDto, RoleAssignmentRef]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Roleassignmentdto", "Roleassignmentref" }
+    any_of_schemas: Set[str] = { "RoleAssignmentDto", "RoleAssignmentRef" }
 
     model_config = {
         "validate_assignment": True,
@@ -61,21 +61,21 @@ class GetRoleAssignmentsV1200ResponseInner(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = GetRoleAssignmentsV1200ResponseInner.model_construct()
         error_messages = []
-        # validate data type: Roleassignmentref
-        if not isinstance(v, Roleassignmentref):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Roleassignmentref`")
+        # validate data type: RoleAssignmentRef
+        if not isinstance(v, RoleAssignmentRef):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `RoleAssignmentRef`")
         else:
             return v
 
-        # validate data type: Roleassignmentdto
-        if not isinstance(v, Roleassignmentdto):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Roleassignmentdto`")
+        # validate data type: RoleAssignmentDto
+        if not isinstance(v, RoleAssignmentDto):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `RoleAssignmentDto`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in GetRoleAssignmentsV1200ResponseInner with anyOf schemas: Roleassignmentdto, Roleassignmentref. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetRoleAssignmentsV1200ResponseInner with anyOf schemas: RoleAssignmentDto, RoleAssignmentRef. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,22 +88,22 @@ class GetRoleAssignmentsV1200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[Roleassignmentref] = None
+        # anyof_schema_1_validator: Optional[RoleAssignmentRef] = None
         try:
-            instance.actual_instance = Roleassignmentref.from_json(json_str)
+            instance.actual_instance = RoleAssignmentRef.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[Roleassignmentdto] = None
+        # anyof_schema_2_validator: Optional[RoleAssignmentDto] = None
         try:
-            instance.actual_instance = Roleassignmentdto.from_json(json_str)
+            instance.actual_instance = RoleAssignmentDto.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetRoleAssignmentsV1200ResponseInner with anyOf schemas: Roleassignmentdto, Roleassignmentref. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetRoleAssignmentsV1200ResponseInner with anyOf schemas: RoleAssignmentDto, RoleAssignmentRef. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +117,7 @@ class GetRoleAssignmentsV1200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Roleassignmentdto, Roleassignmentref]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], RoleAssignmentDto, RoleAssignmentRef]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

@@ -14,11 +14,11 @@
 
 
 # import models into model package
-from sailpoint.identity_attributes.models.errormessagedto import Errormessagedto
-from sailpoint.identity_attributes.models.errorresponsedto import Errorresponsedto
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
-from sailpoint.identity_attributes.models.identityattributenames import Identityattributenames
+from sailpoint.identity_attributes.models.error_message_dto import ErrorMessageDto
+from sailpoint.identity_attributes.models.error_response_dto import ErrorResponseDto
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
+from sailpoint.identity_attributes.models.identity_attribute_names import IdentityAttributeNames
 from sailpoint.identity_attributes.models.list_identity_attributes_v1401_response import ListIdentityAttributesV1401Response
 from sailpoint.identity_attributes.models.list_identity_attributes_v1429_response import ListIdentityAttributesV1429Response
-from sailpoint.identity_attributes.models.localeorigin import Localeorigin
+from sailpoint.identity_attributes.models.locale_origin import LocaleOrigin
 from sailpoint.identity_attributes.models.source2 import Source2

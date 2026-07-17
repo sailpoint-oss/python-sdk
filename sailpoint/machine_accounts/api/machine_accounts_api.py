@@ -20,8 +20,8 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.machine_accounts.models.create_machine_account_subtype_v1_request import CreateMachineAccountSubtypeV1Request
-from sailpoint.machine_accounts.models.machineaccount import Machineaccount
-from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+from sailpoint.machine_accounts.models.machine_account import MachineAccount
+from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
 
 from sailpoint.machine_accounts.api_client import ApiClient, RequestSerialized
 from sailpoint.machine_accounts.api_response import ApiResponse
@@ -59,7 +59,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtype:
+    ) -> SourceSubtype:
         """(Deprecated) Create subtype
 
         Create a new machine account subtype for a source.
@@ -104,12 +104,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -140,7 +140,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtype]:
+    ) -> ApiResponse[SourceSubtype]:
         """(Deprecated) Create subtype
 
         Create a new machine account subtype for a source.
@@ -185,12 +185,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -266,12 +266,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '201': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -426,11 +426,11 @@ class MachineAccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,11 +507,11 @@ class MachineAccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -588,11 +588,11 @@ class MachineAccountsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -687,7 +687,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtype:
+    ) -> SourceSubtype:
         """(Deprecated) Retrieve subtype by subtype id
 
         Get a machine account subtype by its unique ID.
@@ -729,12 +729,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -764,7 +764,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtype]:
+    ) -> ApiResponse[SourceSubtype]:
         """(Deprecated) Retrieve subtype by subtype id
 
         Get a machine account subtype by its unique ID.
@@ -806,12 +806,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -883,12 +883,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -981,7 +981,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtype:
+    ) -> SourceSubtype:
         """(Deprecated) Retrieve subtype by source and technicalName
 
         Get a machine account subtype by source ID and technical name.
@@ -1026,12 +1026,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1062,7 +1062,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtype]:
+    ) -> ApiResponse[SourceSubtype]:
         """(Deprecated) Retrieve subtype by source and technicalName
 
         Get a machine account subtype by source ID and technical name.
@@ -1107,12 +1107,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1188,12 +1188,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1288,7 +1288,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineaccount:
+    ) -> MachineAccount:
         """Get machine account details
 
         Use this API to return the details for a single machine account by its ID.  
@@ -1329,13 +1329,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1365,7 +1365,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineaccount]:
+    ) -> ApiResponse[MachineAccount]:
         """Get machine account details
 
         Use this API to return the details for a single machine account by its ID.  
@@ -1406,13 +1406,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1483,13 +1483,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1586,7 +1586,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Sourcesubtype]:
+    ) -> List[SourceSubtype]:
         """(Deprecated) Retrieve all subtypes by source
 
         Get all machine account subtypes for a given source.
@@ -1643,12 +1643,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtype]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtype]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1683,7 +1683,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Sourcesubtype]]:
+    ) -> ApiResponse[List[SourceSubtype]]:
         """(Deprecated) Retrieve all subtypes by source
 
         Get all machine account subtypes for a given source.
@@ -1740,12 +1740,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtype]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtype]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1837,12 +1837,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Sourcesubtype]",
-            '400': "Errorresponsedto",
+            '200': "List[SourceSubtype]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1963,7 +1963,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Machineaccount]:
+    ) -> List[MachineAccount]:
         """List machine accounts
 
         This returns a list of machine accounts.  
@@ -2016,13 +2016,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccount]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccount]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2056,7 +2056,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Machineaccount]]:
+    ) -> ApiResponse[List[MachineAccount]]:
         """List machine accounts
 
         This returns a list of machine accounts.  
@@ -2109,13 +2109,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccount]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccount]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2202,13 +2202,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Machineaccount]",
-            '400': "Errorresponsedto",
+            '200': "List[MachineAccount]",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2324,7 +2324,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Sourcesubtype:
+    ) -> SourceSubtype:
         """(Deprecated) Patch subtype
 
         Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
@@ -2372,12 +2372,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2409,7 +2409,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Sourcesubtype]:
+    ) -> ApiResponse[SourceSubtype]:
         """(Deprecated) Patch subtype
 
         Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
@@ -2457,12 +2457,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2542,12 +2542,12 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Sourcesubtype",
-            '400': "Errorresponsedto",
+            '200': "SourceSubtype",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2660,7 +2660,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineaccount:
+    ) -> MachineAccount:
         """Update machine account details
 
         Use this API to update machine accounts details.  
@@ -2704,13 +2704,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2741,7 +2741,7 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineaccount]:
+    ) -> ApiResponse[MachineAccount]:
         """Update machine account details
 
         Use this API to update machine accounts details.  
@@ -2785,13 +2785,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2866,13 +2866,13 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineaccount",
-            '400': "Errorresponsedto",
+            '200': "MachineAccount",
+            '400': "ErrorResponseDto",
             '401': "ListMachineAccountsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListMachineAccountsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -48,11 +48,11 @@ with sailpoint.machine_account_mappings.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.machine_account_mappings.MachineAccountMappingsApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID.
-    attributemappings = sailpoint.machine_account_mappings.Attributemappings() # Attributemappings | 
+    attribute_mappings = sailpoint.machine_account_mappings.AttributeMappings() # AttributeMappings | 
 
     try:
         # Create machine account mappings
-        api_response = api_instance.create_machine_account_mappings_v1(source_id, attributemappings)
+        api_response = api_instance.create_machine_account_mappings_v1(source_id, attribute_mappings)
         print("The response of MachineAccountMappingsApi->create_machine_account_mappings_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,17 +74,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Attributemappings](sailpoint/machine_account_mappings/docs/Attributemappings.md)
- - [AttributemappingsAllOfTarget](sailpoint/machine_account_mappings/docs/AttributemappingsAllOfTarget.md)
- - [AttributemappingsAllOfTransformDefinition](sailpoint/machine_account_mappings/docs/AttributemappingsAllOfTransformDefinition.md)
- - [AttributemappingsAllOfTransformDefinitionAttributes](sailpoint/machine_account_mappings/docs/AttributemappingsAllOfTransformDefinitionAttributes.md)
- - [AttributemappingsAllOfTransformDefinitionAttributesInput](sailpoint/machine_account_mappings/docs/AttributemappingsAllOfTransformDefinitionAttributesInput.md)
- - [AttributemappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint/machine_account_mappings/docs/AttributemappingsAllOfTransformDefinitionAttributesInputAttributes.md)
- - [Errormessagedto](sailpoint/machine_account_mappings/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/machine_account_mappings/docs/Errorresponsedto.md)
+ - [AttributeMappings](sailpoint/machine_account_mappings/docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](sailpoint/machine_account_mappings/docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](sailpoint/machine_account_mappings/docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](sailpoint/machine_account_mappings/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](sailpoint/machine_account_mappings/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint/machine_account_mappings/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
+ - [ErrorMessageDto](sailpoint/machine_account_mappings/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/machine_account_mappings/docs/ErrorResponseDto.md)
  - [ListMachineAccountMappingsV1401Response](sailpoint/machine_account_mappings/docs/ListMachineAccountMappingsV1401Response.md)
  - [ListMachineAccountMappingsV1429Response](sailpoint/machine_account_mappings/docs/ListMachineAccountMappingsV1429Response.md)
- - [Localeorigin](sailpoint/machine_account_mappings/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/machine_account_mappings/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

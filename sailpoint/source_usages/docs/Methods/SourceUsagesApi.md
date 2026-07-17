@@ -35,17 +35,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | ID of IDN source
 
 ### Return type
-[**Sourceusagestatus**](../models/sourceusagestatus)
+[**SourceUsageStatus**](../models/source-usage-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the source usage insights setup by IDN source ID. | Sourceusagestatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the source usage insights setup by IDN source ID. | SourceUsageStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetStatusBySourceIdV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetStatusBySourceIdV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -56,7 +56,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.source_usages.api.source_usages_api import SourceUsagesApi
 from sailpoint.source_usages.api_client import ApiClient
-from sailpoint.source_usages.models.sourceusagestatus import Sourceusagestatus
+from sailpoint.source_usages.models.source_usage_status import SourceUsageStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -97,17 +97,17 @@ Path   | source_id | **str** | True  | ID of IDN source
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**
 
 ### Return type
-[**List[Sourceusage]**](../models/sourceusage)
+[**List[SourceUsage]**](../models/source-usage)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Summary of source usage insights for past 12 months. | List[Sourceusage] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Summary of source usage insights for past 12 months. | List[SourceUsage] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetStatusBySourceIdV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetStatusBySourceIdV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -118,7 +118,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.source_usages.api.source_usages_api import SourceUsagesApi
 from sailpoint.source_usages.api_client import ApiClient
-from sailpoint.source_usages.models.sourceusage import Sourceusage
+from sailpoint.source_usages.models.source_usage import SourceUsage
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

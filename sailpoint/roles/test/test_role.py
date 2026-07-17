@@ -40,43 +40,43 @@ class TestRole(unittest.TestCase):
                 created = '2021-03-01T22:32:58.104Z',
                 modified = '2021-03-02T20:22:28.104Z',
                 description = 'Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.',
-                owner = sailpoint.roles.models.ownerreference.ownerreference(
+                owner = sailpoint.roles.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
                 additional_owners = [
-                    sailpoint.roles.models.additionalownerref.additionalownerref(
+                    sailpoint.roles.models.additional_owner_ref.AdditionalOwnerRef(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'support', )
                     ],
                 access_profiles = [
-                    sailpoint.roles.models.accessprofileref.accessprofileref(
+                    sailpoint.roles.models.access_profile_ref.AccessProfileRef(
                         id = 'ff808081751e6e129f1518161919ecca', 
                         type = 'ACCESS_PROFILE', 
                         name = 'Access Profile 2567', )
                     ],
                 entitlements = [
-                    sailpoint.roles.models.entitlementref.entitlementref(
+                    sailpoint.roles.models.entitlement_ref.EntitlementRef(
                         type = 'ENTITLEMENT', 
                         id = '2c91809773dee32014e13e122092014e', 
                         name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local', )
                     ],
-                membership = sailpoint.roles.models.rolemembershipselector.rolemembershipselector(
+                membership = sailpoint.roles.models.role_membership_selector.RoleMembershipSelector(
                     type = 'IDENTITY_LIST', 
-                    criteria = sailpoint.roles.models.rolecriterialevel1.rolecriterialevel1(
+                    criteria = sailpoint.roles.models.role_criteria_level1.RoleCriteriaLevel1(
                         operation = 'EQUALS', 
-                        key = sailpoint.roles.models.rolecriteriakey.rolecriteriakey(
+                        key = sailpoint.roles.models.role_criteria_key.RoleCriteriaKey(
                             type = 'ACCOUNT', 
                             property = 'attribute.email', 
                             source_id = '2c9180867427f3a301745aec18211519', ), 
                         string_value = 'carlee.cert1c9f9b6fd@mailinator.com', 
                         children = [
-                            sailpoint.roles.models.rolecriterialevel2.rolecriterialevel2(
+                            sailpoint.roles.models.role_criteria_level2.RoleCriteriaLevel2(
                                 string_value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                             ], ), 
                     identities = [
-                        sailpoint.roles.models.rolemembershipidentity.rolemembershipidentity(
+                        sailpoint.roles.models.role_membership_identity.RoleMembershipIdentity(
                             id = '2c9180a46faadee4016fb4e018c20639', 
                             name = 'Thomas Edison', 
                             alias_name = 't.edison', )
@@ -84,51 +84,51 @@ class TestRole(unittest.TestCase):
                 legacy_membership_info = {"type":"IDENTITY_LIST"},
                 enabled = True,
                 requestable = True,
-                access_request_config = sailpoint.roles.models.requestabilityforrole.requestabilityforrole(
+                access_request_config = sailpoint.roles.models.requestability_for_role.RequestabilityForRole(
                     comments_required = True, 
                     denial_comments_required = True, 
                     reauthorization_required = True, 
                     require_end_date = True, 
-                    max_permitted_access_duration = sailpoint.roles.models.accessduration.accessduration(
+                    max_permitted_access_duration = sailpoint.roles.models.access_duration.AccessDuration(
                         value = 6, 
                         time_unit = 'MONTHS', ), 
                     approval_schemes = [
-                        sailpoint.roles.models.approvalschemeforrole.approvalschemeforrole(
+                        sailpoint.roles.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], 
-                    dimension_schema = sailpoint.roles.models.dimensionschema.dimensionschema(
+                    dimension_schema = sailpoint.roles.models.dimension_schema.DimensionSchema(
                         dimension_attributes = [
-                            sailpoint.roles.models.dimensionattribute.dimensionattribute(
+                            sailpoint.roles.models.dimension_attribute.DimensionAttribute(
                                 name = 'city', 
                                 display_name = 'City', 
                                 derived = True, )
                             ], ), 
                     form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d', ),
-                revocation_request_config = sailpoint.roles.models.revocabilityforrole.revocabilityforrole(
+                revocation_request_config = sailpoint.roles.models.revocability_for_role.RevocabilityForRole(
                     comments_required = False, 
                     denial_comments_required = False, 
                     approval_schemes = [
-                        sailpoint.roles.models.approvalschemeforrole.approvalschemeforrole(
+                        sailpoint.roles.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
                 segments = ["f7b1b8a3-5fed-4fd4-ad29-82014e137e19","29cb6c06-1da8-43ea-8be4-b3125f248f2a"],
                 dimensional = True,
                 dimension_refs = [
-                    sailpoint.roles.models.dimensionref.dimensionref(
+                    sailpoint.roles.models.dimension_ref.DimensionRef(
                         type = 'DIMENSION', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'Role 2', )
                     ],
-                access_model_metadata = sailpoint.roles.models.attributedtolist.attributedtolist(
+                access_model_metadata = sailpoint.roles.models.attribute_dto_list.AttributeDTOList(
                     attributes = [{"key":"iscPrivacy","name":"Privacy","multiselect":false,"status":"active","type":"governance","objectTypes":["all"],"description":"Specifies the level of privacy associated with an access item.","values":[{"value":"public","name":"Public","status":"active"}]}], ),
                 privilege_level = 'High'
             )
         else:
             return Role(
                 name = 'Role 2567',
-                owner = sailpoint.roles.models.ownerreference.ownerreference(
+                owner = sailpoint.roles.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),

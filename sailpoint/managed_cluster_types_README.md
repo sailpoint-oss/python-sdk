@@ -47,11 +47,11 @@ configuration = sailpoint.managed_cluster_types.Configuration(
 with sailpoint.managed_cluster_types.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.managed_cluster_types.ManagedClusterTypesApi(api_client)
-    managedclustertype = sailpoint.managed_cluster_types.Managedclustertype() # Managedclustertype | 
+    managed_cluster_type = sailpoint.managed_cluster_types.ManagedClusterType() # ManagedClusterType | 
 
     try:
         # Create new managed cluster type
-        api_response = api_instance.create_managed_cluster_type_v1(managedclustertype)
+        api_response = api_instance.create_managed_cluster_type_v1(managed_cluster_type)
         print("The response of ManagedClusterTypesApi->create_managed_cluster_type_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -75,15 +75,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/managed_cluster_types/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/managed_cluster_types/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/managed_cluster_types/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/managed_cluster_types/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/managed_cluster_types/docs/ErrorResponseDto.md)
  - [GetManagedClusterTypesV1401Response](sailpoint/managed_cluster_types/docs/GetManagedClusterTypesV1401Response.md)
  - [GetManagedClusterTypesV1429Response](sailpoint/managed_cluster_types/docs/GetManagedClusterTypesV1429Response.md)
- - [Jsonpatch](sailpoint/managed_cluster_types/docs/Jsonpatch.md)
- - [Jsonpatchoperation](sailpoint/managed_cluster_types/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/managed_cluster_types/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/managed_cluster_types/docs/Localeorigin.md)
- - [Managedclustertype](sailpoint/managed_cluster_types/docs/Managedclustertype.md)
+ - [JsonPatch](sailpoint/managed_cluster_types/docs/JsonPatch.md)
+ - [JsonPatchOperation](sailpoint/managed_cluster_types/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/managed_cluster_types/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/managed_cluster_types/docs/LocaleOrigin.md)
+ - [ManagedClusterType](sailpoint/managed_cluster_types/docs/ManagedClusterType.md)
 
 
 <a id="documentation-for-authorization"></a>

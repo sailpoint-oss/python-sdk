@@ -32,17 +32,17 @@ from sailpoint.connectors.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.connectors.models.array_inner import ArrayInner
-from sailpoint.connectors.models.connectordetail import Connectordetail
-from sailpoint.connectors.models.errormessagedto import Errormessagedto
-from sailpoint.connectors.models.errorresponsedto import Errorresponsedto
+from sailpoint.connectors.models.connector_detail import ConnectorDetail
+from sailpoint.connectors.models.error_message_dto import ErrorMessageDto
+from sailpoint.connectors.models.error_response_dto import ErrorResponseDto
 from sailpoint.connectors.models.get_connector_v1401_response import GetConnectorV1401Response
 from sailpoint.connectors.models.get_connector_v1429_response import GetConnectorV1429Response
-from sailpoint.connectors.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.connectors.models.jsonpatchoperation_value import JsonpatchoperationValue
-from sailpoint.connectors.models.localeorigin import Localeorigin
+from sailpoint.connectors.models.json_patch_operation import JsonPatchOperation
+from sailpoint.connectors.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.connectors.models.locale_origin import LocaleOrigin
 from sailpoint.connectors.models.put_connector_correlation_config_v1_request import PutConnectorCorrelationConfigV1Request
 from sailpoint.connectors.models.put_connector_source_config_v1_request import PutConnectorSourceConfigV1Request
 from sailpoint.connectors.models.put_connector_source_template_v1_request import PutConnectorSourceTemplateV1Request
-from sailpoint.connectors.models.updatedetail import Updatedetail
-from sailpoint.connectors.models.v3connectordto import V3connectordto
-from sailpoint.connectors.models.v3createconnectordto import V3createconnectordto
+from sailpoint.connectors.models.update_detail import UpdateDetail
+from sailpoint.connectors.models.v3_connector_dto import V3ConnectorDto
+from sailpoint.connectors.models.v3_create_connector_dto import V3CreateConnectorDto

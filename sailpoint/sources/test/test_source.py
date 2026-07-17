@@ -38,28 +38,28 @@ class TestSource(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
                 description = 'This is the corporate directory.',
-                owner = sailpoint.sources.models.source_owner.source_owner(
+                owner = sailpoint.sources.models.source_owner.Source_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
-                cluster = sailpoint.sources.models.source_cluster.source_cluster(
+                cluster = sailpoint.sources.models.source_cluster.Source_cluster(
                     type = 'CLUSTER', 
                     id = '2c9180866166b5b0016167c32ef31a66', 
                     name = 'Corporate Cluster', ),
-                account_correlation_config = sailpoint.sources.models.source_account_correlation_config.source_accountCorrelationConfig(
+                account_correlation_config = sailpoint.sources.models.source_account_correlation_config.Source_accountCorrelationConfig(
                     type = 'ACCOUNT_CORRELATION_CONFIG', 
                     id = '2c9180855d191c59015d28583727245a', 
                     name = 'Directory [source-62867] Account Correlation', ),
-                account_correlation_rule = sailpoint.sources.models.source_account_correlation_rule.source_accountCorrelationRule(
+                account_correlation_rule = sailpoint.sources.models.source_account_correlation_rule.Source_accountCorrelationRule(
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
                 manager_correlation_mapping = None,
-                manager_correlation_rule = sailpoint.sources.models.source_manager_correlation_rule.source_managerCorrelationRule(
+                manager_correlation_rule = sailpoint.sources.models.source_manager_correlation_rule.Source_managerCorrelationRule(
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
-                before_provisioning_rule = sailpoint.sources.models.source_before_provisioning_rule.source_beforeProvisioningRule(
+                before_provisioning_rule = sailpoint.sources.models.source_before_provisioning_rule.Source_beforeProvisioningRule(
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
@@ -72,7 +72,7 @@ class TestSource(unittest.TestCase):
                 connector_attributes = {"healthCheckTimeout":30,"authSearchAttributes":["cn","uid","mail"]},
                 delete_threshold = 10,
                 authoritative = False,
-                management_workgroup = sailpoint.sources.models.source_management_workgroup.source_managementWorkgroup(
+                management_workgroup = sailpoint.sources.models.source_management_workgroup.Source_managementWorkgroup(
                     type = 'GOVERNANCE_GROUP', 
                     id = '2c91808568c529c60168cca6f90c2222', 
                     name = 'My Management Workgroup', ),
@@ -91,7 +91,7 @@ class TestSource(unittest.TestCase):
         else:
             return Source(
                 name = 'My Source',
-                owner = sailpoint.sources.models.source_owner.source_owner(
+                owner = sailpoint.sources.models.source_owner.Source_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),

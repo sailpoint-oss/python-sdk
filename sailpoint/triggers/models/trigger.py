@@ -22,7 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.triggers.models.trigger_example_input import TriggerExampleInput
 from sailpoint.triggers.models.trigger_example_output import TriggerExampleOutput
-from sailpoint.triggers.models.triggertype import Triggertype
+from sailpoint.triggers.models.trigger_type import TriggerType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class Trigger(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="Unique identifier of the trigger.")
     name: StrictStr = Field(description="Trigger Name.")
-    type: Triggertype
+    type: TriggerType
     description: Optional[StrictStr] = Field(default=None, description="Trigger Description.")
     input_schema: StrictStr = Field(description="The JSON schema of the payload that will be sent by the trigger to the subscribed service.", alias="inputSchema")
     example_input: TriggerExampleInput = Field(alias="exampleInput")

@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.iai_recommendations.models.recommendationconfigdto import Recommendationconfigdto
-from sailpoint.iai_recommendations.models.recommendationrequestdto import Recommendationrequestdto
-from sailpoint.iai_recommendations.models.recommendationresponsedto import Recommendationresponsedto
+from sailpoint.iai_recommendations.models.recommendation_config_dto import RecommendationConfigDto
+from sailpoint.iai_recommendations.models.recommendation_request_dto import RecommendationRequestDto
+from sailpoint.iai_recommendations.models.recommendation_response_dto import RecommendationResponseDto
 
 from sailpoint.iai_recommendations.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_recommendations.api_response import ApiResponse
@@ -57,7 +57,7 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Recommendationconfigdto:
+    ) -> RecommendationConfigDto:
         """Get certification recommendation config values
 
         Retrieves configuration attributes used by certification recommendations.
@@ -95,12 +95,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Recommendationconfigdto]:
+    ) -> ApiResponse[RecommendationConfigDto]:
         """Get certification recommendation config values
 
         Retrieves configuration attributes used by certification recommendations.
@@ -167,12 +167,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,12 +239,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -319,7 +319,7 @@ class IAIRecommendationsApi:
     @validate_call
     def get_recommendations_v1(
         self,
-        recommendationrequestdto: Recommendationrequestdto,
+        recommendation_request_dto: RecommendationRequestDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -333,13 +333,13 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Recommendationresponsedto:
+    ) -> RecommendationResponseDto:
         """Returns recommendation based on object
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
-        :param recommendationrequestdto: (required)
-        :type recommendationrequestdto: Recommendationrequestdto
+        :param recommendation_request_dto: (required)
+        :type recommendation_request_dto: RecommendationRequestDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -365,7 +365,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._get_recommendations_v1_serialize(
-            recommendationrequestdto=recommendationrequestdto,
+            recommendation_request_dto=recommendation_request_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -374,12 +374,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationresponsedto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -395,7 +395,7 @@ class IAIRecommendationsApi:
     @validate_call
     def get_recommendations_v1_with_http_info(
         self,
-        recommendationrequestdto: Recommendationrequestdto,
+        recommendation_request_dto: RecommendationRequestDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -409,13 +409,13 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Recommendationresponsedto]:
+    ) -> ApiResponse[RecommendationResponseDto]:
         """Returns recommendation based on object
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
-        :param recommendationrequestdto: (required)
-        :type recommendationrequestdto: Recommendationrequestdto
+        :param recommendation_request_dto: (required)
+        :type recommendation_request_dto: RecommendationRequestDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -441,7 +441,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._get_recommendations_v1_serialize(
-            recommendationrequestdto=recommendationrequestdto,
+            recommendation_request_dto=recommendation_request_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -450,12 +450,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationresponsedto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -471,7 +471,7 @@ class IAIRecommendationsApi:
     @validate_call
     def get_recommendations_v1_without_preload_content(
         self,
-        recommendationrequestdto: Recommendationrequestdto,
+        recommendation_request_dto: RecommendationRequestDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -490,8 +490,8 @@ class IAIRecommendationsApi:
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
-        :param recommendationrequestdto: (required)
-        :type recommendationrequestdto: Recommendationrequestdto
+        :param recommendation_request_dto: (required)
+        :type recommendation_request_dto: RecommendationRequestDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -517,7 +517,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._get_recommendations_v1_serialize(
-            recommendationrequestdto=recommendationrequestdto,
+            recommendation_request_dto=recommendation_request_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -526,12 +526,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationresponsedto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationResponseDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -542,7 +542,7 @@ class IAIRecommendationsApi:
 
     def _get_recommendations_v1_serialize(
         self,
-        recommendationrequestdto,
+        recommendation_request_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -571,8 +571,8 @@ class IAIRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if recommendationrequestdto is not None:
-            _body_params = recommendationrequestdto
+        if recommendation_request_dto is not None:
+            _body_params = recommendation_request_dto
 
 
         # set the HTTP header `Accept`
@@ -622,7 +622,7 @@ class IAIRecommendationsApi:
     @validate_call
     def update_recommendations_config_v1(
         self,
-        recommendationconfigdto: Recommendationconfigdto,
+        recommendation_config_dto: RecommendationConfigDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -636,13 +636,13 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Recommendationconfigdto:
+    ) -> RecommendationConfigDto:
         """Update certification recommendation config values
 
         Updates configuration attributes used by certification recommendations.
 
-        :param recommendationconfigdto: (required)
-        :type recommendationconfigdto: Recommendationconfigdto
+        :param recommendation_config_dto: (required)
+        :type recommendation_config_dto: RecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -668,7 +668,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._update_recommendations_config_v1_serialize(
-            recommendationconfigdto=recommendationconfigdto,
+            recommendation_config_dto=recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -677,12 +677,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,7 +698,7 @@ class IAIRecommendationsApi:
     @validate_call
     def update_recommendations_config_v1_with_http_info(
         self,
-        recommendationconfigdto: Recommendationconfigdto,
+        recommendation_config_dto: RecommendationConfigDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -712,13 +712,13 @@ class IAIRecommendationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Recommendationconfigdto]:
+    ) -> ApiResponse[RecommendationConfigDto]:
         """Update certification recommendation config values
 
         Updates configuration attributes used by certification recommendations.
 
-        :param recommendationconfigdto: (required)
-        :type recommendationconfigdto: Recommendationconfigdto
+        :param recommendation_config_dto: (required)
+        :type recommendation_config_dto: RecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -744,7 +744,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._update_recommendations_config_v1_serialize(
-            recommendationconfigdto=recommendationconfigdto,
+            recommendation_config_dto=recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -753,12 +753,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -774,7 +774,7 @@ class IAIRecommendationsApi:
     @validate_call
     def update_recommendations_config_v1_without_preload_content(
         self,
-        recommendationconfigdto: Recommendationconfigdto,
+        recommendation_config_dto: RecommendationConfigDto,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -793,8 +793,8 @@ class IAIRecommendationsApi:
 
         Updates configuration attributes used by certification recommendations.
 
-        :param recommendationconfigdto: (required)
-        :type recommendationconfigdto: Recommendationconfigdto
+        :param recommendation_config_dto: (required)
+        :type recommendation_config_dto: RecommendationConfigDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -820,7 +820,7 @@ class IAIRecommendationsApi:
         """ # noqa: E501
 
         _param = self._update_recommendations_config_v1_serialize(
-            recommendationconfigdto=recommendationconfigdto,
+            recommendation_config_dto=recommendation_config_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -829,12 +829,12 @@ class IAIRecommendationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Recommendationconfigdto",
-            '400': "Errorresponsedto",
+            '200': "RecommendationConfigDto",
+            '400': "ErrorResponseDto",
             '401': "GetRecommendationsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRecommendationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -845,7 +845,7 @@ class IAIRecommendationsApi:
 
     def _update_recommendations_config_v1_serialize(
         self,
-        recommendationconfigdto,
+        recommendation_config_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -874,8 +874,8 @@ class IAIRecommendationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if recommendationconfigdto is not None:
-            _body_params = recommendationconfigdto
+        if recommendation_config_dto is not None:
+            _body_params = recommendation_config_dto
 
 
         # set the HTTP header `Accept`

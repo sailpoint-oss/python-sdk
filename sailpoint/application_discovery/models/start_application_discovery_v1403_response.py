@@ -17,24 +17,24 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from sailpoint.application_discovery.models.errorresponsedto import Errorresponsedto
+from sailpoint.application_discovery.models.error_response_dto import ErrorResponseDto
 from sailpoint.application_discovery.models.start_application_discovery_v1403_response_one_of import StartApplicationDiscoveryV1403ResponseOneOf
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-STARTAPPLICATIONDISCOVERYV1403RESPONSE_ONE_OF_SCHEMAS = ["Errorresponsedto", "StartApplicationDiscoveryV1403ResponseOneOf"]
+STARTAPPLICATIONDISCOVERYV1403RESPONSE_ONE_OF_SCHEMAS = ["ErrorResponseDto", "StartApplicationDiscoveryV1403ResponseOneOf"]
 
 class StartApplicationDiscoveryV1403Response(BaseModel):
     """
     StartApplicationDiscoveryV1403Response
     """
-    # data type: Errorresponsedto
-    oneof_schema_1_validator: Optional[Errorresponsedto] = None
+    # data type: ErrorResponseDto
+    oneof_schema_1_validator: Optional[ErrorResponseDto] = None
     # data type: StartApplicationDiscoveryV1403ResponseOneOf
     oneof_schema_2_validator: Optional[StartApplicationDiscoveryV1403ResponseOneOf] = None
-    actual_instance: Optional[Union[Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf]] = None
-    one_of_schemas: Set[str] = { "Errorresponsedto", "StartApplicationDiscoveryV1403ResponseOneOf" }
+    actual_instance: Optional[Union[ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf]] = None
+    one_of_schemas: Set[str] = { "ErrorResponseDto", "StartApplicationDiscoveryV1403ResponseOneOf" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -57,9 +57,9 @@ class StartApplicationDiscoveryV1403Response(BaseModel):
         instance = StartApplicationDiscoveryV1403Response.model_construct()
         error_messages = []
         match = 0
-        # validate data type: Errorresponsedto
-        if not isinstance(v, Errorresponsedto):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Errorresponsedto`")
+        # validate data type: ErrorResponseDto
+        if not isinstance(v, ErrorResponseDto):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ErrorResponseDto`")
         else:
             match += 1
         # validate data type: StartApplicationDiscoveryV1403ResponseOneOf
@@ -69,10 +69,10 @@ class StartApplicationDiscoveryV1403Response(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in StartApplicationDiscoveryV1403Response with oneOf schemas: Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in StartApplicationDiscoveryV1403Response with oneOf schemas: ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in StartApplicationDiscoveryV1403Response with oneOf schemas: Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in StartApplicationDiscoveryV1403Response with oneOf schemas: ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -87,9 +87,9 @@ class StartApplicationDiscoveryV1403Response(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into Errorresponsedto
+        # deserialize data into ErrorResponseDto
         try:
-            instance.actual_instance = Errorresponsedto.from_json(json_str)
+            instance.actual_instance = ErrorResponseDto.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -102,10 +102,10 @@ class StartApplicationDiscoveryV1403Response(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into StartApplicationDiscoveryV1403Response with oneOf schemas: Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into StartApplicationDiscoveryV1403Response with oneOf schemas: ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into StartApplicationDiscoveryV1403Response with oneOf schemas: Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into StartApplicationDiscoveryV1403Response with oneOf schemas: ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -119,7 +119,7 @@ class StartApplicationDiscoveryV1403Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Errorresponsedto, StartApplicationDiscoveryV1403ResponseOneOf]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], ErrorResponseDto, StartApplicationDiscoveryV1403ResponseOneOf]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

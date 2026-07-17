@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.account_usages.models.accountusage import Accountusage
-from sailpoint.account_usages.models.errormessagedto import Errormessagedto
-from sailpoint.account_usages.models.errorresponsedto import Errorresponsedto
+from sailpoint.account_usages.models.account_usage import AccountUsage
+from sailpoint.account_usages.models.error_message_dto import ErrorMessageDto
+from sailpoint.account_usages.models.error_response_dto import ErrorResponseDto
 from sailpoint.account_usages.models.get_usages_by_account_id_v1401_response import GetUsagesByAccountIdV1401Response
 from sailpoint.account_usages.models.get_usages_by_account_id_v1429_response import GetUsagesByAccountIdV1429Response
-from sailpoint.account_usages.models.localeorigin import Localeorigin
+from sailpoint.account_usages.models.locale_origin import LocaleOrigin

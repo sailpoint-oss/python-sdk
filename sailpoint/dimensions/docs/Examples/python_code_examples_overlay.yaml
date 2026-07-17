@@ -13,7 +13,93 @@
 
         with ApiClient(configuration) as api_client:
           role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
-          dimension = '''sailpoint.dimensions.Dimension()''' # Dimension | 
+          dimension = '''{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "accessProfiles" : [ {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          }, {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          } ],
+          "created" : "2021-03-01T22:32:58.104Z",
+          "name" : "Dimension 2567",
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "description" : "Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.",
+          "id" : "2c918086749d78830174a1a40e121518",
+          "membership" : {
+            "criteria" : {
+              "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+              "children" : [ {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "property" : "attribute.email",
+                  "type" : "IDENTITY"
+                }
+              }, {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "property" : "attribute.email",
+                  "type" : "IDENTITY"
+                }
+              } ],
+              "operation" : "EQUALS",
+              "key" : {
+                "property" : "attribute.email",
+                "type" : "IDENTITY"
+              }
+            },
+            "type" : "STANDARD"
+          },
+          "parentId" : "2c918086749d78830174a1a40e121518"
+        }''' # Dimension | 
           try:
               # Create a dimension
               new_dimension = Dimension.from_json(dimension)
@@ -32,21 +118,23 @@
       source: |
         from sailpoint.dimensions.api.dimensions_api import DimensionsApi
         from sailpoint.dimensions.api_client import ApiClient
-        from sailpoint.dimensions.models.dimensionbulkdeleterequest import Dimensionbulkdeleterequest
-        from sailpoint.dimensions.models.taskresultdto import Taskresultdto
+        from sailpoint.dimensions.models.dimension_bulk_delete_request import DimensionBulkDeleteRequest
+        from sailpoint.dimensions.models.task_result_dto import TaskResultDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimensions. # str | Parent Role Id of the dimensions.
-          dimensionbulkdeleterequest = '''{"dimensionIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}''' # Dimensionbulkdeleterequest | 
+          dimension_bulk_delete_request = '''{
+          "dimensionIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
+        }''' # DimensionBulkDeleteRequest | 
           try:
               # Delete dimension(s)
-              new_dimensionbulkdeleterequest = Dimensionbulkdeleterequest.from_json(dimensionbulkdeleterequest)
-              results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id=role_id, dimensionbulkdeleterequest=new_dimensionbulkdeleterequest)
+              new_dimension_bulk_delete_request = DimensionBulkDeleteRequest.from_json(dimension_bulk_delete_request)
+              results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id=role_id, dimension_bulk_delete_request=new_dimension_bulk_delete_request)
               # Below is a request that includes all optional parameters
-              # results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id, new_dimensionbulkdeleterequest)
+              # results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id, new_dimension_bulk_delete_request)
               print("The response of DimensionsApi->delete_bulk_dimensions_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -140,7 +228,7 @@
       source: |
         from sailpoint.dimensions.api.dimensions_api import DimensionsApi
         from sailpoint.dimensions.api_client import ApiClient
-        from sailpoint.dimensions.models.accessprofile import Accessprofile
+        from sailpoint.dimensions.models.access_profile import AccessProfile
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -205,7 +293,7 @@
         from sailpoint.dimensions.api.dimensions_api import DimensionsApi
         from sailpoint.dimensions.api_client import ApiClient
         from sailpoint.dimensions.models.dimension import Dimension
-        from sailpoint.dimensions.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.dimensions.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -213,13 +301,13 @@
         with ApiClient(configuration) as api_client:
           role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
           dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
-          jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]''' # List[Jsonpatchoperation] | 
+          json_patch_operation = '''[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]''' # List[JsonPatchOperation] | 
           try:
               # Patch a specified dimension
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = DimensionsApi(api_client).patch_dimension_v1(role_id=role_id, dimension_id=dimension_id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = DimensionsApi(api_client).patch_dimension_v1(role_id=role_id, dimension_id=dimension_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = DimensionsApi(api_client).patch_dimension_v1(role_id, dimension_id, new_jsonpatchoperation)
+              # results = DimensionsApi(api_client).patch_dimension_v1(role_id, dimension_id, new_json_patch_operation)
               print("The response of DimensionsApi->patch_dimension_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

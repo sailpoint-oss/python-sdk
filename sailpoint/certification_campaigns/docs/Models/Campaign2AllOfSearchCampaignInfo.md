@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **reviewer** | [**Campaign2AllOfSearchCampaignInfoReviewer**](campaign2-all-of-search-campaign-info-reviewer) |  | [optional] 
 **query** | **str** | The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set. | [optional] 
 **identity_ids** | **[]str** | A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set. | [optional] 
-**access_constraints** | [**[]Accessconstraint**](accessconstraint) | Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access. | [optional] 
+**access_constraints** | [**[]AccessConstraint**](access-constraint) | Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access. | [optional] 
 }
 
 ## Example
@@ -33,7 +33,7 @@ from sailpoint.certification_campaigns.models.campaign2_all_of_search_campaign_i
 campaign2_all_of_search_campaign_info = Campaign2AllOfSearchCampaignInfo(
 type='ACCESS',
 description='Search Campaign description',
-reviewer=sailpoint.certification_campaigns.models.campaign_2_all_of_search_campaign_info_reviewer.campaign_2_allOf_searchCampaignInfo_reviewer(
+reviewer=sailpoint.certification_campaigns.models.campaign_2_all_of_search_campaign_info_reviewer.Campaign_2_allOf_searchCampaignInfo_reviewer(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),

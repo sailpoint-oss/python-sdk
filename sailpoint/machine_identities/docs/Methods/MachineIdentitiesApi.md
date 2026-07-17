@@ -55,22 +55,22 @@ The maximum supported length for the description field is 2000 characters.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | machineidentityrequest | [**Machineidentityrequest**](../models/machineidentityrequest) | True  | 
+ Body  | machine_identity_request | [**MachineIdentityRequest**](../models/machine-identity-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Machineidentityresponse**](../models/machineidentityresponse)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Machine Identity created. | Machineidentityresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Machine Identity created. | MachineIdentityResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -81,23 +81,53 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityrequest import Machineidentityrequest
-from sailpoint.machine_identities.models.machineidentityresponse import Machineidentityresponse
+from sailpoint.machine_identities.models.machine_identity_request import MachineIdentityRequest
+from sailpoint.machine_identities.models.machine_identity_response import MachineIdentityResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    machineidentityrequest = '''sailpoint.machine_identities.Machineidentityrequest()''' # Machineidentityrequest | 
+    machine_identity_request = '''{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "subtype" : "Application",
+          "created" : "2015-05-28T14:07:17Z",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "",
+          "attributes" : "{\"Region\":\"EU\"}",
+          "owners" : {
+            "primaryIdentity" : "{}",
+            "secondaryIdentities" : [ {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }, {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            } ]
+          },
+          "id" : "id12345",
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd"
+        }''' # MachineIdentityRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create machine identity
-        new_machineidentityrequest = Machineidentityrequest.from_json(machineidentityrequest)
-        results = MachineIdentitiesApi(api_client).create_machine_identity_v1(machineidentityrequest=new_machineidentityrequest)
+        new_machine_identity_request = MachineIdentityRequest.from_json(machine_identity_request)
+        results = MachineIdentitiesApi(api_client).create_machine_identity_v1(machine_identity_request=new_machine_identity_request)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).create_machine_identity_v1(new_machineidentityrequest, x_sail_point_experimental)
+        # results = MachineIdentitiesApi(api_client).create_machine_identity_v1(new_machine_identity_request, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->create_machine_identity_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -127,12 +157,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Machine identity created (same schema family as v2 GET/PATCH). | Machineidentityv2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -149,7 +179,90 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    machineidentityv2 = '''sailpoint.machine_identities.Machineidentityv2()''' # Machineidentityv2 | 
+    machineidentityv2 = '''{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "resource" : {
+            "features" : [ "PROVISIONING", "AUTHENTICATION" ],
+            "name" : "nightly-batch-role",
+            "id" : "8886e5e3-63d0-462f-a195-d98da885b8dc",
+            "type" : "aws:iam-role"
+          },
+          "created" : "2015-05-28T14:07:17Z",
+          "connectorAttributes" : {
+            "objectguid" : "abc-123"
+          },
+          "description" : "Service account for nightly batch jobs",
+          "owners" : {
+            "secondary" : [ {
+              "id" : "2c9180858082150f0180893dbaf44202",
+              "name" : "Jane Doe",
+              "type" : "IDENTITY"
+            } ],
+            "primary" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          },
+          "source" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd",
+          "effectiveSanctionedStatus" : "SANCTIONED",
+          "environment" : "PRODUCTION",
+          "subtype" : "AI_AGENT",
+          "businessApplicationRefs" : [ {
+            "name" : "Cursor",
+            "correlationType" : "MANUAL",
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "type" : "BUSINESS_APPLICATION",
+            "sanctionedStatus" : "SANCTIONED"
+          }, {
+            "name" : "Cursor",
+            "correlationType" : "MANUAL",
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "type" : "BUSINESS_APPLICATION",
+            "sanctionedStatus" : "SANCTIONED"
+          } ],
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "displayName" : "Entitlement Name",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+            "source" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "displayName" : "Entitlement Name",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+            "source" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "datasetId" : "8886e5e3-63d0-462f-a195-d98da885b8dc",
+          "attributes" : {
+            "privilegeLevel" : "HIGH",
+            "region" : "APAC"
+          },
+          "risk" : {
+            "severity" : "HIGH",
+            "score" : 72.5
+          },
+          "id" : "id12345",
+          "manuallyEdited" : true,
+          "manuallyCreated" : true,
+          "existsOnSource" : "TRUE",
+          "status" : "ACTIVE"
+        }''' # Machineidentityv2 | 
 
     try:
         # Create machine identity
@@ -198,12 +311,12 @@ Path   | id | **str** | True  | Machine Identity ID
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -256,12 +369,12 @@ Path   | id | **str** | True  | Machine Identity ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -314,12 +427,12 @@ Path   | config_id | **str** | True  | The correlation config ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -378,18 +491,18 @@ Path   | id | **str** | True  | Machine Identity ID
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Machineidentityresponse**](../models/machineidentityresponse)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A machine identity object | Machineidentityresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A machine identity object | MachineIdentityResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -400,7 +513,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityresponse import Machineidentityresponse
+from sailpoint.machine_identities.models.machine_identity_response import MachineIdentityResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -445,12 +558,12 @@ Path   | id | **str** | True  | Machine Identity ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A machine identity object. | Machineidentityv2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -500,18 +613,18 @@ Path   | resource_id | **str** | True  | The source resource ID (for example, ac
 Path   | config_id | **str** | True  | The correlation config ID.
 
 ### Return type
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested correlation config. | Correlationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested correlation config. | CorrelationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -522,7 +635,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.correlationconfig import Correlationconfig
+from sailpoint.machine_identities.models.correlation_config import CorrelationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -577,18 +690,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Machineidentityresponse]**](../models/machineidentityresponse)
+[**List[MachineIdentityResponse]**](../models/machine-identity-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of machine identities. | List[Machineidentityresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of machine identities. | List[MachineIdentityResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -599,7 +712,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityresponse import Machineidentityresponse
+from sailpoint.machine_identities.models.machine_identity_response import MachineIdentityResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -653,12 +766,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of machine identities. | List[Machineidentityv2] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -727,18 +840,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Machineidentityuserentitlementresponse]**](../models/machineidentityuserentitlementresponse)
+[**List[MachineIdentityUserEntitlementResponse]**](../models/machine-identity-user-entitlement-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of machine identity user entitlements. | List[Machineidentityuserentitlementresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of machine identity user entitlements. | List[MachineIdentityUserEntitlementResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -749,7 +862,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityuserentitlementresponse import Machineidentityuserentitlementresponse
+from sailpoint.machine_identities.models.machine_identity_user_entitlement_response import MachineIdentityUserEntitlementResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -798,17 +911,17 @@ Path   | resource_id | **str** | True  | The source resource ID (for example, ac
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Correlationconfig]**](../models/correlationconfig)
+[**List[CorrelationConfig]**](../models/correlation-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of correlation configs. | List[Correlationconfig] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of correlation configs. | List[CorrelationConfig] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -819,7 +932,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.correlationconfig import Correlationconfig
+from sailpoint.machine_identities.models.correlation_config import CorrelationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -862,21 +975,21 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source ID.
 Path   | resource_id | **str** | True  | The source resource ID (for example, account or aws:iam-role).
 Path   | config_id | **str** | True  | The correlation config ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the correlation config.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the correlation config.
 
 ### Return type
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated correlation config. | Correlationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated correlation config. | CorrelationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -887,8 +1000,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.correlationconfig import Correlationconfig
-from sailpoint.machine_identities.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.machine_identities.models.correlation_config import CorrelationConfig
+from sailpoint.machine_identities.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -897,14 +1010,14 @@ with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     resource_id = 'aws:iam-role' # str | The source resource ID (for example, account or aws:iam-role). # str | The source resource ID (for example, account or aws:iam-role).
     config_id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The correlation config ID. # str | The correlation config ID.
-    jsonpatchoperation = '''[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the correlation config.
+    json_patch_operation = '''[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the correlation config.
 
     try:
         # Patch ownership correlation config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id=source_id, resource_id=resource_id, config_id=config_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id=source_id, resource_id=resource_id, config_id=config_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id, resource_id, config_id, new_jsonpatchoperation)
+        # results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id, resource_id, config_id, new_json_patch_operation)
         print("The response of MachineIdentitiesApi->patch_ownership_correlation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -937,22 +1050,22 @@ Starts a machine identity (AI Agents) aggregation on the specified source.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
- Body  | machineidentityaggregationrequest | [**Machineidentityaggregationrequest**](../models/machineidentityaggregationrequest) | True  | 
+ Body  | machine_identity_aggregation_request | [**MachineIdentityAggregationRequest**](../models/machine-identity-aggregation-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Machineidentityaggregationresponse**](../models/machineidentityaggregationresponse)
+[**MachineIdentityAggregationResponse**](../models/machine-identity-aggregation-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Machine Identity Aggregation was started successfully. | Machineidentityaggregationresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Machine Identity Aggregation was started successfully. | MachineIdentityAggregationResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -963,8 +1076,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityaggregationrequest import Machineidentityaggregationrequest
-from sailpoint.machine_identities.models.machineidentityaggregationresponse import Machineidentityaggregationresponse
+from sailpoint.machine_identities.models.machine_identity_aggregation_request import MachineIdentityAggregationRequest
+from sailpoint.machine_identities.models.machine_identity_aggregation_response import MachineIdentityAggregationResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -972,15 +1085,18 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-    machineidentityaggregationrequest = '''sailpoint.machine_identities.Machineidentityaggregationrequest()''' # Machineidentityaggregationrequest | 
+    machine_identity_aggregation_request = '''{
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ],
+          "disableOptimization" : false
+        }''' # MachineIdentityAggregationRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Start machine identity aggregation
-        new_machineidentityaggregationrequest = Machineidentityaggregationrequest.from_json(machineidentityaggregationrequest)
-        results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation_v1(source_id=source_id, machineidentityaggregationrequest=new_machineidentityaggregationrequest)
+        new_machine_identity_aggregation_request = MachineIdentityAggregationRequest.from_json(machine_identity_aggregation_request)
+        results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation_v1(source_id=source_id, machine_identity_aggregation_request=new_machine_identity_aggregation_request)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation_v1(source_id, new_machineidentityaggregationrequest, x_sail_point_experimental)
+        # results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation_v1(source_id, new_machine_identity_aggregation_request, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->start_machine_identity_aggregation_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1018,18 +1134,18 @@ Path   | id | **str** | True  | Machine Identity ID.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Machineidentityresponse**](../models/machineidentityresponse)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated Machine Identity object. | Machineidentityresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated Machine Identity object. | MachineIdentityResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1040,7 +1156,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.machineidentityresponse import Machineidentityresponse
+from sailpoint.machine_identities.models.machine_identity_response import MachineIdentityResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1081,7 +1197,7 @@ Patchable fields include **name**, **description**, **nativeIdentity**, **subtyp
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Machine Identity ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
 [**Machineidentityv2**](../models/machineidentityv2)
@@ -1090,12 +1206,12 @@ Path   | id | **str** | True  | Machine Identity ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Updated machine identity object. | Machineidentityv2 |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1106,7 +1222,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.machine_identities.api_client import ApiClient
-from sailpoint.machine_identities.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.machine_identities.models.json_patch_operation import JsonPatchOperation
 from sailpoint.machine_identities.models.machineidentityv2 import Machineidentityv2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -1114,14 +1230,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID. # str | Machine Identity ID.
-    jsonpatchoperation = '''[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]''' # List[Jsonpatchoperation] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = '''[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]''' # List[JsonPatchOperation] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Partial update of machine identity
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id, new_jsonpatchoperation)
+        # results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id, new_json_patch_operation)
         print("The response of MachineIdentitiesApi->update_machine_identity_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

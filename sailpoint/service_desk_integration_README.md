@@ -47,11 +47,11 @@ configuration = sailpoint.service_desk_integration.Configuration(
 with sailpoint.service_desk_integration.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.service_desk_integration.ServiceDeskIntegrationApi(api_client)
-    servicedeskintegrationdto = sailpoint.service_desk_integration.Servicedeskintegrationdto() # Servicedeskintegrationdto | The specifics of a new integration to create
+    service_desk_integration_dto = sailpoint.service_desk_integration.ServiceDeskIntegrationDto() # ServiceDeskIntegrationDto | The specifics of a new integration to create
 
     try:
         # Create new service desk integration
-        api_response = api_instance.create_service_desk_integration_v1(servicedeskintegrationdto)
+        api_response = api_instance.create_service_desk_integration_v1(service_desk_integration_dto)
         print("The response of ServiceDeskIntegrationApi->create_service_desk_integration_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -80,24 +80,24 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/service_desk_integration/docs/ArrayInner.md)
- - [Basecommondto](sailpoint/service_desk_integration/docs/Basecommondto.md)
- - [Beforeprovisioningruledto](sailpoint/service_desk_integration/docs/Beforeprovisioningruledto.md)
- - [Errormessagedto](sailpoint/service_desk_integration/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/service_desk_integration/docs/Errorresponsedto.md)
+ - [BaseCommonDto](sailpoint/service_desk_integration/docs/BaseCommonDto.md)
+ - [BeforeProvisioningRuleDto](sailpoint/service_desk_integration/docs/BeforeProvisioningRuleDto.md)
+ - [ErrorMessageDto](sailpoint/service_desk_integration/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/service_desk_integration/docs/ErrorResponseDto.md)
  - [GetServiceDeskIntegrationsV1401Response](sailpoint/service_desk_integration/docs/GetServiceDeskIntegrationsV1401Response.md)
  - [GetServiceDeskIntegrationsV1429Response](sailpoint/service_desk_integration/docs/GetServiceDeskIntegrationsV1429Response.md)
- - [Jsonpatchoperation](sailpoint/service_desk_integration/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/service_desk_integration/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/service_desk_integration/docs/Localeorigin.md)
- - [Ownerdto](sailpoint/service_desk_integration/docs/Ownerdto.md)
- - [Provisioningconfig](sailpoint/service_desk_integration/docs/Provisioningconfig.md)
- - [ProvisioningconfigPlanInitializerScript](sailpoint/service_desk_integration/docs/ProvisioningconfigPlanInitializerScript.md)
- - [Queuedcheckconfigdetails](sailpoint/service_desk_integration/docs/Queuedcheckconfigdetails.md)
- - [Servicedeskintegrationdto](sailpoint/service_desk_integration/docs/Servicedeskintegrationdto.md)
- - [Servicedeskintegrationtemplatedto](sailpoint/service_desk_integration/docs/Servicedeskintegrationtemplatedto.md)
- - [Servicedeskintegrationtemplatetype](sailpoint/service_desk_integration/docs/Servicedeskintegrationtemplatetype.md)
- - [Servicedesksource](sailpoint/service_desk_integration/docs/Servicedesksource.md)
- - [Sourceclusterdto](sailpoint/service_desk_integration/docs/Sourceclusterdto.md)
+ - [JsonPatchOperation](sailpoint/service_desk_integration/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/service_desk_integration/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/service_desk_integration/docs/LocaleOrigin.md)
+ - [OwnerDto](sailpoint/service_desk_integration/docs/OwnerDto.md)
+ - [ProvisioningConfig](sailpoint/service_desk_integration/docs/ProvisioningConfig.md)
+ - [ProvisioningConfigPlanInitializerScript](sailpoint/service_desk_integration/docs/ProvisioningConfigPlanInitializerScript.md)
+ - [QueuedCheckConfigDetails](sailpoint/service_desk_integration/docs/QueuedCheckConfigDetails.md)
+ - [ServiceDeskIntegrationDto](sailpoint/service_desk_integration/docs/ServiceDeskIntegrationDto.md)
+ - [ServiceDeskIntegrationTemplateDto](sailpoint/service_desk_integration/docs/ServiceDeskIntegrationTemplateDto.md)
+ - [ServiceDeskIntegrationTemplateType](sailpoint/service_desk_integration/docs/ServiceDeskIntegrationTemplateType.md)
+ - [ServiceDeskSource](sailpoint/service_desk_integration/docs/ServiceDeskSource.md)
+ - [SourceClusterDto](sailpoint/service_desk_integration/docs/SourceClusterDto.md)
 
 
 <a id="documentation-for-authorization"></a>

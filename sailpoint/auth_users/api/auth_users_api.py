@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List
 from typing_extensions import Annotated
-from sailpoint.auth_users.models.authuser import Authuser
-from sailpoint.auth_users.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.auth_users.models.auth_user import AuthUser
+from sailpoint.auth_users.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.auth_users.api_client import ApiClient, RequestSerialized
 from sailpoint.auth_users.api_response import ApiResponse
@@ -56,7 +56,7 @@ class AuthUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Authuser:
+    ) -> AuthUser:
         """Auth user details
 
         Return the specified user's authentication system details.
@@ -94,13 +94,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class AuthUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Authuser]:
+    ) -> ApiResponse[AuthUser]:
         """Auth user details
 
         Return the specified user's authentication system details.
@@ -167,13 +167,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,13 +240,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -322,7 +322,7 @@ class AuthUsersApi:
     def patch_auth_user_v1(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -335,15 +335,15 @@ class AuthUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Authuser:
+    ) -> AuthUser:
         """Auth user update
 
         Use a PATCH request to update an existing user in the authentication system. Use this endpoint to modify these fields:    * `capabilities`  A '400.1.1 Illegal update attempt' detail code indicates that you attempted to PATCH a field that is not allowed.
 
         :param id: Identity ID (required)
         :type id: str
-        :param jsonpatchoperation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -368,7 +368,7 @@ class AuthUsersApi:
 
         _param = self._patch_auth_user_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -376,13 +376,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -399,7 +399,7 @@ class AuthUsersApi:
     def patch_auth_user_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -412,15 +412,15 @@ class AuthUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Authuser]:
+    ) -> ApiResponse[AuthUser]:
         """Auth user update
 
         Use a PATCH request to update an existing user in the authentication system. Use this endpoint to modify these fields:    * `capabilities`  A '400.1.1 Illegal update attempt' detail code indicates that you attempted to PATCH a field that is not allowed.
 
         :param id: Identity ID (required)
         :type id: str
-        :param jsonpatchoperation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -445,7 +445,7 @@ class AuthUsersApi:
 
         _param = self._patch_auth_user_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -453,13 +453,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -476,7 +476,7 @@ class AuthUsersApi:
     def patch_auth_user_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Identity ID")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -496,8 +496,8 @@ class AuthUsersApi:
 
         :param id: Identity ID (required)
         :type id: str
-        :param jsonpatchoperation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -522,7 +522,7 @@ class AuthUsersApi:
 
         _param = self._patch_auth_user_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -530,13 +530,13 @@ class AuthUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Authuser",
-            '400': "Errorresponsedto",
+            '200': "AuthUser",
+            '400': "ErrorResponseDto",
             '401': "GetAuthUserV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAuthUserV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -548,7 +548,7 @@ class AuthUsersApi:
     def _patch_auth_user_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -558,7 +558,7 @@ class AuthUsersApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -577,8 +577,8 @@ class AuthUsersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

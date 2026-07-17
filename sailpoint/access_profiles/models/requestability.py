@@ -20,8 +20,8 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.access_profiles.models.accessduration import Accessduration
-from sailpoint.access_profiles.models.accessprofileapprovalscheme import Accessprofileapprovalscheme
+from sailpoint.access_profiles.models.access_duration import AccessDuration
+from sailpoint.access_profiles.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,8 +33,8 @@ class Requestability(BaseModel):
     denial_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether an approver must provide comments when denying the request.", alias="denialCommentsRequired")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Indicates whether reauthorization is required for the request.", alias="reauthorizationRequired")
     require_end_date: Optional[StrictBool] = Field(default=False, description="Indicates whether the requester of the containing object must provide access end date.", alias="requireEndDate")
-    max_permitted_access_duration: Optional[Accessduration] = Field(default=None, alias="maxPermittedAccessDuration")
-    approval_schemes: Optional[List[Accessprofileapprovalscheme]] = Field(default=None, description="List describing the steps involved in approving the request.", alias="approvalSchemes")
+    max_permitted_access_duration: Optional[AccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps involved in approving the request.", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "approvalSchemes"]
 
     model_config = ConfigDict(
@@ -132,8 +132,8 @@ class Requestability(BaseModel):
             "denialCommentsRequired": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
             "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
-            "maxPermittedAccessDuration": Accessduration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
-            "approvalSchemes": [Accessprofileapprovalscheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
+            "maxPermittedAccessDuration": AccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
+            "approvalSchemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
 

@@ -6,20 +6,40 @@
       source: |
         from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
         from sailpoint.machine_account_mappings.api_client import ApiClient
-        from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+        from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-          attributemappings = '''sailpoint.machine_account_mappings.Attributemappings()''' # Attributemappings | 
+          attribute_mappings = '''{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }''' # AttributeMappings | 
           try:
               # Create machine account mappings
-              new_attributemappings = Attributemappings.from_json(attributemappings)
-              results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id=source_id, attributemappings=new_attributemappings)
+              new_attribute_mappings = AttributeMappings.from_json(attribute_mappings)
+              results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id=source_id, attribute_mappings=new_attribute_mappings)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attributemappings)
+              # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attribute_mappings)
               print("The response of MachineAccountMappingsApi->create_machine_account_mappings_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -55,7 +75,7 @@
       source: |
         from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
         from sailpoint.machine_account_mappings.api_client import ApiClient
-        from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+        from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -83,20 +103,40 @@
       source: |
         from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi
         from sailpoint.machine_account_mappings.api_client import ApiClient
-        from sailpoint.machine_account_mappings.models.attributemappings import Attributemappings
+        from sailpoint.machine_account_mappings.models.attribute_mappings import AttributeMappings
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-          attributemappings = '''sailpoint.machine_account_mappings.Attributemappings()''' # Attributemappings | 
+          attribute_mappings = '''{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }''' # AttributeMappings | 
           try:
               # Update source's machine account mappings
-              new_attributemappings = Attributemappings.from_json(attributemappings)
-              results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id=source_id, attributemappings=new_attributemappings)
+              new_attribute_mappings = AttributeMappings.from_json(attribute_mappings)
+              results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id=source_id, attribute_mappings=new_attribute_mappings)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id, new_attributemappings)
+              # results = MachineAccountMappingsApi(api_client).set_machine_account_mappings_v1(source_id, new_attribute_mappings)
               print("The response of MachineAccountMappingsApi->set_machine_account_mappings_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))

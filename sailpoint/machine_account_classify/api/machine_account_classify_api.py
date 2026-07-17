@@ -98,11 +98,11 @@ class MachineAccountClassifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SendClassifyMachineAccountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SendClassifyMachineAccountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -174,11 +174,11 @@ class MachineAccountClassifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SendClassifyMachineAccountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SendClassifyMachineAccountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -250,11 +250,11 @@ class MachineAccountClassifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SendClassifyMachineAccountV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "SendClassifyMachineAccountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "SendClassifyMachineAccountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

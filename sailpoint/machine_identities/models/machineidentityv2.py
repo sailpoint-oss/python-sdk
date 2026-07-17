@@ -21,13 +21,13 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.machine_identities.models.businessapplicationref import Businessapplicationref
+from sailpoint.machine_identities.models.business_application_ref import BusinessApplicationRef
+from sailpoint.machine_identities.models.machine_identity_owners_v2 import MachineIdentityOwnersV2
 from sailpoint.machine_identities.models.machine_identity_v2_risk import MachineIdentityV2Risk
 from sailpoint.machine_identities.models.machine_identity_v2_source import MachineIdentityV2Source
-from sailpoint.machine_identities.models.machineidentityownersv2 import Machineidentityownersv2
-from sailpoint.machine_identities.models.resourcev2 import Resourcev2
-from sailpoint.machine_identities.models.sanctionedstatus import Sanctionedstatus
-from sailpoint.machine_identities.models.userentitlementv2 import Userentitlementv2
+from sailpoint.machine_identities.models.resource_v2 import ResourceV2
+from sailpoint.machine_identities.models.sanctioned_status import SanctionedStatus
+from sailpoint.machine_identities.models.user_entitlement_v2 import UserEntitlementV2
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,7 +44,7 @@ class Machineidentityv2(BaseModel):
     connector_attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of attributes sourced from the connector during aggregation.", alias="connectorAttributes")
     manually_edited: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually edited.", alias="manuallyEdited")
     manually_created: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually created.", alias="manuallyCreated")
-    owners: Optional[Machineidentityownersv2] = None
+    owners: Optional[MachineIdentityOwnersV2] = None
     subtype: Optional[StrictStr] = Field(default=None, description="The subtype value associated to the machine identity.")
     source_id: Optional[StrictStr] = Field(default=None, description="The source id associated to the machine identity.", alias="sourceId")
     uuid: Optional[StrictStr] = Field(default=None, description="The UUID associated to the machine identity directly aggregated from a source.")
@@ -53,11 +53,11 @@ class Machineidentityv2(BaseModel):
     environment: Optional[StrictStr] = Field(default=None, description="The environment the machine identity belongs to.")
     exists_on_source: Optional[StrictStr] = Field(default=None, description="Indicates whether the machine identity still exists on the source.", alias="existsOnSource")
     status: Optional[StrictStr] = Field(default=None, description="Operational status read from stored attributes.status; null when absent.")
-    resource: Optional[Resourcev2] = None
+    resource: Optional[ResourceV2] = None
     source: Optional[MachineIdentityV2Source] = None
-    user_entitlements: Optional[List[Userentitlementv2]] = Field(default=None, description="The user entitlements associated to the machine identity.", alias="userEntitlements")
-    business_application_refs: Optional[List[Businessapplicationref]] = Field(default=None, description="Optional Business Application references associated with this machine identity.", alias="businessApplicationRefs")
-    effective_sanctioned_status: Optional[Union[Sanctionedstatus, str]] = Field(default=None, alias="effectiveSanctionedStatus")
+    user_entitlements: Optional[List[UserEntitlementV2]] = Field(default=None, description="The user entitlements associated to the machine identity.", alias="userEntitlements")
+    business_application_refs: Optional[List[BusinessApplicationRef]] = Field(default=None, description="Optional Business Application references associated with this machine identity.", alias="businessApplicationRefs")
+    effective_sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, alias="effectiveSanctionedStatus")
     risk: Optional[MachineIdentityV2Risk] = None
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "attributes", "connectorAttributes", "manuallyEdited", "manuallyCreated", "owners", "subtype", "sourceId", "uuid", "nativeIdentity", "datasetId", "environment", "existsOnSource", "status", "resource", "source", "userEntitlements", "businessApplicationRefs", "effectiveSanctionedStatus", "risk"]
 
@@ -168,7 +168,7 @@ class Machineidentityv2(BaseModel):
             "connectorAttributes": obj.get("connectorAttributes"),
             "manuallyEdited": obj.get("manuallyEdited") if obj.get("manuallyEdited") is not None else False,
             "manuallyCreated": obj.get("manuallyCreated") if obj.get("manuallyCreated") is not None else False,
-            "owners": Machineidentityownersv2.from_dict(obj["owners"]) if obj.get("owners") is not None else None,
+            "owners": MachineIdentityOwnersV2.from_dict(obj["owners"]) if obj.get("owners") is not None else None,
             "subtype": obj.get("subtype"),
             "sourceId": obj.get("sourceId"),
             "uuid": obj.get("uuid"),
@@ -177,10 +177,10 @@ class Machineidentityv2(BaseModel):
             "environment": obj.get("environment"),
             "existsOnSource": obj.get("existsOnSource"),
             "status": obj.get("status"),
-            "resource": Resourcev2.from_dict(obj["resource"]) if obj.get("resource") is not None else None,
+            "resource": ResourceV2.from_dict(obj["resource"]) if obj.get("resource") is not None else None,
             "source": MachineIdentityV2Source.from_dict(obj["source"]) if obj.get("source") is not None else None,
-            "userEntitlements": [Userentitlementv2.from_dict(_item) for _item in obj["userEntitlements"]] if obj.get("userEntitlements") is not None else None,
-            "businessApplicationRefs": [Businessapplicationref.from_dict(_item) for _item in obj["businessApplicationRefs"]] if obj.get("businessApplicationRefs") is not None else None,
+            "userEntitlements": [UserEntitlementV2.from_dict(_item) for _item in obj["userEntitlements"]] if obj.get("userEntitlements") is not None else None,
+            "businessApplicationRefs": [BusinessApplicationRef.from_dict(_item) for _item in obj["businessApplicationRefs"]] if obj.get("businessApplicationRefs") is not None else None,
             "effectiveSanctionedStatus": obj.get("effectiveSanctionedStatus"),
             "risk": MachineIdentityV2Risk.from_dict(obj["risk"]) if obj.get("risk") is not None else None
         })

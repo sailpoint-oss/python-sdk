@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Filter', 'Filter']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **Filtertype** |  | [optional] 
+**type** | **FilterType** |  | [optional] 
 **range** | [**Range**](range) |  | [optional] 
 **terms** | **[]str** | The terms to be filtered. | [optional] 
 **exclude** | **bool** | Indicates if the filter excludes results. | [optional] [default to False]
@@ -29,11 +29,11 @@ from sailpoint.access_model_metadata.models.filter import Filter
 
 filter = Filter(
 type='RANGE',
-range=sailpoint.access_model_metadata.models.range.range(
-                    lower = sailpoint.access_model_metadata.models.bound.bound(
+range=sailpoint.access_model_metadata.models.range.Range(
+                    lower = sailpoint.access_model_metadata.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), 
-                    upper = sailpoint.access_model_metadata.models.bound.bound(
+                    upper = sailpoint.access_model_metadata.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), ),
 terms=[

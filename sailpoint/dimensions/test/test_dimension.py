@@ -40,32 +40,32 @@ class TestDimension(unittest.TestCase):
                 created = '2021-03-01T22:32:58.104Z',
                 modified = '2021-03-02T20:22:28.104Z',
                 description = 'Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.',
-                owner = sailpoint.dimensions.models.ownerreference.ownerreference(
+                owner = sailpoint.dimensions.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
                 access_profiles = [
-                    sailpoint.dimensions.models.accessprofileref.accessprofileref(
+                    sailpoint.dimensions.models.access_profile_ref.AccessProfileRef(
                         id = 'ff808081751e6e129f1518161919ecca', 
                         type = 'ACCESS_PROFILE', 
                         name = 'Access Profile 2567', )
                     ],
                 entitlements = [
-                    sailpoint.dimensions.models.entitlementref.entitlementref(
+                    sailpoint.dimensions.models.entitlement_ref.EntitlementRef(
                         type = 'ENTITLEMENT', 
                         id = '2c91809773dee32014e13e122092014e', 
                         name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local', )
                     ],
-                membership = sailpoint.dimensions.models.dimensionmembershipselector.dimensionmembershipselector(
+                membership = sailpoint.dimensions.models.dimension_membership_selector.DimensionMembershipSelector(
                     type = 'STANDARD', 
-                    criteria = sailpoint.dimensions.models.dimensioncriterialevel1.dimensioncriterialevel1(
+                    criteria = sailpoint.dimensions.models.dimension_criteria_level1.DimensionCriteriaLevel1(
                         operation = 'EQUALS', 
-                        key = sailpoint.dimensions.models.dimensioncriteriakey.dimensioncriteriakey(
+                        key = sailpoint.dimensions.models.dimension_criteria_key.DimensionCriteriaKey(
                             type = 'IDENTITY', 
                             property = 'attribute.email', ), 
                         string_value = 'carlee.cert1c9f9b6fd@mailinator.com', 
                         children = [
-                            sailpoint.dimensions.models.dimensioncriterialevel2.dimensioncriterialevel2(
+                            sailpoint.dimensions.models.dimension_criteria_level2.DimensionCriteriaLevel2(
                                 string_value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                             ], ), ),
                 parent_id = '2c918086749d78830174a1a40e121518'
@@ -73,7 +73,7 @@ class TestDimension(unittest.TestCase):
         else:
             return Dimension(
                 name = 'Dimension 2567',
-                owner = sailpoint.dimensions.models.ownerreference.ownerreference(
+                owner = sailpoint.dimensions.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),

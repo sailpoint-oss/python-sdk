@@ -71,20 +71,20 @@ Requires role of ORG_ADMIN.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | sodpolicy | [**Sodpolicy**](../models/sodpolicy) | True  | 
+ Body  | sod_policy | [**SodPolicy**](../models/sod-policy) | True  | 
 
 ### Return type
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | SOD policy created | Sodpolicy |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | SOD policy created | SodPolicy |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -95,20 +95,75 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicy import Sodpolicy
+from sailpoint.sod_policies.models.sod_policy import SodPolicy
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    sodpolicy = '''{"name":"Conflicting-Policy-Name","description":"This policy ensures compliance of xyz","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Owner Name"},"externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"creatorId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","modifierId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}}''' # Sodpolicy | 
+    sod_policy = '''{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }''' # SodPolicy | 
 
     try:
         # Create sod policy
-        new_sodpolicy = Sodpolicy.from_json(sodpolicy)
-        results = SODPoliciesApi(api_client).create_sod_policy_v1(sodpolicy=new_sodpolicy)
+        new_sod_policy = SodPolicy.from_json(sod_policy)
+        results = SODPoliciesApi(api_client).create_sod_policy_v1(sod_policy=new_sod_policy)
         # Below is a request that includes all optional parameters
-        # results = SODPoliciesApi(api_client).create_sod_policy_v1(new_sodpolicy)
+        # results = SODPoliciesApi(api_client).create_sod_policy_v1(new_sod_policy)
         print("The response of SODPoliciesApi->create_sod_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -138,12 +193,12 @@ Path   | id | **str** | True  | The ID of the SOD policy the schedule must be de
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -196,12 +251,12 @@ Path   | id | **str** | True  | The ID of the SOD Policy to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -254,12 +309,12 @@ Path   | file_name | **str** | True  | Custom Name for the  file.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Returns the zip file with given custom name that contains the violation report file. | bytearray |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -313,12 +368,12 @@ Path   | report_result_id | **str** | True  | The ID of the report reference to 
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Returns the PolicyReport.zip that contains the violation report file. | bytearray |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -362,17 +417,17 @@ This endpoint gets the status for a violation report for all policy run.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the violation report run task for all policy run. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the violation report run task for all policy run. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -383,7 +438,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -419,17 +474,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the SOD policy schedule to retrieve.
 
 ### Return type
-[**Sodpolicyschedule**](../models/sodpolicyschedule)
+[**SodPolicySchedule**](../models/sod-policy-schedule)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | SOD policy schedule. | Sodpolicyschedule |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | SOD policy schedule. | SodPolicySchedule |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -440,7 +495,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicyschedule import Sodpolicyschedule
+from sailpoint.sod_policies.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -478,18 +533,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the SOD Policy to retrieve.
 
 ### Return type
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | SOD policy ID. | Sodpolicy |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | SOD policy ID. | SodPolicy |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -500,7 +555,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicy import Sodpolicy
+from sailpoint.sod_policies.models.sod_policy import SodPolicy
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -537,18 +592,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | report_result_id | **str** | True  | The ID of the report reference to retrieve.
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the violation report run task. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the violation report run task. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -559,7 +614,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -596,18 +651,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the violation report to retrieve status for.
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the violation report run task. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the violation report run task. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -618,7 +673,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -660,17 +715,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description**
 
 ### Return type
-[**List[Sodpolicy]**](../models/sodpolicy)
+[**List[SodPolicy]**](../models/sod-policy)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of all SOD policies. | List[Sodpolicy] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of all SOD policies. | List[SodPolicy] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -681,7 +736,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicy import Sodpolicy
+from sailpoint.sod_policies.models.sod_policy import SodPolicy
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -723,21 +778,21 @@ This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the SOD policy being modified.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
 ### Return type
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Indicates the PATCH operation succeeded, and returns the SOD policy&#39;s new representation. | Sodpolicy |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Indicates the PATCH operation succeeded, and returns the SOD policy&#39;s new representation. | SodPolicy |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -748,22 +803,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.sod_policies.models.sodpolicy import Sodpolicy
+from sailpoint.sod_policies.models.json_patch_operation import JsonPatchOperation
+from sailpoint.sod_policies.models.sod_policy import SodPolicy
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c918083-5d19-1a86-015d-28455b4a2329' # str | The ID of the SOD policy being modified. # str | The ID of the SOD policy being modified.
-    jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Modified description"},{"op":"replace","path":"/conflictingAccessCriteria/leftCriteria/name","value":"money-in-modified"},{"op":"replace","path":"/conflictingAccessCriteria/rightCriteria","value":{"name":"money-out-modified","criteriaList":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}}]''' # List[Jsonpatchoperation] | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+    json_patch_operation = '''[{"op":"replace","path":"/description","value":"Modified description"},{"op":"replace","path":"/conflictingAccessCriteria/leftCriteria/name","value":"money-in-modified"},{"op":"replace","path":"/conflictingAccessCriteria/rightCriteria","value":{"name":"money-out-modified","criteriaList":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}}]''' # List[JsonPatchOperation] | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
     try:
         # Patch sod policy by id
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = SODPoliciesApi(api_client).patch_sod_policy_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SODPoliciesApi(api_client).patch_sod_policy_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SODPoliciesApi(api_client).patch_sod_policy_v1(id, new_jsonpatchoperation)
+        # results = SODPoliciesApi(api_client).patch_sod_policy_v1(id, new_json_patch_operation)
         print("The response of SODPoliciesApi->patch_sod_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -785,20 +840,20 @@ This updates schedule for a specified SOD policy.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the SOD policy to update its schedule.
- Body  | sodpolicyschedule | [**Sodpolicyschedule**](../models/sodpolicyschedule) | True  | 
+ Body  | sod_policy_schedule | [**SodPolicySchedule**](../models/sod-policy-schedule) | True  | 
 
 ### Return type
-[**Sodpolicyschedule**](../models/sodpolicyschedule)
+[**SodPolicySchedule**](../models/sod-policy-schedule)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created or updated SOD policy schedule. | Sodpolicyschedule |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created or updated SOD policy schedule. | SodPolicySchedule |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -809,21 +864,58 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicyschedule import Sodpolicyschedule
+from sailpoint.sod_policies.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy to update its schedule. # str | The ID of the SOD policy to update its schedule.
-    sodpolicyschedule = '''sailpoint.sod_policies.Sodpolicyschedule()''' # Sodpolicyschedule | 
+    sod_policy_schedule = '''{
+          "schedule" : {
+            "hours" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "months" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "timeZoneId" : "America/Chicago",
+            "days" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "expiration" : "2018-06-25T20:22:28.104Z",
+            "type" : "WEEKLY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "recipients" : [ {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          } ],
+          "name" : "SCH-1584312283015",
+          "creatorId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modifierId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modified" : "2020-01-01T00:00:00Z",
+          "description" : "Schedule for policy xyz",
+          "emailEmptyResults" : false
+        }''' # SodPolicySchedule | 
 
     try:
         # Update sod policy schedule
-        new_sodpolicyschedule = Sodpolicyschedule.from_json(sodpolicyschedule)
-        results = SODPoliciesApi(api_client).put_policy_schedule_v1(id=id, sodpolicyschedule=new_sodpolicyschedule)
+        new_sod_policy_schedule = SodPolicySchedule.from_json(sod_policy_schedule)
+        results = SODPoliciesApi(api_client).put_policy_schedule_v1(id=id, sod_policy_schedule=new_sod_policy_schedule)
         # Below is a request that includes all optional parameters
-        # results = SODPoliciesApi(api_client).put_policy_schedule_v1(id, new_sodpolicyschedule)
+        # results = SODPoliciesApi(api_client).put_policy_schedule_v1(id, new_sod_policy_schedule)
         print("The response of SODPoliciesApi->put_policy_schedule_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -846,21 +938,21 @@ Requires role of ORG_ADMIN.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the SOD policy to update.
- Body  | sodpolicy | [**Sodpolicy**](../models/sodpolicy) | True  | 
+ Body  | sod_policy | [**SodPolicy**](../models/sod-policy) | True  | 
 
 ### Return type
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | SOD Policy by ID | Sodpolicy |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | SOD Policy by ID | SodPolicy |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -871,21 +963,76 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.sodpolicy import Sodpolicy
+from sailpoint.sod_policies.models.sod_policy import SodPolicy
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy to update. # str | The ID of the SOD policy to update.
-    sodpolicy = '''{"name":"Conflicting-Policy-Name","description":"Modified Description","externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}}''' # Sodpolicy | 
+    sod_policy = '''{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }''' # SodPolicy | 
 
     try:
         # Update sod policy by id
-        new_sodpolicy = Sodpolicy.from_json(sodpolicy)
-        results = SODPoliciesApi(api_client).put_sod_policy_v1(id=id, sodpolicy=new_sodpolicy)
+        new_sod_policy = SodPolicy.from_json(sod_policy)
+        results = SODPoliciesApi(api_client).put_sod_policy_v1(id=id, sod_policy=new_sod_policy)
         # Below is a request that includes all optional parameters
-        # results = SODPoliciesApi(api_client).put_sod_policy_v1(id, new_sodpolicy)
+        # results = SODPoliciesApi(api_client).put_sod_policy_v1(id, new_sod_policy)
         print("The response of SODPoliciesApi->put_sod_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -909,17 +1056,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The SOD policy ID to run.
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the violation report run task. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the violation report run task. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -930,7 +1077,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -964,20 +1111,20 @@ Runs multi-policy report for the org. If a policy reports more than 5000 violati
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | multipolicyrequest | [**Multipolicyrequest**](../models/multipolicyrequest) |   (optional) | 
+ Body  | multi_policy_request | [**MultiPolicyRequest**](../models/multi-policy-request) |   (optional) | 
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the violation report run task. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the violation report run task. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -988,21 +1135,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.multipolicyrequest import Multipolicyrequest
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.multi_policy_request import MultiPolicyRequest
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    multipolicyrequest = '''{"filteredPolicyList":["b868cd40-ffa4-4337-9c07-1a51846cfa94","63a07a7b-39a4-48aa-956d-50c827deba2a"]}''' # Multipolicyrequest |  (optional)
+    multi_policy_request = '''{
+          "filteredPolicyList" : [ "[\"b868cd40-ffa4-4337-9c07-1a51846cfa94\",\"63a07a7b-39a4-48aa-956d-50c827deba2a\"]", "[\"b868cd40-ffa4-4337-9c07-1a51846cfa94\",\"63a07a7b-39a4-48aa-956d-50c827deba2a\"]" ]
+        }''' # MultiPolicyRequest |  (optional)
 
     try:
         # Runs all policies for org
         
         results = SODPoliciesApi(api_client).start_sod_all_policies_for_org_v1()
         # Below is a request that includes all optional parameters
-        # results = SODPoliciesApi(api_client).start_sod_all_policies_for_org_v1(new_multipolicyrequest)
+        # results = SODPoliciesApi(api_client).start_sod_all_policies_for_org_v1(new_multi_policy_request)
         print("The response of SODPoliciesApi->start_sod_all_policies_for_org_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1026,18 +1175,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The SOD policy ID to run.
 
 ### Return type
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the violation report run task. | Reportresultreference |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the violation report run task. | ReportResultReference |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSodPoliciesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSodPoliciesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1048,7 +1197,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi
 from sailpoint.sod_policies.api_client import ApiClient
-from sailpoint.sod_policies.models.reportresultreference import Reportresultreference
+from sailpoint.sod_policies.models.report_result_reference import ReportResultReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

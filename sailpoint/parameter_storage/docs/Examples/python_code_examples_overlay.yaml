@@ -6,20 +6,27 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstoragenewparameter import Parameterstoragenewparameter
-        from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+        from sailpoint.parameter_storage.models.parameter_storage_new_parameter import ParameterStorageNewParameter
+        from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          parameterstoragenewparameter = '''sailpoint.parameter_storage.Parameterstoragenewparameter()''' # Parameterstoragenewparameter | The parameter to add to the store. (optional)
+          parameter_storage_new_parameter = '''{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b",
+          "type" : "1.1"
+        }''' # ParameterStorageNewParameter | The parameter to add to the store. (optional)
           try:
               # Add a new parameter.
               
               results = ParameterStorageApi(api_client).create_parameter_v1()
               # Below is a request that includes all optional parameters
-              # results = ParameterStorageApi(api_client).create_parameter_v1(new_parameterstoragenewparameter)
+              # results = ParameterStorageApi(api_client).create_parameter_v1(new_parameter_storage_new_parameter)
               print("The response of ParameterStorageApi->create_parameter_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -54,7 +61,7 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstorageattestationdocument import Parameterstorageattestationdocument
+        from sailpoint.parameter_storage.models.parameter_storage_attestation_document import ParameterStorageAttestationDocument
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -79,7 +86,7 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstoragereference import Parameterstoragereference
+        from sailpoint.parameter_storage.models.parameter_storage_reference import ParameterStorageReference
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -131,7 +138,7 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+        from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -156,7 +163,7 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
+        from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -185,21 +192,33 @@
       source: |
         from sailpoint.parameter_storage.api.parameter_storage_api import ParameterStorageApi
         from sailpoint.parameter_storage.api_client import ApiClient
-        from sailpoint.parameter_storage.models.parameterstorageparameter import Parameterstorageparameter
-        from sailpoint.parameter_storage.models.parameterstorageupdateparameter import Parameterstorageupdateparameter
+        from sailpoint.parameter_storage.models.parameter_storage_parameter import ParameterStorageParameter
+        from sailpoint.parameter_storage.models.parameter_storage_update_parameter import ParameterStorageUpdateParameter
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = '58de858b-83d9-4563-9e15-7393594c684a' # str | The ID of the parameter to be updated. # str | The ID of the parameter to be updated.
-          parameterstorageupdateparameter = '''sailpoint.parameter_storage.Parameterstorageupdateparameter()''' # Parameterstorageupdateparameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
+          parameter_storage_update_parameter = '''{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }''' # ParameterStorageUpdateParameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
           try:
               # Update a parameter.
               
               results = ParameterStorageApi(api_client).update_parameter_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = ParameterStorageApi(api_client).update_parameter_v1(id, new_parameterstorageupdateparameter)
+              # results = ParameterStorageApi(api_client).update_parameter_v1(id, new_parameter_storage_update_parameter)
               print("The response of ParameterStorageApi->update_parameter_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

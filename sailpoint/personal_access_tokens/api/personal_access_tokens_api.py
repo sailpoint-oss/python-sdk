@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.personal_access_tokens.models.createpersonalaccesstokenrequest import Createpersonalaccesstokenrequest
-from sailpoint.personal_access_tokens.models.createpersonalaccesstokenresponse import Createpersonalaccesstokenresponse
-from sailpoint.personal_access_tokens.models.getpersonalaccesstokenresponse import Getpersonalaccesstokenresponse
-from sailpoint.personal_access_tokens.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.personal_access_tokens.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
+from sailpoint.personal_access_tokens.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
+from sailpoint.personal_access_tokens.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.personal_access_tokens.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.personal_access_tokens.api_client import ApiClient, RequestSerialized
 from sailpoint.personal_access_tokens.api_response import ApiResponse
@@ -45,7 +45,7 @@ class PersonalAccessTokensApi:
     @validate_call
     def create_personal_access_token_v1(
         self,
-        createpersonalaccesstokenrequest: Annotated[Createpersonalaccesstokenrequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
+        create_personal_access_token_request: Annotated[CreatePersonalAccessTokenRequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,13 +58,13 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Createpersonalaccesstokenresponse:
+    ) -> CreatePersonalAccessTokenResponse:
         """Create personal access token
 
         This creates a personal access token. **expirationDate and userAwareTokenNeverExpires Relationship:** **Important:** When `expirationDate` is `null` or empty (not included in the request body), the token will never expire. **Required Validation:** If `expirationDate` is `null` or empty, `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule. The valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`: * **When `userAwareTokenNeverExpires` is `true` (or required to be `true`):** `expirationDate` can be `null` or omitted from the request body. When `expirationDate` is `null` or empty, the token will never expire. This creates a PAT that never expires and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted. **Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). The token will never expire. * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted. **Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed. **Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
-        :param createpersonalaccesstokenrequest: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
-        :type createpersonalaccesstokenrequest: Createpersonalaccesstokenrequest
+        :param create_personal_access_token_request: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
+        :type create_personal_access_token_request: CreatePersonalAccessTokenRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,7 +88,7 @@ class PersonalAccessTokensApi:
         """ # noqa: E501
 
         _param = self._create_personal_access_token_v1_serialize(
-            createpersonalaccesstokenrequest=createpersonalaccesstokenrequest,
+            create_personal_access_token_request=create_personal_access_token_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -96,12 +96,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "CreatePersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -117,7 +117,7 @@ class PersonalAccessTokensApi:
     @validate_call
     def create_personal_access_token_v1_with_http_info(
         self,
-        createpersonalaccesstokenrequest: Annotated[Createpersonalaccesstokenrequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
+        create_personal_access_token_request: Annotated[CreatePersonalAccessTokenRequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,13 +130,13 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Createpersonalaccesstokenresponse]:
+    ) -> ApiResponse[CreatePersonalAccessTokenResponse]:
         """Create personal access token
 
         This creates a personal access token. **expirationDate and userAwareTokenNeverExpires Relationship:** **Important:** When `expirationDate` is `null` or empty (not included in the request body), the token will never expire. **Required Validation:** If `expirationDate` is `null` or empty, `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule. The valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`: * **When `userAwareTokenNeverExpires` is `true` (or required to be `true`):** `expirationDate` can be `null` or omitted from the request body. When `expirationDate` is `null` or empty, the token will never expire. This creates a PAT that never expires and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted. **Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). The token will never expire. * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted. **Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed. **Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
-        :param createpersonalaccesstokenrequest: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
-        :type createpersonalaccesstokenrequest: Createpersonalaccesstokenrequest
+        :param create_personal_access_token_request: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
+        :type create_personal_access_token_request: CreatePersonalAccessTokenRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,7 +160,7 @@ class PersonalAccessTokensApi:
         """ # noqa: E501
 
         _param = self._create_personal_access_token_v1_serialize(
-            createpersonalaccesstokenrequest=createpersonalaccesstokenrequest,
+            create_personal_access_token_request=create_personal_access_token_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -168,12 +168,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "CreatePersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -189,7 +189,7 @@ class PersonalAccessTokensApi:
     @validate_call
     def create_personal_access_token_v1_without_preload_content(
         self,
-        createpersonalaccesstokenrequest: Annotated[Createpersonalaccesstokenrequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
+        create_personal_access_token_request: Annotated[CreatePersonalAccessTokenRequest, Field(description="Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,8 +207,8 @@ class PersonalAccessTokensApi:
 
         This creates a personal access token. **expirationDate and userAwareTokenNeverExpires Relationship:** **Important:** When `expirationDate` is `null` or empty (not included in the request body), the token will never expire. **Required Validation:** If `expirationDate` is `null` or empty, `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule. The valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`: * **When `userAwareTokenNeverExpires` is `true` (or required to be `true`):** `expirationDate` can be `null` or omitted from the request body. When `expirationDate` is `null` or empty, the token will never expire. This creates a PAT that never expires and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted. **Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). The token will never expire. * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted. **Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed. **Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
-        :param createpersonalaccesstokenrequest: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
-        :type createpersonalaccesstokenrequest: Createpersonalaccesstokenrequest
+        :param create_personal_access_token_request: Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. (required)
+        :type create_personal_access_token_request: CreatePersonalAccessTokenRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +232,7 @@ class PersonalAccessTokensApi:
         """ # noqa: E501
 
         _param = self._create_personal_access_token_v1_serialize(
-            createpersonalaccesstokenrequest=createpersonalaccesstokenrequest,
+            create_personal_access_token_request=create_personal_access_token_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -240,12 +240,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "CreatePersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -256,7 +256,7 @@ class PersonalAccessTokensApi:
 
     def _create_personal_access_token_v1_serialize(
         self,
-        createpersonalaccesstokenrequest,
+        create_personal_access_token_request,
         _request_auth,
         _content_type,
         _headers,
@@ -282,8 +282,8 @@ class PersonalAccessTokensApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if createpersonalaccesstokenrequest is not None:
-            _body_params = createpersonalaccesstokenrequest
+        if create_personal_access_token_request is not None:
+            _body_params = create_personal_access_token_request
 
 
         # set the HTTP header `Accept`
@@ -385,12 +385,12 @@ class PersonalAccessTokensApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -458,12 +458,12 @@ class PersonalAccessTokensApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -531,12 +531,12 @@ class PersonalAccessTokensApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -625,7 +625,7 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Getpersonalaccesstokenresponse]:
+    ) -> List[GetPersonalAccessTokenResponse]:
         """List personal access tokens
 
         This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.
@@ -666,12 +666,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getpersonalaccesstokenresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -701,7 +701,7 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Getpersonalaccesstokenresponse]]:
+    ) -> ApiResponse[List[GetPersonalAccessTokenResponse]]:
         """List personal access tokens
 
         This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.
@@ -742,12 +742,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getpersonalaccesstokenresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -818,12 +818,12 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getpersonalaccesstokenresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -906,7 +906,7 @@ class PersonalAccessTokensApi:
     def patch_personal_access_token_v1(
         self,
         id: Annotated[StrictStr, Field(description="The Personal Access Token id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -919,15 +919,15 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Getpersonalaccesstokenresponse:
+    ) -> GetPersonalAccessTokenResponse:
         """Patch personal access token
 
         This performs a targeted update to the field(s) of a Personal Access Token. Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens. **expirationDate and userAwareTokenNeverExpires Relationship:** **Important:** When `expirationDate` is `null` or empty (replaced to `null` or omitted from the patch request), the token will never expire. **Required Validation:** If `expirationDate` is being replaced to `null` or is empty, `userAwareTokenNeverExpires` must be set to `true` in the patch request. This is a required validation rule. When patching `expirationDate` and `userAwareTokenNeverExpires`, the valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`: * **When `userAwareTokenNeverExpires` is being set to `true` (or required to be `true`):** `expirationDate` can be replaced to `null` or omitted from the patch request. When `expirationDate` is `null` or empty, the token will never expire. This sets the PAT to never expire and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted. **Validation Rules:** * **If `expirationDate` is being replaced to `null`:** `userAwareTokenNeverExpires` must also be present in the patch request with a value of `true` (required). The token will never expire. * **If `expirationDate` is not being replaced to `null` (i.e., set to a future date):** `userAwareTokenNeverExpires` can be omitted. **Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed. **Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
         :param id: The Personal Access Token id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -952,7 +952,7 @@ class PersonalAccessTokensApi:
 
         _param = self._patch_personal_access_token_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -960,13 +960,13 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "GetPersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -983,7 +983,7 @@ class PersonalAccessTokensApi:
     def patch_personal_access_token_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The Personal Access Token id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -996,15 +996,15 @@ class PersonalAccessTokensApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Getpersonalaccesstokenresponse]:
+    ) -> ApiResponse[GetPersonalAccessTokenResponse]:
         """Patch personal access token
 
         This performs a targeted update to the field(s) of a Personal Access Token. Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens. **expirationDate and userAwareTokenNeverExpires Relationship:** **Important:** When `expirationDate` is `null` or empty (replaced to `null` or omitted from the patch request), the token will never expire. **Required Validation:** If `expirationDate` is being replaced to `null` or is empty, `userAwareTokenNeverExpires` must be set to `true` in the patch request. This is a required validation rule. When patching `expirationDate` and `userAwareTokenNeverExpires`, the valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`: * **When `userAwareTokenNeverExpires` is being set to `true` (or required to be `true`):** `expirationDate` can be replaced to `null` or omitted from the patch request. When `expirationDate` is `null` or empty, the token will never expire. This sets the PAT to never expire and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted. **Validation Rules:** * **If `expirationDate` is being replaced to `null`:** `userAwareTokenNeverExpires` must also be present in the patch request with a value of `true` (required). The token will never expire. * **If `expirationDate` is not being replaced to `null` (i.e., set to a future date):** `userAwareTokenNeverExpires` can be omitted. **Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed. **Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
         :param id: The Personal Access Token id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1029,7 +1029,7 @@ class PersonalAccessTokensApi:
 
         _param = self._patch_personal_access_token_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1037,13 +1037,13 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "GetPersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1060,7 +1060,7 @@ class PersonalAccessTokensApi:
     def patch_personal_access_token_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The Personal Access Token id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1080,8 +1080,8 @@ class PersonalAccessTokensApi:
 
         :param id: The Personal Access Token id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1106,7 +1106,7 @@ class PersonalAccessTokensApi:
 
         _param = self._patch_personal_access_token_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1114,13 +1114,13 @@ class PersonalAccessTokensApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getpersonalaccesstokenresponse",
-            '400': "Errorresponsedto",
+            '200': "GetPersonalAccessTokenResponse",
+            '400': "ErrorResponseDto",
             '401': "ListPersonalAccessTokensV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListPersonalAccessTokensV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1132,7 +1132,7 @@ class PersonalAccessTokensApi:
     def _patch_personal_access_token_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1142,7 +1142,7 @@ class PersonalAccessTokensApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1161,8 +1161,8 @@ class PersonalAccessTokensApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

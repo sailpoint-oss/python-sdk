@@ -44,18 +44,18 @@ class TestEntitlement(unittest.TestCase):
                 privileged = True,
                 cloud_governed = True,
                 requestable = True,
-                owner = sailpoint.access_profiles.models.entitlement_owner.entitlement_owner(
+                owner = sailpoint.access_profiles.models.entitlement_owner.Entitlement_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
                 additional_owners = [
-                    sailpoint.access_profiles.models.additionalownerref.additionalownerref(
+                    sailpoint.access_profiles.models.additional_owner_ref.AdditionalOwnerRef(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'support', )
                     ],
                 manually_updated_fields = {"DISPLAY_NAME":true,"DESCRIPTION":true},
-                access_model_metadata = sailpoint.access_profiles.models.entitlement_access_model_metadata.entitlement_accessModelMetadata(
+                access_model_metadata = sailpoint.access_profiles.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
                     attributes = [
                         sailpoint.access_profiles.models.access_model_metadata.Access Model Metadata(
                             key = 'iscCsp', 
@@ -66,7 +66,7 @@ class TestEntitlement(unittest.TestCase):
                             object_types = ["general"], 
                             description = 'Indicates the type of deployment environment of an access item.', 
                             values = [
-                                sailpoint.access_profiles.models.accessmodelmetadata_values_inner.accessmodelmetadata_values_inner(
+                                sailpoint.access_profiles.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
                                     value = 'development', 
                                     name = 'Development', 
                                     status = 'active', )
@@ -74,7 +74,7 @@ class TestEntitlement(unittest.TestCase):
                         ], ),
                 created = '2020-10-08T18:33:52.029Z',
                 modified = '2020-10-08T18:33:52.029Z',
-                source = sailpoint.access_profiles.models.entitlement_source.entitlement_source(
+                source = sailpoint.access_profiles.models.entitlement_source.Entitlement_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),

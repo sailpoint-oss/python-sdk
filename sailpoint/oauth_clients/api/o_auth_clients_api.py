@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.oauth_clients.models.createoauthclientrequest import Createoauthclientrequest
-from sailpoint.oauth_clients.models.createoauthclientresponse import Createoauthclientresponse
-from sailpoint.oauth_clients.models.getoauthclientresponse import Getoauthclientresponse
-from sailpoint.oauth_clients.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.oauth_clients.models.create_o_auth_client_request import CreateOAuthClientRequest
+from sailpoint.oauth_clients.models.create_o_auth_client_response import CreateOAuthClientResponse
+from sailpoint.oauth_clients.models.get_o_auth_client_response import GetOAuthClientResponse
+from sailpoint.oauth_clients.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.oauth_clients.api_client import ApiClient, RequestSerialized
 from sailpoint.oauth_clients.api_response import ApiResponse
@@ -45,7 +45,7 @@ class OAuthClientsApi:
     @validate_call
     def create_oauth_client_v1(
         self,
-        createoauthclientrequest: Createoauthclientrequest,
+        create_o_auth_client_request: CreateOAuthClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -58,13 +58,13 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Createoauthclientresponse:
+    ) -> CreateOAuthClientResponse:
         """Create oauth client
 
         This creates an OAuth client.
 
-        :param createoauthclientrequest: (required)
-        :type createoauthclientrequest: Createoauthclientrequest
+        :param create_o_auth_client_request: (required)
+        :type create_o_auth_client_request: CreateOAuthClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,7 +88,7 @@ class OAuthClientsApi:
         """ # noqa: E501
 
         _param = self._create_oauth_client_v1_serialize(
-            createoauthclientrequest=createoauthclientrequest,
+            create_o_auth_client_request=create_o_auth_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -96,12 +96,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "CreateOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -117,7 +117,7 @@ class OAuthClientsApi:
     @validate_call
     def create_oauth_client_v1_with_http_info(
         self,
-        createoauthclientrequest: Createoauthclientrequest,
+        create_o_auth_client_request: CreateOAuthClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,13 +130,13 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Createoauthclientresponse]:
+    ) -> ApiResponse[CreateOAuthClientResponse]:
         """Create oauth client
 
         This creates an OAuth client.
 
-        :param createoauthclientrequest: (required)
-        :type createoauthclientrequest: Createoauthclientrequest
+        :param create_o_auth_client_request: (required)
+        :type create_o_auth_client_request: CreateOAuthClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,7 +160,7 @@ class OAuthClientsApi:
         """ # noqa: E501
 
         _param = self._create_oauth_client_v1_serialize(
-            createoauthclientrequest=createoauthclientrequest,
+            create_o_auth_client_request=create_o_auth_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -168,12 +168,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "CreateOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -189,7 +189,7 @@ class OAuthClientsApi:
     @validate_call
     def create_oauth_client_v1_without_preload_content(
         self,
-        createoauthclientrequest: Createoauthclientrequest,
+        create_o_auth_client_request: CreateOAuthClientRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,8 +207,8 @@ class OAuthClientsApi:
 
         This creates an OAuth client.
 
-        :param createoauthclientrequest: (required)
-        :type createoauthclientrequest: Createoauthclientrequest
+        :param create_o_auth_client_request: (required)
+        :type create_o_auth_client_request: CreateOAuthClientRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +232,7 @@ class OAuthClientsApi:
         """ # noqa: E501
 
         _param = self._create_oauth_client_v1_serialize(
-            createoauthclientrequest=createoauthclientrequest,
+            create_o_auth_client_request=create_o_auth_client_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -240,12 +240,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Createoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "CreateOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -256,7 +256,7 @@ class OAuthClientsApi:
 
     def _create_oauth_client_v1_serialize(
         self,
-        createoauthclientrequest,
+        create_o_auth_client_request,
         _request_auth,
         _content_type,
         _headers,
@@ -282,8 +282,8 @@ class OAuthClientsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if createoauthclientrequest is not None:
-            _body_params = createoauthclientrequest
+        if create_o_auth_client_request is not None:
+            _body_params = create_o_auth_client_request
 
 
         # set the HTTP header `Accept`
@@ -385,12 +385,12 @@ class OAuthClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -458,12 +458,12 @@ class OAuthClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -531,12 +531,12 @@ class OAuthClientsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -624,7 +624,7 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Getoauthclientresponse:
+    ) -> GetOAuthClientResponse:
         """Get oauth client
 
         This gets details of an OAuth client.
@@ -662,13 +662,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -697,7 +697,7 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Getoauthclientresponse]:
+    ) -> ApiResponse[GetOAuthClientResponse]:
         """Get oauth client
 
         This gets details of an OAuth client.
@@ -735,13 +735,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -808,13 +808,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -902,7 +902,7 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Getoauthclientresponse]:
+    ) -> List[GetOAuthClientResponse]:
         """List oauth clients
 
         This gets a list of OAuth clients.
@@ -940,12 +940,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getoauthclientresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetOAuthClientResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -974,7 +974,7 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Getoauthclientresponse]]:
+    ) -> ApiResponse[List[GetOAuthClientResponse]]:
         """List oauth clients
 
         This gets a list of OAuth clients.
@@ -1012,12 +1012,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getoauthclientresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetOAuthClientResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1084,12 +1084,12 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Getoauthclientresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[GetOAuthClientResponse]",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1167,7 +1167,7 @@ class OAuthClientsApi:
     def patch_oauth_client_v1(
         self,
         id: Annotated[StrictStr, Field(description="The OAuth client id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1180,15 +1180,15 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Getoauthclientresponse:
+    ) -> GetOAuthClientResponse:
         """Patch oauth client
 
         This performs a targeted update to the field(s) of an OAuth client.
 
         :param id: The OAuth client id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1213,7 +1213,7 @@ class OAuthClientsApi:
 
         _param = self._patch_oauth_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1221,13 +1221,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1244,7 +1244,7 @@ class OAuthClientsApi:
     def patch_oauth_client_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The OAuth client id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1257,15 +1257,15 @@ class OAuthClientsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Getoauthclientresponse]:
+    ) -> ApiResponse[GetOAuthClientResponse]:
         """Patch oauth client
 
         This performs a targeted update to the field(s) of an OAuth client.
 
         :param id: The OAuth client id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1290,7 +1290,7 @@ class OAuthClientsApi:
 
         _param = self._patch_oauth_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1298,13 +1298,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1321,7 +1321,7 @@ class OAuthClientsApi:
     def patch_oauth_client_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The OAuth client id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1341,8 +1341,8 @@ class OAuthClientsApi:
 
         :param id: The OAuth client id (required)
         :type id: str
-        :param jsonpatchoperation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,7 +1367,7 @@ class OAuthClientsApi:
 
         _param = self._patch_oauth_client_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1375,13 +1375,13 @@ class OAuthClientsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Getoauthclientresponse",
-            '400': "Errorresponsedto",
+            '200': "GetOAuthClientResponse",
+            '400': "ErrorResponseDto",
             '401': "ListOauthClientsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListOauthClientsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1393,7 +1393,7 @@ class OAuthClientsApi:
     def _patch_oauth_client_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1403,7 +1403,7 @@ class OAuthClientsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1422,8 +1422,8 @@ class OAuthClientsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

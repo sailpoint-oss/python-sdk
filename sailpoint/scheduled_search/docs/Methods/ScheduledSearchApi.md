@@ -63,18 +63,18 @@ Param Type | Name | Data Type | Required  | Description
  Body  | create_scheduled_search_v1_request | [**CreateScheduledSearchV1Request**](../models/create-scheduled-search-v1-request) | True  | The scheduled search to persist.
 
 ### Return type
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | The persisted scheduled search. | Scheduledsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | The persisted scheduled search. | ScheduledSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListScheduledSearchV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListScheduledSearchV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -86,7 +86,7 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.scheduled_search.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.scheduled_search.api_client import ApiClient
 from sailpoint.scheduled_search.models.create_scheduled_search_v1_request import CreateScheduledSearchV1Request
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -130,12 +130,12 @@ Path   | id | **str** | True  | ID of the requested document.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content - Indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListScheduledSearchV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListScheduledSearchV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -180,18 +180,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the requested document.
 
 ### Return type
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested scheduled search. | Scheduledsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested scheduled search. | ScheduledSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListScheduledSearchV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListScheduledSearchV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -202,7 +202,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.scheduled_search.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.scheduled_search.api_client import ApiClient
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -243,18 +243,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*
 
 ### Return type
-[**List[Scheduledsearch]**](../models/scheduledsearch)
+[**List[ScheduledSearch]**](../models/scheduled-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The list of requested scheduled searches. | List[Scheduledsearch] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The list of requested scheduled searches. | List[ScheduledSearch] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListScheduledSearchV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListScheduledSearchV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -265,7 +265,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.scheduled_search.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.scheduled_search.api_client import ApiClient
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -305,7 +305,7 @@ Unsubscribes a recipient from the specified scheduled search.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the requested document.
- Body  | typedreference | [**Typedreference**](../models/typedreference) | True  | The recipient to be removed from the scheduled search. 
+ Body  | typed_reference | [**TypedReference**](../models/typed-reference) | True  | The recipient to be removed from the scheduled search. 
 
 ### Return type
  (empty response body)
@@ -314,9 +314,9 @@ Path   | id | **str** | True  | ID of the requested document.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No Content - Indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -327,21 +327,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.scheduled_search.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.scheduled_search.api_client import ApiClient
-from sailpoint.scheduled_search.models.typedreference import Typedreference
+from sailpoint.scheduled_search.models.typed_reference import TypedReference
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document. # str | ID of the requested document.
-    typedreference = '''sailpoint.scheduled_search.Typedreference()''' # Typedreference | The recipient to be removed from the scheduled search. 
+    typed_reference = '''{
+          "id" : "2c91808568c529c60168cca6f90c1313",
+          "type" : "IDENTITY"
+        }''' # TypedReference | The recipient to be removed from the scheduled search. 
 
     try:
         # Unsubscribe a recipient from scheduled search
-        new_typedreference = Typedreference.from_json(typedreference)
-        ScheduledSearchApi(api_client).unsubscribe_scheduled_search_v1(id=id, typedreference=new_typedreference)
+        new_typed_reference = TypedReference.from_json(typed_reference)
+        ScheduledSearchApi(api_client).unsubscribe_scheduled_search_v1(id=id, typed_reference=new_typed_reference)
         # Below is a request that includes all optional parameters
-        # ScheduledSearchApi(api_client).unsubscribe_scheduled_search_v1(id, new_typedreference)
+        # ScheduledSearchApi(api_client).unsubscribe_scheduled_search_v1(id, new_typed_reference)
     except Exception as e:
         print("Exception when calling ScheduledSearchApi->unsubscribe_scheduled_search_v1: %s\n" % e)
 ```
@@ -362,21 +365,21 @@ Updates an existing scheduled search.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the requested document.
- Body  | scheduledsearch | [**Scheduledsearch**](../models/scheduledsearch) | True  | The scheduled search to persist.
+ Body  | scheduled_search | [**ScheduledSearch**](../models/scheduled-search) | True  | The scheduled search to persist.
 
 ### Return type
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The persisted scheduled search. | Scheduledsearch |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The persisted scheduled search. | ScheduledSearch |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListScheduledSearchV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListScheduledSearchV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -387,21 +390,63 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.scheduled_search.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.scheduled_search.api_client import ApiClient
-from sailpoint.scheduled_search.models.scheduledsearch import Scheduledsearch
+from sailpoint.scheduled_search.models.scheduled_search import ScheduledSearch
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document. # str | ID of the requested document.
-    scheduledsearch = '''sailpoint.scheduled_search.Scheduledsearch()''' # Scheduledsearch | The scheduled search to persist.
+    scheduled_search = '''{
+          "owner" : {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          },
+          "displayQueryDetails" : false,
+          "created" : "",
+          "description" : "Daily disabled accounts",
+          "ownerId" : "2c9180867624cbd7017642d8c8c81f67",
+          "enabled" : false,
+          "schedule" : {
+            "hours" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "months" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "timeZoneId" : "America/Chicago",
+            "days" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "expiration" : "2018-06-25T20:22:28.104Z",
+            "type" : "WEEKLY"
+          },
+          "recipients" : [ {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          } ],
+          "savedSearchId" : "554f1511-f0a1-4744-ab14-599514d3e57c",
+          "name" : "Daily disabled accounts",
+          "modified" : "",
+          "id" : "0de46054-fe90-434a-b84e-c6b3359d0c64",
+          "emailEmptyResults" : false
+        }''' # ScheduledSearch | The scheduled search to persist.
 
     try:
         # Update an existing scheduled search
-        new_scheduledsearch = Scheduledsearch.from_json(scheduledsearch)
-        results = ScheduledSearchApi(api_client).update_scheduled_search_v1(id=id, scheduledsearch=new_scheduledsearch)
+        new_scheduled_search = ScheduledSearch.from_json(scheduled_search)
+        results = ScheduledSearchApi(api_client).update_scheduled_search_v1(id=id, scheduled_search=new_scheduled_search)
         # Below is a request that includes all optional parameters
-        # results = ScheduledSearchApi(api_client).update_scheduled_search_v1(id, new_scheduledsearch)
+        # results = ScheduledSearchApi(api_client).update_scheduled_search_v1(id, new_scheduled_search)
         print("The response of ScheduledSearchApi->update_scheduled_search_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

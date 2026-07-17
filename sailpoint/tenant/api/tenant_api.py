@@ -87,12 +87,12 @@ class TenantApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Tenant",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -156,12 +156,12 @@ class TenantApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Tenant",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -225,12 +225,12 @@ class TenantApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Tenant",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTenantV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTenantV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

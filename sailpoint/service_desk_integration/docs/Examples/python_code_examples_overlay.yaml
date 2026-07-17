@@ -6,19 +6,52 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
+        from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          servicedeskintegrationdto = '''sailpoint.service_desk_integration.Servicedeskintegrationdto()''' # Servicedeskintegrationdto | The specifics of a new integration to create
+          service_desk_integration_dto = '''{
+          "ownerRef" : "",
+          "cluster" : "xyzzy999",
+          "created" : "2024-01-17T18:45:25.994Z",
+          "description" : "A very nice Service Desk integration",
+          "clusterRef" : "",
+          "type" : "ServiceNowSDIM",
+          "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "provisioningConfig" : {
+            "managedResourceRefs" : [ {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb051111",
+              "name" : "My Source 1"
+            }, {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb052222",
+              "name" : "My Source 2"
+            } ],
+            "provisioningRequestExpiration" : 7,
+            "noProvisioningRequests" : true,
+            "universalManager" : true,
+            "planInitializerScript" : {
+              "source" : "<?xml version='1.0' encoding='UTF-8'?>\\r\\n<!DOCTYPE Rule PUBLIC \\\"sailpoint.dtd\\\" \\\"sailpoint.dtd\\\">\\r\\n<Rule name=\\\"Example Rule\\\" type=\\\"BeforeProvisioning\\\">\\r\\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\\r\\n  <Source><![CDATA[\\r\\nimport sailpoint.object.*;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\\r\\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\\r\\nimport sailpoint.object.ProvisioningPlan;\\r\\nimport sailpoint.object.ProvisioningPlan.Operation;\\r\\n\\r\\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n}\\r\\n\\r\\n  ]]></Source>\n"
+            }
+          },
+          "name" : "Service Desk Integration Name",
+          "modified" : "2024-02-18T18:45:25.994Z",
+          "attributes" : {
+            "property" : "value",
+            "key" : "value"
+          },
+          "id" : "62945a496ef440189b1f03e3623411c8",
+          "beforeProvisioningRule" : ""
+        }''' # ServiceDeskIntegrationDto | The specifics of a new integration to create
           try:
               # Create new service desk integration
-              new_servicedeskintegrationdto = Servicedeskintegrationdto.from_json(servicedeskintegrationdto)
-              results = ServiceDeskIntegrationApi(api_client).create_service_desk_integration_v1(servicedeskintegrationdto=new_servicedeskintegrationdto)
+              new_service_desk_integration_dto = ServiceDeskIntegrationDto.from_json(service_desk_integration_dto)
+              results = ServiceDeskIntegrationApi(api_client).create_service_desk_integration_v1(service_desk_integration_dto=new_service_desk_integration_dto)
               # Below is a request that includes all optional parameters
-              # results = ServiceDeskIntegrationApi(api_client).create_service_desk_integration_v1(new_servicedeskintegrationdto)
+              # results = ServiceDeskIntegrationApi(api_client).create_service_desk_integration_v1(new_service_desk_integration_dto)
               print("The response of ServiceDeskIntegrationApi->create_service_desk_integration_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -53,7 +86,7 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationtemplatedto import Servicedeskintegrationtemplatedto
+        from sailpoint.service_desk_integration.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -78,7 +111,7 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationtemplatetype import Servicedeskintegrationtemplatetype
+        from sailpoint.service_desk_integration.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -103,7 +136,7 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
+        from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -128,7 +161,7 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
+        from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -158,7 +191,7 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.queuedcheckconfigdetails import Queuedcheckconfigdetails
+        from sailpoint.service_desk_integration.models.queued_check_config_details import QueuedCheckConfigDetails
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -182,21 +215,21 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
+        from sailpoint.service_desk_integration.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'anId' # str | ID of the Service Desk integration to update # str | ID of the Service Desk integration to update
-          jsonpatchoperation = '''[sailpoint.service_desk_integration.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+          json_patch_operation = '''[sailpoint.service_desk_integration.JsonPatchOperation()]''' # List[JsonPatchOperation] | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
           try:
               # Patch a service desk integration
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = ServiceDeskIntegrationApi(api_client).patch_service_desk_integration_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = ServiceDeskIntegrationApi(api_client).patch_service_desk_integration_v1(id=id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = ServiceDeskIntegrationApi(api_client).patch_service_desk_integration_v1(id, new_jsonpatchoperation)
+              # results = ServiceDeskIntegrationApi(api_client).patch_service_desk_integration_v1(id, new_json_patch_operation)
               print("The response of ServiceDeskIntegrationApi->patch_service_desk_integration_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -209,20 +242,53 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
+        from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'anId' # str | ID of the Service Desk integration to update # str | ID of the Service Desk integration to update
-          servicedeskintegrationdto = '''sailpoint.service_desk_integration.Servicedeskintegrationdto()''' # Servicedeskintegrationdto | The specifics of the integration to update
+          service_desk_integration_dto = '''{
+          "ownerRef" : "",
+          "cluster" : "xyzzy999",
+          "created" : "2024-01-17T18:45:25.994Z",
+          "description" : "A very nice Service Desk integration",
+          "clusterRef" : "",
+          "type" : "ServiceNowSDIM",
+          "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "provisioningConfig" : {
+            "managedResourceRefs" : [ {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb051111",
+              "name" : "My Source 1"
+            }, {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb052222",
+              "name" : "My Source 2"
+            } ],
+            "provisioningRequestExpiration" : 7,
+            "noProvisioningRequests" : true,
+            "universalManager" : true,
+            "planInitializerScript" : {
+              "source" : "<?xml version='1.0' encoding='UTF-8'?>\\r\\n<!DOCTYPE Rule PUBLIC \\\"sailpoint.dtd\\\" \\\"sailpoint.dtd\\\">\\r\\n<Rule name=\\\"Example Rule\\\" type=\\\"BeforeProvisioning\\\">\\r\\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\\r\\n  <Source><![CDATA[\\r\\nimport sailpoint.object.*;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\\r\\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\\r\\nimport sailpoint.object.ProvisioningPlan;\\r\\nimport sailpoint.object.ProvisioningPlan.Operation;\\r\\n\\r\\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n}\\r\\n\\r\\n  ]]></Source>\n"
+            }
+          },
+          "name" : "Service Desk Integration Name",
+          "modified" : "2024-02-18T18:45:25.994Z",
+          "attributes" : {
+            "property" : "value",
+            "key" : "value"
+          },
+          "id" : "62945a496ef440189b1f03e3623411c8",
+          "beforeProvisioningRule" : ""
+        }''' # ServiceDeskIntegrationDto | The specifics of the integration to update
           try:
               # Update a service desk integration
-              new_servicedeskintegrationdto = Servicedeskintegrationdto.from_json(servicedeskintegrationdto)
-              results = ServiceDeskIntegrationApi(api_client).put_service_desk_integration_v1(id=id, servicedeskintegrationdto=new_servicedeskintegrationdto)
+              new_service_desk_integration_dto = ServiceDeskIntegrationDto.from_json(service_desk_integration_dto)
+              results = ServiceDeskIntegrationApi(api_client).put_service_desk_integration_v1(id=id, service_desk_integration_dto=new_service_desk_integration_dto)
               # Below is a request that includes all optional parameters
-              # results = ServiceDeskIntegrationApi(api_client).put_service_desk_integration_v1(id, new_servicedeskintegrationdto)
+              # results = ServiceDeskIntegrationApi(api_client).put_service_desk_integration_v1(id, new_service_desk_integration_dto)
               print("The response of ServiceDeskIntegrationApi->put_service_desk_integration_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -235,19 +301,22 @@
       source: |
         from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi
         from sailpoint.service_desk_integration.api_client import ApiClient
-        from sailpoint.service_desk_integration.models.queuedcheckconfigdetails import Queuedcheckconfigdetails
+        from sailpoint.service_desk_integration.models.queued_check_config_details import QueuedCheckConfigDetails
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          queuedcheckconfigdetails = '''sailpoint.service_desk_integration.Queuedcheckconfigdetails()''' # Queuedcheckconfigdetails | The modified time check configuration
+          queued_check_config_details = '''{
+          "provisioningStatusCheckIntervalMinutes" : "30",
+          "provisioningMaxStatusCheckDays" : "2"
+        }''' # QueuedCheckConfigDetails | The modified time check configuration
           try:
               # Update the time check configuration
-              new_queuedcheckconfigdetails = Queuedcheckconfigdetails.from_json(queuedcheckconfigdetails)
-              results = ServiceDeskIntegrationApi(api_client).update_status_check_details_v1(queuedcheckconfigdetails=new_queuedcheckconfigdetails)
+              new_queued_check_config_details = QueuedCheckConfigDetails.from_json(queued_check_config_details)
+              results = ServiceDeskIntegrationApi(api_client).update_status_check_details_v1(queued_check_config_details=new_queued_check_config_details)
               # Below is a request that includes all optional parameters
-              # results = ServiceDeskIntegrationApi(api_client).update_status_check_details_v1(new_queuedcheckconfigdetails)
+              # results = ServiceDeskIntegrationApi(api_client).update_status_check_details_v1(new_queued_check_config_details)
               print("The response of ServiceDeskIntegrationApi->update_status_check_details_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

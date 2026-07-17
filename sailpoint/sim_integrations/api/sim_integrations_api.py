@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.sim_integrations.models.jsonpatch import Jsonpatch
-from sailpoint.sim_integrations.models.servicedeskintegrationdto import Servicedeskintegrationdto
-from sailpoint.sim_integrations.models.simintegrationdetails import Simintegrationdetails
+from sailpoint.sim_integrations.models.json_patch import JsonPatch
+from sailpoint.sim_integrations.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.sim_integrations.models.sim_integration_details import SimIntegrationDetails
 
 from sailpoint.sim_integrations.api_client import ApiClient, RequestSerialized
 from sailpoint.sim_integrations.api_response import ApiResponse
@@ -44,7 +44,7 @@ class SIMIntegrationsApi:
     @validate_call
     def create_sim_integration_v1(
         self,
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="DTO containing the details of the SIM integration")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="DTO containing the details of the SIM integration")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -58,13 +58,13 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Create new sim integration
 
         Create a new SIM Integrations.
 
-        :param simintegrationdetails: DTO containing the details of the SIM integration (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: DTO containing the details of the SIM integration (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -90,7 +90,7 @@ class SIMIntegrationsApi:
         """ # noqa: E501
 
         _param = self._create_sim_integration_v1_serialize(
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -99,13 +99,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class SIMIntegrationsApi:
     @validate_call
     def create_sim_integration_v1_with_http_info(
         self,
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="DTO containing the details of the SIM integration")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="DTO containing the details of the SIM integration")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -135,13 +135,13 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Create new sim integration
 
         Create a new SIM Integrations.
 
-        :param simintegrationdetails: DTO containing the details of the SIM integration (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: DTO containing the details of the SIM integration (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -167,7 +167,7 @@ class SIMIntegrationsApi:
         """ # noqa: E501
 
         _param = self._create_sim_integration_v1_serialize(
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -176,13 +176,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -198,7 +198,7 @@ class SIMIntegrationsApi:
     @validate_call
     def create_sim_integration_v1_without_preload_content(
         self,
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="DTO containing the details of the SIM integration")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="DTO containing the details of the SIM integration")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -217,8 +217,8 @@ class SIMIntegrationsApi:
 
         Create a new SIM Integrations.
 
-        :param simintegrationdetails: DTO containing the details of the SIM integration (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: DTO containing the details of the SIM integration (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -244,7 +244,7 @@ class SIMIntegrationsApi:
         """ # noqa: E501
 
         _param = self._create_sim_integration_v1_serialize(
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -253,13 +253,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -270,7 +270,7 @@ class SIMIntegrationsApi:
 
     def _create_sim_integration_v1_serialize(
         self,
-        simintegrationdetails,
+        sim_integration_details,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -299,8 +299,8 @@ class SIMIntegrationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if simintegrationdetails is not None:
-            _body_params = simintegrationdetails
+        if sim_integration_details is not None:
+            _body_params = sim_integration_details
 
 
         # set the HTTP header `Accept`
@@ -406,12 +406,12 @@ class SIMIntegrationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -483,12 +483,12 @@ class SIMIntegrationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -560,12 +560,12 @@ class SIMIntegrationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -657,7 +657,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Get a sim integration details.
 
         Get the details of a SIM integration.
@@ -698,13 +698,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -734,7 +734,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Get a sim integration details.
 
         Get the details of a SIM integration.
@@ -775,13 +775,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -852,13 +852,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -949,7 +949,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Servicedeskintegrationdto]:
+    ) -> List[ServiceDeskIntegrationDto]:
         """List the existing sim integrations.
 
         List the existing SIM integrations.
@@ -987,13 +987,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1022,7 +1022,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Servicedeskintegrationdto]]:
+    ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
         """List the existing sim integrations.
 
         List the existing SIM integrations.
@@ -1060,13 +1060,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1133,13 +1133,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1215,7 +1215,7 @@ class SIMIntegrationsApi:
     def patch_before_provisioning_rule_v1(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1229,15 +1229,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Patch a sim beforeprovisioningrule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1264,7 +1264,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_before_provisioning_rule_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1273,13 +1273,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1296,7 +1296,7 @@ class SIMIntegrationsApi:
     def patch_before_provisioning_rule_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1310,15 +1310,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Patch a sim beforeprovisioningrule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1345,7 +1345,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_before_provisioning_rule_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1354,13 +1354,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1377,7 +1377,7 @@ class SIMIntegrationsApi:
     def patch_before_provisioning_rule_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM beforeProvisioningRule.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1398,8 +1398,8 @@ class SIMIntegrationsApi:
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM beforeProvisioningRule. (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1426,7 +1426,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_before_provisioning_rule_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1435,13 +1435,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1453,7 +1453,7 @@ class SIMIntegrationsApi:
     def _patch_before_provisioning_rule_v1_serialize(
         self,
         id,
-        jsonpatch,
+        json_patch,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1484,8 +1484,8 @@ class SIMIntegrationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatch is not None:
-            _body_params = jsonpatch
+        if json_patch is not None:
+            _body_params = json_patch
 
 
         # set the HTTP header `Accept`
@@ -1536,7 +1536,7 @@ class SIMIntegrationsApi:
     def patch_sim_attributes_v1(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1550,15 +1550,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Patch a sim attribute.
 
         Patch a SIM attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1585,7 +1585,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_sim_attributes_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1594,13 +1594,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1617,7 +1617,7 @@ class SIMIntegrationsApi:
     def patch_sim_attributes_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1631,15 +1631,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Patch a sim attribute.
 
         Patch a SIM attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1666,7 +1666,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_sim_attributes_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1675,13 +1675,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1698,7 +1698,7 @@ class SIMIntegrationsApi:
     def patch_sim_attributes_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="SIM integration id")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JsonPatch object that describes the changes of SIM")],
+        json_patch: Annotated[JsonPatch, Field(description="The JsonPatch object that describes the changes of SIM")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1719,8 +1719,8 @@ class SIMIntegrationsApi:
 
         :param id: SIM integration id (required)
         :type id: str
-        :param jsonpatch: The JsonPatch object that describes the changes of SIM (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JsonPatch object that describes the changes of SIM (required)
+        :type json_patch: JsonPatch
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1747,7 +1747,7 @@ class SIMIntegrationsApi:
 
         _param = self._patch_sim_attributes_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1756,13 +1756,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1774,7 +1774,7 @@ class SIMIntegrationsApi:
     def _patch_sim_attributes_v1_serialize(
         self,
         id,
-        jsonpatch,
+        json_patch,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1805,8 +1805,8 @@ class SIMIntegrationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatch is not None:
-            _body_params = jsonpatch
+        if json_patch is not None:
+            _body_params = json_patch
 
 
         # set the HTTP header `Accept`
@@ -1857,7 +1857,7 @@ class SIMIntegrationsApi:
     def put_sim_integration_v1(
         self,
         id: Annotated[StrictStr, Field(description="The id of the integration.")],
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="The full DTO of the integration containing the updated model")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="The full DTO of the integration containing the updated model")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1871,15 +1871,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Update an existing sim integration
 
         Update an existing SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
-        :param simintegrationdetails: The full DTO of the integration containing the updated model (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: The full DTO of the integration containing the updated model (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1906,7 +1906,7 @@ class SIMIntegrationsApi:
 
         _param = self._put_sim_integration_v1_serialize(
             id=id,
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1915,13 +1915,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1938,7 +1938,7 @@ class SIMIntegrationsApi:
     def put_sim_integration_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The id of the integration.")],
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="The full DTO of the integration containing the updated model")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="The full DTO of the integration containing the updated model")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1952,15 +1952,15 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Update an existing sim integration
 
         Update an existing SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
-        :param simintegrationdetails: The full DTO of the integration containing the updated model (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: The full DTO of the integration containing the updated model (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1987,7 +1987,7 @@ class SIMIntegrationsApi:
 
         _param = self._put_sim_integration_v1_serialize(
             id=id,
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1996,13 +1996,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2019,7 +2019,7 @@ class SIMIntegrationsApi:
     def put_sim_integration_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The id of the integration.")],
-        simintegrationdetails: Annotated[Simintegrationdetails, Field(description="The full DTO of the integration containing the updated model")],
+        sim_integration_details: Annotated[SimIntegrationDetails, Field(description="The full DTO of the integration containing the updated model")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2040,8 +2040,8 @@ class SIMIntegrationsApi:
 
         :param id: The id of the integration. (required)
         :type id: str
-        :param simintegrationdetails: The full DTO of the integration containing the updated model (required)
-        :type simintegrationdetails: Simintegrationdetails
+        :param sim_integration_details: The full DTO of the integration containing the updated model (required)
+        :type sim_integration_details: SimIntegrationDetails
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2068,7 +2068,7 @@ class SIMIntegrationsApi:
 
         _param = self._put_sim_integration_v1_serialize(
             id=id,
-            simintegrationdetails=simintegrationdetails,
+            sim_integration_details=sim_integration_details,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2077,13 +2077,13 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetSIMIntegrationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetSIMIntegrationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2095,7 +2095,7 @@ class SIMIntegrationsApi:
     def _put_sim_integration_v1_serialize(
         self,
         id,
-        simintegrationdetails,
+        sim_integration_details,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2126,8 +2126,8 @@ class SIMIntegrationsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if simintegrationdetails is not None:
-            _body_params = simintegrationdetails
+        if sim_integration_details is not None:
+            _body_params = sim_integration_details
 
 
         # set the HTTP header `Accept`

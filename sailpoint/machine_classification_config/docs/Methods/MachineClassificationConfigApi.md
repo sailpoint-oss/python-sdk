@@ -40,12 +40,12 @@ Path   | source_id | **str** | True  | Source ID.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMachineClassificationConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMachineClassificationConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -90,18 +90,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | Source ID
 
 ### Return type
-[**Machineclassificationconfig**](../models/machineclassificationconfig)
+[**MachineClassificationConfig**](../models/machine-classification-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Config Object | Machineclassificationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Config Object | MachineClassificationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMachineClassificationConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMachineClassificationConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -112,7 +112,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_classification_config.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.machine_classification_config.api_client import ApiClient
-from sailpoint.machine_classification_config.models.machineclassificationconfig import Machineclassificationconfig
+from sailpoint.machine_classification_config.models.machine_classification_config import MachineClassificationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -147,21 +147,21 @@ Use this API to update Classification Config for a Source. A token with ORG_ADMI
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
- Body  | machineclassificationconfig | [**Machineclassificationconfig**](../models/machineclassificationconfig) | True  | 
+ Body  | machine_classification_config | [**MachineClassificationConfig**](../models/machine-classification-config) | True  | 
 
 ### Return type
-[**Machineclassificationconfig**](../models/machineclassificationconfig)
+[**MachineClassificationConfig**](../models/machine-classification-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated Machine Classification Config Object. | Machineclassificationconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated Machine Classification Config Object. | MachineClassificationConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMachineClassificationConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMachineClassificationConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -172,21 +172,76 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_classification_config.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.machine_classification_config.api_client import ApiClient
-from sailpoint.machine_classification_config.models.machineclassificationconfig import Machineclassificationconfig
+from sailpoint.machine_classification_config.models.machine_classification_config import MachineClassificationConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
-    machineclassificationconfig = '''sailpoint.machine_classification_config.Machineclassificationconfig()''' # Machineclassificationconfig | 
+    machine_classification_config = '''{
+          "criteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            }, {
+              "children" : [ {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            } ],
+            "caseSensitive" : false,
+            "dataType" : "dataType",
+            "attribute" : "distinguishedName",
+            "operation" : "EQUALS",
+            "value" : "OU=Service Accounts"
+          },
+          "created" : "2017-07-11T18:45:37.098Z",
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "classificationMethod" : "SOURCE",
+          "enabled" : true
+        }''' # MachineClassificationConfig | 
 
     try:
         # Update source's classification config
-        new_machineclassificationconfig = Machineclassificationconfig.from_json(machineclassificationconfig)
-        results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id=source_id, machineclassificationconfig=new_machineclassificationconfig)
+        new_machine_classification_config = MachineClassificationConfig.from_json(machine_classification_config)
+        results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id=source_id, machine_classification_config=new_machine_classification_config)
         # Below is a request that includes all optional parameters
-        # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machineclassificationconfig)
+        # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machine_classification_config)
         print("The response of MachineClassificationConfigApi->set_machine_classification_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

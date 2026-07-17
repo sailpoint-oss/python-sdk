@@ -39,11 +39,11 @@ This endpoint does not need any parameter.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Successfully retrieved tenant context. | List[GetTenantContextV1200ResponseInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTenantContextV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTenantContextV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -93,7 +93,7 @@ Note that each tenant is limited to a maximum of 100 key-value pairs.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | jsonpatchoperation | [**Jsonpatchoperation**](../models/jsonpatchoperation) | True  | 
+ Body  | json_patch_operation | [**JsonPatchOperation**](../models/json-patch-operation) | True  | 
 
 ### Return type
  (empty response body)
@@ -102,12 +102,12 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Tenant context updated successfully. |  |  -  |
-400 | Bad request due to invalid input parameters. | Errorresponsedto |  -  |
+400 | Bad request due to invalid input parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTenantContextV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTenantContextV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -118,20 +118,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.tenant_context.api.tenant_context_api import TenantContextApi
 from sailpoint.tenant_context.api_client import ApiClient
-from sailpoint.tenant_context.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.tenant_context.models.json_patch_operation import JsonPatchOperation
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    jsonpatchoperation = '''[{"op":"add","path":"/Key/IAS","value":"Integrated Automation System"},{"op":"replace","path":"/Key/IAS","value":"International Accounting Standards"},{"op":"remove","path":"/Key/NDR"}]''' # Jsonpatchoperation | 
+    json_patch_operation = '''{
+          "op" : "replace",
+          "path" : "/description",
+          "value" : "New description"
+        }''' # JsonPatchOperation | 
 
     try:
         # Update tenant context
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        TenantContextApi(api_client).patch_tenant_context_v1(jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        TenantContextApi(api_client).patch_tenant_context_v1(json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # TenantContextApi(api_client).patch_tenant_context_v1(new_jsonpatchoperation)
+        # TenantContextApi(api_client).patch_tenant_context_v1(new_json_patch_operation)
     except Exception as e:
         print("Exception when calling TenantContextApi->patch_tenant_context_v1: %s\n" % e)
 ```

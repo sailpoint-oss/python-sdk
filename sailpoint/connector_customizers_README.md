@@ -47,11 +47,11 @@ configuration = sailpoint.connector_customizers.Configuration(
 with sailpoint.connector_customizers.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.connector_customizers.ConnectorCustomizersApi(api_client)
-    connectorcustomizercreaterequest = sailpoint.connector_customizers.Connectorcustomizercreaterequest() # Connectorcustomizercreaterequest | Connector customizer to create.
+    connector_customizer_create_request = sailpoint.connector_customizers.ConnectorCustomizerCreateRequest() # ConnectorCustomizerCreateRequest | Connector customizer to create.
 
     try:
         # Create connector customizer
-        api_response = api_instance.create_connector_customizer_v1(connectorcustomizercreaterequest)
+        api_response = api_instance.create_connector_customizer_v1(connector_customizer_create_request)
         print("The response of ConnectorCustomizersApi->create_connector_customizer_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -75,17 +75,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Connectorcustomizercreaterequest](sailpoint/connector_customizers/docs/Connectorcustomizercreaterequest.md)
- - [Connectorcustomizercreateresponse](sailpoint/connector_customizers/docs/Connectorcustomizercreateresponse.md)
- - [Connectorcustomizersresponse](sailpoint/connector_customizers/docs/Connectorcustomizersresponse.md)
- - [Connectorcustomizerupdaterequest](sailpoint/connector_customizers/docs/Connectorcustomizerupdaterequest.md)
- - [Connectorcustomizerupdateresponse](sailpoint/connector_customizers/docs/Connectorcustomizerupdateresponse.md)
- - [Connectorcustomizerversioncreateresponse](sailpoint/connector_customizers/docs/Connectorcustomizerversioncreateresponse.md)
- - [Errormessagedto](sailpoint/connector_customizers/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/connector_customizers/docs/Errorresponsedto.md)
+ - [ConnectorCustomizerCreateRequest](sailpoint/connector_customizers/docs/ConnectorCustomizerCreateRequest.md)
+ - [ConnectorCustomizerCreateResponse](sailpoint/connector_customizers/docs/ConnectorCustomizerCreateResponse.md)
+ - [ConnectorCustomizerUpdateRequest](sailpoint/connector_customizers/docs/ConnectorCustomizerUpdateRequest.md)
+ - [ConnectorCustomizerUpdateResponse](sailpoint/connector_customizers/docs/ConnectorCustomizerUpdateResponse.md)
+ - [ConnectorCustomizerVersionCreateResponse](sailpoint/connector_customizers/docs/ConnectorCustomizerVersionCreateResponse.md)
+ - [ConnectorCustomizersResponse](sailpoint/connector_customizers/docs/ConnectorCustomizersResponse.md)
+ - [ErrorMessageDto](sailpoint/connector_customizers/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/connector_customizers/docs/ErrorResponseDto.md)
  - [ListConnectorCustomizersV1401Response](sailpoint/connector_customizers/docs/ListConnectorCustomizersV1401Response.md)
  - [ListConnectorCustomizersV1429Response](sailpoint/connector_customizers/docs/ListConnectorCustomizersV1429Response.md)
- - [Localeorigin](sailpoint/connector_customizers/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/connector_customizers/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -19,22 +19,22 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.custom_forms.models.createformdefinitionrequest import Createformdefinitionrequest
-from sailpoint.custom_forms.models.createforminstancerequest import Createforminstancerequest
+from sailpoint.custom_forms.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.custom_forms.models.create_form_instance_request import CreateFormInstanceRequest
 from sailpoint.custom_forms.models.export_form_definitions_by_tenant_v1200_response_inner import ExportFormDefinitionsByTenantV1200ResponseInner
-from sailpoint.custom_forms.models.formdefinitiondynamicschemarequest import Formdefinitiondynamicschemarequest
-from sailpoint.custom_forms.models.formdefinitiondynamicschemaresponse import Formdefinitiondynamicschemaresponse
-from sailpoint.custom_forms.models.formdefinitionfileuploadresponse import Formdefinitionfileuploadresponse
-from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
-from sailpoint.custom_forms.models.formelementpreviewrequest import Formelementpreviewrequest
-from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+from sailpoint.custom_forms.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
+from sailpoint.custom_forms.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
+from sailpoint.custom_forms.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
+from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
+from sailpoint.custom_forms.models.form_element_preview_request import FormElementPreviewRequest
+from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
 from sailpoint.custom_forms.models.import_form_definitions_v1202_response import ImportFormDefinitionsV1202Response
 from sailpoint.custom_forms.models.import_form_definitions_v1_request_inner import ImportFormDefinitionsV1RequestInner
-from sailpoint.custom_forms.models.listformdefinitionsbytenantresponse import Listformdefinitionsbytenantresponse
-from sailpoint.custom_forms.models.listformelementdatabyelementidresponse import Listformelementdatabyelementidresponse
-from sailpoint.custom_forms.models.listforminstancesbytenantresponse import Listforminstancesbytenantresponse
-from sailpoint.custom_forms.models.listpredefinedselectoptionsresponse import Listpredefinedselectoptionsresponse
-from sailpoint.custom_forms.models.previewdatasourceresponse import Previewdatasourceresponse
+from sailpoint.custom_forms.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
+from sailpoint.custom_forms.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
+from sailpoint.custom_forms.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
+from sailpoint.custom_forms.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
+from sailpoint.custom_forms.models.preview_data_source_response import PreviewDataSourceResponse
 
 from sailpoint.custom_forms.api_client import ApiClient, RequestSerialized
 from sailpoint.custom_forms.api_response import ApiResponse
@@ -57,7 +57,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_dynamic_schema_v1(
         self,
-        body: Annotated[Optional[Formdefinitiondynamicschemarequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,12 +70,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Formdefinitiondynamicschemaresponse:
+    ) -> FormDefinitionDynamicSchemaResponse:
         """Generate json schema dynamically.
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
-        :type body: Formdefinitiondynamicschemarequest
+        :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,7 +107,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitiondynamicschemaresponse",
+            '200': "FormDefinitionDynamicSchemaResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -129,7 +129,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_dynamic_schema_v1_with_http_info(
         self,
-        body: Annotated[Optional[Formdefinitiondynamicschemarequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -142,12 +142,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Formdefinitiondynamicschemaresponse]:
+    ) -> ApiResponse[FormDefinitionDynamicSchemaResponse]:
         """Generate json schema dynamically.
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
-        :type body: Formdefinitiondynamicschemarequest
+        :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -179,7 +179,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitiondynamicschemaresponse",
+            '200': "FormDefinitionDynamicSchemaResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -201,7 +201,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_dynamic_schema_v1_without_preload_content(
         self,
-        body: Annotated[Optional[Formdefinitiondynamicschemarequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,7 +219,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
-        :type body: Formdefinitiondynamicschemarequest
+        :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -251,7 +251,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitiondynamicschemaresponse",
+            '200': "FormDefinitionDynamicSchemaResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -359,7 +359,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Formdefinitionfileuploadresponse:
+    ) -> FormDefinitionFileUploadResponse:
         """Upload new form definition file.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -400,7 +400,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionfileuploadresponse",
+            '201': "FormDefinitionFileUploadResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -439,7 +439,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Formdefinitionfileuploadresponse]:
+    ) -> ApiResponse[FormDefinitionFileUploadResponse]:
         """Upload new form definition file.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -480,7 +480,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionfileuploadresponse",
+            '201': "FormDefinitionFileUploadResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -560,7 +560,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionfileuploadresponse",
+            '201': "FormDefinitionFileUploadResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -660,7 +660,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_v1(
         self,
-        body: Annotated[Optional[Createformdefinitionrequest], Field(description="Body is the request payload to create form definition request")] = None,
+        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -673,12 +673,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Formdefinitionresponse:
+    ) -> FormDefinitionResponse:
         """Creates a form definition.
 
 
         :param body: Body is the request payload to create form definition request
-        :type body: Createformdefinitionrequest
+        :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -710,7 +710,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionresponse",
+            '201': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -731,7 +731,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_v1_with_http_info(
         self,
-        body: Annotated[Optional[Createformdefinitionrequest], Field(description="Body is the request payload to create form definition request")] = None,
+        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -744,12 +744,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Formdefinitionresponse]:
+    ) -> ApiResponse[FormDefinitionResponse]:
         """Creates a form definition.
 
 
         :param body: Body is the request payload to create form definition request
-        :type body: Createformdefinitionrequest
+        :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -781,7 +781,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionresponse",
+            '201': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -802,7 +802,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_v1_without_preload_content(
         self,
-        body: Annotated[Optional[Createformdefinitionrequest], Field(description="Body is the request payload to create form definition request")] = None,
+        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -820,7 +820,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to create form definition request
-        :type body: Createformdefinitionrequest
+        :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -852,7 +852,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Formdefinitionresponse",
+            '201': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -945,7 +945,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_instance_v1(
         self,
-        body: Annotated[Optional[Createforminstancerequest], Field(description="Body is the request payload to create a form instance")] = None,
+        body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -958,12 +958,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Forminstanceresponse:
+    ) -> FormInstanceResponse:
         """Creates a form instance.
 
 
         :param body: Body is the request payload to create a form instance
-        :type body: Createforminstancerequest
+        :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,7 +995,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Forminstanceresponse",
+            '201': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -1016,7 +1016,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_instance_v1_with_http_info(
         self,
-        body: Annotated[Optional[Createforminstancerequest], Field(description="Body is the request payload to create a form instance")] = None,
+        body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1029,12 +1029,12 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Forminstanceresponse]:
+    ) -> ApiResponse[FormInstanceResponse]:
         """Creates a form instance.
 
 
         :param body: Body is the request payload to create a form instance
-        :type body: Createforminstancerequest
+        :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1066,7 +1066,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Forminstanceresponse",
+            '201': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -1087,7 +1087,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_instance_v1_without_preload_content(
         self,
-        body: Annotated[Optional[Createforminstancerequest], Field(description="Body is the request payload to create a form instance")] = None,
+        body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1105,7 +1105,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to create a form instance
-        :type body: Createforminstancerequest
+        :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1137,7 +1137,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Forminstanceresponse",
+            '201': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2145,7 +2145,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Formdefinitionresponse:
+    ) -> FormDefinitionResponse:
         """Return a form definition.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -2183,7 +2183,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2218,7 +2218,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Formdefinitionresponse]:
+    ) -> ApiResponse[FormDefinitionResponse]:
         """Return a form definition.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -2256,7 +2256,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2329,7 +2329,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2423,7 +2423,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Forminstanceresponse:
+    ) -> FormInstanceResponse:
         """Returns a form instance.
 
         Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
@@ -2461,7 +2461,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2496,7 +2496,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Forminstanceresponse]:
+    ) -> ApiResponse[FormInstanceResponse]:
         """Returns a form instance.
 
         Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
@@ -2534,7 +2534,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -2607,7 +2607,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3284,7 +3284,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Formdefinitionresponse:
+    ) -> FormDefinitionResponse:
         """Patch a form definition.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -3325,7 +3325,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3361,7 +3361,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Formdefinitionresponse]:
+    ) -> ApiResponse[FormDefinitionResponse]:
         """Patch a form definition.
 
         Parameter `{formDefinitionID}` should match a form definition ID.
@@ -3402,7 +3402,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3479,7 +3479,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Formdefinitionresponse",
+            '200': "FormDefinitionResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3591,7 +3591,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Forminstanceresponse:
+    ) -> FormInstanceResponse:
         """Patch a form instance.
 
         Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
@@ -3632,7 +3632,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3669,7 +3669,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Forminstanceresponse]:
+    ) -> ApiResponse[FormInstanceResponse]:
         """Patch a form instance.
 
         Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
@@ -3710,7 +3710,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3788,7 +3788,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Forminstanceresponse",
+            '200': "FormInstanceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3903,7 +3903,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Listformdefinitionsbytenantresponse:
+    ) -> ListFormDefinitionsByTenantResponse:
         """Export form definitions by tenant.
 
         No parameters required.
@@ -3950,7 +3950,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformdefinitionsbytenantresponse",
+            '200': "ListFormDefinitionsByTenantResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -3987,7 +3987,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Listformdefinitionsbytenantresponse]:
+    ) -> ApiResponse[ListFormDefinitionsByTenantResponse]:
         """Export form definitions by tenant.
 
         No parameters required.
@@ -4034,7 +4034,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformdefinitionsbytenantresponse",
+            '200': "ListFormDefinitionsByTenantResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4118,7 +4118,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformdefinitionsbytenantresponse",
+            '200': "ListFormDefinitionsByTenantResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4232,7 +4232,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Listformelementdatabyelementidresponse:
+    ) -> ListFormElementDataByElementIDResponse:
         """Retrieves dynamic data by element.
 
         Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formElementID}` should match a form element ID at the data source configuration.
@@ -4282,7 +4282,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformelementdatabyelementidresponse",
+            '200': "ListFormElementDataByElementIDResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4321,7 +4321,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Listformelementdatabyelementidresponse]:
+    ) -> ApiResponse[ListFormElementDataByElementIDResponse]:
         """Retrieves dynamic data by element.
 
         Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formElementID}` should match a form element ID at the data source configuration.
@@ -4371,7 +4371,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformelementdatabyelementidresponse",
+            '200': "ListFormElementDataByElementIDResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4460,7 +4460,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listformelementdatabyelementidresponse",
+            '200': "ListFormElementDataByElementIDResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4574,7 +4574,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Listforminstancesbytenantresponse]:
+    ) -> List[ListFormInstancesByTenantResponse]:
         """List form instances by tenant.
 
         Returns a list of form instances for the tenant. Optionally filter by form definition ID.
@@ -4618,7 +4618,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Listforminstancesbytenantresponse]",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4654,7 +4654,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Listforminstancesbytenantresponse]]:
+    ) -> ApiResponse[List[ListFormInstancesByTenantResponse]]:
         """List form instances by tenant.
 
         Returns a list of form instances for the tenant. Optionally filter by form definition ID.
@@ -4698,7 +4698,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Listforminstancesbytenantresponse]",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4778,7 +4778,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Listforminstancesbytenantresponse]",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4882,7 +4882,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Listpredefinedselectoptionsresponse:
+    ) -> ListPredefinedSelectOptionsResponse:
         """List predefined select options.
 
         No parameters required.
@@ -4917,7 +4917,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listpredefinedselectoptionsresponse",
+            '200': "ListPredefinedSelectOptionsResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -4950,7 +4950,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Listpredefinedselectoptionsresponse]:
+    ) -> ApiResponse[ListPredefinedSelectOptionsResponse]:
         """List predefined select options.
 
         No parameters required.
@@ -4985,7 +4985,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listpredefinedselectoptionsresponse",
+            '200': "ListPredefinedSelectOptionsResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -5053,7 +5053,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Listpredefinedselectoptionsresponse",
+            '200': "ListPredefinedSelectOptionsResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -5134,7 +5134,7 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        formelementpreviewrequest: Annotated[Optional[Formelementpreviewrequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5147,7 +5147,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Previewdatasourceresponse:
+    ) -> PreviewDataSourceResponse:
         """Preview form definition data source.
 
 
@@ -5159,8 +5159,8 @@ class CustomFormsApi:
         :type filters: str
         :param query: String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.
         :type query: str
-        :param formelementpreviewrequest: Body is the request payload to create a form definition dynamic schema
-        :type formelementpreviewrequest: Formelementpreviewrequest
+        :param form_element_preview_request: Body is the request payload to create a form definition dynamic schema
+        :type form_element_preview_request: FormElementPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5188,7 +5188,7 @@ class CustomFormsApi:
             limit=limit,
             filters=filters,
             query=query,
-            formelementpreviewrequest=formelementpreviewrequest,
+            form_element_preview_request=form_element_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5196,7 +5196,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Previewdatasourceresponse",
+            '200': "PreviewDataSourceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -5222,7 +5222,7 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        formelementpreviewrequest: Annotated[Optional[Formelementpreviewrequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5235,7 +5235,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Previewdatasourceresponse]:
+    ) -> ApiResponse[PreviewDataSourceResponse]:
         """Preview form definition data source.
 
 
@@ -5247,8 +5247,8 @@ class CustomFormsApi:
         :type filters: str
         :param query: String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.
         :type query: str
-        :param formelementpreviewrequest: Body is the request payload to create a form definition dynamic schema
-        :type formelementpreviewrequest: Formelementpreviewrequest
+        :param form_element_preview_request: Body is the request payload to create a form definition dynamic schema
+        :type form_element_preview_request: FormElementPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5276,7 +5276,7 @@ class CustomFormsApi:
             limit=limit,
             filters=filters,
             query=query,
-            formelementpreviewrequest=formelementpreviewrequest,
+            form_element_preview_request=form_element_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5284,7 +5284,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Previewdatasourceresponse",
+            '200': "PreviewDataSourceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -5310,7 +5310,7 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        formelementpreviewrequest: Annotated[Optional[Formelementpreviewrequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
+        form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5335,8 +5335,8 @@ class CustomFormsApi:
         :type filters: str
         :param query: String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.
         :type query: str
-        :param formelementpreviewrequest: Body is the request payload to create a form definition dynamic schema
-        :type formelementpreviewrequest: Formelementpreviewrequest
+        :param form_element_preview_request: Body is the request payload to create a form definition dynamic schema
+        :type form_element_preview_request: FormElementPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5364,7 +5364,7 @@ class CustomFormsApi:
             limit=limit,
             filters=filters,
             query=query,
-            formelementpreviewrequest=formelementpreviewrequest,
+            form_element_preview_request=form_element_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5372,7 +5372,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Previewdatasourceresponse",
+            '200': "PreviewDataSourceResponse",
             '400': "SearchFormDefinitionsByTenantV1400Response",
             '401': "SearchFormDefinitionsByTenantV1400Response",
             '403': "SearchFormDefinitionsByTenantV1400Response",
@@ -5393,7 +5393,7 @@ class CustomFormsApi:
         limit,
         filters,
         query,
-        formelementpreviewrequest,
+        form_element_preview_request,
         _request_auth,
         _content_type,
         _headers,
@@ -5433,8 +5433,8 @@ class CustomFormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if formelementpreviewrequest is not None:
-            _body_params = formelementpreviewrequest
+        if form_element_preview_request is not None:
+            _body_params = form_element_preview_request
 
 
         # set the HTTP header `Accept`

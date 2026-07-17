@@ -91,20 +91,20 @@ Approves a non-employee approval request and notifies the next approver. The cur
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Non-Employee approval item id (UUID)
- Body  | nonemployeeapprovaldecision | [**Nonemployeeapprovaldecision**](../models/nonemployeeapprovaldecision) | True  | 
+ Body  | non_employee_approval_decision | [**NonEmployeeApprovalDecision**](../models/non-employee-approval-decision) | True  | 
 
 ### Return type
-[**Nonemployeeapprovalitem**](../models/nonemployeeapprovalitem)
+[**NonEmployeeApprovalItem**](../models/non-employee-approval-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee approval item object. | Nonemployeeapprovalitem |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee approval item object. | NonEmployeeApprovalItem |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -115,22 +115,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovaldecision import Nonemployeeapprovaldecision
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitem import Nonemployeeapprovalitem
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_decision import NonEmployeeApprovalDecision
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item import NonEmployeeApprovalItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Non-Employee approval item id (UUID) # str | Non-Employee approval item id (UUID)
-    nonemployeeapprovaldecision = '''sailpoint.non_employee_lifecycle_management.Nonemployeeapprovaldecision()''' # Nonemployeeapprovaldecision | 
+    non_employee_approval_decision = '''{
+          "comment" : "Approved by manager"
+        }''' # NonEmployeeApprovalDecision | 
 
     try:
         # Approve a non-employee request
-        new_nonemployeeapprovaldecision = Nonemployeeapprovaldecision.from_json(nonemployeeapprovaldecision)
-        results = NonEmployeeLifecycleManagementApi(api_client).approve_non_employee_request_v1(id=id, nonemployeeapprovaldecision=new_nonemployeeapprovaldecision)
+        new_non_employee_approval_decision = NonEmployeeApprovalDecision.from_json(non_employee_approval_decision)
+        results = NonEmployeeLifecycleManagementApi(api_client).approve_non_employee_request_v1(id=id, non_employee_approval_decision=new_non_employee_approval_decision)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).approve_non_employee_request_v1(id, new_nonemployeeapprovaldecision)
+        # results = NonEmployeeLifecycleManagementApi(api_client).approve_non_employee_request_v1(id, new_non_employee_approval_decision)
         print("The response of NonEmployeeLifecycleManagementApi->approve_non_employee_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -152,20 +154,20 @@ Requires role context of `idn:nesr:create`
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | nonemployeerequestbody | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | True  | Non-Employee record creation request body.
+ Body  | non_employee_request_body | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | True  | Non-Employee record creation request body.
 
 ### Return type
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created non-employee record. | Nonemployeerecord |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created non-employee record. | NonEmployeeRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -176,21 +178,34 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestbody import Nonemployeerequestbody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_body import NonEmployeeRequestBody
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    nonemployeerequestbody = '''sailpoint.non_employee_lifecycle_management.Nonemployeerequestbody()''' # Nonemployeerequestbody | Non-Employee record creation request body.
+    non_employee_request_body = '''{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }''' # NonEmployeeRequestBody | Non-Employee record creation request body.
 
     try:
         # Create non-employee record
-        new_nonemployeerequestbody = Nonemployeerequestbody.from_json(nonemployeerequestbody)
-        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_record_v1(nonemployeerequestbody=new_nonemployeerequestbody)
+        new_non_employee_request_body = NonEmployeeRequestBody.from_json(non_employee_request_body)
+        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_record_v1(non_employee_request_body=new_non_employee_request_body)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_record_v1(new_nonemployeerequestbody)
+        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_record_v1(new_non_employee_request_body)
         print("The response of NonEmployeeLifecycleManagementApi->create_non_employee_record_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -211,20 +226,20 @@ This request will create a non-employee request and notify the approver. Require
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | nonemployeerequestbody | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | True  | Non-Employee creation request body
+ Body  | non_employee_request_body | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | True  | Non-Employee creation request body
 
 ### Return type
-[**Nonemployeerequest**](../models/nonemployeerequest)
+[**NonEmployeeRequest**](../models/non-employee-request)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee request creation object | Nonemployeerequest |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee request creation object | NonEmployeeRequest |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -235,21 +250,34 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequest import Nonemployeerequest
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestbody import Nonemployeerequestbody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request import NonEmployeeRequest
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_body import NonEmployeeRequestBody
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    nonemployeerequestbody = '''sailpoint.non_employee_lifecycle_management.Nonemployeerequestbody()''' # Nonemployeerequestbody | Non-Employee creation request body
+    non_employee_request_body = '''{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }''' # NonEmployeeRequestBody | Non-Employee creation request body
 
     try:
         # Create non-employee request
-        new_nonemployeerequestbody = Nonemployeerequestbody.from_json(nonemployeerequestbody)
-        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_request_v1(nonemployeerequestbody=new_nonemployeerequestbody)
+        new_non_employee_request_body = NonEmployeeRequestBody.from_json(non_employee_request_body)
+        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_request_v1(non_employee_request_body=new_non_employee_request_body)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_request_v1(new_nonemployeerequestbody)
+        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_request_v1(new_non_employee_request_body)
         print("The response of NonEmployeeLifecycleManagementApi->create_non_employee_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -272,20 +300,20 @@ Requires role context of `idn:nesr:create`
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id
- Body  | nonemployeeschemaattributebody | [**Nonemployeeschemaattributebody**](../models/nonemployeeschemaattributebody) | True  | 
+ Body  | non_employee_schema_attribute_body | [**NonEmployeeSchemaAttributeBody**](../models/non-employee-schema-attribute-body) | True  | 
 
 ### Return type
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Schema Attribute created. | Nonemployeeschemaattribute |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Schema Attribute created. | NonEmployeeSchemaAttribute |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -296,22 +324,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattribute import Nonemployeeschemaattribute
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattributebody import Nonemployeeschemaattributebody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id # str | The Source id
-    nonemployeeschemaattributebody = '''sailpoint.non_employee_lifecycle_management.Nonemployeeschemaattributebody()''' # Nonemployeeschemaattributebody | 
+    non_employee_schema_attribute_body = '''{
+          "helpText" : "The unique identifier for the account",
+          "label" : "Account Name",
+          "placeholder" : "Enter a unique user name for this account.",
+          "type" : "TEXT",
+          "technicalName" : "account.name",
+          "required" : true
+        }''' # NonEmployeeSchemaAttributeBody | 
 
     try:
         # Create a new schema attribute for non-employee source
-        new_nonemployeeschemaattributebody = Nonemployeeschemaattributebody.from_json(nonemployeeschemaattributebody)
-        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_schema_attributes_v1(source_id=source_id, nonemployeeschemaattributebody=new_nonemployeeschemaattributebody)
+        new_non_employee_schema_attribute_body = NonEmployeeSchemaAttributeBody.from_json(non_employee_schema_attribute_body)
+        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_schema_attributes_v1(source_id=source_id, non_employee_schema_attribute_body=new_non_employee_schema_attribute_body)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_schema_attributes_v1(source_id, new_nonemployeeschemaattributebody)
+        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_schema_attributes_v1(source_id, new_non_employee_schema_attribute_body)
         print("The response of NonEmployeeLifecycleManagementApi->create_non_employee_source_schema_attributes_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -332,20 +367,20 @@ Create a non-employee source.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | nonemployeesourcerequestbody | [**Nonemployeesourcerequestbody**](../models/nonemployeesourcerequestbody) | True  | Non-Employee source creation request body.
+ Body  | non_employee_source_request_body | [**NonEmployeeSourceRequestBody**](../models/non-employee-source-request-body) | True  | Non-Employee source creation request body.
 
 ### Return type
-[**Nonemployeesourcewithcloudexternalid**](../models/nonemployeesourcewithcloudexternalid)
+[**NonEmployeeSourceWithCloudExternalId**](../models/non-employee-source-with-cloud-external-id)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Created non-employee source. | Nonemployeesourcewithcloudexternalid |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Created non-employee source. | NonEmployeeSourceWithCloudExternalId |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -356,21 +391,46 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcerequestbody import Nonemployeesourcerequestbody
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcewithcloudexternalid import Nonemployeesourcewithcloudexternalid
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    nonemployeesourcerequestbody = '''sailpoint.non_employee_lifecycle_management.Nonemployeesourcerequestbody()''' # Nonemployeesourcerequestbody | Non-Employee source creation request body.
+    non_employee_source_request_body = '''{
+          "owner" : {
+            "id" : "2c91808570313110017040b06f344ec9"
+          },
+          "managementWorkgroup" : "123299",
+          "accountManagers" : [ {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          } ],
+          "name" : "Retail",
+          "description" : "Source description",
+          "approvers" : [ {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          } ]
+        }''' # NonEmployeeSourceRequestBody | Non-Employee source creation request body.
 
     try:
         # Create non-employee source
-        new_nonemployeesourcerequestbody = Nonemployeesourcerequestbody.from_json(nonemployeesourcerequestbody)
-        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_v1(nonemployeesourcerequestbody=new_nonemployeesourcerequestbody)
+        new_non_employee_source_request_body = NonEmployeeSourceRequestBody.from_json(non_employee_source_request_body)
+        results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_v1(non_employee_source_request_body=new_non_employee_source_request_body)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_v1(new_nonemployeesourcerequestbody)
+        # results = NonEmployeeLifecycleManagementApi(api_client).create_non_employee_source_v1(new_non_employee_source_request_body)
         print("The response of NonEmployeeLifecycleManagementApi->create_non_employee_source_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -401,11 +461,11 @@ Path   | id | **str** | True  | Non-Employee record id (UUID)
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -456,11 +516,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -513,12 +573,12 @@ Path   | id | **str** | True  | Non-Employee request id in the UUID format
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -572,11 +632,11 @@ Path   | source_id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -628,11 +688,11 @@ Path   | source_id | **str** | True  | The Source id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -683,11 +743,11 @@ Path   | source_id | **str** | True  | Source Id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -738,12 +798,12 @@ Path   | id | **str** | True  | Source Id (UUID)
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Exported CSV |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -794,12 +854,12 @@ Path   | id | **str** | True  | Source Id (UUID)
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Exported Source Schema Template |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -848,17 +908,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | requested_for | **str** | True  | The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
 ### Return type
-[**Nonemployeeapprovalsummary**](../models/nonemployeeapprovalsummary)
+[**NonEmployeeApprovalSummary**](../models/non-employee-approval-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | summary of non-employee approval requests | Nonemployeeapprovalsummary |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | summary of non-employee approval requests | NonEmployeeApprovalSummary |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -869,7 +929,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalsummary import Nonemployeeapprovalsummary
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_summary import NonEmployeeApprovalSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -910,17 +970,17 @@ Path   | id | **str** | True  | Non-Employee approval item id (UUID)
   Query | include_detail | **bool** |   (optional) | The object nonEmployeeRequest will not be included detail when set to false. *Default value is true*
 
 ### Return type
-[**Nonemployeeapprovalitemdetail**](../models/nonemployeeapprovalitemdetail)
+[**NonEmployeeApprovalItemDetail**](../models/non-employee-approval-item-detail)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee approval item object. | Nonemployeeapprovalitemdetail |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee approval item object. | NonEmployeeApprovalItemDetail |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -931,7 +991,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitemdetail import Nonemployeeapprovalitemdetail
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -971,17 +1031,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Source ID (UUID)
 
 ### Return type
-[**Nonemployeebulkuploadstatus**](../models/nonemployeebulkuploadstatus)
+[**NonEmployeeBulkUploadStatus**](../models/non-employee-bulk-upload-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the newest bulk-upload job, if any. | Nonemployeebulkuploadstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the newest bulk-upload job, if any. | NonEmployeeBulkUploadStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -992,7 +1052,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeebulkuploadstatus import Nonemployeebulkuploadstatus
+from sailpoint.non_employee_lifecycle_management.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1030,17 +1090,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-Employee record id (UUID)
 
 ### Return type
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee record object | Nonemployeerecord |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee record object | NonEmployeeRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1051,7 +1111,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1092,17 +1152,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | requested_for | **str** | True  | The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
 ### Return type
-[**Nonemployeerequestsummary**](../models/nonemployeerequestsummary)
+[**NonEmployeeRequestSummary**](../models/non-employee-request-summary)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee request summary object. | Nonemployeerequestsummary |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee request summary object. | NonEmployeeRequestSummary |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1113,7 +1173,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestsummary import Nonemployeerequestsummary
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_summary import NonEmployeeRequestSummary
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1154,18 +1214,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-Employee request id (UUID)
 
 ### Return type
-[**Nonemployeerequest**](../models/nonemployeerequest)
+[**NonEmployeeRequest**](../models/non-employee-request)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee request object. | Nonemployeerequest |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee request object. | NonEmployeeRequest |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1176,7 +1236,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequest import Nonemployeerequest
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request import NonEmployeeRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1214,17 +1274,17 @@ Path   | attribute_id | **str** | True  | The Schema Attribute Id (UUID)
 Path   | source_id | **str** | True  | The Source id
 
 ### Return type
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The Schema Attribute | Nonemployeeschemaattribute |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The Schema Attribute | NonEmployeeSchemaAttribute |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1235,7 +1295,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattribute import Nonemployeeschemaattribute
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1274,18 +1334,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source id
 
 ### Return type
-[**List[Nonemployeeschemaattribute]**](../models/nonemployeeschemaattribute)
+[**List[NonEmployeeSchemaAttribute]**](../models/non-employee-schema-attribute)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of Schema Attributes | List[Nonemployeeschemaattribute] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of Schema Attributes | List[NonEmployeeSchemaAttribute] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1296,7 +1356,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattribute import Nonemployeeschemaattribute
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1338,17 +1398,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | Source Id
 
 ### Return type
-[**Nonemployeesource**](../models/nonemployeesource)
+[**NonEmployeeSource**](../models/non-employee-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee source object. | Nonemployeesource |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee source object. | NonEmployeeSource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1359,7 +1419,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesource import Nonemployeesource
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source import NonEmployeeSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1397,18 +1457,18 @@ Path   | id | **str** | True  | Source Id (UUID)
    | data | **bytearray** | True  | 
 
 ### Return type
-[**Nonemployeebulkuploadjob**](../models/nonemployeebulkuploadjob)
+[**NonEmployeeBulkUploadJob**](../models/non-employee-bulk-upload-job)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | The CSV was accepted to be bulk inserted now or at a later time. | Nonemployeebulkuploadjob |  -  |
-400 | Client Error - Returned if the request body is invalid. The response body will contain the list of specific errors with one on each line.  | Errorresponsedto |  -  |
+202 | The CSV was accepted to be bulk inserted now or at a later time. | NonEmployeeBulkUploadJob |  -  |
+400 | Client Error - Returned if the request body is invalid. The response body will contain the list of specific errors with one on each line.  | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -1419,7 +1479,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeebulkuploadjob import Nonemployeebulkuploadjob
+from sailpoint.non_employee_lifecycle_management.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1466,17 +1526,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
 
 ### Return type
-[**List[Nonemployeeapprovalitem]**](../models/nonemployeeapprovalitem)
+[**List[NonEmployeeApprovalItem]**](../models/non-employee-approval-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of approval items. | List[Nonemployeeapprovalitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of approval items. | List[NonEmployeeApprovalItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1487,7 +1547,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitem import Nonemployeeapprovalitem
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item import NonEmployeeApprovalItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1536,17 +1596,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*
 
 ### Return type
-[**List[Nonemployeerecord]**](../models/nonemployeerecord)
+[**List[NonEmployeeRecord]**](../models/non-employee-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee record objects | List[Nonemployeerecord] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee record objects | List[NonEmployeeRecord] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1557,7 +1617,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1608,17 +1668,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* 
 
 ### Return type
-[**List[Nonemployeerequest]**](../models/nonemployeerequest)
+[**List[NonEmployeeRequest]**](../models/non-employee-request)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of non-employee request objects. | List[Nonemployeerequest] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of non-employee request objects. | List[NonEmployeeRequest] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1629,7 +1689,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequest import Nonemployeerequest
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request import NonEmployeeRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1679,17 +1739,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**
 
 ### Return type
-[**List[Nonemployeesourcewithnecount]**](../models/nonemployeesourcewithnecount)
+[**List[NonEmployeeSourceWithNECount]**](../models/non-employee-source-with-ne-count)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of non-employee sources objects. | List[Nonemployeesourcewithnecount] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of non-employee sources objects. | List[NonEmployeeSourceWithNECount] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1700,7 +1760,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcewithnecount import Nonemployeesourcewithnecount
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1745,21 +1805,21 @@ end date.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Non-employee record id (UUID)
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
 ### Return type
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A patched non-employee record. | Nonemployeerecord |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A patched non-employee record. | NonEmployeeRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1770,22 +1830,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
+from sailpoint.non_employee_lifecycle_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-employee record id (UUID) # str | Non-employee record id (UUID)
-    jsonpatchoperation = '''[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]''' # List[Jsonpatchoperation] | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    json_patch_operation = '''[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]''' # List[JsonPatchOperation] | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
     try:
         # Patch non-employee record
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_record_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_record_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_record_v1(id, new_jsonpatchoperation)
+        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_record_v1(id, new_json_patch_operation)
         print("The response of NonEmployeeLifecycleManagementApi->patch_non_employee_record_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1810,21 +1870,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | attribute_id | **str** | True  | The Schema Attribute Id (UUID)
 Path   | source_id | **str** | True  | The Source id
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
 ### Return type
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The Schema Attribute was successfully patched. | Nonemployeeschemaattribute |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The Schema Attribute was successfully patched. | NonEmployeeSchemaAttribute |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1835,8 +1895,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattribute import Nonemployeeschemaattribute
+from sailpoint.non_employee_lifecycle_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1844,14 +1904,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     attribute_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Schema Attribute Id (UUID) # str | The Schema Attribute Id (UUID)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id # str | The Source id
-    jsonpatchoperation = '''[{"op":"replace","path":"/label","value":{"new attribute label":null}}]''' # List[Jsonpatchoperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
+    json_patch_operation = '''[{"op":"replace","path":"/label","value":{"new attribute label":null}}]''' # List[JsonPatchOperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
     try:
         # Patch a schema attribute for non-employee source
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_schema_attribute_v1(attribute_id=attribute_id, source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_schema_attribute_v1(attribute_id=attribute_id, source_id=source_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_schema_attribute_v1(attribute_id, source_id, new_jsonpatchoperation)
+        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_schema_attribute_v1(attribute_id, source_id, new_json_patch_operation)
         print("The response of NonEmployeeLifecycleManagementApi->patch_non_employee_schema_attribute_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1873,20 +1933,20 @@ patch a non-employee source. (partial update) <br/> Patchable field: **name, des
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source Id
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
-[**Nonemployeesource**](../models/nonemployeesource)
+[**NonEmployeeSource**](../models/non-employee-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A patched non-employee source object. | Nonemployeesource |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A patched non-employee source object. | NonEmployeeSource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1897,22 +1957,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesource import Nonemployeesource
+from sailpoint.non_employee_lifecycle_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source import NonEmployeeSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source Id # str | Source Id
-    jsonpatchoperation = '''[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]''' # List[Jsonpatchoperation] | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = '''[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]''' # List[JsonPatchOperation] | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Patch a non-employee source
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_source_v1(source_id=source_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_source_v1(source_id=source_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_source_v1(source_id, new_jsonpatchoperation)
+        # results = NonEmployeeLifecycleManagementApi(api_client).patch_non_employee_source_v1(source_id, new_json_patch_operation)
         print("The response of NonEmployeeLifecycleManagementApi->patch_non_employee_source_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1934,20 +1994,20 @@ This endpoint will reject an approval item request and notify user. The current 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Non-Employee approval item id (UUID)
- Body  | nonemployeerejectapprovaldecision | [**Nonemployeerejectapprovaldecision**](../models/nonemployeerejectapprovaldecision) | True  | 
+ Body  | non_employee_reject_approval_decision | [**NonEmployeeRejectApprovalDecision**](../models/non-employee-reject-approval-decision) | True  | 
 
 ### Return type
-[**Nonemployeeapprovalitem**](../models/nonemployeeapprovalitem)
+[**NonEmployeeApprovalItem**](../models/non-employee-approval-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Non-Employee approval item object. | Nonemployeeapprovalitem |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Non-Employee approval item object. | NonEmployeeApprovalItem |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1958,22 +2018,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitem import Nonemployeeapprovalitem
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerejectapprovaldecision import Nonemployeerejectapprovaldecision
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.non_employee_lifecycle_management.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Non-Employee approval item id (UUID) # str | Non-Employee approval item id (UUID)
-    nonemployeerejectapprovaldecision = '''sailpoint.non_employee_lifecycle_management.Nonemployeerejectapprovaldecision()''' # Nonemployeerejectapprovaldecision | 
+    non_employee_reject_approval_decision = '''{
+          "comment" : "approved"
+        }''' # NonEmployeeRejectApprovalDecision | 
 
     try:
         # Reject a non-employee request
-        new_nonemployeerejectapprovaldecision = Nonemployeerejectapprovaldecision.from_json(nonemployeerejectapprovaldecision)
-        results = NonEmployeeLifecycleManagementApi(api_client).reject_non_employee_request_v1(id=id, nonemployeerejectapprovaldecision=new_nonemployeerejectapprovaldecision)
+        new_non_employee_reject_approval_decision = NonEmployeeRejectApprovalDecision.from_json(non_employee_reject_approval_decision)
+        results = NonEmployeeLifecycleManagementApi(api_client).reject_non_employee_request_v1(id=id, non_employee_reject_approval_decision=new_non_employee_reject_approval_decision)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).reject_non_employee_request_v1(id, new_nonemployeerejectapprovaldecision)
+        # results = NonEmployeeLifecycleManagementApi(api_client).reject_non_employee_request_v1(id, new_non_employee_reject_approval_decision)
         print("The response of NonEmployeeLifecycleManagementApi->reject_non_employee_request_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1999,21 +2061,21 @@ end date.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Non-employee record id (UUID)
- Body  | nonemployeerequestbody | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | True  | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+ Body  | non_employee_request_body | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | True  | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
 ### Return type
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An updated non-employee record. | Nonemployeerecord |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | An updated non-employee record. | NonEmployeeRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListNonEmployeeRecordsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListNonEmployeeRecordsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -2024,22 +2086,35 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.non_employee_lifecycle_management.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestbody import Nonemployeerequestbody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_body import NonEmployeeRequestBody
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-employee record id (UUID) # str | Non-employee record id (UUID)
-    nonemployeerequestbody = '''sailpoint.non_employee_lifecycle_management.Nonemployeerequestbody()''' # Nonemployeerequestbody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    non_employee_request_body = '''{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }''' # NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
     try:
         # Update non-employee record
-        new_nonemployeerequestbody = Nonemployeerequestbody.from_json(nonemployeerequestbody)
-        results = NonEmployeeLifecycleManagementApi(api_client).update_non_employee_record_v1(id=id, nonemployeerequestbody=new_nonemployeerequestbody)
+        new_non_employee_request_body = NonEmployeeRequestBody.from_json(non_employee_request_body)
+        results = NonEmployeeLifecycleManagementApi(api_client).update_non_employee_record_v1(id=id, non_employee_request_body=new_non_employee_request_body)
         # Below is a request that includes all optional parameters
-        # results = NonEmployeeLifecycleManagementApi(api_client).update_non_employee_record_v1(id, new_nonemployeerequestbody)
+        # results = NonEmployeeLifecycleManagementApi(api_client).update_non_employee_record_v1(id, new_non_employee_request_body)
         print("The response of NonEmployeeLifecycleManagementApi->update_non_employee_record_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

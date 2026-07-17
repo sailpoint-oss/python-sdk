@@ -35,21 +35,21 @@ For more information about the object types that currently support export functi
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | exportpayload | [**Exportpayload**](../models/exportpayload) | True  | Export options control what will be included in the export.
+ Body  | export_payload | [**ExportPayload**](../models/export-payload) | True  | Export options control what will be included in the export.
 
 ### Return type
-[**Spconfigexportjob**](../models/spconfigexportjob)
+[**SpConfigExportJob**](../models/sp-config-export-job)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Export job accepted and queued for processing. | Spconfigexportjob |  -  |
-400 | Client Error - Returned if the request body is invalid.  | Errorresponsedto |  -  |
+202 | Export job accepted and queued for processing. | SpConfigExportJob |  -  |
+400 | Client Error - Returned if the request body is invalid.  | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -60,21 +60,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.exportpayload import Exportpayload
-from sailpoint.sp_config.models.spconfigexportjob import Spconfigexportjob
+from sailpoint.sp_config.models.export_payload import ExportPayload
+from sailpoint.sp_config.models.sp_config_export_job import SpConfigExportJob
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    exportpayload = '''{"description":"Export all available objects","excludeTypes":[],"includeTypes":["ACCESS_PROFILE","ACCESS_REQUEST_CONFIG","ATTR_SYNC_SOURCE_CONFIG","AUTH_ORG","CAMPAIGN_FILTER","CONNECTOR_RULE","FORM_DEFINITION","GOVERNANCE_GROUP","IDENTITY_OBJECT_CONFIG","IDENTITY_PROFILE","LIFECYCLE_STATE","NOTIFICATION_TEMPLATE","PASSWORD_POLICY","PASSWORD_SYNC_GROUP","PUBLIC_IDENTITIES_CONFIG","ROLE","RULE","SEGMENT","SERVICE_DESK_INTEGRATION","SOD_POLICY","SOURCE","TAG","TRANSFORM","TRIGGER_SUBSCRIPTION","WORKFLOW"],"objectOptions":{}}''' # Exportpayload | Export options control what will be included in the export.
+    export_payload = '''{
+          "description" : "Export Job 1 Test"
+        }''' # ExportPayload | Export options control what will be included in the export.
 
     try:
         # Initiates configuration objects export job
-        new_exportpayload = Exportpayload.from_json(exportpayload)
-        results = SPConfigApi(api_client).export_sp_config_v1(exportpayload=new_exportpayload)
+        new_export_payload = ExportPayload.from_json(export_payload)
+        results = SPConfigApi(api_client).export_sp_config_v1(export_payload=new_export_payload)
         # Below is a request that includes all optional parameters
-        # results = SPConfigApi(api_client).export_sp_config_v1(new_exportpayload)
+        # results = SPConfigApi(api_client).export_sp_config_v1(new_export_payload)
         print("The response of SPConfigApi->export_sp_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -100,18 +102,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the export job whose status will be returned.
 
 ### Return type
-[**Spconfigexportjobstatus**](../models/spconfigexportjobstatus)
+[**SpConfigExportJobStatus**](../models/sp-config-export-job-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Export job status successfully returned. | Spconfigexportjobstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Export job status successfully returned. | SpConfigExportJobStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -122,7 +124,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.spconfigexportjobstatus import Spconfigexportjobstatus
+from sailpoint.sp_config.models.sp_config_export_job_status import SpConfigExportJobStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -161,18 +163,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the export job whose results will be downloaded.
 
 ### Return type
-[**Spconfigexportresults**](../models/spconfigexportresults)
+[**SpConfigExportResults**](../models/sp-config-export-results)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Exported JSON objects. | Spconfigexportresults |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Exported JSON objects. | SpConfigExportResults |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -183,7 +185,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.spconfigexportresults import Spconfigexportresults
+from sailpoint.sp_config.models.sp_config_export_results import SpConfigExportResults
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -224,18 +226,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the import job whose status will be returned.
 
 ### Return type
-[**Spconfigimportjobstatus**](../models/spconfigimportjobstatus)
+[**SpConfigImportJobStatus**](../models/sp-config-import-job-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Import job status successfully returned. | Spconfigimportjobstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Import job status successfully returned. | SpConfigImportJobStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -246,7 +248,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.spconfigimportjobstatus import Spconfigimportjobstatus
+from sailpoint.sp_config.models.sp_config_import_job_status import SpConfigImportJobStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -285,18 +287,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The ID of the import job whose results will be downloaded.
 
 ### Return type
-[**Spconfigimportresults**](../models/spconfigimportresults)
+[**SpConfigImportResults**](../models/sp-config-import-results)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Import results JSON object, containing detailed results of the import operation. | Spconfigimportresults |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Import results JSON object, containing detailed results of the import operation. | SpConfigImportResults |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -307,7 +309,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.spconfigimportresults import Spconfigimportresults
+from sailpoint.sp_config.models.sp_config_import_results import SpConfigImportResults
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -353,21 +355,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | data | **bytearray** | True  | JSON file containing the objects to be imported.
   Query | preview | **bool** |   (optional) (default to False) | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
-   | options | [**Importoptions**](../models/importoptions) |   (optional) | 
+   | options | [**ImportOptions**](../models/import-options) |   (optional) | 
 
 ### Return type
-[**Spconfigjob**](../models/spconfigjob)
+[**SpConfigJob**](../models/sp-config-job)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Import job accepted and queued for processing. | Spconfigjob |  -  |
-400 | Client Error - Returned if the request body is invalid.  | Errorresponsedto |  -  |
+202 | Import job accepted and queued for processing. | SpConfigJob |  -  |
+400 | Client Error - Returned if the request body is invalid.  | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -378,8 +380,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.importoptions import Importoptions
-from sailpoint.sp_config.models.spconfigjob import Spconfigjob
+from sailpoint.sp_config.models.import_options import ImportOptions
+from sailpoint.sp_config.models.sp_config_job import SpConfigJob
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -387,7 +389,7 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     data = None # bytearray | JSON file containing the objects to be imported. # bytearray | JSON file containing the objects to be imported.
     preview = False # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to False) # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to False)
-    options = '''sailpoint.sp_config.Importoptions()''' # Importoptions |  (optional)
+    options = '''sailpoint.sp_config.ImportOptions()''' # ImportOptions |  (optional)
 
     try:
         # Initiates configuration objects import job
@@ -415,18 +417,18 @@ Get a list of object configurations that the tenant export/import service knows.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**List[Spconfigobject]**](../models/spconfigobject)
+[**List[SpConfigObject]**](../models/sp-config-object)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Object configurations returned successfully. | List[Spconfigobject] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Object configurations returned successfully. | List[SpConfigObject] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ExportSpConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ExportSpConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -437,7 +439,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sp_config.api.sp_config_api import SPConfigApi
 from sailpoint.sp_config.api_client import ApiClient
-from sailpoint.sp_config.models.spconfigobject import Spconfigobject
+from sailpoint.sp_config.models.sp_config_object import SpConfigObject
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

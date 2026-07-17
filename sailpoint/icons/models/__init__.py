@@ -14,9 +14,9 @@
 
 
 # import models into model package
-from sailpoint.icons.models.errormessagedto import Errormessagedto
-from sailpoint.icons.models.errorresponsedto import Errorresponsedto
-from sailpoint.icons.models.localeorigin import Localeorigin
+from sailpoint.icons.models.error_message_dto import ErrorMessageDto
+from sailpoint.icons.models.error_response_dto import ErrorResponseDto
+from sailpoint.icons.models.locale_origin import LocaleOrigin
 from sailpoint.icons.models.set_icon_v1200_response import SetIconV1200Response
 from sailpoint.icons.models.set_icon_v1401_response import SetIconV1401Response
 from sailpoint.icons.models.set_icon_v1429_response import SetIconV1429Response

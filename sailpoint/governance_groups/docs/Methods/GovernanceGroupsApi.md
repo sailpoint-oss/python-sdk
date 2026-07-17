@@ -42,20 +42,20 @@ This API creates a new Governance Group.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | workgroupdto | [**Workgroupdto**](../models/workgroupdto) | True  | 
+ Body  | workgroup_dto | [**WorkgroupDto**](../models/workgroup-dto) | True  | 
 
 ### Return type
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Governance Group object created. | Workgroupdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Governance Group object created. | WorkgroupDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -66,20 +66,35 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+from sailpoint.governance_groups.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    workgroupdto = '''sailpoint.governance_groups.Workgroupdto()''' # Workgroupdto | 
+    workgroup_dto = '''{
+          "owner" : {
+            "emailAddress" : "support@sailpoint.com",
+            "displayName" : "Support",
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "connectionCount" : 1641498673000,
+          "created" : "2022-01-06T19:51:13Z",
+          "memberCount" : 1641498673000,
+          "name" : "DB Access Governance Group",
+          "description" : "Description of the Governance Group",
+          "modified" : "2022-01-06T19:51:13Z",
+          "id" : "2c91808568c529c60168cca6f90c1313"
+        }''' # WorkgroupDto | 
 
     try:
         # Create a new governance group.
-        new_workgroupdto = Workgroupdto.from_json(workgroupdto)
-        results = GovernanceGroupsApi(api_client).create_workgroup_v1(workgroupdto=new_workgroupdto)
+        new_workgroup_dto = WorkgroupDto.from_json(workgroup_dto)
+        results = GovernanceGroupsApi(api_client).create_workgroup_v1(workgroup_dto=new_workgroup_dto)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).create_workgroup_v1(new_workgroupdto)
+        # results = GovernanceGroupsApi(api_client).create_workgroup_v1(new_workgroup_dto)
         print("The response of GovernanceGroupsApi->create_workgroup_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -104,20 +119,20 @@ This API removes one or more  members from a Governance Group.  A
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
- Body  | bulkworkgroupmembersrequest_inner | [**[]BulkworkgroupmembersrequestInner**](../models/bulkworkgroupmembersrequest-inner) | True  | List of identities to be removed from  a Governance Group members list.
+ Body  | bulk_workgroup_members_request_inner | [**[]BulkWorkgroupMembersRequestInner**](../models/bulk-workgroup-members-request-inner) | True  | List of identities to be removed from  a Governance Group members list.
 
 ### Return type
-[**List[Workgroupmemberdeleteitem]**](../models/workgroupmemberdeleteitem)
+[**List[WorkgroupMemberDeleteItem]**](../models/workgroup-member-delete-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | List of deleted and not deleted identities from Governance Group members list. | List[Workgroupmemberdeleteitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | List of deleted and not deleted identities from Governance Group members list. | List[WorkgroupMemberDeleteItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -128,22 +143,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.bulkworkgroupmembersrequest_inner import BulkworkgroupmembersrequestInner
-from sailpoint.governance_groups.models.workgroupmemberdeleteitem import Workgroupmemberdeleteitem
+from sailpoint.governance_groups.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
+from sailpoint.governance_groups.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    bulkworkgroupmembersrequest_inner = '''[sailpoint.governance_groups.BulkworkgroupmembersrequestInner()]''' # List[BulkworkgroupmembersrequestInner] | List of identities to be removed from  a Governance Group members list.
+    bulk_workgroup_members_request_inner = '''[sailpoint.governance_groups.BulkWorkgroupMembersRequestInner()]''' # List[BulkWorkgroupMembersRequestInner] | List of identities to be removed from  a Governance Group members list.
 
     try:
         # Remove members from governance group
-        new_bulkworkgroupmembersrequest_inner = BulkworkgroupmembersrequestInner.from_json(bulkworkgroupmembersrequest_inner)
-        results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id=workgroup_id, bulkworkgroupmembersrequest_inner=new_bulkworkgroupmembersrequest_inner)
+        new_bulk_workgroup_members_request_inner = BulkWorkgroupMembersRequestInner.from_json(bulk_workgroup_members_request_inner)
+        results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id=workgroup_id, bulk_workgroup_members_request_inner=new_bulk_workgroup_members_request_inner)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id, new_bulkworkgroupmembersrequest_inner)
+        # results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id, new_bulk_workgroup_members_request_inner)
         print("The response of GovernanceGroupsApi->delete_workgroup_members_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -174,11 +189,11 @@ Path   | id | **str** | True  | ID of the Governance Group
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -231,20 +246,20 @@ This API initiates a bulk deletion of one or more Governance Groups.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | workgroupbulkdeleterequest | [**Workgroupbulkdeleterequest**](../models/workgroupbulkdeleterequest) | True  | 
+ Body  | workgroup_bulk_delete_request | [**WorkgroupBulkDeleteRequest**](../models/workgroup-bulk-delete-request) | True  | 
 
 ### Return type
-[**List[Workgroupdeleteitem]**](../models/workgroupdeleteitem)
+[**List[WorkgroupDeleteItem]**](../models/workgroup-delete-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | Governance Group bulk delete response. | List[Workgroupdeleteitem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | Governance Group bulk delete response. | List[WorkgroupDeleteItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -255,21 +270,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.workgroupbulkdeleterequest import Workgroupbulkdeleterequest
-from sailpoint.governance_groups.models.workgroupdeleteitem import Workgroupdeleteitem
+from sailpoint.governance_groups.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
+from sailpoint.governance_groups.models.workgroup_delete_item import WorkgroupDeleteItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    workgroupbulkdeleterequest = '''{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}''' # Workgroupbulkdeleterequest | 
+    workgroup_bulk_delete_request = '''{
+          "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
+        }''' # WorkgroupBulkDeleteRequest | 
 
     try:
         # Delete governance group(s)
-        new_workgroupbulkdeleterequest = Workgroupbulkdeleterequest.from_json(workgroupbulkdeleterequest)
-        results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(workgroupbulkdeleterequest=new_workgroupbulkdeleterequest)
+        new_workgroup_bulk_delete_request = WorkgroupBulkDeleteRequest.from_json(workgroup_bulk_delete_request)
+        results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(workgroup_bulk_delete_request=new_workgroup_bulk_delete_request)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(new_workgroupbulkdeleterequest)
+        # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(new_workgroup_bulk_delete_request)
         print("The response of GovernanceGroupsApi->delete_workgroups_in_bulk_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -294,17 +311,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | ID of the Governance Group
 
 ### Return type
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Governance Group | Workgroupdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Governance Group | WorkgroupDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -315,7 +332,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+from sailpoint.governance_groups.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -356,17 +373,17 @@ Path   | workgroup_id | **str** | True  | ID of the Governance Group.
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
 
 ### Return type
-[**List[Workgroupconnectiondto]**](../models/workgroupconnectiondto)
+[**List[WorkgroupConnectionDto]**](../models/workgroup-connection-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List all connections associated with a Governance Group. | List[Workgroupconnectiondto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List all connections associated with a Governance Group. | List[WorkgroupConnectionDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -377,7 +394,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.workgroupconnectiondto import Workgroupconnectiondto
+from sailpoint.governance_groups.models.workgroup_connection_dto import WorkgroupConnectionDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -429,11 +446,11 @@ Path   | workgroup_id | **str** | True  | ID of the Governance Group.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List all members associated with a Governance Group. | List[ListWorkgroupMembersV1200ResponseInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -490,17 +507,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description**
 
 ### Return type
-[**List[Workgroupdto]**](../models/workgroupdto)
+[**List[WorkgroupDto]**](../models/workgroup-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Governance Groups | List[Workgroupdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Governance Groups | List[WorkgroupDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -511,7 +528,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+from sailpoint.governance_groups.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -554,20 +571,20 @@ This API updates an existing governance group by ID. The following fields and ob
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Governance Group
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |   (optional) | 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) |   (optional) | 
 
 ### Return type
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A Governance Group. | Workgroupdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A Governance Group. | WorkgroupDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -578,22 +595,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+from sailpoint.governance_groups.models.json_patch_operation import JsonPatchOperation
+from sailpoint.governance_groups.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-    jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Governance Group new description."}]''' # List[Jsonpatchoperation] |  (optional)
+    json_patch_operation = '''[{"op":"replace","path":"/description","value":"Governance Group new description."}]''' # List[JsonPatchOperation] |  (optional)
 
     try:
         # Patch a governance group
         
         results = GovernanceGroupsApi(api_client).patch_workgroup_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).patch_workgroup_v1(id, new_jsonpatchoperation)
+        # results = GovernanceGroupsApi(api_client).patch_workgroup_v1(id, new_json_patch_operation)
         print("The response of GovernanceGroupsApi->patch_workgroup_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -619,20 +636,20 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
- Body  | bulkworkgroupmembersrequest_inner | [**[]BulkworkgroupmembersrequestInner**](../models/bulkworkgroupmembersrequest-inner) | True  | List of identities to be added to a Governance Group members list.
+ Body  | bulk_workgroup_members_request_inner | [**[]BulkWorkgroupMembersRequestInner**](../models/bulk-workgroup-members-request-inner) | True  | List of identities to be added to a Governance Group members list.
 
 ### Return type
-[**List[Workgroupmemberadditem]**](../models/workgroupmemberadditem)
+[**List[WorkgroupMemberAddItem]**](../models/workgroup-member-add-item)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-207 | List of added and not added identities into  Governance Group members list. | List[Workgroupmemberadditem] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+207 | List of added and not added identities into  Governance Group members list. | List[WorkgroupMemberAddItem] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListWorkgroupsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListWorkgroupsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -643,22 +660,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.governance_groups.api_client import ApiClient
-from sailpoint.governance_groups.models.bulkworkgroupmembersrequest_inner import BulkworkgroupmembersrequestInner
-from sailpoint.governance_groups.models.workgroupmemberadditem import Workgroupmemberadditem
+from sailpoint.governance_groups.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
+from sailpoint.governance_groups.models.workgroup_member_add_item import WorkgroupMemberAddItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    bulkworkgroupmembersrequest_inner = '''[sailpoint.governance_groups.BulkworkgroupmembersrequestInner()]''' # List[BulkworkgroupmembersrequestInner] | List of identities to be added to a Governance Group members list.
+    bulk_workgroup_members_request_inner = '''[sailpoint.governance_groups.BulkWorkgroupMembersRequestInner()]''' # List[BulkWorkgroupMembersRequestInner] | List of identities to be added to a Governance Group members list.
 
     try:
         # Add members to governance group
-        new_bulkworkgroupmembersrequest_inner = BulkworkgroupmembersrequestInner.from_json(bulkworkgroupmembersrequest_inner)
-        results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id=workgroup_id, bulkworkgroupmembersrequest_inner=new_bulkworkgroupmembersrequest_inner)
+        new_bulk_workgroup_members_request_inner = BulkWorkgroupMembersRequestInner.from_json(bulk_workgroup_members_request_inner)
+        results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id=workgroup_id, bulk_workgroup_members_request_inner=new_bulk_workgroup_members_request_inner)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id, new_bulkworkgroupmembersrequest_inner)
+        # results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id, new_bulk_workgroup_members_request_inner)
         print("The response of GovernanceGroupsApi->update_workgroup_members_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

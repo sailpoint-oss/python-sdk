@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.dimensions.models.accessprofile import Accessprofile
+from sailpoint.dimensions.models.access_profile import AccessProfile
 from sailpoint.dimensions.models.dimension import Dimension
-from sailpoint.dimensions.models.dimensionbulkdeleterequest import Dimensionbulkdeleterequest
+from sailpoint.dimensions.models.dimension_bulk_delete_request import DimensionBulkDeleteRequest
 from sailpoint.dimensions.models.entitlement import Entitlement
-from sailpoint.dimensions.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.dimensions.models.taskresultdto import Taskresultdto
+from sailpoint.dimensions.models.json_patch_operation import JsonPatchOperation
+from sailpoint.dimensions.models.task_result_dto import TaskResultDto
 
 from sailpoint.dimensions.api_client import ApiClient, RequestSerialized
 from sailpoint.dimensions.api_response import ApiResponse
@@ -103,11 +103,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -179,11 +179,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -255,11 +255,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -351,7 +351,7 @@ class DimensionsApi:
     def delete_bulk_dimensions_v1(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimensions.")],
-        dimensionbulkdeleterequest: Dimensionbulkdeleterequest,
+        dimension_bulk_delete_request: DimensionBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -364,15 +364,15 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultdto:
+    ) -> TaskResultDto:
         """Delete dimension(s)
 
         This endpoint initiates a bulk deletion of one or more dimensions. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this endpoint. In addition, a token with ROLE_SUBADMIN authority can only call this endpoint if all dimensions included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
         :param role_id: Parent Role Id of the dimensions. (required)
         :type role_id: str
-        :param dimensionbulkdeleterequest: (required)
-        :type dimensionbulkdeleterequest: Dimensionbulkdeleterequest
+        :param dimension_bulk_delete_request: (required)
+        :type dimension_bulk_delete_request: DimensionBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -397,7 +397,7 @@ class DimensionsApi:
 
         _param = self._delete_bulk_dimensions_v1_serialize(
             role_id=role_id,
-            dimensionbulkdeleterequest=dimensionbulkdeleterequest,
+            dimension_bulk_delete_request=dimension_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -405,12 +405,12 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -427,7 +427,7 @@ class DimensionsApi:
     def delete_bulk_dimensions_v1_with_http_info(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimensions.")],
-        dimensionbulkdeleterequest: Dimensionbulkdeleterequest,
+        dimension_bulk_delete_request: DimensionBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -440,15 +440,15 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultdto]:
+    ) -> ApiResponse[TaskResultDto]:
         """Delete dimension(s)
 
         This endpoint initiates a bulk deletion of one or more dimensions. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this endpoint. In addition, a token with ROLE_SUBADMIN authority can only call this endpoint if all dimensions included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
         :param role_id: Parent Role Id of the dimensions. (required)
         :type role_id: str
-        :param dimensionbulkdeleterequest: (required)
-        :type dimensionbulkdeleterequest: Dimensionbulkdeleterequest
+        :param dimension_bulk_delete_request: (required)
+        :type dimension_bulk_delete_request: DimensionBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -473,7 +473,7 @@ class DimensionsApi:
 
         _param = self._delete_bulk_dimensions_v1_serialize(
             role_id=role_id,
-            dimensionbulkdeleterequest=dimensionbulkdeleterequest,
+            dimension_bulk_delete_request=dimension_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -481,12 +481,12 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -503,7 +503,7 @@ class DimensionsApi:
     def delete_bulk_dimensions_v1_without_preload_content(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimensions.")],
-        dimensionbulkdeleterequest: Dimensionbulkdeleterequest,
+        dimension_bulk_delete_request: DimensionBulkDeleteRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -523,8 +523,8 @@ class DimensionsApi:
 
         :param role_id: Parent Role Id of the dimensions. (required)
         :type role_id: str
-        :param dimensionbulkdeleterequest: (required)
-        :type dimensionbulkdeleterequest: Dimensionbulkdeleterequest
+        :param dimension_bulk_delete_request: (required)
+        :type dimension_bulk_delete_request: DimensionBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -549,7 +549,7 @@ class DimensionsApi:
 
         _param = self._delete_bulk_dimensions_v1_serialize(
             role_id=role_id,
-            dimensionbulkdeleterequest=dimensionbulkdeleterequest,
+            dimension_bulk_delete_request=dimension_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -557,12 +557,12 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Taskresultdto",
-            '400': "Errorresponsedto",
+            '202': "TaskResultDto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +574,7 @@ class DimensionsApi:
     def _delete_bulk_dimensions_v1_serialize(
         self,
         role_id,
-        dimensionbulkdeleterequest,
+        dimension_bulk_delete_request,
         _request_auth,
         _content_type,
         _headers,
@@ -602,8 +602,8 @@ class DimensionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if dimensionbulkdeleterequest is not None:
-            _body_params = dimensionbulkdeleterequest
+        if dimension_bulk_delete_request is not None:
+            _body_params = dimension_bulk_delete_request
 
 
         # set the HTTP header `Accept`
@@ -709,11 +709,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -785,11 +785,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -861,11 +861,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1019,11 +1019,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1115,11 +1115,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1211,11 +1211,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1374,11 +1374,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1450,11 +1450,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1526,11 +1526,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1627,7 +1627,7 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessprofile]:
+    ) -> List[AccessProfile]:
         """List dimension's access profiles
 
         This API lists the Access Profiles associated with a given Dimension  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
@@ -1683,13 +1683,13 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1724,7 +1724,7 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessprofile]]:
+    ) -> ApiResponse[List[AccessProfile]]:
         """List dimension's access profiles
 
         This API lists the Access Profiles associated with a given Dimension  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
@@ -1780,13 +1780,13 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1877,13 +1877,13 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessprofile]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2062,11 +2062,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Dimension]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2158,11 +2158,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Dimension]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2254,11 +2254,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Dimension]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2365,7 +2365,7 @@ class DimensionsApi:
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
         dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2387,8 +2387,8 @@ class DimensionsApi:
         :type role_id: str
         :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2414,7 +2414,7 @@ class DimensionsApi:
         _param = self._patch_dimension_v1_serialize(
             role_id=role_id,
             dimension_id=dimension_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2423,11 +2423,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2445,7 +2445,7 @@ class DimensionsApi:
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
         dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2467,8 +2467,8 @@ class DimensionsApi:
         :type role_id: str
         :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2494,7 +2494,7 @@ class DimensionsApi:
         _param = self._patch_dimension_v1_serialize(
             role_id=role_id,
             dimension_id=dimension_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2503,11 +2503,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2525,7 +2525,7 @@ class DimensionsApi:
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
         dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
-        jsonpatchoperation: List[Jsonpatchoperation],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2547,8 +2547,8 @@ class DimensionsApi:
         :type role_id: str
         :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
-        :param jsonpatchoperation: (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2574,7 +2574,7 @@ class DimensionsApi:
         _param = self._patch_dimension_v1_serialize(
             role_id=role_id,
             dimension_id=dimension_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2583,11 +2583,11 @@ class DimensionsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dimension",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListDimensionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListDimensionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2600,7 +2600,7 @@ class DimensionsApi:
         self,
         role_id,
         dimension_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2610,7 +2610,7 @@ class DimensionsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2631,8 +2631,8 @@ class DimensionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

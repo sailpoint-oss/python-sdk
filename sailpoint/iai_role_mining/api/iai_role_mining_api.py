@@ -19,23 +19,23 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.iai_role_mining.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.iai_role_mining.models.jsonpatchoperationrolemining import Jsonpatchoperationrolemining
-from sailpoint.iai_role_mining.models.roleminingentitlement import Roleminingentitlement
-from sailpoint.iai_role_mining.models.roleminingidentity import Roleminingidentity
-from sailpoint.iai_role_mining.models.roleminingpotentialrole import Roleminingpotentialrole
-from sailpoint.iai_role_mining.models.roleminingpotentialroleapplication import Roleminingpotentialroleapplication
-from sailpoint.iai_role_mining.models.roleminingpotentialroleeditentitlements import Roleminingpotentialroleeditentitlements
-from sailpoint.iai_role_mining.models.roleminingpotentialroleentitlements import Roleminingpotentialroleentitlements
-from sailpoint.iai_role_mining.models.roleminingpotentialroleexportrequest import Roleminingpotentialroleexportrequest
-from sailpoint.iai_role_mining.models.roleminingpotentialroleexportresponse import Roleminingpotentialroleexportresponse
-from sailpoint.iai_role_mining.models.roleminingpotentialroleprovisionrequest import Roleminingpotentialroleprovisionrequest
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesourceusage import Roleminingpotentialrolesourceusage
-from sailpoint.iai_role_mining.models.roleminingpotentialrolesummary import Roleminingpotentialrolesummary
-from sailpoint.iai_role_mining.models.roleminingsessiondraftroledto import Roleminingsessiondraftroledto
-from sailpoint.iai_role_mining.models.roleminingsessiondto import Roleminingsessiondto
-from sailpoint.iai_role_mining.models.roleminingsessionresponse import Roleminingsessionresponse
-from sailpoint.iai_role_mining.models.roleminingsessionstatus import Roleminingsessionstatus
+from sailpoint.iai_role_mining.models.json_patch_operation import JsonPatchOperation
+from sailpoint.iai_role_mining.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
+from sailpoint.iai_role_mining.models.role_mining_entitlement import RoleMiningEntitlement
+from sailpoint.iai_role_mining.models.role_mining_identity import RoleMiningIdentity
+from sailpoint.iai_role_mining.models.role_mining_potential_role import RoleMiningPotentialRole
+from sailpoint.iai_role_mining.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
+from sailpoint.iai_role_mining.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements
+from sailpoint.iai_role_mining.models.role_mining_potential_role_entitlements import RoleMiningPotentialRoleEntitlements
+from sailpoint.iai_role_mining.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
+from sailpoint.iai_role_mining.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
+from sailpoint.iai_role_mining.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
+from sailpoint.iai_role_mining.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
+from sailpoint.iai_role_mining.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
+from sailpoint.iai_role_mining.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
+from sailpoint.iai_role_mining.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.iai_role_mining.models.role_mining_session_response import RoleMiningSessionResponse
+from sailpoint.iai_role_mining.models.role_mining_session_status import RoleMiningSessionStatus
 
 from sailpoint.iai_role_mining.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_role_mining.api_response import ApiResponse
@@ -62,7 +62,7 @@ class IAIRoleMiningApi:
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
         min_entitlement_popularity: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=0)]], Field(description="Minimum popularity required for an entitlement to be included in the provisioned role.")] = None,
         include_common_access: Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included in the provisioned role.")] = None,
-        roleminingpotentialroleprovisionrequest: Annotated[Optional[Roleminingpotentialroleprovisionrequest], Field(description="Required information to create a new role")] = None,
+        role_mining_potential_role_provision_request: Annotated[Optional[RoleMiningPotentialRoleProvisionRequest], Field(description="Required information to create a new role")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -76,7 +76,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialrolesummary:
+    ) -> RoleMiningPotentialRoleSummary:
         """Create request to provision a potential role into an actual role.
 
         This method starts a job to provision a potential role
@@ -91,8 +91,8 @@ class IAIRoleMiningApi:
         :type include_common_access: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleprovisionrequest: Required information to create a new role
-        :type roleminingpotentialroleprovisionrequest: Roleminingpotentialroleprovisionrequest
+        :param role_mining_potential_role_provision_request: Required information to create a new role
+        :type role_mining_potential_role_provision_request: RoleMiningPotentialRoleProvisionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -121,7 +121,7 @@ class IAIRoleMiningApi:
             min_entitlement_popularity=min_entitlement_popularity,
             include_common_access=include_common_access,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleprovisionrequest=roleminingpotentialroleprovisionrequest,
+            role_mining_potential_role_provision_request=role_mining_potential_role_provision_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -129,12 +129,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialrolesummary",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleSummary",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -154,7 +154,7 @@ class IAIRoleMiningApi:
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
         min_entitlement_popularity: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=0)]], Field(description="Minimum popularity required for an entitlement to be included in the provisioned role.")] = None,
         include_common_access: Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included in the provisioned role.")] = None,
-        roleminingpotentialroleprovisionrequest: Annotated[Optional[Roleminingpotentialroleprovisionrequest], Field(description="Required information to create a new role")] = None,
+        role_mining_potential_role_provision_request: Annotated[Optional[RoleMiningPotentialRoleProvisionRequest], Field(description="Required information to create a new role")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -168,7 +168,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialrolesummary]:
+    ) -> ApiResponse[RoleMiningPotentialRoleSummary]:
         """Create request to provision a potential role into an actual role.
 
         This method starts a job to provision a potential role
@@ -183,8 +183,8 @@ class IAIRoleMiningApi:
         :type include_common_access: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleprovisionrequest: Required information to create a new role
-        :type roleminingpotentialroleprovisionrequest: Roleminingpotentialroleprovisionrequest
+        :param role_mining_potential_role_provision_request: Required information to create a new role
+        :type role_mining_potential_role_provision_request: RoleMiningPotentialRoleProvisionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -213,7 +213,7 @@ class IAIRoleMiningApi:
             min_entitlement_popularity=min_entitlement_popularity,
             include_common_access=include_common_access,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleprovisionrequest=roleminingpotentialroleprovisionrequest,
+            role_mining_potential_role_provision_request=role_mining_potential_role_provision_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -221,12 +221,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialrolesummary",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleSummary",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -246,7 +246,7 @@ class IAIRoleMiningApi:
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
         min_entitlement_popularity: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=0)]], Field(description="Minimum popularity required for an entitlement to be included in the provisioned role.")] = None,
         include_common_access: Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included in the provisioned role.")] = None,
-        roleminingpotentialroleprovisionrequest: Annotated[Optional[Roleminingpotentialroleprovisionrequest], Field(description="Required information to create a new role")] = None,
+        role_mining_potential_role_provision_request: Annotated[Optional[RoleMiningPotentialRoleProvisionRequest], Field(description="Required information to create a new role")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -275,8 +275,8 @@ class IAIRoleMiningApi:
         :type include_common_access: bool
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleprovisionrequest: Required information to create a new role
-        :type roleminingpotentialroleprovisionrequest: Roleminingpotentialroleprovisionrequest
+        :param role_mining_potential_role_provision_request: Required information to create a new role
+        :type role_mining_potential_role_provision_request: RoleMiningPotentialRoleProvisionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -305,7 +305,7 @@ class IAIRoleMiningApi:
             min_entitlement_popularity=min_entitlement_popularity,
             include_common_access=include_common_access,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleprovisionrequest=roleminingpotentialroleprovisionrequest,
+            role_mining_potential_role_provision_request=role_mining_potential_role_provision_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -313,12 +313,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialrolesummary",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleSummary",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -334,7 +334,7 @@ class IAIRoleMiningApi:
         min_entitlement_popularity,
         include_common_access,
         x_sail_point_experimental,
-        roleminingpotentialroleprovisionrequest,
+        role_mining_potential_role_provision_request,
         _request_auth,
         _content_type,
         _headers,
@@ -374,8 +374,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if roleminingpotentialroleprovisionrequest is not None:
-            _body_params = roleminingpotentialroleprovisionrequest
+        if role_mining_potential_role_provision_request is not None:
+            _body_params = role_mining_potential_role_provision_request
 
 
         # set the HTTP header `Accept`
@@ -425,7 +425,7 @@ class IAIRoleMiningApi:
     @validate_call
     def create_role_mining_sessions_v1(
         self,
-        roleminingsessiondto: Annotated[Roleminingsessiondto, Field(description="Role mining session parameters")],
+        role_mining_session_dto: Annotated[RoleMiningSessionDto, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -439,13 +439,13 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingsessionresponse:
+    ) -> RoleMiningSessionResponse:
         """Create a role mining session
 
         This submits a create role mining session request to the role mining application.
 
-        :param roleminingsessiondto: Role mining session parameters (required)
-        :type roleminingsessiondto: Roleminingsessiondto
+        :param role_mining_session_dto: Role mining session parameters (required)
+        :type role_mining_session_dto: RoleMiningSessionDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -471,7 +471,7 @@ class IAIRoleMiningApi:
         """ # noqa: E501
 
         _param = self._create_role_mining_sessions_v1_serialize(
-            roleminingsessiondto=roleminingsessiondto,
+            role_mining_session_dto=role_mining_session_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -480,12 +480,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -501,7 +501,7 @@ class IAIRoleMiningApi:
     @validate_call
     def create_role_mining_sessions_v1_with_http_info(
         self,
-        roleminingsessiondto: Annotated[Roleminingsessiondto, Field(description="Role mining session parameters")],
+        role_mining_session_dto: Annotated[RoleMiningSessionDto, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -515,13 +515,13 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingsessionresponse]:
+    ) -> ApiResponse[RoleMiningSessionResponse]:
         """Create a role mining session
 
         This submits a create role mining session request to the role mining application.
 
-        :param roleminingsessiondto: Role mining session parameters (required)
-        :type roleminingsessiondto: Roleminingsessiondto
+        :param role_mining_session_dto: Role mining session parameters (required)
+        :type role_mining_session_dto: RoleMiningSessionDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -547,7 +547,7 @@ class IAIRoleMiningApi:
         """ # noqa: E501
 
         _param = self._create_role_mining_sessions_v1_serialize(
-            roleminingsessiondto=roleminingsessiondto,
+            role_mining_session_dto=role_mining_session_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -556,12 +556,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -577,7 +577,7 @@ class IAIRoleMiningApi:
     @validate_call
     def create_role_mining_sessions_v1_without_preload_content(
         self,
-        roleminingsessiondto: Annotated[Roleminingsessiondto, Field(description="Role mining session parameters")],
+        role_mining_session_dto: Annotated[RoleMiningSessionDto, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -596,8 +596,8 @@ class IAIRoleMiningApi:
 
         This submits a create role mining session request to the role mining application.
 
-        :param roleminingsessiondto: Role mining session parameters (required)
-        :type roleminingsessiondto: Roleminingsessiondto
+        :param role_mining_session_dto: Role mining session parameters (required)
+        :type role_mining_session_dto: RoleMiningSessionDto
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -623,7 +623,7 @@ class IAIRoleMiningApi:
         """ # noqa: E501
 
         _param = self._create_role_mining_sessions_v1_serialize(
-            roleminingsessiondto=roleminingsessiondto,
+            role_mining_session_dto=role_mining_session_dto,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -632,12 +632,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -648,7 +648,7 @@ class IAIRoleMiningApi:
 
     def _create_role_mining_sessions_v1_serialize(
         self,
-        roleminingsessiondto,
+        role_mining_session_dto,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -677,8 +677,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if roleminingsessiondto is not None:
-            _body_params = roleminingsessiondto
+        if role_mining_session_dto is not None:
+            _body_params = role_mining_session_dto
 
 
         # set the HTTP header `Accept`
@@ -792,10 +792,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -875,10 +875,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -958,10 +958,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1048,7 +1048,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleexportrequest: Optional[Roleminingpotentialroleexportrequest] = None,
+        role_mining_potential_role_export_request: Optional[RoleMiningPotentialRoleExportRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1062,7 +1062,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialroleexportresponse:
+    ) -> RoleMiningPotentialRoleExportResponse:
         """Asynchronously export details for a potential role in a role mining session and upload to S3
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.
@@ -1073,8 +1073,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleexportrequest:
-        :type roleminingpotentialroleexportrequest: Roleminingpotentialroleexportrequest
+        :param role_mining_potential_role_export_request:
+        :type role_mining_potential_role_export_request: RoleMiningPotentialRoleExportRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1101,7 +1101,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleexportrequest=roleminingpotentialroleexportrequest,
+            role_mining_potential_role_export_request=role_mining_potential_role_export_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1109,11 +1109,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1131,7 +1131,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleexportrequest: Optional[Roleminingpotentialroleexportrequest] = None,
+        role_mining_potential_role_export_request: Optional[RoleMiningPotentialRoleExportRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1145,7 +1145,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialroleexportresponse]:
+    ) -> ApiResponse[RoleMiningPotentialRoleExportResponse]:
         """Asynchronously export details for a potential role in a role mining session and upload to S3
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.
@@ -1156,8 +1156,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleexportrequest:
-        :type roleminingpotentialroleexportrequest: Roleminingpotentialroleexportrequest
+        :param role_mining_potential_role_export_request:
+        :type role_mining_potential_role_export_request: RoleMiningPotentialRoleExportRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1184,7 +1184,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleexportrequest=roleminingpotentialroleexportrequest,
+            role_mining_potential_role_export_request=role_mining_potential_role_export_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1192,11 +1192,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1214,7 +1214,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleexportrequest: Optional[Roleminingpotentialroleexportrequest] = None,
+        role_mining_potential_role_export_request: Optional[RoleMiningPotentialRoleExportRequest] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1239,8 +1239,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
-        :param roleminingpotentialroleexportrequest:
-        :type roleminingpotentialroleexportrequest: Roleminingpotentialroleexportrequest
+        :param role_mining_potential_role_export_request:
+        :type role_mining_potential_role_export_request: RoleMiningPotentialRoleExportRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1267,7 +1267,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            roleminingpotentialroleexportrequest=roleminingpotentialroleexportrequest,
+            role_mining_potential_role_export_request=role_mining_potential_role_export_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1275,11 +1275,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '202': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1293,7 +1293,7 @@ class IAIRoleMiningApi:
         session_id,
         potential_role_id,
         x_sail_point_experimental,
-        roleminingpotentialroleexportrequest,
+        role_mining_potential_role_export_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1325,8 +1325,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if roleminingpotentialroleexportrequest is not None:
-            _body_params = roleminingpotentialroleexportrequest
+        if role_mining_potential_role_export_request is not None:
+            _body_params = role_mining_potential_role_export_request
 
 
         # set the HTTP header `Accept`
@@ -1392,7 +1392,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialroleexportresponse:
+    ) -> RoleMiningPotentialRoleExportResponse:
         """Retrieve status of a potential role export job
 
         This endpoint retrieves information about the current status of a potential role export.
@@ -1439,11 +1439,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1475,7 +1475,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialroleexportresponse]:
+    ) -> ApiResponse[RoleMiningPotentialRoleExportResponse]:
         """Retrieve status of a potential role export job
 
         This endpoint retrieves information about the current status of a potential role export.
@@ -1522,11 +1522,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1605,11 +1605,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialroleexportresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRoleExportResponse",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1753,10 +1753,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1832,10 +1832,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1911,10 +1911,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2014,7 +2014,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingpotentialrolesummary]:
+    ) -> List[RoleMiningPotentialRoleSummary]:
         """Retrieves all potential role summaries
 
         Returns all potential role summaries that match the query parameters
@@ -2067,12 +2067,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2106,7 +2106,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingpotentialrolesummary]]:
+    ) -> ApiResponse[List[RoleMiningPotentialRoleSummary]]:
         """Retrieves all potential role summaries
 
         Returns all potential role summaries that match the query parameters
@@ -2159,12 +2159,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2251,12 +2251,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2420,10 +2420,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2503,10 +2503,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2586,10 +2586,10 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2696,7 +2696,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingentitlement]:
+    ) -> List[RoleMiningEntitlement]:
         """Retrieves entitlements for a potential role in a role mining session
 
         This method returns entitlements for a potential role in a role mining session.
@@ -2758,12 +2758,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2800,7 +2800,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingentitlement]]:
+    ) -> ApiResponse[List[RoleMiningEntitlement]]:
         """Retrieves entitlements for a potential role in a role mining session
 
         This method returns entitlements for a potential role in a role mining session.
@@ -2862,12 +2862,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2966,12 +2966,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3102,7 +3102,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingentitlement]:
+    ) -> List[RoleMiningEntitlement]:
         """Retrieves excluded entitlements for a potential role in a role mining session
 
         This method returns excluded entitlements for a potential role in a role mining session.
@@ -3161,11 +3161,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3201,7 +3201,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingentitlement]]:
+    ) -> ApiResponse[List[RoleMiningEntitlement]]:
         """Retrieves excluded entitlements for a potential role in a role mining session
 
         This method returns excluded entitlements for a potential role in a role mining session.
@@ -3260,11 +3260,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3359,11 +3359,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3489,7 +3489,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingidentity]:
+    ) -> List[RoleMiningIdentity]:
         """Retrieves identities for a potential role in a role mining session
 
         This method returns identities for a potential role in a role mining session.
@@ -3548,11 +3548,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3588,7 +3588,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingidentity]]:
+    ) -> ApiResponse[List[RoleMiningIdentity]]:
         """Retrieves identities for a potential role in a role mining session
 
         This method returns identities for a potential role in a role mining session.
@@ -3647,11 +3647,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3746,11 +3746,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingidentity]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningIdentity]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3875,7 +3875,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingpotentialroleapplication]:
+    ) -> List[RoleMiningPotentialRoleApplication]:
         """Retrieves the applications of a potential role for a role mining session
 
         This method returns the applications of a potential role for a role mining session.
@@ -3931,12 +3931,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleapplication]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleApplication]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3971,7 +3971,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingpotentialroleapplication]]:
+    ) -> ApiResponse[List[RoleMiningPotentialRoleApplication]]:
         """Retrieves the applications of a potential role for a role mining session
 
         This method returns the applications of a potential role for a role mining session.
@@ -4027,12 +4027,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleapplication]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleApplication]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4123,12 +4123,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleapplication]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleApplication]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4248,7 +4248,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingpotentialroleentitlements]:
+    ) -> List[RoleMiningPotentialRoleEntitlements]:
         """Retrieves the entitlements of a potential role for a role mining session
 
         This method returns the entitlements of a potential role for a role mining session.
@@ -4304,12 +4304,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4344,7 +4344,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingpotentialroleentitlements]]:
+    ) -> ApiResponse[List[RoleMiningPotentialRoleEntitlements]]:
         """Retrieves the entitlements of a potential role for a role mining session
 
         This method returns the entitlements of a potential role for a role mining session.
@@ -4400,12 +4400,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4496,12 +4496,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialroleentitlements]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleEntitlements]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4621,7 +4621,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingpotentialrolesourceusage]:
+    ) -> List[RoleMiningPotentialRoleSourceUsage]:
         """Retrieves potential role source usage
 
         This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.
@@ -4677,12 +4677,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4717,7 +4717,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingpotentialrolesourceusage]]:
+    ) -> ApiResponse[List[RoleMiningPotentialRoleSourceUsage]]:
         """Retrieves potential role source usage
 
         This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.
@@ -4773,12 +4773,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4869,12 +4869,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesourceusage]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSourceUsage]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4994,7 +4994,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingpotentialrolesummary]:
+    ) -> List[RoleMiningPotentialRoleSummary]:
         """Retrieves all potential role summaries
 
         This method returns the potential role summaries for a role mining session.
@@ -5050,12 +5050,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5090,7 +5090,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingpotentialrolesummary]]:
+    ) -> ApiResponse[List[RoleMiningPotentialRoleSummary]]:
         """Retrieves all potential role summaries
 
         This method returns the potential role summaries for a role mining session.
@@ -5146,12 +5146,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5242,12 +5242,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingpotentialrolesummary]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5365,7 +5365,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialrole:
+    ) -> RoleMiningPotentialRole:
         """Retrieves a specific potential role
 
         This method returns a specific potential role for a role mining session.
@@ -5409,12 +5409,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5445,7 +5445,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialrole]:
+    ) -> ApiResponse[RoleMiningPotentialRole]:
         """Retrieves a specific potential role
 
         This method returns a specific potential role for a role mining session.
@@ -5489,12 +5489,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5569,12 +5569,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5669,7 +5669,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialrole:
+    ) -> RoleMiningPotentialRole:
         """Retrieves a specific potential role
 
         This method returns a specific potential role.
@@ -5710,12 +5710,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5745,7 +5745,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialrole]:
+    ) -> ApiResponse[RoleMiningPotentialRole]:
         """Retrieves a specific potential role
 
         This method returns a specific potential role.
@@ -5786,12 +5786,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5862,12 +5862,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5959,7 +5959,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingsessionstatus:
+    ) -> RoleMiningSessionStatus:
         """Get role mining session status state
 
         This method returns a role mining session status for a customer.
@@ -6000,11 +6000,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionstatus",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningSessionStatus",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6034,7 +6034,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingsessionstatus]:
+    ) -> ApiResponse[RoleMiningSessionStatus]:
         """Get role mining session status state
 
         This method returns a role mining session status for a customer.
@@ -6075,11 +6075,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionstatus",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningSessionStatus",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6150,11 +6150,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionstatus",
-            '400': "Errorresponsedto",
+            '200': "RoleMiningSessionStatus",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6246,7 +6246,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingsessionresponse:
+    ) -> RoleMiningSessionResponse:
         """Get a role mining session
 
         The method retrieves a role mining session.
@@ -6287,13 +6287,13 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
-            '401': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
+            '401': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6323,7 +6323,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingsessionresponse]:
+    ) -> ApiResponse[RoleMiningSessionResponse]:
         """Get a role mining session
 
         The method retrieves a role mining session.
@@ -6364,13 +6364,13 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
-            '401': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
+            '401': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6441,13 +6441,13 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleminingsessionresponse",
-            '400': "Errorresponsedto",
-            '401': "Errorresponsedto",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '200': "RoleMiningSessionResponse",
+            '400': "ErrorResponseDto",
+            '401': "ErrorResponseDto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6543,7 +6543,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingsessiondto]:
+    ) -> List[RoleMiningSessionDto]:
         """Retrieves all role mining sessions
 
         Returns all role mining sessions that match the query parameters
@@ -6596,12 +6596,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6635,7 +6635,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingsessiondto]]:
+    ) -> ApiResponse[List[RoleMiningSessionDto]]:
         """Retrieves all role mining sessions
 
         Returns all role mining sessions that match the query parameters
@@ -6688,12 +6688,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6780,12 +6780,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6902,7 +6902,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleminingsessiondraftroledto]:
+    ) -> List[RoleMiningSessionDraftRoleDto]:
         """Retrieves all saved potential roles
 
         This method returns all saved potential roles (draft roles).
@@ -6952,12 +6952,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondraftroledto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDraftRoleDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6990,7 +6990,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleminingsessiondraftroledto]]:
+    ) -> ApiResponse[List[RoleMiningSessionDraftRoleDto]]:
         """Retrieves all saved potential roles
 
         This method returns all saved potential roles (draft roles).
@@ -7040,12 +7040,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondraftroledto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDraftRoleDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7128,12 +7128,12 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleminingsessiondraftroledto]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleMiningSessionDraftRoleDto]",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7230,7 +7230,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7253,8 +7253,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7282,7 +7282,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_session_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7292,12 +7292,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7315,7 +7315,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7338,8 +7338,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7367,7 +7367,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_session_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7377,12 +7377,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7400,7 +7400,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7423,8 +7423,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7452,7 +7452,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_session_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7462,12 +7462,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7480,7 +7480,7 @@ class IAIRoleMiningApi:
         self,
         session_id,
         potential_role_id,
-        jsonpatchoperationrolemining,
+        json_patch_operation_role_mining,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -7491,7 +7491,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperationrolemining': '',
+            'JsonPatchOperationRoleMining': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7514,8 +7514,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperationrolemining is not None:
-            _body_params = jsonpatchoperationrolemining
+        if json_patch_operation_role_mining is not None:
+            _body_params = json_patch_operation_role_mining
 
 
         # set the HTTP header `Accept`
@@ -7567,7 +7567,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7590,8 +7590,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7619,7 +7619,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7629,12 +7629,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7652,7 +7652,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7675,8 +7675,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7704,7 +7704,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7714,12 +7714,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7737,7 +7737,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7760,8 +7760,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param jsonpatchoperationrolemining: (required)
-        :type jsonpatchoperationrolemining: List[Jsonpatchoperationrolemining]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7789,7 +7789,7 @@ class IAIRoleMiningApi:
         _param = self._patch_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            jsonpatchoperationrolemining=jsonpatchoperationrolemining,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7799,12 +7799,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7817,7 +7817,7 @@ class IAIRoleMiningApi:
         self,
         session_id,
         potential_role_id,
-        jsonpatchoperationrolemining,
+        json_patch_operation_role_mining,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -7828,7 +7828,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperationrolemining': '',
+            'JsonPatchOperationRoleMining': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7851,8 +7851,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperationrolemining is not None:
-            _body_params = jsonpatchoperationrolemining
+        if json_patch_operation_role_mining is not None:
+            _body_params = json_patch_operation_role_mining
 
 
         # set the HTTP header `Accept`
@@ -7903,7 +7903,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_session_v1(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id to be patched")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -7924,8 +7924,8 @@ class IAIRoleMiningApi:
 
         :param session_id: The role mining session id to be patched (required)
         :type session_id: str
-        :param jsonpatchoperation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7952,7 +7952,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_session_v1_serialize(
             session_id=session_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7962,12 +7962,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7984,7 +7984,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_session_v1_with_http_info(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id to be patched")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -8005,8 +8005,8 @@ class IAIRoleMiningApi:
 
         :param session_id: The role mining session id to be patched (required)
         :type session_id: str
-        :param jsonpatchoperation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -8033,7 +8033,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_session_v1_serialize(
             session_id=session_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8043,12 +8043,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8065,7 +8065,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_session_v1_without_preload_content(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id to be patched")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -8086,8 +8086,8 @@ class IAIRoleMiningApi:
 
         :param session_id: The role mining session id to be patched (required)
         :type session_id: str
-        :param jsonpatchoperation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -8114,7 +8114,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_session_v1_serialize(
             session_id=session_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8124,12 +8124,12 @@ class IAIRoleMiningApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetRoleMiningSessionsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8141,7 +8141,7 @@ class IAIRoleMiningApi:
     def _patch_role_mining_session_v1_serialize(
         self,
         session_id,
-        jsonpatchoperation,
+        json_patch_operation,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -8152,7 +8152,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8173,8 +8173,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -8226,7 +8226,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleeditentitlements: Annotated[Roleminingpotentialroleeditentitlements, Field(description="Role mining session parameters")],
+        role_mining_potential_role_edit_entitlements: Annotated[RoleMiningPotentialRoleEditEntitlements, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -8240,7 +8240,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleminingpotentialrole:
+    ) -> RoleMiningPotentialRole:
         """Edit entitlements for a potential role to exclude some entitlements
 
         This endpoint adds or removes entitlements from an exclusion list for a potential role.
@@ -8249,8 +8249,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: A potential role id in a role mining session (required)
         :type potential_role_id: str
-        :param roleminingpotentialroleeditentitlements: Role mining session parameters (required)
-        :type roleminingpotentialroleeditentitlements: Roleminingpotentialroleeditentitlements
+        :param role_mining_potential_role_edit_entitlements: Role mining session parameters (required)
+        :type role_mining_potential_role_edit_entitlements: RoleMiningPotentialRoleEditEntitlements
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -8278,7 +8278,7 @@ class IAIRoleMiningApi:
         _param = self._update_entitlements_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            roleminingpotentialroleeditentitlements=roleminingpotentialroleeditentitlements,
+            role_mining_potential_role_edit_entitlements=role_mining_potential_role_edit_entitlements,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8287,11 +8287,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8309,7 +8309,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleeditentitlements: Annotated[Roleminingpotentialroleeditentitlements, Field(description="Role mining session parameters")],
+        role_mining_potential_role_edit_entitlements: Annotated[RoleMiningPotentialRoleEditEntitlements, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -8323,7 +8323,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleminingpotentialrole]:
+    ) -> ApiResponse[RoleMiningPotentialRole]:
         """Edit entitlements for a potential role to exclude some entitlements
 
         This endpoint adds or removes entitlements from an exclusion list for a potential role.
@@ -8332,8 +8332,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: A potential role id in a role mining session (required)
         :type potential_role_id: str
-        :param roleminingpotentialroleeditentitlements: Role mining session parameters (required)
-        :type roleminingpotentialroleeditentitlements: Roleminingpotentialroleeditentitlements
+        :param role_mining_potential_role_edit_entitlements: Role mining session parameters (required)
+        :type role_mining_potential_role_edit_entitlements: RoleMiningPotentialRoleEditEntitlements
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -8361,7 +8361,7 @@ class IAIRoleMiningApi:
         _param = self._update_entitlements_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            roleminingpotentialroleeditentitlements=roleminingpotentialroleeditentitlements,
+            role_mining_potential_role_edit_entitlements=role_mining_potential_role_edit_entitlements,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8370,11 +8370,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8392,7 +8392,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="A potential role id in a role mining session")],
-        roleminingpotentialroleeditentitlements: Annotated[Roleminingpotentialroleeditentitlements, Field(description="Role mining session parameters")],
+        role_mining_potential_role_edit_entitlements: Annotated[RoleMiningPotentialRoleEditEntitlements, Field(description="Role mining session parameters")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -8415,8 +8415,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: A potential role id in a role mining session (required)
         :type potential_role_id: str
-        :param roleminingpotentialroleeditentitlements: Role mining session parameters (required)
-        :type roleminingpotentialroleeditentitlements: Roleminingpotentialroleeditentitlements
+        :param role_mining_potential_role_edit_entitlements: Role mining session parameters (required)
+        :type role_mining_potential_role_edit_entitlements: RoleMiningPotentialRoleEditEntitlements
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -8444,7 +8444,7 @@ class IAIRoleMiningApi:
         _param = self._update_entitlements_potential_role_v1_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            roleminingpotentialroleeditentitlements=roleminingpotentialroleeditentitlements,
+            role_mining_potential_role_edit_entitlements=role_mining_potential_role_edit_entitlements,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8453,11 +8453,11 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleminingpotentialrole",
-            '400': "Errorresponsedto",
+            '201': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
             '401': "GetRoleMiningSessionsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8470,7 +8470,7 @@ class IAIRoleMiningApi:
         self,
         session_id,
         potential_role_id,
-        roleminingpotentialroleeditentitlements,
+        role_mining_potential_role_edit_entitlements,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -8503,8 +8503,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if roleminingpotentialroleeditentitlements is not None:
-            _body_params = roleminingpotentialroleeditentitlements
+        if role_mining_potential_role_edit_entitlements is not None:
+            _body_params = role_mining_potential_role_edit_entitlements
 
 
         # set the HTTP header `Accept`

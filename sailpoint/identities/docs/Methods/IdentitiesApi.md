@@ -75,12 +75,12 @@ Path   | id | **str** | True  | Identity Id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request is invalid. It may indicate that the specified identity is marked as protected and cannot be deleted. | Identityassociationdetails |  -  |
+400 | Client Error - Returned if the request is invalid. It may indicate that the specified identity is marked as protected and cannot be deleted. | IdentityAssociationDetails |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -129,18 +129,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | identity_id | **str** | True  | Identity ID.
 
 ### Return type
-[**Identityownershipassociationdetails**](../models/identityownershipassociationdetails)
+[**IdentityOwnershipAssociationDetails**](../models/identity-ownership-association-details)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Identity&#39;s ownership association details. | Identityownershipassociationdetails |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Identity&#39;s ownership association details. | IdentityOwnershipAssociationDetails |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -151,7 +151,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.identityownershipassociationdetails import Identityownershipassociationdetails
+from sailpoint.identities.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -194,12 +194,12 @@ Path   | id | **str** | True  | Identity Id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | An identity object | Identity |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -248,18 +248,18 @@ Path   | identity_id | **str** | True  | Identity Id
 Path   | assignment_id | **str** | True  | Assignment Id
 
 ### Return type
-[**Roleassignmentdto**](../models/roleassignmentdto)
+[**RoleAssignmentDto**](../models/role-assignment-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A role assignment object | Roleassignmentdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A role assignment object | RoleAssignmentDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -270,7 +270,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.roleassignmentdto import Roleassignmentdto
+from sailpoint.identities.models.role_assignment_dto import RoleAssignmentDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -316,12 +316,12 @@ Path   | identity_id | **str** | True  | Identity Id to get the role assignments
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A role assignment object | List[GetRoleAssignmentsV1200ResponseInner] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -375,18 +375,18 @@ Path   | id | **str** | True  | Identity Id
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Identityentitlements]**](../models/identityentitlements)
+[**List[IdentityEntitlements]**](../models/identity-entitlements)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of all Entitlements for given Identity | List[Identityentitlements] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of all Entitlements for given Identity | List[IdentityEntitlements] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -397,7 +397,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.identityentitlements import Identityentitlements
+from sailpoint.identities.models.identity_entitlements import IdentityEntitlements
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -449,11 +449,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of identities. | List[Identity] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -513,12 +513,12 @@ Path   | id | **str** | True  | Identity Id
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted. The reset request accepted and is in progress. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -573,7 +573,7 @@ This API sends an email with the link to start Password Reset. After selecting t
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Identity ID
- Body  | sendaccountverificationrequest | [**Sendaccountverificationrequest**](../models/sendaccountverificationrequest) | True  | 
+ Body  | send_account_verification_request | [**SendAccountVerificationRequest**](../models/send-account-verification-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -583,12 +583,12 @@ Path   | id | **str** | True  | Identity ID
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The email was successfully sent |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -599,7 +599,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.sendaccountverificationrequest import Sendaccountverificationrequest
+from sailpoint.identities.models.send_account_verification_request import SendAccountVerificationRequest
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -607,15 +607,18 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID # str | Identity ID
-    sendaccountverificationrequest = '''sailpoint.identities.Sendaccountverificationrequest()''' # Sendaccountverificationrequest | 
+    send_account_verification_request = '''{
+          "sourceName" : "Active Directory Source",
+          "via" : "EMAIL_WORK"
+        }''' # SendAccountVerificationRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Send password reset email
-        new_sendaccountverificationrequest = Sendaccountverificationrequest.from_json(sendaccountverificationrequest)
-        IdentitiesApi(api_client).send_identity_verification_account_token_v1(id=id, sendaccountverificationrequest=new_sendaccountverificationrequest)
+        new_send_account_verification_request = SendAccountVerificationRequest.from_json(send_account_verification_request)
+        IdentitiesApi(api_client).send_identity_verification_account_token_v1(id=id, send_account_verification_request=new_send_account_verification_request)
         # Below is a request that includes all optional parameters
-        # IdentitiesApi(api_client).send_identity_verification_account_token_v1(id, new_sendaccountverificationrequest, x_sail_point_experimental)
+        # IdentitiesApi(api_client).send_identity_verification_account_token_v1(id, new_send_account_verification_request, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling IdentitiesApi->send_identity_verification_account_token_v1: %s\n" % e)
 ```
@@ -650,22 +653,22 @@ The executed task status can be checked by Task Management > [Get task status by
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | inviteidentitiesrequest | [**Inviteidentitiesrequest**](../models/inviteidentitiesrequest) | True  | 
+ Body  | invite_identities_request | [**InviteIdentitiesRequest**](../models/invite-identities-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Responds with an initial TaskStatus for the executed task | Taskstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Responds with an initial TaskStatus for the executed task | TaskStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -676,23 +679,26 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.inviteidentitiesrequest import Inviteidentitiesrequest
-from sailpoint.identities.models.taskstatus import Taskstatus
+from sailpoint.identities.models.invite_identities_request import InviteIdentitiesRequest
+from sailpoint.identities.models.task_status import TaskStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    inviteidentitiesrequest = '''sailpoint.identities.Inviteidentitiesrequest()''' # Inviteidentitiesrequest | 
+    invite_identities_request = '''{
+          "ids" : [ "2b568c65bc3c4c57a43bd97e3a8e55", "2c9180867769897d01776ed5f125512f" ],
+          "uninvited" : false
+        }''' # InviteIdentitiesRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Invite identities to register
-        new_inviteidentitiesrequest = Inviteidentitiesrequest.from_json(inviteidentitiesrequest)
-        results = IdentitiesApi(api_client).start_identities_invite_v1(inviteidentitiesrequest=new_inviteidentitiesrequest)
+        new_invite_identities_request = InviteIdentitiesRequest.from_json(invite_identities_request)
+        results = IdentitiesApi(api_client).start_identities_invite_v1(invite_identities_request=new_invite_identities_request)
         # Below is a request that includes all optional parameters
-        # results = IdentitiesApi(api_client).start_identities_invite_v1(new_inviteidentitiesrequest, x_sail_point_experimental)
+        # results = IdentitiesApi(api_client).start_identities_invite_v1(new_invite_identities_request, x_sail_point_experimental)
         print("The response of IdentitiesApi->start_identities_invite_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -731,22 +737,22 @@ This endpoint will perform the following tasks:
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | processidentitiesrequest | [**Processidentitiesrequest**](../models/processidentitiesrequest) | True  | 
+ Body  | process_identities_request | [**ProcessIdentitiesRequest**](../models/process-identities-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Taskresultresponse**](../models/taskresultresponse)
+[**TaskResultResponse**](../models/task-result-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Object containing the DTO type TASK_RESULT and the job id for the task | Taskresultresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Object containing the DTO type TASK_RESULT and the job id for the task | TaskResultResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -757,23 +763,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.processidentitiesrequest import Processidentitiesrequest
-from sailpoint.identities.models.taskresultresponse import Taskresultresponse
+from sailpoint.identities.models.process_identities_request import ProcessIdentitiesRequest
+from sailpoint.identities.models.task_result_response import TaskResultResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    processidentitiesrequest = '''sailpoint.identities.Processidentitiesrequest()''' # Processidentitiesrequest | 
+    process_identities_request = '''{
+          "identityIds" : [ "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8" ]
+        }''' # ProcessIdentitiesRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Process a list of identityids
-        new_processidentitiesrequest = Processidentitiesrequest.from_json(processidentitiesrequest)
-        results = IdentitiesApi(api_client).start_identity_processing_v1(processidentitiesrequest=new_processidentitiesrequest)
+        new_process_identities_request = ProcessIdentitiesRequest.from_json(process_identities_request)
+        results = IdentitiesApi(api_client).start_identity_processing_v1(process_identities_request=new_process_identities_request)
         # Below is a request that includes all optional parameters
-        # results = IdentitiesApi(api_client).start_identity_processing_v1(new_processidentitiesrequest, x_sail_point_experimental)
+        # results = IdentitiesApi(api_client).start_identity_processing_v1(new_process_identities_request, x_sail_point_experimental)
         print("The response of IdentitiesApi->start_identity_processing_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -809,18 +817,18 @@ Path   | identity_id | **str** | True  | The Identity id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Identitysyncjob**](../models/identitysyncjob)
+[**IdentitySyncJob**](../models/identity-sync-job)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | An Identity Sync job | Identitysyncjob |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | An Identity Sync job | IdentitySyncJob |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListIdentitiesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListIdentitiesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -831,7 +839,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.identities.api.identities_api import IdentitiesApi
 from sailpoint.identities.api_client import ApiClient
-from sailpoint.identities.models.identitysyncjob import Identitysyncjob
+from sailpoint.identities.models.identity_sync_job import IdentitySyncJob
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

@@ -40,7 +40,7 @@ class TestSegment(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This segment represents xyz',
-                owner = sailpoint.segments.models.ownerreferencesegments.ownerreferencesegments(
+                owner = sailpoint.segments.models.owner_reference_segments.OwnerReferenceSegments(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),

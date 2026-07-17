@@ -70,11 +70,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/password_dictionary/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/password_dictionary/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/password_dictionary/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/password_dictionary/docs/ErrorResponseDto.md)
  - [GetPasswordDictionaryV1401Response](sailpoint/password_dictionary/docs/GetPasswordDictionaryV1401Response.md)
  - [GetPasswordDictionaryV1429Response](sailpoint/password_dictionary/docs/GetPasswordDictionaryV1429Response.md)
- - [Localeorigin](sailpoint/password_dictionary/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/password_dictionary/docs/LocaleOrigin.md)
  - [PutPasswordDictionaryV1Request](sailpoint/password_dictionary/docs/PutPasswordDictionaryV1Request.md)
 
 

@@ -41,21 +41,21 @@ This API is used to add roles/access profiles to the list of common access for a
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | commonaccessitemrequest | [**Commonaccessitemrequest**](../models/commonaccessitemrequest) | True  | 
+ Body  | common_access_item_request | [**CommonAccessItemRequest**](../models/common-access-item-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Commonaccessitemresponse**](../models/commonaccessitemresponse)
+[**CommonAccessItemResponse**](../models/common-access-item-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returns details of the common access classification request. | Commonaccessitemresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Returns details of the common access classification request. | CommonAccessItemResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetCommonAccessV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | CreateCommonAccessV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -66,23 +66,33 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_common_access.api.iai_common_access_api import IAICommonAccessApi
 from sailpoint.iai_common_access.api_client import ApiClient
-from sailpoint.iai_common_access.models.commonaccessitemrequest import Commonaccessitemrequest
-from sailpoint.iai_common_access.models.commonaccessitemresponse import Commonaccessitemresponse
+from sailpoint.iai_common_access.models.common_access_item_request import CommonAccessItemRequest
+from sailpoint.iai_common_access.models.common_access_item_response import CommonAccessItemResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    commonaccessitemrequest = '''sailpoint.iai_common_access.Commonaccessitemrequest()''' # Commonaccessitemrequest | 
+    common_access_item_request = '''{
+          "access" : {
+            "ownerName" : "ownerName",
+            "name" : "name",
+            "description" : "description",
+            "id" : "id",
+            "type" : "ACCESS_PROFILE",
+            "ownerId" : "ownerId"
+          },
+          "status" : "CONFIRMED"
+        }''' # CommonAccessItemRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create common access items
-        new_commonaccessitemrequest = Commonaccessitemrequest.from_json(commonaccessitemrequest)
-        results = IAICommonAccessApi(api_client).create_common_access_v1(commonaccessitemrequest=new_commonaccessitemrequest)
+        new_common_access_item_request = CommonAccessItemRequest.from_json(common_access_item_request)
+        results = IAICommonAccessApi(api_client).create_common_access_v1(common_access_item_request=new_common_access_item_request)
         # Below is a request that includes all optional parameters
-        # results = IAICommonAccessApi(api_client).create_common_access_v1(new_commonaccessitemrequest, x_sail_point_experimental)
+        # results = IAICommonAccessApi(api_client).create_common_access_v1(new_common_access_item_request, x_sail_point_experimental)
         print("The response of IAICommonAccessApi->create_common_access_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -122,16 +132,16 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Commonaccessresponse]**](../models/commonaccessresponse)
+[**List[CommonAccessResponse]**](../models/common-access-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns a list of common access for a customer. | List[Commonaccessresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Succeeded. Returns a list of common access for a customer. | List[CommonAccessResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetCommonAccessV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -142,7 +152,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_common_access.api.iai_common_access_api import IAICommonAccessApi
 from sailpoint.iai_common_access.api_client import ApiClient
-from sailpoint.iai_common_access.models.commonaccessresponse import Commonaccessresponse
+from sailpoint.iai_common_access.models.common_access_response import CommonAccessResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -194,7 +204,7 @@ This submits an update request to the common access application. At this time th
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | commonaccessidstatus | [**[]Commonaccessidstatus**](../models/commonaccessidstatus) | True  | Confirm or deny in bulk the common access ids that are (or aren't) common access
+ Body  | common_access_id_status | [**[]CommonAccessIDStatus**](../models/common-access-id-status) | True  | Confirm or deny in bulk the common access ids that are (or aren't) common access
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -204,11 +214,11 @@ Param Type | Name | Data Type | Required  | Description
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetCommonAccessV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | CreateCommonAccessV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -219,22 +229,22 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.iai_common_access.api.iai_common_access_api import IAICommonAccessApi
 from sailpoint.iai_common_access.api_client import ApiClient
-from sailpoint.iai_common_access.models.commonaccessidstatus import Commonaccessidstatus
+from sailpoint.iai_common_access.models.common_access_id_status import CommonAccessIDStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    commonaccessidstatus = '''[sailpoint.iai_common_access.Commonaccessidstatus()]''' # List[Commonaccessidstatus] | Confirm or deny in bulk the common access ids that are (or aren't) common access
+    common_access_id_status = '''[sailpoint.iai_common_access.CommonAccessIDStatus()]''' # List[CommonAccessIDStatus] | Confirm or deny in bulk the common access ids that are (or aren't) common access
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Bulk update common access status
-        new_commonaccessidstatus = Commonaccessidstatus.from_json(commonaccessidstatus)
-        results = IAICommonAccessApi(api_client).update_common_access_status_in_bulk_v1(commonaccessidstatus=new_commonaccessidstatus)
+        new_common_access_id_status = CommonAccessIdStatus.from_json(common_access_id_status)
+        results = IAICommonAccessApi(api_client).update_common_access_status_in_bulk_v1(common_access_id_status=new_common_access_id_status)
         # Below is a request that includes all optional parameters
-        # results = IAICommonAccessApi(api_client).update_common_access_status_in_bulk_v1(new_commonaccessidstatus, x_sail_point_experimental)
+        # results = IAICommonAccessApi(api_client).update_common_access_status_in_bulk_v1(new_common_access_id_status, x_sail_point_experimental)
         print("The response of IAICommonAccessApi->update_common_access_status_in_bulk_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

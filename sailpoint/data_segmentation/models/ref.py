@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.data_segmentation.models.dtotype import Dtotype
+from sailpoint.data_segmentation.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class Ref(BaseModel):
     """
     Ref
     """ # noqa: E501
-    type: Optional[Union[Dtotype, str]] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
     __properties: ClassVar[List[str]] = ["type", "id"]
 

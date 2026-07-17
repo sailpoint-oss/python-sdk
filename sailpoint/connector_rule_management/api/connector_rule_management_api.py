@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.connector_rule_management.models.connectorrulecreaterequest import Connectorrulecreaterequest
-from sailpoint.connector_rule_management.models.connectorruleresponse import Connectorruleresponse
-from sailpoint.connector_rule_management.models.connectorruleupdaterequest import Connectorruleupdaterequest
-from sailpoint.connector_rule_management.models.connectorrulevalidationresponse import Connectorrulevalidationresponse
-from sailpoint.connector_rule_management.models.sourcecode import Sourcecode
+from sailpoint.connector_rule_management.models.connector_rule_create_request import ConnectorRuleCreateRequest
+from sailpoint.connector_rule_management.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.connector_rule_management.models.connector_rule_update_request import ConnectorRuleUpdateRequest
+from sailpoint.connector_rule_management.models.connector_rule_validation_response import ConnectorRuleValidationResponse
+from sailpoint.connector_rule_management.models.source_code import SourceCode
 
 from sailpoint.connector_rule_management.api_client import ApiClient, RequestSerialized
 from sailpoint.connector_rule_management.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule_v1(
         self,
-        connectorrulecreaterequest: Annotated[Connectorrulecreaterequest, Field(description="Connector rule to create.")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +59,13 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorruleresponse:
+    ) -> ConnectorRuleResponse:
         """Create connector rule
 
         Create a connector rule from the available types.
 
-        :param connectorrulecreaterequest: Connector rule to create. (required)
-        :type connectorrulecreaterequest: Connectorrulecreaterequest
+        :param connector_rule_create_request: Connector rule to create. (required)
+        :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_v1_serialize(
-            connectorrulecreaterequest=connectorrulecreaterequest,
+            connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,12 +97,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -118,7 +118,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule_v1_with_http_info(
         self,
-        connectorrulecreaterequest: Annotated[Connectorrulecreaterequest, Field(description="Connector rule to create.")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,13 +131,13 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorruleresponse]:
+    ) -> ApiResponse[ConnectorRuleResponse]:
         """Create connector rule
 
         Create a connector rule from the available types.
 
-        :param connectorrulecreaterequest: Connector rule to create. (required)
-        :type connectorrulecreaterequest: Connectorrulecreaterequest
+        :param connector_rule_create_request: Connector rule to create. (required)
+        :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +161,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_v1_serialize(
-            connectorrulecreaterequest=connectorrulecreaterequest,
+            connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,12 +169,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -190,7 +190,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule_v1_without_preload_content(
         self,
-        connectorrulecreaterequest: Annotated[Connectorrulecreaterequest, Field(description="Connector rule to create.")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,8 +208,8 @@ class ConnectorRuleManagementApi:
 
         Create a connector rule from the available types.
 
-        :param connectorrulecreaterequest: Connector rule to create. (required)
-        :type connectorrulecreaterequest: Connectorrulecreaterequest
+        :param connector_rule_create_request: Connector rule to create. (required)
+        :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,7 +233,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_v1_serialize(
-            connectorrulecreaterequest=connectorrulecreaterequest,
+            connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,12 +241,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '201': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class ConnectorRuleManagementApi:
 
     def _create_connector_rule_v1_serialize(
         self,
-        connectorrulecreaterequest,
+        connector_rule_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +283,8 @@ class ConnectorRuleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if connectorrulecreaterequest is not None:
-            _body_params = connectorrulecreaterequest
+        if connector_rule_create_request is not None:
+            _body_params = connector_rule_create_request
 
 
         # set the HTTP header `Accept`
@@ -386,12 +386,12 @@ class ConnectorRuleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -459,12 +459,12 @@ class ConnectorRuleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -532,12 +532,12 @@ class ConnectorRuleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -627,7 +627,7 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Connectorruleresponse]:
+    ) -> List[ConnectorRuleResponse]:
         """List connector rules
 
         List existing connector rules.
@@ -671,12 +671,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorruleresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorRuleResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -707,7 +707,7 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Connectorruleresponse]]:
+    ) -> ApiResponse[List[ConnectorRuleResponse]]:
         """List connector rules
 
         List existing connector rules.
@@ -751,12 +751,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorruleresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorRuleResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -831,12 +831,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Connectorruleresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConnectorRuleResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -936,7 +936,7 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorruleresponse:
+    ) -> ConnectorRuleResponse:
         """Get connector rule
 
         Get a connector rule by ID.
@@ -974,13 +974,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1009,7 +1009,7 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorruleresponse]:
+    ) -> ApiResponse[ConnectorRuleResponse]:
         """Get connector rule
 
         Get a connector rule by ID.
@@ -1047,13 +1047,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1120,13 +1120,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1202,7 +1202,7 @@ class ConnectorRuleManagementApi:
     def put_connector_rule_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
-        connectorruleupdaterequest: Annotated[Optional[Connectorruleupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1215,15 +1215,15 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorruleresponse:
+    ) -> ConnectorRuleResponse:
         """Update connector rule
 
         Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param connectorruleupdaterequest: Connector rule with updated data.
-        :type connectorruleupdaterequest: Connectorruleupdaterequest
+        :param connector_rule_update_request: Connector rule with updated data.
+        :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1248,7 +1248,7 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_v1_serialize(
             id=id,
-            connectorruleupdaterequest=connectorruleupdaterequest,
+            connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1256,13 +1256,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1279,7 +1279,7 @@ class ConnectorRuleManagementApi:
     def put_connector_rule_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
-        connectorruleupdaterequest: Annotated[Optional[Connectorruleupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1292,15 +1292,15 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorruleresponse]:
+    ) -> ApiResponse[ConnectorRuleResponse]:
         """Update connector rule
 
         Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param connectorruleupdaterequest: Connector rule with updated data.
-        :type connectorruleupdaterequest: Connectorruleupdaterequest
+        :param connector_rule_update_request: Connector rule with updated data.
+        :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1325,7 +1325,7 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_v1_serialize(
             id=id,
-            connectorruleupdaterequest=connectorruleupdaterequest,
+            connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1333,13 +1333,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1356,7 +1356,7 @@ class ConnectorRuleManagementApi:
     def put_connector_rule_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
-        connectorruleupdaterequest: Annotated[Optional[Connectorruleupdaterequest], Field(description="Connector rule with updated data.")] = None,
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1376,8 +1376,8 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param connectorruleupdaterequest: Connector rule with updated data.
-        :type connectorruleupdaterequest: Connectorruleupdaterequest
+        :param connector_rule_update_request: Connector rule with updated data.
+        :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1402,7 +1402,7 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_v1_serialize(
             id=id,
-            connectorruleupdaterequest=connectorruleupdaterequest,
+            connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1410,13 +1410,13 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorruleresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1428,7 +1428,7 @@ class ConnectorRuleManagementApi:
     def _put_connector_rule_v1_serialize(
         self,
         id,
-        connectorruleupdaterequest,
+        connector_rule_update_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1456,8 +1456,8 @@ class ConnectorRuleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if connectorruleupdaterequest is not None:
-            _body_params = connectorruleupdaterequest
+        if connector_rule_update_request is not None:
+            _body_params = connector_rule_update_request
 
 
         # set the HTTP header `Accept`
@@ -1507,7 +1507,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def test_connector_rule_v1(
         self,
-        sourcecode: Annotated[Sourcecode, Field(description="Code to validate.")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1520,13 +1520,13 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Connectorrulevalidationresponse:
+    ) -> ConnectorRuleValidationResponse:
         """Validate connector rule
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param sourcecode: Code to validate. (required)
-        :type sourcecode: Sourcecode
+        :param source_code: Code to validate. (required)
+        :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1550,7 +1550,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_v1_serialize(
-            sourcecode=sourcecode,
+            source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1558,12 +1558,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorrulevalidationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleValidationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1579,7 +1579,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def test_connector_rule_v1_with_http_info(
         self,
-        sourcecode: Annotated[Sourcecode, Field(description="Code to validate.")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1592,13 +1592,13 @@ class ConnectorRuleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Connectorrulevalidationresponse]:
+    ) -> ApiResponse[ConnectorRuleValidationResponse]:
         """Validate connector rule
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param sourcecode: Code to validate. (required)
-        :type sourcecode: Sourcecode
+        :param source_code: Code to validate. (required)
+        :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1622,7 +1622,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_v1_serialize(
-            sourcecode=sourcecode,
+            source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1630,12 +1630,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorrulevalidationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleValidationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1651,7 +1651,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def test_connector_rule_v1_without_preload_content(
         self,
-        sourcecode: Annotated[Sourcecode, Field(description="Code to validate.")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1669,8 +1669,8 @@ class ConnectorRuleManagementApi:
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param sourcecode: Code to validate. (required)
-        :type sourcecode: Sourcecode
+        :param source_code: Code to validate. (required)
+        :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1694,7 +1694,7 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_v1_serialize(
-            sourcecode=sourcecode,
+            source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1702,12 +1702,12 @@ class ConnectorRuleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Connectorrulevalidationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConnectorRuleValidationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetConnectorRuleListV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetConnectorRuleListV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1718,7 +1718,7 @@ class ConnectorRuleManagementApi:
 
     def _test_connector_rule_v1_serialize(
         self,
-        sourcecode,
+        source_code,
         _request_auth,
         _content_type,
         _headers,
@@ -1744,8 +1744,8 @@ class ConnectorRuleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sourcecode is not None:
-            _body_params = sourcecode
+        if source_code is not None:
+            _body_params = source_code
 
 
         # set the HTTP header `Accept`

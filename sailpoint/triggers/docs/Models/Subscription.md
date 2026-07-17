@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 **description** | **str** | Subscription description. | [optional] 
 **trigger_id** | **str** | ID of trigger subscribed to. | [required]
 **trigger_name** | **str** | Trigger name of trigger subscribed to. | [required]
-**type** | **Subscriptiontype** |  | [required]
+**type** | **SubscriptionType** |  | [required]
 **response_deadline** | **str** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to 'PT1H']
-**http_config** | [**Httpconfig**](httpconfig) |  | [optional] 
-**event_bridge_config** | [**Eventbridgeconfig**](eventbridgeconfig) |  | [optional] 
+**http_config** | [**HttpConfig**](http-config) |  | [optional] 
+**event_bridge_config** | [**EventBridgeConfig**](event-bridge-config) |  | [optional] 
 **enabled** | **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [required][default to True]
 **filter** | **str** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
 }

@@ -72,20 +72,20 @@ Use this endpoint to create a lifecycle state.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_profile_id | **str** | True  | Identity profile ID.
- Body  | lifecyclestate | [**Lifecyclestate**](../models/lifecyclestate) | True  | Lifecycle state to be created.
+ Body  | lifecycle_state | [**LifecycleState**](../models/lifecycle-state) | True  | Lifecycle state to be created.
 
 ### Return type
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created LifecycleState object. | Lifecyclestate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created LifecycleState object. | LifecycleState |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -96,21 +96,53 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.lifecycle_states.api_client import ApiClient
-from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+from sailpoint.lifecycle_states.models.lifecycle_state import LifecycleState
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
-    lifecyclestate = '''sailpoint.lifecycle_states.Lifecyclestate()''' # Lifecyclestate | Lifecycle state to be created.
+    lifecycle_state = '''{
+          "accessActionConfiguration" : {
+            "removeAllAccessEnabled" : true
+          },
+          "accessProfileIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ],
+          "emailNotificationOption" : {
+            "notifyManagers" : true,
+            "notifySpecificUsers" : true,
+            "emailAddressList" : [ "test@test.com", "test2@test.com" ],
+            "notifyAllAdmins" : true
+          },
+          "created" : "2015-05-28T14:07:17Z",
+          "description" : "Lifecycle description",
+          "identityCount" : 42,
+          "priority" : 10,
+          "technicalName" : "Technical Name",
+          "identityState" : "INACTIVE_LONG_TERM",
+          "enabled" : true,
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "accountActions" : [ {
+            "allSources" : true,
+            "action" : "ENABLE",
+            "excludeSourceIds" : [ "3b551ccf5566478b9b77f37de25303aa" ],
+            "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+          }, {
+            "allSources" : true,
+            "action" : "ENABLE",
+            "excludeSourceIds" : [ "3b551ccf5566478b9b77f37de25303aa" ],
+            "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+          } ],
+          "id" : "id12345"
+        }''' # LifecycleState | Lifecycle state to be created.
 
     try:
         # Create lifecycle state
-        new_lifecyclestate = Lifecyclestate.from_json(lifecyclestate)
-        results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id=identity_profile_id, lifecyclestate=new_lifecyclestate)
+        new_lifecycle_state = LifecycleState.from_json(lifecycle_state)
+        results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id=identity_profile_id, lifecycle_state=new_lifecycle_state)
         # Below is a request that includes all optional parameters
-        # results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id, new_lifecyclestate)
+        # results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id, new_lifecycle_state)
         print("The response of LifecycleStatesApi->create_lifecycle_state_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -135,18 +167,18 @@ Path   | identity_profile_id | **str** | True  | Identity profile ID.
 Path   | lifecycle_state_id | **str** | True  | Lifecycle state ID.
 
 ### Return type
-[**Lifecyclestatedeleted**](../models/lifecyclestatedeleted)
+[**LifecyclestateDeleted**](../models/lifecyclestate-deleted)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | The request was successfully accepted into the system. | Lifecyclestatedeleted |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | The request was successfully accepted into the system. | LifecyclestateDeleted |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -157,7 +189,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.lifecycle_states.api_client import ApiClient
-from sailpoint.lifecycle_states.models.lifecyclestatedeleted import Lifecyclestatedeleted
+from sailpoint.lifecycle_states.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -196,18 +228,18 @@ Path   | identity_profile_id | **str** | True  | Identity profile ID.
 Path   | lifecycle_state_id | **str** | True  | Lifecycle state ID.
 
 ### Return type
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested LifecycleState was successfully retrieved. | Lifecyclestate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The requested LifecycleState was successfully retrieved. | LifecycleState |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -218,7 +250,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.lifecycle_states.api_client import ApiClient
-from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+from sailpoint.lifecycle_states.models.lifecycle_state import LifecycleState
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -260,17 +292,17 @@ Path   | identity_profile_id | **str** | True  | Identity profile ID.
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified**
 
 ### Return type
-[**List[Lifecyclestate]**](../models/lifecyclestate)
+[**List[LifecycleState]**](../models/lifecycle-state)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of LifecycleState objects. | List[Lifecyclestate] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of LifecycleState objects. | List[LifecycleState] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -281,7 +313,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.lifecycle_states.api_client import ApiClient
-from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+from sailpoint.lifecycle_states.models.lifecycle_state import LifecycleState
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -330,12 +362,12 @@ Path   | identity_id | **str** | True  | ID of the identity to update.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The request was successfully accepted into the system. | SetLifecycleStateV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -384,21 +416,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_profile_id | **str** | True  | Identity profile ID.
 Path   | lifecycle_state_id | **str** | True  | Lifecycle state ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
 
 ### Return type
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The LifecycleState was successfully updated. | Lifecyclestate |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The LifecycleState was successfully updated. | LifecycleState |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | SetLifecycleStateV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | SetLifecycleStateV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -409,8 +441,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.lifecycle_states.api_client import ApiClient
-from sailpoint.lifecycle_states.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+from sailpoint.lifecycle_states.models.json_patch_operation import JsonPatchOperation
+from sailpoint.lifecycle_states.models.lifecycle_state import LifecycleState
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -418,14 +450,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
     lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle state ID. # str | Lifecycle state ID.
-    jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]''' # List[Jsonpatchoperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
+    json_patch_operation = '''[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]''' # List[JsonPatchOperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
 
     try:
         # Update lifecycle state
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id=identity_profile_id, lifecycle_state_id=lifecycle_state_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id=identity_profile_id, lifecycle_state_id=lifecycle_state_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id, lifecycle_state_id, new_jsonpatchoperation)
+        # results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id, lifecycle_state_id, new_json_patch_operation)
         print("The response of LifecycleStatesApi->update_lifecycle_states_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

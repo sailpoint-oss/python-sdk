@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.intelligence.models.intelaccessaccountwire import Intelaccessaccountwire
-from sailpoint.intelligence.models.intelaccessitemhistoryevent import Intelaccessitemhistoryevent
-from sailpoint.intelligence.models.intelcertificationhistoryevent import Intelcertificationhistoryevent
-from sailpoint.intelligence.models.intelidentityaggregate import Intelidentityaggregate
-from sailpoint.intelligence.models.inteloutlieraccessitem import Inteloutlieraccessitem
+from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
+from sailpoint.intelligence.models.intel_access_item_history_event import IntelAccessItemHistoryEvent
+from sailpoint.intelligence.models.intel_certification_history_event import IntelCertificationHistoryEvent
+from sailpoint.intelligence.models.intel_identity_aggregate import IntelIdentityAggregate
+from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
 
 from sailpoint.intelligence.api_client import ApiClient, RequestSerialized
 from sailpoint.intelligence.api_response import ApiResponse
@@ -59,7 +59,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Intelidentityaggregate:
+    ) -> IntelIdentityAggregate:
         """Get identity by filter
 
         Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
@@ -97,14 +97,14 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Intelidentityaggregate",
-            '400': "Errorresponsedto",
+            '200': "IntelIdentityAggregate",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '409': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '409': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -133,7 +133,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Intelidentityaggregate]:
+    ) -> ApiResponse[IntelIdentityAggregate]:
         """Get identity by filter
 
         Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
@@ -171,14 +171,14 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Intelidentityaggregate",
-            '400': "Errorresponsedto",
+            '200': "IntelIdentityAggregate",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '409': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '409': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,14 +245,14 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Intelidentityaggregate",
-            '400': "Errorresponsedto",
+            '200': "IntelIdentityAggregate",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
-            '409': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '409': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -344,7 +344,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Intelaccessitemhistoryevent]:
+    ) -> List[IntelAccessItemHistoryEvent]:
         """List identity access item history
 
         Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
@@ -388,12 +388,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessItemHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Intelaccessitemhistoryevent]]:
+    ) -> ApiResponse[List[IntelAccessItemHistoryEvent]]:
         """List identity access item history
 
         Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
@@ -468,12 +468,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessItemHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -548,12 +548,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessItemHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -653,7 +653,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Intelaccessaccountwire]:
+    ) -> List[IntelAccessAccountWire]:
         """List identity accounts
 
         Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Requires tenant license idn:response-and-remediation. 
@@ -697,12 +697,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessaccountwire]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessAccountWire]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -733,7 +733,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Intelaccessaccountwire]]:
+    ) -> ApiResponse[List[IntelAccessAccountWire]]:
         """List identity accounts
 
         Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Requires tenant license idn:response-and-remediation. 
@@ -777,12 +777,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessaccountwire]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessAccountWire]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -857,12 +857,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelaccessaccountwire]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelAccessAccountWire]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -962,7 +962,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Intelcertificationhistoryevent]:
+    ) -> List[IntelCertificationHistoryEvent]:
         """List identity certification history
 
         Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
@@ -1006,12 +1006,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelCertificationHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1042,7 +1042,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Intelcertificationhistoryevent]]:
+    ) -> ApiResponse[List[IntelCertificationHistoryEvent]]:
         """List identity certification history
 
         Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
@@ -1086,12 +1086,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelCertificationHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1166,12 +1166,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelCertificationHistoryEvent]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1271,7 +1271,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Inteloutlieraccessitem]:
+    ) -> List[IntelOutlierAccessItem]:
         """List identity rare access
 
         Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. An identity with no outlier returns an empty array. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
@@ -1315,12 +1315,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelOutlierAccessItem]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1351,7 +1351,7 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Inteloutlieraccessitem]]:
+    ) -> ApiResponse[List[IntelOutlierAccessItem]]:
         """List identity rare access
 
         Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. An identity with no outlier returns an empty array. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
@@ -1395,12 +1395,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelOutlierAccessItem]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1475,12 +1475,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorresponsedto",
+            '200': "List[IntelOutlierAccessItem]",
+            '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

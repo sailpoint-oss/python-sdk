@@ -51,17 +51,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created machine account subtype. | Sourcesubtypewithsource |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | Created machine account subtype. | SourceSubtypeWithSource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -73,7 +73,7 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
 from sailpoint.machine_account_subtypes.models.create_source_subtype_v1_request import CreateSourceSubtypeV1Request
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -132,11 +132,11 @@ Path   | subtype_id | **str** | True  | The ID of the subtype.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | Subtype deleted successfully. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -195,18 +195,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | subtype_id | **str** | True  | machine subtype id.
 
 ### Return type
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+[**MachineAccountSubtypeConfigDto**](../models/machine-account-subtype-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Responds with a MachineAccountSubtypeConfigDto for machine account creation and deletion approval config by subtypeId. | Machineaccountsubtypeconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Responds with a MachineAccountSubtypeConfigDto for machine account creation and deletion approval config by subtypeId. | MachineAccountSubtypeConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -217,7 +217,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -268,18 +268,18 @@ Path   | subtype_id | **str** | True  | The ID of the subtype.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Machine account subtype object. | Sourcesubtypewithsource |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Machine account subtype object. | SourceSubtypeWithSource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -290,7 +290,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -345,17 +345,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[Sourcesubtypewithsource]**](../models/sourcesubtypewithsource)
+[**List[SourceSubtypeWithSource]**](../models/source-subtype-with-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of machine account subtypes. | List[Sourcesubtypewithsource] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of machine account subtypes. | List[SourceSubtypeWithSource] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -366,7 +366,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -422,18 +422,18 @@ Param Type | Name | Data Type | Required  | Description
  Body  | request_body | **[]str** | True  | 
 
 ### Return type
-[**List[Sourcesubtypewithsource]**](../models/sourcesubtypewithsource)
+[**List[SourceSubtypeWithSource]**](../models/source-subtype-with-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of source subtypes. | List[Sourcesubtypewithsource] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of source subtypes. | List[SourceSubtypeWithSource] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -444,7 +444,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -498,17 +498,17 @@ Path   | subtype_id | **str** | True  | The ID of the subtype.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Updated machine account subtype. | Sourcesubtypewithsource |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Updated machine account subtype. | SourceSubtypeWithSource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -519,7 +519,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -569,21 +569,21 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 Path   | subtype_id | **str** | True  | machine account subtype ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the object.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the object.
 
 ### Return type
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+[**MachineAccountSubtypeConfigDto**](../models/machine-account-subtype-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | This response indicates the PATCH operation succeeded and the API returns the updated MachineAccountSubtypeConfigDto object. | Machineaccountsubtypeconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | This response indicates the PATCH operation succeeded and the API returns the updated MachineAccountSubtypeConfigDto object. | MachineAccountSubtypeConfigDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | LoadBulkSourceSubtypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | LoadBulkSourceSubtypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -594,8 +594,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.machine_account_subtypes.api_client import ApiClient
-from sailpoint.machine_account_subtypes.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.machine_account_subtypes.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
+from sailpoint.machine_account_subtypes.models.json_patch_operation import JsonPatchOperation
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -604,14 +604,14 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
-    jsonpatchoperation = '''[sailpoint.machine_account_subtypes.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+    json_patch_operation = '''[sailpoint.machine_account_subtypes.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Machine Subtype Approval Config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, jsonpatchoperation=new_jsonpatchoperation)
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id, new_jsonpatchoperation)
+        # results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id, new_json_patch_operation)
         print("The response of MachineAccountSubtypesApi->update_machine_account_subtype_approval_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

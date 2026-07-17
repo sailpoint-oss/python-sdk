@@ -58,20 +58,20 @@ This API performs a deploy based on an existing daft.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | deployrequest | [**Deployrequest**](../models/deployrequest) | True  | The deploy request body.
+ Body  | deploy_request | [**DeployRequest**](../models/deploy-request) | True  | The deploy request body.
 
 ### Return type
-[**Deployresponse**](../models/deployresponse)
+[**DeployResponse**](../models/deploy-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Deploy job accepted and queued for processing. | Deployresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Deploy job accepted and queued for processing. | DeployResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -82,21 +82,23 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.deployrequest import Deployrequest
-from sailpoint.configuration_hub.models.deployresponse import Deployresponse
+from sailpoint.configuration_hub.models.deploy_request import DeployRequest
+from sailpoint.configuration_hub.models.deploy_response import DeployResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    deployrequest = '''{"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"}''' # Deployrequest | The deploy request body.
+    deploy_request = '''{
+          "draftId" : "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b"
+        }''' # DeployRequest | The deploy request body.
 
     try:
         # Create a deploy
-        new_deployrequest = Deployrequest.from_json(deployrequest)
-        results = ConfigurationHubApi(api_client).create_deploy_v1(deployrequest=new_deployrequest)
+        new_deploy_request = DeployRequest.from_json(deploy_request)
+        results = ConfigurationHubApi(api_client).create_deploy_v1(deploy_request=new_deploy_request)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).create_deploy_v1(new_deployrequest)
+        # results = ConfigurationHubApi(api_client).create_deploy_v1(new_deploy_request)
         print("The response of ConfigurationHubApi->create_deploy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -121,21 +123,21 @@ The request will need the following security scope:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_org | **str** | True  | The name of the source org.
- Body  | objectmappingrequest | [**Objectmappingrequest**](../models/objectmappingrequest) | True  | The object mapping request body.
+ Body  | object_mapping_request | [**ObjectMappingRequest**](../models/object-mapping-request) | True  | The object mapping request body.
 
 ### Return type
-[**Objectmappingresponse**](../models/objectmappingresponse)
+[**ObjectMappingResponse**](../models/object-mapping-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The created object mapping between current org and source org. | Objectmappingresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The created object mapping between current org and source org. | ObjectMappingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -146,22 +148,28 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.objectmappingrequest import Objectmappingrequest
-from sailpoint.configuration_hub.models.objectmappingresponse import Objectmappingresponse
+from sailpoint.configuration_hub.models.object_mapping_request import ObjectMappingRequest
+from sailpoint.configuration_hub.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
-    objectmappingrequest = '''{"objectType":"GOVERNANCE_GROUP","jsonPath":"$.description","sourceValue":"Sample Governance Group","targetValue":"Sample Governance Group - Updated","enabled":true}''' # Objectmappingrequest | The object mapping request body.
+    object_mapping_request = '''{
+          "targetValue" : "My New Governance Group Name",
+          "jsonPath" : "$.name",
+          "sourceValue" : "My Governance Group Name",
+          "enabled" : false,
+          "objectType" : "IDENTITY"
+        }''' # ObjectMappingRequest | The object mapping request body.
 
     try:
         # Creates an object mapping
-        new_objectmappingrequest = Objectmappingrequest.from_json(objectmappingrequest)
-        results = ConfigurationHubApi(api_client).create_object_mapping_v1(source_org=source_org, objectmappingrequest=new_objectmappingrequest)
+        new_object_mapping_request = ObjectMappingRequest.from_json(object_mapping_request)
+        results = ConfigurationHubApi(api_client).create_object_mapping_v1(source_org=source_org, object_mapping_request=new_object_mapping_request)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).create_object_mapping_v1(source_org, new_objectmappingrequest)
+        # results = ConfigurationHubApi(api_client).create_object_mapping_v1(source_org, new_object_mapping_request)
         print("The response of ConfigurationHubApi->create_object_mapping_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -186,21 +194,21 @@ The request will need the following security scope:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_org | **str** | True  | The name of the source org.
- Body  | objectmappingbulkcreaterequest | [**Objectmappingbulkcreaterequest**](../models/objectmappingbulkcreaterequest) | True  | The bulk create object mapping request body.
+ Body  | object_mapping_bulk_create_request | [**ObjectMappingBulkCreateRequest**](../models/object-mapping-bulk-create-request) | True  | The bulk create object mapping request body.
 
 ### Return type
-[**Objectmappingbulkcreateresponse**](../models/objectmappingbulkcreateresponse)
+[**ObjectMappingBulkCreateResponse**](../models/object-mapping-bulk-create-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The created object mapping between current org and source org. | Objectmappingbulkcreateresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The created object mapping between current org and source org. | ObjectMappingBulkCreateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -211,22 +219,36 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.objectmappingbulkcreaterequest import Objectmappingbulkcreaterequest
-from sailpoint.configuration_hub.models.objectmappingbulkcreateresponse import Objectmappingbulkcreateresponse
+from sailpoint.configuration_hub.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
+from sailpoint.configuration_hub.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
-    objectmappingbulkcreaterequest = '''{"newObjectsMappings":[{"objectType":"SOURCE","jsonPath":"$.name","sourceValue":"Original SOURCE Name","targetValue":"New SOURCE Name","enabled":true},{"objectType":"IDENTITY","jsonPath":"$.name","sourceValue":"Original IDENTITY Name","targetValue":"New IDENTITY Name ","enabled":true}]}''' # Objectmappingbulkcreaterequest | The bulk create object mapping request body.
+    object_mapping_bulk_create_request = '''{
+          "newObjectsMappings" : [ {
+            "targetValue" : "My New Governance Group Name",
+            "jsonPath" : "$.name",
+            "sourceValue" : "My Governance Group Name",
+            "enabled" : false,
+            "objectType" : "IDENTITY"
+          }, {
+            "targetValue" : "My New Governance Group Name",
+            "jsonPath" : "$.name",
+            "sourceValue" : "My Governance Group Name",
+            "enabled" : false,
+            "objectType" : "IDENTITY"
+          } ]
+        }''' # ObjectMappingBulkCreateRequest | The bulk create object mapping request body.
 
     try:
         # Bulk creates object mappings
-        new_objectmappingbulkcreaterequest = Objectmappingbulkcreaterequest.from_json(objectmappingbulkcreaterequest)
-        results = ConfigurationHubApi(api_client).create_object_mappings_v1(source_org=source_org, objectmappingbulkcreaterequest=new_objectmappingbulkcreaterequest)
+        new_object_mapping_bulk_create_request = ObjectMappingBulkCreateRequest.from_json(object_mapping_bulk_create_request)
+        results = ConfigurationHubApi(api_client).create_object_mappings_v1(source_org=source_org, object_mapping_bulk_create_request=new_object_mapping_bulk_create_request)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).create_object_mappings_v1(source_org, new_objectmappingbulkcreaterequest)
+        # results = ConfigurationHubApi(api_client).create_object_mappings_v1(source_org, new_object_mapping_bulk_create_request)
         print("The response of ConfigurationHubApi->create_object_mappings_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -247,20 +269,20 @@ This API creates a new scheduled action for the current tenant.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | scheduledactionpayload | [**Scheduledactionpayload**](../models/scheduledactionpayload) | True  | The scheduled action creation request body.
+ Body  | scheduled_action_payload | [**ScheduledActionPayload**](../models/scheduled-action-payload) | True  | The scheduled action creation request body.
 
 ### Return type
-[**Scheduledactionresponse**](../models/scheduledactionresponse)
+[**ScheduledActionResponse**](../models/scheduled-action-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The created scheduled action. | Scheduledactionresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The created scheduled action. | ScheduledActionResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -271,21 +293,43 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.scheduledactionpayload import Scheduledactionpayload
-from sailpoint.configuration_hub.models.scheduledactionresponse import Scheduledactionresponse
+from sailpoint.configuration_hub.models.scheduled_action_payload import ScheduledActionPayload
+from sailpoint.configuration_hub.models.scheduled_action_response import ScheduledActionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    scheduledactionpayload = '''{"jobType":"BACKUP","startTime":"2024-08-16T14:16:58.389Z","cronString":"0 0 * * * *","timeZoneId":"America/Chicago","content":{"name":"Daily Backup","backupOptions":{"includeTypes":["SOURCE","IDENTITY"],"objectOptions":{"SOURCE":{"includedNames":["Source1","Source2"]}}}}}''' # Scheduledactionpayload | The scheduled action creation request body.
+    scheduled_action_payload = '''{
+          "cronString" : "0 0 * * * *",
+          "timeZoneId" : "America/Chicago",
+          "startTime" : "2024-08-16T14:16:58.389Z",
+          "jobType" : "BACKUP",
+          "content" : {
+            "sourceTenant" : "tenant-name",
+            "draftId" : "9012b87d-48ca-439a-868f-2160001da8c3",
+            "name" : "Daily Backup",
+            "backupOptions" : {
+              "includeTypes" : [ "ROLE", "IDENTITY_PROFILE" ],
+              "objectOptions" : {
+                "SOURCE" : {
+                  "includedNames" : [ "Source1", "Source2" ]
+                },
+                "ROLE" : {
+                  "includedNames" : [ "Admin Role", "User Role" ]
+                }
+              }
+            },
+            "sourceBackupId" : "5678b87d-48ca-439a-868f-2160001da8c2"
+          }
+        }''' # ScheduledActionPayload | The scheduled action creation request body.
 
     try:
         # Create scheduled action
-        new_scheduledactionpayload = Scheduledactionpayload.from_json(scheduledactionpayload)
-        results = ConfigurationHubApi(api_client).create_scheduled_action_v1(scheduledactionpayload=new_scheduledactionpayload)
+        new_scheduled_action_payload = ScheduledActionPayload.from_json(scheduled_action_payload)
+        results = ConfigurationHubApi(api_client).create_scheduled_action_v1(scheduled_action_payload=new_scheduled_action_payload)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).create_scheduled_action_v1(new_scheduledactionpayload)
+        # results = ConfigurationHubApi(api_client).create_scheduled_action_v1(new_scheduled_action_payload)
         print("The response of ConfigurationHubApi->create_scheduled_action_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -314,17 +358,17 @@ Param Type | Name | Data Type | Required  | Description
    | name | **str** | True  | Name that will be assigned to the uploaded configuration file.
 
 ### Return type
-[**Backupresponse**](../models/backupresponse)
+[**BackupResponse**](../models/backup-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Upload job accepted and queued for processing. | Backupresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Upload job accepted and queued for processing. | BackupResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: multipart/form-data
@@ -335,7 +379,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.backupresponse import Backupresponse
+from sailpoint.configuration_hub.models.backup_response import BackupResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -383,12 +427,12 @@ Path   | id | **str** | True  | The id of the backup to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -443,12 +487,12 @@ Path   | id | **str** | True  | The id of the draft to delete.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -503,12 +547,12 @@ Path   | object_mapping_id | **str** | True  | The id of the object mapping to b
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -560,12 +604,12 @@ Path   | id | **str** | True  | The ID of the scheduled action.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -620,12 +664,12 @@ Path   | id | **str** | True  | The id of the uploaded configuration.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -670,18 +714,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The id of the deploy.
 
 ### Return type
-[**Deployresponse**](../models/deployresponse)
+[**DeployResponse**](../models/deploy-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Gets the details of a deploy. | Deployresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Gets the details of a deploy. | DeployResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -692,7 +736,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.deployresponse import Deployresponse
+from sailpoint.configuration_hub.models.deploy_response import DeployResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -732,18 +776,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_org | **str** | True  | The name of the source org.
 
 ### Return type
-[**List[Objectmappingresponse]**](../models/objectmappingresponse)
+[**List[ObjectMappingResponse]**](../models/object-mapping-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of existing object mappings between current org and source org. | List[Objectmappingresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of existing object mappings between current org and source org. | List[ObjectMappingResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -754,7 +798,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.objectmappingresponse import Objectmappingresponse
+from sailpoint.configuration_hub.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -792,18 +836,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | The id of the uploaded configuration.
 
 ### Return type
-[**Backupresponse**](../models/backupresponse)
+[**BackupResponse**](../models/backup-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Gets an uploaded configuration details. | Backupresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Gets an uploaded configuration details. | BackupResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -814,7 +858,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.backupresponse import Backupresponse
+from sailpoint.configuration_hub.models.backup_response import BackupResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -851,17 +895,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*
 
 ### Return type
-[**List[Backupresponse]**](../models/backupresponse)
+[**List[BackupResponse]**](../models/backup-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of existing backups. | List[Backupresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of existing backups. | List[BackupResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -872,7 +916,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.backupresponse import Backupresponse
+from sailpoint.configuration_hub.models.backup_response import BackupResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -913,11 +957,11 @@ This endpoint does not need any parameter.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of existing deploys. | ListDeploysV1200Response |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -964,17 +1008,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **approvalStatus**: *eq*
 
 ### Return type
-[**List[Draftresponse]**](../models/draftresponse)
+[**List[DraftResponse]**](../models/draft-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of existing drafts. | List[Draftresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of existing drafts. | List[DraftResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -985,7 +1029,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.draftresponse import Draftresponse
+from sailpoint.configuration_hub.models.draft_response import DraftResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1020,17 +1064,17 @@ This API gets a list of existing scheduled actions for the current tenant.
 This endpoint does not need any parameter. 
 
 ### Return type
-[**List[Scheduledactionresponse]**](../models/scheduledactionresponse)
+[**List[ScheduledActionResponse]**](../models/scheduled-action-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of existing scheduled actions. | List[Scheduledactionresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of existing scheduled actions. | List[ScheduledActionResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1041,7 +1085,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.scheduledactionresponse import Scheduledactionresponse
+from sailpoint.configuration_hub.models.scheduled_action_response import ScheduledActionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1078,18 +1122,18 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*
 
 ### Return type
-[**List[Backupresponse]**](../models/backupresponse)
+[**List[BackupResponse]**](../models/backup-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of existing uploaded configurations. | List[Backupresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of existing uploaded configurations. | List[BackupResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -1100,7 +1144,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.backupresponse import Backupresponse
+from sailpoint.configuration_hub.models.backup_response import BackupResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1139,21 +1183,21 @@ The request will need the following security scope:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_org | **str** | True  | The name of the source org.
- Body  | objectmappingbulkpatchrequest | [**Objectmappingbulkpatchrequest**](../models/objectmappingbulkpatchrequest) | True  | The object mapping request body.
+ Body  | object_mapping_bulk_patch_request | [**ObjectMappingBulkPatchRequest**](../models/object-mapping-bulk-patch-request) | True  | The object mapping request body.
 
 ### Return type
-[**Objectmappingbulkpatchresponse**](../models/objectmappingbulkpatchresponse)
+[**ObjectMappingBulkPatchResponse**](../models/object-mapping-bulk-patch-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated object mappings. | Objectmappingbulkpatchresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated object mappings. | ObjectMappingBulkPatchResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -1164,22 +1208,35 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.objectmappingbulkpatchrequest import Objectmappingbulkpatchrequest
-from sailpoint.configuration_hub.models.objectmappingbulkpatchresponse import Objectmappingbulkpatchresponse
+from sailpoint.configuration_hub.models.object_mapping_bulk_patch_request import ObjectMappingBulkPatchRequest
+from sailpoint.configuration_hub.models.object_mapping_bulk_patch_response import ObjectMappingBulkPatchResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
-    objectmappingbulkpatchrequest = '''{"patches":{"603b1a61-d03d-4ed1-864f-a508fbd1995d":[{"op":"replace","path":"/enabled","value":true}],"00bece34-f50d-4227-8878-76f620b5a971":[{"op":"replace","path":"/targetValue","value":"New Target Value"}]}}''' # Objectmappingbulkpatchrequest | The object mapping request body.
+    object_mapping_bulk_patch_request = '''{
+          "patches" : {
+            "603b1a61-d03d-4ed1-864f-a508fbd1995d" : [ {
+              "op" : "replace",
+              "path" : "/enabled",
+              "value" : true
+            } ],
+            "00bece34-f50d-4227-8878-76f620b5a971" : [ {
+              "op" : "replace",
+              "path" : "/targetValue",
+              "value" : "New Target Value"
+            } ]
+          }
+        }''' # ObjectMappingBulkPatchRequest | The object mapping request body.
 
     try:
         # Bulk updates object mappings
-        new_objectmappingbulkpatchrequest = Objectmappingbulkpatchrequest.from_json(objectmappingbulkpatchrequest)
-        results = ConfigurationHubApi(api_client).update_object_mappings_v1(source_org=source_org, objectmappingbulkpatchrequest=new_objectmappingbulkpatchrequest)
+        new_object_mapping_bulk_patch_request = ObjectMappingBulkPatchRequest.from_json(object_mapping_bulk_patch_request)
+        results = ConfigurationHubApi(api_client).update_object_mappings_v1(source_org=source_org, object_mapping_bulk_patch_request=new_object_mapping_bulk_patch_request)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).update_object_mappings_v1(source_org, new_objectmappingbulkpatchrequest)
+        # results = ConfigurationHubApi(api_client).update_object_mappings_v1(source_org, new_object_mapping_bulk_patch_request)
         print("The response of ConfigurationHubApi->update_object_mappings_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1201,21 +1258,21 @@ This API updates an existing scheduled action using JSON Patch format.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the scheduled action.
- Body  | jsonpatch | [**Jsonpatch**](../models/jsonpatch) | True  | The JSON Patch document containing the changes to apply to the scheduled action.
+ Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | The JSON Patch document containing the changes to apply to the scheduled action.
 
 ### Return type
-[**Scheduledactionresponse**](../models/scheduledactionresponse)
+[**ScheduledActionResponse**](../models/scheduled-action-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The updated scheduled action. | Scheduledactionresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The updated scheduled action. | ScheduledActionResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetObjectMappingsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetObjectMappingsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -1226,22 +1283,32 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.configuration_hub.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.configuration_hub.api_client import ApiClient
-from sailpoint.configuration_hub.models.jsonpatch import Jsonpatch
-from sailpoint.configuration_hub.models.scheduledactionresponse import Scheduledactionresponse
+from sailpoint.configuration_hub.models.json_patch import JsonPatch
+from sailpoint.configuration_hub.models.scheduled_action_response import ScheduledActionResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the scheduled action. # str | The ID of the scheduled action.
-    jsonpatch = '''[{"op":"replace","path":"/content/name","value":"Updated Backup Name"},{"op":"replace","path":"/cronString","value":"0 0 9 * * ?"}]''' # Jsonpatch | The JSON Patch document containing the changes to apply to the scheduled action.
+    json_patch = '''{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }''' # JsonPatch | The JSON Patch document containing the changes to apply to the scheduled action.
 
     try:
         # Update scheduled action
-        new_jsonpatch = Jsonpatch.from_json(jsonpatch)
-        results = ConfigurationHubApi(api_client).update_scheduled_action_v1(id=id, jsonpatch=new_jsonpatch)
+        new_json_patch = JsonPatch.from_json(json_patch)
+        results = ConfigurationHubApi(api_client).update_scheduled_action_v1(id=id, json_patch=new_json_patch)
         # Below is a request that includes all optional parameters
-        # results = ConfigurationHubApi(api_client).update_scheduled_action_v1(id, new_jsonpatch)
+        # results = ConfigurationHubApi(api_client).update_scheduled_action_v1(id, new_json_patch)
         print("The response of ConfigurationHubApi->update_scheduled_action_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

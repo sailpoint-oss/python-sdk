@@ -47,11 +47,11 @@ configuration = sailpoint.notifications.Configuration(
 with sailpoint.notifications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.notifications.NotificationsApi(api_client)
-    domainaddress = sailpoint.notifications.Domainaddress() # Domainaddress | 
+    domain_address = sailpoint.notifications.DomainAddress() # DomainAddress | 
 
     try:
         # Verify domain address via dkim
-        api_response = api_instance.create_domain_dkim_v1(domainaddress)
+        api_response = api_instance.create_domain_dkim_v1(domain_address)
         print("The response of NotificationsApi->create_domain_dkim_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -86,33 +86,33 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CreateDomainDkimV1405Response](sailpoint/notifications/docs/CreateDomainDkimV1405Response.md)
- - [Dkimattributes](sailpoint/notifications/docs/Dkimattributes.md)
- - [Domainaddress](sailpoint/notifications/docs/Domainaddress.md)
- - [Domainstatusdto](sailpoint/notifications/docs/Domainstatusdto.md)
- - [Emailstatusdto](sailpoint/notifications/docs/Emailstatusdto.md)
- - [Errormessagedto](sailpoint/notifications/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/notifications/docs/Errorresponsedto.md)
+ - [DkimAttributes](sailpoint/notifications/docs/DkimAttributes.md)
+ - [DomainAddress](sailpoint/notifications/docs/DomainAddress.md)
+ - [DomainStatusDto](sailpoint/notifications/docs/DomainStatusDto.md)
+ - [EmailStatusDto](sailpoint/notifications/docs/EmailStatusDto.md)
+ - [ErrorMessageDto](sailpoint/notifications/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/notifications/docs/ErrorResponseDto.md)
  - [GetNotificationTemplateVariablesV1401Response](sailpoint/notifications/docs/GetNotificationTemplateVariablesV1401Response.md)
  - [GetNotificationTemplateVariablesV1429Response](sailpoint/notifications/docs/GetNotificationTemplateVariablesV1429Response.md)
- - [Localeorigin](sailpoint/notifications/docs/Localeorigin.md)
- - [Mailfromattributes](sailpoint/notifications/docs/Mailfromattributes.md)
- - [Mailfromattributesdto](sailpoint/notifications/docs/Mailfromattributesdto.md)
+ - [LocaleOrigin](sailpoint/notifications/docs/LocaleOrigin.md)
+ - [MailFromAttributes](sailpoint/notifications/docs/MailFromAttributes.md)
+ - [MailFromAttributesDto](sailpoint/notifications/docs/MailFromAttributesDto.md)
  - [Medium](sailpoint/notifications/docs/Medium.md)
- - [Notificationtemplatecontext](sailpoint/notifications/docs/Notificationtemplatecontext.md)
- - [Preferencesdto](sailpoint/notifications/docs/Preferencesdto.md)
- - [Sendtestnotificationrequestdto](sailpoint/notifications/docs/Sendtestnotificationrequestdto.md)
- - [Templatebulkdeletedto](sailpoint/notifications/docs/Templatebulkdeletedto.md)
- - [Templatedto](sailpoint/notifications/docs/Templatedto.md)
- - [TemplatedtoSlackTemplate](sailpoint/notifications/docs/TemplatedtoSlackTemplate.md)
- - [TemplatedtoTeamsTemplate](sailpoint/notifications/docs/TemplatedtoTeamsTemplate.md)
- - [Templatedtodefault](sailpoint/notifications/docs/Templatedtodefault.md)
- - [Templatemediumdto](sailpoint/notifications/docs/Templatemediumdto.md)
- - [Templateslack](sailpoint/notifications/docs/Templateslack.md)
- - [TemplateslackAutoApprovalData](sailpoint/notifications/docs/TemplateslackAutoApprovalData.md)
- - [TemplateslackCustomFields](sailpoint/notifications/docs/TemplateslackCustomFields.md)
- - [Templateteams](sailpoint/notifications/docs/Templateteams.md)
- - [Templatevariable](sailpoint/notifications/docs/Templatevariable.md)
- - [Templatevariablesdto](sailpoint/notifications/docs/Templatevariablesdto.md)
+ - [NotificationTemplateContext](sailpoint/notifications/docs/NotificationTemplateContext.md)
+ - [PreferencesDto](sailpoint/notifications/docs/PreferencesDto.md)
+ - [SendTestNotificationRequestDto](sailpoint/notifications/docs/SendTestNotificationRequestDto.md)
+ - [TemplateBulkDeleteDto](sailpoint/notifications/docs/TemplateBulkDeleteDto.md)
+ - [TemplateDto](sailpoint/notifications/docs/TemplateDto.md)
+ - [TemplateDtoDefault](sailpoint/notifications/docs/TemplateDtoDefault.md)
+ - [TemplateDtoSlackTemplate](sailpoint/notifications/docs/TemplateDtoSlackTemplate.md)
+ - [TemplateDtoTeamsTemplate](sailpoint/notifications/docs/TemplateDtoTeamsTemplate.md)
+ - [TemplateMediumDto](sailpoint/notifications/docs/TemplateMediumDto.md)
+ - [TemplateSlack](sailpoint/notifications/docs/TemplateSlack.md)
+ - [TemplateSlackAutoApprovalData](sailpoint/notifications/docs/TemplateSlackAutoApprovalData.md)
+ - [TemplateSlackCustomFields](sailpoint/notifications/docs/TemplateSlackCustomFields.md)
+ - [TemplateTeams](sailpoint/notifications/docs/TemplateTeams.md)
+ - [TemplateVariable](sailpoint/notifications/docs/TemplateVariable.md)
+ - [TemplateVariablesDto](sailpoint/notifications/docs/TemplateVariablesDto.md)
 
 
 <a id="documentation-for-authorization"></a>

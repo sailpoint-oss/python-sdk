@@ -6,14 +6,22 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.formdefinitiondynamicschemarequest import Formdefinitiondynamicschemarequest
-        from sailpoint.custom_forms.models.formdefinitiondynamicschemaresponse import Formdefinitiondynamicschemaresponse
+        from sailpoint.custom_forms.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
+        from sailpoint.custom_forms.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          body = '''{"id":"sp:forms","attributes":{"formDefinitionId":"00000000-0000-0000-0000-000000000000"},"description":"AnotherDescription","type":"action","versionNumber":1}''' # Formdefinitiondynamicschemarequest | Body is the request payload to create a form definition dynamic schema (optional)
+          body = '''{
+          "description" : "A description",
+          "attributes" : {
+            "formDefinitionId" : "00000000-0000-0000-0000-000000000000"
+          },
+          "id" : "00000000-0000-0000-0000-000000000000",
+          "type" : "action",
+          "versionNumber" : 1
+        }''' # FormDefinitionDynamicSchemaRequest | Body is the request payload to create a form definition dynamic schema (optional)
           try:
               # Generate json schema dynamically.
               
@@ -32,7 +40,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.formdefinitionfileuploadresponse import Formdefinitionfileuploadresponse
+        from sailpoint.custom_forms.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -58,14 +66,124 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.createformdefinitionrequest import Createformdefinitionrequest
-        from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+        from sailpoint.custom_forms.models.create_form_definition_request import CreateFormDefinitionRequest
+        from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          body = '''{"name":"my form","description":"my form description","owner":{"type":"IDENTITY","id":"00000000-0000-0000-0000-000000000000"},"formElements":[{"id":"000000000000","elementType":"SECTION","config":{"alignment":"LEFT","description":"elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute","label":"Section","labelStyle":"h2","showLabel":true,"formElements":[{"id":"0000000000000","key":"textField","elementType":"TEXT","config":{"default":"","description":"","helpText":"form element type text","label":"Text Field","placeholder":"","required":false},"validations":[]}]}}]}''' # Createformdefinitionrequest | Body is the request payload to create form definition request (optional)
+          body = '''{
+          "owner" : {
+            "name" : "Grant Smith",
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          },
+          "formConditions" : [ {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          }, {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          } ],
+          "formInput" : [ {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          }, {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          } ],
+          "name" : "My form",
+          "description" : "My form description",
+          "usedBy" : [ {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          }, {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          } ],
+          "formElements" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          } ]
+        }''' # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
           try:
               # Creates a form definition.
               
@@ -84,14 +202,34 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.createforminstancerequest import Createforminstancerequest
-        from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+        from sailpoint.custom_forms.models.create_form_instance_request import CreateFormInstanceRequest
+        from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          body = '''{"expire":"2023-06-20T15:57:55.332882Z","formDefinitionId":"00000000-0000-0000-0000-000000000000","recipients":[{"type":"IDENTITY","id":"an-identity-id"}],"createdBy":{"type":"WORKFLOW_EXECUTION","id":"a-workflow-execution-id"}}''' # Createforminstancerequest | Body is the request payload to create a form instance (optional)
+          body = '''{
+          "formInput" : {
+            "input1" : "Sales"
+          },
+          "standAloneForm" : false,
+          "createdBy" : {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "WORKFLOW_EXECUTION"
+          },
+          "recipients" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          } ],
+          "expire" : "2023-08-12T20:14:57.74486Z",
+          "formDefinitionId" : "00000000-0000-0000-0000-000000000000",
+          "state" : "ASSIGNED",
+          "ttl" : 1571827560
+        }''' # CreateFormInstanceRequest | Body is the request payload to create a form instance (optional)
           try:
               # Creates a form instance.
               
@@ -188,7 +326,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+        from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -213,7 +351,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+        from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -289,7 +427,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.formdefinitionresponse import Formdefinitionresponse
+        from sailpoint.custom_forms.models.form_definition_response import FormDefinitionResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -315,7 +453,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.forminstanceresponse import Forminstanceresponse
+        from sailpoint.custom_forms.models.form_instance_response import FormInstanceResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -341,7 +479,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.listformdefinitionsbytenantresponse import Listformdefinitionsbytenantresponse
+        from sailpoint.custom_forms.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -369,7 +507,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.listformelementdatabyelementidresponse import Listformelementdatabyelementidresponse
+        from sailpoint.custom_forms.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -398,7 +536,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.listforminstancesbytenantresponse import Listforminstancesbytenantresponse
+        from sailpoint.custom_forms.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -426,7 +564,7 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.listpredefinedselectoptionsresponse import Listpredefinedselectoptionsresponse
+        from sailpoint.custom_forms.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -450,8 +588,8 @@
       source: |
         from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi
         from sailpoint.custom_forms.api_client import ApiClient
-        from sailpoint.custom_forms.models.formelementpreviewrequest import Formelementpreviewrequest
-        from sailpoint.custom_forms.models.previewdatasourceresponse import Previewdatasourceresponse
+        from sailpoint.custom_forms.models.form_element_preview_request import FormElementPreviewRequest
+        from sailpoint.custom_forms.models.preview_data_source_response import PreviewDataSourceResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -461,13 +599,23 @@
           limit = 10 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
           filters = 'value eq \"ID01\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
           query = 'ac' # str | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional) # str | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
-          formelementpreviewrequest = '''sailpoint.custom_forms.Formelementpreviewrequest()''' # Formelementpreviewrequest | Body is the request payload to create a form definition dynamic schema (optional)
+          form_element_preview_request = '''{
+          "dataSource" : {
+            "config" : {
+              "indices" : [ "identities" ],
+              "query" : "*",
+              "aggregationBucketField" : "attributes.cloudStatus.exact",
+              "objectType" : "IDENTITY"
+            },
+            "dataSourceType" : "STATIC"
+          }
+        }''' # FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
           try:
               # Preview form definition data source.
               
               results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id=form_definition_id)
               # Below is a request that includes all optional parameters
-              # results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id, limit, filters, query, new_formelementpreviewrequest)
+              # results = CustomFormsApi(api_client).show_preview_data_source_v1(form_definition_id, limit, filters, query, new_form_element_preview_request)
               print("The response of CustomFormsApi->show_preview_data_source_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

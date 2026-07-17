@@ -47,12 +47,12 @@ configuration = sailpoint.work_reassignment.Configuration(
 with sailpoint.work_reassignment.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.work_reassignment.WorkReassignmentApi(api_client)
-    configurationitemrequest = sailpoint.work_reassignment.Configurationitemrequest() # Configurationitemrequest | 
+    configuration_item_request = sailpoint.work_reassignment.ConfigurationItemRequest() # ConfigurationItemRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create a reassignment configuration
-        api_response = api_instance.create_reassignment_configuration_v1(configurationitemrequest, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_reassignment_configuration_v1(configuration_item_request, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of WorkReassignmentApi->create_reassignment_configuration_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -79,26 +79,26 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Auditdetails](sailpoint/work_reassignment/docs/Auditdetails.md)
- - [Configtype](sailpoint/work_reassignment/docs/Configtype.md)
- - [Configtypeenum](sailpoint/work_reassignment/docs/Configtypeenum.md)
- - [Configtypeenumcamel](sailpoint/work_reassignment/docs/Configtypeenumcamel.md)
- - [Configurationdetailsresponse](sailpoint/work_reassignment/docs/Configurationdetailsresponse.md)
- - [Configurationitemrequest](sailpoint/work_reassignment/docs/Configurationitemrequest.md)
- - [Configurationitemresponse](sailpoint/work_reassignment/docs/Configurationitemresponse.md)
- - [Configurationresponse](sailpoint/work_reassignment/docs/Configurationresponse.md)
- - [Errormessagedto](sailpoint/work_reassignment/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/work_reassignment/docs/Errorresponsedto.md)
- - [Evaluateresponse](sailpoint/work_reassignment/docs/Evaluateresponse.md)
+ - [AuditDetails](sailpoint/work_reassignment/docs/AuditDetails.md)
+ - [ConfigType](sailpoint/work_reassignment/docs/ConfigType.md)
+ - [ConfigTypeEnum](sailpoint/work_reassignment/docs/ConfigTypeEnum.md)
+ - [ConfigTypeEnumCamel](sailpoint/work_reassignment/docs/ConfigTypeEnumCamel.md)
+ - [ConfigurationDetailsResponse](sailpoint/work_reassignment/docs/ConfigurationDetailsResponse.md)
+ - [ConfigurationItemRequest](sailpoint/work_reassignment/docs/ConfigurationItemRequest.md)
+ - [ConfigurationItemResponse](sailpoint/work_reassignment/docs/ConfigurationItemResponse.md)
+ - [ConfigurationResponse](sailpoint/work_reassignment/docs/ConfigurationResponse.md)
+ - [ErrorMessageDto](sailpoint/work_reassignment/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/work_reassignment/docs/ErrorResponseDto.md)
+ - [EvaluateResponse](sailpoint/work_reassignment/docs/EvaluateResponse.md)
  - [GetReassignmentConfigTypesV1401Response](sailpoint/work_reassignment/docs/GetReassignmentConfigTypesV1401Response.md)
  - [GetReassignmentConfigTypesV1429Response](sailpoint/work_reassignment/docs/GetReassignmentConfigTypesV1429Response.md)
  - [Identity2](sailpoint/work_reassignment/docs/Identity2.md)
- - [Localeorigin](sailpoint/work_reassignment/docs/Localeorigin.md)
- - [Lookupstep](sailpoint/work_reassignment/docs/Lookupstep.md)
- - [Reassignmenttypeenum](sailpoint/work_reassignment/docs/Reassignmenttypeenum.md)
- - [Tenantconfigurationdetails](sailpoint/work_reassignment/docs/Tenantconfigurationdetails.md)
- - [Tenantconfigurationrequest](sailpoint/work_reassignment/docs/Tenantconfigurationrequest.md)
- - [Tenantconfigurationresponse](sailpoint/work_reassignment/docs/Tenantconfigurationresponse.md)
+ - [LocaleOrigin](sailpoint/work_reassignment/docs/LocaleOrigin.md)
+ - [LookupStep](sailpoint/work_reassignment/docs/LookupStep.md)
+ - [ReassignmentTypeEnum](sailpoint/work_reassignment/docs/ReassignmentTypeEnum.md)
+ - [TenantConfigurationDetails](sailpoint/work_reassignment/docs/TenantConfigurationDetails.md)
+ - [TenantConfigurationRequest](sailpoint/work_reassignment/docs/TenantConfigurationRequest.md)
+ - [TenantConfigurationResponse](sailpoint/work_reassignment/docs/TenantConfigurationResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

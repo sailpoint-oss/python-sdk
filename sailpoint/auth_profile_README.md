@@ -73,15 +73,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/auth_profile/docs/ArrayInner.md)
- - [Authprofile](sailpoint/auth_profile/docs/Authprofile.md)
- - [Authprofilesummary](sailpoint/auth_profile/docs/Authprofilesummary.md)
- - [Errormessagedto](sailpoint/auth_profile/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/auth_profile/docs/Errorresponsedto.md)
+ - [AuthProfile](sailpoint/auth_profile/docs/AuthProfile.md)
+ - [AuthProfileSummary](sailpoint/auth_profile/docs/AuthProfileSummary.md)
+ - [ErrorMessageDto](sailpoint/auth_profile/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/auth_profile/docs/ErrorResponseDto.md)
  - [GetProfileConfigListV1401Response](sailpoint/auth_profile/docs/GetProfileConfigListV1401Response.md)
  - [GetProfileConfigListV1429Response](sailpoint/auth_profile/docs/GetProfileConfigListV1429Response.md)
- - [Jsonpatchoperation](sailpoint/auth_profile/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/auth_profile/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/auth_profile/docs/Localeorigin.md)
+ - [JsonPatchOperation](sailpoint/auth_profile/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/auth_profile/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/auth_profile/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

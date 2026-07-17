@@ -19,19 +19,19 @@ Name | Type | Description | Notes
 **certification_id** | **str** | the id of the certification item | [required]
 **certification_name** | **str** | the certification item name | [required]
 **signed_date** | **str** | the date ceritification was signed | [optional] 
-**certifiers** | [**[]Certifierresponse**](certifierresponse) | this field is deprecated and may go away | [optional] 
-**reviewers** | [**[]Certifierresponse**](certifierresponse) | The list of identities who review this certification | [optional] 
-**signer** | [**Certifierresponse**](certifierresponse) |  | [optional] 
+**certifiers** | [**[]CertifierResponse**](certifier-response) | this field is deprecated and may go away | [optional] 
+**reviewers** | [**[]CertifierResponse**](certifier-response) | The list of identities who review this certification | [optional] 
+**signer** | [**CertifierResponse**](certifier-response) |  | [optional] 
 **event_type** | **str** | the event type | [optional] 
 **date_time** | **str** | the date of event | [optional] 
 **identity_id** | **str** | the identity id | [optional] 
-**access_item** | [**AccessitemassociatedAccessItem**](accessitemassociated-access-item) |  | [required]
-**governance_event** | [**Correlatedgovernanceevent**](correlatedgovernanceevent) |  | [required]
+**access_item** | [**AccessItemAssociatedAccessItem**](access-item-associated-access-item) |  | [required]
+**governance_event** | [**CorrelatedGovernanceEvent**](correlated-governance-event) |  | [required]
 **access_item_type** |  **Enum** [  'account',    'app',    'entitlement',    'role',    'accessProfile' ] | the access item type | [optional] 
-**attribute_changes** | [**[]Attributechange**](attributechange) |  | [required]
-**access_request** | [**Accessrequestresponse2**](accessrequestresponse2) |  | [required]
-**account** | [**AccountstatuschangedAccount**](accountstatuschanged-account) |  | [required]
-**status_change** | [**AccountstatuschangedStatusChange**](accountstatuschanged-status-change) |  | [required]
+**attribute_changes** | [**[]AttributeChange**](attribute-change) |  | [required]
+**access_request** | [**AccessRequestResponse2**](access-request-response2) |  | [required]
+**account** | [**AccountStatusChangedAccount**](account-status-changed-account) |  | [required]
+**status_change** | [**AccountStatusChangedStatusChange**](account-status-changed-status-change) |  | [required]
 }
 
 ## Example
@@ -73,7 +73,7 @@ access_request=sailpoint.identity_history.models.access_request_response.Access 
                     requester_id = '2c91808a77ff216301782327a50f09bf', 
                     requester_name = 'Bing C', 
                     items = [{"operation":"Add","accessItemType":"role","name":"Role-1","decision":"APPROVED","description":"The role descrition","sourceId":"8a80828f643d484f01643e14202e206f","sourceName":"Source1","approvalInfos":[{"name":"John Snow","id":"8a80828f643d484f01643e14202e2000","status":"Approved"}]}], ),
-account=sailpoint.identity_history.models.accountstatuschanged_account.accountstatuschanged_account(
+account=sailpoint.identity_history.models.account_status_changed_account.AccountStatusChanged_account(
                     id = '2c91808a77ff216301782327a50f09bf', 
                     native_identity = 'dr.arden.ogahn.d', 
                     display_name = 'Adam Archer', 
@@ -81,7 +81,7 @@ account=sailpoint.identity_history.models.accountstatuschanged_account.accountst
                     source_name = 'JDBC Entitlements Source', 
                     entitlement_count = 2, 
                     access_type = 'account', ),
-status_change=sailpoint.identity_history.models.accountstatuschanged_status_change.accountstatuschanged_statusChange(
+status_change=sailpoint.identity_history.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
                     previous_status = 'enabled', 
                     new_status = 'disabled', )
 )

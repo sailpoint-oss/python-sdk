@@ -17,33 +17,33 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from sailpoint.identity_history.models.accessitemaccessprofileresponse import Accessitemaccessprofileresponse
-from sailpoint.identity_history.models.accessitemaccountresponse import Accessitemaccountresponse
-from sailpoint.identity_history.models.accessitemappresponse import Accessitemappresponse
-from sailpoint.identity_history.models.accessitementitlementresponse import Accessitementitlementresponse
-from sailpoint.identity_history.models.accessitemroleresponse import Accessitemroleresponse
+from sailpoint.identity_history.models.access_item_access_profile_response import AccessItemAccessProfileResponse
+from sailpoint.identity_history.models.access_item_account_response import AccessItemAccountResponse
+from sailpoint.identity_history.models.access_item_app_response import AccessItemAppResponse
+from sailpoint.identity_history.models.access_item_entitlement_response import AccessItemEntitlementResponse
+from sailpoint.identity_history.models.access_item_role_response import AccessItemRoleResponse
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-LISTIDENTITYSNAPSHOTACCESSITEMSV1200RESPONSEINNER_ONE_OF_SCHEMAS = ["Accessitemaccessprofileresponse", "Accessitemaccountresponse", "Accessitemappresponse", "Accessitementitlementresponse", "Accessitemroleresponse"]
+LISTIDENTITYSNAPSHOTACCESSITEMSV1200RESPONSEINNER_ONE_OF_SCHEMAS = ["AccessItemAccessProfileResponse", "AccessItemAccountResponse", "AccessItemAppResponse", "AccessItemEntitlementResponse", "AccessItemRoleResponse"]
 
 class ListIdentitySnapshotAccessItemsV1200ResponseInner(BaseModel):
     """
     ListIdentitySnapshotAccessItemsV1200ResponseInner
     """
-    # data type: Accessitemaccessprofileresponse
-    oneof_schema_1_validator: Optional[Accessitemaccessprofileresponse] = None
-    # data type: Accessitemaccountresponse
-    oneof_schema_2_validator: Optional[Accessitemaccountresponse] = None
-    # data type: Accessitemappresponse
-    oneof_schema_3_validator: Optional[Accessitemappresponse] = None
-    # data type: Accessitementitlementresponse
-    oneof_schema_4_validator: Optional[Accessitementitlementresponse] = None
-    # data type: Accessitemroleresponse
-    oneof_schema_5_validator: Optional[Accessitemroleresponse] = None
-    actual_instance: Optional[Union[Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse]] = None
-    one_of_schemas: Set[str] = { "Accessitemaccessprofileresponse", "Accessitemaccountresponse", "Accessitemappresponse", "Accessitementitlementresponse", "Accessitemroleresponse" }
+    # data type: AccessItemAccessProfileResponse
+    oneof_schema_1_validator: Optional[AccessItemAccessProfileResponse] = None
+    # data type: AccessItemAccountResponse
+    oneof_schema_2_validator: Optional[AccessItemAccountResponse] = None
+    # data type: AccessItemAppResponse
+    oneof_schema_3_validator: Optional[AccessItemAppResponse] = None
+    # data type: AccessItemEntitlementResponse
+    oneof_schema_4_validator: Optional[AccessItemEntitlementResponse] = None
+    # data type: AccessItemRoleResponse
+    oneof_schema_5_validator: Optional[AccessItemRoleResponse] = None
+    actual_instance: Optional[Union[AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse]] = None
+    one_of_schemas: Set[str] = { "AccessItemAccessProfileResponse", "AccessItemAccountResponse", "AccessItemAppResponse", "AccessItemEntitlementResponse", "AccessItemRoleResponse" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -66,37 +66,37 @@ class ListIdentitySnapshotAccessItemsV1200ResponseInner(BaseModel):
         instance = ListIdentitySnapshotAccessItemsV1200ResponseInner.model_construct()
         error_messages = []
         match = 0
-        # validate data type: Accessitemaccessprofileresponse
-        if not isinstance(v, Accessitemaccessprofileresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemaccessprofileresponse`")
+        # validate data type: AccessItemAccessProfileResponse
+        if not isinstance(v, AccessItemAccessProfileResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAccessProfileResponse`")
         else:
             match += 1
-        # validate data type: Accessitemaccountresponse
-        if not isinstance(v, Accessitemaccountresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemaccountresponse`")
+        # validate data type: AccessItemAccountResponse
+        if not isinstance(v, AccessItemAccountResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAccountResponse`")
         else:
             match += 1
-        # validate data type: Accessitemappresponse
-        if not isinstance(v, Accessitemappresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemappresponse`")
+        # validate data type: AccessItemAppResponse
+        if not isinstance(v, AccessItemAppResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAppResponse`")
         else:
             match += 1
-        # validate data type: Accessitementitlementresponse
-        if not isinstance(v, Accessitementitlementresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitementitlementresponse`")
+        # validate data type: AccessItemEntitlementResponse
+        if not isinstance(v, AccessItemEntitlementResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemEntitlementResponse`")
         else:
             match += 1
-        # validate data type: Accessitemroleresponse
-        if not isinstance(v, Accessitemroleresponse):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Accessitemroleresponse`")
+        # validate data type: AccessItemRoleResponse
+        if not isinstance(v, AccessItemRoleResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemRoleResponse`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -111,43 +111,43 @@ class ListIdentitySnapshotAccessItemsV1200ResponseInner(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into Accessitemaccessprofileresponse
+        # deserialize data into AccessItemAccessProfileResponse
         try:
-            instance.actual_instance = Accessitemaccessprofileresponse.from_json(json_str)
+            instance.actual_instance = AccessItemAccessProfileResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into Accessitemaccountresponse
+        # deserialize data into AccessItemAccountResponse
         try:
-            instance.actual_instance = Accessitemaccountresponse.from_json(json_str)
+            instance.actual_instance = AccessItemAccountResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into Accessitemappresponse
+        # deserialize data into AccessItemAppResponse
         try:
-            instance.actual_instance = Accessitemappresponse.from_json(json_str)
+            instance.actual_instance = AccessItemAppResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into Accessitementitlementresponse
+        # deserialize data into AccessItemEntitlementResponse
         try:
-            instance.actual_instance = Accessitementitlementresponse.from_json(json_str)
+            instance.actual_instance = AccessItemEntitlementResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into Accessitemroleresponse
+        # deserialize data into AccessItemRoleResponse
         try:
-            instance.actual_instance = Accessitemroleresponse.from_json(json_str)
+            instance.actual_instance = AccessItemRoleResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ListIdentitySnapshotAccessItemsV1200ResponseInner with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -161,7 +161,7 @@ class ListIdentitySnapshotAccessItemsV1200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Accessitemaccessprofileresponse, Accessitemaccountresponse, Accessitemappresponse, Accessitementitlementresponse, Accessitemroleresponse]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

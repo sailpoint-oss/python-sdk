@@ -19,20 +19,20 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.data_access_security.models.applicationitem import Applicationitem
-from sailpoint.data_access_security.models.assignresourceownerrequest import Assignresourceownerrequest
-from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+from sailpoint.data_access_security.models.application_item import ApplicationItem
+from sailpoint.data_access_security.models.assign_resource_owner_request import AssignResourceOwnerRequest
+from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
 from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+from sailpoint.data_access_security.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.data_access_security.models.createidentitycollectorrequest import Createidentitycollectorrequest
-from sailpoint.data_access_security.models.createschedulerequest import Createschedulerequest
-from sailpoint.data_access_security.models.dataownermodel import Dataownermodel
+from sailpoint.data_access_security.models.data_owner_model import DataOwnerModel
 from sailpoint.data_access_security.models.identitycollectorlistitem import Identitycollectorlistitem
-from sailpoint.data_access_security.models.reelectrequest import Reelectrequest
-from sailpoint.data_access_security.models.resourcemodel import Resourcemodel
-from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
-from sailpoint.data_access_security.models.taskinfo import Taskinfo
+from sailpoint.data_access_security.models.reelect_request import ReelectRequest
+from sailpoint.data_access_security.models.resource_model import ResourceModel
+from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
+from sailpoint.data_access_security.models.task_info import TaskInfo
+from sailpoint.data_access_security.models.update_schedule_request import UpdateScheduleRequest
 from sailpoint.data_access_security.models.updateidentitycollectorrequest import Updateidentitycollectorrequest
-from sailpoint.data_access_security.models.updateschedulerequest import Updateschedulerequest
 
 from sailpoint.data_access_security.api_client import ApiClient, RequestSerialized
 from sailpoint.data_access_security.api_response import ApiResponse
@@ -107,12 +107,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -180,12 +180,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -253,12 +253,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -333,7 +333,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_application_v1(
         self,
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the details required to create a new application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the details required to create a new application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -351,8 +351,8 @@ class DataAccessSecurityApi:
 
         This endpoint creates a new application in Data Access Security with the specified configuration.
 
-        :param basecreateapplicationrequest: Request body containing the details required to create a new application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the details required to create a new application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -376,7 +376,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_application_v1_serialize(
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -385,12 +385,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -406,7 +406,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_application_v1_with_http_info(
         self,
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the details required to create a new application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the details required to create a new application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -424,8 +424,8 @@ class DataAccessSecurityApi:
 
         This endpoint creates a new application in Data Access Security with the specified configuration.
 
-        :param basecreateapplicationrequest: Request body containing the details required to create a new application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the details required to create a new application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -449,7 +449,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_application_v1_serialize(
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -458,12 +458,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -479,7 +479,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_application_v1_without_preload_content(
         self,
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the details required to create a new application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the details required to create a new application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -497,8 +497,8 @@ class DataAccessSecurityApi:
 
         This endpoint creates a new application in Data Access Security with the specified configuration.
 
-        :param basecreateapplicationrequest: Request body containing the details required to create a new application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the details required to create a new application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -522,7 +522,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_application_v1_serialize(
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -531,12 +531,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -547,7 +547,7 @@ class DataAccessSecurityApi:
 
     def _create_application_v1_serialize(
         self,
-        basecreateapplicationrequest,
+        base_create_application_request,
         _request_auth,
         _content_type,
         _headers,
@@ -573,8 +573,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if basecreateapplicationrequest is not None:
-            _body_params = basecreateapplicationrequest
+        if base_create_application_request is not None:
+            _body_params = base_create_application_request
 
 
         # set the HTTP header `Accept`
@@ -676,12 +676,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateIdentityCollectorV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -749,12 +749,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateIdentityCollectorV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -822,12 +822,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateIdentityCollectorV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -915,7 +915,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_schedule_v1(
         self,
-        createschedulerequest: Createschedulerequest,
+        create_schedule_request: CreateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -932,8 +932,8 @@ class DataAccessSecurityApi:
         """Create a new schedule.
 
 
-        :param createschedulerequest: (required)
-        :type createschedulerequest: Createschedulerequest
+        :param create_schedule_request: (required)
+        :type create_schedule_request: CreateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -957,7 +957,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_schedule_v1_serialize(
-            createschedulerequest=createschedulerequest,
+            create_schedule_request=create_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -966,12 +966,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -987,7 +987,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_schedule_v1_with_http_info(
         self,
-        createschedulerequest: Createschedulerequest,
+        create_schedule_request: CreateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1004,8 +1004,8 @@ class DataAccessSecurityApi:
         """Create a new schedule.
 
 
-        :param createschedulerequest: (required)
-        :type createschedulerequest: Createschedulerequest
+        :param create_schedule_request: (required)
+        :type create_schedule_request: CreateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1029,7 +1029,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_schedule_v1_serialize(
-            createschedulerequest=createschedulerequest,
+            create_schedule_request=create_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1038,12 +1038,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1059,7 +1059,7 @@ class DataAccessSecurityApi:
     @validate_call
     def create_schedule_v1_without_preload_content(
         self,
-        createschedulerequest: Createschedulerequest,
+        create_schedule_request: CreateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1076,8 +1076,8 @@ class DataAccessSecurityApi:
         """Create a new schedule.
 
 
-        :param createschedulerequest: (required)
-        :type createschedulerequest: Createschedulerequest
+        :param create_schedule_request: (required)
+        :type create_schedule_request: CreateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1101,7 +1101,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._create_schedule_v1_serialize(
-            createschedulerequest=createschedulerequest,
+            create_schedule_request=create_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1110,12 +1110,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1126,7 +1126,7 @@ class DataAccessSecurityApi:
 
     def _create_schedule_v1_serialize(
         self,
-        createschedulerequest,
+        create_schedule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1152,8 +1152,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if createschedulerequest is not None:
-            _body_params = createschedulerequest
+        if create_schedule_request is not None:
+            _body_params = create_schedule_request
 
 
         # set the HTTP header `Accept`
@@ -1203,7 +1203,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_assign_post(
         self,
-        assignresourceownerrequest: Annotated[Assignresourceownerrequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
+        assign_resource_owner_request: Annotated[AssignResourceOwnerRequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1220,8 +1220,8 @@ class DataAccessSecurityApi:
         """Assign owner to application resource.
 
 
-        :param assignresourceownerrequest: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
-        :type assignresourceownerrequest: Assignresourceownerrequest
+        :param assign_resource_owner_request: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
+        :type assign_resource_owner_request: AssignResourceOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1245,7 +1245,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_assign_post_serialize(
-            assignresourceownerrequest=assignresourceownerrequest,
+            assign_resource_owner_request=assign_resource_owner_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1254,12 +1254,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1275,7 +1275,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_assign_post_with_http_info(
         self,
-        assignresourceownerrequest: Annotated[Assignresourceownerrequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
+        assign_resource_owner_request: Annotated[AssignResourceOwnerRequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1292,8 +1292,8 @@ class DataAccessSecurityApi:
         """Assign owner to application resource.
 
 
-        :param assignresourceownerrequest: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
-        :type assignresourceownerrequest: Assignresourceownerrequest
+        :param assign_resource_owner_request: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
+        :type assign_resource_owner_request: AssignResourceOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1317,7 +1317,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_assign_post_serialize(
-            assignresourceownerrequest=assignresourceownerrequest,
+            assign_resource_owner_request=assign_resource_owner_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1326,12 +1326,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1347,7 +1347,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_assign_post_without_preload_content(
         self,
-        assignresourceownerrequest: Annotated[Assignresourceownerrequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
+        assign_resource_owner_request: Annotated[AssignResourceOwnerRequest, Field(description="The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1364,8 +1364,8 @@ class DataAccessSecurityApi:
         """Assign owner to application resource.
 
 
-        :param assignresourceownerrequest: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
-        :type assignresourceownerrequest: Assignresourceownerrequest
+        :param assign_resource_owner_request: The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. (required)
+        :type assign_resource_owner_request: AssignResourceOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1389,7 +1389,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_assign_post_serialize(
-            assignresourceownerrequest=assignresourceownerrequest,
+            assign_resource_owner_request=assign_resource_owner_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1398,12 +1398,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1414,7 +1414,7 @@ class DataAccessSecurityApi:
 
     def _das_v1_owners_assign_post_serialize(
         self,
-        assignresourceownerrequest,
+        assign_resource_owner_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1440,8 +1440,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if assignresourceownerrequest is not None:
-            _body_params = assignresourceownerrequest
+        if assign_resource_owner_request is not None:
+            _body_params = assign_resource_owner_request
 
 
         # set the HTTP header `Accept`
@@ -1506,7 +1506,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Resourcemodel]:
+    ) -> List[ResourceModel]:
         """List resources for owner.
 
 
@@ -1549,13 +1549,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Resourcemodel]",
-            '400': "Errorresponsedto",
+            '200': "List[ResourceModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1586,7 +1586,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Resourcemodel]]:
+    ) -> ApiResponse[List[ResourceModel]]:
         """List resources for owner.
 
 
@@ -1629,13 +1629,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Resourcemodel]",
-            '400': "Errorresponsedto",
+            '200': "List[ResourceModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1709,13 +1709,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Resourcemodel]",
-            '400': "Errorresponsedto",
+            '200': "List[ResourceModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1800,7 +1800,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_reelect_post(
         self,
-        reelectrequest: Annotated[Reelectrequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
+        reelect_request: Annotated[ReelectRequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1817,8 +1817,8 @@ class DataAccessSecurityApi:
         """Re-elect resource owner.
 
 
-        :param reelectrequest: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
-        :type reelectrequest: Reelectrequest
+        :param reelect_request: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
+        :type reelect_request: ReelectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1842,7 +1842,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_reelect_post_serialize(
-            reelectrequest=reelectrequest,
+            reelect_request=reelect_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1851,12 +1851,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1872,7 +1872,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_reelect_post_with_http_info(
         self,
-        reelectrequest: Annotated[Reelectrequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
+        reelect_request: Annotated[ReelectRequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1889,8 +1889,8 @@ class DataAccessSecurityApi:
         """Re-elect resource owner.
 
 
-        :param reelectrequest: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
-        :type reelectrequest: Reelectrequest
+        :param reelect_request: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
+        :type reelect_request: ReelectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1914,7 +1914,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_reelect_post_serialize(
-            reelectrequest=reelectrequest,
+            reelect_request=reelect_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1923,12 +1923,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1944,7 +1944,7 @@ class DataAccessSecurityApi:
     @validate_call
     def das_v1_owners_reelect_post_without_preload_content(
         self,
-        reelectrequest: Annotated[Reelectrequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
+        reelect_request: Annotated[ReelectRequest, Field(description="The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1961,8 +1961,8 @@ class DataAccessSecurityApi:
         """Re-elect resource owner.
 
 
-        :param reelectrequest: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
-        :type reelectrequest: Reelectrequest
+        :param reelect_request: The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. (required)
+        :type reelect_request: ReelectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1986,7 +1986,7 @@ class DataAccessSecurityApi:
         """ # noqa: E501
 
         _param = self._das_v1_owners_reelect_post_serialize(
-            reelectrequest=reelectrequest,
+            reelect_request=reelect_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1995,12 +1995,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2011,7 +2011,7 @@ class DataAccessSecurityApi:
 
     def _das_v1_owners_reelect_post_serialize(
         self,
-        reelectrequest,
+        reelect_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2037,8 +2037,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reelectrequest is not None:
-            _body_params = reelectrequest
+        if reelect_request is not None:
+            _body_params = reelect_request
 
 
         # set the HTTP header `Accept`
@@ -2147,12 +2147,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2227,12 +2227,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2307,12 +2307,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2452,12 +2452,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2528,12 +2528,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2604,12 +2604,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "int",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2739,12 +2739,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2812,12 +2812,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2885,12 +2885,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3017,12 +3017,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3090,12 +3090,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3163,12 +3163,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3295,12 +3295,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3368,12 +3368,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3441,12 +3441,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3573,12 +3573,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3646,12 +3646,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3719,12 +3719,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3812,7 +3812,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Applicationitem:
+    ) -> ApplicationItem:
         """Retrieve application details by identifier.
 
         This endpoint retrieves the details of a specific application in Data Access Security by its unique identifier.
@@ -3850,13 +3850,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationitem",
-            '400': "Errorresponsedto",
+            '200': "ApplicationItem",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3885,7 +3885,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Applicationitem]:
+    ) -> ApiResponse[ApplicationItem]:
         """Retrieve application details by identifier.
 
         This endpoint retrieves the details of a specific application in Data Access Security by its unique identifier.
@@ -3923,13 +3923,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationitem",
-            '400': "Errorresponsedto",
+            '200': "ApplicationItem",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3996,13 +3996,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Applicationitem",
-            '400': "Errorresponsedto",
+            '200': "ApplicationItem",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4093,7 +4093,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Applicationitem]:
+    ) -> List[ApplicationItem]:
         """Search applications in DAS.
 
         This endpoint lists all the applications in Data Access Security with optional filtering.
@@ -4140,13 +4140,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Applicationitem]",
-            '400': "Errorresponsedto",
+            '200': "List[ApplicationItem]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4178,7 +4178,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Applicationitem]]:
+    ) -> ApiResponse[List[ApplicationItem]]:
         """Search applications in DAS.
 
         This endpoint lists all the applications in Data Access Security with optional filtering.
@@ -4225,13 +4225,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Applicationitem]",
-            '400': "Errorresponsedto",
+            '200': "List[ApplicationItem]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4310,13 +4310,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Applicationitem]",
-            '400': "Errorresponsedto",
+            '200': "List[ApplicationItem]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4423,7 +4423,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Dataownermodel]:
+    ) -> List[DataOwnerModel]:
         """Retrieve owners per application.
 
 
@@ -4466,13 +4466,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataownermodel]",
-            '400': "Errorresponsedto",
+            '200': "List[DataOwnerModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4503,7 +4503,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Dataownermodel]]:
+    ) -> ApiResponse[List[DataOwnerModel]]:
         """Retrieve owners per application.
 
 
@@ -4546,13 +4546,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataownermodel]",
-            '400': "Errorresponsedto",
+            '200': "List[DataOwnerModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4626,13 +4626,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Dataownermodel]",
-            '400': "Errorresponsedto",
+            '200': "List[DataOwnerModel]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4730,7 +4730,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Scheduleinfo:
+    ) -> ScheduleInfo:
         """Get a DAS schedule.
 
         This end-point gets a schedule in Data Access Security.
@@ -4768,13 +4768,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduleinfo",
-            '400': "Errorresponsedto",
+            '200': "ScheduleInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4803,7 +4803,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Scheduleinfo]:
+    ) -> ApiResponse[ScheduleInfo]:
         """Get a DAS schedule.
 
         This end-point gets a schedule in Data Access Security.
@@ -4841,13 +4841,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduleinfo",
-            '400': "Errorresponsedto",
+            '200': "ScheduleInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4914,13 +4914,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Scheduleinfo",
-            '400': "Errorresponsedto",
+            '200': "ScheduleInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5011,7 +5011,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Scheduleinfo]:
+    ) -> List[ScheduleInfo]:
         """List all schedules.
 
         This end-point lists all the schedules in Data Access Security.
@@ -5058,13 +5058,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduleinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduleInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5096,7 +5096,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Scheduleinfo]]:
+    ) -> ApiResponse[List[ScheduleInfo]]:
         """List all schedules.
 
         This end-point lists all the schedules in Data Access Security.
@@ -5143,13 +5143,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduleinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduleInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5228,13 +5228,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Scheduleinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[ScheduleInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5339,7 +5339,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskinfo:
+    ) -> TaskInfo:
         """Get a DAS task.
 
         This end-point gets a task in Data Access Security.
@@ -5377,13 +5377,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskinfo",
-            '400': "Errorresponsedto",
+            '200': "TaskInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5412,7 +5412,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskinfo]:
+    ) -> ApiResponse[TaskInfo]:
         """Get a DAS task.
 
         This end-point gets a task in Data Access Security.
@@ -5450,13 +5450,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskinfo",
-            '400': "Errorresponsedto",
+            '200': "TaskInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5523,13 +5523,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskinfo",
-            '400': "Errorresponsedto",
+            '200': "TaskInfo",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5620,7 +5620,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Taskinfo]:
+    ) -> List[TaskInfo]:
         """Lists all DAS tasks.
 
         This end-point lists all the tasks in Data Access Security.
@@ -5667,13 +5667,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5705,7 +5705,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Taskinfo]]:
+    ) -> ApiResponse[List[TaskInfo]]:
         """Lists all DAS tasks.
 
         This end-point lists all the tasks in Data Access Security.
@@ -5752,13 +5752,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5837,13 +5837,13 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskinfo]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskInfo]",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5999,12 +5999,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identitycollectorlistitem]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6084,12 +6084,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identitycollectorlistitem]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6169,12 +6169,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Identitycollectorlistitem]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6267,7 +6267,7 @@ class DataAccessSecurityApi:
     def put_application_v1(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the application to update.")],
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the updated details for the application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the updated details for the application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6287,8 +6287,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the application to update. (required)
         :type id: int
-        :param basecreateapplicationrequest: Request body containing the updated details for the application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the updated details for the application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6313,7 +6313,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_application_v1_serialize(
             id=id,
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6322,12 +6322,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6344,7 +6344,7 @@ class DataAccessSecurityApi:
     def put_application_v1_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the application to update.")],
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the updated details for the application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the updated details for the application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6364,8 +6364,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the application to update. (required)
         :type id: int
-        :param basecreateapplicationrequest: Request body containing the updated details for the application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the updated details for the application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6390,7 +6390,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_application_v1_serialize(
             id=id,
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6399,12 +6399,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6421,7 +6421,7 @@ class DataAccessSecurityApi:
     def put_application_v1_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the application to update.")],
-        basecreateapplicationrequest: Annotated[Basecreateapplicationrequest, Field(description="Request body containing the updated details for the application.")],
+        base_create_application_request: Annotated[BaseCreateApplicationRequest, Field(description="Request body containing the updated details for the application.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6441,8 +6441,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the application to update. (required)
         :type id: int
-        :param basecreateapplicationrequest: Request body containing the updated details for the application. (required)
-        :type basecreateapplicationrequest: Basecreateapplicationrequest
+        :param base_create_application_request: Request body containing the updated details for the application. (required)
+        :type base_create_application_request: BaseCreateApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6467,7 +6467,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_application_v1_serialize(
             id=id,
-            basecreateapplicationrequest=basecreateapplicationrequest,
+            base_create_application_request=base_create_application_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6476,12 +6476,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6493,7 +6493,7 @@ class DataAccessSecurityApi:
     def _put_application_v1_serialize(
         self,
         id,
-        basecreateapplicationrequest,
+        base_create_application_request,
         _request_auth,
         _content_type,
         _headers,
@@ -6521,8 +6521,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if basecreateapplicationrequest is not None:
-            _body_params = basecreateapplicationrequest
+        if base_create_application_request is not None:
+            _body_params = base_create_application_request
 
 
         # set the HTTP header `Accept`
@@ -6628,13 +6628,13 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "PutIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6706,13 +6706,13 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "PutIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6784,13 +6784,13 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '409': "PutIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6882,7 +6882,7 @@ class DataAccessSecurityApi:
     def put_schedule_v1(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the schedule to update.")],
-        updateschedulerequest: Updateschedulerequest,
+        update_schedule_request: UpdateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6901,8 +6901,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the schedule to update. (required)
         :type id: int
-        :param updateschedulerequest: (required)
-        :type updateschedulerequest: Updateschedulerequest
+        :param update_schedule_request: (required)
+        :type update_schedule_request: UpdateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6927,7 +6927,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_schedule_v1_serialize(
             id=id,
-            updateschedulerequest=updateschedulerequest,
+            update_schedule_request=update_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6936,12 +6936,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6958,7 +6958,7 @@ class DataAccessSecurityApi:
     def put_schedule_v1_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the schedule to update.")],
-        updateschedulerequest: Updateschedulerequest,
+        update_schedule_request: UpdateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6977,8 +6977,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the schedule to update. (required)
         :type id: int
-        :param updateschedulerequest: (required)
-        :type updateschedulerequest: Updateschedulerequest
+        :param update_schedule_request: (required)
+        :type update_schedule_request: UpdateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7003,7 +7003,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_schedule_v1_serialize(
             id=id,
-            updateschedulerequest=updateschedulerequest,
+            update_schedule_request=update_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7012,12 +7012,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7034,7 +7034,7 @@ class DataAccessSecurityApi:
     def put_schedule_v1_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the schedule to update.")],
-        updateschedulerequest: Updateschedulerequest,
+        update_schedule_request: UpdateScheduleRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7053,8 +7053,8 @@ class DataAccessSecurityApi:
 
         :param id: The unique identifier of the schedule to update. (required)
         :type id: int
-        :param updateschedulerequest: (required)
-        :type updateschedulerequest: Updateschedulerequest
+        :param update_schedule_request: (required)
+        :type update_schedule_request: UpdateScheduleRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7079,7 +7079,7 @@ class DataAccessSecurityApi:
 
         _param = self._put_schedule_v1_serialize(
             id=id,
-            updateschedulerequest=updateschedulerequest,
+            update_schedule_request=update_schedule_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7088,12 +7088,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7105,7 +7105,7 @@ class DataAccessSecurityApi:
     def _put_schedule_v1_serialize(
         self,
         id,
-        updateschedulerequest,
+        update_schedule_request,
         _request_auth,
         _content_type,
         _headers,
@@ -7133,8 +7133,8 @@ class DataAccessSecurityApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if updateschedulerequest is not None:
-            _body_params = updateschedulerequest
+        if update_schedule_request is not None:
+            _body_params = update_schedule_request
 
 
         # set the HTTP header `Accept`
@@ -7236,12 +7236,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7309,12 +7309,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7382,12 +7382,12 @@ class DataAccessSecurityApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTasksV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

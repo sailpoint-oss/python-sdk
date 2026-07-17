@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Any, Dict, List
 from typing_extensions import Annotated
-from sailpoint.privilege_criteria.models.createprivilegecriteriarequest import Createprivilegecriteriarequest
-from sailpoint.privilege_criteria.models.privilegecriteriadto import Privilegecriteriadto
+from sailpoint.privilege_criteria.models.create_privilege_criteria_request import CreatePrivilegeCriteriaRequest
+from sailpoint.privilege_criteria.models.privilege_criteria_dto import PrivilegeCriteriaDTO
 
 from sailpoint.privilege_criteria.api_client import ApiClient, RequestSerialized
 from sailpoint.privilege_criteria.api_response import ApiResponse
@@ -43,7 +43,7 @@ class PrivilegeCriteriaApi:
     @validate_call
     def create_custom_privilege_criteria_v1(
         self,
-        createprivilegecriteriarequest: Annotated[Createprivilegecriteriarequest, Field(description="Create custom privilege criteria request body.")],
+        create_privilege_criteria_request: Annotated[CreatePrivilegeCriteriaRequest, Field(description="Create custom privilege criteria request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,13 +56,13 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Privilegecriteriadto:
+    ) -> PrivilegeCriteriaDTO:
         """Create custom privilege criteria
 
         Use this API to create a custom privilege criteria
 
-        :param createprivilegecriteriarequest: Create custom privilege criteria request body. (required)
-        :type createprivilegecriteriarequest: Createprivilegecriteriarequest
+        :param create_privilege_criteria_request: Create custom privilege criteria request body. (required)
+        :type create_privilege_criteria_request: CreatePrivilegeCriteriaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +86,7 @@ class PrivilegeCriteriaApi:
         """ # noqa: E501
 
         _param = self._create_custom_privilege_criteria_v1_serialize(
-            createprivilegecriteriarequest=createprivilegecriteriarequest,
+            create_privilege_criteria_request=create_privilege_criteria_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -94,12 +94,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '201': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -115,7 +115,7 @@ class PrivilegeCriteriaApi:
     @validate_call
     def create_custom_privilege_criteria_v1_with_http_info(
         self,
-        createprivilegecriteriarequest: Annotated[Createprivilegecriteriarequest, Field(description="Create custom privilege criteria request body.")],
+        create_privilege_criteria_request: Annotated[CreatePrivilegeCriteriaRequest, Field(description="Create custom privilege criteria request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,13 +128,13 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Privilegecriteriadto]:
+    ) -> ApiResponse[PrivilegeCriteriaDTO]:
         """Create custom privilege criteria
 
         Use this API to create a custom privilege criteria
 
-        :param createprivilegecriteriarequest: Create custom privilege criteria request body. (required)
-        :type createprivilegecriteriarequest: Createprivilegecriteriarequest
+        :param create_privilege_criteria_request: Create custom privilege criteria request body. (required)
+        :type create_privilege_criteria_request: CreatePrivilegeCriteriaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -158,7 +158,7 @@ class PrivilegeCriteriaApi:
         """ # noqa: E501
 
         _param = self._create_custom_privilege_criteria_v1_serialize(
-            createprivilegecriteriarequest=createprivilegecriteriarequest,
+            create_privilege_criteria_request=create_privilege_criteria_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -166,12 +166,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '201': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -187,7 +187,7 @@ class PrivilegeCriteriaApi:
     @validate_call
     def create_custom_privilege_criteria_v1_without_preload_content(
         self,
-        createprivilegecriteriarequest: Annotated[Createprivilegecriteriarequest, Field(description="Create custom privilege criteria request body.")],
+        create_privilege_criteria_request: Annotated[CreatePrivilegeCriteriaRequest, Field(description="Create custom privilege criteria request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +205,8 @@ class PrivilegeCriteriaApi:
 
         Use this API to create a custom privilege criteria
 
-        :param createprivilegecriteriarequest: Create custom privilege criteria request body. (required)
-        :type createprivilegecriteriarequest: Createprivilegecriteriarequest
+        :param create_privilege_criteria_request: Create custom privilege criteria request body. (required)
+        :type create_privilege_criteria_request: CreatePrivilegeCriteriaRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +230,7 @@ class PrivilegeCriteriaApi:
         """ # noqa: E501
 
         _param = self._create_custom_privilege_criteria_v1_serialize(
-            createprivilegecriteriarequest=createprivilegecriteriarequest,
+            create_privilege_criteria_request=create_privilege_criteria_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,12 +238,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '201': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -254,7 +254,7 @@ class PrivilegeCriteriaApi:
 
     def _create_custom_privilege_criteria_v1_serialize(
         self,
-        createprivilegecriteriarequest,
+        create_privilege_criteria_request,
         _request_auth,
         _content_type,
         _headers,
@@ -280,8 +280,8 @@ class PrivilegeCriteriaApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if createprivilegecriteriarequest is not None:
-            _body_params = createprivilegecriteriarequest
+        if create_privilege_criteria_request is not None:
+            _body_params = create_privilege_criteria_request
 
 
         # set the HTTP header `Accept`
@@ -383,11 +383,11 @@ class PrivilegeCriteriaApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -455,11 +455,11 @@ class PrivilegeCriteriaApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -527,11 +527,11 @@ class PrivilegeCriteriaApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -619,7 +619,7 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Privilegecriteriadto:
+    ) -> PrivilegeCriteriaDTO:
         """Get privilege criteria
 
         Use this API to get a specific privilege criteria.
@@ -657,12 +657,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -691,7 +691,7 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Privilegecriteriadto]:
+    ) -> ApiResponse[PrivilegeCriteriaDTO]:
         """Get privilege criteria
 
         Use this API to get a specific privilege criteria.
@@ -729,12 +729,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -801,12 +801,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -894,7 +894,7 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Privilegecriteriadto]:
+    ) -> List[PrivilegeCriteriaDTO]:
         """List privilege criteria
 
         Use this API to list all privilege criteria matching a filter
@@ -932,12 +932,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriadto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -966,7 +966,7 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Privilegecriteriadto]]:
+    ) -> ApiResponse[List[PrivilegeCriteriaDTO]]:
         """List privilege criteria
 
         Use this API to list all privilege criteria matching a filter
@@ -1004,12 +1004,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriadto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1076,12 +1076,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Privilegecriteriadto]",
-            '400': "Errorresponsedto",
+            '200': "List[PrivilegeCriteriaDTO]",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1159,7 +1159,7 @@ class PrivilegeCriteriaApi:
     def put_custom_privilege_criteria_value_v1(
         self,
         criteria_id: Annotated[StrictStr, Field(description="The Id of the privilege criteria record to return.")],
-        privilegecriteriadto: Annotated[Privilegecriteriadto, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
+        privilege_criteria_dto: Annotated[PrivilegeCriteriaDTO, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1172,15 +1172,15 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Privilegecriteriadto:
+    ) -> PrivilegeCriteriaDTO:
         """Update privilege criteria
 
         Use this API to update a specific custom privilege criteria by overwriting the information with new information.
 
         :param criteria_id: The Id of the privilege criteria record to return. (required)
         :type criteria_id: str
-        :param privilegecriteriadto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
-        :type privilegecriteriadto: Privilegecriteriadto
+        :param privilege_criteria_dto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
+        :type privilege_criteria_dto: PrivilegeCriteriaDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1205,7 +1205,7 @@ class PrivilegeCriteriaApi:
 
         _param = self._put_custom_privilege_criteria_value_v1_serialize(
             criteria_id=criteria_id,
-            privilegecriteriadto=privilegecriteriadto,
+            privilege_criteria_dto=privilege_criteria_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1213,12 +1213,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1235,7 +1235,7 @@ class PrivilegeCriteriaApi:
     def put_custom_privilege_criteria_value_v1_with_http_info(
         self,
         criteria_id: Annotated[StrictStr, Field(description="The Id of the privilege criteria record to return.")],
-        privilegecriteriadto: Annotated[Privilegecriteriadto, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
+        privilege_criteria_dto: Annotated[PrivilegeCriteriaDTO, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1248,15 +1248,15 @@ class PrivilegeCriteriaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Privilegecriteriadto]:
+    ) -> ApiResponse[PrivilegeCriteriaDTO]:
         """Update privilege criteria
 
         Use this API to update a specific custom privilege criteria by overwriting the information with new information.
 
         :param criteria_id: The Id of the privilege criteria record to return. (required)
         :type criteria_id: str
-        :param privilegecriteriadto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
-        :type privilegecriteriadto: Privilegecriteriadto
+        :param privilege_criteria_dto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
+        :type privilege_criteria_dto: PrivilegeCriteriaDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1281,7 +1281,7 @@ class PrivilegeCriteriaApi:
 
         _param = self._put_custom_privilege_criteria_value_v1_serialize(
             criteria_id=criteria_id,
-            privilegecriteriadto=privilegecriteriadto,
+            privilege_criteria_dto=privilege_criteria_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1289,12 +1289,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1311,7 +1311,7 @@ class PrivilegeCriteriaApi:
     def put_custom_privilege_criteria_value_v1_without_preload_content(
         self,
         criteria_id: Annotated[StrictStr, Field(description="The Id of the privilege criteria record to return.")],
-        privilegecriteriadto: Annotated[Privilegecriteriadto, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
+        privilege_criteria_dto: Annotated[PrivilegeCriteriaDTO, Field(description="The new version of the custom privilege criteria. This overwrites the existing privilege criteria.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1331,8 +1331,8 @@ class PrivilegeCriteriaApi:
 
         :param criteria_id: The Id of the privilege criteria record to return. (required)
         :type criteria_id: str
-        :param privilegecriteriadto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
-        :type privilegecriteriadto: Privilegecriteriadto
+        :param privilege_criteria_dto: The new version of the custom privilege criteria. This overwrites the existing privilege criteria. (required)
+        :type privilege_criteria_dto: PrivilegeCriteriaDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1357,7 +1357,7 @@ class PrivilegeCriteriaApi:
 
         _param = self._put_custom_privilege_criteria_value_v1_serialize(
             criteria_id=criteria_id,
-            privilegecriteriadto=privilegecriteriadto,
+            privilege_criteria_dto=privilege_criteria_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1365,12 +1365,12 @@ class PrivilegeCriteriaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Privilegecriteriadto",
-            '400': "Errorresponsedto",
+            '200': "PrivilegeCriteriaDTO",
+            '400': "ErrorResponseDto",
             '401': "ListPrivilegeCriteriaV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListPrivilegeCriteriaV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1382,7 +1382,7 @@ class PrivilegeCriteriaApi:
     def _put_custom_privilege_criteria_value_v1_serialize(
         self,
         criteria_id,
-        privilegecriteriadto,
+        privilege_criteria_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1410,8 +1410,8 @@ class PrivilegeCriteriaApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if privilegecriteriadto is not None:
-            _body_params = privilegecriteriadto
+        if privilege_criteria_dto is not None:
+            _body_params = privilege_criteria_dto
 
 
         # set the HTTP header `Accept`

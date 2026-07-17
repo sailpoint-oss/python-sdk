@@ -18,7 +18,7 @@ The owner configuration associated to the machine identity
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **primary_identity** | **object** | Defines the identity which is selected as the primary owner | [required]
-**secondary_identities** | [**[]Basereferencedto**](basereferencedto) | Defines the identities which are selected as secondary owners | [required]
+**secondary_identities** | [**[]BaseReferenceDto**](base-reference-dto) | Defines the identities which are selected as secondary owners | [required]
 }
 
 ## Example

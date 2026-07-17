@@ -74,12 +74,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/iai_peer_group_strategies/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/iai_peer_group_strategies/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/iai_peer_group_strategies/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/iai_peer_group_strategies/docs/ErrorResponseDto.md)
  - [GetPeerGroupOutliersV1401Response](sailpoint/iai_peer_group_strategies/docs/GetPeerGroupOutliersV1401Response.md)
  - [GetPeerGroupOutliersV1429Response](sailpoint/iai_peer_group_strategies/docs/GetPeerGroupOutliersV1429Response.md)
- - [Localeorigin](sailpoint/iai_peer_group_strategies/docs/Localeorigin.md)
- - [Peergroupmember](sailpoint/iai_peer_group_strategies/docs/Peergroupmember.md)
+ - [LocaleOrigin](sailpoint/iai_peer_group_strategies/docs/LocaleOrigin.md)
+ - [PeerGroupMember](sailpoint/iai_peer_group_strategies/docs/PeerGroupMember.md)
 
 
 <a id="documentation-for-authorization"></a>

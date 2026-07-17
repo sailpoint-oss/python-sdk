@@ -6,7 +6,7 @@
       source: |
         from sailpoint.jit_access.api.jit_access_api import JITAccessApi
         from sailpoint.jit_access.api_client import ApiClient
-        from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
+        from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,21 +31,21 @@
       source: |
         from sailpoint.jit_access.api.jit_access_api import JITAccessApi
         from sailpoint.jit_access.api_client import ApiClient
-        from sailpoint.jit_access.models.jitaccessoperationrequest import Jitaccessoperationrequest
-        from sailpoint.jit_access.models.jitactivationconfigresponse import Jitactivationconfigresponse
+        from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
+        from sailpoint.jit_access.models.jit_access_operation_request import JitAccessOperationRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           config_type = 'policy' # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
-          jitaccessoperationrequest = '''[sailpoint.jit_access.Jitaccessoperationrequest()]''' # List[Jitaccessoperationrequest] | 
+          jit_access_operation_request = '''[sailpoint.jit_access.JitAccessOperationRequest()]''' # List[JitAccessOperationRequest] | 
           try:
               # Update JIT activation policy configuration
-              new_jitaccessoperationrequest = Jitaccessoperationrequest.from_json(jitaccessoperationrequest)
-              results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type=config_type, jitaccessoperationrequest=new_jitaccessoperationrequest)
+              new_jit_access_operation_request = JitAccessOperationRequest.from_json(jit_access_operation_request)
+              results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type=config_type, jit_access_operation_request=new_jit_access_operation_request)
               # Below is a request that includes all optional parameters
-              # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jitaccessoperationrequest)
+              # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jit_access_operation_request)
               print("The response of JITAccessApi->patch_jit_activation_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

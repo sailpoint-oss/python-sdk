@@ -28,19 +28,65 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+        from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the details required to create a new application.
+          base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the details required to create a new application.
           try:
               # Create application
-              new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
-              DataAccessSecurityApi(api_client).create_application_v1(basecreateapplicationrequest=new_basecreateapplicationrequest)
+              new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+              DataAccessSecurityApi(api_client).create_application_v1(base_create_application_request=new_base_create_application_request)
               # Below is a request that includes all optional parameters
-              # DataAccessSecurityApi(api_client).create_application_v1(new_basecreateapplicationrequest)
+              # DataAccessSecurityApi(api_client).create_application_v1(new_base_create_application_request)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->create_application_v1: %s\n" % e)
 - path: /das/identity-collectors/v1
@@ -58,7 +104,10 @@
 
 
         with ApiClient(configuration) as api_client:
-          createidentitycollectorrequest = '''sailpoint.data_access_security.Createidentitycollectorrequest()''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+          createidentitycollectorrequest = '''{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector"
+        }''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
           try:
               # Create identity collector
               new_createidentitycollectorrequest = Createidentitycollectorrequest.from_json(createidentitycollectorrequest)
@@ -77,19 +126,30 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.createschedulerequest import Createschedulerequest
+        from sailpoint.data_access_security.models.create_schedule_request import CreateScheduleRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          createschedulerequest = '''sailpoint.data_access_security.Createschedulerequest()''' # Createschedulerequest | 
+          create_schedule_request = '''{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }''' # CreateScheduleRequest | 
           try:
               # Create a new schedule.
-              new_createschedulerequest = Createschedulerequest.from_json(createschedulerequest)
-              results = DataAccessSecurityApi(api_client).create_schedule_v1(createschedulerequest=new_createschedulerequest)
+              new_create_schedule_request = CreateScheduleRequest.from_json(create_schedule_request)
+              results = DataAccessSecurityApi(api_client).create_schedule_v1(create_schedule_request=new_create_schedule_request)
               # Below is a request that includes all optional parameters
-              # results = DataAccessSecurityApi(api_client).create_schedule_v1(new_createschedulerequest)
+              # results = DataAccessSecurityApi(api_client).create_schedule_v1(new_create_schedule_request)
               print("The response of DataAccessSecurityApi->create_schedule_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -102,19 +162,23 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.assignresourceownerrequest import Assignresourceownerrequest
+        from sailpoint.data_access_security.models.assign_resource_owner_request import AssignResourceOwnerRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          assignresourceownerrequest = '''sailpoint.data_access_security.Assignresourceownerrequest()''' # Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+          assign_resource_owner_request = '''{
+          "fullPath" : "/shared/hr/documents/employee-records.pdf",
+          "identityId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "appId" : 12345
+        }''' # AssignResourceOwnerRequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
           try:
               # Assign owner to application resource.
-              new_assignresourceownerrequest = Assignresourceownerrequest.from_json(assignresourceownerrequest)
-              results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(assignresourceownerrequest=new_assignresourceownerrequest)
+              new_assign_resource_owner_request = AssignResourceOwnerRequest.from_json(assign_resource_owner_request)
+              results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(assign_resource_owner_request=new_assign_resource_owner_request)
               # Below is a request that includes all optional parameters
-              # results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(new_assignresourceownerrequest)
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(new_assign_resource_owner_request)
               print("The response of DataAccessSecurityApi->das_v1_owners_assign_post:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -127,7 +191,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.resourcemodel import Resourcemodel
+        from sailpoint.data_access_security.models.resource_model import ResourceModel
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -155,19 +219,23 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.reelectrequest import Reelectrequest
+        from sailpoint.data_access_security.models.reelect_request import ReelectRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          reelectrequest = '''sailpoint.data_access_security.Reelectrequest()''' # Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+          reelect_request = '''{
+          "ownerId" : "c1a2b3d4-e5f6-7890-abcd-1234567890ab",
+          "campaignName" : "Annual Resource Owner Election",
+          "reviewers" : [ "d4e5f6a7-b8c9-0123-4567-89abcdef0123", "e7f8g9h0-i1j2-3456-7890-klmnopqrstuv" ]
+        }''' # ReelectRequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
           try:
               # Re-elect resource owner.
-              new_reelectrequest = Reelectrequest.from_json(reelectrequest)
-              results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(reelectrequest=new_reelectrequest)
+              new_reelect_request = ReelectRequest.from_json(reelect_request)
+              results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(reelect_request=new_reelect_request)
               # Below is a request that includes all optional parameters
-              # results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(new_reelectrequest)
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(new_reelect_request)
               print("The response of DataAccessSecurityApi->das_v1_owners_reelect_post:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -320,7 +388,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.applicationitem import Applicationitem
+        from sailpoint.data_access_security.models.application_item import ApplicationItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -345,7 +413,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.applicationitem import Applicationitem
+        from sailpoint.data_access_security.models.application_item import ApplicationItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -374,7 +442,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.dataownermodel import Dataownermodel
+        from sailpoint.data_access_security.models.data_owner_model import DataOwnerModel
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -402,7 +470,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+        from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -427,7 +495,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+        from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -456,7 +524,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.taskinfo import Taskinfo
+        from sailpoint.data_access_security.models.task_info import TaskInfo
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -481,7 +549,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.taskinfo import Taskinfo
+        from sailpoint.data_access_security.models.task_info import TaskInfo
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -539,20 +607,66 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+        from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 12345 # int | The unique identifier of the application to update. # int | The unique identifier of the application to update.
-          basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the updated details for the application.
+          base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the updated details for the application.
           try:
               # Update application by identifier.
-              new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
-              DataAccessSecurityApi(api_client).put_application_v1(id=id, basecreateapplicationrequest=new_basecreateapplicationrequest)
+              new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+              DataAccessSecurityApi(api_client).put_application_v1(id=id, base_create_application_request=new_base_create_application_request)
               # Below is a request that includes all optional parameters
-              # DataAccessSecurityApi(api_client).put_application_v1(id, new_basecreateapplicationrequest)
+              # DataAccessSecurityApi(api_client).put_application_v1(id, new_base_create_application_request)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->put_application_v1: %s\n" % e)
 - path: /das/identity-collectors/v1/{id}
@@ -570,7 +684,11 @@
 
         with ApiClient(configuration) as api_client:
           id = 12345 # int | The unique identifier of the identity collector to update. # int | The unique identifier of the identity collector to update.
-          updateidentitycollectorrequest = '''sailpoint.data_access_security.Updateidentitycollectorrequest()''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+          updateidentitycollectorrequest = '''{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector",
+          "type" : "Active Directory"
+        }''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
           try:
               # Update identity collector by identifier
               new_updateidentitycollectorrequest = Updateidentitycollectorrequest.from_json(updateidentitycollectorrequest)
@@ -587,20 +705,31 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.updateschedulerequest import Updateschedulerequest
+        from sailpoint.data_access_security.models.update_schedule_request import UpdateScheduleRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 1001 # int | The unique identifier of the schedule to update. # int | The unique identifier of the schedule to update.
-          updateschedulerequest = '''sailpoint.data_access_security.Updateschedulerequest()''' # Updateschedulerequest | 
+          update_schedule_request = '''{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }''' # UpdateScheduleRequest | 
           try:
               # Update a schedule.
-              new_updateschedulerequest = Updateschedulerequest.from_json(updateschedulerequest)
-              DataAccessSecurityApi(api_client).put_schedule_v1(id=id, updateschedulerequest=new_updateschedulerequest)
+              new_update_schedule_request = UpdateScheduleRequest.from_json(update_schedule_request)
+              DataAccessSecurityApi(api_client).put_schedule_v1(id=id, update_schedule_request=new_update_schedule_request)
               # Below is a request that includes all optional parameters
-              # DataAccessSecurityApi(api_client).put_schedule_v1(id, new_updateschedulerequest)
+              # DataAccessSecurityApi(api_client).put_schedule_v1(id, new_update_schedule_request)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->put_schedule_v1: %s\n" % e)
 - path: /das/v1/tasks/rerun/{id}

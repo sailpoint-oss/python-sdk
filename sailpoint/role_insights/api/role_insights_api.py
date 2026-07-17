@@ -19,12 +19,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.role_insights.models.roleinsight import Roleinsight
-from sailpoint.role_insights.models.roleinsightsentitlement import Roleinsightsentitlement
-from sailpoint.role_insights.models.roleinsightsentitlementchanges import Roleinsightsentitlementchanges
-from sailpoint.role_insights.models.roleinsightsidentities import Roleinsightsidentities
-from sailpoint.role_insights.models.roleinsightsresponse import Roleinsightsresponse
-from sailpoint.role_insights.models.roleinsightssummary import Roleinsightssummary
+from sailpoint.role_insights.models.role_insight import RoleInsight
+from sailpoint.role_insights.models.role_insights_entitlement import RoleInsightsEntitlement
+from sailpoint.role_insights.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
+from sailpoint.role_insights.models.role_insights_identities import RoleInsightsIdentities
+from sailpoint.role_insights.models.role_insights_response import RoleInsightsResponse
+from sailpoint.role_insights.models.role_insights_summary import RoleInsightsSummary
 
 from sailpoint.role_insights.api_client import ApiClient, RequestSerialized
 from sailpoint.role_insights.api_response import ApiResponse
@@ -60,7 +60,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleinsightsresponse:
+    ) -> RoleInsightsResponse:
         """(Deprecated) Generate insights for roles
 
         Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
@@ -99,12 +99,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -133,7 +133,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleinsightsresponse]:
+    ) -> ApiResponse[RoleInsightsResponse]:
         """(Deprecated) Generate insights for roles
 
         Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
@@ -172,12 +172,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,12 +245,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '201': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -389,10 +389,10 @@ class RoleInsightsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -472,10 +472,10 @@ class RoleInsightsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -555,10 +555,10 @@ class RoleInsightsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -668,7 +668,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleinsightsidentities]:
+    ) -> List[RoleInsightsIdentities]:
         """Get identities for a suggested entitlement (for a role)
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.
@@ -730,11 +730,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsidentities]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsIdentities]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -771,7 +771,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleinsightsidentities]]:
+    ) -> ApiResponse[List[RoleInsightsIdentities]]:
         """Get identities for a suggested entitlement (for a role)
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.
@@ -833,11 +833,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsidentities]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsIdentities]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -936,11 +936,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsidentities]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsIdentities]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1065,7 +1065,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleinsight:
+    ) -> RoleInsight:
         """Get a single role insight
 
         This endpoint gets role insights information for a role.
@@ -1106,11 +1106,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsight",
-            '400': "Errorresponsedto",
+            '200': "RoleInsight",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1140,7 +1140,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleinsight]:
+    ) -> ApiResponse[RoleInsight]:
         """Get a single role insight
 
         This endpoint gets role insights information for a role.
@@ -1181,11 +1181,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsight",
-            '400': "Errorresponsedto",
+            '200': "RoleInsight",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1256,11 +1256,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsight",
-            '400': "Errorresponsedto",
+            '200': "RoleInsight",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1353,7 +1353,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleinsightsentitlement]:
+    ) -> List[RoleInsightsEntitlement]:
         """Get current entitlement for a role
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.
@@ -1397,11 +1397,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1432,7 +1432,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleinsightsentitlement]]:
+    ) -> ApiResponse[List[RoleInsightsEntitlement]]:
         """Get current entitlement for a role
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.
@@ -1476,11 +1476,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1555,11 +1555,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlement]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlement]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1658,7 +1658,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleinsightsentitlementchanges]:
+    ) -> List[RoleInsightsEntitlementChanges]:
         """Get entitlement insights for a role
 
         This endpoint returns entitlement insights for a role.
@@ -1705,11 +1705,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlementchanges]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlementChanges]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1741,7 +1741,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleinsightsentitlementchanges]]:
+    ) -> ApiResponse[List[RoleInsightsEntitlementChanges]]:
         """Get entitlement insights for a role
 
         This endpoint returns entitlement insights for a role.
@@ -1788,11 +1788,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlementchanges]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlementChanges]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1871,11 +1871,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsightsentitlementchanges]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsightsEntitlementChanges]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1977,7 +1977,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleinsightsresponse:
+    ) -> RoleInsightsResponse:
         """(Deprecated) Returns metadata from prior request.
 
         This endpoint returns details of a prior role insights request. 
@@ -2019,12 +2019,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2054,7 +2054,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleinsightsresponse]:
+    ) -> ApiResponse[RoleInsightsResponse]:
         """(Deprecated) Returns metadata from prior request.
 
         This endpoint returns details of a prior role insights request. 
@@ -2096,12 +2096,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2173,12 +2173,12 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightsresponse",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsResponse",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateRoleInsightRequestsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2269,7 +2269,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Roleinsightssummary:
+    ) -> RoleInsightsSummary:
         """Get role insights summary information
 
         This method returns high level summary information for role insights for a customer.
@@ -2307,11 +2307,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightssummary",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsSummary",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2340,7 +2340,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Roleinsightssummary]:
+    ) -> ApiResponse[RoleInsightsSummary]:
         """Get role insights summary information
 
         This method returns high level summary information for role insights for a customer.
@@ -2378,11 +2378,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightssummary",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsSummary",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2449,11 +2449,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Roleinsightssummary",
-            '400': "Errorresponsedto",
+            '200': "RoleInsightsSummary",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2546,7 +2546,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Roleinsight]:
+    ) -> List[RoleInsight]:
         """Get role insights
 
         This method returns detailed role insights for each role.
@@ -2599,11 +2599,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsight]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsight]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2637,7 +2637,7 @@ class RoleInsightsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Roleinsight]]:
+    ) -> ApiResponse[List[RoleInsight]]:
         """Get role insights
 
         This method returns detailed role insights for each role.
@@ -2690,11 +2690,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsight]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsight]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2781,11 +2781,11 @@ class RoleInsightsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Roleinsight]",
-            '400': "Errorresponsedto",
+            '200': "List[RoleInsight]",
+            '400': "ErrorResponseDto",
             '401': "CreateRoleInsightRequestsV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

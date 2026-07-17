@@ -77,20 +77,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/task_management/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/task_management/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/task_management/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/task_management/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/task_management/docs/ErrorResponseDto.md)
  - [GetTaskStatusV1401Response](sailpoint/task_management/docs/GetTaskStatusV1401Response.md)
  - [GetTaskStatusV1429Response](sailpoint/task_management/docs/GetTaskStatusV1429Response.md)
- - [Jsonpatchoperation](sailpoint/task_management/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/task_management/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/task_management/docs/Localeorigin.md)
- - [Localizedmessage](sailpoint/task_management/docs/Localizedmessage.md)
+ - [JsonPatchOperation](sailpoint/task_management/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/task_management/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/task_management/docs/LocaleOrigin.md)
+ - [LocalizedMessage](sailpoint/task_management/docs/LocalizedMessage.md)
  - [Target](sailpoint/task_management/docs/Target.md)
- - [Taskdefinitionsummary](sailpoint/task_management/docs/Taskdefinitionsummary.md)
- - [Taskreturndetails](sailpoint/task_management/docs/Taskreturndetails.md)
- - [Taskstatus](sailpoint/task_management/docs/Taskstatus.md)
- - [Taskstatusmessage](sailpoint/task_management/docs/Taskstatusmessage.md)
- - [TaskstatusmessageParametersInner](sailpoint/task_management/docs/TaskstatusmessageParametersInner.md)
+ - [TaskDefinitionSummary](sailpoint/task_management/docs/TaskDefinitionSummary.md)
+ - [TaskReturnDetails](sailpoint/task_management/docs/TaskReturnDetails.md)
+ - [TaskStatus](sailpoint/task_management/docs/TaskStatus.md)
+ - [TaskStatusMessage](sailpoint/task_management/docs/TaskStatusMessage.md)
+ - [TaskStatusMessageParametersInner](sailpoint/task_management/docs/TaskStatusMessageParametersInner.md)
 
 
 <a id="documentation-for-authorization"></a>

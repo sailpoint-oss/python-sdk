@@ -47,11 +47,11 @@ configuration = sailpoint.identity_attributes.Configuration(
 with sailpoint.identity_attributes.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.identity_attributes.IdentityAttributesApi(api_client)
-    identityattribute2 = sailpoint.identity_attributes.Identityattribute2() # Identityattribute2 | 
+    identity_attribute2 = sailpoint.identity_attributes.IdentityAttribute2() # IdentityAttribute2 | 
 
     try:
         # Create identity attribute
-        api_response = api_instance.create_identity_attribute_v1(identityattribute2)
+        api_response = api_instance.create_identity_attribute_v1(identity_attribute2)
         print("The response of IdentityAttributesApi->create_identity_attribute_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -75,13 +75,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/identity_attributes/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/identity_attributes/docs/Errorresponsedto.md)
- - [Identityattribute2](sailpoint/identity_attributes/docs/Identityattribute2.md)
- - [Identityattributenames](sailpoint/identity_attributes/docs/Identityattributenames.md)
+ - [ErrorMessageDto](sailpoint/identity_attributes/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/identity_attributes/docs/ErrorResponseDto.md)
+ - [IdentityAttribute2](sailpoint/identity_attributes/docs/IdentityAttribute2.md)
+ - [IdentityAttributeNames](sailpoint/identity_attributes/docs/IdentityAttributeNames.md)
  - [ListIdentityAttributesV1401Response](sailpoint/identity_attributes/docs/ListIdentityAttributesV1401Response.md)
  - [ListIdentityAttributesV1429Response](sailpoint/identity_attributes/docs/ListIdentityAttributesV1429Response.md)
- - [Localeorigin](sailpoint/identity_attributes/docs/Localeorigin.md)
+ - [LocaleOrigin](sailpoint/identity_attributes/docs/LocaleOrigin.md)
  - [Source2](sailpoint/identity_attributes/docs/Source2.md)
 
 

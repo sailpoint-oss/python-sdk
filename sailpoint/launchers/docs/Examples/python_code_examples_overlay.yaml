@@ -7,19 +7,29 @@
         from sailpoint.launchers.api.launchers_api import LaunchersApi
         from sailpoint.launchers.api_client import ApiClient
         from sailpoint.launchers.models.launcher import Launcher
-        from sailpoint.launchers.models.launcherrequest import Launcherrequest
+        from sailpoint.launchers.models.launcher_request import LauncherRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          launcherrequest = '''sailpoint.launchers.Launcherrequest()''' # Launcherrequest | Payload to create a Launcher
+          launcher_request = '''{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }''' # LauncherRequest | Payload to create a Launcher
           try:
               # Create launcher
-              new_launcherrequest = Launcherrequest.from_json(launcherrequest)
-              results = LaunchersApi(api_client).create_launcher_v1(launcherrequest=new_launcherrequest)
+              new_launcher_request = LauncherRequest.from_json(launcher_request)
+              results = LaunchersApi(api_client).create_launcher_v1(launcher_request=new_launcher_request)
               # Below is a request that includes all optional parameters
-              # results = LaunchersApi(api_client).create_launcher_v1(new_launcherrequest)
+              # results = LaunchersApi(api_client).create_launcher_v1(new_launcher_request)
               print("The response of LaunchersApi->create_launcher_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -107,20 +117,30 @@
         from sailpoint.launchers.api.launchers_api import LaunchersApi
         from sailpoint.launchers.api_client import ApiClient
         from sailpoint.launchers.models.launcher import Launcher
-        from sailpoint.launchers.models.launcherrequest import Launcherrequest
+        from sailpoint.launchers.models.launcher_request import LauncherRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           launcher_id = 'e3012408-8b61-4564-ad41-c5ec131c325b' # str | ID of the Launcher to be replaced # str | ID of the Launcher to be replaced
-          launcherrequest = '''sailpoint.launchers.Launcherrequest()''' # Launcherrequest | Payload to replace Launcher
+          launcher_request = '''{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }''' # LauncherRequest | Payload to replace Launcher
           try:
               # Replace launcher
-              new_launcherrequest = Launcherrequest.from_json(launcherrequest)
-              results = LaunchersApi(api_client).put_launcher_v1(launcher_id=launcher_id, launcherrequest=new_launcherrequest)
+              new_launcher_request = LauncherRequest.from_json(launcher_request)
+              results = LaunchersApi(api_client).put_launcher_v1(launcher_id=launcher_id, launcher_request=new_launcher_request)
               # Below is a request that includes all optional parameters
-              # results = LaunchersApi(api_client).put_launcher_v1(launcher_id, new_launcherrequest)
+              # results = LaunchersApi(api_client).put_launcher_v1(launcher_id, new_launcher_request)
               print("The response of LaunchersApi->put_launcher_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

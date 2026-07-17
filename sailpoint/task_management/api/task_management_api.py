@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.task_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.task_management.models.taskstatus import Taskstatus
+from sailpoint.task_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.task_management.models.task_status import TaskStatus
 
 from sailpoint.task_management.api_client import ApiClient, RequestSerialized
 from sailpoint.task_management.api_response import ApiResponse
@@ -60,7 +60,7 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Taskstatus]:
+    ) -> List[TaskStatus]:
         """Retrieve task status list
 
         Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field. 
@@ -110,13 +110,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -149,7 +149,7 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Taskstatus]]:
+    ) -> ApiResponse[List[TaskStatus]]:
         """Retrieve task status list
 
         Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field. 
@@ -199,13 +199,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -288,13 +288,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Taskstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[TaskStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -404,7 +404,7 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskstatus:
+    ) -> TaskStatus:
         """Get task status by id
 
         Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
@@ -442,13 +442,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
             '403': None,
             '404': None,
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -477,7 +477,7 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskstatus]:
+    ) -> ApiResponse[TaskStatus]:
         """Get task status by id
 
         Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
@@ -515,13 +515,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
             '403': None,
             '404': None,
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -588,13 +588,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
             '403': None,
             '404': None,
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -670,7 +670,7 @@ class TaskManagementApi:
     def update_task_status_v1(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -683,15 +683,15 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskstatus:
+    ) -> TaskStatus:
         """Update task status by id
 
         Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
         :param id: Task ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -716,7 +716,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -724,13 +724,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -747,7 +747,7 @@ class TaskManagementApi:
     def update_task_status_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -760,15 +760,15 @@ class TaskManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskstatus]:
+    ) -> ApiResponse[TaskStatus]:
         """Update task status by id
 
         Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
         :param id: Task ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -793,7 +793,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -801,13 +801,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -824,7 +824,7 @@ class TaskManagementApi:
     def update_task_status_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the object.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -844,8 +844,8 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param jsonpatchoperation: The JSONPatch payload used to update the object. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -870,7 +870,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -878,13 +878,13 @@ class TaskManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskstatus",
-            '400': "Errorresponsedto",
+            '200': "TaskStatus",
+            '400': "ErrorResponseDto",
             '401': "GetTaskStatusV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetTaskStatusV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -896,7 +896,7 @@ class TaskManagementApi:
     def _update_task_status_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -906,7 +906,7 @@ class TaskManagementApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -925,8 +925,8 @@ class TaskManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

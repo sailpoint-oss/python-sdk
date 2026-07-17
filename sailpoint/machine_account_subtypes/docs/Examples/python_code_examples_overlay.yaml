@@ -7,7 +7,7 @@
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
         from sailpoint.machine_account_subtypes.models.create_source_subtype_v1_request import CreateSourceSubtypeV1Request
-        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -58,7 +58,7 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
+        from sailpoint.machine_account_subtypes.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -85,7 +85,7 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -112,7 +112,7 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -144,7 +144,7 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -172,7 +172,7 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.machine_account_subtypes.models.source_subtype_with_source import SourceSubtypeWithSource
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -200,8 +200,8 @@
       source: |
         from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
         from sailpoint.machine_account_subtypes.api_client import ApiClient
-        from sailpoint.machine_account_subtypes.models.jsonpatchoperation import Jsonpatchoperation
-        from sailpoint.machine_account_subtypes.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
+        from sailpoint.machine_account_subtypes.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.machine_account_subtypes.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -210,13 +210,13 @@
         with ApiClient(configuration) as api_client:
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
-          jsonpatchoperation = '''[sailpoint.machine_account_subtypes.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
+          json_patch_operation = '''[sailpoint.machine_account_subtypes.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Machine Subtype Approval Config
-              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-              results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, jsonpatchoperation=new_jsonpatchoperation)
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id, new_jsonpatchoperation)
+              # results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id, new_json_patch_operation)
               print("The response of MachineAccountSubtypesApi->update_machine_account_subtype_approval_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

@@ -57,21 +57,21 @@ Creates a new Reassignment Configuration for the specified identity.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | configurationitemrequest | [**Configurationitemrequest**](../models/configurationitemrequest) | True  | 
+ Body  | configuration_item_request | [**ConfigurationItemRequest**](../models/configuration-item-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Configurationitemresponse**](../models/configurationitemresponse)
+[**ConfigurationItemResponse**](../models/configuration-item-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | The newly created Reassignment Configuration object | Configurationitemresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+201 | The newly created Reassignment Configuration object | ConfigurationItemResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -82,23 +82,29 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configurationitemrequest import Configurationitemrequest
-from sailpoint.work_reassignment.models.configurationitemresponse import Configurationitemresponse
+from sailpoint.work_reassignment.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.work_reassignment.models.configuration_item_response import ConfigurationItemResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    configurationitemrequest = '''sailpoint.work_reassignment.Configurationitemrequest()''' # Configurationitemrequest | 
+    configuration_item_request = '''{
+          "endDate" : "2022-07-30T17:00:00Z",
+          "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
+          "configType" : "ACCESS_REQUESTS",
+          "reassignedToId" : "2c91808781a71ddb0181b9090b53504a",
+          "startDate" : "2022-07-21T11:13:12.345Z"
+        }''' # ConfigurationItemRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create a reassignment configuration
-        new_configurationitemrequest = Configurationitemrequest.from_json(configurationitemrequest)
-        results = WorkReassignmentApi(api_client).create_reassignment_configuration_v1(configurationitemrequest=new_configurationitemrequest)
+        new_configuration_item_request = ConfigurationItemRequest.from_json(configuration_item_request)
+        results = WorkReassignmentApi(api_client).create_reassignment_configuration_v1(configuration_item_request=new_configuration_item_request)
         # Below is a request that includes all optional parameters
-        # results = WorkReassignmentApi(api_client).create_reassignment_configuration_v1(new_configurationitemrequest, x_sail_point_experimental)
+        # results = WorkReassignmentApi(api_client).create_reassignment_configuration_v1(new_configuration_item_request, x_sail_point_experimental)
         print("The response of WorkReassignmentApi->create_reassignment_configuration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -131,7 +137,7 @@ Deletes a single reassignment configuration for the specified identity
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_id | **str** | True  | unique identity id
-Path   | config_type | [**Configtypeenum**](../models/configtypeenum) | True  | 
+Path   | config_type | [**ConfigTypeEnum**](../models/config-type-enum) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -141,11 +147,11 @@ Path   | config_type | [**Configtypeenum**](../models/configtypeenum) | True  |
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | Reassignment Configuration deleted |  |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -156,7 +162,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configtypeenum import Configtypeenum
+from sailpoint.work_reassignment.models.config_type_enum import ConfigTypeEnum
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -164,7 +170,7 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id # str | unique identity id
-    config_type = sailpoint.work_reassignment.Configtypeenum() # Configtypeenum |  # Configtypeenum | 
+    config_type = sailpoint.work_reassignment.ConfigTypeEnum() # ConfigTypeEnum |  # ConfigTypeEnum | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
@@ -203,22 +209,22 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_id | **str** | True  | unique identity id
-Path   | config_type | [**Configtypeenum**](../models/configtypeenum) | True  | Reassignment work type
+Path   | config_type | [**ConfigTypeEnum**](../models/config-type-enum) | True  | Reassignment work type
   Query | exclusion_filters | **[]str** |   (optional) | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Evaluateresponse]**](../models/evaluateresponse)
+[**List[EvaluateResponse]**](../models/evaluate-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Evaluated Reassignment Configuration | List[Evaluateresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Evaluated Reassignment Configuration | List[EvaluateResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -229,8 +235,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configtypeenum import Configtypeenum
-from sailpoint.work_reassignment.models.evaluateresponse import Evaluateresponse
+from sailpoint.work_reassignment.models.config_type_enum import ConfigTypeEnum
+from sailpoint.work_reassignment.models.evaluate_response import EvaluateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -238,7 +244,7 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id # str | unique identity id
-    config_type = sailpoint.work_reassignment.Configtypeenum() # Configtypeenum | Reassignment work type # Configtypeenum | Reassignment work type
+    config_type = sailpoint.work_reassignment.ConfigTypeEnum() # ConfigTypeEnum | Reassignment work type # ConfigTypeEnum | Reassignment work type
     exclusion_filters = '''['SELF_REVIEW_DELEGATION']''' # List[str] | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
@@ -283,17 +289,17 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Configtype]**](../models/configtype)
+[**List[ConfigType]**](../models/config-type)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of Reassignment Configuration Types | List[Configtype] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | List of Reassignment Configuration Types | List[ConfigType] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -304,7 +310,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configtype import Configtype
+from sailpoint.work_reassignment.models.config_type import ConfigType
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -355,18 +361,18 @@ Path   | identity_id | **str** | True  | unique identity id
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Configurationresponse**](../models/configurationresponse)
+[**ConfigurationResponse**](../models/configuration-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reassignment Configuration for an identity | Configurationresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reassignment Configuration for an identity | ConfigurationResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -377,7 +383,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configurationresponse import Configurationresponse
+from sailpoint.work_reassignment.models.configuration_response import ConfigurationResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -427,18 +433,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Tenantconfigurationresponse**](../models/tenantconfigurationresponse)
+[**TenantConfigurationResponse**](../models/tenant-configuration-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Tenant-wide Reassignment Configuration settings | Tenantconfigurationresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Tenant-wide Reassignment Configuration settings | TenantConfigurationResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -449,7 +455,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.tenantconfigurationresponse import Tenantconfigurationresponse
+from sailpoint.work_reassignment.models.tenant_configuration_response import TenantConfigurationResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -498,18 +504,18 @@ Param Type | Name | Data Type | Required  | Description
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**List[Configurationresponse]**](../models/configurationresponse)
+[**List[ConfigurationResponse]**](../models/configuration-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of Reassignment Configurations for an org | List[Configurationresponse] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | A list of Reassignment Configurations for an org | List[ConfigurationResponse] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -520,7 +526,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configurationresponse import Configurationresponse
+from sailpoint.work_reassignment.models.configuration_response import ConfigurationResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -568,21 +574,21 @@ Replaces existing Reassignment configuration for an identity with the newly prov
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identity_id | **str** | True  | unique identity id
- Body  | configurationitemrequest | [**Configurationitemrequest**](../models/configurationitemrequest) | True  | 
+ Body  | configuration_item_request | [**ConfigurationItemRequest**](../models/configuration-item-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Configurationitemresponse**](../models/configurationitemresponse)
+[**ConfigurationItemResponse**](../models/configuration-item-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reassignment Configuration updated | Configurationitemresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reassignment Configuration updated | ConfigurationItemResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -593,8 +599,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.configurationitemrequest import Configurationitemrequest
-from sailpoint.work_reassignment.models.configurationitemresponse import Configurationitemresponse
+from sailpoint.work_reassignment.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.work_reassignment.models.configuration_item_response import ConfigurationItemResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -602,15 +608,21 @@ configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id # str | unique identity id
-    configurationitemrequest = '''sailpoint.work_reassignment.Configurationitemrequest()''' # Configurationitemrequest | 
+    configuration_item_request = '''{
+          "endDate" : "2022-07-30T17:00:00Z",
+          "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
+          "configType" : "ACCESS_REQUESTS",
+          "reassignedToId" : "2c91808781a71ddb0181b9090b53504a",
+          "startDate" : "2022-07-21T11:13:12.345Z"
+        }''' # ConfigurationItemRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update reassignment configuration
-        new_configurationitemrequest = Configurationitemrequest.from_json(configurationitemrequest)
-        results = WorkReassignmentApi(api_client).put_reassignment_config_v1(identity_id=identity_id, configurationitemrequest=new_configurationitemrequest)
+        new_configuration_item_request = ConfigurationItemRequest.from_json(configuration_item_request)
+        results = WorkReassignmentApi(api_client).put_reassignment_config_v1(identity_id=identity_id, configuration_item_request=new_configuration_item_request)
         # Below is a request that includes all optional parameters
-        # results = WorkReassignmentApi(api_client).put_reassignment_config_v1(identity_id, new_configurationitemrequest, x_sail_point_experimental)
+        # results = WorkReassignmentApi(api_client).put_reassignment_config_v1(identity_id, new_configuration_item_request, x_sail_point_experimental)
         print("The response of WorkReassignmentApi->put_reassignment_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -642,21 +654,21 @@ Replaces existing Tenant-wide Reassignment Configuration settings with the newly
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | tenantconfigurationrequest | [**Tenantconfigurationrequest**](../models/tenantconfigurationrequest) | True  | 
+ Body  | tenant_configuration_request | [**TenantConfigurationRequest**](../models/tenant-configuration-request) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Tenantconfigurationresponse**](../models/tenantconfigurationresponse)
+[**TenantConfigurationResponse**](../models/tenant-configuration-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Tenant-wide Reassignment Configuration settings | Tenantconfigurationresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Tenant-wide Reassignment Configuration settings | TenantConfigurationResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetReassignmentConfigTypesV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetReassignmentConfigTypesV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -667,23 +679,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.work_reassignment.api_client import ApiClient
-from sailpoint.work_reassignment.models.tenantconfigurationrequest import Tenantconfigurationrequest
-from sailpoint.work_reassignment.models.tenantconfigurationresponse import Tenantconfigurationresponse
+from sailpoint.work_reassignment.models.tenant_configuration_request import TenantConfigurationRequest
+from sailpoint.work_reassignment.models.tenant_configuration_response import TenantConfigurationResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    tenantconfigurationrequest = '''sailpoint.work_reassignment.Tenantconfigurationrequest()''' # Tenantconfigurationrequest | 
+    tenant_configuration_request = '''{
+          "configDetails" : {
+            "disabled" : true
+          }
+        }''' # TenantConfigurationRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update tenant-wide reassignment configuration settings
-        new_tenantconfigurationrequest = Tenantconfigurationrequest.from_json(tenantconfigurationrequest)
-        results = WorkReassignmentApi(api_client).put_tenant_configuration_v1(tenantconfigurationrequest=new_tenantconfigurationrequest)
+        new_tenant_configuration_request = TenantConfigurationRequest.from_json(tenant_configuration_request)
+        results = WorkReassignmentApi(api_client).put_tenant_configuration_v1(tenant_configuration_request=new_tenant_configuration_request)
         # Below is a request that includes all optional parameters
-        # results = WorkReassignmentApi(api_client).put_tenant_configuration_v1(new_tenantconfigurationrequest, x_sail_point_experimental)
+        # results = WorkReassignmentApi(api_client).put_tenant_configuration_v1(new_tenant_configuration_request, x_sail_point_experimental)
         print("The response of WorkReassignmentApi->put_tenant_configuration_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

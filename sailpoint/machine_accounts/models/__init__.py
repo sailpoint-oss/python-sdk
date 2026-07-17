@@ -14,12 +14,12 @@
 
 
 # import models into model package
-from sailpoint.machine_accounts.models.basecommondto import Basecommondto
+from sailpoint.machine_accounts.models.base_common_dto import BaseCommonDto
 from sailpoint.machine_accounts.models.create_machine_account_subtype_v1_request import CreateMachineAccountSubtypeV1Request
-from sailpoint.machine_accounts.models.errormessagedto import Errormessagedto
-from sailpoint.machine_accounts.models.errorresponsedto import Errorresponsedto
+from sailpoint.machine_accounts.models.error_message_dto import ErrorMessageDto
+from sailpoint.machine_accounts.models.error_response_dto import ErrorResponseDto
 from sailpoint.machine_accounts.models.list_machine_accounts_v1401_response import ListMachineAccountsV1401Response
 from sailpoint.machine_accounts.models.list_machine_accounts_v1429_response import ListMachineAccountsV1429Response
-from sailpoint.machine_accounts.models.localeorigin import Localeorigin
-from sailpoint.machine_accounts.models.machineaccount import Machineaccount
-from sailpoint.machine_accounts.models.sourcesubtype import Sourcesubtype
+from sailpoint.machine_accounts.models.locale_origin import LocaleOrigin
+from sailpoint.machine_accounts.models.machine_account import MachineAccount
+from sailpoint.machine_accounts.models.source_subtype import SourceSubtype

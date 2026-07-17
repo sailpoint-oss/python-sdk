@@ -94,11 +94,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -166,11 +166,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,11 +238,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -382,12 +382,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -455,12 +455,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -528,12 +528,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -660,12 +660,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -733,12 +733,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -806,12 +806,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -946,11 +946,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Segment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1026,11 +1026,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Segment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1106,11 +1106,11 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Segment]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1253,12 +1253,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1330,12 +1330,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1407,12 +1407,12 @@ class SegmentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Segment",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListSegmentsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListSegmentsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

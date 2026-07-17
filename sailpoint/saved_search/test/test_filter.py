@@ -36,11 +36,11 @@ class TestFilter(unittest.TestCase):
         if include_optional:
             return Filter(
                 type = 'RANGE',
-                range = sailpoint.saved_search.models.range.range(
-                    lower = sailpoint.saved_search.models.bound.bound(
+                range = sailpoint.saved_search.models.range.Range(
+                    lower = sailpoint.saved_search.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), 
-                    upper = sailpoint.saved_search.models.bound.bound(
+                    upper = sailpoint.saved_search.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), ),
                 terms = [

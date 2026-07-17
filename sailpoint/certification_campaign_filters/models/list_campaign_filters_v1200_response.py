@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.certification_campaign_filters.models.campaignfilterdetails import Campaignfilterdetails
+from sailpoint.certification_campaign_filters.models.campaign_filter_details import CampaignFilterDetails
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ListCampaignFiltersV1200Response(BaseModel):
     """
     ListCampaignFiltersV1200Response
     """ # noqa: E501
-    items: Optional[List[Campaignfilterdetails]] = Field(default=None, description="List of campaign filters.")
+    items: Optional[List[CampaignFilterDetails]] = Field(default=None, description="List of campaign filters.")
     count: Optional[StrictInt] = Field(default=None, description="Number of filters returned.")
     __properties: ClassVar[List[str]] = ["items", "count"]
 
@@ -90,7 +90,7 @@ class ListCampaignFiltersV1200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "items": [Campaignfilterdetails.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "items": [CampaignFilterDetails.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
             "count": obj.get("count")
         })
         return _obj

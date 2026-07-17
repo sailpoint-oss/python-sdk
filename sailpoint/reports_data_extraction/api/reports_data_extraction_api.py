@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.reports_data_extraction.models.reportdetails import Reportdetails
-from sailpoint.reports_data_extraction.models.reportresults import Reportresults
-from sailpoint.reports_data_extraction.models.taskresultdetails import Taskresultdetails
+from sailpoint.reports_data_extraction.models.report_details import ReportDetails
+from sailpoint.reports_data_extraction.models.report_results import ReportResults
+from sailpoint.reports_data_extraction.models.task_result_details import TaskResultDetails
 
 from sailpoint.reports_data_extraction.api_client import ApiClient, RequestSerialized
 from sailpoint.reports_data_extraction.api_response import ApiResponse
@@ -96,11 +96,11 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -168,11 +168,11 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,11 +240,11 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -333,7 +333,7 @@ class ReportsDataExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Reportresults:
+    ) -> ReportResults:
         """Get report result
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
@@ -374,12 +374,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Reportresults",
-            '400': "Errorresponsedto",
+            '200': "ReportResults",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -409,7 +409,7 @@ class ReportsDataExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Reportresults]:
+    ) -> ApiResponse[ReportResults]:
         """Get report result
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
@@ -450,12 +450,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Reportresults",
-            '400': "Errorresponsedto",
+            '200': "ReportResults",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -526,12 +526,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Reportresults",
-            '400': "Errorresponsedto",
+            '200': "ReportResults",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -675,12 +675,12 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -760,12 +760,12 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -845,12 +845,12 @@ class ReportsDataExtractionApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -942,7 +942,7 @@ class ReportsDataExtractionApi:
     @validate_call
     def start_report_v1(
         self,
-        reportdetails: Reportdetails,
+        report_details: ReportDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -955,13 +955,13 @@ class ReportsDataExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Taskresultdetails:
+    ) -> TaskResultDetails:
         """Run report
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
-        :param reportdetails: (required)
-        :type reportdetails: Reportdetails
+        :param report_details: (required)
+        :type report_details: ReportDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -985,7 +985,7 @@ class ReportsDataExtractionApi:
         """ # noqa: E501
 
         _param = self._start_report_v1_serialize(
-            reportdetails=reportdetails,
+            report_details=report_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -993,12 +993,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskresultdetails",
-            '400': "Errorresponsedto",
+            '200': "TaskResultDetails",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1014,7 +1014,7 @@ class ReportsDataExtractionApi:
     @validate_call
     def start_report_v1_with_http_info(
         self,
-        reportdetails: Reportdetails,
+        report_details: ReportDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1027,13 +1027,13 @@ class ReportsDataExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Taskresultdetails]:
+    ) -> ApiResponse[TaskResultDetails]:
         """Run report
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
-        :param reportdetails: (required)
-        :type reportdetails: Reportdetails
+        :param report_details: (required)
+        :type report_details: ReportDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1057,7 +1057,7 @@ class ReportsDataExtractionApi:
         """ # noqa: E501
 
         _param = self._start_report_v1_serialize(
-            reportdetails=reportdetails,
+            report_details=report_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1065,12 +1065,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskresultdetails",
-            '400': "Errorresponsedto",
+            '200': "TaskResultDetails",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1086,7 +1086,7 @@ class ReportsDataExtractionApi:
     @validate_call
     def start_report_v1_without_preload_content(
         self,
-        reportdetails: Reportdetails,
+        report_details: ReportDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1104,8 +1104,8 @@ class ReportsDataExtractionApi:
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
-        :param reportdetails: (required)
-        :type reportdetails: Reportdetails
+        :param report_details: (required)
+        :type report_details: ReportDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1129,7 +1129,7 @@ class ReportsDataExtractionApi:
         """ # noqa: E501
 
         _param = self._start_report_v1_serialize(
-            reportdetails=reportdetails,
+            report_details=report_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1137,12 +1137,12 @@ class ReportsDataExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Taskresultdetails",
-            '400': "Errorresponsedto",
+            '200': "TaskResultDetails",
+            '400': "ErrorResponseDto",
             '401': "GetReportResultV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReportResultV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1153,7 +1153,7 @@ class ReportsDataExtractionApi:
 
     def _start_report_v1_serialize(
         self,
-        reportdetails,
+        report_details,
         _request_auth,
         _content_type,
         _headers,
@@ -1179,8 +1179,8 @@ class ReportsDataExtractionApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if reportdetails is not None:
-            _body_params = reportdetails
+        if report_details is not None:
+            _body_params = report_details
 
 
         # set the HTTP header `Accept`

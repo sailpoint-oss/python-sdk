@@ -6,22 +6,28 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
+          access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Ignore access request recommendation
-              new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+              new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
               # Below is a request that includes all optional parameters
-              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
               print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_ignored_item_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -34,22 +40,28 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access item that was requested for an identity.
+          access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Accept access request recommendation
-              new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+              new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
               # Below is a request that includes all optional parameters
-              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
               print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_requested_item_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -62,22 +74,28 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          accessrequestrecommendationactionitemdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()''' # Accessrequestrecommendationactionitemdto | The recommended access that was viewed for an identity.
+          access_request_recommendation_action_item_dto = '''{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Mark viewed access request recommendations
-              new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+              new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
               # Below is a request that includes all optional parameters
-              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
               print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_item_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -90,22 +108,22 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemdto import Accessrequestrecommendationactionitemdto
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          accessrequestrecommendationactionitemdto = '''[sailpoint.iai_access_request_recommendations.Accessrequestrecommendationactionitemdto()]''' # List[Accessrequestrecommendationactionitemdto] | The recommended access items that were viewed for an identity.
+          access_request_recommendation_action_item_dto = '''[sailpoint.iai_access_request_recommendations.AccessRequestRecommendationActionItemDto()]''' # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Bulk mark viewed access request recommendations
-              new_accessrequestrecommendationactionitemdto = Accessrequestrecommendationactionitemdto.from_json(accessrequestrecommendationactionitemdto)
-              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(accessrequestrecommendationactionitemdto=new_accessrequestrecommendationactionitemdto)
+              new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+              results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
               # Below is a request that includes all optional parameters
-              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(new_accessrequestrecommendationactionitemdto, x_sail_point_experimental)
+              # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items_v1(new_access_request_recommendation_action_item_dto, x_sail_point_experimental)
               print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_items_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -119,7 +137,7 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationconfigdto import Accessrequestrecommendationconfigdto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -145,7 +163,7 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -177,7 +195,7 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -209,7 +227,7 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationitemdetail import Accessrequestrecommendationitemdetail
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -243,7 +261,7 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationactionitemresponsedto import Accessrequestrecommendationactionitemresponsedto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -275,21 +293,28 @@
       source: |
         from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
         from sailpoint.iai_access_request_recommendations.api_client import ApiClient
-        from sailpoint.iai_access_request_recommendations.models.accessrequestrecommendationconfigdto import Accessrequestrecommendationconfigdto
+        from sailpoint.iai_access_request_recommendations.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          accessrequestrecommendationconfigdto = '''sailpoint.iai_access_request_recommendations.Accessrequestrecommendationconfigdto()''' # Accessrequestrecommendationconfigdto | The desired configurations for Access Request Recommender for the tenant.
+          access_request_recommendation_config_dto = '''{
+          "scoreThreshold" : 0.5,
+          "startDateAttribute" : "startDate",
+          "restrictionAttribute" : "location",
+          "moverAttribute" : "isMover",
+          "joinerAttribute" : "isJoiner",
+          "useRestrictionAttribute" : true
+        }''' # AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update access request recommendations config
-              new_accessrequestrecommendationconfigdto = Accessrequestrecommendationconfigdto.from_json(accessrequestrecommendationconfigdto)
-              results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(accessrequestrecommendationconfigdto=new_accessrequestrecommendationconfigdto)
+              new_access_request_recommendation_config_dto = AccessRequestRecommendationConfigDto.from_json(access_request_recommendation_config_dto)
+              results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(access_request_recommendation_config_dto=new_access_request_recommendation_config_dto)
               # Below is a request that includes all optional parameters
-              # results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(new_accessrequestrecommendationconfigdto, x_sail_point_experimental)
+              # results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config_v1(new_access_request_recommendation_config_dto, x_sail_point_experimental)
               print("The response of IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

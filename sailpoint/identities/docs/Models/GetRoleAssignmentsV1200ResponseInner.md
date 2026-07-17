@@ -17,16 +17,16 @@ tags: ['SDK', 'Software Development Kit', 'GetRoleAssignmentsV1200ResponseInner'
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Assignment Id | [optional] 
-**role** | [**Basereferencedto**](basereferencedto) |  | [optional] 
+**role** | [**BaseReferenceDto**](base-reference-dto) |  | [optional] 
 **added_date** | **datetime** | Date that the assignment was added | [optional] 
 **start_date** | **datetime** | Date when assignment will be active, if access was requested with a future start date. If null, assignment is active immediately | [optional] 
 **remove_date** | **datetime** | Date that the assignment will be removed | [optional] 
 **comments** | **str** | Comments added by the user when the assignment was made | [optional] 
 **assignment_source** | **str** | Source describing how this assignment was made | [optional] 
-**assigner** | [**RoleassignmentdtoAssigner**](roleassignmentdto-assigner) |  | [optional] 
-**assigned_dimensions** | [**[]Basereferencedto**](basereferencedto) | Dimensions assigned related to this role | [optional] 
-**assignment_context** | [**RoleassignmentdtoAssignmentContext**](roleassignmentdto-assignment-context) |  | [optional] 
-**account_targets** | [**[]Roletargetdto**](roletargetdto) |  | [optional] 
+**assigner** | [**RoleAssignmentDtoAssigner**](role-assignment-dto-assigner) |  | [optional] 
+**assigned_dimensions** | [**[]BaseReferenceDto**](base-reference-dto) | Dimensions assigned related to this role | [optional] 
+**assignment_context** | [**RoleAssignmentDtoAssignmentContext**](role-assignment-dto-assignment-context) |  | [optional] 
+**account_targets** | [**[]RoleTargetDto**](role-target-dto) |  | [optional] 
 }
 
 ## Example
@@ -45,7 +45,7 @@ start_date='2026-07-10T18:45:37.098Z',
 remove_date='2026-07-11T18:45:37.098Z',
 comments='I'm a new Engineer and need this role to do my work',
 assignment_source='UI',
-assigner=sailpoint.identities.models.roleassignmentdto_assigner.roleassignmentdto_assigner(
+assigner=sailpoint.identities.models.role_assignment_dto_assigner.RoleAssignmentDto_assigner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),

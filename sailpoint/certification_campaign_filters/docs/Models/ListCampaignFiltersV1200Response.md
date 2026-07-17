@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ListCampaignFiltersV1200Response', 'L
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[]Campaignfilterdetails**](campaignfilterdetails) | List of campaign filters. | [optional] 
+**items** | [**[]CampaignFilterDetails**](campaign-filter-details) | List of campaign filters. | [optional] 
 **count** | **int** | Number of filters returned. | [optional] 
 }
 

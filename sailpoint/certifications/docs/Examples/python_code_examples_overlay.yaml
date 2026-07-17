@@ -6,7 +6,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.certificationtask import Certificationtask
+        from sailpoint.certifications.models.certification_task import CertificationTask
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -31,7 +31,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.permissiondto import Permissiondto
+        from sailpoint.certifications.models.permission_dto import PermissionDTO
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -62,7 +62,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -87,7 +87,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.certificationtask import Certificationtask
+        from sailpoint.certifications.models.certification_task import CertificationTask
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -117,7 +117,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identityreferencewithnameandemail import Identityreferencewithnameandemail
+        from sailpoint.certifications.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -148,7 +148,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.accessreviewitem import Accessreviewitem
+        from sailpoint.certifications.models.access_review_item import AccessReviewItem
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -182,7 +182,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -213,21 +213,21 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
-        from sailpoint.certifications.models.reviewdecision import Reviewdecision
+        from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
+        from sailpoint.certifications.models.review_decision import ReviewDecision
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the identity campaign certification on which to make decisions # str | The ID of the identity campaign certification on which to make decisions
-          reviewdecision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]''' # List[Reviewdecision] | A non-empty array of decisions to be made.
+          review_decision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]''' # List[ReviewDecision] | A non-empty array of decisions to be made.
           try:
               # Decide on a certification item
-              new_reviewdecision = Reviewdecision.from_json(reviewdecision)
-              results = CertificationsApi(api_client).make_identity_decision_v1(id=id, reviewdecision=new_reviewdecision)
+              new_review_decision = ReviewDecision.from_json(review_decision)
+              results = CertificationsApi(api_client).make_identity_decision_v1(id=id, review_decision=new_review_decision)
               # Below is a request that includes all optional parameters
-              # results = CertificationsApi(api_client).make_identity_decision_v1(id, new_reviewdecision)
+              # results = CertificationsApi(api_client).make_identity_decision_v1(id, new_review_decision)
               print("The response of CertificationsApi->make_identity_decision_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -240,21 +240,31 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
-        from sailpoint.certifications.models.reviewreassign import Reviewreassign
+        from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
+        from sailpoint.certifications.models.review_reassign import ReviewReassign
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
-          reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+          review_reassign = '''{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReviewReassign | 
           try:
               # Reassign identities or items
-              new_reviewreassign = Reviewreassign.from_json(reviewreassign)
-              results = CertificationsApi(api_client).reassign_identity_certifications_v1(id=id, reviewreassign=new_reviewreassign)
+              new_review_reassign = ReviewReassign.from_json(review_reassign)
+              results = CertificationsApi(api_client).reassign_identity_certifications_v1(id=id, review_reassign=new_review_reassign)
               # Below is a request that includes all optional parameters
-              # results = CertificationsApi(api_client).reassign_identity_certifications_v1(id, new_reviewreassign)
+              # results = CertificationsApi(api_client).reassign_identity_certifications_v1(id, new_review_reassign)
               print("The response of CertificationsApi->reassign_identity_certifications_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -267,7 +277,7 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.certifications.models.identity_certification_dto import IdentityCertificationDto
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -292,21 +302,31 @@
       source: |
         from sailpoint.certifications.api.certifications_api import CertificationsApi
         from sailpoint.certifications.api_client import ApiClient
-        from sailpoint.certifications.models.certificationtask import Certificationtask
-        from sailpoint.certifications.models.reviewreassign import Reviewreassign
+        from sailpoint.certifications.models.certification_task import CertificationTask
+        from sailpoint.certifications.models.review_reassign import ReviewReassign
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
-          reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+          review_reassign = '''{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReviewReassign | 
           try:
               # Reassign certifications asynchronously
-              new_reviewreassign = Reviewreassign.from_json(reviewreassign)
-              results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id=id, reviewreassign=new_reviewreassign)
+              new_review_reassign = ReviewReassign.from_json(review_reassign)
+              results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id=id, review_reassign=new_review_reassign)
               # Below is a request that includes all optional parameters
-              # results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id, new_reviewreassign)
+              # results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id, new_review_reassign)
               print("The response of CertificationsApi->submit_reassign_certs_async_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from sailpoint.role_propagation.models.role_propagation_config_input import RolePropagationConfigInput
-from sailpoint.role_propagation.models.role_propagation_config_response import RolePropagationConfigResponse
-from sailpoint.role_propagation.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
-from sailpoint.role_propagation.models.role_propagation_response import RolePropagationResponse
-from sailpoint.role_propagation.models.role_propagation_status_response import RolePropagationStatusResponse
+from sailpoint.role_propagation.models.rolepropagationconfiginput import Rolepropagationconfiginput
+from sailpoint.role_propagation.models.rolepropagationconfigresponse import Rolepropagationconfigresponse
+from sailpoint.role_propagation.models.rolepropagationongoingresponse import Rolepropagationongoingresponse
+from sailpoint.role_propagation.models.rolepropagationresponse import Rolepropagationresponse
+from sailpoint.role_propagation.models.rolepropagationstatusresponse import Rolepropagationstatusresponse
 
 from sailpoint.role_propagation.api_client import ApiClient, RequestSerialized
 from sailpoint.role_propagation.api_response import ApiResponse
@@ -98,11 +98,11 @@ class RolePropagationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -170,11 +170,11 @@ class RolePropagationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -242,11 +242,11 @@ class RolePropagationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -334,7 +334,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RolePropagationOngoingResponse:
+    ) -> Rolepropagationongoingresponse:
         """Get ongoing Role Propagation process
 
         This endpoint returns the information of ongoing role change propagation process for a tenant. It returns the information whether the role propagation process is currently running or not, If it is running it returns the details of the ongoing role propagation process. The execution stage of the role propagation process can be one of the following: - PENDING - The role propagation process is queued to be executed. - DATA_AGGREGATION_RUNNING - The role propagation process is currently aggregating data. - LAUNCH_PROVISIONING - The role propagation process has started to provision the access to the identities. - SUCCEEDED - The role propagation process has successfully completed. - FAILED - The role propagation process has failed. - TERMINATED - The role propagation process was externally terminated.
@@ -372,12 +372,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationOngoingResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationongoingresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -406,7 +406,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RolePropagationOngoingResponse]:
+    ) -> ApiResponse[Rolepropagationongoingresponse]:
         """Get ongoing Role Propagation process
 
         This endpoint returns the information of ongoing role change propagation process for a tenant. It returns the information whether the role propagation process is currently running or not, If it is running it returns the details of the ongoing role propagation process. The execution stage of the role propagation process can be one of the following: - PENDING - The role propagation process is queued to be executed. - DATA_AGGREGATION_RUNNING - The role propagation process is currently aggregating data. - LAUNCH_PROVISIONING - The role propagation process has started to provision the access to the identities. - SUCCEEDED - The role propagation process has successfully completed. - FAILED - The role propagation process has failed. - TERMINATED - The role propagation process was externally terminated.
@@ -444,12 +444,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationOngoingResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationongoingresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -516,12 +516,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationOngoingResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationongoingresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -609,7 +609,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RolePropagationConfigResponse:
+    ) -> Rolepropagationconfigresponse:
         """Get Role Change Propagation Configuration
 
         This endpoint fetches the Role Change Propagation Configuration for the tenant
@@ -647,12 +647,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -681,7 +681,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RolePropagationConfigResponse]:
+    ) -> ApiResponse[Rolepropagationconfigresponse]:
         """Get Role Change Propagation Configuration
 
         This endpoint fetches the Role Change Propagation Configuration for the tenant
@@ -719,12 +719,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -791,12 +791,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -885,7 +885,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RolePropagationStatusResponse:
+    ) -> Rolepropagationstatusresponse:
         """Get status of Role-Propagation process
 
         This endpoint returns the information of the specified role change propagation process. The execution stage of the role propagation process can be one of the following:     - PENDING - The role propagation process is queued to be executed.     - DATA_AGGREGATION_RUNNING - The role propagation process is currently aggregating data.     - LAUNCH_PROVISIONING - The role propagation process has started to provision the access to the identities.     - SUCCEEDED - The role propagation process has successfully completed.     - FAILED - The role propagation process has failed.     - TERMINATED - The role propagation process was externally terminated.
@@ -926,13 +926,13 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationStatusResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationstatusresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -962,7 +962,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RolePropagationStatusResponse]:
+    ) -> ApiResponse[Rolepropagationstatusresponse]:
         """Get status of Role-Propagation process
 
         This endpoint returns the information of the specified role change propagation process. The execution stage of the role propagation process can be one of the following:     - PENDING - The role propagation process is queued to be executed.     - DATA_AGGREGATION_RUNNING - The role propagation process is currently aggregating data.     - LAUNCH_PROVISIONING - The role propagation process has started to provision the access to the identities.     - SUCCEEDED - The role propagation process has successfully completed.     - FAILED - The role propagation process has failed.     - TERMINATED - The role propagation process was externally terminated.
@@ -1003,13 +1003,13 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationStatusResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationstatusresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1080,13 +1080,13 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationStatusResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationstatusresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1164,7 +1164,7 @@ class RolePropagationApi:
     @validate_call
     def set_role_propagation_config_v1(
         self,
-        role_propagation_config_input: RolePropagationConfigInput,
+        rolepropagationconfiginput: Rolepropagationconfiginput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1178,13 +1178,13 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RolePropagationConfigResponse:
+    ) -> Rolepropagationconfigresponse:
         """Update Role Change Propagation Configuration
 
         This endpoint enables or disables the Role Change Propagation Process for the tenant
 
-        :param role_propagation_config_input: (required)
-        :type role_propagation_config_input: RolePropagationConfigInput
+        :param rolepropagationconfiginput: (required)
+        :type rolepropagationconfiginput: Rolepropagationconfiginput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1210,7 +1210,7 @@ class RolePropagationApi:
         """ # noqa: E501
 
         _param = self._set_role_propagation_config_v1_serialize(
-            role_propagation_config_input=role_propagation_config_input,
+            rolepropagationconfiginput=rolepropagationconfiginput,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1219,12 +1219,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1240,7 +1240,7 @@ class RolePropagationApi:
     @validate_call
     def set_role_propagation_config_v1_with_http_info(
         self,
-        role_propagation_config_input: RolePropagationConfigInput,
+        rolepropagationconfiginput: Rolepropagationconfiginput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1254,13 +1254,13 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RolePropagationConfigResponse]:
+    ) -> ApiResponse[Rolepropagationconfigresponse]:
         """Update Role Change Propagation Configuration
 
         This endpoint enables or disables the Role Change Propagation Process for the tenant
 
-        :param role_propagation_config_input: (required)
-        :type role_propagation_config_input: RolePropagationConfigInput
+        :param rolepropagationconfiginput: (required)
+        :type rolepropagationconfiginput: Rolepropagationconfiginput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1286,7 +1286,7 @@ class RolePropagationApi:
         """ # noqa: E501
 
         _param = self._set_role_propagation_config_v1_serialize(
-            role_propagation_config_input=role_propagation_config_input,
+            rolepropagationconfiginput=rolepropagationconfiginput,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1295,12 +1295,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1316,7 +1316,7 @@ class RolePropagationApi:
     @validate_call
     def set_role_propagation_config_v1_without_preload_content(
         self,
-        role_propagation_config_input: RolePropagationConfigInput,
+        rolepropagationconfiginput: Rolepropagationconfiginput,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1335,8 +1335,8 @@ class RolePropagationApi:
 
         This endpoint enables or disables the Role Change Propagation Process for the tenant
 
-        :param role_propagation_config_input: (required)
-        :type role_propagation_config_input: RolePropagationConfigInput
+        :param rolepropagationconfiginput: (required)
+        :type rolepropagationconfiginput: Rolepropagationconfiginput
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1362,7 +1362,7 @@ class RolePropagationApi:
         """ # noqa: E501
 
         _param = self._set_role_propagation_config_v1_serialize(
-            role_propagation_config_input=role_propagation_config_input,
+            rolepropagationconfiginput=rolepropagationconfiginput,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1371,12 +1371,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RolePropagationConfigResponse",
-            '400': "Errorresponsedto",
+            '200': "Rolepropagationconfigresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1387,7 +1387,7 @@ class RolePropagationApi:
 
     def _set_role_propagation_config_v1_serialize(
         self,
-        role_propagation_config_input,
+        rolepropagationconfiginput,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -1416,8 +1416,8 @@ class RolePropagationApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if role_propagation_config_input is not None:
-            _body_params = role_propagation_config_input
+        if rolepropagationconfiginput is not None:
+            _body_params = rolepropagationconfiginput
 
 
         # set the HTTP header `Accept`
@@ -1481,7 +1481,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RolePropagationResponse:
+    ) -> Rolepropagationresponse:
         """Initiate Role Propagation process
 
         This endpoint initiates a role change propagation process for a tenant asynchronously.  If all preconditions are met, the request is accepted and a rolePropagationId is returned which  can be used to view the status. API throws 4xx if any of the following conditions are met - Role propagation feature is disabled  - There is an ongoing role propagation for the tenant - Role refresh needs to be kicked off as part of the role propagation (skipRoleRefresh=false) and there is an ongoing refresh for the tenant
@@ -1522,12 +1522,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "RolePropagationResponse",
-            '400': "Errorresponsedto",
+            '202': "Rolepropagationresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1557,7 +1557,7 @@ class RolePropagationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RolePropagationResponse]:
+    ) -> ApiResponse[Rolepropagationresponse]:
         """Initiate Role Propagation process
 
         This endpoint initiates a role change propagation process for a tenant asynchronously.  If all preconditions are met, the request is accepted and a rolePropagationId is returned which  can be used to view the status. API throws 4xx if any of the following conditions are met - Role propagation feature is disabled  - There is an ongoing role propagation for the tenant - Role refresh needs to be kicked off as part of the role propagation (skipRoleRefresh=false) and there is an ongoing refresh for the tenant
@@ -1598,12 +1598,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "RolePropagationResponse",
-            '400': "Errorresponsedto",
+            '202': "Rolepropagationresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1674,12 +1674,12 @@ class RolePropagationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "RolePropagationResponse",
-            '400': "Errorresponsedto",
+            '202': "Rolepropagationresponse",
+            '400': "ErrorResponseDto",
             '401': "StartRolePropagationV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "StartRolePropagationV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

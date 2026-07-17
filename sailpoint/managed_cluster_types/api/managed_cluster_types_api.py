@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.managed_cluster_types.models.jsonpatch import Jsonpatch
-from sailpoint.managed_cluster_types.models.managedclustertype import Managedclustertype
+from sailpoint.managed_cluster_types.models.json_patch import JsonPatch
+from sailpoint.managed_cluster_types.models.managed_cluster_type import ManagedClusterType
 
 from sailpoint.managed_cluster_types.api_client import ApiClient, RequestSerialized
 from sailpoint.managed_cluster_types.api_response import ApiResponse
@@ -43,7 +43,7 @@ class ManagedClusterTypesApi:
     @validate_call
     def create_managed_cluster_type_v1(
         self,
-        managedclustertype: Managedclustertype,
+        managed_cluster_type: ManagedClusterType,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,13 +56,13 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclustertype:
+    ) -> ManagedClusterType:
         """Create new managed cluster type
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
-        :param managedclustertype: (required)
-        :type managedclustertype: Managedclustertype
+        :param managed_cluster_type: (required)
+        :type managed_cluster_type: ManagedClusterType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +86,7 @@ class ManagedClusterTypesApi:
         """ # noqa: E501
 
         _param = self._create_managed_cluster_type_v1_serialize(
-            managedclustertype=managedclustertype,
+            managed_cluster_type=managed_cluster_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -94,13 +94,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -116,7 +116,7 @@ class ManagedClusterTypesApi:
     @validate_call
     def create_managed_cluster_type_v1_with_http_info(
         self,
-        managedclustertype: Managedclustertype,
+        managed_cluster_type: ManagedClusterType,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,13 +129,13 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclustertype]:
+    ) -> ApiResponse[ManagedClusterType]:
         """Create new managed cluster type
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
-        :param managedclustertype: (required)
-        :type managedclustertype: Managedclustertype
+        :param managed_cluster_type: (required)
+        :type managed_cluster_type: ManagedClusterType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +159,7 @@ class ManagedClusterTypesApi:
         """ # noqa: E501
 
         _param = self._create_managed_cluster_type_v1_serialize(
-            managedclustertype=managedclustertype,
+            managed_cluster_type=managed_cluster_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,13 +167,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -189,7 +189,7 @@ class ManagedClusterTypesApi:
     @validate_call
     def create_managed_cluster_type_v1_without_preload_content(
         self,
-        managedclustertype: Managedclustertype,
+        managed_cluster_type: ManagedClusterType,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,8 +207,8 @@ class ManagedClusterTypesApi:
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
-        :param managedclustertype: (required)
-        :type managedclustertype: Managedclustertype
+        :param managed_cluster_type: (required)
+        :type managed_cluster_type: ManagedClusterType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +232,7 @@ class ManagedClusterTypesApi:
         """ # noqa: E501
 
         _param = self._create_managed_cluster_type_v1_serialize(
-            managedclustertype=managedclustertype,
+            managed_cluster_type=managed_cluster_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -240,13 +240,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class ManagedClusterTypesApi:
 
     def _create_managed_cluster_type_v1_serialize(
         self,
-        managedclustertype,
+        managed_cluster_type,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +283,8 @@ class ManagedClusterTypesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if managedclustertype is not None:
-            _body_params = managedclustertype
+        if managed_cluster_type is not None:
+            _body_params = managed_cluster_type
 
 
         # set the HTTP header `Accept`
@@ -386,11 +386,11 @@ class ManagedClusterTypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -458,11 +458,11 @@ class ManagedClusterTypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -530,11 +530,11 @@ class ManagedClusterTypesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -622,7 +622,7 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclustertype:
+    ) -> ManagedClusterType:
         """Get a managed cluster type
 
         Get a Managed Cluster Type.
@@ -660,13 +660,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -695,7 +695,7 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclustertype]:
+    ) -> ApiResponse[ManagedClusterType]:
         """Get a managed cluster type
 
         Get a Managed Cluster Type.
@@ -733,13 +733,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -806,13 +806,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -904,7 +904,7 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Managedclustertype]:
+    ) -> List[ManagedClusterType]:
         """List managed cluster types
 
         Get a list of Managed Cluster Types.
@@ -954,13 +954,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclustertype]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClusterType]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -993,7 +993,7 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Managedclustertype]]:
+    ) -> ApiResponse[List[ManagedClusterType]]:
         """List managed cluster types
 
         Get a list of Managed Cluster Types.
@@ -1043,13 +1043,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclustertype]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClusterType]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1132,13 +1132,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Managedclustertype]",
-            '400': "Errorresponsedto",
+            '200': "List[ManagedClusterType]",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1236,7 +1236,7 @@ class ManagedClusterTypesApi:
     def update_managed_cluster_type_v1(
         self,
         id: Annotated[StrictStr, Field(description="The Managed Cluster Type ID")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1249,15 +1249,15 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Managedclustertype:
+    ) -> ManagedClusterType:
         """Update a managed cluster type
 
         Update an existing Managed Cluster Type.
 
         :param id: The Managed Cluster Type ID (required)
         :type id: str
-        :param jsonpatch: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSONPatch payload used to update the schema. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1282,7 +1282,7 @@ class ManagedClusterTypesApi:
 
         _param = self._update_managed_cluster_type_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1290,13 +1290,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1313,7 +1313,7 @@ class ManagedClusterTypesApi:
     def update_managed_cluster_type_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The Managed Cluster Type ID")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1326,15 +1326,15 @@ class ManagedClusterTypesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Managedclustertype]:
+    ) -> ApiResponse[ManagedClusterType]:
         """Update a managed cluster type
 
         Update an existing Managed Cluster Type.
 
         :param id: The Managed Cluster Type ID (required)
         :type id: str
-        :param jsonpatch: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSONPatch payload used to update the schema. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1359,7 +1359,7 @@ class ManagedClusterTypesApi:
 
         _param = self._update_managed_cluster_type_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1367,13 +1367,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1390,7 +1390,7 @@ class ManagedClusterTypesApi:
     def update_managed_cluster_type_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The Managed Cluster Type ID")],
-        jsonpatch: Annotated[Jsonpatch, Field(description="The JSONPatch payload used to update the schema.")],
+        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1410,8 +1410,8 @@ class ManagedClusterTypesApi:
 
         :param id: The Managed Cluster Type ID (required)
         :type id: str
-        :param jsonpatch: The JSONPatch payload used to update the schema. (required)
-        :type jsonpatch: Jsonpatch
+        :param json_patch: The JSONPatch payload used to update the schema. (required)
+        :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1436,7 +1436,7 @@ class ManagedClusterTypesApi:
 
         _param = self._update_managed_cluster_type_v1_serialize(
             id=id,
-            jsonpatch=jsonpatch,
+            json_patch=json_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1444,13 +1444,13 @@ class ManagedClusterTypesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Managedclustertype",
-            '400': "Errorresponsedto",
+            '200': "ManagedClusterType",
+            '400': "ErrorResponseDto",
             '401': "GetManagedClusterTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetManagedClusterTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1462,7 +1462,7 @@ class ManagedClusterTypesApi:
     def _update_managed_cluster_type_v1_serialize(
         self,
         id,
-        jsonpatch,
+        json_patch,
         _request_auth,
         _content_type,
         _headers,
@@ -1490,8 +1490,8 @@ class ManagedClusterTypesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatch is not None:
-            _body_params = jsonpatch
+        if json_patch is not None:
+            _body_params = json_patch
 
 
         # set the HTTP header `Accept`

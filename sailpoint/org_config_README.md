@@ -72,15 +72,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/org_config/docs/ArrayInner.md)
- - [Errormessagedto](sailpoint/org_config/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/org_config/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/org_config/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/org_config/docs/ErrorResponseDto.md)
  - [GetOrgConfigV1401Response](sailpoint/org_config/docs/GetOrgConfigV1401Response.md)
  - [GetOrgConfigV1429Response](sailpoint/org_config/docs/GetOrgConfigV1429Response.md)
- - [Jsonpatchoperation](sailpoint/org_config/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/org_config/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/org_config/docs/Localeorigin.md)
- - [Orgconfig](sailpoint/org_config/docs/Orgconfig.md)
- - [Reportconfigdto](sailpoint/org_config/docs/Reportconfigdto.md)
+ - [JsonPatchOperation](sailpoint/org_config/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/org_config/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/org_config/docs/LocaleOrigin.md)
+ - [OrgConfig](sailpoint/org_config/docs/OrgConfig.md)
+ - [ReportConfigDTO](sailpoint/org_config/docs/ReportConfigDTO.md)
 
 
 <a id="documentation-for-authorization"></a>

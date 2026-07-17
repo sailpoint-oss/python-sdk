@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
-from sailpoint.machine_classification_config.models.machineclassificationconfig import Machineclassificationconfig
+from sailpoint.machine_classification_config.models.machine_classification_config import MachineClassificationConfig
 
 from sailpoint.machine_classification_config.api_client import ApiClient, RequestSerialized
 from sailpoint.machine_classification_config.api_response import ApiResponse
@@ -93,12 +93,12 @@ class MachineClassificationConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -166,12 +166,12 @@ class MachineClassificationConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,12 +239,12 @@ class MachineClassificationConfigApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -332,7 +332,7 @@ class MachineClassificationConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineclassificationconfig:
+    ) -> MachineClassificationConfig:
         """Machine classification config for source
 
         This API returns a Machine Classification Config for a Source using Source ID.
@@ -370,13 +370,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -405,7 +405,7 @@ class MachineClassificationConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineclassificationconfig]:
+    ) -> ApiResponse[MachineClassificationConfig]:
         """Machine classification config for source
 
         This API returns a Machine Classification Config for a Source using Source ID.
@@ -443,13 +443,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -516,13 +516,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -598,7 +598,7 @@ class MachineClassificationConfigApi:
     def set_machine_classification_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineclassificationconfig: Machineclassificationconfig,
+        machine_classification_config: MachineClassificationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -611,15 +611,15 @@ class MachineClassificationConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Machineclassificationconfig:
+    ) -> MachineClassificationConfig:
         """Update source's classification config
 
         Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineclassificationconfig: (required)
-        :type machineclassificationconfig: Machineclassificationconfig
+        :param machine_classification_config: (required)
+        :type machine_classification_config: MachineClassificationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -644,7 +644,7 @@ class MachineClassificationConfigApi:
 
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
-            machineclassificationconfig=machineclassificationconfig,
+            machine_classification_config=machine_classification_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -652,13 +652,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -675,7 +675,7 @@ class MachineClassificationConfigApi:
     def set_machine_classification_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineclassificationconfig: Machineclassificationconfig,
+        machine_classification_config: MachineClassificationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -688,15 +688,15 @@ class MachineClassificationConfigApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Machineclassificationconfig]:
+    ) -> ApiResponse[MachineClassificationConfig]:
         """Update source's classification config
 
         Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineclassificationconfig: (required)
-        :type machineclassificationconfig: Machineclassificationconfig
+        :param machine_classification_config: (required)
+        :type machine_classification_config: MachineClassificationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,7 +721,7 @@ class MachineClassificationConfigApi:
 
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
-            machineclassificationconfig=machineclassificationconfig,
+            machine_classification_config=machine_classification_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -729,13 +729,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -752,7 +752,7 @@ class MachineClassificationConfigApi:
     def set_machine_classification_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        machineclassificationconfig: Machineclassificationconfig,
+        machine_classification_config: MachineClassificationConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -772,8 +772,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param machineclassificationconfig: (required)
-        :type machineclassificationconfig: Machineclassificationconfig
+        :param machine_classification_config: (required)
+        :type machine_classification_config: MachineClassificationConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -798,7 +798,7 @@ class MachineClassificationConfigApi:
 
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
-            machineclassificationconfig=machineclassificationconfig,
+            machine_classification_config=machine_classification_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -806,13 +806,13 @@ class MachineClassificationConfigApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Machineclassificationconfig",
-            '400': "Errorresponsedto",
+            '200': "MachineClassificationConfig",
+            '400': "ErrorResponseDto",
             '401': "GetMachineClassificationConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetMachineClassificationConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -824,7 +824,7 @@ class MachineClassificationConfigApi:
     def _set_machine_classification_config_v1_serialize(
         self,
         source_id,
-        machineclassificationconfig,
+        machine_classification_config,
         _request_auth,
         _content_type,
         _headers,
@@ -852,8 +852,8 @@ class MachineClassificationConfigApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if machineclassificationconfig is not None:
-            _body_params = machineclassificationconfig
+        if machine_classification_config is not None:
+            _body_params = machine_classification_config
 
 
         # set the HTTP header `Accept`

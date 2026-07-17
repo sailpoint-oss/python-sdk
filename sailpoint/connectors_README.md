@@ -47,11 +47,11 @@ configuration = sailpoint.connectors.Configuration(
 with sailpoint.connectors.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.connectors.ConnectorsApi(api_client)
-    v3createconnectordto = sailpoint.connectors.V3createconnectordto() # V3createconnectordto | 
+    v3_create_connector_dto = sailpoint.connectors.V3CreateConnectorDto() # V3CreateConnectorDto | 
 
     try:
         # Create custom connector
-        api_response = api_instance.create_custom_connector_v1(v3createconnectordto)
+        api_response = api_instance.create_custom_connector_v1(v3_create_connector_dto)
         print("The response of ConnectorsApi->create_custom_connector_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -83,20 +83,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/connectors/docs/ArrayInner.md)
- - [Connectordetail](sailpoint/connectors/docs/Connectordetail.md)
- - [Errormessagedto](sailpoint/connectors/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/connectors/docs/Errorresponsedto.md)
+ - [ConnectorDetail](sailpoint/connectors/docs/ConnectorDetail.md)
+ - [ErrorMessageDto](sailpoint/connectors/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/connectors/docs/ErrorResponseDto.md)
  - [GetConnectorV1401Response](sailpoint/connectors/docs/GetConnectorV1401Response.md)
  - [GetConnectorV1429Response](sailpoint/connectors/docs/GetConnectorV1429Response.md)
- - [Jsonpatchoperation](sailpoint/connectors/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/connectors/docs/JsonpatchoperationValue.md)
- - [Localeorigin](sailpoint/connectors/docs/Localeorigin.md)
+ - [JsonPatchOperation](sailpoint/connectors/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/connectors/docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](sailpoint/connectors/docs/LocaleOrigin.md)
  - [PutConnectorCorrelationConfigV1Request](sailpoint/connectors/docs/PutConnectorCorrelationConfigV1Request.md)
  - [PutConnectorSourceConfigV1Request](sailpoint/connectors/docs/PutConnectorSourceConfigV1Request.md)
  - [PutConnectorSourceTemplateV1Request](sailpoint/connectors/docs/PutConnectorSourceTemplateV1Request.md)
- - [Updatedetail](sailpoint/connectors/docs/Updatedetail.md)
- - [V3connectordto](sailpoint/connectors/docs/V3connectordto.md)
- - [V3createconnectordto](sailpoint/connectors/docs/V3createconnectordto.md)
+ - [UpdateDetail](sailpoint/connectors/docs/UpdateDetail.md)
+ - [V3ConnectorDto](sailpoint/connectors/docs/V3ConnectorDto.md)
+ - [V3CreateConnectorDto](sailpoint/connectors/docs/V3CreateConnectorDto.md)
 
 
 <a id="documentation-for-authorization"></a>

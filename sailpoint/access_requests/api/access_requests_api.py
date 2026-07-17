@@ -19,19 +19,19 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.access_requests.models.accessrequest import Accessrequest
-from sailpoint.access_requests.models.accessrequestadminitemstatus import Accessrequestadminitemstatus
-from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
-from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
-from sailpoint.access_requests.models.accessrequestresponse import Accessrequestresponse
-from sailpoint.access_requests.models.accountsselectionrequest import Accountsselectionrequest
-from sailpoint.access_requests.models.accountsselectionresponse import Accountsselectionresponse
-from sailpoint.access_requests.models.bulkapproveaccessrequest import Bulkapproveaccessrequest
-from sailpoint.access_requests.models.bulkcancelaccessrequest import Bulkcancelaccessrequest
-from sailpoint.access_requests.models.cancelaccessrequest import Cancelaccessrequest
-from sailpoint.access_requests.models.closeaccessrequest import Closeaccessrequest
-from sailpoint.access_requests.models.identityentitlementdetails import Identityentitlementdetails
-from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
+from sailpoint.access_requests.models.access_request import AccessRequest
+from sailpoint.access_requests.models.access_request_admin_item_status import AccessRequestAdminItemStatus
+from sailpoint.access_requests.models.access_request_config import AccessRequestConfig
+from sailpoint.access_requests.models.access_request_config2 import AccessRequestConfig2
+from sailpoint.access_requests.models.access_request_response import AccessRequestResponse
+from sailpoint.access_requests.models.accounts_selection_request import AccountsSelectionRequest
+from sailpoint.access_requests.models.accounts_selection_response import AccountsSelectionResponse
+from sailpoint.access_requests.models.bulk_approve_access_request import BulkApproveAccessRequest
+from sailpoint.access_requests.models.bulk_cancel_access_request import BulkCancelAccessRequest
+from sailpoint.access_requests.models.cancel_access_request import CancelAccessRequest
+from sailpoint.access_requests.models.close_access_request import CloseAccessRequest
+from sailpoint.access_requests.models.identity_entitlement_details import IdentityEntitlementDetails
+from sailpoint.access_requests.models.requested_item_status import RequestedItemStatus
 
 from sailpoint.access_requests.api_client import ApiClient, RequestSerialized
 from sailpoint.access_requests.api_response import ApiResponse
@@ -54,7 +54,7 @@ class AccessRequestsApi:
     @validate_call
     def approve_bulk_access_request_v1(
         self,
-        bulkapproveaccessrequest: Bulkapproveaccessrequest,
+        bulk_approve_access_request: BulkApproveAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,8 +72,8 @@ class AccessRequestsApi:
 
         This API endpoint allows approving pending access requests in bulk. Maximum of 50 approval ids can be  provided in the request for one single invocation.  ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can approve the access requests in bulk.
 
-        :param bulkapproveaccessrequest: (required)
-        :type bulkapproveaccessrequest: Bulkapproveaccessrequest
+        :param bulk_approve_access_request: (required)
+        :type bulk_approve_access_request: BulkApproveAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -97,7 +97,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_access_request_v1_serialize(
-            bulkapproveaccessrequest=bulkapproveaccessrequest,
+            bulk_approve_access_request=bulk_approve_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,12 +106,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -127,7 +127,7 @@ class AccessRequestsApi:
     @validate_call
     def approve_bulk_access_request_v1_with_http_info(
         self,
-        bulkapproveaccessrequest: Bulkapproveaccessrequest,
+        bulk_approve_access_request: BulkApproveAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,8 +145,8 @@ class AccessRequestsApi:
 
         This API endpoint allows approving pending access requests in bulk. Maximum of 50 approval ids can be  provided in the request for one single invocation.  ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can approve the access requests in bulk.
 
-        :param bulkapproveaccessrequest: (required)
-        :type bulkapproveaccessrequest: Bulkapproveaccessrequest
+        :param bulk_approve_access_request: (required)
+        :type bulk_approve_access_request: BulkApproveAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,7 +170,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_access_request_v1_serialize(
-            bulkapproveaccessrequest=bulkapproveaccessrequest,
+            bulk_approve_access_request=bulk_approve_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -179,12 +179,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -200,7 +200,7 @@ class AccessRequestsApi:
     @validate_call
     def approve_bulk_access_request_v1_without_preload_content(
         self,
-        bulkapproveaccessrequest: Bulkapproveaccessrequest,
+        bulk_approve_access_request: BulkApproveAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -218,8 +218,8 @@ class AccessRequestsApi:
 
         This API endpoint allows approving pending access requests in bulk. Maximum of 50 approval ids can be  provided in the request for one single invocation.  ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can approve the access requests in bulk.
 
-        :param bulkapproveaccessrequest: (required)
-        :type bulkapproveaccessrequest: Bulkapproveaccessrequest
+        :param bulk_approve_access_request: (required)
+        :type bulk_approve_access_request: BulkApproveAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,7 +243,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._approve_bulk_access_request_v1_serialize(
-            bulkapproveaccessrequest=bulkapproveaccessrequest,
+            bulk_approve_access_request=bulk_approve_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,12 +252,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -268,7 +268,7 @@ class AccessRequestsApi:
 
     def _approve_bulk_access_request_v1_serialize(
         self,
-        bulkapproveaccessrequest,
+        bulk_approve_access_request,
         _request_auth,
         _content_type,
         _headers,
@@ -294,8 +294,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkapproveaccessrequest is not None:
-            _body_params = bulkapproveaccessrequest
+        if bulk_approve_access_request is not None:
+            _body_params = bulk_approve_access_request
 
 
         # set the HTTP header `Accept`
@@ -345,7 +345,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_in_bulk_v1(
         self,
-        bulkcancelaccessrequest: Bulkcancelaccessrequest,
+        bulk_cancel_access_request: BulkCancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -363,8 +363,8 @@ class AccessRequestsApi:
 
         This API endpoint allows cancelling pending access requests in bulk. Maximum of 50 access request ids can be  provided in the request for one single invocation.  Only ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can cancel the access requests in  bulk.
 
-        :param bulkcancelaccessrequest: (required)
-        :type bulkcancelaccessrequest: Bulkcancelaccessrequest
+        :param bulk_cancel_access_request: (required)
+        :type bulk_cancel_access_request: BulkCancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -388,7 +388,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_in_bulk_v1_serialize(
-            bulkcancelaccessrequest=bulkcancelaccessrequest,
+            bulk_cancel_access_request=bulk_cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -397,12 +397,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -418,7 +418,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_in_bulk_v1_with_http_info(
         self,
-        bulkcancelaccessrequest: Bulkcancelaccessrequest,
+        bulk_cancel_access_request: BulkCancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -436,8 +436,8 @@ class AccessRequestsApi:
 
         This API endpoint allows cancelling pending access requests in bulk. Maximum of 50 access request ids can be  provided in the request for one single invocation.  Only ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can cancel the access requests in  bulk.
 
-        :param bulkcancelaccessrequest: (required)
-        :type bulkcancelaccessrequest: Bulkcancelaccessrequest
+        :param bulk_cancel_access_request: (required)
+        :type bulk_cancel_access_request: BulkCancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,7 +461,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_in_bulk_v1_serialize(
-            bulkcancelaccessrequest=bulkcancelaccessrequest,
+            bulk_cancel_access_request=bulk_cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -470,12 +470,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -491,7 +491,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_in_bulk_v1_without_preload_content(
         self,
-        bulkcancelaccessrequest: Bulkcancelaccessrequest,
+        bulk_cancel_access_request: BulkCancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -509,8 +509,8 @@ class AccessRequestsApi:
 
         This API endpoint allows cancelling pending access requests in bulk. Maximum of 50 access request ids can be  provided in the request for one single invocation.  Only ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can cancel the access requests in  bulk.
 
-        :param bulkcancelaccessrequest: (required)
-        :type bulkcancelaccessrequest: Bulkcancelaccessrequest
+        :param bulk_cancel_access_request: (required)
+        :type bulk_cancel_access_request: BulkCancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -534,7 +534,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_in_bulk_v1_serialize(
-            bulkcancelaccessrequest=bulkcancelaccessrequest,
+            bulk_cancel_access_request=bulk_cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -543,12 +543,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -559,7 +559,7 @@ class AccessRequestsApi:
 
     def _cancel_access_request_in_bulk_v1_serialize(
         self,
-        bulkcancelaccessrequest,
+        bulk_cancel_access_request,
         _request_auth,
         _content_type,
         _headers,
@@ -585,8 +585,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkcancelaccessrequest is not None:
-            _body_params = bulkcancelaccessrequest
+        if bulk_cancel_access_request is not None:
+            _body_params = bulk_cancel_access_request
 
 
         # set the HTTP header `Accept`
@@ -636,7 +636,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_v1(
         self,
-        cancelaccessrequest: Cancelaccessrequest,
+        cancel_access_request: CancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -654,8 +654,8 @@ class AccessRequestsApi:
 
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step. In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
 
-        :param cancelaccessrequest: (required)
-        :type cancelaccessrequest: Cancelaccessrequest
+        :param cancel_access_request: (required)
+        :type cancel_access_request: CancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -679,7 +679,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_v1_serialize(
-            cancelaccessrequest=cancelaccessrequest,
+            cancel_access_request=cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -688,12 +688,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -709,7 +709,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_v1_with_http_info(
         self,
-        cancelaccessrequest: Cancelaccessrequest,
+        cancel_access_request: CancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -727,8 +727,8 @@ class AccessRequestsApi:
 
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step. In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
 
-        :param cancelaccessrequest: (required)
-        :type cancelaccessrequest: Cancelaccessrequest
+        :param cancel_access_request: (required)
+        :type cancel_access_request: CancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -752,7 +752,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_v1_serialize(
-            cancelaccessrequest=cancelaccessrequest,
+            cancel_access_request=cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -761,12 +761,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -782,7 +782,7 @@ class AccessRequestsApi:
     @validate_call
     def cancel_access_request_v1_without_preload_content(
         self,
-        cancelaccessrequest: Cancelaccessrequest,
+        cancel_access_request: CancelAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -800,8 +800,8 @@ class AccessRequestsApi:
 
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step. In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
 
-        :param cancelaccessrequest: (required)
-        :type cancelaccessrequest: Cancelaccessrequest
+        :param cancel_access_request: (required)
+        :type cancel_access_request: CancelAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -825,7 +825,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._cancel_access_request_v1_serialize(
-            cancelaccessrequest=cancelaccessrequest,
+            cancel_access_request=cancel_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -834,12 +834,12 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -850,7 +850,7 @@ class AccessRequestsApi:
 
     def _cancel_access_request_v1_serialize(
         self,
-        cancelaccessrequest,
+        cancel_access_request,
         _request_auth,
         _content_type,
         _headers,
@@ -876,8 +876,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if cancelaccessrequest is not None:
-            _body_params = cancelaccessrequest
+        if cancel_access_request is not None:
+            _body_params = cancel_access_request
 
 
         # set the HTTP header `Accept`
@@ -927,7 +927,7 @@ class AccessRequestsApi:
     @validate_call
     def close_access_request_v1(
         self,
-        closeaccessrequest: Closeaccessrequest,
+        close_access_request: CloseAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -945,8 +945,8 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param closeaccessrequest: (required)
-        :type closeaccessrequest: Closeaccessrequest
+        :param close_access_request: (required)
+        :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -970,7 +970,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_v1_serialize(
-            closeaccessrequest=closeaccessrequest,
+            close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -979,11 +979,11 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -999,7 +999,7 @@ class AccessRequestsApi:
     @validate_call
     def close_access_request_v1_with_http_info(
         self,
-        closeaccessrequest: Closeaccessrequest,
+        close_access_request: CloseAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1017,8 +1017,8 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param closeaccessrequest: (required)
-        :type closeaccessrequest: Closeaccessrequest
+        :param close_access_request: (required)
+        :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1042,7 +1042,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_v1_serialize(
-            closeaccessrequest=closeaccessrequest,
+            close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1051,11 +1051,11 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1071,7 +1071,7 @@ class AccessRequestsApi:
     @validate_call
     def close_access_request_v1_without_preload_content(
         self,
-        closeaccessrequest: Closeaccessrequest,
+        close_access_request: CloseAccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1089,8 +1089,8 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param closeaccessrequest: (required)
-        :type closeaccessrequest: Closeaccessrequest
+        :param close_access_request: (required)
+        :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1114,7 +1114,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_v1_serialize(
-            closeaccessrequest=closeaccessrequest,
+            close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1123,11 +1123,11 @@ class AccessRequestsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1138,7 +1138,7 @@ class AccessRequestsApi:
 
     def _close_access_request_v1_serialize(
         self,
-        closeaccessrequest,
+        close_access_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1164,8 +1164,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if closeaccessrequest is not None:
-            _body_params = closeaccessrequest
+        if close_access_request is not None:
+            _body_params = close_access_request
 
 
         # set the HTTP header `Accept`
@@ -1215,7 +1215,7 @@ class AccessRequestsApi:
     @validate_call
     def create_access_request_v1(
         self,
-        accessrequest: Accessrequest,
+        access_request: AccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1228,13 +1228,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestresponse:
+    ) -> AccessRequestResponse:
         """Submit access request
 
         Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.  >**Security:** idn:access-request:manage is for ORG_ADMIN level. idn:access-request-self:manage is for USER level.  :::info The ability to request access using this API is constrained by the Access Request Segments defined in the API token's user context. :::  Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it does not return an error if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.  It is best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) APIs. You can also use the [Search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items an identity has before submitting an access request to ensure that you aren't requesting access that is already granted. If you use this API to request access that an identity already has,  without changing the account details or end date information from the existing assignment,  the API will cancel the request as a duplicate.  There are two types of access request:  __GRANT_ACCESS__ * Can be requested for multiple identities in a single request. * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.   * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others. * Roles, access profiles and entitlements can be requested. * You can specify a `startDate` to set or alter a sunrise date-time on an assignment. The startDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunrise date and its yet to be provisioned, you can also submit a request without a `startDate` to request immediate provisioning after approval. * If a `startDate` is specified, then the requested role, access profile, or entitlement will be provisioned on that date and time. * You can specify a `removeDate` to set or alter a sunset date-time on an assignment. The removeDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunset date, you can also submit a request without a `removeDate` to request removal of the sunset date and time. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Now supports an alternate field 'requestedForWithRequestedItems' for users to specify account selections while requesting items where they have more than one account on the source.  :::caution  If any entitlements are being requested, then the maximum number of entitlements that can be requested is 25, and the maximum number of identities that can be requested for is 10. If you exceed these limits, the request will fail with a 400 error. If you are not requesting any entitlements, then there are no limits.  :::  __REVOKE_ACCESS__ * Can only be requested for a single identity at a time. * You cannot use an access request to revoke access from an identity if that access has been granted by role membership or by birthright provisioning.  * Does not support self request. Only manager can request to revoke access for their directly managed employees. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Roles, access profiles, and entitlements can be requested for revocation. * Revoke requests for entitlements are limited to 1 entitlement per access request currently. * You cannot specify a 'startDate' in a REVOKE_ACCESS request, as startDate is only applicable for GRANT_ACCESS requests to indicate when the access should be provisioned, and it does not make sense in the context of revoking access. * You can specify a `removeDate` to add or alter a sunset date and time on an assignment. The `removeDate` must be a future date-time, in the UTC timezone. If the user already has the access assigned with a sunset date and time, the removeDate must be a date-time earlier than the existing sunset date and time.  * Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone. * Now supports REVOKE_ACCESS requests for identities with multiple accounts on a single source, with the help of 'assignmentId' and 'nativeIdentity' fields. These fields should be used within the 'requestedItems' section for the revoke requests.  * Usage of 'requestedForWithRequestedItems' field is not supported for revoke requests. 
 
-        :param accessrequest: (required)
-        :type accessrequest: Accessrequest
+        :param access_request: (required)
+        :type access_request: AccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1258,7 +1258,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._create_access_request_v1_serialize(
-            accessrequest=accessrequest,
+            access_request=access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1266,12 +1266,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessrequestresponse",
-            '400': "Errorresponsedto",
+            '202': "AccessRequestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1287,7 +1287,7 @@ class AccessRequestsApi:
     @validate_call
     def create_access_request_v1_with_http_info(
         self,
-        accessrequest: Accessrequest,
+        access_request: AccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1300,13 +1300,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestresponse]:
+    ) -> ApiResponse[AccessRequestResponse]:
         """Submit access request
 
         Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.  >**Security:** idn:access-request:manage is for ORG_ADMIN level. idn:access-request-self:manage is for USER level.  :::info The ability to request access using this API is constrained by the Access Request Segments defined in the API token's user context. :::  Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it does not return an error if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.  It is best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) APIs. You can also use the [Search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items an identity has before submitting an access request to ensure that you aren't requesting access that is already granted. If you use this API to request access that an identity already has,  without changing the account details or end date information from the existing assignment,  the API will cancel the request as a duplicate.  There are two types of access request:  __GRANT_ACCESS__ * Can be requested for multiple identities in a single request. * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.   * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others. * Roles, access profiles and entitlements can be requested. * You can specify a `startDate` to set or alter a sunrise date-time on an assignment. The startDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunrise date and its yet to be provisioned, you can also submit a request without a `startDate` to request immediate provisioning after approval. * If a `startDate` is specified, then the requested role, access profile, or entitlement will be provisioned on that date and time. * You can specify a `removeDate` to set or alter a sunset date-time on an assignment. The removeDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunset date, you can also submit a request without a `removeDate` to request removal of the sunset date and time. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Now supports an alternate field 'requestedForWithRequestedItems' for users to specify account selections while requesting items where they have more than one account on the source.  :::caution  If any entitlements are being requested, then the maximum number of entitlements that can be requested is 25, and the maximum number of identities that can be requested for is 10. If you exceed these limits, the request will fail with a 400 error. If you are not requesting any entitlements, then there are no limits.  :::  __REVOKE_ACCESS__ * Can only be requested for a single identity at a time. * You cannot use an access request to revoke access from an identity if that access has been granted by role membership or by birthright provisioning.  * Does not support self request. Only manager can request to revoke access for their directly managed employees. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Roles, access profiles, and entitlements can be requested for revocation. * Revoke requests for entitlements are limited to 1 entitlement per access request currently. * You cannot specify a 'startDate' in a REVOKE_ACCESS request, as startDate is only applicable for GRANT_ACCESS requests to indicate when the access should be provisioned, and it does not make sense in the context of revoking access. * You can specify a `removeDate` to add or alter a sunset date and time on an assignment. The `removeDate` must be a future date-time, in the UTC timezone. If the user already has the access assigned with a sunset date and time, the removeDate must be a date-time earlier than the existing sunset date and time.  * Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone. * Now supports REVOKE_ACCESS requests for identities with multiple accounts on a single source, with the help of 'assignmentId' and 'nativeIdentity' fields. These fields should be used within the 'requestedItems' section for the revoke requests.  * Usage of 'requestedForWithRequestedItems' field is not supported for revoke requests. 
 
-        :param accessrequest: (required)
-        :type accessrequest: Accessrequest
+        :param access_request: (required)
+        :type access_request: AccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1330,7 +1330,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._create_access_request_v1_serialize(
-            accessrequest=accessrequest,
+            access_request=access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1338,12 +1338,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessrequestresponse",
-            '400': "Errorresponsedto",
+            '202': "AccessRequestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1359,7 +1359,7 @@ class AccessRequestsApi:
     @validate_call
     def create_access_request_v1_without_preload_content(
         self,
-        accessrequest: Accessrequest,
+        access_request: AccessRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1377,8 +1377,8 @@ class AccessRequestsApi:
 
         Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.  >**Security:** idn:access-request:manage is for ORG_ADMIN level. idn:access-request-self:manage is for USER level.  :::info The ability to request access using this API is constrained by the Access Request Segments defined in the API token's user context. :::  Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it does not return an error if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.  It is best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) APIs. You can also use the [Search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items an identity has before submitting an access request to ensure that you aren't requesting access that is already granted. If you use this API to request access that an identity already has,  without changing the account details or end date information from the existing assignment,  the API will cancel the request as a duplicate.  There are two types of access request:  __GRANT_ACCESS__ * Can be requested for multiple identities in a single request. * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.   * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others. * Roles, access profiles and entitlements can be requested. * You can specify a `startDate` to set or alter a sunrise date-time on an assignment. The startDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunrise date and its yet to be provisioned, you can also submit a request without a `startDate` to request immediate provisioning after approval. * If a `startDate` is specified, then the requested role, access profile, or entitlement will be provisioned on that date and time. * You can specify a `removeDate` to set or alter a sunset date-time on an assignment. The removeDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunset date, you can also submit a request without a `removeDate` to request removal of the sunset date and time. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Now supports an alternate field 'requestedForWithRequestedItems' for users to specify account selections while requesting items where they have more than one account on the source.  :::caution  If any entitlements are being requested, then the maximum number of entitlements that can be requested is 25, and the maximum number of identities that can be requested for is 10. If you exceed these limits, the request will fail with a 400 error. If you are not requesting any entitlements, then there are no limits.  :::  __REVOKE_ACCESS__ * Can only be requested for a single identity at a time. * You cannot use an access request to revoke access from an identity if that access has been granted by role membership or by birthright provisioning.  * Does not support self request. Only manager can request to revoke access for their directly managed employees. * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time. * Roles, access profiles, and entitlements can be requested for revocation. * Revoke requests for entitlements are limited to 1 entitlement per access request currently. * You cannot specify a 'startDate' in a REVOKE_ACCESS request, as startDate is only applicable for GRANT_ACCESS requests to indicate when the access should be provisioned, and it does not make sense in the context of revoking access. * You can specify a `removeDate` to add or alter a sunset date and time on an assignment. The `removeDate` must be a future date-time, in the UTC timezone. If the user already has the access assigned with a sunset date and time, the removeDate must be a date-time earlier than the existing sunset date and time.  * Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone. * Now supports REVOKE_ACCESS requests for identities with multiple accounts on a single source, with the help of 'assignmentId' and 'nativeIdentity' fields. These fields should be used within the 'requestedItems' section for the revoke requests.  * Usage of 'requestedForWithRequestedItems' field is not supported for revoke requests. 
 
-        :param accessrequest: (required)
-        :type accessrequest: Accessrequest
+        :param access_request: (required)
+        :type access_request: AccessRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1402,7 +1402,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._create_access_request_v1_serialize(
-            accessrequest=accessrequest,
+            access_request=access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1410,12 +1410,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessrequestresponse",
-            '400': "Errorresponsedto",
+            '202': "AccessRequestResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1426,7 +1426,7 @@ class AccessRequestsApi:
 
     def _create_access_request_v1_serialize(
         self,
-        accessrequest,
+        access_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1452,8 +1452,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessrequest is not None:
-            _body_params = accessrequest
+        if access_request is not None:
+            _body_params = access_request
 
 
         # set the HTTP header `Accept`
@@ -1515,7 +1515,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestconfigv1:
+    ) -> AccessRequestConfig:
         """(Deprecated) Get access request configuration
 
         This endpoint returns the current access-request configuration.
@@ -1551,12 +1551,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1584,7 +1584,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestconfigv1]:
+    ) -> ApiResponse[AccessRequestConfig]:
         """(Deprecated) Get access request configuration
 
         This endpoint returns the current access-request configuration.
@@ -1620,12 +1620,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1689,12 +1689,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1778,7 +1778,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestconfigv2:
+    ) -> AccessRequestConfig2:
         """Get access request configuration
 
         This endpoint returns the current access-request configuration.
@@ -1813,12 +1813,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1846,7 +1846,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestconfigv2]:
+    ) -> ApiResponse[AccessRequestConfig2]:
         """Get access request configuration
 
         This endpoint returns the current access-request configuration.
@@ -1881,12 +1881,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1949,12 +1949,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2040,7 +2040,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityentitlementdetails:
+    ) -> IdentityEntitlementDetails:
         """Identity entitlement details
 
         Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
@@ -2081,13 +2081,13 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityentitlementdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityEntitlementDetails",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2117,7 +2117,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityentitlementdetails]:
+    ) -> ApiResponse[IdentityEntitlementDetails]:
         """Identity entitlement details
 
         Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
@@ -2158,13 +2158,13 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityentitlementdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityEntitlementDetails",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2235,13 +2235,13 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityentitlementdetails",
-            '400': "Errorresponsedto",
+            '200': "IdentityEntitlementDetails",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2341,7 +2341,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Requesteditemstatus]:
+    ) -> List[RequestedItemStatus]:
         """Access request status
 
         Use this API to return a list of access request statuses based on the specified query parameters. If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses. Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
@@ -2406,12 +2406,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Requesteditemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[RequestedItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2449,7 +2449,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Requesteditemstatus]]:
+    ) -> ApiResponse[List[RequestedItemStatus]]:
         """Access request status
 
         Use this API to return a list of access request statuses based on the specified query parameters. If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses. Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
@@ -2514,12 +2514,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Requesteditemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[RequestedItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2622,12 +2622,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Requesteditemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[RequestedItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2772,7 +2772,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Accessrequestadminitemstatus]:
+    ) -> List[AccessRequestAdminItemStatus]:
         """Access request status for administrators
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
@@ -2840,12 +2840,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestadminitemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2884,7 +2884,7 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Accessrequestadminitemstatus]]:
+    ) -> ApiResponse[List[AccessRequestAdminItemStatus]]:
         """Access request status for administrators
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
@@ -2952,12 +2952,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestadminitemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3064,12 +3064,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Accessrequestadminitemstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3194,7 +3194,7 @@ class AccessRequestsApi:
     @validate_call
     def load_account_selections_v1(
         self,
-        accountsselectionrequest: Accountsselectionrequest,
+        accounts_selection_request: AccountsSelectionRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3208,13 +3208,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accountsselectionresponse:
+    ) -> AccountsSelectionResponse:
         """Get accounts selections for identity
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
-        :param accountsselectionrequest: (required)
-        :type accountsselectionrequest: Accountsselectionrequest
+        :param accounts_selection_request: (required)
+        :type accounts_selection_request: AccountsSelectionRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3240,7 +3240,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_v1_serialize(
-            accountsselectionrequest=accountsselectionrequest,
+            accounts_selection_request=accounts_selection_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3249,12 +3249,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountsselectionresponse",
-            '400': "Errorresponsedto",
+            '200': "AccountsSelectionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3270,7 +3270,7 @@ class AccessRequestsApi:
     @validate_call
     def load_account_selections_v1_with_http_info(
         self,
-        accountsselectionrequest: Accountsselectionrequest,
+        accounts_selection_request: AccountsSelectionRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3284,13 +3284,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accountsselectionresponse]:
+    ) -> ApiResponse[AccountsSelectionResponse]:
         """Get accounts selections for identity
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
-        :param accountsselectionrequest: (required)
-        :type accountsselectionrequest: Accountsselectionrequest
+        :param accounts_selection_request: (required)
+        :type accounts_selection_request: AccountsSelectionRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3316,7 +3316,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_v1_serialize(
-            accountsselectionrequest=accountsselectionrequest,
+            accounts_selection_request=accounts_selection_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3325,12 +3325,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountsselectionresponse",
-            '400': "Errorresponsedto",
+            '200': "AccountsSelectionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3346,7 +3346,7 @@ class AccessRequestsApi:
     @validate_call
     def load_account_selections_v1_without_preload_content(
         self,
-        accountsselectionrequest: Accountsselectionrequest,
+        accounts_selection_request: AccountsSelectionRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -3365,8 +3365,8 @@ class AccessRequestsApi:
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
-        :param accountsselectionrequest: (required)
-        :type accountsselectionrequest: Accountsselectionrequest
+        :param accounts_selection_request: (required)
+        :type accounts_selection_request: AccountsSelectionRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3392,7 +3392,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_v1_serialize(
-            accountsselectionrequest=accountsselectionrequest,
+            accounts_selection_request=accounts_selection_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3401,12 +3401,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accountsselectionresponse",
-            '400': "Errorresponsedto",
+            '200': "AccountsSelectionResponse",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3417,7 +3417,7 @@ class AccessRequestsApi:
 
     def _load_account_selections_v1_serialize(
         self,
-        accountsselectionrequest,
+        accounts_selection_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -3446,8 +3446,8 @@ class AccessRequestsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if accountsselectionrequest is not None:
-            _body_params = accountsselectionrequest
+        if accounts_selection_request is not None:
+            _body_params = accounts_selection_request
 
 
         # set the HTTP header `Accept`
@@ -3497,7 +3497,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v1(
         self,
-        accessrequestconfigv1: Accessrequestconfigv1,
+        access_request_config: AccessRequestConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3510,13 +3510,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestconfigv1:
+    ) -> AccessRequestConfig:
         """(Deprecated) Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv1: (required)
-        :type accessrequestconfigv1: Accessrequestconfigv1
+        :param access_request_config: (required)
+        :type access_request_config: AccessRequestConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3541,7 +3541,7 @@ class AccessRequestsApi:
         warnings.warn("PUT /access-request-config/v1 is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_v1_serialize(
-            accessrequestconfigv1=accessrequestconfigv1,
+            access_request_config=access_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3549,12 +3549,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3570,7 +3570,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v1_with_http_info(
         self,
-        accessrequestconfigv1: Accessrequestconfigv1,
+        access_request_config: AccessRequestConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3583,13 +3583,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestconfigv1]:
+    ) -> ApiResponse[AccessRequestConfig]:
         """(Deprecated) Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv1: (required)
-        :type accessrequestconfigv1: Accessrequestconfigv1
+        :param access_request_config: (required)
+        :type access_request_config: AccessRequestConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3614,7 +3614,7 @@ class AccessRequestsApi:
         warnings.warn("PUT /access-request-config/v1 is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_v1_serialize(
-            accessrequestconfigv1=accessrequestconfigv1,
+            access_request_config=access_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3622,12 +3622,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3643,7 +3643,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v1_without_preload_content(
         self,
-        accessrequestconfigv1: Accessrequestconfigv1,
+        access_request_config: AccessRequestConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3661,8 +3661,8 @@ class AccessRequestsApi:
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv1: (required)
-        :type accessrequestconfigv1: Accessrequestconfigv1
+        :param access_request_config: (required)
+        :type access_request_config: AccessRequestConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3687,7 +3687,7 @@ class AccessRequestsApi:
         warnings.warn("PUT /access-request-config/v1 is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_v1_serialize(
-            accessrequestconfigv1=accessrequestconfigv1,
+            access_request_config=access_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3695,12 +3695,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv1",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3711,7 +3711,7 @@ class AccessRequestsApi:
 
     def _set_access_request_config_v1_serialize(
         self,
-        accessrequestconfigv1,
+        access_request_config,
         _request_auth,
         _content_type,
         _headers,
@@ -3737,8 +3737,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessrequestconfigv1 is not None:
-            _body_params = accessrequestconfigv1
+        if access_request_config is not None:
+            _body_params = access_request_config
 
 
         # set the HTTP header `Accept`
@@ -3788,7 +3788,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v2(
         self,
-        accessrequestconfigv2: Accessrequestconfigv2,
+        access_request_config2: AccessRequestConfig2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3801,13 +3801,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessrequestconfigv2:
+    ) -> AccessRequestConfig2:
         """Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv2: (required)
-        :type accessrequestconfigv2: Accessrequestconfigv2
+        :param access_request_config2: (required)
+        :type access_request_config2: AccessRequestConfig2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3831,7 +3831,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_config_v2_serialize(
-            accessrequestconfigv2=accessrequestconfigv2,
+            access_request_config2=access_request_config2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3839,12 +3839,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3860,7 +3860,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v2_with_http_info(
         self,
-        accessrequestconfigv2: Accessrequestconfigv2,
+        access_request_config2: AccessRequestConfig2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3873,13 +3873,13 @@ class AccessRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessrequestconfigv2]:
+    ) -> ApiResponse[AccessRequestConfig2]:
         """Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv2: (required)
-        :type accessrequestconfigv2: Accessrequestconfigv2
+        :param access_request_config2: (required)
+        :type access_request_config2: AccessRequestConfig2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3903,7 +3903,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_config_v2_serialize(
-            accessrequestconfigv2=accessrequestconfigv2,
+            access_request_config2=access_request_config2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3911,12 +3911,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3932,7 +3932,7 @@ class AccessRequestsApi:
     @validate_call
     def set_access_request_config_v2_without_preload_content(
         self,
-        accessrequestconfigv2: Accessrequestconfigv2,
+        access_request_config2: AccessRequestConfig2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3950,8 +3950,8 @@ class AccessRequestsApi:
 
         This endpoint replaces the current access-request configuration.
 
-        :param accessrequestconfigv2: (required)
-        :type accessrequestconfigv2: Accessrequestconfigv2
+        :param access_request_config2: (required)
+        :type access_request_config2: AccessRequestConfig2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3975,7 +3975,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._set_access_request_config_v2_serialize(
-            accessrequestconfigv2=accessrequestconfigv2,
+            access_request_config2=access_request_config2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3983,12 +3983,12 @@ class AccessRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Accessrequestconfigv2",
-            '400': "Errorresponsedto",
+            '200': "AccessRequestConfig2",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfigV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestConfigV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3999,7 +3999,7 @@ class AccessRequestsApi:
 
     def _set_access_request_config_v2_serialize(
         self,
-        accessrequestconfigv2,
+        access_request_config2,
         _request_auth,
         _content_type,
         _headers,
@@ -4025,8 +4025,8 @@ class AccessRequestsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessrequestconfigv2 is not None:
-            _body_params = accessrequestconfigv2
+        if access_request_config2 is not None:
+            _body_params = access_request_config2
 
 
         # set the HTTP header `Accept`

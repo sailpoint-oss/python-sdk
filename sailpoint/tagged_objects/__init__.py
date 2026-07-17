@@ -31,13 +31,13 @@ from sailpoint.tagged_objects.exceptions import ApiAttributeError
 from sailpoint.tagged_objects.exceptions import ApiException
 
 # import models into sdk package
-from sailpoint.tagged_objects.models.bulkaddtaggedobject import Bulkaddtaggedobject
-from sailpoint.tagged_objects.models.bulkremovetaggedobject import Bulkremovetaggedobject
-from sailpoint.tagged_objects.models.bulktaggedobjectresponse import Bulktaggedobjectresponse
-from sailpoint.tagged_objects.models.errormessagedto import Errormessagedto
-from sailpoint.tagged_objects.models.errorresponsedto import Errorresponsedto
+from sailpoint.tagged_objects.models.bulk_add_tagged_object import BulkAddTaggedObject
+from sailpoint.tagged_objects.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
+from sailpoint.tagged_objects.models.bulk_tagged_object_response import BulkTaggedObjectResponse
+from sailpoint.tagged_objects.models.error_message_dto import ErrorMessageDto
+from sailpoint.tagged_objects.models.error_response_dto import ErrorResponseDto
 from sailpoint.tagged_objects.models.list_tagged_objects_v1401_response import ListTaggedObjectsV1401Response
 from sailpoint.tagged_objects.models.list_tagged_objects_v1429_response import ListTaggedObjectsV1429Response
-from sailpoint.tagged_objects.models.localeorigin import Localeorigin
-from sailpoint.tagged_objects.models.taggedobject import Taggedobject
-from sailpoint.tagged_objects.models.taggedobjectdto import Taggedobjectdto
+from sailpoint.tagged_objects.models.locale_origin import LocaleOrigin
+from sailpoint.tagged_objects.models.tagged_object import TaggedObject
+from sailpoint.tagged_objects.models.tagged_object_dto import TaggedObjectDto

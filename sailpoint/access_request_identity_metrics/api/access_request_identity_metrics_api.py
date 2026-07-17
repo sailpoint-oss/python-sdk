@@ -101,11 +101,11 @@ class AccessRequestIdentityMetricsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestIdentityMetricsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestIdentityMetricsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -181,11 +181,11 @@ class AccessRequestIdentityMetricsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestIdentityMetricsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestIdentityMetricsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -261,11 +261,11 @@ class AccessRequestIdentityMetricsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestIdentityMetricsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetAccessRequestIdentityMetricsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -38,20 +38,20 @@ Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passwordorgconfig | [**Passwordorgconfig**](../models/passwordorgconfig) | True  | 
+ Body  | password_org_config | [**PasswordOrgConfig**](../models/password-org-config) | True  | 
 
 ### Return type
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password org config. | Passwordorgconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password org config. | PasswordOrgConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -62,20 +62,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_configuration.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.password_configuration.api_client import ApiClient
-from sailpoint.password_configuration.models.passwordorgconfig import Passwordorgconfig
+from sailpoint.password_configuration.models.password_org_config import PasswordOrgConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    passwordorgconfig = '''{"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9}''' # Passwordorgconfig | 
+    password_org_config = '''{
+          "digitTokenLength" : 9,
+          "digitTokenEnabled" : true,
+          "digitTokenDurationMinutes" : 10,
+          "customInstructionsEnabled" : true
+        }''' # PasswordOrgConfig | 
 
     try:
         # Create password org config
-        new_passwordorgconfig = Passwordorgconfig.from_json(passwordorgconfig)
-        results = PasswordConfigurationApi(api_client).create_password_org_config_v1(passwordorgconfig=new_passwordorgconfig)
+        new_password_org_config = PasswordOrgConfig.from_json(password_org_config)
+        results = PasswordConfigurationApi(api_client).create_password_org_config_v1(password_org_config=new_password_org_config)
         # Below is a request that includes all optional parameters
-        # results = PasswordConfigurationApi(api_client).create_password_org_config_v1(new_passwordorgconfig)
+        # results = PasswordConfigurationApi(api_client).create_password_org_config_v1(new_password_org_config)
         print("The response of PasswordConfigurationApi->create_password_org_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -96,17 +101,17 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 This endpoint does not need any parameter. 
 
 ### Return type
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password org config. | Passwordorgconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password org config. | PasswordOrgConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -117,7 +122,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_configuration.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.password_configuration.api_client import ApiClient
-from sailpoint.password_configuration.models.passwordorgconfig import Passwordorgconfig
+from sailpoint.password_configuration.models.password_org_config import PasswordOrgConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -152,20 +157,20 @@ Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passwordorgconfig | [**Passwordorgconfig**](../models/passwordorgconfig) | True  | 
+ Body  | password_org_config | [**PasswordOrgConfig**](../models/password-org-config) | True  | 
 
 ### Return type
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password org config. | Passwordorgconfig |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password org config. | PasswordOrgConfig |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPasswordOrgConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPasswordOrgConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -176,20 +181,25 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_configuration.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.password_configuration.api_client import ApiClient
-from sailpoint.password_configuration.models.passwordorgconfig import Passwordorgconfig
+from sailpoint.password_configuration.models.password_org_config import PasswordOrgConfig
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    passwordorgconfig = '''{"digitTokenEnabled":true,"digitTokenDurationMinutes":12}''' # Passwordorgconfig | 
+    password_org_config = '''{
+          "digitTokenLength" : 9,
+          "digitTokenEnabled" : true,
+          "digitTokenDurationMinutes" : 10,
+          "customInstructionsEnabled" : true
+        }''' # PasswordOrgConfig | 
 
     try:
         # Update password org config
-        new_passwordorgconfig = Passwordorgconfig.from_json(passwordorgconfig)
-        results = PasswordConfigurationApi(api_client).put_password_org_config_v1(passwordorgconfig=new_passwordorgconfig)
+        new_password_org_config = PasswordOrgConfig.from_json(password_org_config)
+        results = PasswordConfigurationApi(api_client).put_password_org_config_v1(password_org_config=new_password_org_config)
         # Below is a request that includes all optional parameters
-        # results = PasswordConfigurationApi(api_client).put_password_org_config_v1(new_passwordorgconfig)
+        # results = PasswordConfigurationApi(api_client).put_password_org_config_v1(new_password_org_config)
         print("The response of PasswordConfigurationApi->put_password_org_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

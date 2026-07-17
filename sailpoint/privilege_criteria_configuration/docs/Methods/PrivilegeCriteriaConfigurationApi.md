@@ -60,17 +60,17 @@ Param Type | Name | Data Type | Required  | Description
 Path   | criteria_config_id | **str** | True  | The Id of the privilege criteria configuration record to retrieve.
 
 ### Return type
-[**Privilegecriteriaconfigdto**](../models/privilegecriteriaconfigdto)
+[**PrivilegeCriteriaConfigDTO**](../models/privilege-criteria-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Privilegecriteriaconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | PrivilegeCriteriaConfigDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPrivilegeCriteriaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPrivilegeCriteriaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -81,7 +81,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
 from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -118,17 +118,17 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **str** | True  | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
 
 ### Return type
-[**List[Privilegecriteriaconfigdto]**](../models/privilegecriteriaconfigdto)
+[**List[PrivilegeCriteriaConfigDTO]**](../models/privilege-criteria-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | List[Privilegecriteriaconfigdto] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | List[PrivilegeCriteriaConfigDTO] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPrivilegeCriteriaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPrivilegeCriteriaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -139,7 +139,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
 from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -178,17 +178,17 @@ Path   | criteria_config_id | **str** | True  | The Id of the privilege criteria
  Body  | request_body | **[]object** | True  | A list of criteria configuration operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
-[**Privilegecriteriaconfigdto**](../models/privilegecriteriaconfigdto)
+[**PrivilegeCriteriaConfigDTO**](../models/privilege-criteria-config-dto)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | OK | Privilegecriteriaconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | OK | PrivilegeCriteriaConfigDTO |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetPrivilegeCriteriaConfigV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetPrivilegeCriteriaConfigV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json-patch+json
@@ -199,7 +199,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
 from sailpoint.privilege_criteria_configuration.api_client import ApiClient
-from sailpoint.privilege_criteria_configuration.models.privilegecriteriaconfigdto import Privilegecriteriaconfigdto
+from sailpoint.privilege_criteria_configuration.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

@@ -20,24 +20,24 @@ from pydantic import Field, StrictBool, StrictBytes, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.non_employee_lifecycle_management.models.delete_non_employee_records_in_bulk_v1_request import DeleteNonEmployeeRecordsInBulkV1Request
-from sailpoint.non_employee_lifecycle_management.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovaldecision import Nonemployeeapprovaldecision
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitem import Nonemployeeapprovalitem
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalitemdetail import Nonemployeeapprovalitemdetail
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeapprovalsummary import Nonemployeeapprovalsummary
-from sailpoint.non_employee_lifecycle_management.models.nonemployeebulkuploadjob import Nonemployeebulkuploadjob
-from sailpoint.non_employee_lifecycle_management.models.nonemployeebulkuploadstatus import Nonemployeebulkuploadstatus
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerecord import Nonemployeerecord
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerejectapprovaldecision import Nonemployeerejectapprovaldecision
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequest import Nonemployeerequest
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestbody import Nonemployeerequestbody
-from sailpoint.non_employee_lifecycle_management.models.nonemployeerequestsummary import Nonemployeerequestsummary
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattribute import Nonemployeeschemaattribute
-from sailpoint.non_employee_lifecycle_management.models.nonemployeeschemaattributebody import Nonemployeeschemaattributebody
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesource import Nonemployeesource
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcerequestbody import Nonemployeesourcerequestbody
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcewithcloudexternalid import Nonemployeesourcewithcloudexternalid
-from sailpoint.non_employee_lifecycle_management.models.nonemployeesourcewithnecount import Nonemployeesourcewithnecount
+from sailpoint.non_employee_lifecycle_management.models.json_patch_operation import JsonPatchOperation
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_decision import NonEmployeeApprovalDecision
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
+from sailpoint.non_employee_lifecycle_management.models.non_employee_approval_summary import NonEmployeeApprovalSummary
+from sailpoint.non_employee_lifecycle_management.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
+from sailpoint.non_employee_lifecycle_management.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
+from sailpoint.non_employee_lifecycle_management.models.non_employee_record import NonEmployeeRecord
+from sailpoint.non_employee_lifecycle_management.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request import NonEmployeeRequest
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_request_summary import NonEmployeeRequestSummary
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.non_employee_lifecycle_management.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source import NonEmployeeSource
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
+from sailpoint.non_employee_lifecycle_management.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 
 from sailpoint.non_employee_lifecycle_management.api_client import ApiClient, RequestSerialized
 from sailpoint.non_employee_lifecycle_management.api_response import ApiResponse
@@ -61,7 +61,7 @@ class NonEmployeeLifecycleManagementApi:
     def approve_non_employee_request_v1(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeeapprovaldecision: Nonemployeeapprovaldecision,
+        non_employee_approval_decision: NonEmployeeApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,15 +74,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeapprovalitem:
+    ) -> NonEmployeeApprovalItem:
         """Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeeapprovaldecision: (required)
-        :type nonemployeeapprovaldecision: Nonemployeeapprovaldecision
+        :param non_employee_approval_decision: (required)
+        :type non_employee_approval_decision: NonEmployeeApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,7 +107,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._approve_non_employee_request_v1_serialize(
             id=id,
-            nonemployeeapprovaldecision=nonemployeeapprovaldecision,
+            non_employee_approval_decision=non_employee_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -115,12 +115,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -137,7 +137,7 @@ class NonEmployeeLifecycleManagementApi:
     def approve_non_employee_request_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeeapprovaldecision: Nonemployeeapprovaldecision,
+        non_employee_approval_decision: NonEmployeeApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -150,15 +150,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeapprovalitem]:
+    ) -> ApiResponse[NonEmployeeApprovalItem]:
         """Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeeapprovaldecision: (required)
-        :type nonemployeeapprovaldecision: Nonemployeeapprovaldecision
+        :param non_employee_approval_decision: (required)
+        :type non_employee_approval_decision: NonEmployeeApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -183,7 +183,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._approve_non_employee_request_v1_serialize(
             id=id,
-            nonemployeeapprovaldecision=nonemployeeapprovaldecision,
+            non_employee_approval_decision=non_employee_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -191,12 +191,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -213,7 +213,7 @@ class NonEmployeeLifecycleManagementApi:
     def approve_non_employee_request_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeeapprovaldecision: Nonemployeeapprovaldecision,
+        non_employee_approval_decision: NonEmployeeApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -233,8 +233,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeeapprovaldecision: (required)
-        :type nonemployeeapprovaldecision: Nonemployeeapprovaldecision
+        :param non_employee_approval_decision: (required)
+        :type non_employee_approval_decision: NonEmployeeApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -259,7 +259,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._approve_non_employee_request_v1_serialize(
             id=id,
-            nonemployeeapprovaldecision=nonemployeeapprovaldecision,
+            non_employee_approval_decision=non_employee_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,12 +267,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -284,7 +284,7 @@ class NonEmployeeLifecycleManagementApi:
     def _approve_non_employee_request_v1_serialize(
         self,
         id,
-        nonemployeeapprovaldecision,
+        non_employee_approval_decision,
         _request_auth,
         _content_type,
         _headers,
@@ -312,8 +312,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeeapprovaldecision is not None:
-            _body_params = nonemployeeapprovaldecision
+        if non_employee_approval_decision is not None:
+            _body_params = non_employee_approval_decision
 
 
         # set the HTTP header `Accept`
@@ -363,7 +363,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_record_v1(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee record creation request body.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee record creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -376,13 +376,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerecord:
+    ) -> NonEmployeeRecord:
         """Create non-employee record
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
-        :param nonemployeerequestbody: Non-Employee record creation request body. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee record creation request body. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -406,7 +406,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_record_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -414,12 +414,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -435,7 +435,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_record_v1_with_http_info(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee record creation request body.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee record creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -448,13 +448,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerecord]:
+    ) -> ApiResponse[NonEmployeeRecord]:
         """Create non-employee record
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
-        :param nonemployeerequestbody: Non-Employee record creation request body. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee record creation request body. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -478,7 +478,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_record_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -486,12 +486,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,7 +507,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_record_v1_without_preload_content(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee record creation request body.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee record creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -525,8 +525,8 @@ class NonEmployeeLifecycleManagementApi:
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
-        :param nonemployeerequestbody: Non-Employee record creation request body. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee record creation request body. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -550,7 +550,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_record_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -558,12 +558,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +574,7 @@ class NonEmployeeLifecycleManagementApi:
 
     def _create_non_employee_record_v1_serialize(
         self,
-        nonemployeerequestbody,
+        non_employee_request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -600,8 +600,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeerequestbody is not None:
-            _body_params = nonemployeerequestbody
+        if non_employee_request_body is not None:
+            _body_params = non_employee_request_body
 
 
         # set the HTTP header `Accept`
@@ -651,7 +651,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_request_v1(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee creation request body")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee creation request body")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -664,13 +664,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerequest:
+    ) -> NonEmployeeRequest:
         """Create non-employee request
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
-        :param nonemployeerequestbody: Non-Employee creation request body (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee creation request body (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -694,7 +694,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_request_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -702,12 +702,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -723,7 +723,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_request_v1_with_http_info(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee creation request body")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee creation request body")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -736,13 +736,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerequest]:
+    ) -> ApiResponse[NonEmployeeRequest]:
         """Create non-employee request
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
-        :param nonemployeerequestbody: Non-Employee creation request body (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee creation request body (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -766,7 +766,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_request_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -774,12 +774,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -795,7 +795,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_request_v1_without_preload_content(
         self,
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-Employee creation request body")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-Employee creation request body")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -813,8 +813,8 @@ class NonEmployeeLifecycleManagementApi:
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
-        :param nonemployeerequestbody: Non-Employee creation request body (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-Employee creation request body (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -838,7 +838,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_request_v1_serialize(
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -846,12 +846,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -862,7 +862,7 @@ class NonEmployeeLifecycleManagementApi:
 
     def _create_non_employee_request_v1_serialize(
         self,
-        nonemployeerequestbody,
+        non_employee_request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -888,8 +888,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeerequestbody is not None:
-            _body_params = nonemployeerequestbody
+        if non_employee_request_body is not None:
+            _body_params = non_employee_request_body
 
 
         # set the HTTP header `Accept`
@@ -940,7 +940,7 @@ class NonEmployeeLifecycleManagementApi:
     def create_non_employee_source_schema_attributes_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        nonemployeeschemaattributebody: Nonemployeeschemaattributebody,
+        non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -953,15 +953,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeschemaattribute:
+    ) -> NonEmployeeSchemaAttribute:
         """Create a new schema attribute for non-employee source
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param nonemployeeschemaattributebody: (required)
-        :type nonemployeeschemaattributebody: Nonemployeeschemaattributebody
+        :param non_employee_schema_attribute_body: (required)
+        :type non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -986,7 +986,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._create_non_employee_source_schema_attributes_v1_serialize(
             source_id=source_id,
-            nonemployeeschemaattributebody=nonemployeeschemaattributebody,
+            non_employee_schema_attribute_body=non_employee_schema_attribute_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -994,12 +994,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1016,7 +1016,7 @@ class NonEmployeeLifecycleManagementApi:
     def create_non_employee_source_schema_attributes_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        nonemployeeschemaattributebody: Nonemployeeschemaattributebody,
+        non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1029,15 +1029,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeschemaattribute]:
+    ) -> ApiResponse[NonEmployeeSchemaAttribute]:
         """Create a new schema attribute for non-employee source
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param nonemployeeschemaattributebody: (required)
-        :type nonemployeeschemaattributebody: Nonemployeeschemaattributebody
+        :param non_employee_schema_attribute_body: (required)
+        :type non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1062,7 +1062,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._create_non_employee_source_schema_attributes_v1_serialize(
             source_id=source_id,
-            nonemployeeschemaattributebody=nonemployeeschemaattributebody,
+            non_employee_schema_attribute_body=non_employee_schema_attribute_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1070,12 +1070,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1092,7 +1092,7 @@ class NonEmployeeLifecycleManagementApi:
     def create_non_employee_source_schema_attributes_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        nonemployeeschemaattributebody: Nonemployeeschemaattributebody,
+        non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1112,8 +1112,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param nonemployeeschemaattributebody: (required)
-        :type nonemployeeschemaattributebody: Nonemployeeschemaattributebody
+        :param non_employee_schema_attribute_body: (required)
+        :type non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1138,7 +1138,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._create_non_employee_source_schema_attributes_v1_serialize(
             source_id=source_id,
-            nonemployeeschemaattributebody=nonemployeeschemaattributebody,
+            non_employee_schema_attribute_body=non_employee_schema_attribute_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1146,12 +1146,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1163,7 +1163,7 @@ class NonEmployeeLifecycleManagementApi:
     def _create_non_employee_source_schema_attributes_v1_serialize(
         self,
         source_id,
-        nonemployeeschemaattributebody,
+        non_employee_schema_attribute_body,
         _request_auth,
         _content_type,
         _headers,
@@ -1191,8 +1191,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeeschemaattributebody is not None:
-            _body_params = nonemployeeschemaattributebody
+        if non_employee_schema_attribute_body is not None:
+            _body_params = non_employee_schema_attribute_body
 
 
         # set the HTTP header `Accept`
@@ -1242,7 +1242,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_source_v1(
         self,
-        nonemployeesourcerequestbody: Annotated[Nonemployeesourcerequestbody, Field(description="Non-Employee source creation request body.")],
+        non_employee_source_request_body: Annotated[NonEmployeeSourceRequestBody, Field(description="Non-Employee source creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1255,13 +1255,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeesourcewithcloudexternalid:
+    ) -> NonEmployeeSourceWithCloudExternalId:
         """Create non-employee source
 
         Create a non-employee source. 
 
-        :param nonemployeesourcerequestbody: Non-Employee source creation request body. (required)
-        :type nonemployeesourcerequestbody: Nonemployeesourcerequestbody
+        :param non_employee_source_request_body: Non-Employee source creation request body. (required)
+        :type non_employee_source_request_body: NonEmployeeSourceRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1285,7 +1285,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_source_v1_serialize(
-            nonemployeesourcerequestbody=nonemployeesourcerequestbody,
+            non_employee_source_request_body=non_employee_source_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1293,12 +1293,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesourcewithcloudexternalid",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSourceWithCloudExternalId",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1314,7 +1314,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_source_v1_with_http_info(
         self,
-        nonemployeesourcerequestbody: Annotated[Nonemployeesourcerequestbody, Field(description="Non-Employee source creation request body.")],
+        non_employee_source_request_body: Annotated[NonEmployeeSourceRequestBody, Field(description="Non-Employee source creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1327,13 +1327,13 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeesourcewithcloudexternalid]:
+    ) -> ApiResponse[NonEmployeeSourceWithCloudExternalId]:
         """Create non-employee source
 
         Create a non-employee source. 
 
-        :param nonemployeesourcerequestbody: Non-Employee source creation request body. (required)
-        :type nonemployeesourcerequestbody: Nonemployeesourcerequestbody
+        :param non_employee_source_request_body: Non-Employee source creation request body. (required)
+        :type non_employee_source_request_body: NonEmployeeSourceRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1357,7 +1357,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_source_v1_serialize(
-            nonemployeesourcerequestbody=nonemployeesourcerequestbody,
+            non_employee_source_request_body=non_employee_source_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1365,12 +1365,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesourcewithcloudexternalid",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSourceWithCloudExternalId",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1386,7 +1386,7 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def create_non_employee_source_v1_without_preload_content(
         self,
-        nonemployeesourcerequestbody: Annotated[Nonemployeesourcerequestbody, Field(description="Non-Employee source creation request body.")],
+        non_employee_source_request_body: Annotated[NonEmployeeSourceRequestBody, Field(description="Non-Employee source creation request body.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1404,8 +1404,8 @@ class NonEmployeeLifecycleManagementApi:
 
         Create a non-employee source. 
 
-        :param nonemployeesourcerequestbody: Non-Employee source creation request body. (required)
-        :type nonemployeesourcerequestbody: Nonemployeesourcerequestbody
+        :param non_employee_source_request_body: Non-Employee source creation request body. (required)
+        :type non_employee_source_request_body: NonEmployeeSourceRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1429,7 +1429,7 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._create_non_employee_source_v1_serialize(
-            nonemployeesourcerequestbody=nonemployeesourcerequestbody,
+            non_employee_source_request_body=non_employee_source_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1437,12 +1437,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesourcewithcloudexternalid",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSourceWithCloudExternalId",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1453,7 +1453,7 @@ class NonEmployeeLifecycleManagementApi:
 
     def _create_non_employee_source_v1_serialize(
         self,
-        nonemployeesourcerequestbody,
+        non_employee_source_request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -1479,8 +1479,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeesourcerequestbody is not None:
-            _body_params = nonemployeesourcerequestbody
+        if non_employee_source_request_body is not None:
+            _body_params = non_employee_source_request_body
 
 
         # set the HTTP header `Accept`
@@ -1582,11 +1582,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1654,11 +1654,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1726,11 +1726,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1857,11 +1857,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1929,11 +1929,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2001,11 +2001,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2145,12 +2145,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2218,12 +2218,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2291,12 +2291,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2427,11 +2427,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2503,11 +2503,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2579,11 +2579,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2713,11 +2713,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2785,11 +2785,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2857,11 +2857,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2988,11 +2988,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3060,11 +3060,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3132,11 +3132,11 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3263,12 +3263,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3336,12 +3336,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3409,12 +3409,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3542,12 +3542,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3615,12 +3615,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3688,12 +3688,12 @@ class NonEmployeeLifecycleManagementApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3782,7 +3782,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeapprovalsummary:
+    ) -> NonEmployeeApprovalSummary:
         """Get summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
@@ -3820,12 +3820,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3854,7 +3854,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeapprovalsummary]:
+    ) -> ApiResponse[NonEmployeeApprovalSummary]:
         """Get summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
@@ -3892,12 +3892,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3964,12 +3964,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4058,7 +4058,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeapprovalitemdetail:
+    ) -> NonEmployeeApprovalItemDetail:
         """Get a non-employee approval item detail
 
         Gets a non-employee approval item detail. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get any approval.   2. The user owns the requested approval.
@@ -4099,12 +4099,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitemdetail",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItemDetail",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4134,7 +4134,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeapprovalitemdetail]:
+    ) -> ApiResponse[NonEmployeeApprovalItemDetail]:
         """Get a non-employee approval item detail
 
         Gets a non-employee approval item detail. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get any approval.   2. The user owns the requested approval.
@@ -4175,12 +4175,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitemdetail",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItemDetail",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4251,12 +4251,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitemdetail",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItemDetail",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4349,7 +4349,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeebulkuploadstatus:
+    ) -> NonEmployeeBulkUploadStatus:
         """Obtain the status of bulk upload on the source
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. Requires role context of `idn:nesr:read` 
@@ -4387,12 +4387,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeebulkuploadstatus",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeBulkUploadStatus",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4421,7 +4421,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeebulkuploadstatus]:
+    ) -> ApiResponse[NonEmployeeBulkUploadStatus]:
         """Obtain the status of bulk upload on the source
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. Requires role context of `idn:nesr:read` 
@@ -4459,12 +4459,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeebulkuploadstatus",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeBulkUploadStatus",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4531,12 +4531,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeebulkuploadstatus",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeBulkUploadStatus",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4624,7 +4624,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerecord:
+    ) -> NonEmployeeRecord:
         """Get a non-employee record
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`
@@ -4662,12 +4662,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4696,7 +4696,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerecord]:
+    ) -> ApiResponse[NonEmployeeRecord]:
         """Get a non-employee record
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`
@@ -4734,12 +4734,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4806,12 +4806,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4899,7 +4899,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerequestsummary:
+    ) -> NonEmployeeRequestSummary:
         """Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
@@ -4937,12 +4937,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequestsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequestSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4971,7 +4971,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerequestsummary]:
+    ) -> ApiResponse[NonEmployeeRequestSummary]:
         """Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
@@ -5009,12 +5009,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequestsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequestSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5081,12 +5081,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequestsummary",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequestSummary",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5174,7 +5174,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerequest:
+    ) -> NonEmployeeRequest:
         """Get a non-employee request
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.
@@ -5212,13 +5212,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5247,7 +5247,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerequest]:
+    ) -> ApiResponse[NonEmployeeRequest]:
         """Get a non-employee request
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.
@@ -5285,13 +5285,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5358,13 +5358,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerequest",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRequest",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5453,7 +5453,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeschemaattribute:
+    ) -> NonEmployeeSchemaAttribute:
         """Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
@@ -5494,12 +5494,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5529,7 +5529,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeschemaattribute]:
+    ) -> ApiResponse[NonEmployeeSchemaAttribute]:
         """Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
@@ -5570,12 +5570,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5646,12 +5646,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5742,7 +5742,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Nonemployeeschemaattribute]:
+    ) -> List[NonEmployeeSchemaAttribute]:
         """List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
@@ -5780,13 +5780,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeschemaattribute]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSchemaAttribute]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5815,7 +5815,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Nonemployeeschemaattribute]]:
+    ) -> ApiResponse[List[NonEmployeeSchemaAttribute]]:
         """List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
@@ -5853,13 +5853,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeschemaattribute]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSchemaAttribute]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5926,13 +5926,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeschemaattribute]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSchemaAttribute]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6020,7 +6020,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeesource:
+    ) -> NonEmployeeSource:
         """Get a non-employee source
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.
@@ -6058,12 +6058,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6092,7 +6092,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeesource]:
+    ) -> ApiResponse[NonEmployeeSource]:
         """Get a non-employee source
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.
@@ -6130,12 +6130,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6202,12 +6202,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6296,7 +6296,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeebulkuploadjob:
+    ) -> NonEmployeeBulkUploadJob:
         """Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
@@ -6337,13 +6337,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Nonemployeebulkuploadjob",
-            '400': "Errorresponsedto",
+            '202': "NonEmployeeBulkUploadJob",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6373,7 +6373,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeebulkuploadjob]:
+    ) -> ApiResponse[NonEmployeeBulkUploadJob]:
         """Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
@@ -6414,13 +6414,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Nonemployeebulkuploadjob",
-            '400': "Errorresponsedto",
+            '202': "NonEmployeeBulkUploadJob",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6491,13 +6491,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Nonemployeebulkuploadjob",
-            '400': "Errorresponsedto",
+            '202': "NonEmployeeBulkUploadJob",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6606,7 +6606,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Nonemployeeapprovalitem]:
+    ) -> List[NonEmployeeApprovalItem]:
         """Get list of non-employee approval requests
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.
@@ -6659,12 +6659,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeapprovalitem]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeApprovalItem]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6698,7 +6698,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Nonemployeeapprovalitem]]:
+    ) -> ApiResponse[List[NonEmployeeApprovalItem]]:
         """Get list of non-employee approval requests
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.
@@ -6751,12 +6751,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeapprovalitem]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeApprovalItem]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6843,12 +6843,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeeapprovalitem]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeApprovalItem]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6967,7 +6967,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Nonemployeerecord]:
+    ) -> List[NonEmployeeRecord]:
         """List non-employee records
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
@@ -7017,12 +7017,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerecord]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRecord]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7055,7 +7055,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Nonemployeerecord]]:
+    ) -> ApiResponse[List[NonEmployeeRecord]]:
         """List non-employee records
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
@@ -7105,12 +7105,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerecord]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRecord]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7193,12 +7193,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerecord]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRecord]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7313,7 +7313,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Nonemployeerequest]:
+    ) -> List[NonEmployeeRequest]:
         """List non-employee requests
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
@@ -7366,12 +7366,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerequest]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRequest]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7405,7 +7405,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Nonemployeerequest]]:
+    ) -> ApiResponse[List[NonEmployeeRequest]]:
         """List non-employee requests
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
@@ -7458,12 +7458,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerequest]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRequest]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7550,12 +7550,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeerequest]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeRequest]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7675,7 +7675,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Nonemployeesourcewithnecount]:
+    ) -> List[NonEmployeeSourceWithNECount]:
         """List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
@@ -7728,12 +7728,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeesourcewithnecount]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSourceWithNECount]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7767,7 +7767,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Nonemployeesourcewithnecount]]:
+    ) -> ApiResponse[List[NonEmployeeSourceWithNECount]]:
         """List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
@@ -7820,12 +7820,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeesourcewithnecount]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSourceWithNECount]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7912,12 +7912,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Nonemployeesourcewithnecount]",
-            '400': "Errorresponsedto",
+            '200': "List[NonEmployeeSourceWithNECount]",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8020,7 +8020,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_record_v1(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8033,15 +8033,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerecord:
+    ) -> NonEmployeeRecord:
         """Patch non-employee record
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param jsonpatchoperation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8066,7 +8066,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_record_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8074,13 +8074,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8097,7 +8097,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_record_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8110,15 +8110,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerecord]:
+    ) -> ApiResponse[NonEmployeeRecord]:
         """Patch non-employee record
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param jsonpatchoperation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8143,7 +8143,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_record_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8151,13 +8151,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8174,7 +8174,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_record_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8194,8 +8194,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param jsonpatchoperation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8220,7 +8220,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_record_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8228,13 +8228,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8246,7 +8246,7 @@ class NonEmployeeLifecycleManagementApi:
     def _patch_non_employee_record_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -8256,7 +8256,7 @@ class NonEmployeeLifecycleManagementApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8275,8 +8275,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -8328,7 +8328,7 @@ class NonEmployeeLifecycleManagementApi:
         self,
         attribute_id: Annotated[StrictStr, Field(description="The Schema Attribute Id (UUID)")],
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8341,7 +8341,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeschemaattribute:
+    ) -> NonEmployeeSchemaAttribute:
         """Patch a schema attribute for non-employee source
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update` 
@@ -8350,8 +8350,8 @@ class NonEmployeeLifecycleManagementApi:
         :type attribute_id: str
         :param source_id: The Source id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8377,7 +8377,7 @@ class NonEmployeeLifecycleManagementApi:
         _param = self._patch_non_employee_schema_attribute_v1_serialize(
             attribute_id=attribute_id,
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8385,13 +8385,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8409,7 +8409,7 @@ class NonEmployeeLifecycleManagementApi:
         self,
         attribute_id: Annotated[StrictStr, Field(description="The Schema Attribute Id (UUID)")],
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8422,7 +8422,7 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeschemaattribute]:
+    ) -> ApiResponse[NonEmployeeSchemaAttribute]:
         """Patch a schema attribute for non-employee source
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update` 
@@ -8431,8 +8431,8 @@ class NonEmployeeLifecycleManagementApi:
         :type attribute_id: str
         :param source_id: The Source id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8458,7 +8458,7 @@ class NonEmployeeLifecycleManagementApi:
         _param = self._patch_non_employee_schema_attribute_v1_serialize(
             attribute_id=attribute_id,
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8466,13 +8466,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8490,7 +8490,7 @@ class NonEmployeeLifecycleManagementApi:
         self,
         attribute_id: Annotated[StrictStr, Field(description="The Schema Attribute Id (UUID)")],
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8512,8 +8512,8 @@ class NonEmployeeLifecycleManagementApi:
         :type attribute_id: str
         :param source_id: The Source id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8539,7 +8539,7 @@ class NonEmployeeLifecycleManagementApi:
         _param = self._patch_non_employee_schema_attribute_v1_serialize(
             attribute_id=attribute_id,
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8547,13 +8547,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeschemaattribute",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSchemaAttribute",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8566,7 +8566,7 @@ class NonEmployeeLifecycleManagementApi:
         self,
         attribute_id,
         source_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -8576,7 +8576,7 @@ class NonEmployeeLifecycleManagementApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8597,8 +8597,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -8649,7 +8649,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_source_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8662,15 +8662,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeesource:
+    ) -> NonEmployeeSource:
         """Patch a non-employee source
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8695,7 +8695,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_source_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8703,12 +8703,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8725,7 +8725,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_source_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8738,15 +8738,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeesource]:
+    ) -> ApiResponse[NonEmployeeSource]:
         """Patch a non-employee source
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8771,7 +8771,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_source_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8779,12 +8779,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8801,7 +8801,7 @@ class NonEmployeeLifecycleManagementApi:
     def patch_non_employee_source_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8821,8 +8821,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param jsonpatchoperation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8847,7 +8847,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._patch_non_employee_source_v1_serialize(
             source_id=source_id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8855,12 +8855,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeesource",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeSource",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8872,7 +8872,7 @@ class NonEmployeeLifecycleManagementApi:
     def _patch_non_employee_source_v1_serialize(
         self,
         source_id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -8882,7 +8882,7 @@ class NonEmployeeLifecycleManagementApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8901,8 +8901,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -8953,7 +8953,7 @@ class NonEmployeeLifecycleManagementApi:
     def reject_non_employee_request_v1(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision,
+        non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8966,15 +8966,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeeapprovalitem:
+    ) -> NonEmployeeApprovalItem:
         """Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeerejectapprovaldecision: (required)
-        :type nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision
+        :param non_employee_reject_approval_decision: (required)
+        :type non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8999,7 +8999,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._reject_non_employee_request_v1_serialize(
             id=id,
-            nonemployeerejectapprovaldecision=nonemployeerejectapprovaldecision,
+            non_employee_reject_approval_decision=non_employee_reject_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9007,12 +9007,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9029,7 +9029,7 @@ class NonEmployeeLifecycleManagementApi:
     def reject_non_employee_request_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision,
+        non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9042,15 +9042,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeeapprovalitem]:
+    ) -> ApiResponse[NonEmployeeApprovalItem]:
         """Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeerejectapprovaldecision: (required)
-        :type nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision
+        :param non_employee_reject_approval_decision: (required)
+        :type non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9075,7 +9075,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._reject_non_employee_request_v1_serialize(
             id=id,
-            nonemployeerejectapprovaldecision=nonemployeerejectapprovaldecision,
+            non_employee_reject_approval_decision=non_employee_reject_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9083,12 +9083,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9105,7 +9105,7 @@ class NonEmployeeLifecycleManagementApi:
     def reject_non_employee_request_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
-        nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision,
+        non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9125,8 +9125,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param id: Non-Employee approval item id (UUID) (required)
         :type id: str
-        :param nonemployeerejectapprovaldecision: (required)
-        :type nonemployeerejectapprovaldecision: Nonemployeerejectapprovaldecision
+        :param non_employee_reject_approval_decision: (required)
+        :type non_employee_reject_approval_decision: NonEmployeeRejectApprovalDecision
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9151,7 +9151,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._reject_non_employee_request_v1_serialize(
             id=id,
-            nonemployeerejectapprovaldecision=nonemployeerejectapprovaldecision,
+            non_employee_reject_approval_decision=non_employee_reject_approval_decision,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9159,12 +9159,12 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeeapprovalitem",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeApprovalItem",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9176,7 +9176,7 @@ class NonEmployeeLifecycleManagementApi:
     def _reject_non_employee_request_v1_serialize(
         self,
         id,
-        nonemployeerejectapprovaldecision,
+        non_employee_reject_approval_decision,
         _request_auth,
         _content_type,
         _headers,
@@ -9204,8 +9204,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeerejectapprovaldecision is not None:
-            _body_params = nonemployeerejectapprovaldecision
+        if non_employee_reject_approval_decision is not None:
+            _body_params = non_employee_reject_approval_decision
 
 
         # set the HTTP header `Accept`
@@ -9256,7 +9256,7 @@ class NonEmployeeLifecycleManagementApi:
     def update_non_employee_record_v1(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9269,15 +9269,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Nonemployeerecord:
+    ) -> NonEmployeeRecord:
         """Update non-employee record
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param nonemployeerequestbody: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9302,7 +9302,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._update_non_employee_record_v1_serialize(
             id=id,
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9310,13 +9310,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9333,7 +9333,7 @@ class NonEmployeeLifecycleManagementApi:
     def update_non_employee_record_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9346,15 +9346,15 @@ class NonEmployeeLifecycleManagementApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Nonemployeerecord]:
+    ) -> ApiResponse[NonEmployeeRecord]:
         """Update non-employee record
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param nonemployeerequestbody: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9379,7 +9379,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._update_non_employee_record_v1_serialize(
             id=id,
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9387,13 +9387,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9410,7 +9410,7 @@ class NonEmployeeLifecycleManagementApi:
     def update_non_employee_record_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        nonemployeerequestbody: Annotated[Nonemployeerequestbody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9430,8 +9430,8 @@ class NonEmployeeLifecycleManagementApi:
 
         :param id: Non-employee record id (UUID) (required)
         :type id: str
-        :param nonemployeerequestbody: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type nonemployeerequestbody: Nonemployeerequestbody
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9456,7 +9456,7 @@ class NonEmployeeLifecycleManagementApi:
 
         _param = self._update_non_employee_record_v1_serialize(
             id=id,
-            nonemployeerequestbody=nonemployeerequestbody,
+            non_employee_request_body=non_employee_request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9464,13 +9464,13 @@ class NonEmployeeLifecycleManagementApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Nonemployeerecord",
-            '400': "Errorresponsedto",
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
             '401': "ListNonEmployeeRecordsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListNonEmployeeRecordsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9482,7 +9482,7 @@ class NonEmployeeLifecycleManagementApi:
     def _update_non_employee_record_v1_serialize(
         self,
         id,
-        nonemployeerequestbody,
+        non_employee_request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -9510,8 +9510,8 @@ class NonEmployeeLifecycleManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if nonemployeerequestbody is not None:
-            _body_params = nonemployeerequestbody
+        if non_employee_request_body is not None:
+            _body_params = non_employee_request_body
 
 
         # set the HTTP header `Accept`

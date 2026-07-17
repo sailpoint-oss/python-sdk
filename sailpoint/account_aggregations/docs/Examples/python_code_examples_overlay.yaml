@@ -6,7 +6,7 @@
       source: |
         from sailpoint.account_aggregations.api.account_aggregations_api import AccountAggregationsApi
         from sailpoint.account_aggregations.api_client import ApiClient
-        from sailpoint.account_aggregations.models.accountaggregationstatus import Accountaggregationstatus
+        from sailpoint.account_aggregations.models.account_aggregation_status import AccountAggregationStatus
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

@@ -48,11 +48,11 @@ with sailpoint.lifecycle_states.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.lifecycle_states.LifecycleStatesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID.
-    lifecyclestate = sailpoint.lifecycle_states.Lifecyclestate() # Lifecyclestate | Lifecycle state to be created.
+    lifecycle_state = sailpoint.lifecycle_states.LifecycleState() # LifecycleState | Lifecycle state to be created.
 
     try:
         # Create lifecycle state
-        api_response = api_instance.create_lifecycle_state_v1(identity_profile_id, lifecyclestate)
+        api_response = api_instance.create_lifecycle_state_v1(identity_profile_id, lifecycle_state)
         print("The response of LifecycleStatesApi->create_lifecycle_state_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -76,18 +76,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessactionconfiguration](sailpoint/lifecycle_states/docs/Accessactionconfiguration.md)
- - [Accountaction](sailpoint/lifecycle_states/docs/Accountaction.md)
+ - [AccessActionConfiguration](sailpoint/lifecycle_states/docs/AccessActionConfiguration.md)
+ - [AccountAction](sailpoint/lifecycle_states/docs/AccountAction.md)
  - [ArrayInner](sailpoint/lifecycle_states/docs/ArrayInner.md)
- - [Basecommondto](sailpoint/lifecycle_states/docs/Basecommondto.md)
- - [Emailnotificationoption](sailpoint/lifecycle_states/docs/Emailnotificationoption.md)
- - [Errormessagedto](sailpoint/lifecycle_states/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/lifecycle_states/docs/Errorresponsedto.md)
- - [Jsonpatchoperation](sailpoint/lifecycle_states/docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](sailpoint/lifecycle_states/docs/JsonpatchoperationValue.md)
- - [Lifecyclestate](sailpoint/lifecycle_states/docs/Lifecyclestate.md)
- - [Lifecyclestatedeleted](sailpoint/lifecycle_states/docs/Lifecyclestatedeleted.md)
- - [Localeorigin](sailpoint/lifecycle_states/docs/Localeorigin.md)
+ - [BaseCommonDto](sailpoint/lifecycle_states/docs/BaseCommonDto.md)
+ - [EmailNotificationOption](sailpoint/lifecycle_states/docs/EmailNotificationOption.md)
+ - [ErrorMessageDto](sailpoint/lifecycle_states/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/lifecycle_states/docs/ErrorResponseDto.md)
+ - [JsonPatchOperation](sailpoint/lifecycle_states/docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](sailpoint/lifecycle_states/docs/JsonPatchOperationValue.md)
+ - [LifecycleState](sailpoint/lifecycle_states/docs/LifecycleState.md)
+ - [LifecyclestateDeleted](sailpoint/lifecycle_states/docs/LifecyclestateDeleted.md)
+ - [LocaleOrigin](sailpoint/lifecycle_states/docs/LocaleOrigin.md)
  - [SetLifecycleStateV1200Response](sailpoint/lifecycle_states/docs/SetLifecycleStateV1200Response.md)
  - [SetLifecycleStateV1401Response](sailpoint/lifecycle_states/docs/SetLifecycleStateV1401Response.md)
  - [SetLifecycleStateV1429Response](sailpoint/lifecycle_states/docs/SetLifecycleStateV1429Response.md)

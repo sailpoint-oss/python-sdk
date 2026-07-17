@@ -32,19 +32,19 @@ from sailpoint.data_segmentation.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.data_segmentation.models.data_segment import DataSegment
-from sailpoint.data_segmentation.models.dtotype import Dtotype
-from sailpoint.data_segmentation.models.errormessagedto import Errormessagedto
-from sailpoint.data_segmentation.models.errorresponsedto import Errorresponsedto
+from sailpoint.data_segmentation.models.dto_type import DtoType
+from sailpoint.data_segmentation.models.error_message_dto import ErrorMessageDto
+from sailpoint.data_segmentation.models.error_response_dto import ErrorResponseDto
 from sailpoint.data_segmentation.models.expression import Expression
 from sailpoint.data_segmentation.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.data_segmentation.models.get_data_segment_identity_membership_v1401_response import GetDataSegmentIdentityMembershipV1401Response
 from sailpoint.data_segmentation.models.get_data_segment_identity_membership_v1429_response import GetDataSegmentIdentityMembershipV1429Response
-from sailpoint.data_segmentation.models.localeorigin import Localeorigin
-from sailpoint.data_segmentation.models.membershiptype import Membershiptype
+from sailpoint.data_segmentation.models.locale_origin import LocaleOrigin
+from sailpoint.data_segmentation.models.membership_type import MembershipType
 from sailpoint.data_segmentation.models.ref import Ref
 from sailpoint.data_segmentation.models.scope import Scope
-from sailpoint.data_segmentation.models.scopetype import Scopetype
-from sailpoint.data_segmentation.models.scopevisibilitytype import Scopevisibilitytype
-from sailpoint.data_segmentation.models.segmentmembership import Segmentmembership
+from sailpoint.data_segmentation.models.scope_type import ScopeType
+from sailpoint.data_segmentation.models.scope_visibility_type import ScopeVisibilityType
+from sailpoint.data_segmentation.models.segment_membership import SegmentMembership
 from sailpoint.data_segmentation.models.value import Value
-from sailpoint.data_segmentation.models.visibilitycriteria import Visibilitycriteria
+from sailpoint.data_segmentation.models.visibility_criteria import VisibilityCriteria

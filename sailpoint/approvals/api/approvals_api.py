@@ -20,17 +20,17 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.approvals.models.approval2 import Approval2
-from sailpoint.approvals.models.approvalapproverequest import Approvalapproverequest
-from sailpoint.approvals.models.approvalattributesrequest import Approvalattributesrequest
-from sailpoint.approvals.models.approvalcancelrequest import Approvalcancelrequest
-from sailpoint.approvals.models.approvalcommentsrequest import Approvalcommentsrequest
-from sailpoint.approvals.models.approvalconfig import Approvalconfig
-from sailpoint.approvals.models.approvalreassignrequest import Approvalreassignrequest
-from sailpoint.approvals.models.approvalrejectrequest import Approvalrejectrequest
-from sailpoint.approvals.models.bulkapproverequestdto import Bulkapproverequestdto
-from sailpoint.approvals.models.bulkcancelrequestdto import Bulkcancelrequestdto
-from sailpoint.approvals.models.bulkreassignrequestdto import Bulkreassignrequestdto
-from sailpoint.approvals.models.bulkrejectrequestdto import Bulkrejectrequestdto
+from sailpoint.approvals.models.approval_approve_request import ApprovalApproveRequest
+from sailpoint.approvals.models.approval_attributes_request import ApprovalAttributesRequest
+from sailpoint.approvals.models.approval_cancel_request import ApprovalCancelRequest
+from sailpoint.approvals.models.approval_comments_request import ApprovalCommentsRequest
+from sailpoint.approvals.models.approval_config import ApprovalConfig
+from sailpoint.approvals.models.approval_reassign_request import ApprovalReassignRequest
+from sailpoint.approvals.models.approval_reject_request import ApprovalRejectRequest
+from sailpoint.approvals.models.bulk_approve_request_dto import BulkApproveRequestDTO
+from sailpoint.approvals.models.bulk_cancel_request_dto import BulkCancelRequestDTO
+from sailpoint.approvals.models.bulk_reassign_request_dto import BulkReassignRequestDTO
+from sailpoint.approvals.models.bulk_reject_request_dto import BulkRejectRequestDTO
 
 from sailpoint.approvals.api_client import ApiClient, RequestSerialized
 from sailpoint.approvals.api_response import ApiResponse
@@ -53,7 +53,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval_in_bulk_v1(
         self,
-        bulkapproverequestdto: Bulkapproverequestdto,
+        bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -71,8 +71,8 @@ class ApprovalsApi:
 
         Bulk Approves specified approval requests on behalf of the caller
 
-        :param bulkapproverequestdto: (required)
-        :type bulkapproverequestdto: Bulkapproverequestdto
+        :param bulk_approve_request_dto: (required)
+        :type bulk_approve_request_dto: BulkApproveRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,7 +96,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._approve_approval_in_bulk_v1_serialize(
-            bulkapproverequestdto=bulkapproverequestdto,
+            bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -105,12 +105,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -126,7 +126,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval_in_bulk_v1_with_http_info(
         self,
-        bulkapproverequestdto: Bulkapproverequestdto,
+        bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,8 +144,8 @@ class ApprovalsApi:
 
         Bulk Approves specified approval requests on behalf of the caller
 
-        :param bulkapproverequestdto: (required)
-        :type bulkapproverequestdto: Bulkapproverequestdto
+        :param bulk_approve_request_dto: (required)
+        :type bulk_approve_request_dto: BulkApproveRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -169,7 +169,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._approve_approval_in_bulk_v1_serialize(
-            bulkapproverequestdto=bulkapproverequestdto,
+            bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -178,12 +178,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +199,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval_in_bulk_v1_without_preload_content(
         self,
-        bulkapproverequestdto: Bulkapproverequestdto,
+        bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,8 +217,8 @@ class ApprovalsApi:
 
         Bulk Approves specified approval requests on behalf of the caller
 
-        :param bulkapproverequestdto: (required)
-        :type bulkapproverequestdto: Bulkapproverequestdto
+        :param bulk_approve_request_dto: (required)
+        :type bulk_approve_request_dto: BulkApproveRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -242,7 +242,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._approve_approval_in_bulk_v1_serialize(
-            bulkapproverequestdto=bulkapproverequestdto,
+            bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,12 +251,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -267,7 +267,7 @@ class ApprovalsApi:
 
     def _approve_approval_in_bulk_v1_serialize(
         self,
-        bulkapproverequestdto,
+        bulk_approve_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -293,8 +293,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkapproverequestdto is not None:
-            _body_params = bulkapproverequestdto
+        if bulk_approve_request_dto is not None:
+            _body_params = bulk_approve_request_dto
 
 
         # set the HTTP header `Accept`
@@ -345,7 +345,7 @@ class ApprovalsApi:
     def approve_approval_v1(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
-        approvalapproverequest: Optional[Approvalapproverequest] = None,
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,8 +365,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
-        :param approvalapproverequest:
-        :type approvalapproverequest: Approvalapproverequest
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -391,7 +391,7 @@ class ApprovalsApi:
 
         _param = self._approve_approval_v1_serialize(
             id=id,
-            approvalapproverequest=approvalapproverequest,
+            approval_approve_request=approval_approve_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,12 +400,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -422,7 +422,7 @@ class ApprovalsApi:
     def approve_approval_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
-        approvalapproverequest: Optional[Approvalapproverequest] = None,
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -442,8 +442,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
-        :param approvalapproverequest:
-        :type approvalapproverequest: Approvalapproverequest
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -468,7 +468,7 @@ class ApprovalsApi:
 
         _param = self._approve_approval_v1_serialize(
             id=id,
-            approvalapproverequest=approvalapproverequest,
+            approval_approve_request=approval_approve_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -477,12 +477,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -499,7 +499,7 @@ class ApprovalsApi:
     def approve_approval_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
-        approvalapproverequest: Optional[Approvalapproverequest] = None,
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -519,8 +519,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
-        :param approvalapproverequest:
-        :type approvalapproverequest: Approvalapproverequest
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -545,7 +545,7 @@ class ApprovalsApi:
 
         _param = self._approve_approval_v1_serialize(
             id=id,
-            approvalapproverequest=approvalapproverequest,
+            approval_approve_request=approval_approve_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -554,12 +554,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -571,7 +571,7 @@ class ApprovalsApi:
     def _approve_approval_v1_serialize(
         self,
         id,
-        approvalapproverequest,
+        approval_approve_request,
         _request_auth,
         _content_type,
         _headers,
@@ -599,8 +599,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalapproverequest is not None:
-            _body_params = approvalapproverequest
+        if approval_approve_request is not None:
+            _body_params = approval_approve_request
 
 
         # set the HTTP header `Accept`
@@ -651,7 +651,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approvalcancelrequest: Optional[Approvalcancelrequest] = None,
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -671,8 +671,8 @@ class ApprovalsApi:
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approvalcancelrequest:
-        :type approvalcancelrequest: Approvalcancelrequest
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -697,7 +697,7 @@ class ApprovalsApi:
 
         _param = self._cancel_approval_by_id_v1_serialize(
             id=id,
-            approvalcancelrequest=approvalcancelrequest,
+            approval_cancel_request=approval_cancel_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -706,12 +706,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -728,7 +728,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approvalcancelrequest: Optional[Approvalcancelrequest] = None,
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -748,8 +748,8 @@ class ApprovalsApi:
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approvalcancelrequest:
-        :type approvalcancelrequest: Approvalcancelrequest
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -774,7 +774,7 @@ class ApprovalsApi:
 
         _param = self._cancel_approval_by_id_v1_serialize(
             id=id,
-            approvalcancelrequest=approvalcancelrequest,
+            approval_cancel_request=approval_cancel_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -783,12 +783,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -805,7 +805,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approvalcancelrequest: Optional[Approvalcancelrequest] = None,
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -825,8 +825,8 @@ class ApprovalsApi:
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approvalcancelrequest:
-        :type approvalcancelrequest: Approvalcancelrequest
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -851,7 +851,7 @@ class ApprovalsApi:
 
         _param = self._cancel_approval_by_id_v1_serialize(
             id=id,
-            approvalcancelrequest=approvalcancelrequest,
+            approval_cancel_request=approval_cancel_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -860,12 +860,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -877,7 +877,7 @@ class ApprovalsApi:
     def _cancel_approval_by_id_v1_serialize(
         self,
         id,
-        approvalcancelrequest,
+        approval_cancel_request,
         _request_auth,
         _content_type,
         _headers,
@@ -905,8 +905,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalcancelrequest is not None:
-            _body_params = approvalcancelrequest
+        if approval_cancel_request is not None:
+            _body_params = approval_cancel_request
 
 
         # set the HTTP header `Accept`
@@ -956,7 +956,7 @@ class ApprovalsApi:
     @validate_call
     def cancel_approval_v1(
         self,
-        bulkcancelrequestdto: Bulkcancelrequestdto,
+        bulk_cancel_request_dto: BulkCancelRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -974,8 +974,8 @@ class ApprovalsApi:
 
         Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
-        :param bulkcancelrequestdto: (required)
-        :type bulkcancelrequestdto: Bulkcancelrequestdto
+        :param bulk_cancel_request_dto: (required)
+        :type bulk_cancel_request_dto: BulkCancelRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -999,7 +999,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._cancel_approval_v1_serialize(
-            bulkcancelrequestdto=bulkcancelrequestdto,
+            bulk_cancel_request_dto=bulk_cancel_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1008,12 +1008,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1029,7 +1029,7 @@ class ApprovalsApi:
     @validate_call
     def cancel_approval_v1_with_http_info(
         self,
-        bulkcancelrequestdto: Bulkcancelrequestdto,
+        bulk_cancel_request_dto: BulkCancelRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1047,8 +1047,8 @@ class ApprovalsApi:
 
         Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
-        :param bulkcancelrequestdto: (required)
-        :type bulkcancelrequestdto: Bulkcancelrequestdto
+        :param bulk_cancel_request_dto: (required)
+        :type bulk_cancel_request_dto: BulkCancelRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1072,7 +1072,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._cancel_approval_v1_serialize(
-            bulkcancelrequestdto=bulkcancelrequestdto,
+            bulk_cancel_request_dto=bulk_cancel_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1081,12 +1081,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1102,7 +1102,7 @@ class ApprovalsApi:
     @validate_call
     def cancel_approval_v1_without_preload_content(
         self,
-        bulkcancelrequestdto: Bulkcancelrequestdto,
+        bulk_cancel_request_dto: BulkCancelRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1120,8 +1120,8 @@ class ApprovalsApi:
 
         Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
-        :param bulkcancelrequestdto: (required)
-        :type bulkcancelrequestdto: Bulkcancelrequestdto
+        :param bulk_cancel_request_dto: (required)
+        :type bulk_cancel_request_dto: BulkCancelRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1145,7 +1145,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._cancel_approval_v1_serialize(
-            bulkcancelrequestdto=bulkcancelrequestdto,
+            bulk_cancel_request_dto=bulk_cancel_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1154,12 +1154,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1170,7 +1170,7 @@ class ApprovalsApi:
 
     def _cancel_approval_v1_serialize(
         self,
-        bulkcancelrequestdto,
+        bulk_cancel_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1196,8 +1196,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkcancelrequestdto is not None:
-            _body_params = bulkcancelrequestdto
+        if bulk_cancel_request_dto is not None:
+            _body_params = bulk_cancel_request_dto
 
 
         # set the HTTP header `Accept`
@@ -1303,12 +1303,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1380,12 +1380,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1457,12 +1457,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1592,11 +1592,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1664,11 +1664,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1736,11 +1736,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1828,7 +1828,7 @@ class ApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Approvalconfig:
+    ) -> ApprovalConfig:
         """Get Approval Config
 
         Retrieves a singular approval configuration that matches the given ID
@@ -1866,12 +1866,12 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1900,7 +1900,7 @@ class ApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Approvalconfig]:
+    ) -> ApiResponse[ApprovalConfig]:
         """Get Approval Config
 
         Retrieves a singular approval configuration that matches the given ID
@@ -1938,12 +1938,12 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2010,12 +2010,12 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2190,11 +2190,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Approval2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2310,11 +2310,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Approval2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2430,11 +2430,11 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Approval2]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2571,7 +2571,7 @@ class ApprovalsApi:
     @validate_call
     def move_approval_v1(
         self,
-        bulkreassignrequestdto: Bulkreassignrequestdto,
+        bulk_reassign_request_dto: BulkReassignRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2589,8 +2589,8 @@ class ApprovalsApi:
 
         Bulk reassigns specified approval requests on behalf of the caller
 
-        :param bulkreassignrequestdto: (required)
-        :type bulkreassignrequestdto: Bulkreassignrequestdto
+        :param bulk_reassign_request_dto: (required)
+        :type bulk_reassign_request_dto: BulkReassignRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2614,7 +2614,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._move_approval_v1_serialize(
-            bulkreassignrequestdto=bulkreassignrequestdto,
+            bulk_reassign_request_dto=bulk_reassign_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2623,12 +2623,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2644,7 +2644,7 @@ class ApprovalsApi:
     @validate_call
     def move_approval_v1_with_http_info(
         self,
-        bulkreassignrequestdto: Bulkreassignrequestdto,
+        bulk_reassign_request_dto: BulkReassignRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2662,8 +2662,8 @@ class ApprovalsApi:
 
         Bulk reassigns specified approval requests on behalf of the caller
 
-        :param bulkreassignrequestdto: (required)
-        :type bulkreassignrequestdto: Bulkreassignrequestdto
+        :param bulk_reassign_request_dto: (required)
+        :type bulk_reassign_request_dto: BulkReassignRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2687,7 +2687,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._move_approval_v1_serialize(
-            bulkreassignrequestdto=bulkreassignrequestdto,
+            bulk_reassign_request_dto=bulk_reassign_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2696,12 +2696,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2717,7 +2717,7 @@ class ApprovalsApi:
     @validate_call
     def move_approval_v1_without_preload_content(
         self,
-        bulkreassignrequestdto: Bulkreassignrequestdto,
+        bulk_reassign_request_dto: BulkReassignRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2735,8 +2735,8 @@ class ApprovalsApi:
 
         Bulk reassigns specified approval requests on behalf of the caller
 
-        :param bulkreassignrequestdto: (required)
-        :type bulkreassignrequestdto: Bulkreassignrequestdto
+        :param bulk_reassign_request_dto: (required)
+        :type bulk_reassign_request_dto: BulkReassignRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2760,7 +2760,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._move_approval_v1_serialize(
-            bulkreassignrequestdto=bulkreassignrequestdto,
+            bulk_reassign_request_dto=bulk_reassign_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2769,12 +2769,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2785,7 +2785,7 @@ class ApprovalsApi:
 
     def _move_approval_v1_serialize(
         self,
-        bulkreassignrequestdto,
+        bulk_reassign_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2811,8 +2811,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkreassignrequestdto is not None:
-            _body_params = bulkreassignrequestdto
+        if bulk_reassign_request_dto is not None:
+            _body_params = bulk_reassign_request_dto
 
 
         # set the HTTP header `Accept`
@@ -2864,7 +2864,7 @@ class ApprovalsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        approvalconfig: Approvalconfig,
+        approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2877,7 +2877,7 @@ class ApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Approvalconfig:
+    ) -> ApprovalConfig:
         """Put Approval Config
 
         Upserts a singular approval configuration that matches the given configID and configScope.  For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
@@ -2886,8 +2886,8 @@ class ApprovalsApi:
         :type id: str
         :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
-        :param approvalconfig: (required)
-        :type approvalconfig: Approvalconfig
+        :param approval_config: (required)
+        :type approval_config: ApprovalConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2913,7 +2913,7 @@ class ApprovalsApi:
         _param = self._put_approvals_config_v1_serialize(
             id=id,
             scope=scope,
-            approvalconfig=approvalconfig,
+            approval_config=approval_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2921,13 +2921,13 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2945,7 +2945,7 @@ class ApprovalsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        approvalconfig: Approvalconfig,
+        approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2958,7 +2958,7 @@ class ApprovalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Approvalconfig]:
+    ) -> ApiResponse[ApprovalConfig]:
         """Put Approval Config
 
         Upserts a singular approval configuration that matches the given configID and configScope.  For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
@@ -2967,8 +2967,8 @@ class ApprovalsApi:
         :type id: str
         :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
-        :param approvalconfig: (required)
-        :type approvalconfig: Approvalconfig
+        :param approval_config: (required)
+        :type approval_config: ApprovalConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2994,7 +2994,7 @@ class ApprovalsApi:
         _param = self._put_approvals_config_v1_serialize(
             id=id,
             scope=scope,
-            approvalconfig=approvalconfig,
+            approval_config=approval_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3002,13 +3002,13 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3026,7 +3026,7 @@ class ApprovalsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        approvalconfig: Approvalconfig,
+        approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3048,8 +3048,8 @@ class ApprovalsApi:
         :type id: str
         :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
-        :param approvalconfig: (required)
-        :type approvalconfig: Approvalconfig
+        :param approval_config: (required)
+        :type approval_config: ApprovalConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3075,7 +3075,7 @@ class ApprovalsApi:
         _param = self._put_approvals_config_v1_serialize(
             id=id,
             scope=scope,
-            approvalconfig=approvalconfig,
+            approval_config=approval_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3083,13 +3083,13 @@ class ApprovalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Approvalconfig",
-            '400': "Errorresponsedto",
+            '200': "ApprovalConfig",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3102,7 +3102,7 @@ class ApprovalsApi:
         self,
         id,
         scope,
-        approvalconfig,
+        approval_config,
         _request_auth,
         _content_type,
         _headers,
@@ -3132,8 +3132,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalconfig is not None:
-            _body_params = approvalconfig
+        if approval_config is not None:
+            _body_params = approval_config
 
 
         # set the HTTP header `Accept`
@@ -3183,7 +3183,7 @@ class ApprovalsApi:
     @validate_call
     def reject_approval_in_bulk_v1(
         self,
-        bulkrejectrequestdto: Bulkrejectrequestdto,
+        bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3201,8 +3201,8 @@ class ApprovalsApi:
 
         Bulk reject specified approval requests on behalf of the caller
 
-        :param bulkrejectrequestdto: (required)
-        :type bulkrejectrequestdto: Bulkrejectrequestdto
+        :param bulk_reject_request_dto: (required)
+        :type bulk_reject_request_dto: BulkRejectRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3226,7 +3226,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._reject_approval_in_bulk_v1_serialize(
-            bulkrejectrequestdto=bulkrejectrequestdto,
+            bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3235,12 +3235,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3256,7 +3256,7 @@ class ApprovalsApi:
     @validate_call
     def reject_approval_in_bulk_v1_with_http_info(
         self,
-        bulkrejectrequestdto: Bulkrejectrequestdto,
+        bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3274,8 +3274,8 @@ class ApprovalsApi:
 
         Bulk reject specified approval requests on behalf of the caller
 
-        :param bulkrejectrequestdto: (required)
-        :type bulkrejectrequestdto: Bulkrejectrequestdto
+        :param bulk_reject_request_dto: (required)
+        :type bulk_reject_request_dto: BulkRejectRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3299,7 +3299,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._reject_approval_in_bulk_v1_serialize(
-            bulkrejectrequestdto=bulkrejectrequestdto,
+            bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3308,12 +3308,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3329,7 +3329,7 @@ class ApprovalsApi:
     @validate_call
     def reject_approval_in_bulk_v1_without_preload_content(
         self,
-        bulkrejectrequestdto: Bulkrejectrequestdto,
+        bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3347,8 +3347,8 @@ class ApprovalsApi:
 
         Bulk reject specified approval requests on behalf of the caller
 
-        :param bulkrejectrequestdto: (required)
-        :type bulkrejectrequestdto: Bulkrejectrequestdto
+        :param bulk_reject_request_dto: (required)
+        :type bulk_reject_request_dto: BulkRejectRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3372,7 +3372,7 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._reject_approval_in_bulk_v1_serialize(
-            bulkrejectrequestdto=bulkrejectrequestdto,
+            bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3381,12 +3381,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3397,7 +3397,7 @@ class ApprovalsApi:
 
     def _reject_approval_in_bulk_v1_serialize(
         self,
-        bulkrejectrequestdto,
+        bulk_reject_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -3423,8 +3423,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulkrejectrequestdto is not None:
-            _body_params = bulkrejectrequestdto
+        if bulk_reject_request_dto is not None:
+            _body_params = bulk_reject_request_dto
 
 
         # set the HTTP header `Accept`
@@ -3475,7 +3475,7 @@ class ApprovalsApi:
     def reject_approval_v1(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
-        approvalrejectrequest: Optional[Approvalrejectrequest] = None,
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3495,8 +3495,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
-        :param approvalrejectrequest:
-        :type approvalrejectrequest: Approvalrejectrequest
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3521,7 +3521,7 @@ class ApprovalsApi:
 
         _param = self._reject_approval_v1_serialize(
             id=id,
-            approvalrejectrequest=approvalrejectrequest,
+            approval_reject_request=approval_reject_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3530,12 +3530,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3552,7 +3552,7 @@ class ApprovalsApi:
     def reject_approval_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
-        approvalrejectrequest: Optional[Approvalrejectrequest] = None,
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3572,8 +3572,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
-        :param approvalrejectrequest:
-        :type approvalrejectrequest: Approvalrejectrequest
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3598,7 +3598,7 @@ class ApprovalsApi:
 
         _param = self._reject_approval_v1_serialize(
             id=id,
-            approvalrejectrequest=approvalrejectrequest,
+            approval_reject_request=approval_reject_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3607,12 +3607,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3629,7 +3629,7 @@ class ApprovalsApi:
     def reject_approval_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
-        approvalrejectrequest: Optional[Approvalrejectrequest] = None,
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3649,8 +3649,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
-        :param approvalrejectrequest:
-        :type approvalrejectrequest: Approvalrejectrequest
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3675,7 +3675,7 @@ class ApprovalsApi:
 
         _param = self._reject_approval_v1_serialize(
             id=id,
-            approvalrejectrequest=approvalrejectrequest,
+            approval_reject_request=approval_reject_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3684,12 +3684,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3701,7 +3701,7 @@ class ApprovalsApi:
     def _reject_approval_v1_serialize(
         self,
         id,
-        approvalrejectrequest,
+        approval_reject_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3729,8 +3729,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalrejectrequest is not None:
-            _body_params = approvalrejectrequest
+        if approval_reject_request is not None:
+            _body_params = approval_reject_request
 
 
         # set the HTTP header `Accept`
@@ -3781,7 +3781,7 @@ class ApprovalsApi:
     def update_approvals_attributes_v1(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
-        approvalattributesrequest: Approvalattributesrequest,
+        approval_attributes_request: ApprovalAttributesRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3801,8 +3801,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
-        :param approvalattributesrequest: (required)
-        :type approvalattributesrequest: Approvalattributesrequest
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3827,7 +3827,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_attributes_v1_serialize(
             id=id,
-            approvalattributesrequest=approvalattributesrequest,
+            approval_attributes_request=approval_attributes_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3836,12 +3836,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3858,7 +3858,7 @@ class ApprovalsApi:
     def update_approvals_attributes_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
-        approvalattributesrequest: Approvalattributesrequest,
+        approval_attributes_request: ApprovalAttributesRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3878,8 +3878,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
-        :param approvalattributesrequest: (required)
-        :type approvalattributesrequest: Approvalattributesrequest
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3904,7 +3904,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_attributes_v1_serialize(
             id=id,
-            approvalattributesrequest=approvalattributesrequest,
+            approval_attributes_request=approval_attributes_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3913,12 +3913,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3935,7 +3935,7 @@ class ApprovalsApi:
     def update_approvals_attributes_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
-        approvalattributesrequest: Approvalattributesrequest,
+        approval_attributes_request: ApprovalAttributesRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3955,8 +3955,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
-        :param approvalattributesrequest: (required)
-        :type approvalattributesrequest: Approvalattributesrequest
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3981,7 +3981,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_attributes_v1_serialize(
             id=id,
-            approvalattributesrequest=approvalattributesrequest,
+            approval_attributes_request=approval_attributes_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3990,12 +3990,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4007,7 +4007,7 @@ class ApprovalsApi:
     def _update_approvals_attributes_v1_serialize(
         self,
         id,
-        approvalattributesrequest,
+        approval_attributes_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4035,8 +4035,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalattributesrequest is not None:
-            _body_params = approvalattributesrequest
+        if approval_attributes_request is not None:
+            _body_params = approval_attributes_request
 
 
         # set the HTTP header `Accept`
@@ -4087,7 +4087,7 @@ class ApprovalsApi:
     def update_approvals_comments_v1(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
-        approvalcommentsrequest: Approvalcommentsrequest,
+        approval_comments_request: ApprovalCommentsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4107,8 +4107,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
-        :param approvalcommentsrequest: (required)
-        :type approvalcommentsrequest: Approvalcommentsrequest
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4133,7 +4133,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_comments_v1_serialize(
             id=id,
-            approvalcommentsrequest=approvalcommentsrequest,
+            approval_comments_request=approval_comments_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4142,12 +4142,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4164,7 +4164,7 @@ class ApprovalsApi:
     def update_approvals_comments_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
-        approvalcommentsrequest: Approvalcommentsrequest,
+        approval_comments_request: ApprovalCommentsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4184,8 +4184,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
-        :param approvalcommentsrequest: (required)
-        :type approvalcommentsrequest: Approvalcommentsrequest
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4210,7 +4210,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_comments_v1_serialize(
             id=id,
-            approvalcommentsrequest=approvalcommentsrequest,
+            approval_comments_request=approval_comments_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4219,12 +4219,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4241,7 +4241,7 @@ class ApprovalsApi:
     def update_approvals_comments_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
-        approvalcommentsrequest: Approvalcommentsrequest,
+        approval_comments_request: ApprovalCommentsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4261,8 +4261,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
-        :param approvalcommentsrequest: (required)
-        :type approvalcommentsrequest: Approvalcommentsrequest
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4287,7 +4287,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_comments_v1_serialize(
             id=id,
-            approvalcommentsrequest=approvalcommentsrequest,
+            approval_comments_request=approval_comments_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4296,12 +4296,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Approval2",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4313,7 +4313,7 @@ class ApprovalsApi:
     def _update_approvals_comments_v1_serialize(
         self,
         id,
-        approvalcommentsrequest,
+        approval_comments_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4341,8 +4341,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalcommentsrequest is not None:
-            _body_params = approvalcommentsrequest
+        if approval_comments_request is not None:
+            _body_params = approval_comments_request
 
 
         # set the HTTP header `Accept`
@@ -4393,7 +4393,7 @@ class ApprovalsApi:
     def update_approvals_reassign_v1(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
-        approvalreassignrequest: Approvalreassignrequest,
+        approval_reassign_request: ApprovalReassignRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4413,8 +4413,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str
-        :param approvalreassignrequest: (required)
-        :type approvalreassignrequest: Approvalreassignrequest
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4439,7 +4439,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_reassign_v1_serialize(
             id=id,
-            approvalreassignrequest=approvalreassignrequest,
+            approval_reassign_request=approval_reassign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4448,12 +4448,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4470,7 +4470,7 @@ class ApprovalsApi:
     def update_approvals_reassign_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
-        approvalreassignrequest: Approvalreassignrequest,
+        approval_reassign_request: ApprovalReassignRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4490,8 +4490,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str
-        :param approvalreassignrequest: (required)
-        :type approvalreassignrequest: Approvalreassignrequest
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4516,7 +4516,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_reassign_v1_serialize(
             id=id,
-            approvalreassignrequest=approvalreassignrequest,
+            approval_reassign_request=approval_reassign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4525,12 +4525,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4547,7 +4547,7 @@ class ApprovalsApi:
     def update_approvals_reassign_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
-        approvalreassignrequest: Approvalreassignrequest,
+        approval_reassign_request: ApprovalReassignRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4567,8 +4567,8 @@ class ApprovalsApi:
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str
-        :param approvalreassignrequest: (required)
-        :type approvalreassignrequest: Approvalreassignrequest
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4593,7 +4593,7 @@ class ApprovalsApi:
 
         _param = self._update_approvals_reassign_v1_serialize(
             id=id,
-            approvalreassignrequest=approvalreassignrequest,
+            approval_reassign_request=approval_reassign_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4602,12 +4602,12 @@ class ApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetApprovalsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetApprovalsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4619,7 +4619,7 @@ class ApprovalsApi:
     def _update_approvals_reassign_v1_serialize(
         self,
         id,
-        approvalreassignrequest,
+        approval_reassign_request,
         _request_auth,
         _content_type,
         _headers,
@@ -4647,8 +4647,8 @@ class ApprovalsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if approvalreassignrequest is not None:
-            _body_params = approvalreassignrequest
+        if approval_reassign_request is not None:
+            _body_params = approval_reassign_request
 
 
         # set the HTTP header `Accept`

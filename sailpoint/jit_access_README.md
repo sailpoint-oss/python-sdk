@@ -71,14 +71,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](sailpoint/jit_access/docs/Errormessagedto.md)
- - [Errorresponsedto](sailpoint/jit_access/docs/Errorresponsedto.md)
+ - [ErrorMessageDto](sailpoint/jit_access/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint/jit_access/docs/ErrorResponseDto.md)
  - [GetJitActivationConfigV1401Response](sailpoint/jit_access/docs/GetJitActivationConfigV1401Response.md)
  - [GetJitActivationConfigV1429Response](sailpoint/jit_access/docs/GetJitActivationConfigV1429Response.md)
- - [Jitaccessoperationrequest](sailpoint/jit_access/docs/Jitaccessoperationrequest.md)
- - [JitaccessoperationrequestValue](sailpoint/jit_access/docs/JitaccessoperationrequestValue.md)
- - [Jitactivationconfigresponse](sailpoint/jit_access/docs/Jitactivationconfigresponse.md)
- - [Localeorigin](sailpoint/jit_access/docs/Localeorigin.md)
+ - [JITActivationConfigResponse](sailpoint/jit_access/docs/JITActivationConfigResponse.md)
+ - [JitAccessOperationRequest](sailpoint/jit_access/docs/JitAccessOperationRequest.md)
+ - [JitAccessOperationRequestValue](sailpoint/jit_access/docs/JitAccessOperationRequestValue.md)
+ - [LocaleOrigin](sailpoint/jit_access/docs/LocaleOrigin.md)
 
 
 <a id="documentation-for-authorization"></a>

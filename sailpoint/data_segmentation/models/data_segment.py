@@ -21,10 +21,10 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.data_segmentation.models.membershiptype import Membershiptype
+from sailpoint.data_segmentation.models.membership_type import MembershipType
 from sailpoint.data_segmentation.models.ref import Ref
 from sailpoint.data_segmentation.models.scope import Scope
-from sailpoint.data_segmentation.models.visibilitycriteria import Visibilitycriteria
+from sailpoint.data_segmentation.models.visibility_criteria import VisibilityCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -39,8 +39,8 @@ class DataSegment(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The segment's optional description.")
     scopes: Optional[List[Scope]] = Field(default=None, description="List of Scopes that are assigned to the segment")
     member_selection: Optional[List[Ref]] = Field(default=None, description="List of Identities that are assigned to the segment", alias="memberSelection")
-    member_filter: Optional[Visibilitycriteria] = Field(default=None, alias="memberFilter")
-    membership: Optional[Union[Membershiptype, str]] = None
+    member_filter: Optional[VisibilityCriteria] = Field(default=None, alias="memberFilter")
+    membership: Optional[Union[MembershipType, str]] = None
     enabled: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is currently active. Inactive segments have no effect.")
     published: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is being applied to the accounts. If unpublished its being actively modified to until published")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "scopes", "memberSelection", "memberFilter", "membership", "enabled", "published"]
@@ -120,7 +120,7 @@ class DataSegment(BaseModel):
             "description": obj.get("description"),
             "scopes": [Scope.from_dict(_item) for _item in obj["scopes"]] if obj.get("scopes") is not None else None,
             "memberSelection": [Ref.from_dict(_item) for _item in obj["memberSelection"]] if obj.get("memberSelection") is not None else None,
-            "memberFilter": Visibilitycriteria.from_dict(obj["memberFilter"]) if obj.get("memberFilter") is not None else None,
+            "memberFilter": VisibilityCriteria.from_dict(obj["memberFilter"]) if obj.get("memberFilter") is not None else None,
             "membership": obj.get("membership"),
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "published": obj.get("published") if obj.get("published") is not None else False

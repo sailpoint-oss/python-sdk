@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ScheduleHours', 'ScheduleHours']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **Selectortype** |  | [required]
+**type** | **SelectorType** |  | [required]
 **values** | **[]str** | The selected values.  | [required]
 **interval** | **int** | The selected interval for RANGE selectors.  | [optional] 
 }

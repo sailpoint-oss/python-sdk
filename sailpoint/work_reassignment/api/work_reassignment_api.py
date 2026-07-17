@@ -19,14 +19,14 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.work_reassignment.models.configtype import Configtype
-from sailpoint.work_reassignment.models.configtypeenum import Configtypeenum
-from sailpoint.work_reassignment.models.configurationitemrequest import Configurationitemrequest
-from sailpoint.work_reassignment.models.configurationitemresponse import Configurationitemresponse
-from sailpoint.work_reassignment.models.configurationresponse import Configurationresponse
-from sailpoint.work_reassignment.models.evaluateresponse import Evaluateresponse
-from sailpoint.work_reassignment.models.tenantconfigurationrequest import Tenantconfigurationrequest
-from sailpoint.work_reassignment.models.tenantconfigurationresponse import Tenantconfigurationresponse
+from sailpoint.work_reassignment.models.config_type import ConfigType
+from sailpoint.work_reassignment.models.config_type_enum import ConfigTypeEnum
+from sailpoint.work_reassignment.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.work_reassignment.models.configuration_item_response import ConfigurationItemResponse
+from sailpoint.work_reassignment.models.configuration_response import ConfigurationResponse
+from sailpoint.work_reassignment.models.evaluate_response import EvaluateResponse
+from sailpoint.work_reassignment.models.tenant_configuration_request import TenantConfigurationRequest
+from sailpoint.work_reassignment.models.tenant_configuration_response import TenantConfigurationResponse
 
 from sailpoint.work_reassignment.api_client import ApiClient, RequestSerialized
 from sailpoint.work_reassignment.api_response import ApiResponse
@@ -49,7 +49,7 @@ class WorkReassignmentApi:
     @validate_call
     def create_reassignment_configuration_v1(
         self,
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -63,13 +63,13 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Configurationitemresponse:
+    ) -> ConfigurationItemResponse:
         """Create a reassignment configuration
 
         Creates a new Reassignment Configuration for the specified identity.
 
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -95,7 +95,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._create_reassignment_configuration_v1_serialize(
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -104,12 +104,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '201': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -125,7 +125,7 @@ class WorkReassignmentApi:
     @validate_call
     def create_reassignment_configuration_v1_with_http_info(
         self,
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -139,13 +139,13 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Configurationitemresponse]:
+    ) -> ApiResponse[ConfigurationItemResponse]:
         """Create a reassignment configuration
 
         Creates a new Reassignment Configuration for the specified identity.
 
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -171,7 +171,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._create_reassignment_configuration_v1_serialize(
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -180,12 +180,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '201': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -201,7 +201,7 @@ class WorkReassignmentApi:
     @validate_call
     def create_reassignment_configuration_v1_without_preload_content(
         self,
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -220,8 +220,8 @@ class WorkReassignmentApi:
 
         Creates a new Reassignment Configuration for the specified identity.
 
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -247,7 +247,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._create_reassignment_configuration_v1_serialize(
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -256,12 +256,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '201': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -272,7 +272,7 @@ class WorkReassignmentApi:
 
     def _create_reassignment_configuration_v1_serialize(
         self,
-        configurationitemrequest,
+        configuration_item_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -301,8 +301,8 @@ class WorkReassignmentApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if configurationitemrequest is not None:
-            _body_params = configurationitemrequest
+        if configuration_item_request is not None:
+            _body_params = configuration_item_request
 
 
         # set the HTTP header `Accept`
@@ -353,7 +353,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_v1(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Configtypeenum,
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -375,7 +375,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -412,11 +412,11 @@ class WorkReassignmentApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -433,7 +433,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_v1_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Configtypeenum,
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -455,7 +455,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -492,11 +492,11 @@ class WorkReassignmentApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -513,7 +513,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_v1_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Configtypeenum,
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -535,7 +535,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -572,11 +572,11 @@ class WorkReassignmentApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -658,7 +658,7 @@ class WorkReassignmentApi:
     def get_evaluate_reassignment_configuration_v1(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Annotated[Configtypeenum, Field(description="Reassignment work type")],
+        config_type: Annotated[ConfigTypeEnum, Field(description="Reassignment work type")],
         exclusion_filters: Annotated[Optional[List[StrictStr]], Field(description="Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -673,7 +673,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Evaluateresponse]:
+    ) -> List[EvaluateResponse]:
         """Evaluate reassignment configuration
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
@@ -681,7 +681,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: Reassignment work type (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param exclusion_filters: Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments
         :type exclusion_filters: List[str]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -720,12 +720,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Evaluateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[EvaluateResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -742,7 +742,7 @@ class WorkReassignmentApi:
     def get_evaluate_reassignment_configuration_v1_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Annotated[Configtypeenum, Field(description="Reassignment work type")],
+        config_type: Annotated[ConfigTypeEnum, Field(description="Reassignment work type")],
         exclusion_filters: Annotated[Optional[List[StrictStr]], Field(description="Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -757,7 +757,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Evaluateresponse]]:
+    ) -> ApiResponse[List[EvaluateResponse]]:
         """Evaluate reassignment configuration
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
@@ -765,7 +765,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: Reassignment work type (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param exclusion_filters: Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments
         :type exclusion_filters: List[str]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -804,12 +804,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Evaluateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[EvaluateResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -826,7 +826,7 @@ class WorkReassignmentApi:
     def get_evaluate_reassignment_configuration_v1_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        config_type: Annotated[Configtypeenum, Field(description="Reassignment work type")],
+        config_type: Annotated[ConfigTypeEnum, Field(description="Reassignment work type")],
         exclusion_filters: Annotated[Optional[List[StrictStr]], Field(description="Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
@@ -849,7 +849,7 @@ class WorkReassignmentApi:
         :param identity_id: unique identity id (required)
         :type identity_id: str
         :param config_type: Reassignment work type (required)
-        :type config_type: Configtypeenum
+        :type config_type: ConfigTypeEnum
         :param exclusion_filters: Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments
         :type exclusion_filters: List[str]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
@@ -888,12 +888,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Evaluateresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[EvaluateResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -993,7 +993,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Configtype]:
+    ) -> List[ConfigType]:
         """List reassignment config types
 
         Gets a collection of types which are available in the Reassignment Configuration UI.
@@ -1031,12 +1031,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configtype]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigType]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1065,7 +1065,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Configtype]]:
+    ) -> ApiResponse[List[ConfigType]]:
         """List reassignment config types
 
         Gets a collection of types which are available in the Reassignment Configuration UI.
@@ -1103,12 +1103,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configtype]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigType]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1175,12 +1175,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configtype]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigType]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1269,7 +1269,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Configurationresponse:
+    ) -> ConfigurationResponse:
         """Get reassignment configuration
 
         Gets the Reassignment Configuration for an identity.
@@ -1310,13 +1310,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1346,7 +1346,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Configurationresponse]:
+    ) -> ApiResponse[ConfigurationResponse]:
         """Get reassignment configuration
 
         Gets the Reassignment Configuration for an identity.
@@ -1387,13 +1387,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1464,13 +1464,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1561,7 +1561,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Tenantconfigurationresponse:
+    ) -> TenantConfigurationResponse:
         """Get tenant-wide reassignment configuration settings
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.
@@ -1599,13 +1599,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1634,7 +1634,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Tenantconfigurationresponse]:
+    ) -> ApiResponse[TenantConfigurationResponse]:
         """Get tenant-wide reassignment configuration settings
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.
@@ -1672,13 +1672,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1745,13 +1745,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1839,7 +1839,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Configurationresponse]:
+    ) -> List[ConfigurationResponse]:
         """List reassignment configurations
 
         Gets all Reassignment configuration for the current org.
@@ -1877,13 +1877,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configurationresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigurationResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1912,7 +1912,7 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Configurationresponse]]:
+    ) -> ApiResponse[List[ConfigurationResponse]]:
         """List reassignment configurations
 
         Gets all Reassignment configuration for the current org.
@@ -1950,13 +1950,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configurationresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigurationResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2023,13 +2023,13 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Configurationresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[ConfigurationResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2105,7 +2105,7 @@ class WorkReassignmentApi:
     def put_reassignment_config_v1(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2119,15 +2119,15 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Configurationitemresponse:
+    ) -> ConfigurationItemResponse:
         """Update reassignment configuration
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2154,7 +2154,7 @@ class WorkReassignmentApi:
 
         _param = self._put_reassignment_config_v1_serialize(
             identity_id=identity_id,
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2163,12 +2163,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2185,7 +2185,7 @@ class WorkReassignmentApi:
     def put_reassignment_config_v1_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2199,15 +2199,15 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Configurationitemresponse]:
+    ) -> ApiResponse[ConfigurationItemResponse]:
         """Update reassignment configuration
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2234,7 +2234,7 @@ class WorkReassignmentApi:
 
         _param = self._put_reassignment_config_v1_serialize(
             identity_id=identity_id,
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2243,12 +2243,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2265,7 +2265,7 @@ class WorkReassignmentApi:
     def put_reassignment_config_v1_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
-        configurationitemrequest: Configurationitemrequest,
+        configuration_item_request: ConfigurationItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2286,8 +2286,8 @@ class WorkReassignmentApi:
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
-        :param configurationitemrequest: (required)
-        :type configurationitemrequest: Configurationitemrequest
+        :param configuration_item_request: (required)
+        :type configuration_item_request: ConfigurationItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2314,7 +2314,7 @@ class WorkReassignmentApi:
 
         _param = self._put_reassignment_config_v1_serialize(
             identity_id=identity_id,
-            configurationitemrequest=configurationitemrequest,
+            configuration_item_request=configuration_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2323,12 +2323,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Configurationitemresponse",
-            '400': "Errorresponsedto",
+            '200': "ConfigurationItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2340,7 +2340,7 @@ class WorkReassignmentApi:
     def _put_reassignment_config_v1_serialize(
         self,
         identity_id,
-        configurationitemrequest,
+        configuration_item_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2371,8 +2371,8 @@ class WorkReassignmentApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if configurationitemrequest is not None:
-            _body_params = configurationitemrequest
+        if configuration_item_request is not None:
+            _body_params = configuration_item_request
 
 
         # set the HTTP header `Accept`
@@ -2422,7 +2422,7 @@ class WorkReassignmentApi:
     @validate_call
     def put_tenant_configuration_v1(
         self,
-        tenantconfigurationrequest: Tenantconfigurationrequest,
+        tenant_configuration_request: TenantConfigurationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2436,13 +2436,13 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Tenantconfigurationresponse:
+    ) -> TenantConfigurationResponse:
         """Update tenant-wide reassignment configuration settings
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
-        :param tenantconfigurationrequest: (required)
-        :type tenantconfigurationrequest: Tenantconfigurationrequest
+        :param tenant_configuration_request: (required)
+        :type tenant_configuration_request: TenantConfigurationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2468,7 +2468,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._put_tenant_configuration_v1_serialize(
-            tenantconfigurationrequest=tenantconfigurationrequest,
+            tenant_configuration_request=tenant_configuration_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2477,12 +2477,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2498,7 +2498,7 @@ class WorkReassignmentApi:
     @validate_call
     def put_tenant_configuration_v1_with_http_info(
         self,
-        tenantconfigurationrequest: Tenantconfigurationrequest,
+        tenant_configuration_request: TenantConfigurationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2512,13 +2512,13 @@ class WorkReassignmentApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Tenantconfigurationresponse]:
+    ) -> ApiResponse[TenantConfigurationResponse]:
         """Update tenant-wide reassignment configuration settings
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
-        :param tenantconfigurationrequest: (required)
-        :type tenantconfigurationrequest: Tenantconfigurationrequest
+        :param tenant_configuration_request: (required)
+        :type tenant_configuration_request: TenantConfigurationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2544,7 +2544,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._put_tenant_configuration_v1_serialize(
-            tenantconfigurationrequest=tenantconfigurationrequest,
+            tenant_configuration_request=tenant_configuration_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2553,12 +2553,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2574,7 +2574,7 @@ class WorkReassignmentApi:
     @validate_call
     def put_tenant_configuration_v1_without_preload_content(
         self,
-        tenantconfigurationrequest: Tenantconfigurationrequest,
+        tenant_configuration_request: TenantConfigurationRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -2593,8 +2593,8 @@ class WorkReassignmentApi:
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
-        :param tenantconfigurationrequest: (required)
-        :type tenantconfigurationrequest: Tenantconfigurationrequest
+        :param tenant_configuration_request: (required)
+        :type tenant_configuration_request: TenantConfigurationRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2620,7 +2620,7 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._put_tenant_configuration_v1_serialize(
-            tenantconfigurationrequest=tenantconfigurationrequest,
+            tenant_configuration_request=tenant_configuration_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2629,12 +2629,12 @@ class WorkReassignmentApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tenantconfigurationresponse",
-            '400': "Errorresponsedto",
+            '200': "TenantConfigurationResponse",
+            '400': "ErrorResponseDto",
             '401': "GetReassignmentConfigTypesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetReassignmentConfigTypesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2645,7 +2645,7 @@ class WorkReassignmentApi:
 
     def _put_tenant_configuration_v1_serialize(
         self,
-        tenantconfigurationrequest,
+        tenant_configuration_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2674,8 +2674,8 @@ class WorkReassignmentApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if tenantconfigurationrequest is not None:
-            _body_params = tenantconfigurationrequest
+        if tenant_configuration_request is not None:
+            _body_params = tenant_configuration_request
 
 
         # set the HTTP header `Accept`

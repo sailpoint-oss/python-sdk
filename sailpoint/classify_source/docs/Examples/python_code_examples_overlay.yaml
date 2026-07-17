@@ -28,7 +28,7 @@
       source: |
         from sailpoint.classify_source.api.classify_source_api import ClassifySourceApi
         from sailpoint.classify_source.api_client import ApiClient
-        from sailpoint.classify_source.models.sourceclassificationstatus import Sourceclassificationstatus
+        from sailpoint.classify_source.models.source_classification_status import SourceClassificationStatus
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

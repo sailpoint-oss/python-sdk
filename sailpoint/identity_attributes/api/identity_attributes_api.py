@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.identity_attributes.models.identityattribute2 import Identityattribute2
-from sailpoint.identity_attributes.models.identityattributenames import Identityattributenames
+from sailpoint.identity_attributes.models.identity_attribute2 import IdentityAttribute2
+from sailpoint.identity_attributes.models.identity_attribute_names import IdentityAttributeNames
 
 from sailpoint.identity_attributes.api_client import ApiClient, RequestSerialized
 from sailpoint.identity_attributes.api_response import ApiResponse
@@ -43,7 +43,7 @@ class IdentityAttributesApi:
     @validate_call
     def create_identity_attribute_v1(
         self,
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,13 +56,13 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityattribute2:
+    ) -> IdentityAttribute2:
         """Create identity attribute
 
         Use this API to create a new identity attribute.
 
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +86,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_v1_serialize(
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -94,13 +94,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '201': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -116,7 +116,7 @@ class IdentityAttributesApi:
     @validate_call
     def create_identity_attribute_v1_with_http_info(
         self,
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,13 +129,13 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityattribute2]:
+    ) -> ApiResponse[IdentityAttribute2]:
         """Create identity attribute
 
         Use this API to create a new identity attribute.
 
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +159,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_v1_serialize(
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,13 +167,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '201': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -189,7 +189,7 @@ class IdentityAttributesApi:
     @validate_call
     def create_identity_attribute_v1_without_preload_content(
         self,
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,8 +207,8 @@ class IdentityAttributesApi:
 
         Use this API to create a new identity attribute.
 
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +232,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_v1_serialize(
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -240,13 +240,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '201': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class IdentityAttributesApi:
 
     def _create_identity_attribute_v1_serialize(
         self,
-        identityattribute2,
+        identity_attribute2,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +283,8 @@ class IdentityAttributesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identityattribute2 is not None:
-            _body_params = identityattribute2
+        if identity_attribute2 is not None:
+            _body_params = identity_attribute2
 
 
         # set the HTTP header `Accept`
@@ -386,12 +386,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -459,12 +459,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -532,12 +532,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -612,7 +612,7 @@ class IdentityAttributesApi:
     @validate_call
     def delete_identity_attributes_in_bulk_v1(
         self,
-        identityattributenames: Identityattributenames,
+        identity_attribute_names: IdentityAttributeNames,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -630,8 +630,8 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param identityattributenames: (required)
-        :type identityattributenames: Identityattributenames
+        :param identity_attribute_names: (required)
+        :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -655,7 +655,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_v1_serialize(
-            identityattributenames=identityattributenames,
+            identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -664,12 +664,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -685,7 +685,7 @@ class IdentityAttributesApi:
     @validate_call
     def delete_identity_attributes_in_bulk_v1_with_http_info(
         self,
-        identityattributenames: Identityattributenames,
+        identity_attribute_names: IdentityAttributeNames,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -703,8 +703,8 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param identityattributenames: (required)
-        :type identityattributenames: Identityattributenames
+        :param identity_attribute_names: (required)
+        :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -728,7 +728,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_v1_serialize(
-            identityattributenames=identityattributenames,
+            identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -737,12 +737,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -758,7 +758,7 @@ class IdentityAttributesApi:
     @validate_call
     def delete_identity_attributes_in_bulk_v1_without_preload_content(
         self,
-        identityattributenames: Identityattributenames,
+        identity_attribute_names: IdentityAttributeNames,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -776,8 +776,8 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param identityattributenames: (required)
-        :type identityattributenames: Identityattributenames
+        :param identity_attribute_names: (required)
+        :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -801,7 +801,7 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_v1_serialize(
-            identityattributenames=identityattributenames,
+            identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -810,12 +810,12 @@ class IdentityAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -826,7 +826,7 @@ class IdentityAttributesApi:
 
     def _delete_identity_attributes_in_bulk_v1_serialize(
         self,
-        identityattributenames,
+        identity_attribute_names,
         _request_auth,
         _content_type,
         _headers,
@@ -852,8 +852,8 @@ class IdentityAttributesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identityattributenames is not None:
-            _body_params = identityattributenames
+        if identity_attribute_names is not None:
+            _body_params = identity_attribute_names
 
 
         # set the HTTP header `Accept`
@@ -916,7 +916,7 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityattribute2:
+    ) -> IdentityAttribute2:
         """Get identity attribute
 
         This gets an identity attribute for a given technical name.
@@ -954,13 +954,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -989,7 +989,7 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityattribute2]:
+    ) -> ApiResponse[IdentityAttribute2]:
         """Get identity attribute
 
         This gets an identity attribute for a given technical name.
@@ -1027,13 +1027,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1100,13 +1100,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1197,7 +1197,7 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Identityattribute2]:
+    ) -> List[IdentityAttribute2]:
         """List identity attributes
 
         Use this API to get a collection of identity attributes.
@@ -1244,12 +1244,12 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityattribute2]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityAttribute2]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1281,7 +1281,7 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Identityattribute2]]:
+    ) -> ApiResponse[List[IdentityAttribute2]]:
         """List identity attributes
 
         Use this API to get a collection of identity attributes.
@@ -1328,12 +1328,12 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityattribute2]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityAttribute2]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1412,12 +1412,12 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Identityattribute2]",
-            '400': "Errorresponsedto",
+            '200': "List[IdentityAttribute2]",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1510,7 +1510,7 @@ class IdentityAttributesApi:
     def put_identity_attribute_v1(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1523,15 +1523,15 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Identityattribute2:
+    ) -> IdentityAttribute2:
         """Update identity attribute
 
         This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1556,7 +1556,7 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_v1_serialize(
             name=name,
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1564,13 +1564,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1587,7 +1587,7 @@ class IdentityAttributesApi:
     def put_identity_attribute_v1_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1600,15 +1600,15 @@ class IdentityAttributesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Identityattribute2]:
+    ) -> ApiResponse[IdentityAttribute2]:
         """Update identity attribute
 
         This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1633,7 +1633,7 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_v1_serialize(
             name=name,
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1641,13 +1641,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1664,7 +1664,7 @@ class IdentityAttributesApi:
     def put_identity_attribute_v1_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        identityattribute2: Identityattribute2,
+        identity_attribute2: IdentityAttribute2,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1684,8 +1684,8 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param identityattribute2: (required)
-        :type identityattribute2: Identityattribute2
+        :param identity_attribute2: (required)
+        :type identity_attribute2: IdentityAttribute2
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1710,7 +1710,7 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_v1_serialize(
             name=name,
-            identityattribute2=identityattribute2,
+            identity_attribute2=identity_attribute2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1718,13 +1718,13 @@ class IdentityAttributesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Identityattribute2",
-            '400': "Errorresponsedto",
+            '200': "IdentityAttribute2",
+            '400': "ErrorResponseDto",
             '401': "ListIdentityAttributesV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListIdentityAttributesV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1736,7 +1736,7 @@ class IdentityAttributesApi:
     def _put_identity_attribute_v1_serialize(
         self,
         name,
-        identityattribute2,
+        identity_attribute2,
         _request_auth,
         _content_type,
         _headers,
@@ -1764,8 +1764,8 @@ class IdentityAttributesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identityattribute2 is not None:
-            _body_params = identityattribute2
+        if identity_attribute2 is not None:
+            _body_params = identity_attribute2
 
 
         # set the HTTP header `Accept`

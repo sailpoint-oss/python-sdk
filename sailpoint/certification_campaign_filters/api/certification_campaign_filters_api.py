@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.certification_campaign_filters.models.campaignfilterdetails import Campaignfilterdetails
+from sailpoint.certification_campaign_filters.models.campaign_filter_details import CampaignFilterDetails
 from sailpoint.certification_campaign_filters.models.list_campaign_filters_v1200_response import ListCampaignFiltersV1200Response
 
 from sailpoint.certification_campaign_filters.api_client import ApiClient, RequestSerialized
@@ -43,7 +43,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def create_campaign_filter_v1(
         self,
-        campaignfilterdetails: Campaignfilterdetails,
+        campaign_filter_details: CampaignFilterDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,13 +56,13 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignfilterdetails:
+    ) -> CampaignFilterDetails:
         """Create campaign filter
 
         Use this API to create a campaign filter based on filter details and criteria.
 
-        :param campaignfilterdetails: (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +86,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._create_campaign_filter_v1_serialize(
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -94,12 +94,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -115,7 +115,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def create_campaign_filter_v1_with_http_info(
         self,
-        campaignfilterdetails: Campaignfilterdetails,
+        campaign_filter_details: CampaignFilterDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,13 +128,13 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignfilterdetails]:
+    ) -> ApiResponse[CampaignFilterDetails]:
         """Create campaign filter
 
         Use this API to create a campaign filter based on filter details and criteria.
 
-        :param campaignfilterdetails: (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -158,7 +158,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._create_campaign_filter_v1_serialize(
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -166,12 +166,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -187,7 +187,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def create_campaign_filter_v1_without_preload_content(
         self,
-        campaignfilterdetails: Campaignfilterdetails,
+        campaign_filter_details: CampaignFilterDetails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +205,8 @@ class CertificationCampaignFiltersApi:
 
         Use this API to create a campaign filter based on filter details and criteria.
 
-        :param campaignfilterdetails: (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +230,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._create_campaign_filter_v1_serialize(
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,12 +238,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -254,7 +254,7 @@ class CertificationCampaignFiltersApi:
 
     def _create_campaign_filter_v1_serialize(
         self,
-        campaignfilterdetails,
+        campaign_filter_details,
         _request_auth,
         _content_type,
         _headers,
@@ -280,8 +280,8 @@ class CertificationCampaignFiltersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaignfilterdetails is not None:
-            _body_params = campaignfilterdetails
+        if campaign_filter_details is not None:
+            _body_params = campaign_filter_details
 
 
         # set the HTTP header `Accept`
@@ -383,12 +383,12 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -456,12 +456,12 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -529,12 +529,12 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -636,7 +636,7 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignfilterdetails:
+    ) -> CampaignFilterDetails:
         """Get campaign filter by id
 
         Retrieves information for an existing campaign filter using the filter's ID.
@@ -674,13 +674,13 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -709,7 +709,7 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignfilterdetails]:
+    ) -> ApiResponse[CampaignFilterDetails]:
         """Get campaign filter by id
 
         Retrieves information for an existing campaign filter using the filter's ID.
@@ -747,13 +747,13 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -820,13 +820,13 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -961,11 +961,11 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListCampaignFiltersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1041,11 +1041,11 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListCampaignFiltersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1121,11 +1121,11 @@ class CertificationCampaignFiltersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListCampaignFiltersV1200Response",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1213,7 +1213,7 @@ class CertificationCampaignFiltersApi:
     def update_campaign_filter_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the campaign filter being modified.")],
-        campaignfilterdetails: Annotated[Campaignfilterdetails, Field(description="A campaign filter details with updated field values.")],
+        campaign_filter_details: Annotated[CampaignFilterDetails, Field(description="A campaign filter details with updated field values.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1226,15 +1226,15 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Campaignfilterdetails:
+    ) -> CampaignFilterDetails:
         """Updates a campaign filter
 
         Updates an existing campaign filter using the filter's ID.
 
         :param id: The ID of the campaign filter being modified. (required)
         :type id: str
-        :param campaignfilterdetails: A campaign filter details with updated field values. (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: A campaign filter details with updated field values. (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1259,7 +1259,7 @@ class CertificationCampaignFiltersApi:
 
         _param = self._update_campaign_filter_v1_serialize(
             id=id,
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1267,12 +1267,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1289,7 +1289,7 @@ class CertificationCampaignFiltersApi:
     def update_campaign_filter_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the campaign filter being modified.")],
-        campaignfilterdetails: Annotated[Campaignfilterdetails, Field(description="A campaign filter details with updated field values.")],
+        campaign_filter_details: Annotated[CampaignFilterDetails, Field(description="A campaign filter details with updated field values.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1302,15 +1302,15 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Campaignfilterdetails]:
+    ) -> ApiResponse[CampaignFilterDetails]:
         """Updates a campaign filter
 
         Updates an existing campaign filter using the filter's ID.
 
         :param id: The ID of the campaign filter being modified. (required)
         :type id: str
-        :param campaignfilterdetails: A campaign filter details with updated field values. (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: A campaign filter details with updated field values. (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1335,7 +1335,7 @@ class CertificationCampaignFiltersApi:
 
         _param = self._update_campaign_filter_v1_serialize(
             id=id,
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1343,12 +1343,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1365,7 +1365,7 @@ class CertificationCampaignFiltersApi:
     def update_campaign_filter_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the campaign filter being modified.")],
-        campaignfilterdetails: Annotated[Campaignfilterdetails, Field(description="A campaign filter details with updated field values.")],
+        campaign_filter_details: Annotated[CampaignFilterDetails, Field(description="A campaign filter details with updated field values.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1385,8 +1385,8 @@ class CertificationCampaignFiltersApi:
 
         :param id: The ID of the campaign filter being modified. (required)
         :type id: str
-        :param campaignfilterdetails: A campaign filter details with updated field values. (required)
-        :type campaignfilterdetails: Campaignfilterdetails
+        :param campaign_filter_details: A campaign filter details with updated field values. (required)
+        :type campaign_filter_details: CampaignFilterDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1411,7 +1411,7 @@ class CertificationCampaignFiltersApi:
 
         _param = self._update_campaign_filter_v1_serialize(
             id=id,
-            campaignfilterdetails=campaignfilterdetails,
+            campaign_filter_details=campaign_filter_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1419,12 +1419,12 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaignfilterdetails",
-            '400': "Errorresponsedto",
+            '200': "CampaignFilterDetails",
+            '400': "ErrorResponseDto",
             '401': "ListCampaignFiltersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListCampaignFiltersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1436,7 +1436,7 @@ class CertificationCampaignFiltersApi:
     def _update_campaign_filter_v1_serialize(
         self,
         id,
-        campaignfilterdetails,
+        campaign_filter_details,
         _request_auth,
         _content_type,
         _headers,
@@ -1464,8 +1464,8 @@ class CertificationCampaignFiltersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if campaignfilterdetails is not None:
-            _body_params = campaignfilterdetails
+        if campaign_filter_details is not None:
+            _body_params = campaign_filter_details
 
 
         # set the HTTP header `Accept`

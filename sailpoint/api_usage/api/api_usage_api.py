@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.api_usage.models.summaryresponse import Summaryresponse
+from sailpoint.api_usage.models.summary_response import SummaryResponse
 
 from sailpoint.api_usage.api_client import ApiClient, RequestSerialized
 from sailpoint.api_usage.api_response import ApiResponse
@@ -98,11 +98,11 @@ class ApiUsageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -174,11 +174,11 @@ class ApiUsageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -250,11 +250,11 @@ class ApiUsageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -350,7 +350,7 @@ class ApiUsageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Summaryresponse]:
+    ) -> List[SummaryResponse]:
         """Get Api Summary
 
         This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
@@ -397,12 +397,12 @@ class ApiUsageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Summaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[SummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -434,7 +434,7 @@ class ApiUsageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Summaryresponse]]:
+    ) -> ApiResponse[List[SummaryResponse]]:
         """Get Api Summary
 
         This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
@@ -481,12 +481,12 @@ class ApiUsageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Summaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[SummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -565,12 +565,12 @@ class ApiUsageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Summaryresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[SummaryResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetTotalCountV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "GetTotalCountV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,

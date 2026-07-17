@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.iai_common_access.models.commonaccessidstatus import Commonaccessidstatus
-from sailpoint.iai_common_access.models.commonaccessitemrequest import Commonaccessitemrequest
-from sailpoint.iai_common_access.models.commonaccessitemresponse import Commonaccessitemresponse
-from sailpoint.iai_common_access.models.commonaccessresponse import Commonaccessresponse
+from sailpoint.iai_common_access.models.common_access_id_status import CommonAccessIDStatus
+from sailpoint.iai_common_access.models.common_access_item_request import CommonAccessItemRequest
+from sailpoint.iai_common_access.models.common_access_item_response import CommonAccessItemResponse
+from sailpoint.iai_common_access.models.common_access_response import CommonAccessResponse
 
 from sailpoint.iai_common_access.api_client import ApiClient, RequestSerialized
 from sailpoint.iai_common_access.api_response import ApiResponse
@@ -45,7 +45,7 @@ class IAICommonAccessApi:
     @validate_call
     def create_common_access_v1(
         self,
-        commonaccessitemrequest: Commonaccessitemrequest,
+        common_access_item_request: CommonAccessItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -59,13 +59,13 @@ class IAICommonAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Commonaccessitemresponse:
+    ) -> CommonAccessItemResponse:
         """Create common access items
 
         This API is used to add roles/access profiles to the list of common access for a customer. Requires authorization scope of iai:access-modeling:create
 
-        :param commonaccessitemrequest: (required)
-        :type commonaccessitemrequest: Commonaccessitemrequest
+        :param common_access_item_request: (required)
+        :type common_access_item_request: CommonAccessItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -91,7 +91,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._create_common_access_v1_serialize(
-            commonaccessitemrequest=commonaccessitemrequest,
+            common_access_item_request=common_access_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -100,12 +100,12 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Commonaccessitemresponse",
-            '400': "Errorresponsedto",
+            '202': "CommonAccessItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class IAICommonAccessApi:
     @validate_call
     def create_common_access_v1_with_http_info(
         self,
-        commonaccessitemrequest: Commonaccessitemrequest,
+        common_access_item_request: CommonAccessItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -135,13 +135,13 @@ class IAICommonAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Commonaccessitemresponse]:
+    ) -> ApiResponse[CommonAccessItemResponse]:
         """Create common access items
 
         This API is used to add roles/access profiles to the list of common access for a customer. Requires authorization scope of iai:access-modeling:create
 
-        :param commonaccessitemrequest: (required)
-        :type commonaccessitemrequest: Commonaccessitemrequest
+        :param common_access_item_request: (required)
+        :type common_access_item_request: CommonAccessItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -167,7 +167,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._create_common_access_v1_serialize(
-            commonaccessitemrequest=commonaccessitemrequest,
+            common_access_item_request=common_access_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -176,12 +176,12 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Commonaccessitemresponse",
-            '400': "Errorresponsedto",
+            '202': "CommonAccessItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -197,7 +197,7 @@ class IAICommonAccessApi:
     @validate_call
     def create_common_access_v1_without_preload_content(
         self,
-        commonaccessitemrequest: Commonaccessitemrequest,
+        common_access_item_request: CommonAccessItemRequest,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -216,8 +216,8 @@ class IAICommonAccessApi:
 
         This API is used to add roles/access profiles to the list of common access for a customer. Requires authorization scope of iai:access-modeling:create
 
-        :param commonaccessitemrequest: (required)
-        :type commonaccessitemrequest: Commonaccessitemrequest
+        :param common_access_item_request: (required)
+        :type common_access_item_request: CommonAccessItemRequest
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -243,7 +243,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._create_common_access_v1_serialize(
-            commonaccessitemrequest=commonaccessitemrequest,
+            common_access_item_request=common_access_item_request,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -252,12 +252,12 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Commonaccessitemresponse",
-            '400': "Errorresponsedto",
+            '202': "CommonAccessItemResponse",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -268,7 +268,7 @@ class IAICommonAccessApi:
 
     def _create_common_access_v1_serialize(
         self,
-        commonaccessitemrequest,
+        common_access_item_request,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -297,8 +297,8 @@ class IAICommonAccessApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if commonaccessitemrequest is not None:
-            _body_params = commonaccessitemrequest
+        if common_access_item_request is not None:
+            _body_params = common_access_item_request
 
 
         # set the HTTP header `Accept`
@@ -366,7 +366,7 @@ class IAICommonAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Commonaccessresponse]:
+    ) -> List[CommonAccessResponse]:
         """Get a paginated list of common access
 
         This endpoint returns the current common access for a customer. The returned items can be filtered and sorted. Requires authorization scope of iai:access-modeling:read
@@ -419,11 +419,11 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Commonaccessresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[CommonAccessResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -457,7 +457,7 @@ class IAICommonAccessApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Commonaccessresponse]]:
+    ) -> ApiResponse[List[CommonAccessResponse]]:
         """Get a paginated list of common access
 
         This endpoint returns the current common access for a customer. The returned items can be filtered and sorted. Requires authorization scope of iai:access-modeling:read
@@ -510,11 +510,11 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Commonaccessresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[CommonAccessResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -601,11 +601,11 @@ class IAICommonAccessApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Commonaccessresponse]",
-            '400': "Errorresponsedto",
+            '200': "List[CommonAccessResponse]",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
-            '500': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -705,7 +705,7 @@ class IAICommonAccessApi:
     @validate_call
     def update_common_access_status_in_bulk_v1(
         self,
-        commonaccessidstatus: Annotated[List[Commonaccessidstatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
+        common_access_id_status: Annotated[List[CommonAccessIDStatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -724,8 +724,8 @@ class IAICommonAccessApi:
 
         This submits an update request to the common access application. At this time there are no parameters. Requires authorization scope of iai:access-modeling:update
 
-        :param commonaccessidstatus: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
-        :type commonaccessidstatus: List[Commonaccessidstatus]
+        :param common_access_id_status: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
+        :type common_access_id_status: List[CommonAccessIDStatus]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -751,7 +751,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._update_common_access_status_in_bulk_v1_serialize(
-            commonaccessidstatus=commonaccessidstatus,
+            common_access_id_status=common_access_id_status,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -761,11 +761,11 @@ class IAICommonAccessApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -781,7 +781,7 @@ class IAICommonAccessApi:
     @validate_call
     def update_common_access_status_in_bulk_v1_with_http_info(
         self,
-        commonaccessidstatus: Annotated[List[Commonaccessidstatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
+        common_access_id_status: Annotated[List[CommonAccessIDStatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -800,8 +800,8 @@ class IAICommonAccessApi:
 
         This submits an update request to the common access application. At this time there are no parameters. Requires authorization scope of iai:access-modeling:update
 
-        :param commonaccessidstatus: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
-        :type commonaccessidstatus: List[Commonaccessidstatus]
+        :param common_access_id_status: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
+        :type common_access_id_status: List[CommonAccessIDStatus]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -827,7 +827,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._update_common_access_status_in_bulk_v1_serialize(
-            commonaccessidstatus=commonaccessidstatus,
+            common_access_id_status=common_access_id_status,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -837,11 +837,11 @@ class IAICommonAccessApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -857,7 +857,7 @@ class IAICommonAccessApi:
     @validate_call
     def update_common_access_status_in_bulk_v1_without_preload_content(
         self,
-        commonaccessidstatus: Annotated[List[Commonaccessidstatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
+        common_access_id_status: Annotated[List[CommonAccessIDStatus], Field(description="Confirm or deny in bulk the common access ids that are (or aren't) common access")],
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -876,8 +876,8 @@ class IAICommonAccessApi:
 
         This submits an update request to the common access application. At this time there are no parameters. Requires authorization scope of iai:access-modeling:update
 
-        :param commonaccessidstatus: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
-        :type commonaccessidstatus: List[Commonaccessidstatus]
+        :param common_access_id_status: Confirm or deny in bulk the common access ids that are (or aren't) common access (required)
+        :type common_access_id_status: List[CommonAccessIDStatus]
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -903,7 +903,7 @@ class IAICommonAccessApi:
         """ # noqa: E501
 
         _param = self._update_common_access_status_in_bulk_v1_serialize(
-            commonaccessidstatus=commonaccessidstatus,
+            common_access_id_status=common_access_id_status,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -913,11 +913,11 @@ class IAICommonAccessApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetCommonAccessV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "CreateCommonAccessV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -928,7 +928,7 @@ class IAICommonAccessApi:
 
     def _update_common_access_status_in_bulk_v1_serialize(
         self,
-        commonaccessidstatus,
+        common_access_id_status,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -939,7 +939,7 @@ class IAICommonAccessApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Commonaccessidstatus': '',
+            'CommonAccessIDStatus': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -958,8 +958,8 @@ class IAICommonAccessApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if commonaccessidstatus is not None:
-            _body_params = commonaccessidstatus
+        if common_access_id_status is not None:
+            _body_params = common_access_id_status
 
 
         # set the HTTP header `Accept`

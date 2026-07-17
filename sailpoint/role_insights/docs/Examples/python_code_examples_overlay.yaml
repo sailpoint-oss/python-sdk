@@ -6,7 +6,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightsresponse import Roleinsightsresponse
+        from sailpoint.role_insights.models.role_insights_response import RoleInsightsResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -60,7 +60,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightsidentities import Roleinsightsidentities
+        from sailpoint.role_insights.models.role_insights_identities import RoleInsightsIdentities
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -95,7 +95,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsight import Roleinsight
+        from sailpoint.role_insights.models.role_insight import RoleInsight
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -122,7 +122,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightsentitlement import Roleinsightsentitlement
+        from sailpoint.role_insights.models.role_insights_entitlement import RoleInsightsEntitlement
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -151,7 +151,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightsentitlementchanges import Roleinsightsentitlementchanges
+        from sailpoint.role_insights.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -181,7 +181,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightsresponse import Roleinsightsresponse
+        from sailpoint.role_insights.models.role_insights_response import RoleInsightsResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -208,7 +208,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsightssummary import Roleinsightssummary
+        from sailpoint.role_insights.models.role_insights_summary import RoleInsightsSummary
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -234,7 +234,7 @@
       source: |
         from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi
         from sailpoint.role_insights.api_client import ApiClient
-        from sailpoint.role_insights.models.roleinsight import Roleinsight
+        from sailpoint.role_insights.models.role_insight import RoleInsight
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

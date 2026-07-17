@@ -66,21 +66,21 @@ This API is used to generate a digit token for password management. Requires aut
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passworddigittokenreset | [**Passworddigittokenreset**](../models/passworddigittokenreset) | True  | 
+ Body  | password_digit_token_reset | [**PasswordDigitTokenReset**](../models/password-digit-token-reset) | True  | 
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
-[**Passworddigittoken**](../models/passworddigittoken)
+[**PasswordDigitToken**](../models/password-digit-token)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The digit token for password management. | Passworddigittoken |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | The digit token for password management. | PasswordDigitToken |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | QueryPasswordInfoV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | QueryPasswordInfoV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -91,23 +91,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_management.api.password_management_api import PasswordManagementApi
 from sailpoint.password_management.api_client import ApiClient
-from sailpoint.password_management.models.passworddigittoken import Passworddigittoken
-from sailpoint.password_management.models.passworddigittokenreset import Passworddigittokenreset
+from sailpoint.password_management.models.password_digit_token import PasswordDigitToken
+from sailpoint.password_management.models.password_digit_token_reset import PasswordDigitTokenReset
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    passworddigittokenreset = '''{"userId":"Abby.Smith","length":8,"durationMinutes":5}''' # Passworddigittokenreset | 
+    password_digit_token_reset = '''{
+          "durationMinutes" : 5,
+          "length" : 8,
+          "userId" : "Abby.Smith"
+        }''' # PasswordDigitTokenReset | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Generate a digit token
-        new_passworddigittokenreset = Passworddigittokenreset.from_json(passworddigittokenreset)
-        results = PasswordManagementApi(api_client).create_digit_token_v1(passworddigittokenreset=new_passworddigittokenreset)
+        new_password_digit_token_reset = PasswordDigitTokenReset.from_json(password_digit_token_reset)
+        results = PasswordManagementApi(api_client).create_digit_token_v1(password_digit_token_reset=new_password_digit_token_reset)
         # Below is a request that includes all optional parameters
-        # results = PasswordManagementApi(api_client).create_digit_token_v1(new_passworddigittokenreset, x_sail_point_experimental)
+        # results = PasswordManagementApi(api_client).create_digit_token_v1(new_password_digit_token_reset, x_sail_point_experimental)
         print("The response of PasswordManagementApi->create_digit_token_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -131,18 +135,18 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Password change request ID
 
 ### Return type
-[**Passwordstatus**](../models/passwordstatus)
+[**PasswordStatus**](../models/password-status)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Status of the password change request | Passwordstatus |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Status of the password change request | PasswordStatus |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | QueryPasswordInfoV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | QueryPasswordInfoV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -153,7 +157,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_management.api.password_management_api import PasswordManagementApi
 from sailpoint.password_management.api_client import ApiClient
-from sailpoint.password_management.models.passwordstatus import Passwordstatus
+from sailpoint.password_management.models.password_status import PasswordStatus
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -188,20 +192,20 @@ This API is used to query password related information.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passwordinfoquerydto | [**Passwordinfoquerydto**](../models/passwordinfoquerydto) | True  | 
+ Body  | password_info_query_dto | [**PasswordInfoQueryDTO**](../models/password-info-query-dto) | True  | 
 
 ### Return type
-[**Passwordinfo**](../models/passwordinfo)
+[**PasswordInfo**](../models/password-info)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Reference to the password info. | Passwordinfo |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+200 | Reference to the password info. | PasswordInfo |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | QueryPasswordInfoV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | QueryPasswordInfoV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -212,21 +216,24 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_management.api.password_management_api import PasswordManagementApi
 from sailpoint.password_management.api_client import ApiClient
-from sailpoint.password_management.models.passwordinfo import Passwordinfo
-from sailpoint.password_management.models.passwordinfoquerydto import Passwordinfoquerydto
+from sailpoint.password_management.models.password_info import PasswordInfo
+from sailpoint.password_management.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    passwordinfoquerydto = '''sailpoint.password_management.Passwordinfoquerydto()''' # Passwordinfoquerydto | 
+    password_info_query_dto = '''{
+          "sourceName" : "My-AD",
+          "userName" : "Abby.Smith"
+        }''' # PasswordInfoQueryDTO | 
 
     try:
         # Query password info
-        new_passwordinfoquerydto = Passwordinfoquerydto.from_json(passwordinfoquerydto)
-        results = PasswordManagementApi(api_client).query_password_info_v1(passwordinfoquerydto=new_passwordinfoquerydto)
+        new_password_info_query_dto = PasswordInfoQueryDto.from_json(password_info_query_dto)
+        results = PasswordManagementApi(api_client).query_password_info_v1(password_info_query_dto=new_password_info_query_dto)
         # Below is a request that includes all optional parameters
-        # results = PasswordManagementApi(api_client).query_password_info_v1(new_passwordinfoquerydto)
+        # results = PasswordManagementApi(api_client).query_password_info_v1(new_password_info_query_dto)
         print("The response of PasswordManagementApi->query_password_info_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -266,20 +273,20 @@ You can then use [Get Password Change Request Status](https://developer.sailpoin
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | passwordchangerequest | [**Passwordchangerequest**](../models/passwordchangerequest) | True  | 
+ Body  | password_change_request | [**PasswordChangeRequest**](../models/password-change-request) | True  | 
 
 ### Return type
-[**Passwordchangeresponse**](../models/passwordchangeresponse)
+[**PasswordChangeResponse**](../models/password-change-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Reference to the password change. | Passwordchangeresponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+202 | Reference to the password change. | PasswordChangeResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | QueryPasswordInfoV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | QueryPasswordInfoV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: application/json
@@ -290,21 +297,27 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.password_management.api.password_management_api import PasswordManagementApi
 from sailpoint.password_management.api_client import ApiClient
-from sailpoint.password_management.models.passwordchangerequest import Passwordchangerequest
-from sailpoint.password_management.models.passwordchangeresponse import Passwordchangeresponse
+from sailpoint.password_management.models.password_change_request import PasswordChangeRequest
+from sailpoint.password_management.models.password_change_response import PasswordChangeResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    passwordchangerequest = '''sailpoint.password_management.Passwordchangerequest()''' # Passwordchangerequest | 
+    password_change_request = '''{
+          "sourceId" : "8a807d4c73c545510173c545d4b60246",
+          "accountId" : "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com",
+          "identityId" : "8a807d4c73c545510173c545f0a002ff",
+          "publicKeyId" : "YWQ2NjQ4MTItZjY0NC00MWExLWFjMjktOGNmMzU3Y2VlNjk2",
+          "encryptedPassword" : "XzN+YwKgr2C+InkMYFMBG3UtjMEw5ZIql/XFlXo8cJNeslmkplx6vn4kd4/43IF9STBk5RnzR6XmjpEO+FwHDoiBwYZAkAZK/Iswxk4OdybG6Y4MStJCOCiK8osKr35IMMSV/mbO4wAeltoCk7daTWzTGLiI6UaT5tf+F2EgdjJZ7YqM8W8r7aUWsm3p2Xt01Y46ZRx0QaM91QruiIx2rECFT2pUO0wr+7oQ77jypATyGWRtADsu3YcvCk/6U5MqCnXMzKBcRas7NnZdSL/d5H1GglVGz3VLPMaivG4/oL4chOMmFCRl/zVsGxZ9RhN8rxsRGFFKn+rhExTi+bax3A=="
+        }''' # PasswordChangeRequest | 
 
     try:
         # Set identity's password
-        new_passwordchangerequest = Passwordchangerequest.from_json(passwordchangerequest)
-        results = PasswordManagementApi(api_client).set_password_v1(passwordchangerequest=new_passwordchangerequest)
+        new_password_change_request = PasswordChangeRequest.from_json(password_change_request)
+        results = PasswordManagementApi(api_client).set_password_v1(password_change_request=new_password_change_request)
         # Below is a request that includes all optional parameters
-        # results = PasswordManagementApi(api_client).set_password_v1(new_passwordchangerequest)
+        # results = PasswordManagementApi(api_client).set_password_v1(new_password_change_request)
         print("The response of PasswordManagementApi->set_password_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

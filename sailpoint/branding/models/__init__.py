@@ -14,10 +14,10 @@
 
 
 # import models into model package
-from sailpoint.branding.models.brandingitem import Brandingitem
-from sailpoint.branding.models.brandingitemcreate import Brandingitemcreate
-from sailpoint.branding.models.errormessagedto import Errormessagedto
-from sailpoint.branding.models.errorresponsedto import Errorresponsedto
+from sailpoint.branding.models.branding_item import BrandingItem
+from sailpoint.branding.models.branding_item_create import BrandingItemCreate
+from sailpoint.branding.models.error_message_dto import ErrorMessageDto
+from sailpoint.branding.models.error_response_dto import ErrorResponseDto
 from sailpoint.branding.models.get_branding_list_v1401_response import GetBrandingListV1401Response
 from sailpoint.branding.models.get_branding_list_v1429_response import GetBrandingListV1429Response
-from sailpoint.branding.models.localeorigin import Localeorigin
+from sailpoint.branding.models.locale_origin import LocaleOrigin

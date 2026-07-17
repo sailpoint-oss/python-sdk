@@ -6,7 +6,7 @@
       source: |
         from sailpoint.ui_metadata.api.ui_metadata_api import UIMetadataApi
         from sailpoint.ui_metadata.api_client import ApiClient
-        from sailpoint.ui_metadata.models.tenantuimetadataitemresponse import Tenantuimetadataitemresponse
+        from sailpoint.ui_metadata.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -32,22 +32,26 @@
       source: |
         from sailpoint.ui_metadata.api.ui_metadata_api import UIMetadataApi
         from sailpoint.ui_metadata.api_client import ApiClient
-        from sailpoint.ui_metadata.models.tenantuimetadataitemresponse import Tenantuimetadataitemresponse
-        from sailpoint.ui_metadata.models.tenantuimetadataitemupdaterequest import Tenantuimetadataitemupdaterequest
+        from sailpoint.ui_metadata.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
+        from sailpoint.ui_metadata.models.tenant_ui_metadata_item_update_request import TenantUiMetadataItemUpdateRequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          tenantuimetadataitemupdaterequest = '''sailpoint.ui_metadata.Tenantuimetadataitemupdaterequest()''' # Tenantuimetadataitemupdaterequest | 
+          tenant_ui_metadata_item_update_request = '''{
+          "usernameEmptyText" : "Please provide your work email address...",
+          "usernameLabel" : "Email",
+          "iframeWhiteList" : "http://example.com http://example2.com"
+        }''' # TenantUiMetadataItemUpdateRequest | 
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update tenant ui metadata
-              new_tenantuimetadataitemupdaterequest = Tenantuimetadataitemupdaterequest.from_json(tenantuimetadataitemupdaterequest)
-              results = UIMetadataApi(api_client).set_tenant_ui_metadata_v1(tenantuimetadataitemupdaterequest=new_tenantuimetadataitemupdaterequest)
+              new_tenant_ui_metadata_item_update_request = TenantUiMetadataItemUpdateRequest.from_json(tenant_ui_metadata_item_update_request)
+              results = UIMetadataApi(api_client).set_tenant_ui_metadata_v1(tenant_ui_metadata_item_update_request=new_tenant_ui_metadata_item_update_request)
               # Below is a request that includes all optional parameters
-              # results = UIMetadataApi(api_client).set_tenant_ui_metadata_v1(new_tenantuimetadataitemupdaterequest, x_sail_point_experimental)
+              # results = UIMetadataApi(api_client).set_tenant_ui_metadata_v1(new_tenant_ui_metadata_item_update_request, x_sail_point_experimental)
               print("The response of UIMetadataApi->set_tenant_ui_metadata_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

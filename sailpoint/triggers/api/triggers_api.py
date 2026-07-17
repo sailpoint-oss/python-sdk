@@ -19,17 +19,17 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.triggers.models.completeinvocation import Completeinvocation
+from sailpoint.triggers.models.complete_invocation import CompleteInvocation
 from sailpoint.triggers.models.invocation import Invocation
-from sailpoint.triggers.models.invocationstatus import Invocationstatus
+from sailpoint.triggers.models.invocation_status import InvocationStatus
 from sailpoint.triggers.models.subscription import Subscription
-from sailpoint.triggers.models.subscriptionpatchrequest_inner import SubscriptionpatchrequestInner
-from sailpoint.triggers.models.subscriptionpostrequest import Subscriptionpostrequest
-from sailpoint.triggers.models.subscriptionputrequest import Subscriptionputrequest
-from sailpoint.triggers.models.testinvocation import Testinvocation
+from sailpoint.triggers.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
+from sailpoint.triggers.models.subscription_post_request import SubscriptionPostRequest
+from sailpoint.triggers.models.subscription_put_request import SubscriptionPutRequest
+from sailpoint.triggers.models.test_invocation import TestInvocation
 from sailpoint.triggers.models.trigger import Trigger
-from sailpoint.triggers.models.validatefilterinputdto import Validatefilterinputdto
-from sailpoint.triggers.models.validatefilteroutputdto import Validatefilteroutputdto
+from sailpoint.triggers.models.validate_filter_input_dto import ValidateFilterInputDto
+from sailpoint.triggers.models.validate_filter_output_dto import ValidateFilterOutputDto
 
 from sailpoint.triggers.api_client import ApiClient, RequestSerialized
 from sailpoint.triggers.api_response import ApiResponse
@@ -53,7 +53,7 @@ class TriggersApi:
     def complete_trigger_invocation_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
-        completeinvocation: Completeinvocation,
+        complete_invocation: CompleteInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,8 +73,8 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param completeinvocation: (required)
-        :type completeinvocation: Completeinvocation
+        :param complete_invocation: (required)
+        :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -99,7 +99,7 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_v1_serialize(
             id=id,
-            completeinvocation=completeinvocation,
+            complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108,11 +108,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +129,7 @@ class TriggersApi:
     def complete_trigger_invocation_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
-        completeinvocation: Completeinvocation,
+        complete_invocation: CompleteInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,8 +149,8 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param completeinvocation: (required)
-        :type completeinvocation: Completeinvocation
+        :param complete_invocation: (required)
+        :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -175,7 +175,7 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_v1_serialize(
             id=id,
-            completeinvocation=completeinvocation,
+            complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,11 +184,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -205,7 +205,7 @@ class TriggersApi:
     def complete_trigger_invocation_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
-        completeinvocation: Completeinvocation,
+        complete_invocation: CompleteInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -225,8 +225,8 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param completeinvocation: (required)
-        :type completeinvocation: Completeinvocation
+        :param complete_invocation: (required)
+        :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -251,7 +251,7 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_v1_serialize(
             id=id,
-            completeinvocation=completeinvocation,
+            complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -260,11 +260,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -276,7 +276,7 @@ class TriggersApi:
     def _complete_trigger_invocation_v1_serialize(
         self,
         id,
-        completeinvocation,
+        complete_invocation,
         _request_auth,
         _content_type,
         _headers,
@@ -304,8 +304,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if completeinvocation is not None:
-            _body_params = completeinvocation
+        if complete_invocation is not None:
+            _body_params = complete_invocation
 
 
         # set the HTTP header `Accept`
@@ -355,7 +355,7 @@ class TriggersApi:
     @validate_call
     def create_subscription_v1(
         self,
-        subscriptionpostrequest: Subscriptionpostrequest,
+        subscription_post_request: SubscriptionPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -373,8 +373,8 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param subscriptionpostrequest: (required)
-        :type subscriptionpostrequest: Subscriptionpostrequest
+        :param subscription_post_request: (required)
+        :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -398,7 +398,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_v1_serialize(
-            subscriptionpostrequest=subscriptionpostrequest,
+            subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -407,11 +407,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -427,7 +427,7 @@ class TriggersApi:
     @validate_call
     def create_subscription_v1_with_http_info(
         self,
-        subscriptionpostrequest: Subscriptionpostrequest,
+        subscription_post_request: SubscriptionPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -445,8 +445,8 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param subscriptionpostrequest: (required)
-        :type subscriptionpostrequest: Subscriptionpostrequest
+        :param subscription_post_request: (required)
+        :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -470,7 +470,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_v1_serialize(
-            subscriptionpostrequest=subscriptionpostrequest,
+            subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -479,11 +479,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -499,7 +499,7 @@ class TriggersApi:
     @validate_call
     def create_subscription_v1_without_preload_content(
         self,
-        subscriptionpostrequest: Subscriptionpostrequest,
+        subscription_post_request: SubscriptionPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -517,8 +517,8 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param subscriptionpostrequest: (required)
-        :type subscriptionpostrequest: Subscriptionpostrequest
+        :param subscription_post_request: (required)
+        :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -542,7 +542,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_v1_serialize(
-            subscriptionpostrequest=subscriptionpostrequest,
+            subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -551,11 +551,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -566,7 +566,7 @@ class TriggersApi:
 
     def _create_subscription_v1_serialize(
         self,
-        subscriptionpostrequest,
+        subscription_post_request,
         _request_auth,
         _content_type,
         _headers,
@@ -592,8 +592,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if subscriptionpostrequest is not None:
-            _body_params = subscriptionpostrequest
+        if subscription_post_request is not None:
+            _body_params = subscription_post_request
 
 
         # set the HTTP header `Accept`
@@ -695,12 +695,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -768,12 +768,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -841,12 +841,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -989,11 +989,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Subscription]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1077,11 +1077,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Subscription]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1165,11 +1165,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Subscription]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1283,7 +1283,7 @@ class TriggersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Invocationstatus]:
+    ) -> List[InvocationStatus]:
         """List latest invocation statuses
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
@@ -1333,12 +1333,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Invocationstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[InvocationStatus]",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1371,7 +1371,7 @@ class TriggersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Invocationstatus]]:
+    ) -> ApiResponse[List[InvocationStatus]]:
         """List latest invocation statuses
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
@@ -1421,12 +1421,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Invocationstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[InvocationStatus]",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1509,12 +1509,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Invocationstatus]",
-            '400': "Errorresponsedto",
+            '200': "List[InvocationStatus]",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1679,11 +1679,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Trigger]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1767,11 +1767,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Trigger]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1855,11 +1855,11 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Trigger]",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1957,7 +1957,7 @@ class TriggersApi:
     def patch_subscription_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
-        subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner],
+        subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1977,8 +1977,8 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param subscriptionpatchrequest_inner: (required)
-        :type subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner]
+        :param subscription_patch_request_inner: (required)
+        :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2003,7 +2003,7 @@ class TriggersApi:
 
         _param = self._patch_subscription_v1_serialize(
             id=id,
-            subscriptionpatchrequest_inner=subscriptionpatchrequest_inner,
+            subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2012,12 +2012,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2034,7 +2034,7 @@ class TriggersApi:
     def patch_subscription_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
-        subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner],
+        subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2054,8 +2054,8 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param subscriptionpatchrequest_inner: (required)
-        :type subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner]
+        :param subscription_patch_request_inner: (required)
+        :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2080,7 +2080,7 @@ class TriggersApi:
 
         _param = self._patch_subscription_v1_serialize(
             id=id,
-            subscriptionpatchrequest_inner=subscriptionpatchrequest_inner,
+            subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2089,12 +2089,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2111,7 +2111,7 @@ class TriggersApi:
     def patch_subscription_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
-        subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner],
+        subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2131,8 +2131,8 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param subscriptionpatchrequest_inner: (required)
-        :type subscriptionpatchrequest_inner: List[SubscriptionpatchrequestInner]
+        :param subscription_patch_request_inner: (required)
+        :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2157,7 +2157,7 @@ class TriggersApi:
 
         _param = self._patch_subscription_v1_serialize(
             id=id,
-            subscriptionpatchrequest_inner=subscriptionpatchrequest_inner,
+            subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2166,12 +2166,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2183,7 +2183,7 @@ class TriggersApi:
     def _patch_subscription_v1_serialize(
         self,
         id,
-        subscriptionpatchrequest_inner,
+        subscription_patch_request_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -2193,7 +2193,7 @@ class TriggersApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'SubscriptionpatchrequestInner': '',
+            'SubscriptionPatchRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2212,8 +2212,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if subscriptionpatchrequest_inner is not None:
-            _body_params = subscriptionpatchrequest_inner
+        if subscription_patch_request_inner is not None:
+            _body_params = subscription_patch_request_inner
 
 
         # set the HTTP header `Accept`
@@ -2263,7 +2263,7 @@ class TriggersApi:
     @validate_call
     def start_test_trigger_invocation_v1(
         self,
-        testinvocation: Testinvocation,
+        test_invocation: TestInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2281,8 +2281,8 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param testinvocation: (required)
-        :type testinvocation: Testinvocation
+        :param test_invocation: (required)
+        :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2306,7 +2306,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_v1_serialize(
-            testinvocation=testinvocation,
+            test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2316,11 +2316,11 @@ class TriggersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invocation]",
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2336,7 +2336,7 @@ class TriggersApi:
     @validate_call
     def start_test_trigger_invocation_v1_with_http_info(
         self,
-        testinvocation: Testinvocation,
+        test_invocation: TestInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2354,8 +2354,8 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param testinvocation: (required)
-        :type testinvocation: Testinvocation
+        :param test_invocation: (required)
+        :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2379,7 +2379,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_v1_serialize(
-            testinvocation=testinvocation,
+            test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2389,11 +2389,11 @@ class TriggersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invocation]",
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2409,7 +2409,7 @@ class TriggersApi:
     @validate_call
     def start_test_trigger_invocation_v1_without_preload_content(
         self,
-        testinvocation: Testinvocation,
+        test_invocation: TestInvocation,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2427,8 +2427,8 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param testinvocation: (required)
-        :type testinvocation: Testinvocation
+        :param test_invocation: (required)
+        :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2452,7 +2452,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_v1_serialize(
-            testinvocation=testinvocation,
+            test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2462,11 +2462,11 @@ class TriggersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invocation]",
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2477,7 +2477,7 @@ class TriggersApi:
 
     def _start_test_trigger_invocation_v1_serialize(
         self,
-        testinvocation,
+        test_invocation,
         _request_auth,
         _content_type,
         _headers,
@@ -2503,8 +2503,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if testinvocation is not None:
-            _body_params = testinvocation
+        if test_invocation is not None:
+            _body_params = test_invocation
 
 
         # set the HTTP header `Accept`
@@ -2554,7 +2554,7 @@ class TriggersApi:
     @validate_call
     def test_subscription_filter_v1(
         self,
-        validatefilterinputdto: Validatefilterinputdto,
+        validate_filter_input_dto: ValidateFilterInputDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2567,13 +2567,13 @@ class TriggersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Validatefilteroutputdto:
+    ) -> ValidateFilterOutputDto:
         """Validate a subscription filter
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param validatefilterinputdto: (required)
-        :type validatefilterinputdto: Validatefilterinputdto
+        :param validate_filter_input_dto: (required)
+        :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2597,7 +2597,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_v1_serialize(
-            validatefilterinputdto=validatefilterinputdto,
+            validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2605,12 +2605,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Validatefilteroutputdto",
-            '400': "Errorresponsedto",
+            '200': "ValidateFilterOutputDto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2626,7 +2626,7 @@ class TriggersApi:
     @validate_call
     def test_subscription_filter_v1_with_http_info(
         self,
-        validatefilterinputdto: Validatefilterinputdto,
+        validate_filter_input_dto: ValidateFilterInputDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2639,13 +2639,13 @@ class TriggersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Validatefilteroutputdto]:
+    ) -> ApiResponse[ValidateFilterOutputDto]:
         """Validate a subscription filter
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param validatefilterinputdto: (required)
-        :type validatefilterinputdto: Validatefilterinputdto
+        :param validate_filter_input_dto: (required)
+        :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2669,7 +2669,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_v1_serialize(
-            validatefilterinputdto=validatefilterinputdto,
+            validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2677,12 +2677,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Validatefilteroutputdto",
-            '400': "Errorresponsedto",
+            '200': "ValidateFilterOutputDto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2698,7 +2698,7 @@ class TriggersApi:
     @validate_call
     def test_subscription_filter_v1_without_preload_content(
         self,
-        validatefilterinputdto: Validatefilterinputdto,
+        validate_filter_input_dto: ValidateFilterInputDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2716,8 +2716,8 @@ class TriggersApi:
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param validatefilterinputdto: (required)
-        :type validatefilterinputdto: Validatefilterinputdto
+        :param validate_filter_input_dto: (required)
+        :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2741,7 +2741,7 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_v1_serialize(
-            validatefilterinputdto=validatefilterinputdto,
+            validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2749,12 +2749,12 @@ class TriggersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Validatefilteroutputdto",
-            '400': "Errorresponsedto",
+            '200': "ValidateFilterOutputDto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
+            '403': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2765,7 +2765,7 @@ class TriggersApi:
 
     def _test_subscription_filter_v1_serialize(
         self,
-        validatefilterinputdto,
+        validate_filter_input_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2791,8 +2791,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if validatefilterinputdto is not None:
-            _body_params = validatefilterinputdto
+        if validate_filter_input_dto is not None:
+            _body_params = validate_filter_input_dto
 
 
         # set the HTTP header `Accept`
@@ -2843,7 +2843,7 @@ class TriggersApi:
     def update_subscription_v1(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        subscriptionputrequest: Subscriptionputrequest,
+        subscription_put_request: SubscriptionPutRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2863,8 +2863,8 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param subscriptionputrequest: (required)
-        :type subscriptionputrequest: Subscriptionputrequest
+        :param subscription_put_request: (required)
+        :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2889,7 +2889,7 @@ class TriggersApi:
 
         _param = self._update_subscription_v1_serialize(
             id=id,
-            subscriptionputrequest=subscriptionputrequest,
+            subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2898,12 +2898,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2920,7 +2920,7 @@ class TriggersApi:
     def update_subscription_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        subscriptionputrequest: Subscriptionputrequest,
+        subscription_put_request: SubscriptionPutRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2940,8 +2940,8 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param subscriptionputrequest: (required)
-        :type subscriptionputrequest: Subscriptionputrequest
+        :param subscription_put_request: (required)
+        :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2966,7 +2966,7 @@ class TriggersApi:
 
         _param = self._update_subscription_v1_serialize(
             id=id,
-            subscriptionputrequest=subscriptionputrequest,
+            subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2975,12 +2975,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2997,7 +2997,7 @@ class TriggersApi:
     def update_subscription_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        subscriptionputrequest: Subscriptionputrequest,
+        subscription_put_request: SubscriptionPutRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3017,8 +3017,8 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param subscriptionputrequest: (required)
-        :type subscriptionputrequest: Subscriptionputrequest
+        :param subscription_put_request: (required)
+        :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3043,7 +3043,7 @@ class TriggersApi:
 
         _param = self._update_subscription_v1_serialize(
             id=id,
-            subscriptionputrequest=subscriptionputrequest,
+            subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3052,12 +3052,12 @@ class TriggersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "ListTriggersV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListTriggersV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3069,7 +3069,7 @@ class TriggersApi:
     def _update_subscription_v1_serialize(
         self,
         id,
-        subscriptionputrequest,
+        subscription_put_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3097,8 +3097,8 @@ class TriggersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if subscriptionputrequest is not None:
-            _body_params = subscriptionputrequest
+        if subscription_put_request is not None:
+            _body_params = subscription_put_request
 
 
         # set the HTTP header `Accept`

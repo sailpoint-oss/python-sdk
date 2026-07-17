@@ -19,11 +19,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.service_desk_integration.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.service_desk_integration.models.queuedcheckconfigdetails import Queuedcheckconfigdetails
-from sailpoint.service_desk_integration.models.servicedeskintegrationdto import Servicedeskintegrationdto
-from sailpoint.service_desk_integration.models.servicedeskintegrationtemplatedto import Servicedeskintegrationtemplatedto
-from sailpoint.service_desk_integration.models.servicedeskintegrationtemplatetype import Servicedeskintegrationtemplatetype
+from sailpoint.service_desk_integration.models.json_patch_operation import JsonPatchOperation
+from sailpoint.service_desk_integration.models.queued_check_config_details import QueuedCheckConfigDetails
+from sailpoint.service_desk_integration.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.service_desk_integration.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
+from sailpoint.service_desk_integration.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 
 from sailpoint.service_desk_integration.api_client import ApiClient, RequestSerialized
 from sailpoint.service_desk_integration.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def create_service_desk_integration_v1(
         self,
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of a new integration to create")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of a new integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +59,13 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Create new service desk integration
 
         Create a new Service Desk integration.
 
-        :param servicedeskintegrationdto: The specifics of a new integration to create (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of a new integration to create (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +89,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_service_desk_integration_v1_serialize(
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,13 +97,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def create_service_desk_integration_v1_with_http_info(
         self,
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of a new integration to create")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of a new integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,13 +132,13 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Create new service desk integration
 
         Create a new Service Desk integration.
 
-        :param servicedeskintegrationdto: The specifics of a new integration to create (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of a new integration to create (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,7 +162,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_service_desk_integration_v1_serialize(
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,13 +170,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def create_service_desk_integration_v1_without_preload_content(
         self,
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of a new integration to create")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of a new integration to create")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +210,8 @@ class ServiceDeskIntegrationApi:
 
         Create a new Service Desk integration.
 
-        :param servicedeskintegrationdto: The specifics of a new integration to create (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of a new integration to create (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +235,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_service_desk_integration_v1_serialize(
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,13 +243,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -260,7 +260,7 @@ class ServiceDeskIntegrationApi:
 
     def _create_service_desk_integration_v1_serialize(
         self,
-        servicedeskintegrationdto,
+        service_desk_integration_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -286,8 +286,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if servicedeskintegrationdto is not None:
-            _body_params = servicedeskintegrationdto
+        if service_desk_integration_dto is not None:
+            _body_params = service_desk_integration_dto
 
 
         # set the HTTP header `Accept`
@@ -389,12 +389,12 @@ class ServiceDeskIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -462,12 +462,12 @@ class ServiceDeskIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -535,12 +535,12 @@ class ServiceDeskIntegrationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '400': "Errorresponsedto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -628,7 +628,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationtemplatedto:
+    ) -> ServiceDeskIntegrationTemplateDto:
         """Service desk integration template by scriptname
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
@@ -666,13 +666,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationtemplatedto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationTemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -701,7 +701,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationtemplatedto]:
+    ) -> ApiResponse[ServiceDeskIntegrationTemplateDto]:
         """Service desk integration template by scriptname
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
@@ -739,13 +739,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationtemplatedto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationTemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -812,13 +812,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationtemplatedto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationTemplateDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -905,7 +905,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Servicedeskintegrationtemplatetype]:
+    ) -> List[ServiceDeskIntegrationTemplateType]:
         """List service desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
@@ -940,13 +940,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -974,7 +974,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Servicedeskintegrationtemplatetype]]:
+    ) -> ApiResponse[List[ServiceDeskIntegrationTemplateType]]:
         """List service desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
@@ -1009,13 +1009,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1078,13 +1078,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationtemplatetype]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationTemplateType]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1169,7 +1169,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Get a service desk integration
 
         Get an existing Service Desk integration by ID.
@@ -1207,13 +1207,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1242,7 +1242,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Get a service desk integration
 
         Get an existing Service Desk integration by ID.
@@ -1280,13 +1280,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1353,13 +1353,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1451,7 +1451,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Servicedeskintegrationdto]:
+    ) -> List[ServiceDeskIntegrationDto]:
         """List existing service desk integrations
 
         Get a list of Service Desk integration objects.
@@ -1501,13 +1501,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1540,7 +1540,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Servicedeskintegrationdto]]:
+    ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
         """List existing service desk integrations
 
         Get a list of Service Desk integration objects.
@@ -1590,13 +1590,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1679,13 +1679,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Servicedeskintegrationdto]",
-            '400': "Errorresponsedto",
+            '200': "List[ServiceDeskIntegrationDto]",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1794,7 +1794,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Queuedcheckconfigdetails:
+    ) -> QueuedCheckConfigDetails:
         """Get the time check configuration
 
         Get the time check configuration of queued SDIM tickets.
@@ -1829,13 +1829,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1863,7 +1863,7 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Queuedcheckconfigdetails]:
+    ) -> ApiResponse[QueuedCheckConfigDetails]:
         """Get the time check configuration
 
         Get the time check configuration of queued SDIM tickets.
@@ -1898,13 +1898,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1967,13 +1967,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2046,7 +2046,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2059,15 +2059,15 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Patch a service desk integration
 
         Update an existing Service Desk integration by ID with a PATCH request.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param jsonpatchoperation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2092,7 +2092,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2100,13 +2100,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2123,7 +2123,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2136,15 +2136,15 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Patch a service desk integration
 
         Update an existing Service Desk integration by ID with a PATCH request.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param jsonpatchoperation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2169,7 +2169,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2177,13 +2177,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2200,7 +2200,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2220,8 +2220,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param jsonpatchoperation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2246,7 +2246,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_v1_serialize(
             id=id,
-            jsonpatchoperation=jsonpatchoperation,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2254,13 +2254,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2272,7 +2272,7 @@ class ServiceDeskIntegrationApi:
     def _patch_service_desk_integration_v1_serialize(
         self,
         id,
-        jsonpatchoperation,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2282,7 +2282,7 @@ class ServiceDeskIntegrationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Jsonpatchoperation': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2301,8 +2301,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if jsonpatchoperation is not None:
-            _body_params = jsonpatchoperation
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -2353,7 +2353,7 @@ class ServiceDeskIntegrationApi:
     def put_service_desk_integration_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of the integration to update")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of the integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2366,15 +2366,15 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Servicedeskintegrationdto:
+    ) -> ServiceDeskIntegrationDto:
         """Update a service desk integration
 
         Update an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param servicedeskintegrationdto: The specifics of the integration to update (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of the integration to update (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2399,7 +2399,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._put_service_desk_integration_v1_serialize(
             id=id,
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2407,13 +2407,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2430,7 +2430,7 @@ class ServiceDeskIntegrationApi:
     def put_service_desk_integration_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of the integration to update")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of the integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2443,15 +2443,15 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Servicedeskintegrationdto]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Update a service desk integration
 
         Update an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param servicedeskintegrationdto: The specifics of the integration to update (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of the integration to update (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2476,7 +2476,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._put_service_desk_integration_v1_serialize(
             id=id,
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2484,13 +2484,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2507,7 +2507,7 @@ class ServiceDeskIntegrationApi:
     def put_service_desk_integration_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        servicedeskintegrationdto: Annotated[Servicedeskintegrationdto, Field(description="The specifics of the integration to update")],
+        service_desk_integration_dto: Annotated[ServiceDeskIntegrationDto, Field(description="The specifics of the integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2527,8 +2527,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param servicedeskintegrationdto: The specifics of the integration to update (required)
-        :type servicedeskintegrationdto: Servicedeskintegrationdto
+        :param service_desk_integration_dto: The specifics of the integration to update (required)
+        :type service_desk_integration_dto: ServiceDeskIntegrationDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2553,7 +2553,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._put_service_desk_integration_v1_serialize(
             id=id,
-            servicedeskintegrationdto=servicedeskintegrationdto,
+            service_desk_integration_dto=service_desk_integration_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2561,13 +2561,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Servicedeskintegrationdto",
-            '400': "Errorresponsedto",
+            '200': "ServiceDeskIntegrationDto",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2579,7 +2579,7 @@ class ServiceDeskIntegrationApi:
     def _put_service_desk_integration_v1_serialize(
         self,
         id,
-        servicedeskintegrationdto,
+        service_desk_integration_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2607,8 +2607,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if servicedeskintegrationdto is not None:
-            _body_params = servicedeskintegrationdto
+        if service_desk_integration_dto is not None:
+            _body_params = service_desk_integration_dto
 
 
         # set the HTTP header `Accept`
@@ -2658,7 +2658,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details_v1(
         self,
-        queuedcheckconfigdetails: Annotated[Queuedcheckconfigdetails, Field(description="The modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2671,13 +2671,13 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Queuedcheckconfigdetails:
+    ) -> QueuedCheckConfigDetails:
         """Update the time check configuration
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queuedcheckconfigdetails: The modified time check configuration (required)
-        :type queuedcheckconfigdetails: Queuedcheckconfigdetails
+        :param queued_check_config_details: The modified time check configuration (required)
+        :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2701,7 +2701,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._update_status_check_details_v1_serialize(
-            queuedcheckconfigdetails=queuedcheckconfigdetails,
+            queued_check_config_details=queued_check_config_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2709,13 +2709,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2731,7 +2731,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details_v1_with_http_info(
         self,
-        queuedcheckconfigdetails: Annotated[Queuedcheckconfigdetails, Field(description="The modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2744,13 +2744,13 @@ class ServiceDeskIntegrationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Queuedcheckconfigdetails]:
+    ) -> ApiResponse[QueuedCheckConfigDetails]:
         """Update the time check configuration
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queuedcheckconfigdetails: The modified time check configuration (required)
-        :type queuedcheckconfigdetails: Queuedcheckconfigdetails
+        :param queued_check_config_details: The modified time check configuration (required)
+        :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2774,7 +2774,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._update_status_check_details_v1_serialize(
-            queuedcheckconfigdetails=queuedcheckconfigdetails,
+            queued_check_config_details=queued_check_config_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2782,13 +2782,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2804,7 +2804,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details_v1_without_preload_content(
         self,
-        queuedcheckconfigdetails: Annotated[Queuedcheckconfigdetails, Field(description="The modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2822,8 +2822,8 @@ class ServiceDeskIntegrationApi:
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queuedcheckconfigdetails: The modified time check configuration (required)
-        :type queuedcheckconfigdetails: Queuedcheckconfigdetails
+        :param queued_check_config_details: The modified time check configuration (required)
+        :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2847,7 +2847,7 @@ class ServiceDeskIntegrationApi:
         """ # noqa: E501
 
         _param = self._update_status_check_details_v1_serialize(
-            queuedcheckconfigdetails=queuedcheckconfigdetails,
+            queued_check_config_details=queued_check_config_details,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2855,13 +2855,13 @@ class ServiceDeskIntegrationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Queuedcheckconfigdetails",
-            '400': "Errorresponsedto",
+            '200': "QueuedCheckConfigDetails",
+            '400': "ErrorResponseDto",
             '401': "GetServiceDeskIntegrationsV1401Response",
-            '403': "Errorresponsedto",
-            '404': "Errorresponsedto",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "GetServiceDeskIntegrationsV1429Response",
-            '500': "Errorresponsedto",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2872,7 +2872,7 @@ class ServiceDeskIntegrationApi:
 
     def _update_status_check_details_v1_serialize(
         self,
-        queuedcheckconfigdetails,
+        queued_check_config_details,
         _request_auth,
         _content_type,
         _headers,
@@ -2898,8 +2898,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if queuedcheckconfigdetails is not None:
-            _body_params = queuedcheckconfigdetails
+        if queued_check_config_details is not None:
+            _body_params = queued_check_config_details
 
 
         # set the HTTP header `Accept`
