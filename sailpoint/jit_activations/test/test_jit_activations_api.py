@@ -26,6 +26,20 @@ class TestJITActivationsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_list_jit_activation_history_for_current_identity_v1(self) -> None:
+        """Test case for list_jit_activation_history_for_current_identity_v1
+
+        List JIT activation history (self)
+        """
+        pass
+
+    def test_list_jit_activation_history_v1(self) -> None:
+        """Test case for list_jit_activation_history_v1
+
+        List JIT activation history (admin)
+        """
+        pass
+
     def test_start_activate_workflow_v1(self) -> None:
         """Test case for start_activate_workflow_v1
 

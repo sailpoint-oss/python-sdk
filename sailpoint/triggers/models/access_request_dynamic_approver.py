@@ -31,7 +31,7 @@ class AccessRequestDynamicApprover(BaseModel):
     """
     AccessRequestDynamicApprover
     """ # noqa: E501
-    access_request_id: StrictStr = Field(description="The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. ", alias="accessRequestId")
+    access_request_id: StrictStr = Field(description="The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/docs/api/list-access-request-status-v-1) to get the status of the request. ", alias="accessRequestId")
     requested_for: Annotated[List[AccessItemRequestedForDto], Field(min_length=1, max_length=10)] = Field(description="Identities access was requested for.", alias="requestedFor")
     requested_items: Annotated[List[AccessRequestDynamicApproverRequestedItemsInner], Field(min_length=1, max_length=25)] = Field(description="The access items that are being requested.", alias="requestedItems")
     requested_by: AccessItemRequesterDto = Field(alias="requestedBy")

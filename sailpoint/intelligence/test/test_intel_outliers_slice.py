@@ -45,7 +45,7 @@ class TestIntelOutliersSlice(unittest.TestCase):
                             source_name = 'Example SaaS Source', 
                             extremely_rare = False, )
                         ], 
-                    next = 'https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10', )
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10', )
             )
         else:
             return IntelOutliersSlice(
@@ -59,7 +59,7 @@ class TestIntelOutliersSlice(unittest.TestCase):
                             source_name = 'Example SaaS Source', 
                             extremely_rare = False, )
                         ], 
-                    next = 'https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10', ),
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10', ),
         )
         """
 
