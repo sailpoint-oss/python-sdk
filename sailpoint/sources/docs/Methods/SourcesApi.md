@@ -1736,17 +1736,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-source-entitlement-request-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Get source entitlement request configuration
 This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
 
@@ -1761,7 +1750,6 @@ Access request to any entitlements in the source should follow this configuratio
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The Source id
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
@@ -1789,18 +1777,16 @@ from sailpoint.sources.models.source_entitlement_request_config import SourceEnt
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get source entitlement request configuration
         
         results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id, x_sail_point_experimental)
+        # results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id)
         print("The response of SourcesApi->get_source_entitlement_request_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -4263,17 +4249,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-source-entitlement-request-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Update source entitlement request configuration
 This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
 
@@ -4289,7 +4264,6 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The Source id
  Body  | source_entitlement_request_config | [**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config) | True  | 
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
@@ -4317,7 +4291,6 @@ from sailpoint.sources.models.source_entitlement_request_config import SourceEnt
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
@@ -4349,14 +4322,13 @@ with ApiClient(configuration) as api_client:
             } ]
           }
         }''' # SourceEntitlementRequestConfig | 
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update source entitlement request configuration
         new_source_entitlement_request_config = SourceEntitlementRequestConfig.from_json(source_entitlement_request_config)
         results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, source_entitlement_request_config=new_source_entitlement_request_config)
         # Below is a request that includes all optional parameters
-        # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config, x_sail_point_experimental)
+        # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config)
         print("The response of SourcesApi->update_source_entitlement_request_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

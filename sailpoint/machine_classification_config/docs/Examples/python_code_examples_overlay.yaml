@@ -9,15 +9,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Delete source's classification config
               
               MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id)
+              # MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling MachineClassificationConfigApi->delete_machine_classification_config_v1: %s\n" % e)
 - path: /sources/v1/{sourceId}/machine-classification-config
@@ -32,15 +34,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID # str | Source ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Machine classification config for source
               
               results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id)
+              # results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id, x_sail_point_experimental)
               print("The response of MachineClassificationConfigApi->get_machine_classification_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -57,6 +61,7 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
@@ -116,12 +121,13 @@
           "classificationMethod" : "SOURCE",
           "enabled" : true
         }''' # MachineClassificationConfig | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update source's classification config
               new_machine_classification_config = MachineClassificationConfig.from_json(machine_classification_config)
               results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id=source_id, machine_classification_config=new_machine_classification_config)
               # Below is a request that includes all optional parameters
-              # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machine_classification_config)
+              # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machine_classification_config, x_sail_point_experimental)
               print("The response of MachineClassificationConfigApi->set_machine_classification_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

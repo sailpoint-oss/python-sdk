@@ -44,6 +44,7 @@ class MachineAccountClassifyApi:
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
         classification_mode: Annotated[Optional[StrictStr], Field(description="Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,6 +66,8 @@ class MachineAccountClassifyApi:
         :type id: str
         :param classification_mode: Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.
         :type classification_mode: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,6 +93,7 @@ class MachineAccountClassifyApi:
         _param = self._send_classify_machine_account_v1_serialize(
             id=id,
             classification_mode=classification_mode,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,6 +124,7 @@ class MachineAccountClassifyApi:
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
         classification_mode: Annotated[Optional[StrictStr], Field(description="Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,6 +146,8 @@ class MachineAccountClassifyApi:
         :type id: str
         :param classification_mode: Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.
         :type classification_mode: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,6 +173,7 @@ class MachineAccountClassifyApi:
         _param = self._send_classify_machine_account_v1_serialize(
             id=id,
             classification_mode=classification_mode,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -196,6 +204,7 @@ class MachineAccountClassifyApi:
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
         classification_mode: Annotated[Optional[StrictStr], Field(description="Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,6 +226,8 @@ class MachineAccountClassifyApi:
         :type id: str
         :param classification_mode: Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.
         :type classification_mode: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -242,6 +253,7 @@ class MachineAccountClassifyApi:
         _param = self._send_classify_machine_account_v1_serialize(
             id=id,
             classification_mode=classification_mode,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,6 +279,7 @@ class MachineAccountClassifyApi:
         self,
         id,
         classification_mode,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -296,6 +309,8 @@ class MachineAccountClassifyApi:
             _query_params.append(('classificationMode', classification_mode))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

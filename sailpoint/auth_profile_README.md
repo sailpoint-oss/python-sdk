@@ -47,11 +47,10 @@ configuration = sailpoint.auth_profile.Configuration(
 with sailpoint.auth_profile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.auth_profile.AuthProfileApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get list of auth profiles
-        api_response = api_instance.get_profile_config_list_v1(x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.get_profile_config_list_v1()
         print("The response of AuthProfileApi->get_profile_config_list_v1:\n")
         pprint(api_response)
     except ApiException as e:

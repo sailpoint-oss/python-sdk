@@ -48,10 +48,11 @@ with sailpoint.suggested_entitlement_description.ApiClient(configuration) as api
     # Create an instance of the API class
     api_instance = sailpoint.suggested_entitlement_description.SuggestedEntitlementDescriptionApi(api_client)
     bulk_approve_entitlement_recommendation_request = sailpoint.suggested_entitlement_description.BulkApproveEntitlementRecommendationRequest() # BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Bulk approve entitlement recommendations
-        api_response = api_instance.approve_bulk_entitlement_recommendations_v1(bulk_approve_entitlement_recommendation_request)
+        api_response = api_instance.approve_bulk_entitlement_recommendations_v1(bulk_approve_entitlement_recommendation_request, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations_v1:\n")
         pprint(api_response)
     except ApiException as e:

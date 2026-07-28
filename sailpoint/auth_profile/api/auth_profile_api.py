@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import List, Optional
+from typing import List
 from typing_extensions import Annotated
 from sailpoint.auth_profile.models.auth_profile import AuthProfile
 from sailpoint.auth_profile.models.auth_profile_summary import AuthProfileSummary
@@ -44,7 +44,6 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_list_v1(
         self,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,8 +61,6 @@ class AuthProfileApi:
 
         This API returns a list of auth profiles.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +84,6 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_list_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,7 +112,6 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_list_v1_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,8 +129,6 @@ class AuthProfileApi:
 
         This API returns a list of auth profiles.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +152,6 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_list_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -188,7 +180,6 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_list_v1_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,8 +197,6 @@ class AuthProfileApi:
 
         This API returns a list of auth profiles.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,7 +220,6 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_list_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -255,7 +243,6 @@ class AuthProfileApi:
 
     def _get_profile_config_list_v1_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -279,8 +266,6 @@ class AuthProfileApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -320,7 +305,6 @@ class AuthProfileApi:
     def get_profile_config_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,8 +324,6 @@ class AuthProfileApi:
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -366,7 +348,6 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -397,7 +378,6 @@ class AuthProfileApi:
     def get_profile_config_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -417,8 +397,6 @@ class AuthProfileApi:
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -443,7 +421,6 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,7 +451,6 @@ class AuthProfileApi:
     def get_profile_config_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -494,8 +470,6 @@ class AuthProfileApi:
 
         :param id: ID of the Auth Profile to patch. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -520,7 +494,6 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -546,7 +519,6 @@ class AuthProfileApi:
     def _get_profile_config_v1_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -572,8 +544,6 @@ class AuthProfileApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -614,7 +584,6 @@ class AuthProfileApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -636,8 +605,6 @@ class AuthProfileApi:
         :type id: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -663,7 +630,6 @@ class AuthProfileApi:
         _param = self._patch_profile_config_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -694,7 +660,6 @@ class AuthProfileApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -716,8 +681,6 @@ class AuthProfileApi:
         :type id: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -743,7 +706,6 @@ class AuthProfileApi:
         _param = self._patch_profile_config_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -774,7 +736,6 @@ class AuthProfileApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,8 +757,6 @@ class AuthProfileApi:
         :type id: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -823,7 +782,6 @@ class AuthProfileApi:
         _param = self._patch_profile_config_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -849,7 +807,6 @@ class AuthProfileApi:
         self,
         id,
         json_patch_operation,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -876,8 +833,6 @@ class AuthProfileApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

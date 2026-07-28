@@ -45,17 +45,6 @@ Method | HTTP request | Description
 
 
 ## delete-identity-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete identity
 The API returns successful response if the requested identity was deleted.
 
@@ -66,7 +55,6 @@ The API returns successful response if the requested identity was deleted.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Identity Id
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -94,18 +82,16 @@ from sailpoint.identities.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id # str | Identity Id
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete identity
         
         IdentitiesApi(api_client).delete_identity_v1(id=id)
         # Below is a request that includes all optional parameters
-        # IdentitiesApi(api_client).delete_identity_v1(id, x_sail_point_experimental)
+        # IdentitiesApi(api_client).delete_identity_v1(id)
     except Exception as e:
         print("Exception when calling IdentitiesApi->delete_identity_v1: %s\n" % e)
 ```

@@ -48,11 +48,10 @@ with sailpoint.search_attribute_configuration.ApiClient(configuration) as api_cl
     # Create an instance of the API class
     api_instance = sailpoint.search_attribute_configuration.SearchAttributeConfigurationApi(api_client)
     search_attribute_config = {"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}} # SearchAttributeConfig | 
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create extended search attributes
-        api_response = api_instance.create_search_attribute_config_v1(search_attribute_config, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_search_attribute_config_v1(search_attribute_config)
         print("The response of SearchAttributeConfigurationApi->create_search_attribute_config_v1:\n")
         pprint(api_response)
     except ApiException as e:

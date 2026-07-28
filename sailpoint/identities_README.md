@@ -48,11 +48,10 @@ with sailpoint.identities.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.identities.IdentitiesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete identity
-        api_instance.delete_identity_v1(id, x_sail_point_experimental=x_sail_point_experimental)
+        api_instance.delete_identity_v1(id)
     except ApiException as e:
         print("Exception when calling IdentitiesApi->delete_identity_v1: %s\n" % e)
 

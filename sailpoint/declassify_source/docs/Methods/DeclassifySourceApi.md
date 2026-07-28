@@ -19,6 +19,17 @@ Method | HTTP request | Description
 
 
 ## send-declassify-machine-account-from-source-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Declassify source's all accounts
 Use this API to declassify all the accounts from a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -30,6 +41,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -56,16 +68,18 @@ from sailpoint.declassify_source.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Declassify source's all accounts
         
         DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id)
+        # DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling DeclassifySourceApi->send_declassify_machine_account_from_source_v1: %s\n" % e)
 ```

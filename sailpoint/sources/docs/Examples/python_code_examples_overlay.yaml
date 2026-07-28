@@ -750,17 +750,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Get source entitlement request configuration
               
               results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id, x_sail_point_experimental)
+              # results = SourcesApi(api_client).get_source_entitlement_request_config_v1(id)
               print("The response of SourcesApi->get_source_entitlement_request_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1906,7 +1904,6 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
@@ -1938,13 +1935,12 @@
             } ]
           }
         }''' # SourceEntitlementRequestConfig | 
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update source entitlement request configuration
               new_source_entitlement_request_config = SourceEntitlementRequestConfig.from_json(source_entitlement_request_config)
               results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id=id, source_entitlement_request_config=new_source_entitlement_request_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config, x_sail_point_experimental)
+              # results = SourcesApi(api_client).update_source_entitlement_request_config_v1(id, new_source_entitlement_request_config)
               print("The response of SourcesApi->update_source_entitlement_request_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

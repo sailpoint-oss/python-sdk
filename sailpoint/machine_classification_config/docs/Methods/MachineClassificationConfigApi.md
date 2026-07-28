@@ -21,6 +21,17 @@ Method | HTTP request | Description
 
 
 ## delete-machine-classification-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Delete source's classification config
 Use this API to remove Classification Config for a Source. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -32,6 +43,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -59,16 +71,18 @@ from sailpoint.machine_classification_config.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete source's classification config
         
         MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id)
+        # MachineClassificationConfigApi(api_client).delete_machine_classification_config_v1(source_id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineClassificationConfigApi->delete_machine_classification_config_v1: %s\n" % e)
 ```
@@ -78,6 +92,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-machine-classification-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Machine classification config for source
 This API returns a Machine Classification Config for a Source using Source ID.
 
@@ -88,6 +113,7 @@ This API returns a Machine Classification Config for a Source using Source ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**MachineClassificationConfig**](../models/machine-classification-config)
@@ -116,16 +142,18 @@ from sailpoint.machine_classification_config.models.machine_classification_confi
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID # str | Source ID
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Machine classification config for source
         
         results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id)
+        # results = MachineClassificationConfigApi(api_client).get_machine_classification_config_v1(source_id, x_sail_point_experimental)
         print("The response of MachineClassificationConfigApi->get_machine_classification_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -137,6 +165,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## set-machine-classification-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Update source's classification config
 Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -148,6 +187,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
  Body  | machine_classification_config | [**MachineClassificationConfig**](../models/machine-classification-config) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**MachineClassificationConfig**](../models/machine-classification-config)
@@ -176,6 +216,7 @@ from sailpoint.machine_classification_config.models.machine_classification_confi
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
@@ -235,13 +276,14 @@ with ApiClient(configuration) as api_client:
           "classificationMethod" : "SOURCE",
           "enabled" : true
         }''' # MachineClassificationConfig | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update source's classification config
         new_machine_classification_config = MachineClassificationConfig.from_json(machine_classification_config)
         results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id=source_id, machine_classification_config=new_machine_classification_config)
         # Below is a request that includes all optional parameters
-        # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machine_classification_config)
+        # results = MachineClassificationConfigApi(api_client).set_machine_classification_config_v1(source_id, new_machine_classification_config, x_sail_point_experimental)
         print("The response of MachineClassificationConfigApi->set_machine_classification_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

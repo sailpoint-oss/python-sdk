@@ -9,15 +9,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Declassify source's all accounts
               
               DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id)
+              # DeclassifySourceApi(api_client).send_declassify_machine_account_from_source_v1(source_id, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling DeclassifySourceApi->send_declassify_machine_account_from_source_v1: %s\n" % e)
 

@@ -2238,7 +2238,6 @@ class AccessProfilesApi:
     def update_access_profiles_in_bulk_v1(
         self,
         access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2258,8 +2257,6 @@ class AccessProfilesApi:
 
         :param access_profile_bulk_update_request_inner: (required)
         :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2284,7 +2281,6 @@ class AccessProfilesApi:
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
             access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2315,7 +2311,6 @@ class AccessProfilesApi:
     def update_access_profiles_in_bulk_v1_with_http_info(
         self,
         access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2335,8 +2330,6 @@ class AccessProfilesApi:
 
         :param access_profile_bulk_update_request_inner: (required)
         :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2361,7 +2354,6 @@ class AccessProfilesApi:
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
             access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2392,7 +2384,6 @@ class AccessProfilesApi:
     def update_access_profiles_in_bulk_v1_without_preload_content(
         self,
         access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2412,8 +2403,6 @@ class AccessProfilesApi:
 
         :param access_profile_bulk_update_request_inner: (required)
         :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2438,7 +2427,6 @@ class AccessProfilesApi:
 
         _param = self._update_access_profiles_in_bulk_v1_serialize(
             access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2464,7 +2452,6 @@ class AccessProfilesApi:
     def _update_access_profiles_in_bulk_v1_serialize(
         self,
         access_profile_bulk_update_request_inner,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2489,8 +2476,6 @@ class AccessProfilesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if access_profile_bulk_update_request_inner is not None:

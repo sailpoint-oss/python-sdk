@@ -48,10 +48,11 @@ with sailpoint.classify_source.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.classify_source.ClassifySourceApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Cancel classify source's accounts process
-        api_instance.delete_classify_machine_account_from_source_v1(source_id)
+        api_instance.delete_classify_machine_account_from_source_v1(source_id, x_sail_point_experimental=x_sail_point_experimental)
     except ApiException as e:
         print("Exception when calling ClassifySourceApi->delete_classify_machine_account_from_source_v1: %s\n" % e)
 

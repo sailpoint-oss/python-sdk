@@ -36,6 +36,17 @@ Method | HTTP request | Description
 
 
 ## approve-bulk-entitlement-recommendations-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Bulk approve entitlement recommendations
 Approve multiple entitlement recommendations in a single request. Each item in the request must include the recommendation ID and, depending on the record type, either an approved description (SED items) or an approved privilege level (privilege items). Returns a per-item result indicating success or failure.
 
@@ -46,6 +57,7 @@ Approve multiple entitlement recommendations in a single request. Each item in t
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | bulk_approve_entitlement_recommendation_request | [**BulkApproveEntitlementRecommendationRequest**](../models/bulk-approve-entitlement-recommendation-request) | True  | The list of recommendation items to approve.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[BulkApproveEntitlementRecommendationResult]**](../models/bulk-approve-entitlement-recommendation-result)
@@ -74,6 +86,7 @@ from sailpoint.suggested_entitlement_description.models.bulk_approve_entitlement
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     bulk_approve_entitlement_recommendation_request = '''{
@@ -87,13 +100,14 @@ with ApiClient(configuration) as api_client:
             "privilegeLevel" : "high"
           } ]
         }''' # BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Bulk approve entitlement recommendations
         new_bulk_approve_entitlement_recommendation_request = BulkApproveEntitlementRecommendationRequest.from_json(bulk_approve_entitlement_recommendation_request)
         results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(bulk_approve_entitlement_recommendation_request=new_bulk_approve_entitlement_recommendation_request)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulk_approve_entitlement_recommendation_request)
+        # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations_v1(new_bulk_approve_entitlement_recommendation_request, x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -357,6 +371,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-pending-entitlement-recommendation-approvals-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List pending entitlement recommendation approvals
 Returns a list of entitlement recommendations (SED and/or privilege) that are currently awaiting review or approval. Each record includes the recommendation type, entitlement details, and any AI-generated suggestions.
 
@@ -368,6 +393,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[EntitlementRecommendationRecord]**](../models/entitlement-recommendation-record)
@@ -395,17 +421,19 @@ from sailpoint.suggested_entitlement_description.models.entitlement_recommendati
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List pending entitlement recommendation approvals
         
         results = SuggestedEntitlementDescriptionApi(api_client).list_pending_entitlement_recommendation_approvals_v1()
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).list_pending_entitlement_recommendation_approvals_v1(offset, limit)
+        # results = SuggestedEntitlementDescriptionApi(api_client).list_pending_entitlement_recommendation_approvals_v1(offset, limit, x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->list_pending_entitlement_recommendation_approvals_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -418,6 +446,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-privileged-entitlement-recommendations-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List privileged entitlement recommendations
 Returns a list of privileged entitlement recommendation groups. Each group aggregates individual entitlement instances that share the same entitlement name and connector type, along with a recommendation score and instance count.
 
@@ -429,6 +468,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[PrivilegedRecommendationGroup]**](../models/privileged-recommendation-group)
@@ -456,17 +496,19 @@ from sailpoint.suggested_entitlement_description.models.privileged_recommendatio
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List privileged entitlement recommendations
         
         results = SuggestedEntitlementDescriptionApi(api_client).list_privileged_entitlement_recommendations_v1()
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).list_privileged_entitlement_recommendations_v1(offset, limit)
+        # results = SuggestedEntitlementDescriptionApi(api_client).list_privileged_entitlement_recommendations_v1(offset, limit, x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->list_privileged_entitlement_recommendations_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -567,6 +609,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## patch-entitlement-recommendation-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Update an entitlement recommendation
 Partially update a single entitlement recommendation record by its ID. Use this endpoint to update the status, description, or privilege level of a specific SED or privilege recommendation.
 
@@ -578,6 +631,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The unique identifier of the entitlement recommendation to update.
  Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The patch operations to apply to the entitlement recommendation record.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**EntitlementRecommendationRecord**](../models/entitlement-recommendation-record)
@@ -607,17 +661,19 @@ from sailpoint.suggested_entitlement_description.models.json_patch_operation imp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '79db50d4-723c-4aa0-a824-83c2205d82d1' # str | The unique identifier of the entitlement recommendation to update. # str | The unique identifier of the entitlement recommendation to update.
     json_patch_operation = '''[sailpoint.suggested_entitlement_description.JsonPatchOperation()]''' # List[JsonPatchOperation] | The patch operations to apply to the entitlement recommendation record.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update an entitlement recommendation
         new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
         results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_json_patch_operation)
+        # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation_v1(id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->patch_entitlement_recommendation_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -691,6 +747,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## submit-entitlement-recommendations-assignment-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Assign entitlement recommendations for review
 Assign a set of entitlement recommendation records to a reviewer. The assignee can be a specific identity, a governance group, or a role-based assignee such as source owner or entitlement owner. Returns a batch ID that can be used to track the assignment.
 
@@ -701,6 +768,7 @@ Assign a set of entitlement recommendation records to a reviewer. The assignee c
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | entitlement_recommendation_assign_request | [**EntitlementRecommendationAssignRequest**](../models/entitlement-recommendation-assign-request) | True  | The recommendation IDs and the target assignee.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**EntitlementRecommendationAssignResult**](../models/entitlement-recommendation-assign-result)
@@ -729,6 +797,7 @@ from sailpoint.suggested_entitlement_description.models.entitlement_recommendati
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     entitlement_recommendation_assign_request = '''{
@@ -738,13 +807,14 @@ with ApiClient(configuration) as api_client:
           },
           "items" : [ "79db50d4-723c-4aa0-a824-83c2205d82d1", "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
         }''' # EntitlementRecommendationAssignRequest | The recommendation IDs and the target assignee.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Assign entitlement recommendations for review
         new_entitlement_recommendation_assign_request = EntitlementRecommendationAssignRequest.from_json(entitlement_recommendation_assign_request)
         results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(entitlement_recommendation_assign_request=new_entitlement_recommendation_assign_request)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlement_recommendation_assign_request)
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment_v1(new_entitlement_recommendation_assign_request, x_sail_point_experimental)
         print("The response of SuggestedEntitlementDescriptionApi->submit_entitlement_recommendations_assignment_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

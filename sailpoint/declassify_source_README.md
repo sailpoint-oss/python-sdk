@@ -48,10 +48,11 @@ with sailpoint.declassify_source.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.declassify_source.DeclassifySourceApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Declassify source's all accounts
-        api_instance.send_declassify_machine_account_from_source_v1(source_id)
+        api_instance.send_declassify_machine_account_from_source_v1(source_id, x_sail_point_experimental=x_sail_point_experimental)
     except ApiException as e:
         print("Exception when calling DeclassifySourceApi->send_declassify_machine_account_from_source_v1: %s\n" % e)
 

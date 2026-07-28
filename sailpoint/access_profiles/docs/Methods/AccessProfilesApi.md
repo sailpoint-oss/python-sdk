@@ -657,17 +657,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-access-profiles-in-bulk-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Update access profile(s) requestable field.
 This API initiates a bulk update of field requestable for one or more Access Profiles.
 
@@ -684,7 +673,6 @@ This API initiates a bulk update of field requestable for one or more Access Pro
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | access_profile_bulk_update_request_inner | [**[]AccessProfileBulkUpdateRequestInner**](../models/access-profile-bulk-update-request-inner) | True  | 
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[AccessProfileUpdateItem]**](../models/access-profile-update-item)
@@ -714,18 +702,16 @@ from sailpoint.access_profiles.models.access_profile_update_item import AccessPr
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     access_profile_bulk_update_request_inner = '''[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]''' # List[AccessProfileBulkUpdateRequestInner] | 
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update access profile(s) requestable field.
         new_access_profile_bulk_update_request_inner = AccessProfileBulkUpdateRequestInner.from_json(access_profile_bulk_update_request_inner)
         results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(access_profile_bulk_update_request_inner=new_access_profile_bulk_update_request_inner)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(new_access_profile_bulk_update_request_inner, x_sail_point_experimental)
+        # results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v1(new_access_profile_bulk_update_request_inner)
         print("The response of AccessProfilesApi->update_access_profiles_in_bulk_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

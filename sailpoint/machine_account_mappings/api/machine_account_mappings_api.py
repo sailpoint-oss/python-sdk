@@ -44,6 +44,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,6 +66,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,6 +93,7 @@ class MachineAccountMappingsApi:
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,6 +124,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,6 +146,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,6 +173,7 @@ class MachineAccountMappingsApi:
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -196,6 +204,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,6 +226,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -242,6 +253,7 @@ class MachineAccountMappingsApi:
         _param = self._create_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,6 +279,7 @@ class MachineAccountMappingsApi:
         self,
         source_id,
         attribute_mappings,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -292,6 +305,8 @@ class MachineAccountMappingsApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if attribute_mappings is not None:
@@ -346,6 +361,7 @@ class MachineAccountMappingsApi:
     def delete_machine_account_mappings_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,6 +381,8 @@ class MachineAccountMappingsApi:
 
         :param source_id: source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -389,6 +407,7 @@ class MachineAccountMappingsApi:
 
         _param = self._delete_machine_account_mappings_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -419,6 +438,7 @@ class MachineAccountMappingsApi:
     def delete_machine_account_mappings_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -438,6 +458,8 @@ class MachineAccountMappingsApi:
 
         :param source_id: source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -462,6 +484,7 @@ class MachineAccountMappingsApi:
 
         _param = self._delete_machine_account_mappings_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -492,6 +515,7 @@ class MachineAccountMappingsApi:
     def delete_machine_account_mappings_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,6 +535,8 @@ class MachineAccountMappingsApi:
 
         :param source_id: source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -535,6 +561,7 @@ class MachineAccountMappingsApi:
 
         _param = self._delete_machine_account_mappings_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -560,6 +587,7 @@ class MachineAccountMappingsApi:
     def _delete_machine_account_mappings_v1_serialize(
         self,
         source_id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -585,6 +613,8 @@ class MachineAccountMappingsApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -626,6 +656,7 @@ class MachineAccountMappingsApi:
         source_id: Annotated[StrictStr, Field(description="Source ID")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -649,6 +680,8 @@ class MachineAccountMappingsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -675,6 +708,7 @@ class MachineAccountMappingsApi:
             source_id=source_id,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -707,6 +741,7 @@ class MachineAccountMappingsApi:
         source_id: Annotated[StrictStr, Field(description="Source ID")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -730,6 +765,8 @@ class MachineAccountMappingsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -756,6 +793,7 @@ class MachineAccountMappingsApi:
             source_id=source_id,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -788,6 +826,7 @@ class MachineAccountMappingsApi:
         source_id: Annotated[StrictStr, Field(description="Source ID")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -811,6 +850,8 @@ class MachineAccountMappingsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -837,6 +878,7 @@ class MachineAccountMappingsApi:
             source_id=source_id,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -864,6 +906,7 @@ class MachineAccountMappingsApi:
         source_id,
         limit,
         offset,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -897,6 +940,8 @@ class MachineAccountMappingsApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

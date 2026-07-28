@@ -49,10 +49,11 @@ with sailpoint.machine_account_classify.ApiClient(configuration) as api_client:
     api_instance = sailpoint.machine_account_classify.MachineAccountClassifyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
     classification_mode = default # str | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to default)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Classify single machine account
-        api_response = api_instance.send_classify_machine_account_v1(id, classification_mode=classification_mode)
+        api_response = api_instance.send_classify_machine_account_v1(id, classification_mode=classification_mode, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of MachineAccountClassifyApi->send_classify_machine_account_v1:\n")
         pprint(api_response)
     except ApiException as e:

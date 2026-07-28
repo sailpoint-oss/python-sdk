@@ -48,10 +48,11 @@ with sailpoint.jit_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.jit_access.JITAccessApi(api_client)
     config_type = 'policy' # str | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get JIT activation policy configuration
-        api_response = api_instance.get_jit_activation_config_v1(config_type)
+        api_response = api_instance.get_jit_activation_config_v1(config_type, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of JITAccessApi->get_jit_activation_config_v1:\n")
         pprint(api_response)
     except ApiException as e:

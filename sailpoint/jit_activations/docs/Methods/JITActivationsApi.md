@@ -178,6 +178,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## start-activate-workflow-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Start JIT activation workflow
 Starts a JIT Privileged (JIT P) activation workflow for the given entitlement connection and duration.
 The service performs quick validation; the workflow performs additional validation.
@@ -192,6 +203,7 @@ The response is returned with HTTP 202 Accepted while the workflow initializes.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | jit_activation_activate_request | [**JitActivationActivateRequest**](../models/jit-activation-activate-request) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**JitActivationActivateResponse**](../models/jit-activation-activate-response)
@@ -220,19 +232,21 @@ from sailpoint.jit_activations.models.jit_activation_activate_response import Ji
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     jit_activation_activate_request = '''{
           "activationPeriodMins" : 120,
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }''' # JitActivationActivateRequest | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Start JIT activation workflow
         new_jit_activation_activate_request = JitActivationActivateRequest.from_json(jit_activation_activate_request)
         results = JITActivationsApi(api_client).start_activate_workflow_v1(jit_activation_activate_request=new_jit_activation_activate_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_activate_workflow_v1(new_jit_activation_activate_request)
+        # results = JITActivationsApi(api_client).start_activate_workflow_v1(new_jit_activation_activate_request, x_sail_point_experimental)
         print("The response of JITActivationsApi->start_activate_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -244,6 +258,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## start-deactivate-workflow-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Deactivate JIT activation workflow
 Sends a signal to a running JIT Privileged (JIT P) activation workflow to deactivate.
 
@@ -260,6 +285,7 @@ The response is returned with HTTP 202 Accepted after the signal is sent.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | jit_activation_deactivate_request | [**JitActivationDeactivateRequest**](../models/jit-activation-deactivate-request) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**JitActivationDeactivateResponse**](../models/jit-activation-deactivate-response)
@@ -289,18 +315,20 @@ from sailpoint.jit_activations.models.jit_activation_deactivate_response import 
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     jit_activation_deactivate_request = '''{
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }''' # JitActivationDeactivateRequest | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Deactivate JIT activation workflow
         new_jit_activation_deactivate_request = JitActivationDeactivateRequest.from_json(jit_activation_deactivate_request)
         results = JITActivationsApi(api_client).start_deactivate_workflow_v1(jit_activation_deactivate_request=new_jit_activation_deactivate_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_deactivate_workflow_v1(new_jit_activation_deactivate_request)
+        # results = JITActivationsApi(api_client).start_deactivate_workflow_v1(new_jit_activation_deactivate_request, x_sail_point_experimental)
         print("The response of JITActivationsApi->start_deactivate_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -312,6 +340,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## start-extend-workflow-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Extend JIT activation workflow
 Sends a signal to a running JIT Privileged (JIT P) activation workflow to extend the activation period
 by the requested number of minutes.
@@ -329,6 +368,7 @@ The response is returned with HTTP 202 Accepted after the signal is sent.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | jit_activation_extend_request | [**JitActivationExtendRequest**](../models/jit-activation-extend-request) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**JitActivationExtendResponse**](../models/jit-activation-extend-response)
@@ -358,19 +398,21 @@ from sailpoint.jit_activations.models.jit_activation_extend_response import JitA
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     jit_activation_extend_request = '''{
           "activationPeriodExtensionMins" : 120,
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }''' # JitActivationExtendRequest | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Extend JIT activation workflow
         new_jit_activation_extend_request = JitActivationExtendRequest.from_json(jit_activation_extend_request)
         results = JITActivationsApi(api_client).start_extend_workflow_v1(jit_activation_extend_request=new_jit_activation_extend_request)
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).start_extend_workflow_v1(new_jit_activation_extend_request)
+        # results = JITActivationsApi(api_client).start_extend_workflow_v1(new_jit_activation_extend_request, x_sail_point_experimental)
         print("The response of JITActivationsApi->start_extend_workflow_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

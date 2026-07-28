@@ -773,6 +773,7 @@ class JITActivationsApi:
     def start_activate_workflow_v1(
         self,
         jit_activation_activate_request: JitActivationActivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -792,6 +793,8 @@ class JITActivationsApi:
 
         :param jit_activation_activate_request: (required)
         :type jit_activation_activate_request: JitActivationActivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -816,6 +819,7 @@ class JITActivationsApi:
 
         _param = self._start_activate_workflow_v1_serialize(
             jit_activation_activate_request=jit_activation_activate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -845,6 +849,7 @@ class JITActivationsApi:
     def start_activate_workflow_v1_with_http_info(
         self,
         jit_activation_activate_request: JitActivationActivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -864,6 +869,8 @@ class JITActivationsApi:
 
         :param jit_activation_activate_request: (required)
         :type jit_activation_activate_request: JitActivationActivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -888,6 +895,7 @@ class JITActivationsApi:
 
         _param = self._start_activate_workflow_v1_serialize(
             jit_activation_activate_request=jit_activation_activate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -917,6 +925,7 @@ class JITActivationsApi:
     def start_activate_workflow_v1_without_preload_content(
         self,
         jit_activation_activate_request: JitActivationActivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -936,6 +945,8 @@ class JITActivationsApi:
 
         :param jit_activation_activate_request: (required)
         :type jit_activation_activate_request: JitActivationActivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,6 +971,7 @@ class JITActivationsApi:
 
         _param = self._start_activate_workflow_v1_serialize(
             jit_activation_activate_request=jit_activation_activate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -984,6 +996,7 @@ class JITActivationsApi:
     def _start_activate_workflow_v1_serialize(
         self,
         jit_activation_activate_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1007,6 +1020,8 @@ class JITActivationsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if jit_activation_activate_request is not None:
@@ -1061,6 +1076,7 @@ class JITActivationsApi:
     def start_deactivate_workflow_v1(
         self,
         jit_activation_deactivate_request: JitActivationDeactivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1080,6 +1096,8 @@ class JITActivationsApi:
 
         :param jit_activation_deactivate_request: (required)
         :type jit_activation_deactivate_request: JitActivationDeactivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1104,6 +1122,7 @@ class JITActivationsApi:
 
         _param = self._start_deactivate_workflow_v1_serialize(
             jit_activation_deactivate_request=jit_activation_deactivate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1134,6 +1153,7 @@ class JITActivationsApi:
     def start_deactivate_workflow_v1_with_http_info(
         self,
         jit_activation_deactivate_request: JitActivationDeactivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1153,6 +1173,8 @@ class JITActivationsApi:
 
         :param jit_activation_deactivate_request: (required)
         :type jit_activation_deactivate_request: JitActivationDeactivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1177,6 +1199,7 @@ class JITActivationsApi:
 
         _param = self._start_deactivate_workflow_v1_serialize(
             jit_activation_deactivate_request=jit_activation_deactivate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1207,6 +1230,7 @@ class JITActivationsApi:
     def start_deactivate_workflow_v1_without_preload_content(
         self,
         jit_activation_deactivate_request: JitActivationDeactivateRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1226,6 +1250,8 @@ class JITActivationsApi:
 
         :param jit_activation_deactivate_request: (required)
         :type jit_activation_deactivate_request: JitActivationDeactivateRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1250,6 +1276,7 @@ class JITActivationsApi:
 
         _param = self._start_deactivate_workflow_v1_serialize(
             jit_activation_deactivate_request=jit_activation_deactivate_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1275,6 +1302,7 @@ class JITActivationsApi:
     def _start_deactivate_workflow_v1_serialize(
         self,
         jit_activation_deactivate_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1298,6 +1326,8 @@ class JITActivationsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if jit_activation_deactivate_request is not None:
@@ -1352,6 +1382,7 @@ class JITActivationsApi:
     def start_extend_workflow_v1(
         self,
         jit_activation_extend_request: JitActivationExtendRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1371,6 +1402,8 @@ class JITActivationsApi:
 
         :param jit_activation_extend_request: (required)
         :type jit_activation_extend_request: JitActivationExtendRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1395,6 +1428,7 @@ class JITActivationsApi:
 
         _param = self._start_extend_workflow_v1_serialize(
             jit_activation_extend_request=jit_activation_extend_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1425,6 +1459,7 @@ class JITActivationsApi:
     def start_extend_workflow_v1_with_http_info(
         self,
         jit_activation_extend_request: JitActivationExtendRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1444,6 +1479,8 @@ class JITActivationsApi:
 
         :param jit_activation_extend_request: (required)
         :type jit_activation_extend_request: JitActivationExtendRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1468,6 +1505,7 @@ class JITActivationsApi:
 
         _param = self._start_extend_workflow_v1_serialize(
             jit_activation_extend_request=jit_activation_extend_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1498,6 +1536,7 @@ class JITActivationsApi:
     def start_extend_workflow_v1_without_preload_content(
         self,
         jit_activation_extend_request: JitActivationExtendRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1517,6 +1556,8 @@ class JITActivationsApi:
 
         :param jit_activation_extend_request: (required)
         :type jit_activation_extend_request: JitActivationExtendRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1541,6 +1582,7 @@ class JITActivationsApi:
 
         _param = self._start_extend_workflow_v1_serialize(
             jit_activation_extend_request=jit_activation_extend_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1566,6 +1608,7 @@ class JITActivationsApi:
     def _start_extend_workflow_v1_serialize(
         self,
         jit_activation_extend_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1589,6 +1632,8 @@ class JITActivationsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if jit_activation_extend_request is not None:

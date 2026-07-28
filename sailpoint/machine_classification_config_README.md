@@ -48,10 +48,11 @@ with sailpoint.machine_classification_config.ApiClient(configuration) as api_cli
     # Create an instance of the API class
     api_instance = sailpoint.machine_classification_config.MachineClassificationConfigApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete source's classification config
-        api_instance.delete_machine_classification_config_v1(source_id)
+        api_instance.delete_machine_classification_config_v1(source_id, x_sail_point_experimental=x_sail_point_experimental)
     except ApiException as e:
         print("Exception when calling MachineClassificationConfigApi->delete_machine_classification_config_v1: %s\n" % e)
 

@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from sailpoint.machine_classification_config.models.machine_classification_config import MachineClassificationConfig
 
@@ -42,6 +43,7 @@ class MachineClassificationConfigApi:
     def delete_machine_classification_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,6 +63,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,6 +89,7 @@ class MachineClassificationConfigApi:
 
         _param = self._delete_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -115,6 +120,7 @@ class MachineClassificationConfigApi:
     def delete_machine_classification_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,6 +140,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -158,6 +166,7 @@ class MachineClassificationConfigApi:
 
         _param = self._delete_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -188,6 +197,7 @@ class MachineClassificationConfigApi:
     def delete_machine_classification_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,6 +217,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,6 +243,7 @@ class MachineClassificationConfigApi:
 
         _param = self._delete_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -256,6 +269,7 @@ class MachineClassificationConfigApi:
     def _delete_machine_classification_config_v1_serialize(
         self,
         source_id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -281,6 +295,8 @@ class MachineClassificationConfigApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -320,6 +336,7 @@ class MachineClassificationConfigApi:
     def get_machine_classification_config_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -339,6 +356,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -363,6 +382,7 @@ class MachineClassificationConfigApi:
 
         _param = self._get_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -393,6 +413,7 @@ class MachineClassificationConfigApi:
     def get_machine_classification_config_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -412,6 +433,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -436,6 +459,7 @@ class MachineClassificationConfigApi:
 
         _param = self._get_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -466,6 +490,7 @@ class MachineClassificationConfigApi:
     def get_machine_classification_config_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -485,6 +510,8 @@ class MachineClassificationConfigApi:
 
         :param source_id: Source ID (required)
         :type source_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -509,6 +536,7 @@ class MachineClassificationConfigApi:
 
         _param = self._get_machine_classification_config_v1_serialize(
             source_id=source_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -534,6 +562,7 @@ class MachineClassificationConfigApi:
     def _get_machine_classification_config_v1_serialize(
         self,
         source_id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -559,6 +588,8 @@ class MachineClassificationConfigApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -599,6 +630,7 @@ class MachineClassificationConfigApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_classification_config: MachineClassificationConfig,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -620,6 +652,8 @@ class MachineClassificationConfigApi:
         :type source_id: str
         :param machine_classification_config: (required)
         :type machine_classification_config: MachineClassificationConfig
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -645,6 +679,7 @@ class MachineClassificationConfigApi:
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
             machine_classification_config=machine_classification_config,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -676,6 +711,7 @@ class MachineClassificationConfigApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_classification_config: MachineClassificationConfig,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -697,6 +733,8 @@ class MachineClassificationConfigApi:
         :type source_id: str
         :param machine_classification_config: (required)
         :type machine_classification_config: MachineClassificationConfig
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -722,6 +760,7 @@ class MachineClassificationConfigApi:
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
             machine_classification_config=machine_classification_config,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -753,6 +792,7 @@ class MachineClassificationConfigApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_classification_config: MachineClassificationConfig,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -774,6 +814,8 @@ class MachineClassificationConfigApi:
         :type source_id: str
         :param machine_classification_config: (required)
         :type machine_classification_config: MachineClassificationConfig
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -799,6 +841,7 @@ class MachineClassificationConfigApi:
         _param = self._set_machine_classification_config_v1_serialize(
             source_id=source_id,
             machine_classification_config=machine_classification_config,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -825,6 +868,7 @@ class MachineClassificationConfigApi:
         self,
         source_id,
         machine_classification_config,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -850,6 +894,8 @@ class MachineClassificationConfigApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if machine_classification_config is not None:

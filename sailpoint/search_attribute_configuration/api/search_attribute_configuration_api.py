@@ -44,7 +44,6 @@ class SearchAttributeConfigurationApi:
     def create_search_attribute_config_v1(
         self,
         search_attribute_config: SearchAttributeConfig,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,8 +63,6 @@ class SearchAttributeConfigurationApi:
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,7 +87,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._create_search_attribute_config_v1_serialize(
             search_attribute_config=search_attribute_config,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,7 +117,6 @@ class SearchAttributeConfigurationApi:
     def create_search_attribute_config_v1_with_http_info(
         self,
         search_attribute_config: SearchAttributeConfig,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,8 +136,6 @@ class SearchAttributeConfigurationApi:
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -167,7 +160,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._create_search_attribute_config_v1_serialize(
             search_attribute_config=search_attribute_config,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -198,7 +190,6 @@ class SearchAttributeConfigurationApi:
     def create_search_attribute_config_v1_without_preload_content(
         self,
         search_attribute_config: SearchAttributeConfig,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -218,8 +209,6 @@ class SearchAttributeConfigurationApi:
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -244,7 +233,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._create_search_attribute_config_v1_serialize(
             search_attribute_config=search_attribute_config,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -270,7 +258,6 @@ class SearchAttributeConfigurationApi:
     def _create_search_attribute_config_v1_serialize(
         self,
         search_attribute_config,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -294,8 +281,6 @@ class SearchAttributeConfigurationApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if search_attribute_config is not None:
@@ -350,7 +335,6 @@ class SearchAttributeConfigurationApi:
     def delete_search_attribute_config_v1(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -370,8 +354,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -396,7 +378,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._delete_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -426,7 +407,6 @@ class SearchAttributeConfigurationApi:
     def delete_search_attribute_config_v1_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -446,8 +426,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -472,7 +450,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._delete_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -502,7 +479,6 @@ class SearchAttributeConfigurationApi:
     def delete_search_attribute_config_v1_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -522,8 +498,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -548,7 +522,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._delete_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -573,7 +546,6 @@ class SearchAttributeConfigurationApi:
     def _delete_search_attribute_config_v1_serialize(
         self,
         name,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -599,8 +571,6 @@ class SearchAttributeConfigurationApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -641,7 +611,6 @@ class SearchAttributeConfigurationApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -663,8 +632,6 @@ class SearchAttributeConfigurationApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -690,7 +657,6 @@ class SearchAttributeConfigurationApi:
         _param = self._get_search_attribute_config_v1_serialize(
             limit=limit,
             offset=offset,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -721,7 +687,6 @@ class SearchAttributeConfigurationApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -743,8 +708,6 @@ class SearchAttributeConfigurationApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -770,7 +733,6 @@ class SearchAttributeConfigurationApi:
         _param = self._get_search_attribute_config_v1_serialize(
             limit=limit,
             offset=offset,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -801,7 +763,6 @@ class SearchAttributeConfigurationApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -823,8 +784,6 @@ class SearchAttributeConfigurationApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -850,7 +809,6 @@ class SearchAttributeConfigurationApi:
         _param = self._get_search_attribute_config_v1_serialize(
             limit=limit,
             offset=offset,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -876,7 +834,6 @@ class SearchAttributeConfigurationApi:
         self,
         limit,
         offset,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -908,8 +865,6 @@ class SearchAttributeConfigurationApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -949,7 +904,6 @@ class SearchAttributeConfigurationApi:
     def get_single_search_attribute_config_v1(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to get.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -969,8 +923,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to get. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,7 +947,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._get_single_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1026,7 +977,6 @@ class SearchAttributeConfigurationApi:
     def get_single_search_attribute_config_v1_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to get.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1046,8 +996,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to get. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1072,7 +1020,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._get_single_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1103,7 +1050,6 @@ class SearchAttributeConfigurationApi:
     def get_single_search_attribute_config_v1_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="Name of the extended search attribute configuration to get.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1123,8 +1069,6 @@ class SearchAttributeConfigurationApi:
 
         :param name: Name of the extended search attribute configuration to get. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1149,7 +1093,6 @@ class SearchAttributeConfigurationApi:
 
         _param = self._get_single_search_attribute_config_v1_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1175,7 +1118,6 @@ class SearchAttributeConfigurationApi:
     def _get_single_search_attribute_config_v1_serialize(
         self,
         name,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1201,8 +1143,6 @@ class SearchAttributeConfigurationApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1243,7 +1183,6 @@ class SearchAttributeConfigurationApi:
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1265,8 +1204,6 @@ class SearchAttributeConfigurationApi:
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1292,7 +1229,6 @@ class SearchAttributeConfigurationApi:
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1324,7 +1260,6 @@ class SearchAttributeConfigurationApi:
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1346,8 +1281,6 @@ class SearchAttributeConfigurationApi:
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1373,7 +1306,6 @@ class SearchAttributeConfigurationApi:
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1405,7 +1337,6 @@ class SearchAttributeConfigurationApi:
         self,
         name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1427,8 +1358,6 @@ class SearchAttributeConfigurationApi:
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1454,7 +1383,6 @@ class SearchAttributeConfigurationApi:
         _param = self._patch_search_attribute_config_v1_serialize(
             name=name,
             json_patch_operation=json_patch_operation,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1481,7 +1409,6 @@ class SearchAttributeConfigurationApi:
         self,
         name,
         json_patch_operation,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1508,8 +1435,6 @@ class SearchAttributeConfigurationApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

@@ -48,10 +48,11 @@ with sailpoint.data_segmentation.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.data_segmentation.DataSegmentationApi(api_client)
     data_segment = sailpoint.data_segmentation.DataSegment() # DataSegment | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create segment
-        api_response = api_instance.create_data_segment_v1(data_segment)
+        api_response = api_instance.create_data_segment_v1(data_segment, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of DataSegmentationApi->create_data_segment_v1:\n")
         pprint(api_response)
     except ApiException as e:

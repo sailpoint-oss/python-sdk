@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr, field_validator
-from typing import List
+from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.jit_access.models.jit_activation_config_response import JITActivationConfigResponse
 from sailpoint.jit_access.models.jit_access_operation_request import JitAccessOperationRequest
@@ -44,6 +44,7 @@ class JITAccessApi:
     def get_jit_activation_config_v1(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to read. Only **policy** (JIT activation policy) is supported today. ")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +64,8 @@ class JITAccessApi:
 
         :param config_type: Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class JITAccessApi:
 
         _param = self._get_jit_activation_config_v1_serialize(
             config_type=config_type,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,6 +121,7 @@ class JITAccessApi:
     def get_jit_activation_config_v1_with_http_info(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to read. Only **policy** (JIT activation policy) is supported today. ")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,6 +141,8 @@ class JITAccessApi:
 
         :param config_type: Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,6 +167,7 @@ class JITAccessApi:
 
         _param = self._get_jit_activation_config_v1_serialize(
             config_type=config_type,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,6 +198,7 @@ class JITAccessApi:
     def get_jit_activation_config_v1_without_preload_content(
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to read. Only **policy** (JIT activation policy) is supported today. ")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,6 +218,8 @@ class JITAccessApi:
 
         :param config_type: Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  (required)
         :type config_type: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,6 +244,7 @@ class JITAccessApi:
 
         _param = self._get_jit_activation_config_v1_serialize(
             config_type=config_type,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -258,6 +270,7 @@ class JITAccessApi:
     def _get_jit_activation_config_v1_serialize(
         self,
         config_type,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -283,6 +296,8 @@ class JITAccessApi:
             _path_params['configType'] = config_type
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -323,6 +338,7 @@ class JITAccessApi:
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
         jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -344,6 +360,8 @@ class JITAccessApi:
         :type config_type: str
         :param jit_access_operation_request: (required)
         :type jit_access_operation_request: List[JitAccessOperationRequest]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -369,6 +387,7 @@ class JITAccessApi:
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
             jit_access_operation_request=jit_access_operation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,6 +419,7 @@ class JITAccessApi:
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
         jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -421,6 +441,8 @@ class JITAccessApi:
         :type config_type: str
         :param jit_access_operation_request: (required)
         :type jit_access_operation_request: List[JitAccessOperationRequest]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -446,6 +468,7 @@ class JITAccessApi:
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
             jit_access_operation_request=jit_access_operation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -477,6 +500,7 @@ class JITAccessApi:
         self,
         config_type: Annotated[StrictStr, Field(description="Configuration kind to update. Only **policy** (JIT activation policy) is supported today. ")],
         jit_access_operation_request: Annotated[List[JitAccessOperationRequest], Field(min_length=1)],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -498,6 +522,8 @@ class JITAccessApi:
         :type config_type: str
         :param jit_access_operation_request: (required)
         :type jit_access_operation_request: List[JitAccessOperationRequest]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -523,6 +549,7 @@ class JITAccessApi:
         _param = self._patch_jit_activation_config_v1_serialize(
             config_type=config_type,
             jit_access_operation_request=jit_access_operation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -549,6 +576,7 @@ class JITAccessApi:
         self,
         config_type,
         jit_access_operation_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -575,6 +603,8 @@ class JITAccessApi:
             _path_params['configType'] = config_type
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if jit_access_operation_request is not None:

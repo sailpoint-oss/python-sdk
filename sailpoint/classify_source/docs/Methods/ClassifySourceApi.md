@@ -21,6 +21,17 @@ Method | HTTP request | Description
 
 
 ## delete-classify-machine-account-from-source-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Cancel classify source's accounts process
 Use this API to cancel account classification process on a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -32,6 +43,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -58,16 +70,18 @@ from sailpoint.classify_source.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Cancel classify source's accounts process
         
         ClassifySourceApi(api_client).delete_classify_machine_account_from_source_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # ClassifySourceApi(api_client).delete_classify_machine_account_from_source_v1(source_id)
+        # ClassifySourceApi(api_client).delete_classify_machine_account_from_source_v1(source_id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling ClassifySourceApi->delete_classify_machine_account_from_source_v1: %s\n" % e)
 ```
@@ -77,6 +91,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-classify-machine-account-from-source-status-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Source accounts classification status
 Use this API to get the status of Machine Account Classification process for a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -88,6 +113,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**SourceClassificationStatus**](../models/source-classification-status)
@@ -116,16 +142,18 @@ from sailpoint.classify_source.models.source_classification_status import Source
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Source accounts classification status
         
         results = ClassifySourceApi(api_client).get_classify_machine_account_from_source_status_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # results = ClassifySourceApi(api_client).get_classify_machine_account_from_source_status_v1(source_id)
+        # results = ClassifySourceApi(api_client).get_classify_machine_account_from_source_status_v1(source_id, x_sail_point_experimental)
         print("The response of ClassifySourceApi->get_classify_machine_account_from_source_status_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -137,6 +165,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## send-classify-machine-account-from-source-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Classify source's all accounts
 Use this API to classify all the accounts from a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -148,6 +187,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**SendClassifyMachineAccountFromSourceV1200Response**](../models/send-classify-machine-account-from-source-v1200-response)
@@ -175,16 +215,18 @@ from sailpoint.classify_source.models.send_classify_machine_account_from_source_
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Classify source's all accounts
         
         results = ClassifySourceApi(api_client).send_classify_machine_account_from_source_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source_v1(source_id)
+        # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source_v1(source_id, x_sail_point_experimental)
         print("The response of ClassifySourceApi->send_classify_machine_account_from_source_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

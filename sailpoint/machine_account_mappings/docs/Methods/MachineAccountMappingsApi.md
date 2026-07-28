@@ -22,6 +22,17 @@ Method | HTTP request | Description
 
 
 ## create-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Create machine account mappings
 Creates Machine Account Mappings for both identities and accounts for a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -34,6 +45,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | Source ID.
  Body  | attribute_mappings | [**AttributeMappings**](../models/attribute-mappings) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[AttributeMappings]**](../models/attribute-mappings)
@@ -61,6 +73,7 @@ from sailpoint.machine_account_mappings.models.attribute_mappings import Attribu
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
@@ -85,13 +98,14 @@ with ApiClient(configuration) as api_client:
             "type" : "IDENTITY"
           }
         }''' # AttributeMappings | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create machine account mappings
         new_attribute_mappings = AttributeMappings.from_json(attribute_mappings)
         results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id=source_id, attribute_mappings=new_attribute_mappings)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attribute_mappings)
+        # results = MachineAccountMappingsApi(api_client).create_machine_account_mappings_v1(source_id, new_attribute_mappings, x_sail_point_experimental)
         print("The response of MachineAccountMappingsApi->create_machine_account_mappings_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -104,6 +118,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Delete source's machine account mappings
 Use this API to remove machine account attribute mappings for a Source. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -115,6 +140,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | source ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -142,16 +168,18 @@ from sailpoint.machine_account_mappings.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | source ID. # str | source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete source's machine account mappings
         
         MachineAccountMappingsApi(api_client).delete_machine_account_mappings_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # MachineAccountMappingsApi(api_client).delete_machine_account_mappings_v1(source_id)
+        # MachineAccountMappingsApi(api_client).delete_machine_account_mappings_v1(source_id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineAccountMappingsApi->delete_machine_account_mappings_v1: %s\n" % e)
 ```
@@ -161,6 +189,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Machine account mapping for source
 Retrieves Machine account mappings for a specified source using Source ID.
 
@@ -173,6 +212,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | Source ID
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[AttributeMappings]**](../models/attribute-mappings)
@@ -201,18 +241,20 @@ from sailpoint.machine_account_mappings.models.attribute_mappings import Attribu
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID # str | Source ID
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Machine account mapping for source
         
         results = MachineAccountMappingsApi(api_client).list_machine_account_mappings_v1(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountMappingsApi(api_client).list_machine_account_mappings_v1(source_id, limit, offset)
+        # results = MachineAccountMappingsApi(api_client).list_machine_account_mappings_v1(source_id, limit, offset, x_sail_point_experimental)
         print("The response of MachineAccountMappingsApi->list_machine_account_mappings_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

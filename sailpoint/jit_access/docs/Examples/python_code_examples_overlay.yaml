@@ -10,15 +10,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           config_type = 'policy' # str | Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Get JIT activation policy configuration
               
               results = JITAccessApi(api_client).get_jit_activation_config_v1(config_type=config_type)
               # Below is a request that includes all optional parameters
-              # results = JITAccessApi(api_client).get_jit_activation_config_v1(config_type)
+              # results = JITAccessApi(api_client).get_jit_activation_config_v1(config_type, x_sail_point_experimental)
               print("The response of JITAccessApi->get_jit_activation_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -36,16 +38,18 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           config_type = 'policy' # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
           jit_access_operation_request = '''[sailpoint.jit_access.JitAccessOperationRequest()]''' # List[JitAccessOperationRequest] | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update JIT activation policy configuration
               new_jit_access_operation_request = JitAccessOperationRequest.from_json(jit_access_operation_request)
               results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type=config_type, jit_access_operation_request=new_jit_access_operation_request)
               # Below is a request that includes all optional parameters
-              # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jit_access_operation_request)
+              # results = JITAccessApi(api_client).patch_jit_activation_config_v1(config_type, new_jit_access_operation_request, x_sail_point_experimental)
               print("The response of JITAccessApi->patch_jit_activation_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

@@ -49,10 +49,11 @@ with sailpoint.machine_account_mappings.ApiClient(configuration) as api_client:
     api_instance = sailpoint.machine_account_mappings.MachineAccountMappingsApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID.
     attribute_mappings = sailpoint.machine_account_mappings.AttributeMappings() # AttributeMappings | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create machine account mappings
-        api_response = api_instance.create_machine_account_mappings_v1(source_id, attribute_mappings)
+        api_response = api_instance.create_machine_account_mappings_v1(source_id, attribute_mappings, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of MachineAccountMappingsApi->create_machine_account_mappings_v1:\n")
         pprint(api_response)
     except ApiException as e:

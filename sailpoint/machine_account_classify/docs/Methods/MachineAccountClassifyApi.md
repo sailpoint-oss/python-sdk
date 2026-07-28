@@ -19,6 +19,17 @@ Method | HTTP request | Description
 
 
 ## send-classify-machine-account-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Classify single machine account
 Use this API to classify a single machine account.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -31,6 +42,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Account ID.
   Query | classification_mode | **str** |   (optional) (default to default) | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**SendClassifyMachineAccountV1200Response**](../models/send-classify-machine-account-v1200-response)
@@ -58,17 +70,19 @@ from sailpoint.machine_account_classify.models.send_classify_machine_account_v12
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID. # str | Account ID.
     classification_mode = default # str | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to default) # str | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to default)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Classify single machine account
         
         results = MachineAccountClassifyApi(api_client).send_classify_machine_account_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountClassifyApi(api_client).send_classify_machine_account_v1(id, classification_mode)
+        # results = MachineAccountClassifyApi(api_client).send_classify_machine_account_v1(id, classification_mode, x_sail_point_experimental)
         print("The response of MachineAccountClassifyApi->send_classify_machine_account_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

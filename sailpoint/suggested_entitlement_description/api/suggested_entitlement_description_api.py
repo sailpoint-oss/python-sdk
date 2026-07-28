@@ -62,6 +62,7 @@ class SuggestedEntitlementDescriptionApi:
     def approve_bulk_entitlement_recommendations_v1(
         self,
         bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -81,6 +82,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
         :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -105,6 +108,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
             bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,6 +138,7 @@ class SuggestedEntitlementDescriptionApi:
     def approve_bulk_entitlement_recommendations_v1_with_http_info(
         self,
         bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -153,6 +158,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
         :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -177,6 +184,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
             bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -206,6 +214,7 @@ class SuggestedEntitlementDescriptionApi:
     def approve_bulk_entitlement_recommendations_v1_without_preload_content(
         self,
         bulk_approve_entitlement_recommendation_request: Annotated[BulkApproveEntitlementRecommendationRequest, Field(description="The list of recommendation items to approve.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -225,6 +234,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param bulk_approve_entitlement_recommendation_request: The list of recommendation items to approve. (required)
         :type bulk_approve_entitlement_recommendation_request: BulkApproveEntitlementRecommendationRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -249,6 +260,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._approve_bulk_entitlement_recommendations_v1_serialize(
             bulk_approve_entitlement_recommendation_request=bulk_approve_entitlement_recommendation_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -273,6 +285,7 @@ class SuggestedEntitlementDescriptionApi:
     def _approve_bulk_entitlement_recommendations_v1_serialize(
         self,
         bulk_approve_entitlement_recommendation_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -296,6 +309,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if bulk_approve_entitlement_recommendation_request is not None:
@@ -1531,6 +1546,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1552,6 +1568,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1577,6 +1595,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_pending_entitlement_recommendation_approvals_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1607,6 +1626,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1628,6 +1648,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1653,6 +1675,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_pending_entitlement_recommendation_approvals_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1683,6 +1706,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1704,6 +1728,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1729,6 +1755,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_pending_entitlement_recommendation_approvals_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1754,6 +1781,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset,
         limit,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1785,6 +1813,8 @@ class SuggestedEntitlementDescriptionApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1825,6 +1855,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1846,6 +1877,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1871,6 +1904,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_privileged_entitlement_recommendations_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1901,6 +1935,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1922,6 +1957,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1947,6 +1984,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_privileged_entitlement_recommendations_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1977,6 +2015,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1998,6 +2037,8 @@ class SuggestedEntitlementDescriptionApi:
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2023,6 +2064,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._list_privileged_entitlement_recommendations_v1_serialize(
             offset=offset,
             limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2048,6 +2090,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         offset,
         limit,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2079,6 +2122,8 @@ class SuggestedEntitlementDescriptionApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2518,6 +2563,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2539,6 +2585,8 @@ class SuggestedEntitlementDescriptionApi:
         :type id: str
         :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2564,6 +2612,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2595,6 +2644,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2616,6 +2666,8 @@ class SuggestedEntitlementDescriptionApi:
         :type id: str
         :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2641,6 +2693,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2672,6 +2725,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the entitlement recommendation to update.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The patch operations to apply to the entitlement recommendation record.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2693,6 +2747,8 @@ class SuggestedEntitlementDescriptionApi:
         :type id: str
         :param json_patch_operation: The patch operations to apply to the entitlement recommendation record. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2718,6 +2774,7 @@ class SuggestedEntitlementDescriptionApi:
         _param = self._patch_entitlement_recommendation_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2744,6 +2801,7 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id,
         json_patch_operation,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2770,6 +2828,8 @@ class SuggestedEntitlementDescriptionApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
@@ -3131,6 +3191,7 @@ class SuggestedEntitlementDescriptionApi:
     def submit_entitlement_recommendations_assignment_v1(
         self,
         entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3150,6 +3211,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
         :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3174,6 +3237,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
             entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3203,6 +3267,7 @@ class SuggestedEntitlementDescriptionApi:
     def submit_entitlement_recommendations_assignment_v1_with_http_info(
         self,
         entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3222,6 +3287,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
         :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3246,6 +3313,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
             entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3275,6 +3343,7 @@ class SuggestedEntitlementDescriptionApi:
     def submit_entitlement_recommendations_assignment_v1_without_preload_content(
         self,
         entitlement_recommendation_assign_request: Annotated[EntitlementRecommendationAssignRequest, Field(description="The recommendation IDs and the target assignee.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3294,6 +3363,8 @@ class SuggestedEntitlementDescriptionApi:
 
         :param entitlement_recommendation_assign_request: The recommendation IDs and the target assignee. (required)
         :type entitlement_recommendation_assign_request: EntitlementRecommendationAssignRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3318,6 +3389,7 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._submit_entitlement_recommendations_assignment_v1_serialize(
             entitlement_recommendation_assign_request=entitlement_recommendation_assign_request,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3342,6 +3414,7 @@ class SuggestedEntitlementDescriptionApi:
     def _submit_entitlement_recommendations_assignment_v1_serialize(
         self,
         entitlement_recommendation_assign_request,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -3365,6 +3438,8 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if entitlement_recommendation_assign_request is not None:
