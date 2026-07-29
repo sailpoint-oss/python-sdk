@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
  - [IntelPrivilegedAccessItemWireSource](sailpoint/intelligence/docs/IntelPrivilegedAccessItemWireSource.md)
  - [IntelPrivilegedAccessSlice](sailpoint/intelligence/docs/IntelPrivilegedAccessSlice.md)
  - [IntelRareAccessSlice](sailpoint/intelligence/docs/IntelRareAccessSlice.md)
+ - [Intelprivilegelevel](sailpoint/intelligence/docs/Intelprivilegelevel.md)
  - [LocaleOrigin](sailpoint/intelligence/docs/LocaleOrigin.md)
 
 

@@ -21,6 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.intelligence.models.intel_privileged_access_item_wire_source import IntelPrivilegedAccessItemWireSource
+from sailpoint.intelligence.models.intelprivilegelevel import Intelprivilegelevel
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,6 +30,7 @@ class IntelPrivilegedAccessItemWire(BaseModel):
     IntelPrivilegedAccessItemWire
     """ # noqa: E501
     privileged: StrictBool = Field(description="True when this item is classified as privileged access for the identity.")
+    privilege_level: Optional[Intelprivilegelevel] = Field(default=None, alias="privilegeLevel")
     id: StrictStr = Field(description="Identifier of the privileged access item.")
     type: StrictStr = Field(description="Type of privileged access object.")
     display_name: Optional[StrictStr] = Field(default=None, description="Display label for the privileged access item in administrative experiences.", alias="displayName")
@@ -36,7 +38,7 @@ class IntelPrivilegedAccessItemWire(BaseModel):
     source: Optional[IntelPrivilegedAccessItemWireSource] = None
     attribute: Optional[StrictStr] = Field(default=None, description="Source attribute name that carries the privileged value when applicable.")
     value: Optional[StrictStr] = Field(default=None, description="Privileged value on the source attribute when applicable.")
-    __properties: ClassVar[List[str]] = ["privileged", "id", "type", "displayName", "name", "source", "attribute", "value"]
+    __properties: ClassVar[List[str]] = ["privileged", "privilegeLevel", "id", "type", "displayName", "name", "source", "attribute", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +79,9 @@ class IntelPrivilegedAccessItemWire(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of privilege_level
+        if self.privilege_level:
+            _dict['privilegeLevel'] = self.privilege_level.to_dict()
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -93,6 +98,7 @@ class IntelPrivilegedAccessItemWire(BaseModel):
 
         _obj = cls.model_validate({
             "privileged": obj.get("privileged"),
+            "privilegeLevel": Intelprivilegelevel.from_dict(obj["privilegeLevel"]) if obj.get("privilegeLevel") is not None else None,
             "id": obj.get("id"),
             "type": obj.get("type"),
             "displayName": obj.get("displayName"),

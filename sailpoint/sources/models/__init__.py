@@ -101,3 +101,4 @@ from sailpoint.sources.models.task_result_dto import TaskResultDto
 from sailpoint.sources.models.transform import Transform
 from sailpoint.sources.models.transform_read import TransformRead
 from sailpoint.sources.models.usage_type import UsageType
+from sailpoint.sources.models.usagetypev2 import Usagetypev2

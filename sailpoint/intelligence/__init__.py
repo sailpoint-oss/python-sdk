@@ -50,4 +50,5 @@ from sailpoint.intelligence.models.intel_privileged_access_item_wire import Inte
 from sailpoint.intelligence.models.intel_privileged_access_item_wire_source import IntelPrivilegedAccessItemWireSource
 from sailpoint.intelligence.models.intel_privileged_access_slice import IntelPrivilegedAccessSlice
 from sailpoint.intelligence.models.intel_rare_access_slice import IntelRareAccessSlice
+from sailpoint.intelligence.models.intelprivilegelevel import Intelprivilegelevel
 from sailpoint.intelligence.models.locale_origin import LocaleOrigin

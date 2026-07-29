@@ -36,6 +36,8 @@ class TestIntelPrivilegedAccessItemWire(unittest.TestCase):
         if include_optional:
             return IntelPrivilegedAccessItemWire(
                 privileged = True,
+                privilege_level = sailpoint.intelligence.models.intelprivilegelevel.Intelprivilegelevel(
+                    effective = 'HIGH', ),
                 id = 'ent-1',
                 type = 'entitlement',
                 display_name = 'Example_Admin_Access',

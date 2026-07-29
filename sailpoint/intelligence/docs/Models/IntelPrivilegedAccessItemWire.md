@@ -17,6 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'IntelPrivilegedAccessItemWire', 'Inte
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **privileged** | **bool** | True when this item is classified as privileged access for the identity. | [required]
+**privilege_level** | [**Intelprivilegelevel**](intelprivilegelevel) |  | [optional] 
 **id** | **str** | Identifier of the privileged access item. | [required]
 **type** | **str** | Type of privileged access object. | [required]
 **display_name** | **str** | Display label for the privileged access item in administrative experiences. | [optional] 
@@ -33,6 +34,8 @@ from sailpoint.intelligence.models.intel_privileged_access_item_wire import Inte
 
 intel_privileged_access_item_wire = IntelPrivilegedAccessItemWire(
 privileged=True,
+privilege_level=sailpoint.intelligence.models.intelprivilegelevel.Intelprivilegelevel(
+                    effective = 'HIGH', ),
 id='ent-1',
 type='entitlement',
 display_name='Example_Admin_Access',

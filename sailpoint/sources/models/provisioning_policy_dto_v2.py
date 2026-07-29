@@ -21,7 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.sources.models.field_details_dto_v2 import FieldDetailsDtoV2
-from sailpoint.sources.models.usage_type import UsageType
+from sailpoint.sources.models.usagetypev2 import Usagetypev2
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class ProvisioningPolicyDtoV2(BaseModel):
     name: Optional[StrictStr] = Field(description="the provisioning policy name")
     subtype_id: Optional[StrictStr] = Field(default=None, description="Subtype ID for which provisioning policy will be created when usageType is CREATE_MACHINE_ACCOUNT.", alias="subtypeId")
     description: Optional[StrictStr] = Field(default=None, description="the description of the provisioning policy")
-    usage_type: Optional[Union[UsageType, str]] = Field(default=None, alias="usageType")
+    usage_type: Optional[Union[Usagetypev2, str]] = Field(default=None, alias="usageType")
     fields: Optional[List[FieldDetailsDtoV2]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "subtypeId", "description", "usageType", "fields"]
 

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **name** | **str** | the provisioning policy name | [required]
 **subtype_id** | **str** | Subtype ID for which provisioning policy will be created when usageType is CREATE_MACHINE_ACCOUNT. | [optional] 
 **description** | **str** | the description of the provisioning policy | [optional] 
-**usage_type** | **UsageType** |  | [optional] 
+**usage_type** | **Usagetypev2** |  | [optional] 
 **fields** | [**[]FieldDetailsDtoV2**](field-details-dto-v2) |  | [optional] 
 }
 

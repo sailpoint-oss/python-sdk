@@ -219,6 +219,7 @@ Class | Method | HTTP request | Description
  - [Transform](sailpoint/sources/docs/Transform.md)
  - [TransformRead](sailpoint/sources/docs/TransformRead.md)
  - [UsageType](sailpoint/sources/docs/UsageType.md)
+ - [Usagetypev2](sailpoint/sources/docs/Usagetypev2.md)
 
 
 <a id="documentation-for-authorization"></a>

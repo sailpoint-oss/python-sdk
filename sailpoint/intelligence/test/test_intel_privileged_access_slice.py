@@ -38,6 +38,8 @@ class TestIntelPrivilegedAccessSlice(unittest.TestCase):
                 items = [
                     sailpoint.intelligence.models.intel_privileged_access_item_wire.IntelPrivilegedAccessItemWire(
                         privileged = True, 
+                        privilege_level = sailpoint.intelligence.models.intelprivilegelevel.Intelprivilegelevel(
+                            effective = 'HIGH', ), 
                         id = 'ent-1', 
                         type = 'entitlement', 
                         display_name = 'Example_Admin_Access', 
@@ -54,6 +56,8 @@ class TestIntelPrivilegedAccessSlice(unittest.TestCase):
                 items = [
                     sailpoint.intelligence.models.intel_privileged_access_item_wire.IntelPrivilegedAccessItemWire(
                         privileged = True, 
+                        privilege_level = sailpoint.intelligence.models.intelprivilegelevel.Intelprivilegelevel(
+                            effective = 'HIGH', ), 
                         id = 'ent-1', 
                         type = 'entitlement', 
                         display_name = 'Example_Admin_Access', 
