@@ -1479,6 +1479,8 @@ class WorkflowsApi:
     def get_workflow_execution_history_v1(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1498,6 +1500,10 @@ class WorkflowsApi:
 
         :param id: Id of the workflow execution (required)
         :type id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1522,6 +1528,8 @@ class WorkflowsApi:
 
         _param = self._get_workflow_execution_history_v1_serialize(
             id=id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1552,6 +1560,8 @@ class WorkflowsApi:
     def get_workflow_execution_history_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1571,6 +1581,10 @@ class WorkflowsApi:
 
         :param id: Id of the workflow execution (required)
         :type id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1595,6 +1609,8 @@ class WorkflowsApi:
 
         _param = self._get_workflow_execution_history_v1_serialize(
             id=id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1625,6 +1641,8 @@ class WorkflowsApi:
     def get_workflow_execution_history_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1644,6 +1662,10 @@ class WorkflowsApi:
 
         :param id: Id of the workflow execution (required)
         :type id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1668,6 +1690,8 @@ class WorkflowsApi:
 
         _param = self._get_workflow_execution_history_v1_serialize(
             id=id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1693,6 +1717,8 @@ class WorkflowsApi:
     def _get_workflow_execution_history_v1_serialize(
         self,
         id,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -1717,6 +1743,14 @@ class WorkflowsApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1754,7 +1788,7 @@ class WorkflowsApi:
 
 
     @validate_call
-    def get_workflow_execution_history_v2(
+    def get_workflow_execution_history_v2_for_v1(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
         _request_timeout: Union[
@@ -1798,7 +1832,7 @@ class WorkflowsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workflow_execution_history_v2_serialize(
+        _param = self._get_workflow_execution_history_v2_for_v1_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1827,7 +1861,7 @@ class WorkflowsApi:
 
 
     @validate_call
-    def get_workflow_execution_history_v2_with_http_info(
+    def get_workflow_execution_history_v2_for_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
         _request_timeout: Union[
@@ -1871,7 +1905,7 @@ class WorkflowsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workflow_execution_history_v2_serialize(
+        _param = self._get_workflow_execution_history_v2_for_v1_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1900,7 +1934,7 @@ class WorkflowsApi:
 
 
     @validate_call
-    def get_workflow_execution_history_v2_without_preload_content(
+    def get_workflow_execution_history_v2_for_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow execution")],
         _request_timeout: Union[
@@ -1944,7 +1978,7 @@ class WorkflowsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_workflow_execution_history_v2_serialize(
+        _param = self._get_workflow_execution_history_v2_for_v1_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1968,7 +2002,7 @@ class WorkflowsApi:
         return response_data.response
 
 
-    def _get_workflow_execution_history_v2_serialize(
+    def _get_workflow_execution_history_v2_for_v1_serialize(
         self,
         id,
         _request_auth,

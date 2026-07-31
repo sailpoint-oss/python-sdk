@@ -69,7 +69,7 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**create_workflow_v1**](sailpoint/workflows/docs/WorkflowsApi.md#create_workflow_v1) | **POST** /workflows/v1 | Create workflow
 *WorkflowsApi* | [**delete_workflow_v1**](sailpoint/workflows/docs/WorkflowsApi.md#delete_workflow_v1) | **DELETE** /workflows/v1/{id} | Delete workflow by id
 *WorkflowsApi* | [**get_workflow_execution_history_v1**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_execution_history_v1) | **GET** /workflow-executions/v1/{id}/history | Get workflow execution history
-*WorkflowsApi* | [**get_workflow_execution_history_v2**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_execution_history_v2) | **GET** /workflow-executions/v1/{id}/history-v2 | Get updated workflow execution history
+*WorkflowsApi* | [**get_workflow_execution_history_v2_for_v1**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_execution_history_v2_for_v1) | **GET** /workflow-executions/v1/{id}/history-v2 | Get updated workflow execution history
 *WorkflowsApi* | [**get_workflow_execution_v1**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_execution_v1) | **GET** /workflow-executions/v1/{id} | Get workflow execution
 *WorkflowsApi* | [**get_workflow_executions_v1**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_executions_v1) | **GET** /workflows/v1/{id}/executions | List workflow executions
 *WorkflowsApi* | [**get_workflow_v1**](sailpoint/workflows/docs/WorkflowsApi.md#get_workflow_v1) | **GET** /workflows/v1/{id} | Get workflow by id

@@ -135,12 +135,14 @@
 
         with ApiClient(configuration) as api_client:
           id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow execution # str | Id of the workflow execution
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           try:
               # Get workflow execution history
               
               results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id)
+              # results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id, limit, offset)
               print("The response of WorkflowsApi->get_workflow_execution_history_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -150,7 +152,7 @@
   method: GET
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/workflows/methods/workflows#get-workflow-execution-history-v2
+      label: SDK_tools/sdk/python/workflows/methods/workflows#get-workflow-execution-history-v2-for-v1
       source: |
         from sailpoint.workflows.api.workflows_api import WorkflowsApi
         from sailpoint.workflows.api_client import ApiClient
@@ -164,13 +166,13 @@
           try:
               # Get updated workflow execution history
               
-              results = WorkflowsApi(api_client).get_workflow_execution_history_v2(id=id)
+              results = WorkflowsApi(api_client).get_workflow_execution_history_v2_for_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = WorkflowsApi(api_client).get_workflow_execution_history_v2(id)
-              print("The response of WorkflowsApi->get_workflow_execution_history_v2:\n")
+              # results = WorkflowsApi(api_client).get_workflow_execution_history_v2_for_v1(id)
+              print("The response of WorkflowsApi->get_workflow_execution_history_v2_for_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
-              print("Exception when calling WorkflowsApi->get_workflow_execution_history_v2: %s\n" % e)
+              print("Exception when calling WorkflowsApi->get_workflow_execution_history_v2_for_v1: %s\n" % e)
 - path: /workflow-executions/v1/{id}
   method: GET
   xCodeSample:

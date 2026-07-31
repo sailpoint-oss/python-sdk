@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**create-workflow-v1**](#create-workflow-v1) | **POST** `/workflows/v1` | Create workflow
 [**delete-workflow-v1**](#delete-workflow-v1) | **DELETE** `/workflows/v1/{id}` | Delete workflow by id
 [**get-workflow-execution-history-v1**](#get-workflow-execution-history-v1) | **GET** `/workflow-executions/v1/{id}/history` | Get workflow execution history
-[**get-workflow-execution-history-v2**](#get-workflow-execution-history-v2) | **GET** `/workflow-executions/v1/{id}/history-v2` | Get updated workflow execution history
+[**get-workflow-execution-history-v2-for-v1**](#get-workflow-execution-history-v2-for-v1) | **GET** `/workflow-executions/v1/{id}/history-v2` | Get updated workflow execution history
 [**get-workflow-execution-v1**](#get-workflow-execution-v1) | **GET** `/workflow-executions/v1/{id}` | Get workflow execution
 [**get-workflow-executions-v1**](#get-workflow-executions-v1) | **GET** `/workflows/v1/{id}/executions` | List workflow executions
 [**get-workflow-v1**](#get-workflow-v1) | **GET** `/workflows/v1/{id}` | Get workflow by id
@@ -337,6 +337,8 @@ Get a detailed history of a single workflow execution.  Workflow executions are 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Id of the workflow execution
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[WorkflowExecutionEvent]**](../models/workflow-execution-event)
@@ -368,13 +370,15 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow execution # str | Id of the workflow execution
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
     try:
         # Get workflow execution history
         
         results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id)
+        # results = WorkflowsApi(api_client).get_workflow_execution_history_v1(id, limit, offset)
         print("The response of WorkflowsApi->get_workflow_execution_history_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -386,11 +390,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## get-workflow-execution-history-v2
+## get-workflow-execution-history-v2-for-v1
 Get updated workflow execution history
 Gets a workflow execution history, trigger input, and workflow definition of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
-[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-execution-history-v-2)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-execution-history-v2-for-v-1)
 
 ### Parameters 
 
@@ -432,13 +436,13 @@ with ApiClient(configuration) as api_client:
     try:
         # Get updated workflow execution history
         
-        results = WorkflowsApi(api_client).get_workflow_execution_history_v2(id=id)
+        results = WorkflowsApi(api_client).get_workflow_execution_history_v2_for_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = WorkflowsApi(api_client).get_workflow_execution_history_v2(id)
-        print("The response of WorkflowsApi->get_workflow_execution_history_v2:\n")
+        # results = WorkflowsApi(api_client).get_workflow_execution_history_v2_for_v1(id)
+        print("The response of WorkflowsApi->get_workflow_execution_history_v2_for_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
-        print("Exception when calling WorkflowsApi->get_workflow_execution_history_v2: %s\n" % e)
+        print("Exception when calling WorkflowsApi->get_workflow_execution_history_v2_for_v1: %s\n" % e)
 ```
 
 
