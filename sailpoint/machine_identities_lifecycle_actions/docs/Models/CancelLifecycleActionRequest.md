@@ -1,0 +1,34 @@
+---
+id: cancel-lifecycle-action-request
+title: CancelLifecycleActionRequest
+pagination_label: CancelLifecycleActionRequest
+sidebar_label: CancelLifecycleActionRequest
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'CancelLifecycleActionRequest', 'CancelLifecycleActionRequest'] 
+slug: /tools/sdk/python/machine-identities-lifecycle-actions/models/cancel-lifecycle-action-request
+tags: ['SDK', 'Software Development Kit', 'CancelLifecycleActionRequest', 'CancelLifecycleActionRequest']
+---
+
+# CancelLifecycleActionRequest
+
+Optional cancel metadata. The path `requestId`.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**comment** | **str** | Optional cancel comment appended to the lifecycle request comment thread. | [optional] 
+}
+
+## Example
+
+```python
+from sailpoint.machine_identities_lifecycle_actions.models.cancel_lifecycle_action_request import CancelLifecycleActionRequest
+
+cancel_lifecycle_action_request = CancelLifecycleActionRequest(
+comment='Cancelling - will resubmit after maintenance window'
+)
+
+```
+[[Back to top]](#) 
+

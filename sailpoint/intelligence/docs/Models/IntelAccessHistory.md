@@ -31,12 +31,14 @@ access_items=sailpoint.intelligence.models.intel_access_history_access_items_sli
                     items = [
                         { }
                         ], 
-                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10', ),
+                    total_count = 128, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10&count=true', ),
 certifications=sailpoint.intelligence.models.intel_access_history_certifications_slice.IntelAccessHistoryCertificationsSlice(
                     items = [
                         { }
                         ], 
-                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10', )
+                    total_count = 6, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10&count=true', )
 )
 
 ```

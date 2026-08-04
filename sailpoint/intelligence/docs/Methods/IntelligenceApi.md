@@ -14,6 +14,18 @@ tags: ['SDK', 'Software Development Kit', 'Intelligence', 'Intelligence']
 for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
 extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
 SDS Search, IDA-outliers, and identity-history.
+
+## Pagination
+
+The aggregated Human GET embeds the first **10** items per paged slice. Each upstream paged call
+sends &#x60;count&#x3D;true&#x60; and reads &#x60;X-Total-Count&#x60;. Parent slices expose &#x60;totalCount&#x60; when &#x60;items&#x60; is
+non-empty and set &#x60;next&#x60; when &#x60;totalCount &gt; offset + len(items)&#x60; (aggregate offset is always 0).
+Empty slices render as &#x60;items: []&#x60; with no &#x60;totalCount&#x60;. &#x60;privilegedAccess&#x60; is never paged and
+carries no &#x60;totalCount&#x60;.
+
+Human child routes (&#x60;/accounts&#x60;, &#x60;/outliers/rare-access&#x60;, &#x60;/access-history/*&#x60;) follow the
+SailPoint V3 pattern: pass &#x60;count&#x3D;true&#x60; to receive &#x60;X-Total-Count&#x60; (including &#x60;0&#x60; on empty
+pages). When &#x60;count&#x60; is omitted, upstream count work is skipped and the header is omitted.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -33,8 +45,11 @@ Requires tenant license idn:response-and-remediation.
 Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope.
 Supported queryable fields are id and email only.
 The response embeds the first page of accounts, rare access, access-history access items, and
-access-history certifications. Paged slices include a next link only when more results exist.
-The privilegedAccess slice contains the full result and is not paged.
+access-history certifications. Each paged slice includes `totalCount` from upstream
+`X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when
+`totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no
+`totalCount`. The privilegedAccess slice contains the full result and is not paged; it never
+carries `next` or `totalCount`.
 The outliers slice is omitted when the tenant lacks the IDA-outliers license.
 
 
@@ -98,6 +113,7 @@ with ApiClient(configuration) as api_client:
 List identity access item history
 Continuation endpoint for the parent response's `accessHistory.accessItems.next` link.
 Returns one page of access-item history events for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Unsupported event types and per-record decode failures are dropped server-side.
 Requires tenant license idn:response-and-remediation.
 
@@ -111,6 +127,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-empty identity id path segment for Intelligence sub-resources.
   Query | limit | **int** |   (optional) (default to 250) | Page size. Defaults to 250; values above 250 are rejected with 400.
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[IntelAccessItemHistoryEvent]**](../models/intel-access-item-history-event)
@@ -118,7 +135,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of access-item history events. | List[IntelAccessItemHistoryEvent] |  -  |
+200 | One page of access-item history events. | List[IntelAccessItemHistoryEvent] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -143,13 +160,14 @@ with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
     limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
     offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
         # List identity access item history
         
         results = IntelligenceApi(api_client).get_intel_identity_access_item_history_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = IntelligenceApi(api_client).get_intel_identity_access_item_history_v1(id, limit, offset)
+        # results = IntelligenceApi(api_client).get_intel_identity_access_item_history_v1(id, limit, offset, count)
         print("The response of IntelligenceApi->get_intel_identity_access_item_history_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -165,6 +183,7 @@ with ApiClient(configuration) as api_client:
 List identity accounts
 Continuation endpoint for the parent response's `accounts.next` link.
 Returns one page of account rows for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Requires tenant license idn:response-and-remediation.
 
 
@@ -177,6 +196,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-empty identity id path segment for Intelligence sub-resources.
   Query | limit | **int** |   (optional) (default to 250) | Page size. Defaults to 250; values above 250 are rejected with 400.
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[IntelAccessAccountWire]**](../models/intel-access-account-wire)
@@ -184,7 +204,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of accounts. | List[IntelAccessAccountWire] |  -  |
+200 | One page of accounts. | List[IntelAccessAccountWire] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -209,13 +229,14 @@ with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
     limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
     offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
         # List identity accounts
         
         results = IntelligenceApi(api_client).get_intel_identity_accounts_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = IntelligenceApi(api_client).get_intel_identity_accounts_v1(id, limit, offset)
+        # results = IntelligenceApi(api_client).get_intel_identity_accounts_v1(id, limit, offset, count)
         print("The response of IntelligenceApi->get_intel_identity_accounts_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -231,6 +252,7 @@ with ApiClient(configuration) as api_client:
 List identity certification history
 Continuation endpoint for the parent response's `accessHistory.certifications.next` link.
 Returns one page of certification history events for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Per-record decode failures are dropped server-side.
 Requires tenant license idn:response-and-remediation.
 
@@ -244,6 +266,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-empty identity id path segment for Intelligence sub-resources.
   Query | limit | **int** |   (optional) (default to 250) | Page size. Defaults to 250; values above 250 are rejected with 400.
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[IntelCertificationHistoryEvent]**](../models/intel-certification-history-event)
@@ -251,7 +274,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of certification history events. | List[IntelCertificationHistoryEvent] |  -  |
+200 | One page of certification history events. | List[IntelCertificationHistoryEvent] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -276,13 +299,14 @@ with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
     limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
     offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
         # List identity certification history
         
         results = IntelligenceApi(api_client).get_intel_identity_certification_history_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = IntelligenceApi(api_client).get_intel_identity_certification_history_v1(id, limit, offset)
+        # results = IntelligenceApi(api_client).get_intel_identity_certification_history_v1(id, limit, offset, count)
         print("The response of IntelligenceApi->get_intel_identity_certification_history_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -298,9 +322,10 @@ with ApiClient(configuration) as api_client:
 List identity rare access
 Continuation endpoint for the parent response's `outliers.rareAccess.next` link.
 Resolves the identity's first outlier, then returns one page of rare access
-items for the supplied limit and offset values. An identity with no outlier
-returns an empty array. Requires tenant license idn:response-and-remediation
-and the IDA-outliers license.
+items for the supplied limit and offset values. Pass `count=true` to receive
+`X-Total-Count` (including `0` on empty pages). An identity with no outlier
+returns an empty array with `X-Total-Count: 0` when `count=true`. Requires
+tenant license idn:response-and-remediation and the IDA-outliers license.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-intel-identity-rare-access-v-1)
@@ -312,6 +337,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **str** | True  | Non-empty identity id path segment for Intelligence sub-resources.
   Query | limit | **int** |   (optional) (default to 250) | Page size. Defaults to 250; values above 250 are rejected with 400.
   Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[IntelOutlierAccessItem]**](../models/intel-outlier-access-item)
@@ -319,7 +345,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of rare access items. | List[IntelOutlierAccessItem] |  -  |
+200 | One page of rare access items. | List[IntelOutlierAccessItem] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -344,13 +370,14 @@ with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
     limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
     offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
         # List identity rare access
         
         results = IntelligenceApi(api_client).get_intel_identity_rare_access_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = IntelligenceApi(api_client).get_intel_identity_rare_access_v1(id, limit, offset)
+        # results = IntelligenceApi(api_client).get_intel_identity_rare_access_v1(id, limit, offset, count)
         print("The response of IntelligenceApi->get_intel_identity_rare_access_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

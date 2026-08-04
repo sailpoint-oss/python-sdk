@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,8 +30,9 @@ class IntelAccountsSlice(BaseModel):
     Accounts slice embedded in the aggregate identity response.
     """ # noqa: E501
     items: List[IntelAccessAccountWire] = Field(description="First page of accounts for the identity.")
-    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next accounts page; present only when more results exist.")
-    __properties: ClassVar[List[str]] = ["items", "next"]
+    total_count: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Total number of accounts for this identity; omitted when `items` is empty.", alias="totalCount")
+    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next accounts page; present when totalCount exceeds the items returned on this page.")
+    __properties: ClassVar[List[str]] = ["items", "totalCount", "next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +93,7 @@ class IntelAccountsSlice(BaseModel):
 
         _obj = cls.model_validate({
             "items": [IntelAccessAccountWire.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "totalCount": obj.get("totalCount"),
             "next": obj.get("next")
         })
         return _obj

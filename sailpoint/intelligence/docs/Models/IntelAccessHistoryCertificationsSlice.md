@@ -18,7 +18,8 @@ Certification history slice embedded in the aggregate identity response.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | **[]IntelCertificationHistoryEvent** | First page of certification history events for the identity. | [required]
-**next** | **str** | Absolute URL to the next certifications page; present only when more results exist. | [optional] 
+**total_count** | **int** | Total number of events in this category; omitted when `items` is empty. | [optional] 
+**next** | **str** | Absolute URL to the next certifications page; present when totalCount exceeds the items returned on this page. | [optional] 
 }
 
 ## Example
@@ -30,7 +31,8 @@ intel_access_history_certifications_slice = IntelAccessHistoryCertificationsSlic
 items=[
                     { }
                     ],
-next='https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10'
+total_count=6,
+next='https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10&count=true'
 )
 
 ```

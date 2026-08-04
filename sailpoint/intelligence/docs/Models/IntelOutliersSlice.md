@@ -36,7 +36,8 @@ rare_access=sailpoint.intelligence.models.intel_rare_access_slice.IntelRareAcces
                             source_name = 'Example SaaS Source', 
                             extremely_rare = False, )
                         ], 
-                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10', )
+                    total_count = 15, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10&count=true', )
 )
 
 ```

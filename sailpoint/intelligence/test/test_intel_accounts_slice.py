@@ -50,7 +50,8 @@ class TestIntelAccountsSlice(unittest.TestCase):
                         created = '2023-11-01T10:00Z', 
                         modified = '2024-02-15T16:20Z', )
                     ],
-                next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10'
+                total_count = 42,
+                next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10&count=true'
             )
         else:
             return IntelAccountsSlice(

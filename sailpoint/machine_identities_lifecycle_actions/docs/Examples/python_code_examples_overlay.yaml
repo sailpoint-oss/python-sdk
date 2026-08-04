@@ -1,0 +1,133 @@
+- path: /machine-identities/v1/lifecycle-actions/{requestId}/cancel
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-identities-lifecycle-actions/methods/machine-identity-lifecycle-actions#cancel-machine-identity-lifecycle-action-v1
+      source: |
+        from sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api import MachineIdentityLifecycleActionsApi
+        from sailpoint.machine_identities_lifecycle_actions.api_client import ApiClient
+        from sailpoint.machine_identities_lifecycle_actions.models.cancel_lifecycle_action_request import CancelLifecycleActionRequest
+        from sailpoint.machine_identities_lifecycle_actions.models.cancel_lifecycle_action_response import CancelLifecycleActionResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          request_id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' # str | Lifecycle request identifier. # str | Lifecycle request identifier.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          cancel_lifecycle_action_request = '''{
+          "comment" : "Cancelling - will resubmit after maintenance window"
+        }''' # CancelLifecycleActionRequest |  (optional)
+          try:
+              # Cancel lifecycle action
+              
+              results = MachineIdentityLifecycleActionsApi(api_client).cancel_machine_identity_lifecycle_action_v1(request_id=request_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentityLifecycleActionsApi(api_client).cancel_machine_identity_lifecycle_action_v1(request_id, x_sail_point_experimental, new_cancel_lifecycle_action_request)
+              print("The response of MachineIdentityLifecycleActionsApi->cancel_machine_identity_lifecycle_action_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentityLifecycleActionsApi->cancel_machine_identity_lifecycle_action_v1: %s\n" % e)
+- path: /machine-identities/v1/lifecycle-actions/{requestId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-identities-lifecycle-actions/methods/machine-identity-lifecycle-actions#get-machine-identity-lifecycle-action-v1
+      source: |
+        from sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api import MachineIdentityLifecycleActionsApi
+        from sailpoint.machine_identities_lifecycle_actions.api_client import ApiClient
+        from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_request import LifecycleActionRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          request_id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' # str | Lifecycle request identifier. # str | Lifecycle request identifier.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get lifecycle action by requestId
+              
+              results = MachineIdentityLifecycleActionsApi(api_client).get_machine_identity_lifecycle_action_v1(request_id=request_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentityLifecycleActionsApi(api_client).get_machine_identity_lifecycle_action_v1(request_id, x_sail_point_experimental)
+              print("The response of MachineIdentityLifecycleActionsApi->get_machine_identity_lifecycle_action_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentityLifecycleActionsApi->get_machine_identity_lifecycle_action_v1: %s\n" % e)
+- path: /machine-identities/v1/lifecycle-actions
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-identities-lifecycle-actions/methods/machine-identity-lifecycle-actions#list-machine-identity-lifecycle-actions-v1
+      source: |
+        from sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api import MachineIdentityLifecycleActionsApi
+        from sailpoint.machine_identities_lifecycle_actions.api_client import ApiClient
+        from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_request import LifecycleActionRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          filters = 'status in (\"RECEIVED\",\"COMPLETED\")' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional)
+          sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional)
+          limit = 50 # int | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List lifecycle actions
+              
+              results = MachineIdentityLifecycleActionsApi(api_client).list_machine_identity_lifecycle_actions_v1()
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentityLifecycleActionsApi(api_client).list_machine_identity_lifecycle_actions_v1(filters, sorters, limit, offset, count, x_sail_point_experimental)
+              print("The response of MachineIdentityLifecycleActionsApi->list_machine_identity_lifecycle_actions_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentityLifecycleActionsApi->list_machine_identity_lifecycle_actions_v1: %s\n" % e)
+- path: /machine-identities/v1/{id}/lifecycle-actions
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-identities-lifecycle-actions/methods/machine-identity-lifecycle-actions#submit-machine-identity-lifecycle-action-v1
+      source: |
+        from sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api import MachineIdentityLifecycleActionsApi
+        from sailpoint.machine_identities_lifecycle_actions.api_client import ApiClient
+        from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_submit_request import LifecycleActionSubmitRequest
+        from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_submit_response import LifecycleActionSubmitResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '1c9c8e1f-2f5f-4f77-9f7e-5d37e4fb3ef0' # str | Machine identity ID. # str | Machine identity ID.
+          lifecycle_action_submit_request = '''{
+          "comments" : [ {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          } ],
+          "action" : "DEACTIVATE"
+        }''' # LifecycleActionSubmitRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Submit machine identity lifecycle action
+              new_lifecycle_action_submit_request = LifecycleActionSubmitRequest.from_json(lifecycle_action_submit_request)
+              results = MachineIdentityLifecycleActionsApi(api_client).submit_machine_identity_lifecycle_action_v1(id=id, lifecycle_action_submit_request=new_lifecycle_action_submit_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentityLifecycleActionsApi(api_client).submit_machine_identity_lifecycle_action_v1(id, new_lifecycle_action_submit_request, x_sail_point_experimental)
+              print("The response of MachineIdentityLifecycleActionsApi->submit_machine_identity_lifecycle_action_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentityLifecycleActionsApi->submit_machine_identity_lifecycle_action_v1: %s\n" % e)
+

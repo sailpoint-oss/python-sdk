@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.intelligence.models.intel_access_item_history_event import IntelAccessItemHistoryEvent
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,8 +30,9 @@ class IntelAccessHistoryAccessItemsSlice(BaseModel):
     Access-item history slice embedded in the aggregate identity response.
     """ # noqa: E501
     items: List[IntelAccessItemHistoryEvent] = Field(description="First page of access-item history events for the identity.")
-    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next access-items page; present only when more results exist.")
-    __properties: ClassVar[List[str]] = ["items", "next"]
+    total_count: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Total number of events in this category; omitted when `items` is empty.", alias="totalCount")
+    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next access-items page; present when totalCount exceeds the items returned on this page.")
+    __properties: ClassVar[List[str]] = ["items", "totalCount", "next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +93,7 @@ class IntelAccessHistoryAccessItemsSlice(BaseModel):
 
         _obj = cls.model_validate({
             "items": [IntelAccessItemHistoryEvent.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "totalCount": obj.get("totalCount"),
             "next": obj.get("next")
         })
         return _obj

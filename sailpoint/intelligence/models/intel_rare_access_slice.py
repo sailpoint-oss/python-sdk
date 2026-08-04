@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,8 +30,9 @@ class IntelRareAccessSlice(BaseModel):
     Rare access slice embedded in the aggregate identity response.
     """ # noqa: E501
     items: List[IntelOutlierAccessItem] = Field(description="First page of rare access items for the identity.")
-    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next rareAccess page; present only when more results exist.")
-    __properties: ClassVar[List[str]] = ["items", "next"]
+    total_count: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Total number of rare-access items for the resolved outlier; omitted when `items` is empty.", alias="totalCount")
+    next: Optional[StrictStr] = Field(default=None, description="Absolute URL to the next rareAccess page; present when totalCount exceeds the items returned on this page.")
+    __properties: ClassVar[List[str]] = ["items", "totalCount", "next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +93,7 @@ class IntelRareAccessSlice(BaseModel):
 
         _obj = cls.model_validate({
             "items": [IntelOutlierAccessItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "totalCount": obj.get("totalCount"),
             "next": obj.get("next")
         })
         return _obj

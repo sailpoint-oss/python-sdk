@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
@@ -62,7 +62,7 @@ class IntelligenceApi:
     ) -> IntelIdentityAggregate:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -136,7 +136,7 @@ class IntelligenceApi:
     ) -> ApiResponse[IntelIdentityAggregate]:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -210,7 +210,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -332,6 +332,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -347,7 +348,7 @@ class IntelligenceApi:
     ) -> List[IntelAccessItemHistoryEvent]:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -355,6 +356,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -381,6 +384,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -412,6 +416,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -427,7 +432,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelAccessItemHistoryEvent]]:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -435,6 +440,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,6 +468,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -492,6 +500,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -507,7 +516,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -515,6 +524,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -541,6 +552,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -567,6 +579,7 @@ class IntelligenceApi:
         id,
         limit,
         offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -598,6 +611,10 @@ class IntelligenceApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
             
         # process the header parameters
         # process the form parameters
@@ -641,6 +658,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -656,7 +674,7 @@ class IntelligenceApi:
     ) -> List[IntelAccessAccountWire]:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -664,6 +682,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -690,6 +710,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -721,6 +742,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -736,7 +758,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelAccessAccountWire]]:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -744,6 +766,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -770,6 +794,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -801,6 +826,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -816,7 +842,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -824,6 +850,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -850,6 +878,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -876,6 +905,7 @@ class IntelligenceApi:
         id,
         limit,
         offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -907,6 +937,10 @@ class IntelligenceApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
             
         # process the header parameters
         # process the form parameters
@@ -950,6 +984,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -965,7 +1000,7 @@ class IntelligenceApi:
     ) -> List[IntelCertificationHistoryEvent]:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -973,6 +1008,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -999,6 +1036,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1030,6 +1068,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1045,7 +1084,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelCertificationHistoryEvent]]:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1053,6 +1092,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1079,6 +1120,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1110,6 +1152,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1125,7 +1168,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1133,6 +1176,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1159,6 +1204,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1185,6 +1231,7 @@ class IntelligenceApi:
         id,
         limit,
         offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -1216,6 +1263,10 @@ class IntelligenceApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
             
         # process the header parameters
         # process the form parameters
@@ -1259,6 +1310,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1274,7 +1326,7 @@ class IntelligenceApi:
     ) -> List[IntelOutlierAccessItem]:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. An identity with no outlier returns an empty array. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1282,6 +1334,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1308,6 +1362,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1339,6 +1394,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1354,7 +1410,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelOutlierAccessItem]]:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. An identity with no outlier returns an empty array. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1362,6 +1418,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1388,6 +1446,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1419,6 +1478,7 @@ class IntelligenceApi:
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Page size. Defaults to 250; values above 250 are rejected with 400.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Zero-based page offset. Defaults to 0.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1434,7 +1494,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. An identity with no outlier returns an empty array. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1442,6 +1502,8 @@ class IntelligenceApi:
         :type limit: int
         :param offset: Zero-based page offset. Defaults to 0.
         :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1468,6 +1530,7 @@ class IntelligenceApi:
             id=id,
             limit=limit,
             offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1494,6 +1557,7 @@ class IntelligenceApi:
         id,
         limit,
         offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -1525,6 +1589,10 @@ class IntelligenceApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
             
         # process the header parameters
         # process the form parameters

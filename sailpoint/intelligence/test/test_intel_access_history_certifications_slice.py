@@ -38,7 +38,8 @@ class TestIntelAccessHistoryCertificationsSlice(unittest.TestCase):
                 items = [
                     { }
                     ],
-                next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10'
+                total_count = 6,
+                next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10&count=true'
             )
         else:
             return IntelAccessHistoryCertificationsSlice(
