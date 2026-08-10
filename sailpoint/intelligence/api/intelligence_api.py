@@ -22,8 +22,8 @@ from typing_extensions import Annotated
 from sailpoint.intelligence.models.intel_access_account_wire import IntelAccessAccountWire
 from sailpoint.intelligence.models.intel_access_item_history_event import IntelAccessItemHistoryEvent
 from sailpoint.intelligence.models.intel_certification_history_event import IntelCertificationHistoryEvent
-from sailpoint.intelligence.models.intel_identity_aggregate import IntelIdentityAggregate
 from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
+from sailpoint.intelligence.models.intelidentityenvelope import Intelidentityenvelope
 
 from sailpoint.intelligence.api_client import ApiClient, RequestSerialized
 from sailpoint.intelligence.api_response import ApiResponse
@@ -46,7 +46,7 @@ class IntelligenceApi:
     @validate_call
     def get_identity_intelligence_v1(
         self,
-        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*")],
+        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq*")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,12 +59,12 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IntelIdentityAggregate:
+    ) -> Intelidentityenvelope:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  **Authentication and data segmentation**  Intelligence forwards the caller JWT to downstream identity and search services (context client). Enriched results, including non-human identity resolution, are filtered to the caller's Data Segmentation visibility.  **Caution:** Generic API Management API keys are not tied to a user identity. When Data Segmentation is enabled, API key authentication may fail or return incomplete data because downstream calls require a user context. Use a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or other user-scoped OAuth token. See [API keys](https://documentation.sailpoint.com/saas/help/common/api_keys.html) and [Data Segmentation](https://documentation.sailpoint.com/saas/help/segmentation/index.html).  Resolves exactly one identity using a single SCIM-style filters expression.  **Supported filters**  | Filter field | Lookup mode | Notes | |---|---|---| | id eq | Human (+ optional non-human identity when feature-flagged) | Resolves human identities by id; when non-human resolution is enabled, a parallel non-human lookup runs. If both match different identities, returns HTTP 409. | | email eq | Human only | Human identity lookup by email only. | | opaqueIdentifier eq | Non-human identity only | Parallel nativeIdentity eq on machine-identities and machine-accounts, then name-prefix fallback on machine-accounts. Requires feature flag ISCRR-1905_NHI_TYPE_MACHINE_FILTER_ENABLED; when disabled, returns HTTP 400. |  Single-clause filters only; composite and or expressions are rejected with HTTP 400.  **Human envelope (type Human)**  Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when totalCount exceeds the items returned on this page. Slices are always present (empty uses items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500, except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license (upstream 401 or 403). identityGraph is omitted when the tenant lacks the idg:base license.  **Non-human identity envelope (type NHI)**  Returns flat non-human identity fields at the top level plus correlated machine accounts on the aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary). Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values. identityGraph is omitted when the tenant lacks the idg:base license. 
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq* (required)
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -97,12 +97,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IntelIdentityAggregate",
+            '200': "Intelidentityenvelope",
             '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '409': "ErrorResponseDto",
+            '404': "IntelIdentityNotFoundBody",
+            '409': "Intelidentityambiguousbody",
             '429': "GetIdentityIntelligenceV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -120,7 +120,7 @@ class IntelligenceApi:
     @validate_call
     def get_identity_intelligence_v1_with_http_info(
         self,
-        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*")],
+        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq*")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,12 +133,12 @@ class IntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IntelIdentityAggregate]:
+    ) -> ApiResponse[Intelidentityenvelope]:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  **Authentication and data segmentation**  Intelligence forwards the caller JWT to downstream identity and search services (context client). Enriched results, including non-human identity resolution, are filtered to the caller's Data Segmentation visibility.  **Caution:** Generic API Management API keys are not tied to a user identity. When Data Segmentation is enabled, API key authentication may fail or return incomplete data because downstream calls require a user context. Use a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or other user-scoped OAuth token. See [API keys](https://documentation.sailpoint.com/saas/help/common/api_keys.html) and [Data Segmentation](https://documentation.sailpoint.com/saas/help/segmentation/index.html).  Resolves exactly one identity using a single SCIM-style filters expression.  **Supported filters**  | Filter field | Lookup mode | Notes | |---|---|---| | id eq | Human (+ optional non-human identity when feature-flagged) | Resolves human identities by id; when non-human resolution is enabled, a parallel non-human lookup runs. If both match different identities, returns HTTP 409. | | email eq | Human only | Human identity lookup by email only. | | opaqueIdentifier eq | Non-human identity only | Parallel nativeIdentity eq on machine-identities and machine-accounts, then name-prefix fallback on machine-accounts. Requires feature flag ISCRR-1905_NHI_TYPE_MACHINE_FILTER_ENABLED; when disabled, returns HTTP 400. |  Single-clause filters only; composite and or expressions are rejected with HTTP 400.  **Human envelope (type Human)**  Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when totalCount exceeds the items returned on this page. Slices are always present (empty uses items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500, except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license (upstream 401 or 403). identityGraph is omitted when the tenant lacks the idg:base license.  **Non-human identity envelope (type NHI)**  Returns flat non-human identity fields at the top level plus correlated machine accounts on the aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary). Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values. identityGraph is omitted when the tenant lacks the idg:base license. 
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq* (required)
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -171,12 +171,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IntelIdentityAggregate",
+            '200': "Intelidentityenvelope",
             '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '409': "ErrorResponseDto",
+            '404': "IntelIdentityNotFoundBody",
+            '409': "Intelidentityambiguousbody",
             '429': "GetIdentityIntelligenceV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -194,7 +194,7 @@ class IntelligenceApi:
     @validate_call
     def get_identity_intelligence_v1_without_preload_content(
         self,
-        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*")],
+        filters: Annotated[StrictStr, Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq*")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,9 +210,9 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Each paged slice includes `totalCount` from upstream `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never carries `next` or `totalCount`. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+        Requires tenant license idn:response-and-remediation.  **Authentication and data segmentation**  Intelligence forwards the caller JWT to downstream identity and search services (context client). Enriched results, including non-human identity resolution, are filtered to the caller's Data Segmentation visibility.  **Caution:** Generic API Management API keys are not tied to a user identity. When Data Segmentation is enabled, API key authentication may fail or return incomplete data because downstream calls require a user context. Use a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or other user-scoped OAuth token. See [API keys](https://documentation.sailpoint.com/saas/help/common/api_keys.html) and [Data Segmentation](https://documentation.sailpoint.com/saas/help/segmentation/index.html).  Resolves exactly one identity using a single SCIM-style filters expression.  **Supported filters**  | Filter field | Lookup mode | Notes | |---|---|---| | id eq | Human (+ optional non-human identity when feature-flagged) | Resolves human identities by id; when non-human resolution is enabled, a parallel non-human lookup runs. If both match different identities, returns HTTP 409. | | email eq | Human only | Human identity lookup by email only. | | opaqueIdentifier eq | Non-human identity only | Parallel nativeIdentity eq on machine-identities and machine-accounts, then name-prefix fallback on machine-accounts. Requires feature flag ISCRR-1905_NHI_TYPE_MACHINE_FILTER_ENABLED; when disabled, returns HTTP 400. |  Single-clause filters only; composite and or expressions are rejected with HTTP 400.  **Human envelope (type Human)**  Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when totalCount exceeds the items returned on this page. Slices are always present (empty uses items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500, except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license (upstream 401 or 403). identityGraph is omitted when the tenant lacks the idg:base license.  **Non-human identity envelope (type NHI)**  Returns flat non-human identity fields at the top level plus correlated machine accounts on the aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary). Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values. identityGraph is omitted when the tenant lacks the idg:base license. 
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq* (required)
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -245,12 +245,12 @@ class IntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IntelIdentityAggregate",
+            '200': "Intelidentityenvelope",
             '400': "ErrorResponseDto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '409': "ErrorResponseDto",
+            '404': "IntelIdentityNotFoundBody",
+            '409': "Intelidentityambiguousbody",
             '429': "GetIdentityIntelligenceV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -348,7 +348,7 @@ class IntelligenceApi:
     ) -> List[IntelAccessItemHistoryEvent]:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -432,7 +432,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelAccessItemHistoryEvent]]:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -516,7 +516,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity access item history
 
-        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.accessItems.next` link. Returns one page of access-item history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Unsupported event types and per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -674,7 +674,7 @@ class IntelligenceApi:
     ) -> List[IntelAccessAccountWire]:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for a Human identity's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Not applicable to non-human identities (NHI accounts are returned on the NHI aggregate only). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -758,7 +758,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelAccessAccountWire]]:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for a Human identity's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Not applicable to non-human identities (NHI accounts are returned on the NHI aggregate only). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -842,7 +842,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity accounts
 
-        Continuation endpoint for the parent response's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for a Human identity's `accounts.next` link. Returns one page of account rows for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Not applicable to non-human identities (NHI accounts are returned on the NHI aggregate only). Requires tenant license idn:response-and-remediation. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1000,7 +1000,7 @@ class IntelligenceApi:
     ) -> List[IntelCertificationHistoryEvent]:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1084,7 +1084,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelCertificationHistoryEvent]]:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1168,7 +1168,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity certification history
 
-        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation. 
+        Continuation endpoint for the parent response's `accessHistory.certifications.next` link. Returns one page of certification history events for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). Per-record decode failures are dropped server-side. Requires tenant license idn:response-and-remediation.  Not applicable to non-human identities. 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1326,7 +1326,7 @@ class IntelligenceApi:
     ) -> List[IntelOutlierAccessItem]:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license.  Not applicable to non-human identities (no outliers slice on the NHI envelope). 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1410,7 +1410,7 @@ class IntelligenceApi:
     ) -> ApiResponse[List[IntelOutlierAccessItem]]:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license.  Not applicable to non-human identities (no outliers slice on the NHI envelope). 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str
@@ -1494,7 +1494,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """List identity rare access
 
-        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license. 
+        Continuation endpoint for the parent response's `outliers.rareAccess.next` link. Resolves the identity's first outlier, then returns one page of rare access items for the supplied limit and offset values. Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages). An identity with no outlier returns an empty array with `X-Total-Count: 0` when `count=true`. Requires tenant license idn:response-and-remediation and the IDA-outliers license.  Not applicable to non-human identities (no outliers slice on the NHI envelope). 
 
         :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
         :type id: str

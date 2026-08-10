@@ -36,13 +36,15 @@ class TestBusinessApplicationRef(unittest.TestCase):
         if include_optional:
             return BusinessApplicationRef(
                 type = 'BUSINESS_APPLICATION',
-                id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+                id = '2ee5e239-e68c-4d69-93fb-6c7ce4576190',
                 name = 'Cursor',
                 sanctioned_status = 'SANCTIONED',
                 correlation_type = 'MANUAL'
             )
         else:
             return BusinessApplicationRef(
+                type = 'BUSINESS_APPLICATION',
+                id = '2ee5e239-e68c-4d69-93fb-6c7ce4576190',
         )
         """
 

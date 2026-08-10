@@ -22,6 +22,9 @@ Name | Type | Description | Notes
 **modified** | **datetime** | The time when this SOD policy is modified. | [optional] [readonly] 
 **description** | **str** | Optional description of the SOD policy | [optional] 
 **owner_ref** | [**SodPolicyOwnerRef**](sod-policy-owner-ref) |  | [optional] 
+**secondary_owner_refs** | [**[]SodPolicySecondaryOwnerRefsInner**](sod-policy-secondary-owner-refs-inner) | Additional owners of the SOD policy.(Max 10). Applicable only to Conflicting Access Based policies. | [optional] 
+**allowed_controls** | [**[]SodPolicyAllowedControlsInner**](sod-policy-allowed-controls-inner) | Compensating or other controls allowed for this policy.(Max 10). Applicable only to Conflicting Access Based policies. | [optional] 
+**level** |  **Enum** [  'CRITICAL',    'HIGH',    'MEDIUM',    'LOW' ] | Policy severity or priority level. Applicable only to Conflicting Access Based policies. If not specified, default will be HIGH. | [optional] 
 **external_policy_reference** | **str** | Optional External Policy Reference | [optional] 
 **policy_query** | **str** | Search query of the SOD policy | [optional] 
 **compensating_controls** | **str** | Optional compensating controls(Mitigating Controls) | [optional] 
@@ -51,6 +54,9 @@ owner_ref=sailpoint.sod_policies.models.sod_policy_owner_ref.SodPolicy_ownerRef(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
+secondary_owner_refs=[{"type":"IDENTITY","id":"2c9180a46faadee4016fb4e018c20639","name":"Support"}],
+allowed_controls=[{"type":"COMPENSATING_CONTROL","id":"2c9180a46faadee4016fb4e018c20639","name":"Mitigating Control 1"}],
+level='HIGH',
 external_policy_reference='XYZ policy',
 policy_query='@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)',
 compensating_controls='Have a manager review the transaction decisions for their "out of compliance" employee',

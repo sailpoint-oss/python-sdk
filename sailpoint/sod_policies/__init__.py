@@ -52,9 +52,11 @@ from sailpoint.sod_policies.models.schedule_type import ScheduleType
 from sailpoint.sod_policies.models.selector import Selector
 from sailpoint.sod_policies.models.selector_type import SelectorType
 from sailpoint.sod_policies.models.sod_policy import SodPolicy
+from sailpoint.sod_policies.models.sod_policy_allowed_controls_inner import SodPolicyAllowedControlsInner
 from sailpoint.sod_policies.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.sod_policies.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.sod_policies.models.sod_policy_schedule import SodPolicySchedule
+from sailpoint.sod_policies.models.sod_policy_secondary_owner_refs_inner import SodPolicySecondaryOwnerRefsInner
 from sailpoint.sod_policies.models.sod_recipient import SodRecipient
 from sailpoint.sod_policies.models.sod_report_result_dto import SodReportResultDto
 from sailpoint.sod_policies.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig

@@ -21,8 +21,10 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.sod_policies.models.sod_policy_allowed_controls_inner import SodPolicyAllowedControlsInner
 from sailpoint.sod_policies.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.sod_policies.models.sod_policy_owner_ref import SodPolicyOwnerRef
+from sailpoint.sod_policies.models.sod_policy_secondary_owner_refs_inner import SodPolicySecondaryOwnerRefsInner
 from sailpoint.sod_policies.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,6 +39,9 @@ class SodPolicy(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="The time when this SOD policy is modified.")
     description: Optional[StrictStr] = Field(default=None, description="Optional description of the SOD policy")
     owner_ref: Optional[SodPolicyOwnerRef] = Field(default=None, alias="ownerRef")
+    secondary_owner_refs: Optional[List[SodPolicySecondaryOwnerRefsInner]] = Field(default=None, description="Additional owners of the SOD policy.(Max 10). Applicable only to Conflicting Access Based policies.", alias="secondaryOwnerRefs")
+    allowed_controls: Optional[List[SodPolicyAllowedControlsInner]] = Field(default=None, description="Compensating or other controls allowed for this policy.(Max 10). Applicable only to Conflicting Access Based policies.", alias="allowedControls")
+    level: Optional[StrictStr] = Field(default=None, description="Policy severity or priority level. Applicable only to Conflicting Access Based policies. If not specified, default will be HIGH.")
     external_policy_reference: Optional[StrictStr] = Field(default=None, description="Optional External Policy Reference", alias="externalPolicyReference")
     policy_query: Optional[StrictStr] = Field(default=None, description="Search query of the SOD policy", alias="policyQuery")
     compensating_controls: Optional[StrictStr] = Field(default=None, description="Optional compensating controls(Mitigating Controls)", alias="compensatingControls")
@@ -49,7 +54,17 @@ class SodPolicy(BaseModel):
     scheduled: Optional[StrictBool] = Field(default=False, description="defines whether a policy has been scheduled or not")
     type: Optional[StrictStr] = Field(default='GENERAL', description="whether a policy is query based or conflicting access based")
     conflicting_access_criteria: Optional[SodPolicyConflictingAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "ownerRef", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type", "conflictingAccessCriteria"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "ownerRef", "secondaryOwnerRefs", "allowedControls", "level", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type", "conflictingAccessCriteria"]
+
+    @field_validator('level')
+    def level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']):
+            warnings.warn(f"must be one of enum values ('CRITICAL', 'HIGH', 'MEDIUM', 'LOW') unknown value: {value}")
+        return value
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -123,6 +138,20 @@ class SodPolicy(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner_ref
         if self.owner_ref:
             _dict['ownerRef'] = self.owner_ref.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in secondary_owner_refs (list)
+        _items = []
+        if self.secondary_owner_refs:
+            for _item_secondary_owner_refs in self.secondary_owner_refs:
+                if _item_secondary_owner_refs:
+                    _items.append(_item_secondary_owner_refs.to_dict())
+            _dict['secondaryOwnerRefs'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in allowed_controls (list)
+        _items = []
+        if self.allowed_controls:
+            for _item_allowed_controls in self.allowed_controls:
+                if _item_allowed_controls:
+                    _items.append(_item_allowed_controls.to_dict())
+            _dict['allowedControls'] = _items
         # override the default output from pydantic by calling `to_dict()` of violation_owner_assignment_config
         if self.violation_owner_assignment_config:
             _dict['violationOwnerAssignmentConfig'] = self.violation_owner_assignment_config.to_dict()
@@ -133,6 +162,11 @@ class SodPolicy(BaseModel):
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if level (nullable) is None
+        # and model_fields_set contains the field
+        if self.level is None and "level" in self.model_fields_set:
+            _dict['level'] = None
 
         # set to None if external_policy_reference (nullable) is None
         # and model_fields_set contains the field
@@ -172,6 +206,9 @@ class SodPolicy(BaseModel):
             "modified": obj.get("modified"),
             "description": obj.get("description"),
             "ownerRef": SodPolicyOwnerRef.from_dict(obj["ownerRef"]) if obj.get("ownerRef") is not None else None,
+            "secondaryOwnerRefs": [SodPolicySecondaryOwnerRefsInner.from_dict(_item) for _item in obj["secondaryOwnerRefs"]] if obj.get("secondaryOwnerRefs") is not None else None,
+            "allowedControls": [SodPolicyAllowedControlsInner.from_dict(_item) for _item in obj["allowedControls"]] if obj.get("allowedControls") is not None else None,
+            "level": obj.get("level"),
             "externalPolicyReference": obj.get("externalPolicyReference"),
             "policyQuery": obj.get("policyQuery"),
             "compensatingControls": obj.get("compensatingControls"),

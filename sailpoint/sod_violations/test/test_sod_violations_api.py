@@ -26,6 +26,41 @@ class TestSODViolationsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_violation_v1(self) -> None:
+        """Test case for get_violation_v1
+
+        Get policy violation by ID
+        """
+        pass
+
+    def test_list_my_violations_v1(self) -> None:
+        """Test case for list_my_violations_v1
+
+        List My Policy Violations
+        """
+        pass
+
+    def test_list_violations_v1(self) -> None:
+        """Test case for list_violations_v1
+
+        List Policy Violations
+        """
+        pass
+
+    def test_move_violation_v1(self) -> None:
+        """Test case for move_violation_v1
+
+        Reassign policy violation
+        """
+        pass
+
+    def test_start_apply_control_v1(self) -> None:
+        """Test case for start_apply_control_v1
+
+        Apply control to violation
+        """
+        pass
+
     def test_start_predict_sod_violations_v1(self) -> None:
         """Test case for start_predict_sod_violations_v1
 

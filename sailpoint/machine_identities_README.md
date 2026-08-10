@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [CorrelationConfig](sailpoint/machine_identities/docs/CorrelationConfig.md)
  - [CorrelationRule](sailpoint/machine_identities/docs/CorrelationRule.md)
  - [CorrelationRuleAction](sailpoint/machine_identities/docs/CorrelationRuleAction.md)
+ - [CorrelationType](sailpoint/machine_identities/docs/CorrelationType.md)
  - [DtoType](sailpoint/machine_identities/docs/DtoType.md)
  - [ErrorMessageDto](sailpoint/machine_identities/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/machine_identities/docs/ErrorResponseDto.md)

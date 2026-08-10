@@ -47,7 +47,7 @@ configuration = sailpoint.intelligence.Configuration(
 with sailpoint.intelligence.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.intelligence.IntelligenceApi(api_client)
-    filters = 'id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*
+    filters = 'id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq*
 
     try:
         # Get identity by filter
@@ -87,12 +87,26 @@ Class | Method | HTTP request | Description
  - [IntelAccountsSlice](sailpoint/intelligence/docs/IntelAccountsSlice.md)
  - [IntelCertificationHistoryEvent](sailpoint/intelligence/docs/IntelCertificationHistoryEvent.md)
  - [IntelIdentityAggregate](sailpoint/intelligence/docs/IntelIdentityAggregate.md)
+ - [IntelIdentityNotFoundBody](sailpoint/intelligence/docs/IntelIdentityNotFoundBody.md)
  - [IntelOutlierAccessItem](sailpoint/intelligence/docs/IntelOutlierAccessItem.md)
  - [IntelOutliersSlice](sailpoint/intelligence/docs/IntelOutliersSlice.md)
  - [IntelPrivilegedAccessItemWire](sailpoint/intelligence/docs/IntelPrivilegedAccessItemWire.md)
  - [IntelPrivilegedAccessItemWireSource](sailpoint/intelligence/docs/IntelPrivilegedAccessItemWireSource.md)
  - [IntelPrivilegedAccessSlice](sailpoint/intelligence/docs/IntelPrivilegedAccessSlice.md)
  - [IntelRareAccessSlice](sailpoint/intelligence/docs/IntelRareAccessSlice.md)
+ - [Intelblastradiussummary](sailpoint/intelligence/docs/Intelblastradiussummary.md)
+ - [Intelidentityambiguousbody](sailpoint/intelligence/docs/Intelidentityambiguousbody.md)
+ - [Intelidentityambiguouscandidate](sailpoint/intelligence/docs/Intelidentityambiguouscandidate.md)
+ - [Intelidentityenvelope](sailpoint/intelligence/docs/Intelidentityenvelope.md)
+ - [Intelidentitygraphlink](sailpoint/intelligence/docs/Intelidentitygraphlink.md)
+ - [Intelidentitymachineaggregate](sailpoint/intelligence/docs/Intelidentitymachineaggregate.md)
+ - [Intelmachineaccountsslice](sailpoint/intelligence/docs/Intelmachineaccountsslice.md)
+ - [Intelmachineaccountwire](sailpoint/intelligence/docs/Intelmachineaccountwire.md)
+ - [Intelmachinederived](sailpoint/intelligence/docs/Intelmachinederived.md)
+ - [Intelmachineentityref](sailpoint/intelligence/docs/Intelmachineentityref.md)
+ - [Intelmachineidentityowners](sailpoint/intelligence/docs/Intelmachineidentityowners.md)
+ - [Intelmachinesourcewire](sailpoint/intelligence/docs/Intelmachinesourcewire.md)
+ - [Intelmachineuserentitlement](sailpoint/intelligence/docs/Intelmachineuserentitlement.md)
  - [Intelprivilegelevel](sailpoint/intelligence/docs/Intelprivilegelevel.md)
  - [LocaleOrigin](sailpoint/intelligence/docs/LocaleOrigin.md)
 

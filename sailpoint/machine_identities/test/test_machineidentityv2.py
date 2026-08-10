@@ -71,10 +71,10 @@ class TestMachineidentityv2(unittest.TestCase):
                 business_application_refs = [
                     sailpoint.machine_identities.models.business_application_ref.Business Application Ref(
                         type = 'BUSINESS_APPLICATION', 
-                        id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', 
+                        id = '2ee5e239-e68c-4d69-93fb-6c7ce4576190', 
                         name = 'Cursor', 
-                        sanctioned_status = 'SANCTIONED', 
-                        correlation_type = 'MANUAL', )
+                        sanctioned_status = SANCTIONED, 
+                        correlation_type = MANUAL, )
                     ],
                 effective_sanctioned_status = 'SANCTIONED',
                 risk = sailpoint.machine_identities.models.machine_identity_v2_risk.Machine_Identity_V2_risk(

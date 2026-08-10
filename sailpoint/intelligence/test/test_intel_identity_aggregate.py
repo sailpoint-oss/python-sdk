@@ -36,11 +36,10 @@ class TestIntelIdentityAggregate(unittest.TestCase):
         if include_optional:
             return IntelIdentityAggregate(
                 id = 'ef38f94347e94562b5bb8424a56397d8',
-                type = 'HUMAN',
+                type = 'Human',
                 display_name = 'Example User',
                 description = 'Example description.',
                 subtype = 'Employee',
-                owners = 'governance-group-001',
                 attributes = {"department":"Engineering","region":"US"},
                 created = '2026-05-12T08:00Z',
                 modified = '2026-05-12T09:15:30Z',
@@ -48,6 +47,8 @@ class TestIntelIdentityAggregate(unittest.TestCase):
                 email = 'user@example.com',
                 identity_status = 'ACTIVE',
                 is_manager = False,
+                identity_graph = sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
+                    href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8', ),
                 accounts = sailpoint.intelligence.models.intel_accounts_slice.IntelAccountsSlice(
                     items = [
                         sailpoint.intelligence.models.intel_access_account_wire.IntelAccessAccountWire(
@@ -91,7 +92,7 @@ class TestIntelIdentityAggregate(unittest.TestCase):
         else:
             return IntelIdentityAggregate(
                 id = 'ef38f94347e94562b5bb8424a56397d8',
-                type = 'HUMAN',
+                type = 'Human',
                 accounts = sailpoint.intelligence.models.intel_accounts_slice.IntelAccountsSlice(
                     items = [
                         sailpoint.intelligence.models.intel_access_account_wire.IntelAccessAccountWire(

@@ -39,6 +39,7 @@ from sailpoint.machine_identities.models.correlation_condition import Correlatio
 from sailpoint.machine_identities.models.correlation_config import CorrelationConfig
 from sailpoint.machine_identities.models.correlation_rule import CorrelationRule
 from sailpoint.machine_identities.models.correlation_rule_action import CorrelationRuleAction
+from sailpoint.machine_identities.models.correlation_type import CorrelationType
 from sailpoint.machine_identities.models.dto_type import DtoType
 from sailpoint.machine_identities.models.error_message_dto import ErrorMessageDto
 from sailpoint.machine_identities.models.error_response_dto import ErrorResponseDto

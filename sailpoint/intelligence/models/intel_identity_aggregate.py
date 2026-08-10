@@ -25,19 +25,19 @@ from sailpoint.intelligence.models.intel_access_history import IntelAccessHistor
 from sailpoint.intelligence.models.intel_accounts_slice import IntelAccountsSlice
 from sailpoint.intelligence.models.intel_outliers_slice import IntelOutliersSlice
 from sailpoint.intelligence.models.intel_privileged_access_slice import IntelPrivilegedAccessSlice
+from sailpoint.intelligence.models.intelidentitygraphlink import Intelidentitygraphlink
 from typing import Optional, Set
 from typing_extensions import Self
 
 class IntelIdentityAggregate(BaseModel):
     """
-    Flat identity response with identity attributes hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+    Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
     """ # noqa: E501
     id: StrictStr = Field(description="Identity Security Cloud identifier for this identity.")
     type: StrictStr = Field(description="Identity type for the matched record.")
     display_name: Optional[StrictStr] = Field(default=None, description="Preferred display name for the identity across administrative experiences.", alias="displayName")
     description: Optional[StrictStr] = Field(default=None, description="Optional free-text description assigned to the identity profile when present.")
     subtype: Optional[StrictStr] = Field(default=None, description="NERM classification for the identity.")
-    owners: Optional[StrictStr] = Field(default=None, description="Serialized owner reference information when populated by upstream identity services.")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Arbitrary SCIM-style attribute bag returned for the identity context view.")
     created: Optional[datetime] = Field(default=None, description="Timestamp when the identity record was created in Identity Security Cloud.")
     modified: Optional[datetime] = Field(default=None, description="Timestamp when the identity record was last modified in Identity Security Cloud.")
@@ -45,17 +45,18 @@ class IntelIdentityAggregate(BaseModel):
     email: Optional[StrictStr] = Field(default=None, description="Primary business email address for the identity.")
     identity_status: Optional[StrictStr] = Field(default=None, description="Current identity lifecycle status label from Identity Security Cloud.", alias="identityStatus")
     is_manager: Optional[StrictBool] = Field(default=False, description="True when the identity is flagged as a people manager in the organization.", alias="isManager")
+    identity_graph: Optional[Intelidentitygraphlink] = Field(default=None, description="Omitted when the tenant lacks the idg:base license.", alias="identityGraph")
     accounts: IntelAccountsSlice = Field(description="First page of accounts for the identity.")
     privileged_access: IntelPrivilegedAccessSlice = Field(description="Full privileged access result for the identity.", alias="privilegedAccess")
     outliers: Optional[IntelOutliersSlice] = Field(default=None, description="Rare access slice; omitted when the tenant lacks the IDA-outliers license.")
     access_history: IntelAccessHistory = Field(description="Access-history split into access items and certifications sub-slices.", alias="accessHistory")
-    __properties: ClassVar[List[str]] = ["id", "type", "displayName", "description", "subtype", "owners", "attributes", "created", "modified", "alias", "email", "identityStatus", "isManager", "accounts", "privilegedAccess", "outliers", "accessHistory"]
+    __properties: ClassVar[List[str]] = ["id", "type", "displayName", "description", "subtype", "attributes", "created", "modified", "alias", "email", "identityStatus", "isManager", "identityGraph", "accounts", "privilegedAccess", "outliers", "accessHistory"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['HUMAN']):
-            warnings.warn(f"must be one of enum values ('HUMAN') unknown value: {value}")
+        if value not in set(['Human']):
+            warnings.warn(f"must be one of enum values ('Human') unknown value: {value}")
         return value
 
     @field_validator('subtype')
@@ -107,6 +108,9 @@ class IntelIdentityAggregate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of identity_graph
+        if self.identity_graph:
+            _dict['identityGraph'] = self.identity_graph.to_dict()
         # override the default output from pydantic by calling `to_dict()` of accounts
         if self.accounts:
             _dict['accounts'] = self.accounts.to_dict()
@@ -129,11 +133,6 @@ class IntelIdentityAggregate(BaseModel):
         if self.subtype is None and "subtype" in self.model_fields_set:
             _dict['subtype'] = None
 
-        # set to None if owners (nullable) is None
-        # and model_fields_set contains the field
-        if self.owners is None and "owners" in self.model_fields_set:
-            _dict['owners'] = None
-
         return _dict
 
     @classmethod
@@ -151,7 +150,6 @@ class IntelIdentityAggregate(BaseModel):
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),
             "subtype": obj.get("subtype"),
-            "owners": obj.get("owners"),
             "attributes": obj.get("attributes"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
@@ -159,6 +157,7 @@ class IntelIdentityAggregate(BaseModel):
             "email": obj.get("email"),
             "identityStatus": obj.get("identityStatus"),
             "isManager": obj.get("isManager") if obj.get("isManager") is not None else False,
+            "identityGraph": Intelidentitygraphlink.from_dict(obj["identityGraph"]) if obj.get("identityGraph") is not None else None,
             "accounts": IntelAccountsSlice.from_dict(obj["accounts"]) if obj.get("accounts") is not None else None,
             "privilegedAccess": IntelPrivilegedAccessSlice.from_dict(obj["privilegedAccess"]) if obj.get("privilegedAccess") is not None else None,
             "outliers": IntelOutliersSlice.from_dict(obj["outliers"]) if obj.get("outliers") is not None else None,

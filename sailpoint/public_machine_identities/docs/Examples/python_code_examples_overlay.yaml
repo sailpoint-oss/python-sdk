@@ -1,0 +1,31 @@
+- path: /public-machine-identities/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/public-machine-identities/methods/public-machine-identities#list-public-machine-identities-v1
+      source: |
+        from sailpoint.public_machine_identities.api.public_machine_identities_api import PublicMachineIdentitiesApi
+        from sailpoint.public_machine_identities.api_client import ApiClient
+        from sailpoint.public_machine_identities.models.public_machine_identity import PublicMachineIdentity
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \"Production API Agent\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **subtype**: *eq*  **owner.id**: *eq*  **owner**: *eq*  `subtype`, **owner.id**, and **owner** are only available when your tenant returns enriched public machine identity data; otherwise requests using those filters return `400 Bad Request`. **owner** is rewritten to **owner.id** when filtering. (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **subtype**: *eq*  **owner.id**: *eq*  **owner**: *eq*  `subtype`, **owner.id**, and **owner** are only available when your tenant returns enriched public machine identity data; otherwise requests using those filters return `400 Bad Request`. **owner** is rewritten to **owner.id** when filtering. (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, subtype**  Sorting on `subtype` is only available when your tenant returns enriched public machine identity data; otherwise the request returns `400 Bad Request`. (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, subtype**  Sorting on `subtype` is only available when your tenant returns enriched public machine identity data; otherwise the request returns `400 Bad Request`. (optional)
+          try:
+              # List public machine identities
+              
+              results = PublicMachineIdentitiesApi(api_client).list_public_machine_identities_v1()
+              # Below is a request that includes all optional parameters
+              # results = PublicMachineIdentitiesApi(api_client).list_public_machine_identities_v1(limit, offset, count, filters, sorters)
+              print("The response of PublicMachineIdentitiesApi->list_public_machine_identities_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PublicMachineIdentitiesApi->list_public_machine_identities_v1: %s\n" % e)
+

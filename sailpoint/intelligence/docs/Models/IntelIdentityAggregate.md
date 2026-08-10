@@ -11,18 +11,17 @@ tags: ['SDK', 'Software Development Kit', 'IntelIdentityAggregate', 'IntelIdenti
 
 # IntelIdentityAggregate
 
-Flat identity response with identity attributes hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Identity Security Cloud identifier for this identity. | [required]
-**type** |  **Enum** [  'HUMAN' ] | Identity type for the matched record. | [required]
+**type** |  **Enum** [  'Human' ] | Identity type for the matched record. | [required]
 **display_name** | **str** | Preferred display name for the identity across administrative experiences. | [optional] 
 **description** | **str** | Optional free-text description assigned to the identity profile when present. | [optional] 
 **subtype** |  **Enum** [  'Employee',    'Non Employee',    'Cannot Determine' ] | NERM classification for the identity. | [optional] 
-**owners** | **str** | Serialized owner reference information when populated by upstream identity services. | [optional] 
 **attributes** | **map[string]object** | Arbitrary SCIM-style attribute bag returned for the identity context view. | [optional] 
 **created** | **datetime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
 **modified** | **datetime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
@@ -30,6 +29,7 @@ Name | Type | Description | Notes
 **email** | **str** | Primary business email address for the identity. | [optional] 
 **identity_status** | **str** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
 **is_manager** | **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to False]
+**identity_graph** | [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **accounts** | [**IntelAccountsSlice**](intel-accounts-slice) | First page of accounts for the identity. | [required]
 **privileged_access** | [**IntelPrivilegedAccessSlice**](intel-privileged-access-slice) | Full privileged access result for the identity. | [required]
 **outliers** | [**IntelOutliersSlice**](intel-outliers-slice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
@@ -43,11 +43,10 @@ from sailpoint.intelligence.models.intel_identity_aggregate import IntelIdentity
 
 intel_identity_aggregate = IntelIdentityAggregate(
 id='ef38f94347e94562b5bb8424a56397d8',
-type='HUMAN',
+type='Human',
 display_name='Example User',
 description='Example description.',
 subtype='Employee',
-owners='governance-group-001',
 attributes={"department":"Engineering","region":"US"},
 created='2026-05-12T08:00Z',
 modified='2026-05-12T09:15:30Z',
@@ -55,6 +54,8 @@ alias='example.user',
 email='user@example.com',
 identity_status='ACTIVE',
 is_manager=False,
+identity_graph=sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
+                    href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8', ),
 accounts=sailpoint.intelligence.models.intel_accounts_slice.IntelAccountsSlice(
                     items = [
                         sailpoint.intelligence.models.intel_access_account_wire.IntelAccessAccountWire(

@@ -21,6 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
 from sailpoint.machine_identities.models.business_application_ref import BusinessApplicationRef
 from sailpoint.machine_identities.models.machine_identity_owners_v2 import MachineIdentityOwnersV2
 from sailpoint.machine_identities.models.machine_identity_v2_risk import MachineIdentityV2Risk
@@ -56,8 +57,8 @@ class Machineidentityv2(BaseModel):
     resource: Optional[ResourceV2] = None
     source: Optional[MachineIdentityV2Source] = None
     user_entitlements: Optional[List[UserEntitlementV2]] = Field(default=None, description="The user entitlements associated to the machine identity.", alias="userEntitlements")
-    business_application_refs: Optional[List[BusinessApplicationRef]] = Field(default=None, description="Optional Business Application references associated with this machine identity.", alias="businessApplicationRefs")
-    effective_sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, alias="effectiveSanctionedStatus")
+    business_application_refs: Optional[Annotated[List[BusinessApplicationRef], Field(max_length=1)]] = Field(default=None, description="Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write.", alias="businessApplicationRefs")
+    effective_sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, description="Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input.", alias="effectiveSanctionedStatus")
     risk: Optional[MachineIdentityV2Risk] = None
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "attributes", "connectorAttributes", "manuallyEdited", "manuallyCreated", "owners", "subtype", "sourceId", "uuid", "nativeIdentity", "datasetId", "environment", "existsOnSource", "status", "resource", "source", "userEntitlements", "businessApplicationRefs", "effectiveSanctionedStatus", "risk"]
 
@@ -94,11 +95,13 @@ class Machineidentityv2(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created",
             "modified",
+            "effective_sanctioned_status",
         ])
 
         _dict = self.model_dump(
@@ -146,6 +149,11 @@ class Machineidentityv2(BaseModel):
         # and model_fields_set contains the field
         if self.business_application_refs is None and "business_application_refs" in self.model_fields_set:
             _dict['businessApplicationRefs'] = None
+
+        # set to None if effective_sanctioned_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.effective_sanctioned_status is None and "effective_sanctioned_status" in self.model_fields_set:
+            _dict['effectiveSanctionedStatus'] = None
 
         return _dict
 

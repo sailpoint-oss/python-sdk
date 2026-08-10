@@ -20,29 +20,27 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from sailpoint.machine_identities.models.correlation_type import CorrelationType
 from sailpoint.machine_identities.models.sanctioned_status import SanctionedStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
 class BusinessApplicationRef(BaseModel):
     """
-    Reference to a Business Application associated with a machine identity.
+    Reference to a Business Application associated with a machine identity. Available when Business Applications is enabled for the tenant. At most one Business Application reference is supported per machine identity on create and patch.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Reference type.")
-    id: Optional[StrictStr] = Field(default=None, description="Business Application ID.")
-    name: Optional[StrictStr] = Field(default=None, description="Business Application display name.")
-    sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, alias="sanctionedStatus")
-    correlation_type: Optional[StrictStr] = Field(default=None, description="Whether the Business Application reference was manually assigned or automatically correlated.", alias="correlationType")
+    type: StrictStr = Field(description="Reference type. Must be `BUSINESS_APPLICATION`.")
+    id: StrictStr = Field(description="Existing Business Application id in the tenant.")
+    name: Optional[StrictStr] = Field(default=None, description="Business Application display name. Ignored on write; responses are enriched from the Business Application.")
+    sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, description="Sanctioned status of the linked Business Application. Ignored on write; responses are enriched from the Business Application.", alias="sanctionedStatus")
+    correlation_type: Optional[Union[CorrelationType, str]] = Field(default=None, description="Correlation type for this reference. On write: omit or `MANUAL` (default). `AUTOMATIC` is rejected (`400`). On response: may be `MANUAL` or `AUTOMATIC`.", alias="correlationType")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "sanctionedStatus", "correlationType"]
 
-    @field_validator('correlation_type')
-    def correlation_type_validate_enum(cls, value):
+    @field_validator('type')
+    def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['MANUAL', 'AUTOMATIC']):
-            warnings.warn(f"must be one of enum values ('MANUAL', 'AUTOMATIC') unknown value: {value}")
+        if value not in set(['BUSINESS_APPLICATION']):
+            warnings.warn(f"must be one of enum values ('BUSINESS_APPLICATION') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -75,8 +73,10 @@ class BusinessApplicationRef(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "sanctioned_status",
         ])
 
         _dict = self.model_dump(

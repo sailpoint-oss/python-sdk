@@ -136,6 +136,7 @@ from sailpoint.privilege_criteria_configuration.api.privilege_criteria_configura
 from sailpoint.prompt_insights.api.prompt_insights_api import PromptInsightsApi as _prompt_insights__PromptInsightsApi
 from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi as _public_identities__PublicIdentitiesApi
 from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi as _public_identities_config__PublicIdentitiesConfigApi
+from sailpoint.public_machine_identities.api.public_machine_identities_api import PublicMachineIdentitiesApi as _public_machine_identities__PublicMachineIdentitiesApi
 from sailpoint.reports_data_extraction.api.reports_data_extraction_api import ReportsDataExtractionApi as _reports_data_extraction__ReportsDataExtractionApi
 from sailpoint.requestable_objects.api.requestable_objects_api import RequestableObjectsApi as _requestable_objects__RequestableObjectsApi
 from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi as _role_insights__RoleInsightsApi
@@ -149,6 +150,7 @@ from sailpoint.segments.api.segments_api import SegmentsApi as _segments__Segmen
 from sailpoint.service_desk_integration.api.service_desk_integration_api import ServiceDeskIntegrationApi as _service_desk_integration__ServiceDeskIntegrationApi
 from sailpoint.shared_signals_framework_ssf.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi as _shared_signals_framework_ssf__SharedSignalsFrameworkSSFApi
 from sailpoint.sim_integrations.api.sim_integrations_api import SIMIntegrationsApi as _sim_integrations__SIMIntegrationsApi
+from sailpoint.sod_controls.api.sod_controls_api import SODControlsApi as _sod_controls__SODControlsApi
 from sailpoint.sod_policies.api.sod_policies_api import SODPoliciesApi as _sod_policies__SODPoliciesApi
 from sailpoint.sod_violations.api.sod_violations_api import SODViolationsApi as _sod_violations__SODViolationsApi
 from sailpoint.source_usages.api.source_usages_api import SourceUsagesApi as _source_usages__SourceUsagesApi
@@ -290,6 +292,7 @@ PrivilegeCriteriaConfigurationApi = _privilege_criteria_configuration__Privilege
 PromptInsightsApi = _prompt_insights__PromptInsightsApi
 PublicIdentitiesApi = _public_identities__PublicIdentitiesApi
 PublicIdentitiesConfigApi = _public_identities_config__PublicIdentitiesConfigApi
+PublicMachineIdentitiesApi = _public_machine_identities__PublicMachineIdentitiesApi
 ReportsDataExtractionApi = _reports_data_extraction__ReportsDataExtractionApi
 RequestableObjectsApi = _requestable_objects__RequestableObjectsApi
 RoleInsightsApi = _role_insights__RoleInsightsApi
@@ -302,6 +305,7 @@ SegmentsApi = _segments__SegmentsApi
 ServiceDeskIntegrationApi = _service_desk_integration__ServiceDeskIntegrationApi
 SharedSignalsFrameworkSSFApi = _shared_signals_framework_ssf__SharedSignalsFrameworkSSFApi
 SIMIntegrationsApi = _sim_integrations__SIMIntegrationsApi
+SODControlsApi = _sod_controls__SODControlsApi
 SODPoliciesApi = _sod_policies__SODPoliciesApi
 SODViolationsApi = _sod_violations__SODViolationsApi
 SourceUsagesApi = _source_usages__SourceUsagesApi
@@ -439,6 +443,7 @@ class SailPoint:
     PromptInsightsApi = _prompt_insights__PromptInsightsApi
     PublicIdentitiesApi = _public_identities__PublicIdentitiesApi
     PublicIdentitiesConfigApi = _public_identities_config__PublicIdentitiesConfigApi
+    PublicMachineIdentitiesApi = _public_machine_identities__PublicMachineIdentitiesApi
     ReportsDataExtractionApi = _reports_data_extraction__ReportsDataExtractionApi
     RequestableObjectsApi = _requestable_objects__RequestableObjectsApi
     RoleInsightsApi = _role_insights__RoleInsightsApi
@@ -451,6 +456,7 @@ class SailPoint:
     ServiceDeskIntegrationApi = _service_desk_integration__ServiceDeskIntegrationApi
     SharedSignalsFrameworkSSFApi = _shared_signals_framework_ssf__SharedSignalsFrameworkSSFApi
     SIMIntegrationsApi = _sim_integrations__SIMIntegrationsApi
+    SODControlsApi = _sod_controls__SODControlsApi
     SODPoliciesApi = _sod_policies__SODPoliciesApi
     SODViolationsApi = _sod_violations__SODViolationsApi
     SourceUsagesApi = _source_usages__SourceUsagesApi

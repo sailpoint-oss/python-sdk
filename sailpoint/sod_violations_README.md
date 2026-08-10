@@ -47,15 +47,16 @@ configuration = sailpoint.sod_violations.Configuration(
 with sailpoint.sod_violations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sod_violations.SODViolationsApi(api_client)
-    identity_with_new_access = {"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]} # IdentityWithNewAccess | 
+    id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the policy violation to fetch
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
-        # Predict sod violations for identity.
-        api_response = api_instance.start_predict_sod_violations_v1(identity_with_new_access)
-        print("The response of SODViolationsApi->start_predict_sod_violations_v1:\n")
+        # Get policy violation by ID
+        api_response = api_instance.get_violation_v1(id, x_sail_point_experimental=x_sail_point_experimental)
+        print("The response of SODViolationsApi->get_violation_v1:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SODViolationsApi->start_predict_sod_violations_v1: %s\n" % e)
+        print("Exception when calling SODViolationsApi->get_violation_v1: %s\n" % e)
 
 ```
 
@@ -65,12 +66,23 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SODViolationsApi* | [**get_violation_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#get_violation_v1) | **GET** /violations/v1/{id} | Get policy violation by ID
+*SODViolationsApi* | [**list_my_violations_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#list_my_violations_v1) | **GET** /my-violations/v1 | List My Policy Violations
+*SODViolationsApi* | [**list_violations_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#list_violations_v1) | **GET** /violations/v1 | List Policy Violations
+*SODViolationsApi* | [**move_violation_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#move_violation_v1) | **POST** /violations/v1/{id}/reassign | Reassign policy violation
+*SODViolationsApi* | [**start_apply_control_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#start_apply_control_v1) | **POST** /violations/v1/{id}/controls | Apply control to violation
 *SODViolationsApi* | [**start_predict_sod_violations_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#start_predict_sod_violations_v1) | **POST** /sod-violations/v1/predict | Predict sod violations for identity.
 *SODViolationsApi* | [**start_violation_check_v1**](sailpoint/sod_violations/docs/SODViolationsApi.md#start_violation_check_v1) | **POST** /sod-violations/v1/check | Check sod violations
 
 
 ## Documentation For Models
 
+ - [AccessCriteria](sailpoint/sod_violations/docs/AccessCriteria.md)
+ - [Appliedcontrol](sailpoint/sod_violations/docs/Appliedcontrol.md)
+ - [Appliedcontrolcreate](sailpoint/sod_violations/docs/Appliedcontrolcreate.md)
+ - [Appliedcontrolstatus](sailpoint/sod_violations/docs/Appliedcontrolstatus.md)
+ - [Conflictingitem](sailpoint/sod_violations/docs/Conflictingitem.md)
+ - [Conflictingitemsourceref](sailpoint/sod_violations/docs/Conflictingitemsourceref.md)
  - [DtoType](sailpoint/sod_violations/docs/DtoType.md)
  - [ErrorMessageDto](sailpoint/sod_violations/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/sod_violations/docs/ErrorResponseDto.md)
@@ -81,6 +93,11 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](sailpoint/sod_violations/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/sod_violations/docs/IdentityWithNewAccessAccessRefsInner.md)
  - [LocaleOrigin](sailpoint/sod_violations/docs/LocaleOrigin.md)
+ - [Policyviolationresponse](sailpoint/sod_violations/docs/Policyviolationresponse.md)
+ - [Policyviolationrisklevel](sailpoint/sod_violations/docs/Policyviolationrisklevel.md)
+ - [Policyviolationstatus](sailpoint/sod_violations/docs/Policyviolationstatus.md)
+ - [Reassigninput](sailpoint/sod_violations/docs/Reassigninput.md)
+ - [Referenceresponse](sailpoint/sod_violations/docs/Referenceresponse.md)
  - [SodPolicyDto2](sailpoint/sod_violations/docs/SodPolicyDto2.md)
  - [SodViolationCheck](sailpoint/sod_violations/docs/SodViolationCheck.md)
  - [StartPredictSodViolationsV1401Response](sailpoint/sod_violations/docs/StartPredictSodViolationsV1401Response.md)
@@ -88,6 +105,7 @@ Class | Method | HTTP request | Description
  - [ViolationContext](sailpoint/sod_violations/docs/ViolationContext.md)
  - [ViolationContextPolicy](sailpoint/sod_violations/docs/ViolationContextPolicy.md)
  - [ViolationPrediction](sailpoint/sod_violations/docs/ViolationPrediction.md)
+ - [Violationreassigninput](sailpoint/sod_violations/docs/Violationreassigninput.md)
 
 
 <a id="documentation-for-authorization"></a>

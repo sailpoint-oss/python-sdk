@@ -37,8 +37,8 @@ Name | Type | Description | Notes
 **resource** | [**ResourceV2**](resource-v2) |  | [optional] 
 **source** | [**MachineIdentityV2Source**](machine-identity-v2-source) |  | [optional] 
 **user_entitlements** | [**[]UserEntitlementV2**](user-entitlement-v2) | The user entitlements associated to the machine identity. | [optional] 
-**business_application_refs** | [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. | [optional] 
-**effective_sanctioned_status** | **SanctionedStatus** |  | [optional] 
+**business_application_refs** | [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write. | [optional] 
+**effective_sanctioned_status** | **SanctionedStatus** | Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input. | [optional] [readonly] 
 **risk** | [**MachineIdentityV2Risk**](machine-identity-v2-risk) |  | [optional] 
 }
 
@@ -84,10 +84,10 @@ user_entitlements=[
 business_application_refs=[
                     sailpoint.machine_identities.models.business_application_ref.Business Application Ref(
                         type = 'BUSINESS_APPLICATION', 
-                        id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', 
+                        id = '2ee5e239-e68c-4d69-93fb-6c7ce4576190', 
                         name = 'Cursor', 
-                        sanctioned_status = 'SANCTIONED', 
-                        correlation_type = 'MANUAL', )
+                        sanctioned_status = SANCTIONED, 
+                        correlation_type = MANUAL, )
                     ],
 effective_sanctioned_status='SANCTIONED',
 risk=sailpoint.machine_identities.models.machine_identity_v2_risk.Machine_Identity_V2_risk(
