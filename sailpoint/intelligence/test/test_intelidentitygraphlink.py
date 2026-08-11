@@ -35,11 +35,11 @@ class TestIntelidentitygraphlink(unittest.TestCase):
         model = Intelidentitygraphlink()
         if include_optional:
             return Intelidentitygraphlink(
-                href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8'
+                href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8'
             )
         else:
             return Intelidentitygraphlink(
-                href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8',
+                href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8',
         )
         """
 

@@ -667,7 +667,7 @@ class CertificationCampaignsApi:
     ) -> Campaign2:
         """Create a campaign
 
-        Use this API to create a certification campaign with the information provided in the request body.     
+        Use this API to create a certification campaign with the information provided in the request body.  When the request body references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign:manage` and `idn:campaign-filter:read`. 
 
         :param campaign2: (required)
         :type campaign2: Campaign2
@@ -739,7 +739,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[Campaign2]:
         """Create a campaign
 
-        Use this API to create a certification campaign with the information provided in the request body.     
+        Use this API to create a certification campaign with the information provided in the request body.  When the request body references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign:manage` and `idn:campaign-filter:read`. 
 
         :param campaign2: (required)
         :type campaign2: Campaign2
@@ -811,7 +811,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Create a campaign
 
-        Use this API to create a certification campaign with the information provided in the request body.     
+        Use this API to create a certification campaign with the information provided in the request body.  When the request body references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign:manage` and `idn:campaign-filter:read`. 
 
         :param campaign2: (required)
         :type campaign2: Campaign2
@@ -5982,7 +5982,7 @@ class CertificationCampaignsApi:
     ) -> CampaignReference:
         """Generate a campaign from template
 
-        Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
+        Use this API to generate a new certification campaign from a campaign template.  When the template campaign references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign-template:manage` and `idn:campaign-filter:read`.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
         :param id: ID of the campaign template to use for generation. (required)
         :type id: str
@@ -6054,7 +6054,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReference]:
         """Generate a campaign from template
 
-        Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
+        Use this API to generate a new certification campaign from a campaign template.  When the template campaign references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign-template:manage` and `idn:campaign-filter:read`.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
         :param id: ID of the campaign template to use for generation. (required)
         :type id: str
@@ -6126,7 +6126,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Generate a campaign from template
 
-        Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
+        Use this API to generate a new certification campaign from a campaign template.  When the template campaign references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign-template:manage` and `idn:campaign-filter:read`.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
         :param id: ID of the campaign template to use for generation. (required)
         :type id: str

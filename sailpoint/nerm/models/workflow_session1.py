@@ -38,8 +38,8 @@ class WorkflowSession1(BaseModel):
     @field_validator('requester_type')
     def requester_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['User', 'NeprofileUser', 'NeaccessUser']):
-            warnings.warn(f"must be one of enum values ('User', 'NeprofileUser', 'NeaccessUser') unknown value: {value}")
+        if value not in set(['User', 'NeprofileUser', 'NeaccessUser', 'NeaccessRegistrant']):
+            warnings.warn(f"must be one of enum values ('User', 'NeprofileUser', 'NeaccessUser', 'NeaccessRegistrant') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -31,7 +31,7 @@ from typing_extensions import Self
 
 class IntelIdentityAggregate(BaseModel):
     """
-    Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+    Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
     """ # noqa: E501
     id: StrictStr = Field(description="Identity Security Cloud identifier for this identity.")
     type: StrictStr = Field(description="Identity type for the matched record.")

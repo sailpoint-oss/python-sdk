@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,22 @@ class AuditEventData(BaseModel):
     workflow_name: Optional[StrictStr] = Field(default=None, description="The workflow name associated with the event")
     workflow_uid: Optional[StrictStr] = Field(default=None, description="The workflow uid associated with the event")
     profile_type_id: Optional[StrictStr] = Field(default=None, description="The profile type associated with the event")
-    __properties: ClassVar[List[str]] = ["profile_id", "workflow_id", "workflow_name", "workflow_uid", "profile_type_id"]
+    workflow_version_id: Optional[StrictStr] = Field(default=None, description="The workflow version a change belongs to. Can be used for both Workflow configurations and Workflow Session events.")
+    version: Optional[StrictStr] = Field(default=None, description="The workflow version SHA.")
+    step_id: Optional[StrictStr] = Field(default=None, description="The id of the workflow action or condition the step event refers to.")
+    step_label: Optional[StrictStr] = Field(default=None, description="The name associated to an action configuration.")
+    source: Optional[StrictStr] = Field(default=None, description="What triggered the versioning change.")
+    __properties: ClassVar[List[str]] = ["profile_id", "workflow_id", "workflow_name", "workflow_uid", "profile_type_id", "workflow_version_id", "version", "step_id", "step_label", "source"]
+
+    @field_validator('source')
+    def source_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['ui', 'import', 'fork', 'cleanup_worker', 'delete_worker']):
+            warnings.warn(f"must be one of enum values ('ui', 'import', 'fork', 'cleanup_worker', 'delete_worker') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +104,12 @@ class AuditEventData(BaseModel):
             "workflow_id": obj.get("workflow_id"),
             "workflow_name": obj.get("workflow_name"),
             "workflow_uid": obj.get("workflow_uid"),
-            "profile_type_id": obj.get("profile_type_id")
+            "profile_type_id": obj.get("profile_type_id"),
+            "workflow_version_id": obj.get("workflow_version_id"),
+            "version": obj.get("version"),
+            "step_id": obj.get("step_id"),
+            "step_label": obj.get("step_label"),
+            "source": obj.get("source")
         })
         return _obj
 

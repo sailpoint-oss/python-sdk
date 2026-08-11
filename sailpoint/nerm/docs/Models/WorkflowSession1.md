@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workflow_id** | **str** | The workflow id. | [required]
 **requester_id** | **str** | The requester's id. | [required]
-**requester_type** |  **Enum** [  'User',    'NeprofileUser',    'NeaccessUser' ] | The requester type. | [required]
+**requester_type** |  **Enum** [  'User',    'NeprofileUser',    'NeaccessUser',    'NeaccessRegistrant' ] | The requester type. | [required]
 **profile_id** | **str** | The profile this workflow session will be working with. Only Applicable for Update workflows | [optional] 
 **profile_ids** | **[]str** | The profiles this workflow session will be working with. Only Applicable for Batch workflows | [optional] 
 **attributes** | **map[string]str** | The attributes associated with the workflow session. | [optional] 

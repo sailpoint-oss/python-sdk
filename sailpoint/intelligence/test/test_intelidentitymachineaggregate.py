@@ -44,7 +44,7 @@ class TestIntelidentitymachineaggregate(unittest.TestCase):
                 modified = '2026-05-12T09:15:30Z',
                 match_confidence = 'exact',
                 identity_graph = sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
-                    href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8', ),
+                    href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8', ),
                 accounts = sailpoint.intelligence.models.intelmachineaccountsslice.Intelmachineaccountsslice(
                     items = [
                         sailpoint.intelligence.models.intelmachineaccountwire.Intelmachineaccountwire(

@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'IntelIdentityAggregate', 'IntelIdenti
 
 # IntelIdentityAggregate
 
-Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
 
 ## Properties
 
@@ -55,7 +55,7 @@ email='user@example.com',
 identity_status='ACTIVE',
 is_manager=False,
 identity_graph=sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
-                    href = 'https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8', ),
+                    href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8', ),
 accounts=sailpoint.intelligence.models.intel_accounts_slice.IntelAccountsSlice(
                     items = [
                         sailpoint.intelligence.models.intel_access_account_wire.IntelAccessAccountWire(

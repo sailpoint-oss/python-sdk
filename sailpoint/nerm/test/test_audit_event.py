@@ -47,7 +47,12 @@ class TestAuditEvent(unittest.TestCase):
                     workflow_id = '7d8c53ca-e99d-485c-9524-ea3849e82c79', 
                     workflow_name = 'My Workflow', 
                     workflow_uid = 'my_workflow', 
-                    profile_type_id = '7d8c53ca-e99d-485c-9524-ea3849e82c79', )
+                    profile_type_id = '7d8c53ca-e99d-485c-9524-ea3849e82c79', 
+                    workflow_version_id = 'e309339f-551f-48ab-b4f6-58d93123911f', 
+                    version = 'aadf95e45846365fa4b4c60f02c76ecffe718ee5', 
+                    step_id = '2f4b24c6-d420-4eee-b860-5ad24c743185', 
+                    step_label = 'RequestAction', 
+                    source = 'ui', )
             )
         else:
             return AuditEvent(
