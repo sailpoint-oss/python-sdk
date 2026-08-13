@@ -29,7 +29,8 @@ class ApprovalApproveRequest(BaseModel):
     """ # noqa: E501
     additional_attributes: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional attributes as key-value pairs that are not part of the standard schema but can be included for custom data.", alias="additionalAttributes")
     comment: Optional[StrictStr] = Field(default=None, description="Comment associated with the request.")
-    __properties: ClassVar[List[str]] = ["additionalAttributes", "comment"]
+    override_approver_id: Optional[StrictStr] = Field(default=None, description="Optional field for ServiceNow Administrators to specify which member of a governance group to override/approve on behalf of.", alias="overrideApproverID")
+    __properties: ClassVar[List[str]] = ["additionalAttributes", "comment", "overrideApproverID"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +84,8 @@ class ApprovalApproveRequest(BaseModel):
 
         _obj = cls.model_validate({
             "additionalAttributes": obj.get("additionalAttributes"),
-            "comment": obj.get("comment")
+            "comment": obj.get("comment"),
+            "overrideApproverID": obj.get("overrideApproverID")
         })
         return _obj
 

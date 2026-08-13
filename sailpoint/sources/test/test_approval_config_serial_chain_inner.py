@@ -35,7 +35,6 @@ class TestApprovalConfigSerialChainInner(unittest.TestCase):
         model = ApprovalConfigSerialChainInner()
         if include_optional:
             return ApprovalConfigSerialChainInner(
-                tier = 1,
                 identity_id = '2c9180858090ea8801809a0465e829da',
                 identity_type = 'IDENTITY'
             )

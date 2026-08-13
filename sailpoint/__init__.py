@@ -35,6 +35,7 @@ from sailpoint.apps.api.apps_api import AppsApi as _apps__AppsApi
 from sailpoint.auth_profile.api.auth_profile_api import AuthProfileApi as _auth_profile__AuthProfileApi
 from sailpoint.auth_users.api.auth_users_api import AuthUsersApi as _auth_users__AuthUsersApi
 from sailpoint.branding.api.branding_api import BrandingApi as _branding__BrandingApi
+from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi as _business_applications__BusinessApplicationsApi
 from sailpoint.certification_campaign_filters.api.certification_campaign_filters_api import CertificationCampaignFiltersApi as _certification_campaign_filters__CertificationCampaignFiltersApi
 from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi as _certification_campaigns__CertificationCampaignsApi
 from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi as _certification_summaries__CertificationSummariesApi
@@ -191,6 +192,7 @@ AppsApi = _apps__AppsApi
 AuthProfileApi = _auth_profile__AuthProfileApi
 AuthUsersApi = _auth_users__AuthUsersApi
 BrandingApi = _branding__BrandingApi
+BusinessApplicationsApi = _business_applications__BusinessApplicationsApi
 CertificationCampaignFiltersApi = _certification_campaign_filters__CertificationCampaignFiltersApi
 CertificationCampaignsApi = _certification_campaigns__CertificationCampaignsApi
 CertificationSummariesApi = _certification_summaries__CertificationSummariesApi
@@ -342,6 +344,7 @@ class SailPoint:
     AuthProfileApi = _auth_profile__AuthProfileApi
     AuthUsersApi = _auth_users__AuthUsersApi
     BrandingApi = _branding__BrandingApi
+    BusinessApplicationsApi = _business_applications__BusinessApplicationsApi
     CertificationCampaignFiltersApi = _certification_campaign_filters__CertificationCampaignFiltersApi
     CertificationCampaignsApi = _certification_campaigns__CertificationCampaignsApi
     CertificationSummariesApi = _certification_summaries__CertificationSummariesApi

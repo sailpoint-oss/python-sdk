@@ -37,7 +37,7 @@ class TestApprovalConfigReminderConfig(unittest.TestCase):
             return ApprovalConfigReminderConfig(
                 enabled = False,
                 days_until_first_reminder = 0,
-                reminder_cron_schedule = '1 1 1 1 1',
+                reminder_cron_schedule = '@every 24h',
                 max_reminders = 5
             )
         else:

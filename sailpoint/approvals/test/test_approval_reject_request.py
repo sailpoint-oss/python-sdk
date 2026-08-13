@@ -35,7 +35,8 @@ class TestApprovalRejectRequest(unittest.TestCase):
         model = ApprovalRejectRequest()
         if include_optional:
             return ApprovalRejectRequest(
-                comment = 'string'
+                comment = 'string',
+                override_approver_id = '12345678901234567890123456789012'
             )
         else:
             return ApprovalRejectRequest(

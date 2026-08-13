@@ -95,15 +95,14 @@ approval_config=sailpoint.approvals.models.approval_config.ApprovalConfig(
                     reminder_config = sailpoint.approvals.models.approval_config_reminder_config.ApprovalConfig_reminderConfig(
                         enabled = False, 
                         days_until_first_reminder = 0, 
-                        reminder_cron_schedule = '1 1 1 1 1', 
+                        reminder_cron_schedule = '@every 24h', 
                         max_reminders = 5, ), 
                     escalation_config = sailpoint.approvals.models.approval_config_escalation_config.ApprovalConfig_escalationConfig(
                         enabled = True, 
                         days_until_first_escalation = 2, 
-                        escalation_cron_schedule = '*/5 * * * *', 
+                        escalation_cron_schedule = '@every 72h', 
                         escalation_chain = [
                             sailpoint.approvals.models.approval_config_escalation_config_escalation_chain_inner.ApprovalConfig_escalationConfig_escalationChain_inner(
-                                tier = 1, 
                                 identity_id = 'fdfda352157d4cc79bb749953131b457', 
                                 identity_type = 'IDENTITY', )
                             ], ), 
@@ -116,7 +115,6 @@ approval_config=sailpoint.approvals.models.approval_config.ApprovalConfig(
                         offset = '', ), 
                     serial_chain = [
                         sailpoint.approvals.models.approval_config_serial_chain_inner.ApprovalConfig_serialChain_inner(
-                            tier = 1, 
                             identity_id = '2c9180858090ea8801809a0465e829da', 
                             identity_type = 'IDENTITY', )
                         ], 

@@ -1518,7 +1518,7 @@ class AccessRequestsApi:
     ) -> AccessRequestConfig:
         """(Deprecated) Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1587,7 +1587,7 @@ class AccessRequestsApi:
     ) -> ApiResponse[AccessRequestConfig]:
         """(Deprecated) Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1656,7 +1656,7 @@ class AccessRequestsApi:
     ) -> RESTResponseType:
         """(Deprecated) Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1781,7 +1781,7 @@ class AccessRequestsApi:
     ) -> AccessRequestConfig2:
         """Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1849,7 +1849,7 @@ class AccessRequestsApi:
     ) -> ApiResponse[AccessRequestConfig2]:
         """Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1917,7 +1917,7 @@ class AccessRequestsApi:
     ) -> RESTResponseType:
         """Get access request configuration
 
-        This endpoint returns the current access-request configuration.
+        This endpoint returns the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3513,7 +3513,7 @@ class AccessRequestsApi:
     ) -> AccessRequestConfig:
         """(Deprecated) Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config: (required)
         :type access_request_config: AccessRequestConfig
@@ -3586,7 +3586,7 @@ class AccessRequestsApi:
     ) -> ApiResponse[AccessRequestConfig]:
         """(Deprecated) Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config: (required)
         :type access_request_config: AccessRequestConfig
@@ -3659,7 +3659,7 @@ class AccessRequestsApi:
     ) -> RESTResponseType:
         """(Deprecated) Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config: (required)
         :type access_request_config: AccessRequestConfig
@@ -3804,7 +3804,7 @@ class AccessRequestsApi:
     ) -> AccessRequestConfig2:
         """Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config2: (required)
         :type access_request_config2: AccessRequestConfig2
@@ -3876,7 +3876,7 @@ class AccessRequestsApi:
     ) -> ApiResponse[AccessRequestConfig2]:
         """Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config2: (required)
         :type access_request_config2: AccessRequestConfig2
@@ -3948,7 +3948,7 @@ class AccessRequestsApi:
     ) -> RESTResponseType:
         """Update access request configuration
 
-        This endpoint replaces the current access-request configuration.
+        This endpoint replaces the current access-request configuration.  To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
         :param access_request_config2: (required)
         :type access_request_config2: AccessRequestConfig2

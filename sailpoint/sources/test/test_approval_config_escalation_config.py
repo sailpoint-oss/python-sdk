@@ -37,10 +37,9 @@ class TestApprovalConfigEscalationConfig(unittest.TestCase):
             return ApprovalConfigEscalationConfig(
                 enabled = True,
                 days_until_first_escalation = 2,
-                escalation_cron_schedule = '*/5 * * * *',
+                escalation_cron_schedule = '@every 72h',
                 escalation_chain = [
                     sailpoint.sources.models.approval_config_escalation_config_escalation_chain_inner.ApprovalConfig_escalationConfig_escalationChain_inner(
-                        tier = 1, 
                         identity_id = 'fdfda352157d4cc79bb749953131b457', 
                         identity_type = 'IDENTITY', )
                     ]

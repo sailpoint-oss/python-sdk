@@ -1,0 +1,143 @@
+- path: /business-applications/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/business-applications/methods/business-applications#create-business-application-v1
+      source: |
+        from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi
+        from sailpoint.business_applications.api_client import ApiClient
+        from sailpoint.business_applications.models.business_application import BusinessApplication
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          business_application = '''{
+          "owner" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "vendor" : "Cursor",
+          "created" : "2026-01-15T13:45:12.312Z",
+          "origin" : "",
+          "name" : "Cursor",
+          "description" : "AI coding assistant used by the platform engineering team.",
+          "modified" : "2026-02-20T09:31:47.882Z",
+          "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "source" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "signatures" : [ {
+            "name" : "cursor",
+            "type" : "AI Agent"
+          }, {
+            "name" : "cursor",
+            "type" : "AI Agent"
+          } ],
+          "additionalOwners" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "sanctionedStatus" : ""
+        }''' # BusinessApplication | 
+          try:
+              # Create Business Application
+              new_business_application = BusinessApplication.from_json(business_application)
+              results = BusinessApplicationsApi(api_client).create_business_application_v1(business_application=new_business_application)
+              # Below is a request that includes all optional parameters
+              # results = BusinessApplicationsApi(api_client).create_business_application_v1(new_business_application)
+              print("The response of BusinessApplicationsApi->create_business_application_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling BusinessApplicationsApi->create_business_application_v1: %s\n" % e)
+- path: /business-applications/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/business-applications/methods/business-applications#get-business-application-v1
+      source: |
+        from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi
+        from sailpoint.business_applications.api_client import ApiClient
+        from sailpoint.business_applications.models.business_application import BusinessApplication
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' # str | Business Application ID. # str | Business Application ID.
+          try:
+              # Get Business Application
+              
+              results = BusinessApplicationsApi(api_client).get_business_application_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = BusinessApplicationsApi(api_client).get_business_application_v1(id)
+              print("The response of BusinessApplicationsApi->get_business_application_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling BusinessApplicationsApi->get_business_application_v1: %s\n" % e)
+- path: /business-applications/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/business-applications/methods/business-applications#list-business-applications-v1
+      source: |
+        from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi
+        from sailpoint.business_applications.api_client import ApiClient
+        from sailpoint.business_applications.models.business_application import BusinessApplication
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'sanctionedStatus eq \"SANCTIONED\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List Business Applications
+              
+              results = BusinessApplicationsApi(api_client).list_business_applications_v1()
+              # Below is a request that includes all optional parameters
+              # results = BusinessApplicationsApi(api_client).list_business_applications_v1(filters, sorters, count, limit, offset)
+              print("The response of BusinessApplicationsApi->list_business_applications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling BusinessApplicationsApi->list_business_applications_v1: %s\n" % e)
+- path: /business-applications/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/business-applications/methods/business-applications#update-business-application-v1
+      source: |
+        from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi
+        from sailpoint.business_applications.api_client import ApiClient
+        from sailpoint.business_applications.models.business_application import BusinessApplication
+        from sailpoint.business_applications.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' # str | Business Application ID. # str | Business Application ID.
+          json_patch_operation = '''[{"op":"replace","path":"/sanctionedStatus","value":"SANCTIONED"}]''' # List[JsonPatchOperation] | A JSON array of patch operations per RFC 6902.
+          try:
+              # Update Business Application
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = BusinessApplicationsApi(api_client).update_business_application_v1(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = BusinessApplicationsApi(api_client).update_business_application_v1(id, new_json_patch_operation)
+              print("The response of BusinessApplicationsApi->update_business_application_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling BusinessApplicationsApi->update_business_application_v1: %s\n" % e)
+

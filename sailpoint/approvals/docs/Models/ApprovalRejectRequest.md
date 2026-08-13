@@ -18,6 +18,7 @@ Request body for rejecting an approval request.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment associated with the reject request. | [optional] 
+**override_approver_id** | **str** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of. | [optional] 
 }
 
 ## Example
@@ -26,7 +27,8 @@ Name | Type | Description | Notes
 from sailpoint.approvals.models.approval_reject_request import ApprovalRejectRequest
 
 approval_reject_request = ApprovalRejectRequest(
-comment='string'
+comment='string',
+override_approver_id='12345678901234567890123456789012'
 )
 
 ```

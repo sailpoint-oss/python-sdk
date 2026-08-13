@@ -36,7 +36,8 @@ class TestApprovalApproveRequest(unittest.TestCase):
         if include_optional:
             return ApprovalApproveRequest(
                 additional_attributes = {"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"},
-                comment = 'comment'
+                comment = 'comment',
+                override_approver_id = '12345678901234567890123456789012'
             )
         else:
             return ApprovalApproveRequest(

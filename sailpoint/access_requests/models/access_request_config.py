@@ -31,7 +31,7 @@ class AccessRequestConfig(BaseModel):
     AccessRequestConfig
     """ # noqa: E501
     approvals_must_be_external: Optional[StrictBool] = Field(default=False, description="If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.", alias="approvalsMustBeExternal")
-    auto_approval_enabled: Optional[StrictBool] = Field(default=False, description="If this is true and the requester and reviewer are the same, the request is automatically approved.", alias="autoApprovalEnabled")
+    auto_approval_enabled: Optional[StrictBool] = Field(default=False, description="If this is true and the requester and reviewer are the same, the request is automatically approved.  This field has been moved to the approval configurations. Please use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint instead.", alias="autoApprovalEnabled")
     reauthorization_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.", alias="reauthorizationEnabled")
     request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig] = Field(default=None, alias="requestOnBehalfOfConfig")
     approval_reminder_and_escalation_config: Optional[ApprovalReminderAndEscalationConfig] = Field(default=None, alias="approvalReminderAndEscalationConfig")
