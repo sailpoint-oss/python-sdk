@@ -74,8 +74,10 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesApi* | [**get_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_machine_identity_v1) | **GET** /machine-identities/v1/{id} | Get machine identity details
 *MachineIdentitiesApi* | [**get_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_machine_identity_v2) | **GET** /machine-identities/v2/{id} | Get machine identity details
 *MachineIdentitiesApi* | [**get_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_ownership_correlation_config_v1) | **GET** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Get ownership correlation config
+*MachineIdentitiesApi* | [**get_unsanctioned_anomaly_summary_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_unsanctioned_anomaly_summary_v1) | **GET** /machine-identities/v1/anomaly-summaries/unsanctioned | Get unsanctioned application anomaly summary
 *MachineIdentitiesApi* | [**list_machine_identities_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identities_v1) | **GET** /machine-identities/v1 | List machine identities
 *MachineIdentitiesApi* | [**list_machine_identities_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identities_v2) | **GET** /machine-identities/v2 | List machine identities
+*MachineIdentitiesApi* | [**list_machine_identity_anomalies_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identity_anomalies_v1) | **GET** /machine-identities/v1/{id}/anomalies | List machine identity anomalies
 *MachineIdentitiesApi* | [**list_machine_identity_user_entitlements_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identity_user_entitlements_v1) | **GET** /machine-identity-user-entitlements/v1 | List machine identity&#39;s user entitlements
 *MachineIdentitiesApi* | [**list_ownership_correlation_configs_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_ownership_correlation_configs_v1) | **GET** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
 *MachineIdentitiesApi* | [**patch_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#patch_ownership_correlation_config_v1) | **PATCH** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
@@ -86,6 +88,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Anomaly](sailpoint/machine_identities/docs/Anomaly.md)
+ - [AnomalyBaseline](sailpoint/machine_identities/docs/AnomalyBaseline.md)
+ - [AnomalyEvidence](sailpoint/machine_identities/docs/AnomalyEvidence.md)
+ - [AnomalyEvidenceTimestamp](sailpoint/machine_identities/docs/AnomalyEvidenceTimestamp.md)
  - [ArrayInner](sailpoint/machine_identities/docs/ArrayInner.md)
  - [BaseCommonDto](sailpoint/machine_identities/docs/BaseCommonDto.md)
  - [BaseReferenceDto](sailpoint/machine_identities/docs/BaseReferenceDto.md)
@@ -127,6 +133,7 @@ Class | Method | HTTP request | Description
  - [TaskReturnDetails](sailpoint/machine_identities/docs/TaskReturnDetails.md)
  - [TaskStatusMessage](sailpoint/machine_identities/docs/TaskStatusMessage.md)
  - [TaskStatusMessageParametersInner](sailpoint/machine_identities/docs/TaskStatusMessageParametersInner.md)
+ - [UnsanctionedApplicationAnomalySummary](sailpoint/machine_identities/docs/UnsanctionedApplicationAnomalySummary.md)
  - [UserEntitlementV2](sailpoint/machine_identities/docs/UserEntitlementV2.md)
  - [UserEntitlementV2Source](sailpoint/machine_identities/docs/UserEntitlementV2Source.md)
 

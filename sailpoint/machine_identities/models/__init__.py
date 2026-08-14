@@ -14,6 +14,10 @@
 
 
 # import models into model package
+from sailpoint.machine_identities.models.anomaly import Anomaly
+from sailpoint.machine_identities.models.anomaly_baseline import AnomalyBaseline
+from sailpoint.machine_identities.models.anomaly_evidence import AnomalyEvidence
+from sailpoint.machine_identities.models.anomaly_evidence_timestamp import AnomalyEvidenceTimestamp
 from sailpoint.machine_identities.models.array_inner import ArrayInner
 from sailpoint.machine_identities.models.base_common_dto import BaseCommonDto
 from sailpoint.machine_identities.models.base_reference_dto import BaseReferenceDto
@@ -55,5 +59,6 @@ from sailpoint.machine_identities.models.task_definition_summary import TaskDefi
 from sailpoint.machine_identities.models.task_return_details import TaskReturnDetails
 from sailpoint.machine_identities.models.task_status_message import TaskStatusMessage
 from sailpoint.machine_identities.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner
+from sailpoint.machine_identities.models.unsanctioned_application_anomaly_summary import UnsanctionedApplicationAnomalySummary
 from sailpoint.machine_identities.models.user_entitlement_v2 import UserEntitlementV2
 from sailpoint.machine_identities.models.user_entitlement_v2_source import UserEntitlementV2Source

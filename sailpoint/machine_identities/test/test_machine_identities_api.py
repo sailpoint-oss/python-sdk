@@ -82,6 +82,13 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_unsanctioned_anomaly_summary_v1(self) -> None:
+        """Test case for get_unsanctioned_anomaly_summary_v1
+
+        Get unsanctioned application anomaly summary
+        """
+        pass
+
     def test_list_machine_identities_v1(self) -> None:
         """Test case for list_machine_identities_v1
 
@@ -93,6 +100,13 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """Test case for list_machine_identities_v2
 
         List machine identities
+        """
+        pass
+
+    def test_list_machine_identity_anomalies_v1(self) -> None:
+        """Test case for list_machine_identity_anomalies_v1
+
+        List machine identity anomalies
         """
         pass
 

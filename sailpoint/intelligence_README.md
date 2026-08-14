@@ -47,15 +47,15 @@ configuration = sailpoint.intelligence.Configuration(
 with sailpoint.intelligence.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.intelligence.IntelligenceApi(api_client)
-    filters = 'id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*  **opaqueIdentifier**: *eq*
+    responseactioncreaterequest = {"actionType":"DISABLE_IDENTITY","identityType":"HUMAN","identityId":"2c918085842e69ae018428c919680149","context":{"source":"CROWDSTRIKE","externalAlertId":"CS-FALCON-12345","reason":"Malware detected on endpoint DESKTOP-A1B2C3","operator":"soc-analyst@customer.com"}} # Responseactioncreaterequest | 
 
     try:
-        # Get identity by filter
-        api_response = api_instance.get_identity_intelligence_v1(filters)
-        print("The response of IntelligenceApi->get_identity_intelligence_v1:\n")
+        # Create a response action
+        api_response = api_instance.create_response_action_v1(responseactioncreaterequest)
+        print("The response of IntelligenceApi->create_response_action_v1:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling IntelligenceApi->get_identity_intelligence_v1: %s\n" % e)
+        print("Exception when calling IntelligenceApi->create_response_action_v1: %s\n" % e)
 
 ```
 
@@ -65,11 +65,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IntelligenceApi* | [**create_response_action_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#create_response_action_v1) | **POST** /intelligence/v1/response-actions | Create a response action
 *IntelligenceApi* | [**get_identity_intelligence_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_identity_intelligence_v1) | **GET** /intelligence/v1/identities | Get identity by filter
 *IntelligenceApi* | [**get_intel_identity_access_item_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_access_item_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceApi* | [**get_intel_identity_accounts_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_accounts_v1) | **GET** /intelligence/v1/identities/{id}/accounts | List identity accounts
 *IntelligenceApi* | [**get_intel_identity_certification_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_certification_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
 *IntelligenceApi* | [**get_intel_identity_rare_access_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_rare_access_v1) | **GET** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
+*IntelligenceApi* | [**get_response_action_status_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_response_action_status_v1) | **GET** /intelligence/v1/response-actions/{id}/status | Get response action status
 
 
 ## Documentation For Models
@@ -109,6 +111,12 @@ Class | Method | HTTP request | Description
  - [Intelmachineuserentitlement](sailpoint/intelligence/docs/Intelmachineuserentitlement.md)
  - [Intelprivilegelevel](sailpoint/intelligence/docs/Intelprivilegelevel.md)
  - [LocaleOrigin](sailpoint/intelligence/docs/LocaleOrigin.md)
+ - [Responseactionaccepted](sailpoint/intelligence/docs/Responseactionaccepted.md)
+ - [Responseactioncontext](sailpoint/intelligence/docs/Responseactioncontext.md)
+ - [Responseactioncreaterequest](sailpoint/intelligence/docs/Responseactioncreaterequest.md)
+ - [ResponseactioncreaterequestOneOf](sailpoint/intelligence/docs/ResponseactioncreaterequestOneOf.md)
+ - [ResponseactioncreaterequestOneOf1](sailpoint/intelligence/docs/ResponseactioncreaterequestOneOf1.md)
+ - [Responseactionstatus](sailpoint/intelligence/docs/Responseactionstatus.md)
 
 
 <a id="documentation-for-authorization"></a>

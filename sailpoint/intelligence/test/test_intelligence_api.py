@@ -26,6 +26,13 @@ class TestIntelligenceApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_response_action_v1(self) -> None:
+        """Test case for create_response_action_v1
+
+        Create a response action
+        """
+        pass
+
     def test_get_identity_intelligence_v1(self) -> None:
         """Test case for get_identity_intelligence_v1
 
@@ -58,6 +65,13 @@ class TestIntelligenceApi(unittest.TestCase):
         """Test case for get_intel_identity_rare_access_v1
 
         List identity rare access
+        """
+        pass
+
+    def test_get_response_action_status_v1(self) -> None:
+        """Test case for get_response_action_status_v1
+
+        Get response action status
         """
         pass
 

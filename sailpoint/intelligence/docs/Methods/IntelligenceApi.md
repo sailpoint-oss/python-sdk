@@ -10,10 +10,10 @@ tags: ['SDK', 'Software Development Kit', 'Intelligence', 'Intelligence']
 ---
 
 # sailpoint.intelligence.IntelligenceApi
-  Read-only HTTP API that returns the Intelligence (identity context)
-for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
-extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
-SDS Search, IDA-outliers, and identity-history.
+  HTTP API that returns the Intelligence (identity context) for SecOps enrichment
+use cases (SIEM/SOAR connectors, MCP, browser extension), and accepts asynchronous
+response actions for remediation. Identity reads are backed by Atlas internal-REST
+calls to MICE, Shelby List Accounts, SDS Search, IDA-outliers, and identity-history.
 
 ## License-based segmentation
 
@@ -39,12 +39,92 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create-response-action-v1**](#create-response-action-v1) | **POST** `/intelligence/v1/response-actions` | Create a response action
 [**get-identity-intelligence-v1**](#get-identity-intelligence-v1) | **GET** `/intelligence/v1/identities` | Get identity by filter
 [**get-intel-identity-access-item-history-v1**](#get-intel-identity-access-item-history-v1) | **GET** `/intelligence/v1/identities/{id}/access-history/access-items` | List identity access item history
 [**get-intel-identity-accounts-v1**](#get-intel-identity-accounts-v1) | **GET** `/intelligence/v1/identities/{id}/accounts` | List identity accounts
 [**get-intel-identity-certification-history-v1**](#get-intel-identity-certification-history-v1) | **GET** `/intelligence/v1/identities/{id}/access-history/certifications` | List identity certification history
 [**get-intel-identity-rare-access-v1**](#get-intel-identity-rare-access-v1) | **GET** `/intelligence/v1/identities/{id}/outliers/rare-access` | List identity rare access
+[**get-response-action-status-v1**](#get-response-action-status-v1) | **GET** `/intelligence/v1/response-actions/{id}/status` | Get response action status
 
+
+## create-response-action-v1
+Create a response action
+Requires tenant license idn:response-and-remediation.
+
+Creates a response action: the request is validated, a requestId (the correlation id) is
+minted, the action is recorded as SUBMITTED, and an event is published that triggers the
+correlated workflow(s).
+
+Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll
+GET /intelligence/v1/response-actions/{requestId}/status for progress.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-response-action-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | responseactioncreaterequest | [**Responseactioncreaterequest**](../models/responseactioncreaterequest) | True  | 
+
+### Return type
+[**Responseactionaccepted**](../models/responseactionaccepted)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | The response action was accepted and is being processed asynchronously. | Responseactionaccepted |  -  |
+400 | Missing or invalid request body. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
+from sailpoint.intelligence.api_client import ApiClient
+from sailpoint.intelligence.models.responseactionaccepted import Responseactionaccepted
+from sailpoint.intelligence.models.responseactioncreaterequest import Responseactioncreaterequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    responseactioncreaterequest = '''{
+          "actionType" : "DISABLE_ACCOUNT",
+          "identityType" : "HUMAN",
+          "identityId" : "2c918085842e69ae018428c919680149",
+          "accountIds" : [ "2c918085abc000000000000000000001" ],
+          "context" : {
+            "reason" : "Contain compromised account",
+            "externalAlertId" : "CS-FALCON-12345",
+            "source" : "CROWDSTRIKE",
+            "operator" : "soc-analyst@customer.com"
+          }
+        }''' # Responseactioncreaterequest | 
+
+    try:
+        # Create a response action
+        new_responseactioncreaterequest = Responseactioncreaterequest.from_json(responseactioncreaterequest)
+        results = IntelligenceApi(api_client).create_response_action_v1(responseactioncreaterequest=new_responseactioncreaterequest)
+        # Below is a request that includes all optional parameters
+        # results = IntelligenceApi(api_client).create_response_action_v1(new_responseactioncreaterequest)
+        print("The response of IntelligenceApi->create_response_action_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling IntelligenceApi->create_response_action_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
 
 ## get-identity-intelligence-v1
 Get identity by filter
@@ -438,6 +518,71 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling IntelligenceApi->get_intel_identity_rare_access_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-response-action-status-v1
+Get response action status
+Requires tenant license idn:response-and-remediation.
+
+Returns the current aggregate status of a previously submitted response action, identified by
+the requestId returned from POST /intelligence/v1/response-actions.
+
+Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-response-action-status-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The requestId of the response action to look up.
+
+### Return type
+[**Responseactionstatus**](../models/responseactionstatus)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The current status of the response action. | Responseactionstatus |  -  |
+400 | Invalid path parameter. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | No response action exists for the supplied requestId. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
+from sailpoint.intelligence.api_client import ApiClient
+from sailpoint.intelligence.models.responseactionstatus import Responseactionstatus
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b' # str | The requestId of the response action to look up. # str | The requestId of the response action to look up.
+
+    try:
+        # Get response action status
+        
+        results = IntelligenceApi(api_client).get_response_action_status_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = IntelligenceApi(api_client).get_response_action_status_v1(id)
+        print("The response of IntelligenceApi->get_response_action_status_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling IntelligenceApi->get_response_action_status_v1: %s\n" % e)
 ```
 
 
