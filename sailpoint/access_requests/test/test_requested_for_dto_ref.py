@@ -36,6 +36,7 @@ class TestRequestedForDtoRef(unittest.TestCase):
         if include_optional:
             return RequestedForDtoRef(
                 identity_id = 'cb89bc2f1ee6445fbea12224c526ba3a',
+                identity_type = 'HUMAN',
                 requested_items = [
                     sailpoint.access_requests.models.requested_item_dto_ref.RequestedItemDtoRef(
                         type = 'ACCESS_PROFILE', 
@@ -52,7 +53,8 @@ class TestRequestedForDtoRef(unittest.TestCase):
                                         account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                                         native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                     ], )
-                            ], )
+                            ], 
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                     ]
             )
         else:
@@ -74,7 +76,8 @@ class TestRequestedForDtoRef(unittest.TestCase):
                                         account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                                         native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                     ], )
-                            ], )
+                            ], 
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                     ],
         )
         """

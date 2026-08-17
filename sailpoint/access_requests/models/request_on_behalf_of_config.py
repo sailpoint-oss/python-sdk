@@ -29,7 +29,9 @@ class RequestOnBehalfOfConfig(BaseModel):
     """ # noqa: E501
     allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(default=False, description="If this is true, anyone can request access for anyone.", alias="allowRequestOnBehalfOfAnyoneByAnyone")
     allow_request_on_behalf_of_employee_by_manager: Optional[StrictBool] = Field(default=False, description="If this is true, a manager can request access for his or her direct reports.", alias="allowRequestOnBehalfOfEmployeeByManager")
-    __properties: ClassVar[List[str]] = ["allowRequestOnBehalfOfAnyoneByAnyone", "allowRequestOnBehalfOfEmployeeByManager"]
+    allow_request_on_behalf_of_for_machine_identity: Optional[StrictBool] = Field(default=True, description="If this is true, anyone can request access on behalf of machine identities. Machine access request authorization is evaluated as follows: 1. If this flag is true, any requester is allowed. 2. Else if `allowRequestForMachineByOwner` is true, the requester must be an admin or a primary/secondary owner of every requested machine identity. 3. Else admins are still allowed; non-admins receive 403. ", alias="allowRequestOnBehalfOfForMachineIdentity")
+    allow_request_for_machine_by_owner: Optional[StrictBool] = Field(default=False, description="When `allowRequestOnBehalfOfForMachineIdentity` is false and this flag is true, only admins and primary/secondary owners of the requested machine identities may submit machine access requests. Defaults to false (opt-in). ", alias="allowRequestForMachineByOwner")
+    __properties: ClassVar[List[str]] = ["allowRequestOnBehalfOfAnyoneByAnyone", "allowRequestOnBehalfOfEmployeeByManager", "allowRequestOnBehalfOfForMachineIdentity", "allowRequestForMachineByOwner"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +85,9 @@ class RequestOnBehalfOfConfig(BaseModel):
 
         _obj = cls.model_validate({
             "allowRequestOnBehalfOfAnyoneByAnyone": obj.get("allowRequestOnBehalfOfAnyoneByAnyone") if obj.get("allowRequestOnBehalfOfAnyoneByAnyone") is not None else False,
-            "allowRequestOnBehalfOfEmployeeByManager": obj.get("allowRequestOnBehalfOfEmployeeByManager") if obj.get("allowRequestOnBehalfOfEmployeeByManager") is not None else False
+            "allowRequestOnBehalfOfEmployeeByManager": obj.get("allowRequestOnBehalfOfEmployeeByManager") if obj.get("allowRequestOnBehalfOfEmployeeByManager") is not None else False,
+            "allowRequestOnBehalfOfForMachineIdentity": obj.get("allowRequestOnBehalfOfForMachineIdentity") if obj.get("allowRequestOnBehalfOfForMachineIdentity") is not None else True,
+            "allowRequestForMachineByOwner": obj.get("allowRequestForMachineByOwner") if obj.get("allowRequestForMachineByOwner") is not None else False
         })
         return _obj
 

@@ -12,28 +12,22 @@
 """  # noqa: E501
 
 
-from __future__ import annotations
-import json
-from enum import Enum
-from typing_extensions import Self
+import unittest
 
+from sailpoint.notifications.models.cc_bcc_recipient_type import CcBccRecipientType
 
-class Medium(str, Enum):
-    """
-    The notification medium (EMAIL, SLACK, TEAMS, or INBOX)
-    """
+class TestCcBccRecipientType(unittest.TestCase):
+    """CcBccRecipientType unit test stubs"""
 
-    """
-    allowed enum values
-    """
-    EMAIL = 'EMAIL'
-    SLACK = 'SLACK'
-    TEAMS = 'TEAMS'
-    INBOX = 'INBOX'
+    def setUp(self):
+        pass
 
-    @classmethod
-    def from_json(cls, json_str: str) -> Self:
-        """Create an instance of Medium from a JSON string"""
-        return cls(json.loads(json_str))
+    def tearDown(self):
+        pass
 
+    def testCcBccRecipientType(self):
+        """Test CcBccRecipientType"""
+        # inst = CcBccRecipientType()
 
+if __name__ == '__main__':
+    unittest.main()

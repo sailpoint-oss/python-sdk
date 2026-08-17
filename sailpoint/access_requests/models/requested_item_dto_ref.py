@@ -29,14 +29,15 @@ class RequestedItemDtoRef(BaseModel):
     """
     RequestedItemDtoRef
     """ # noqa: E501
-    type: StrictStr = Field(description="The type of the item being requested.")
+    type: StrictStr = Field(description="The type of the item being requested. * Machine identity access requests support `ENTITLEMENT` only. ")
     id: StrictStr = Field(description="ID of Role, Access Profile or Entitlement being requested.")
     comment: Optional[StrictStr] = Field(default=None, description="Comment provided by requester. * Comment is required when the request is of type Revoke Access. ")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.", alias="clientMetadata")
-    start_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date. * Specify a date-time in the future. * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for. * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible. ", alias="startDate")
-    remove_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. ", alias="removeDate")
-    account_selection: Optional[List[SourceItemRef]] = Field(default=None, description="The accounts where the access item will be provisioned to * Includes selections performed by the user in the event of multiple accounts existing on the same source * Also includes details for sources where user only has one account ", alias="accountSelection")
-    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "accountSelection"]
+    start_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date. * Specify a date-time in the future. * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for. * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible. * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`. ", alias="startDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`. ", alias="removeDate")
+    account_selection: Optional[List[SourceItemRef]] = Field(default=None, description="The accounts where the access item will be provisioned to.  * Includes selections performed by the user in the event of multiple accounts existing on the same source.  * Also includes details for sources where user only has one account.  * For machine identity GRANT_ACCESS and MODIFY_ACCESS: required. Provide exactly one source entry and exactly one account on that source. `accountUuid` and/or `nativeIdentity` must match a real machine account for the requested machine identity on that source. Prefer values returned by the accounts-selection API.  * For machine identity REVOKE_ACCESS: not supported. Use `nativeIdentity` on the item instead. ", alias="accountSelection")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. * For machine identity REVOKE_ACCESS: required per entitlement item (or auto-resolved when the machine has exactly one account on the entitlement source). Must match a machine account on that source. Do not send `accountSelection` on machine revoke. Human REVOKE_ACCESS cannot use this nested item schema; use flat `requestedItems` instead. ", alias="nativeIdentity")
+    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "accountSelection", "nativeIdentity"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -96,6 +97,11 @@ class RequestedItemDtoRef(BaseModel):
         if self.account_selection is None and "account_selection" in self.model_fields_set:
             _dict['accountSelection'] = None
 
+        # set to None if native_identity (nullable) is None
+        # and model_fields_set contains the field
+        if self.native_identity is None and "native_identity" in self.model_fields_set:
+            _dict['nativeIdentity'] = None
+
         return _dict
 
     @classmethod
@@ -114,7 +120,8 @@ class RequestedItemDtoRef(BaseModel):
             "clientMetadata": obj.get("clientMetadata"),
             "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
-            "accountSelection": [SourceItemRef.from_dict(_item) for _item in obj["accountSelection"]] if obj.get("accountSelection") is not None else None
+            "accountSelection": [SourceItemRef.from_dict(_item) for _item in obj["accountSelection"]] if obj.get("accountSelection") is not None else None,
+            "nativeIdentity": obj.get("nativeIdentity")
         })
         return _obj
 

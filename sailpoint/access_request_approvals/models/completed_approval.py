@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.access_request_approvals.models.access_item_requester import AccessItemRequester
 from sailpoint.access_request_approvals.models.access_item_reviewed_by import AccessItemReviewedBy
@@ -50,6 +50,7 @@ class CompletedApproval(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="When the approval was modified last time.")
     request_created: Optional[datetime] = Field(default=None, description="When the access-request was created.", alias="requestCreated")
     request_type: Optional[Union[AccessRequestType, str]] = Field(default=None, alias="requestType")
+    identity_type: Optional[StrictStr] = Field(default=None, description="Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`. ", alias="identityType")
     requester: Optional[AccessItemRequester] = None
     requested_for: Optional[CompletedApprovalRequestedFor] = Field(default=None, alias="requestedFor")
     reviewed_by: Optional[AccessItemReviewedBy] = Field(default=None, alias="reviewedBy")
@@ -74,7 +75,17 @@ class CompletedApproval(BaseModel):
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     max_permitted_access_duration: Optional[PendingApprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
     jit_details: Optional[List[EntitlementStateSnapshotJitDetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration", "jitDetails"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "identityType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration", "jitDetails"]
+
+    @field_validator('identity_type')
+    def identity_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HUMAN', 'MACHINE']):
+            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -236,6 +247,7 @@ class CompletedApproval(BaseModel):
             "modified": obj.get("modified"),
             "requestCreated": obj.get("requestCreated"),
             "requestType": obj.get("requestType"),
+            "identityType": obj.get("identityType"),
             "requester": AccessItemRequester.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
             "requestedFor": CompletedApprovalRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
             "reviewedBy": AccessItemReviewedBy.from_dict(obj["reviewedBy"]) if obj.get("reviewedBy") is not None else None,

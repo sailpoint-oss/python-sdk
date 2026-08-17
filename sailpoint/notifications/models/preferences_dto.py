@@ -21,18 +21,22 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from sailpoint.notifications.models.cc_bcc_preference_entry import CcBccPreferenceEntry
 from sailpoint.notifications.models.medium import Medium
 from typing import Optional, Set
 from typing_extensions import Self
 
 class PreferencesDto(BaseModel):
     """
-    Maps an Identity's attribute key to a list of preferred notification mediums.
+    Tenant notification preferences for a notification key, including preferred mediums and optional CC/BCC email recipients.
     """ # noqa: E501
     key: Optional[StrictStr] = Field(default=None, description="The template notification key.")
-    mediums: Optional[List[Union[Medium, str]]] = Field(default=None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.")
-    modified: Optional[datetime] = Field(default=None, description="Modified date of preference")
-    __properties: ClassVar[List[str]] = ["key", "mediums", "modified"]
+    mediums: Optional[List[Union[Medium, str]]] = Field(default=None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. An empty list means the notification is disabled for the tenant. More mediums may be added in the future.")
+    modified: Optional[datetime] = Field(default=None, description="Modified date of preference.")
+    cc_list: Optional[Annotated[List[CcBccPreferenceEntry], Field(max_length=5)]] = Field(default=None, description="Optional CC recipients for email notifications for this key. Requires EMAIL to be included in `mediums`. Maximum of five entries. The same recipient cannot appear in both `ccList` and `bccList`.", alias="ccList")
+    bcc_list: Optional[Annotated[List[CcBccPreferenceEntry], Field(max_length=5)]] = Field(default=None, description="Optional BCC recipients for email notifications for this key. Requires EMAIL to be included in `mediums`. Maximum of five entries. The same recipient cannot appear in both `ccList` and `bccList`.", alias="bccList")
+    __properties: ClassVar[List[str]] = ["key", "mediums", "modified", "ccList", "bccList"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -64,8 +68,10 @@ class PreferencesDto(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "modified",
         ])
 
         _dict = self.model_dump(
@@ -73,6 +79,20 @@ class PreferencesDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in cc_list (list)
+        _items = []
+        if self.cc_list:
+            for _item_cc_list in self.cc_list:
+                if _item_cc_list:
+                    _items.append(_item_cc_list.to_dict())
+            _dict['ccList'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in bcc_list (list)
+        _items = []
+        if self.bcc_list:
+            for _item_bcc_list in self.bcc_list:
+                if _item_bcc_list:
+                    _items.append(_item_bcc_list.to_dict())
+            _dict['bccList'] = _items
         return _dict
 
     @classmethod
@@ -87,7 +107,9 @@ class PreferencesDto(BaseModel):
         _obj = cls.model_validate({
             "key": obj.get("key"),
             "mediums": obj.get("mediums"),
-            "modified": obj.get("modified")
+            "modified": obj.get("modified"),
+            "ccList": [CcBccPreferenceEntry.from_dict(_item) for _item in obj["ccList"]] if obj.get("ccList") is not None else None,
+            "bccList": [CcBccPreferenceEntry.from_dict(_item) for _item in obj["bccList"]] if obj.get("bccList") is not None else None
         })
         return _obj
 

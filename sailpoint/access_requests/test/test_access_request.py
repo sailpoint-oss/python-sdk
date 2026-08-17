@@ -52,6 +52,7 @@ class TestAccessRequest(unittest.TestCase):
                 requested_for_with_requested_items = [
                     sailpoint.access_requests.models.requested_for_dto_ref.RequestedForDtoRef(
                         identity_id = 'cb89bc2f1ee6445fbea12224c526ba3a', 
+                        identity_type = 'HUMAN', 
                         requested_items = [
                             sailpoint.access_requests.models.requested_item_dto_ref.RequestedItemDtoRef(
                                 type = 'ACCESS_PROFILE', 
@@ -68,24 +69,13 @@ class TestAccessRequest(unittest.TestCase):
                                                 account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                                                 native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                             ], )
-                                    ], )
+                                    ], 
+                                native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                             ], )
                     ]
             )
         else:
             return AccessRequest(
-                requested_for = 2c918084660f45d6016617daa9210584,
-                requested_items = [
-                    sailpoint.access_requests.models.access_request_item.Access Request Item(
-                        type = 'ACCESS_PROFILE', 
-                        id = '2c9180835d2e5168015d32f890ca1581', 
-                        comment = 'Requesting access profile for John Doe', 
-                        client_metadata = {"requestedAppName":"test-app","requestedAppId":"2c91808f7892918f0178b78da4a305a1"}, 
-                        start_date = '2020-06-12T21:22:23Z', 
-                        remove_date = '2020-07-11T21:23:15Z', 
-                        assignment_id = 'ee48a191c00d49bf9264eb0a4fc3a9fc', 
-                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
-                    ],
         )
         """
 

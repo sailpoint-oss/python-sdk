@@ -34,7 +34,8 @@ class AccessRequestConfig2(BaseModel):
     request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig2] = Field(default=None, alias="requestOnBehalfOfConfig")
     entitlement_request_config: Optional[EntitlementRequestConfig2] = Field(default=None, alias="entitlementRequestConfig")
     gov_group_visibility_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed.", alias="govGroupVisibilityEnabled")
-    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "reauthorizationEnabled", "requestOnBehalfOfConfig", "entitlementRequestConfig", "govGroupVisibilityEnabled"]
+    machine_identity_access_request_enabled: Optional[StrictBool] = Field(default=True, description="If this is false, machine identity access requests and machine accounts-selection are rejected with 403 (for example, \"Machine identity access request is disabled in access request configuration.\"). Defaults to true. Exposed on access-request-config v2 only. ", alias="machineIdentityAccessRequestEnabled")
+    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "reauthorizationEnabled", "requestOnBehalfOfConfig", "entitlementRequestConfig", "govGroupVisibilityEnabled", "machineIdentityAccessRequestEnabled"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,7 +98,8 @@ class AccessRequestConfig2(BaseModel):
             "reauthorizationEnabled": obj.get("reauthorizationEnabled") if obj.get("reauthorizationEnabled") is not None else False,
             "requestOnBehalfOfConfig": RequestOnBehalfOfConfig2.from_dict(obj["requestOnBehalfOfConfig"]) if obj.get("requestOnBehalfOfConfig") is not None else None,
             "entitlementRequestConfig": EntitlementRequestConfig2.from_dict(obj["entitlementRequestConfig"]) if obj.get("entitlementRequestConfig") is not None else None,
-            "govGroupVisibilityEnabled": obj.get("govGroupVisibilityEnabled") if obj.get("govGroupVisibilityEnabled") is not None else False
+            "govGroupVisibilityEnabled": obj.get("govGroupVisibilityEnabled") if obj.get("govGroupVisibilityEnabled") is not None else False,
+            "machineIdentityAccessRequestEnabled": obj.get("machineIdentityAccessRequestEnabled") if obj.get("machineIdentityAccessRequestEnabled") is not None else True
         })
         return _obj
 

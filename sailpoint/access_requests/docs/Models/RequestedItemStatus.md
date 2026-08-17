@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | When the request was created. | [optional] 
 **requester** | [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **requested_for** | [**RequestedItemStatusRequestedFor**](requested-item-status-requested-for) |  | [optional] 
+**identity_type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Type of identity the access was requested for. Legacy requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **requester_comment** | [**RequestedItemStatusRequesterComment**](requested-item-status-requester-comment) |  | [optional] 
 **sod_violation_context** | [**RequestedItemStatusSodViolationContext**](requested-item-status-sod-violation-context) |  | [optional] 
 **provisioning_details** | [**RequestedItemStatusProvisioningDetails**](requested-item-status-provisioning-details) |  | [optional] 
@@ -42,7 +43,7 @@ Name | Type | Description | Notes
 **cancelable** | **bool** | True if the request can be canceled. | [optional] [default to False]
 **access_request_id** | **str** | This is the account activity id. | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
-**requested_accounts** | [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
+**requested_accounts** | [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources. | [optional] 
 **privilege_level** | **str** | The privilege level of the requested access item, if applicable. | [optional] 
 **jit_details** | **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
 }
@@ -117,6 +118,7 @@ requested_for=sailpoint.access_requests.models.requested_item_status_requested_f
                     type = 'IDENTITY', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'William Wilson', ),
+identity_type='HUMAN',
 requester_comment=,
 sod_violation_context=,
 provisioning_details=,

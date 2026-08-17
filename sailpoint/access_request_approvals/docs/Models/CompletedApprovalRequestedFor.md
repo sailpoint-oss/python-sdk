@@ -11,13 +11,13 @@ tags: ['SDK', 'Software Development Kit', 'CompletedApprovalRequestedFor', 'Comp
 
 # CompletedApprovalRequestedFor
 
-Identity access was requested for.
+Identity access was requested for. For machine identity requests, `type` is `MACHINE_IDENTITY` and `id` is the machine identity id.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'IDENTITY' ] | Type of the object to which this reference applies | [optional] 
+**type** |  **Enum** [  'IDENTITY',    'MACHINE_IDENTITY' ] | Type of the object to which this reference applies | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] 
 **name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
 }

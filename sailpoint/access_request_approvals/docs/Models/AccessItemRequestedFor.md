@@ -17,7 +17,7 @@ Identity the access item is requested for.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'IDENTITY' ] | DTO type of identity the access item is requested for. | [optional] 
+**type** |  **Enum** [  'IDENTITY',    'MACHINE_IDENTITY' ] | DTO type of identity the access item is requested for. `IDENTITY` for human identities. `MACHINE_IDENTITY` for machine identities. When `MACHINE_IDENTITY`, `id` is the machine identity id.  | [optional] 
 **id** | **str** | ID of identity the access item is requested for. | [optional] 
 **name** | **str** | Human-readable display name of identity the access item is requested for. | [optional] 
 }

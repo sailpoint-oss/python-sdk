@@ -78,7 +78,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_get_notification_preferences_v1(self) -> None:
         """Test case for get_notification_preferences_v1
 
-        List notification preferences for tenant.
+        Get notification preferences by key
         """
         pass
 
@@ -110,6 +110,13 @@ class TestNotificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_notification_preferences_v1(self) -> None:
+        """Test case for list_notification_preferences_v1
+
+        List notification preferences for tenant
+        """
+        pass
+
     def test_list_notification_template_defaults_v1(self) -> None:
         """Test case for list_notification_template_defaults_v1
 
@@ -135,6 +142,13 @@ class TestNotificationsApi(unittest.TestCase):
         """Test case for send_test_notification_v1
 
         Send test notification
+        """
+        pass
+
+    def test_set_notification_preferences_v1(self) -> None:
+        """Test case for set_notification_preferences_v1
+
+        Set notification preferences by key
         """
         pass
 

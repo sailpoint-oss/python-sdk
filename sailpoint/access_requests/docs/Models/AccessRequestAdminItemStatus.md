@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | When the request was created. | [optional] 
 **requester** | [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **requested_for** | [**RequestedItemStatusRequestedFor**](requested-item-status-requested-for) |  | [optional] 
+**identity_type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **requester_comment** | [**RequestedItemStatusRequesterComment**](requested-item-status-requester-comment) |  | [optional] 
 **sod_violation_context** | [**RequestedItemStatusSodViolationContext**](requested-item-status-sod-violation-context) |  | [optional] 
 **provisioning_details** | [**RequestedItemStatusProvisioningDetails**](requested-item-status-provisioning-details) |  | [optional] 
@@ -113,6 +114,7 @@ requested_for=sailpoint.access_requests.models.requested_item_status_requested_f
                     type = 'IDENTITY', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'William Wilson', ),
+identity_type='HUMAN',
 requester_comment=,
 sod_violation_context=,
 provisioning_details=,

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **modified** | **datetime** | When the approval was modified last time. | [optional] 
 **request_created** | **datetime** | When the access-request was created. | [optional] 
 **request_type** | **AccessRequestType** |  | [optional] 
+**identity_type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **requester** | [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **requested_for** | [**CompletedApprovalRequestedFor**](completed-approval-requested-for) |  | [optional] 
 **reviewed_by** | [**AccessItemReviewedBy**](access-item-reviewed-by) |  | [optional] 
@@ -60,6 +61,7 @@ created='2017-07-11T18:45:37.098Z',
 modified='2018-07-25T20:22:28.104Z',
 request_created='2017-07-11T18:45:35.098Z',
 request_type='GRANT_ACCESS',
+identity_type='HUMAN',
 requester=sailpoint.access_request_approvals.models.access_item_requester.Access Item Requester(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 

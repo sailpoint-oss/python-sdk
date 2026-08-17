@@ -16,11 +16,11 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequest', 'AccessRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requested_for** | **[]str** | A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. | [required]
+**requested_for** | **[]str** | A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. * Used for human identity requests with the 'requestedItems' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`   (including all machine identity requests). | [optional] 
 **request_type** | **AccessRequestType** |  | [optional] 
-**requested_items** | [**[]AccessRequestItem**](access-request-item) |  | [required]
+**requested_items** | [**[]AccessRequestItem**](access-request-item) | * Used for human identity requests with the 'requestedFor' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`. | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
-**requested_for_with_requested_items** | [**[]RequestedForDtoRef**](requested-for-dto-ref) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different start dates * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests  | [optional] 
+**requested_for_with_requested_items** | [**[]RequestedForDtoRef**](requested-for-dto-ref) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source. * Allows the ability to request items with different start dates and remove dates. * Also allows different combinations of request items and identities in the same request. * For human identities, primarily used with GRANT_ACCESS (and related multi-account flows). Human REVOKE_ACCESS continues to use the flat `requestedFor` / `requestedItems` shape. * Required for machine identity access requests. Set `identityType: MACHINE` on each entry. Machine requests support GRANT_ACCESS, MODIFY_ACCESS, and REVOKE_ACCESS with the constraints documented on the create endpoint and item schemas (entitlement-only; grant/modify account selection; revoke nativeIdentity).  | [optional] 
 }
 
 ## Example
@@ -46,6 +46,7 @@ client_metadata={"requestedAppId":"2c91808f7892918f0178b78da4a305a1","requestedA
 requested_for_with_requested_items=[
                     sailpoint.access_requests.models.requested_for_dto_ref.RequestedForDtoRef(
                         identity_id = 'cb89bc2f1ee6445fbea12224c526ba3a', 
+                        identity_type = 'HUMAN', 
                         requested_items = [
                             sailpoint.access_requests.models.requested_item_dto_ref.RequestedItemDtoRef(
                                 type = 'ACCESS_PROFILE', 
@@ -62,7 +63,8 @@ requested_for_with_requested_items=[
                                                 account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                                                 native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                             ], )
-                                    ], )
+                                    ], 
+                                native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                             ], )
                     ]
 )

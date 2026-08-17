@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Medium', 'Medium']
 
 # Medium
 
-The notification medium (EMAIL, SLACK, or TEAMS)
+The notification medium (EMAIL, SLACK, TEAMS, or INBOX)
 
 ## Enum
 
@@ -20,6 +20,8 @@ The notification medium (EMAIL, SLACK, or TEAMS)
 * `SLACK` (value: `'SLACK'`)
 
 * `TEAMS` (value: `'TEAMS'`)
+
+* `INBOX` (value: `'INBOX'`)
 
 [[Back to top]](#) 
 

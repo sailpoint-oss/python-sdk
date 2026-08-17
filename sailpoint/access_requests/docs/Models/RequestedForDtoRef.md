@@ -16,7 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'RequestedForDtoRef', 'RequestedForDto
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity_id** | **str** | The identity id for which the access is requested | [required]
+**identity_id** | **str** | The identity id the access is requested for. * `HUMAN` (default): the human identity id. * `MACHINE`: the machine identity id (hyphenated RFC-4122 UUID, not the correlated human identity).  | [required]
+**identity_type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Type of identity the access is requested for. * `HUMAN` (default) - standard human identity access request. * `MACHINE` - machine identity access request. When `MACHINE`, all entries in the request must also be `MACHINE` (mixed human and machine identities in one request are not supported), and only `ENTITLEMENT` items are allowed.  | [optional] [default to 'HUMAN']
 **requested_items** | [**[]RequestedItemDtoRef**](requested-item-dto-ref) | the details for the access items that are requested for the identity | [required]
 }
 
@@ -27,6 +28,7 @@ from sailpoint.access_requests.models.requested_for_dto_ref import RequestedForD
 
 requested_for_dto_ref = RequestedForDtoRef(
 identity_id='cb89bc2f1ee6445fbea12224c526ba3a',
+identity_type='HUMAN',
 requested_items=[
                     sailpoint.access_requests.models.requested_item_dto_ref.RequestedItemDtoRef(
                         type = 'ACCESS_PROFILE', 
@@ -43,7 +45,8 @@ requested_items=[
                                         account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                                         native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                     ], )
-                            ], )
+                            ], 
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                     ]
 )
 

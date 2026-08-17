@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Icons
+    Identity Security Cloud API - Notifications
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.icons.models.set_icon_v1_request import SetIconV1Request
+from sailpoint.notifications.models.cc_bcc_preference_entry import CcBccPreferenceEntry
 
-class TestSetIconV1Request(unittest.TestCase):
-    """SetIconV1Request unit test stubs"""
+class TestCcBccPreferenceEntry(unittest.TestCase):
+    """CcBccPreferenceEntry unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,28 @@ class TestSetIconV1Request(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SetIconV1Request:
-        """Test SetIconV1Request
+    def make_instance(self, include_optional) -> CcBccPreferenceEntry:
+        """Test CcBccPreferenceEntry
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SetIconV1Request`
+        # uncomment below to create an instance of `CcBccPreferenceEntry`
         """
-        model = SetIconV1Request()
+        model = CcBccPreferenceEntry()
         if include_optional:
-            return SetIconV1Request(
-                image = '[B@3153ddfc'
+            return CcBccPreferenceEntry(
+                type = 'IDENTITY',
+                id = '6b0b8e47cc1f4c3fa961a38fc718e989',
+                email = 'cc-recipient@example.com'
             )
         else:
-            return SetIconV1Request(
-                image = '[B@3153ddfc',
+            return CcBccPreferenceEntry(
+                type = 'IDENTITY',
         )
         """
 
-    def testSetIconV1Request(self):
-        """Test SetIconV1Request"""
+    def testCcBccPreferenceEntry(self):
+        """Test CcBccPreferenceEntry"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

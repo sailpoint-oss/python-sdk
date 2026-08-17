@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **request_on_behalf_of_config** | [**RequestOnBehalfOfConfig2**](request-on-behalf-of-config2) |  | [optional] 
 **entitlement_request_config** | [**EntitlementRequestConfig2**](entitlement-request-config2) |  | [optional] 
 **gov_group_visibility_enabled** | **bool** | If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed. | [optional] [default to False]
+**machine_identity_access_request_enabled** | **bool** | If this is false, machine identity access requests and machine accounts-selection are rejected with 403 (for example, \"Machine identity access request is disabled in access request configuration.\"). Defaults to true. Exposed on access-request-config v2 only.  | [optional] [default to True]
 }
 
 ## Example
@@ -33,7 +34,9 @@ approvals_must_be_external=True,
 reauthorization_enabled=True,
 request_on_behalf_of_config=sailpoint.access_requests.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
-                    allow_request_on_behalf_of_employee_by_manager = True, ),
+                    allow_request_on_behalf_of_employee_by_manager = True, 
+                    allow_request_on_behalf_of_for_machine_identity = True, 
+                    allow_request_for_machine_by_owner = False, ),
 entitlement_request_config=sailpoint.access_requests.models.entitlement_request_config.Entitlement Request Config(
                     access_request_config = sailpoint.access_requests.models.entitlement_access_request_config.Entitlement Access Request Config(
                         approval_schemes = [
@@ -49,7 +52,8 @@ entitlement_request_config=sailpoint.access_requests.models.entitlement_request_
                             value = 5, 
                             time_unit = 'DAYS', ), ), 
                     revocation_request_config = sailpoint.access_requests.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(), ),
-gov_group_visibility_enabled=True
+gov_group_visibility_enabled=True,
+machine_identity_access_request_enabled=True
 )
 
 ```

@@ -27,7 +27,7 @@ class AccessItemRequestedFor(BaseModel):
     """
     Identity the access item is requested for.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity the access item is requested for.")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity the access item is requested for. `IDENTITY` for human identities. `MACHINE_IDENTITY` for machine identities. When `MACHINE_IDENTITY`, `id` is the machine identity id. ")
     id: Optional[StrictStr] = Field(default=None, description="ID of identity the access item is requested for.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity the access item is requested for.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
@@ -38,8 +38,8 @@ class AccessItemRequestedFor(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        if value not in set(['IDENTITY', 'MACHINE_IDENTITY']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'MACHINE_IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

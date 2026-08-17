@@ -18,22 +18,23 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class Medium(str, Enum):
+class CcBccRecipientType(str, Enum):
     """
-    The notification medium (EMAIL, SLACK, TEAMS, or INBOX)
+    Recipient resolution type for a CC or BCC preference entry. Dynamic types are resolved at notification send time based on the triggering event's context.
     """
 
     """
     allowed enum values
     """
-    EMAIL = 'EMAIL'
-    SLACK = 'SLACK'
-    TEAMS = 'TEAMS'
-    INBOX = 'INBOX'
+    IDENTITY = 'IDENTITY'
+    MANAGER_OF = 'MANAGER_OF'
+    GOVERNANCE_GROUP = 'GOVERNANCE_GROUP'
+    ORG_ADMINS = 'ORG_ADMINS'
+    STATIC_EMAIL = 'STATIC_EMAIL'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of Medium from a JSON string"""
+        """Create an instance of CcBccRecipientType from a JSON string"""
         return cls(json.loads(json_str))
 
 

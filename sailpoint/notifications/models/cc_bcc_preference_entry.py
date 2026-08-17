@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Access Requests
+    Identity Security Cloud API - Notifications
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -20,16 +20,18 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.notifications.models.cc_bcc_recipient_type import CcBccRecipientType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccountItemRef(BaseModel):
+class CcBccPreferenceEntry(BaseModel):
     """
-    AccountItemRef
+    One CC or BCC routing entry. Dynamic recipient types are resolved at notification send time. Field applicability depends on type: IDENTITY and GOVERNANCE_GROUP require `id`; STATIC_EMAIL requires `email`; MANAGER_OF may optionally include `id` (manager of that identity, otherwise manager of the notification recipient); ORG_ADMINS does not use `id` or `email`.
     """ # noqa: E501
-    account_uuid: Optional[StrictStr] = Field(default=None, description="The uuid for the account on the source, available under the 'objectguid' attribute * Corresponds to the account's unique identifier as returned by accounts-selection or the accounts APIs. * For machine identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or `nativeIdentity`. Submitted values must match a real machine account for the requested machine identity on the selected source.", alias="accountUuid")
-    native_identity: Optional[StrictStr] = Field(default=None, description="The 'distinguishedName' attribute for the account. * For machine identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or `nativeIdentity`. Submitted values must match a real machine account for the requested machine identity on the selected source.", alias="nativeIdentity")
-    __properties: ClassVar[List[str]] = ["accountUuid", "nativeIdentity"]
+    type: CcBccRecipientType
+    id: Optional[StrictStr] = Field(default=None, description="Identity or governance group id when required by the recipient type. For MANAGER_OF, when provided this is the identity whose manager should receive the email.")
+    email: Optional[StrictStr] = Field(default=None, description="Static email address when type is STATIC_EMAIL.")
+    __properties: ClassVar[List[str]] = ["type", "id", "email"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class AccountItemRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccountItemRef from a JSON string"""
+        """Create an instance of CcBccPreferenceEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,16 +72,21 @@ class AccountItemRef(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if account_uuid (nullable) is None
+        # set to None if id (nullable) is None
         # and model_fields_set contains the field
-        if self.account_uuid is None and "account_uuid" in self.model_fields_set:
-            _dict['accountUuid'] = None
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccountItemRef from a dict"""
+        """Create an instance of CcBccPreferenceEntry from a dict"""
         if obj is None:
             return None
 
@@ -87,8 +94,9 @@ class AccountItemRef(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountUuid": obj.get("accountUuid"),
-            "nativeIdentity": obj.get("nativeIdentity")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "email": obj.get("email")
         })
         return _obj
 

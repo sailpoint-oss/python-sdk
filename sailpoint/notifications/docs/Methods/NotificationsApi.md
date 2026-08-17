@@ -22,15 +22,17 @@ Method | HTTP request | Description
 [**delete-verified-from-address-v1**](#delete-verified-from-address-v1) | **DELETE** `/verified-from-addresses/v1/{id}` | Delete verified from address
 [**get-dkim-attributes-v1**](#get-dkim-attributes-v1) | **GET** `/verified-domains/v1` | Get dkim attributes
 [**get-mail-from-attributes-v1**](#get-mail-from-attributes-v1) | **GET** `/mail-from-attributes/v1/{identity}` | Get mail from attributes
-[**get-notification-preferences-v1**](#get-notification-preferences-v1) | **GET** `/notification-preferences/v1/{key}` | List notification preferences for tenant.
+[**get-notification-preferences-v1**](#get-notification-preferences-v1) | **GET** `/notification-preferences/v1/{key}` | Get notification preferences by key
 [**get-notification-template-v1**](#get-notification-template-v1) | **GET** `/notification-templates/v1/{id}` | Get notification template by id
 [**get-notification-template-variables-v1**](#get-notification-template-variables-v1) | **GET** `/notification-template-variables/v1/{key}/{medium}` | Get notification template variables
 [**get-notifications-template-context-v1**](#get-notifications-template-context-v1) | **GET** `/notification-template-context/v1` | Get notification template context
 [**list-from-addresses-v1**](#list-from-addresses-v1) | **GET** `/verified-from-addresses/v1` | List from addresses
+[**list-notification-preferences-v1**](#list-notification-preferences-v1) | **GET** `/notification-preferences/v1` | List notification preferences for tenant
 [**list-notification-template-defaults-v1**](#list-notification-template-defaults-v1) | **GET** `/notification-template-defaults/v1` | List notification template defaults
 [**list-notification-templates-v1**](#list-notification-templates-v1) | **GET** `/notification-templates/v1` | List notification templates
 [**put-mail-from-attributes-v1**](#put-mail-from-attributes-v1) | **PUT** `/mail-from-attributes/v1` | Change mail from domain
 [**send-test-notification-v1**](#send-test-notification-v1) | **POST** `/send-test-notification/v1` | Send test notification
+[**set-notification-preferences-v1**](#set-notification-preferences-v1) | **PUT** `/notification-preferences/v1/{key}` | Set notification preferences by key
 
 
 ## create-domain-dkim-v1
@@ -515,8 +517,8 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-notification-preferences-v1
-List notification preferences for tenant.
-Returns a list of notification preferences for tenant.
+Get notification preferences by key
+Returns the notification preferences for a specific notification key, including preferred mediums and optional CC/BCC email recipients. If no custom preferences exist, returns the default settings from the interest definition. If the key does not exist, a 404 is returned.
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-notification-preferences-v-1)
 
@@ -524,7 +526,8 @@ Returns a list of notification preferences for tenant.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-Path   | key | **str** | True  | The key.
+Path   | key | **str** | True  | The notification key.
+  Query | filter_unavailable_mediums | **bool** |   (optional) (default to False) | When `true`, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant.
 
 ### Return type
 [**PreferencesDto**](../models/preferences-dto)
@@ -532,7 +535,7 @@ Path   | key | **str** | True  | The key.
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Return preference for the given notification key. | PreferencesDto |  -  |
+200 | Notification preferences for the given key. | PreferencesDto |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -555,14 +558,15 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    key = 'key_example' # str | The key. # str | The key.
+    key = 'approval_completed_notification' # str | The notification key. # str | The notification key.
+    filter_unavailable_mediums = False # bool | When `true`, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant. (optional) (default to False) # bool | When `true`, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant. (optional) (default to False)
 
     try:
-        # List notification preferences for tenant.
+        # Get notification preferences by key
         
         results = NotificationsApi(api_client).get_notification_preferences_v1(key=key)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).get_notification_preferences_v1(key)
+        # results = NotificationsApi(api_client).get_notification_preferences_v1(key, filter_unavailable_mediums)
         print("The response of NotificationsApi->get_notification_preferences_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -813,6 +817,73 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling NotificationsApi->list_from_addresses_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## list-notification-preferences-v1
+List notification preferences for tenant
+Returns a list of notification preferences for the current tenant, including preferred mediums and optional CC/BCC email recipients for each notification key. Supports standard V3 filtering, sorting, and offset/limit pagination.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-notification-preferences-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in*
+  Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key**
+
+### Return type
+[**List[PreferencesDto]**](../models/preferences-dto)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of notification preferences for the tenant. | List[PreferencesDto] |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*).  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.notifications.api.notifications_api import NotificationsApi
+from sailpoint.notifications.api_client import ApiClient
+from sailpoint.notifications.models.preferences_dto import PreferencesDto
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+    filters = 'key eq \"approval_completed_notification\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in* (optional)
+    sorters = 'key' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key** (optional)
+
+    try:
+        # List notification preferences for tenant
+        
+        results = NotificationsApi(api_client).list_notification_preferences_v1()
+        # Below is a request that includes all optional parameters
+        # results = NotificationsApi(api_client).list_notification_preferences_v1(limit, offset, count, filters, sorters)
+        print("The response of NotificationsApi->list_notification_preferences_v1:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling NotificationsApi->list_notification_preferences_v1: %s\n" % e)
 ```
 
 
@@ -1071,6 +1142,83 @@ with ApiClient(configuration) as api_client:
         # NotificationsApi(api_client).send_test_notification_v1(new_send_test_notification_request_dto)
     except Exception as e:
         print("Exception when calling NotificationsApi->send_test_notification_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## set-notification-preferences-v1
+Set notification preferences by key
+Overwrites the notification preferences for a specific notification key. Controls which mediums are enabled and optional CC/BCC email recipients. The `key` property in the request body is optional; if provided, it must match the key in the path or a 400 is returned. Each of `ccList` and `bccList` supports a maximum of five entries, and the same recipient cannot appear in both lists. CC/BCC configuration requires EMAIL to be enabled in `mediums` and is only allowed for templates which support it (i.e., templates which contain sensitive data like reset tokens do not allow for carbon copy emails to be configured).
+
+[API Spec](https://developer.sailpoint.com/docs/api/set-notification-preferences-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | key | **str** | True  | The notification key.
+ Body  | preferences_dto | [**PreferencesDto**](../models/preferences-dto) | True  | 
+
+### Return type
+[**PreferencesDto**](../models/preferences-dto)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Preferences updated successfully. An echo of the saved preferences is returned. | PreferencesDto |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetNotificationTemplateVariablesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetNotificationTemplateVariablesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.notifications.api.notifications_api import NotificationsApi
+from sailpoint.notifications.api_client import ApiClient
+from sailpoint.notifications.models.preferences_dto import PreferencesDto
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    key = 'approval_completed_notification' # str | The notification key. # str | The notification key.
+    preferences_dto = '''{
+          "modified" : "2020-05-15T14:37:06.909Z",
+          "ccList" : [ {
+            "type" : "IDENTITY",
+            "id" : "6b0b8e47cc1f4c3fa961a38fc718e989"
+          }, {
+            "type" : "STATIC_EMAIL",
+            "email" : "cc-recipient@example.com"
+          } ],
+          "bccList" : [ {
+            "type" : "MANAGER_OF"
+          }, {
+            "type" : "ORG_ADMINS"
+          } ],
+          "mediums" : [ "EMAIL" ],
+          "key" : "cloud_manual_work_item_summary"
+        }''' # PreferencesDto | 
+
+    try:
+        # Set notification preferences by key
+        new_preferences_dto = PreferencesDto.from_json(preferences_dto)
+        results = NotificationsApi(api_client).set_notification_preferences_v1(key=key, preferences_dto=new_preferences_dto)
+        # Below is a request that includes all optional parameters
+        # results = NotificationsApi(api_client).set_notification_preferences_v1(key, new_preferences_dto)
+        print("The response of NotificationsApi->set_notification_preferences_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling NotificationsApi->set_notification_preferences_v1: %s\n" % e)
 ```
 
 

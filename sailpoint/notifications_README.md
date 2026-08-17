@@ -72,19 +72,23 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**delete_verified_from_address_v1**](sailpoint/notifications/docs/NotificationsApi.md#delete_verified_from_address_v1) | **DELETE** /verified-from-addresses/v1/{id} | Delete verified from address
 *NotificationsApi* | [**get_dkim_attributes_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_dkim_attributes_v1) | **GET** /verified-domains/v1 | Get dkim attributes
 *NotificationsApi* | [**get_mail_from_attributes_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_mail_from_attributes_v1) | **GET** /mail-from-attributes/v1/{identity} | Get mail from attributes
-*NotificationsApi* | [**get_notification_preferences_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_notification_preferences_v1) | **GET** /notification-preferences/v1/{key} | List notification preferences for tenant.
+*NotificationsApi* | [**get_notification_preferences_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_notification_preferences_v1) | **GET** /notification-preferences/v1/{key} | Get notification preferences by key
 *NotificationsApi* | [**get_notification_template_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_notification_template_v1) | **GET** /notification-templates/v1/{id} | Get notification template by id
 *NotificationsApi* | [**get_notification_template_variables_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_notification_template_variables_v1) | **GET** /notification-template-variables/v1/{key}/{medium} | Get notification template variables
 *NotificationsApi* | [**get_notifications_template_context_v1**](sailpoint/notifications/docs/NotificationsApi.md#get_notifications_template_context_v1) | **GET** /notification-template-context/v1 | Get notification template context
 *NotificationsApi* | [**list_from_addresses_v1**](sailpoint/notifications/docs/NotificationsApi.md#list_from_addresses_v1) | **GET** /verified-from-addresses/v1 | List from addresses
+*NotificationsApi* | [**list_notification_preferences_v1**](sailpoint/notifications/docs/NotificationsApi.md#list_notification_preferences_v1) | **GET** /notification-preferences/v1 | List notification preferences for tenant
 *NotificationsApi* | [**list_notification_template_defaults_v1**](sailpoint/notifications/docs/NotificationsApi.md#list_notification_template_defaults_v1) | **GET** /notification-template-defaults/v1 | List notification template defaults
 *NotificationsApi* | [**list_notification_templates_v1**](sailpoint/notifications/docs/NotificationsApi.md#list_notification_templates_v1) | **GET** /notification-templates/v1 | List notification templates
 *NotificationsApi* | [**put_mail_from_attributes_v1**](sailpoint/notifications/docs/NotificationsApi.md#put_mail_from_attributes_v1) | **PUT** /mail-from-attributes/v1 | Change mail from domain
 *NotificationsApi* | [**send_test_notification_v1**](sailpoint/notifications/docs/NotificationsApi.md#send_test_notification_v1) | **POST** /send-test-notification/v1 | Send test notification
+*NotificationsApi* | [**set_notification_preferences_v1**](sailpoint/notifications/docs/NotificationsApi.md#set_notification_preferences_v1) | **PUT** /notification-preferences/v1/{key} | Set notification preferences by key
 
 
 ## Documentation For Models
 
+ - [CcBccPreferenceEntry](sailpoint/notifications/docs/CcBccPreferenceEntry.md)
+ - [CcBccRecipientType](sailpoint/notifications/docs/CcBccRecipientType.md)
  - [CreateDomainDkimV1405Response](sailpoint/notifications/docs/CreateDomainDkimV1405Response.md)
  - [DkimAttributes](sailpoint/notifications/docs/DkimAttributes.md)
  - [DomainAddress](sailpoint/notifications/docs/DomainAddress.md)

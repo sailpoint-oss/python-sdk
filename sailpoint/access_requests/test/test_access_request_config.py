@@ -40,7 +40,9 @@ class TestAccessRequestConfig(unittest.TestCase):
                 reauthorization_enabled = True,
                 request_on_behalf_of_config = sailpoint.access_requests.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
-                    allow_request_on_behalf_of_employee_by_manager = True, ),
+                    allow_request_on_behalf_of_employee_by_manager = True, 
+                    allow_request_on_behalf_of_for_machine_identity = True, 
+                    allow_request_for_machine_by_owner = False, ),
                 approval_reminder_and_escalation_config = sailpoint.access_requests.models.approval_reminder_and_escalation_config.Approval Reminder And Escalation Config(
                     days_until_escalation = 0, 
                     days_between_reminders = 0, 

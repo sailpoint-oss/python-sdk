@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **requested_items** | [**[]RequestedItemAccountSelections**](requested-item-account-selections) | Available account selections for the identity, per requested item | [optional] 
 **accounts_selection_required** | **bool** | A boolean indicating whether any account selections will be required for the user to raise an access request | [optional] [default to False]
 **type** | **DtoType** |  | [optional] 
-**id** | **str** | The identity id for the user | [optional] 
+**id** | **str** | The identity id for the requested-for identity. * `IDENTITY`: the human identity id. * `MACHINE_IDENTITY`: the machine identity id (not the correlated human identity).  | [optional] 
 **name** | **str** | The name of the identity | [optional] 
 }
 

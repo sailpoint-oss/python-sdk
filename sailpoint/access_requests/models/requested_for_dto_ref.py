@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.access_requests.models.requested_item_dto_ref import RequestedItemDtoRef
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,9 +28,20 @@ class RequestedForDtoRef(BaseModel):
     """
     RequestedForDtoRef
     """ # noqa: E501
-    identity_id: StrictStr = Field(description="The identity id for which the access is requested", alias="identityId")
+    identity_id: StrictStr = Field(description="The identity id the access is requested for. * `HUMAN` (default): the human identity id. * `MACHINE`: the machine identity id (hyphenated RFC-4122 UUID, not the correlated human identity). ", alias="identityId")
+    identity_type: Optional[StrictStr] = Field(default='HUMAN', description="Type of identity the access is requested for. * `HUMAN` (default) - standard human identity access request. * `MACHINE` - machine identity access request. When `MACHINE`, all entries in the request must also be `MACHINE` (mixed human and machine identities in one request are not supported), and only `ENTITLEMENT` items are allowed. ", alias="identityType")
     requested_items: List[RequestedItemDtoRef] = Field(description="the details for the access items that are requested for the identity", alias="requestedItems")
-    __properties: ClassVar[List[str]] = ["identityId", "requestedItems"]
+    __properties: ClassVar[List[str]] = ["identityId", "identityType", "requestedItems"]
+
+    @field_validator('identity_type')
+    def identity_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HUMAN', 'MACHINE']):
+            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +102,7 @@ class RequestedForDtoRef(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
+            "identityType": obj.get("identityType") if obj.get("identityType") is not None else 'HUMAN',
             "requestedItems": [RequestedItemDtoRef.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None
         })
         return _obj

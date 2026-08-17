@@ -37,7 +37,9 @@ class TestPreferencesDto(unittest.TestCase):
             return PreferencesDto(
                 key = 'cloud_manual_work_item_summary',
                 mediums = ["EMAIL"],
-                modified = '2020-05-15T14:37:06.909Z'
+                modified = '2020-05-15T14:37:06.909Z',
+                cc_list = [{"type":"IDENTITY","id":"6b0b8e47cc1f4c3fa961a38fc718e989"},{"type":"STATIC_EMAIL","email":"cc-recipient@example.com"}],
+                bcc_list = [{"type":"MANAGER_OF"},{"type":"ORG_ADMINS"}]
             )
         else:
             return PreferencesDto(

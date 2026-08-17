@@ -31,6 +31,8 @@ from sailpoint.notifications.exceptions import ApiAttributeError
 from sailpoint.notifications.exceptions import ApiException
 
 # import models into sdk package
+from sailpoint.notifications.models.cc_bcc_preference_entry import CcBccPreferenceEntry
+from sailpoint.notifications.models.cc_bcc_recipient_type import CcBccRecipientType
 from sailpoint.notifications.models.create_domain_dkim_v1405_response import CreateDomainDkimV1405Response
 from sailpoint.notifications.models.dkim_attributes import DkimAttributes
 from sailpoint.notifications.models.domain_address import DomainAddress

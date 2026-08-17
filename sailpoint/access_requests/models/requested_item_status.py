@@ -58,6 +58,7 @@ class RequestedItemStatus(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
     requester: Optional[AccessItemRequester] = None
     requested_for: Optional[RequestedItemStatusRequestedFor] = Field(default=None, alias="requestedFor")
+    identity_type: Optional[StrictStr] = Field(default=None, description="Type of identity the access was requested for. Legacy requests without a stored identity type are returned as `HUMAN`. ", alias="identityType")
     requester_comment: Optional[RequestedItemStatusRequesterComment] = Field(default=None, alias="requesterComment")
     sod_violation_context: Optional[RequestedItemStatusSodViolationContext] = Field(default=None, alias="sodViolationContext")
     provisioning_details: Optional[RequestedItemStatusProvisioningDetails] = Field(default=None, alias="provisioningDetails")
@@ -69,10 +70,10 @@ class RequestedItemStatus(BaseModel):
     cancelable: Optional[StrictBool] = Field(default=False, description="True if the request can be canceled.")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
+    requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     jit_details: Optional[List[EntitlementStateSnapshotJitDetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel", "jitDetails"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel", "jitDetails"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -82,6 +83,16 @@ class RequestedItemStatus(BaseModel):
 
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
             warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
+        return value
+
+    @field_validator('identity_type')
+    def identity_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HUMAN', 'MACHINE']):
+            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -298,6 +309,7 @@ class RequestedItemStatus(BaseModel):
             "created": obj.get("created"),
             "requester": AccessItemRequester.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
             "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
+            "identityType": obj.get("identityType"),
             "requesterComment": RequestedItemStatusRequesterComment.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
             "sodViolationContext": RequestedItemStatusSodViolationContext.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "provisioningDetails": RequestedItemStatusProvisioningDetails.from_dict(obj["provisioningDetails"]) if obj.get("provisioningDetails") is not None else None,

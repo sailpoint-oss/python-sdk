@@ -98,6 +98,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'William Wilson', ),
+                identity_type = 'HUMAN',
                 requester_comment = None,
                 sod_violation_context = None,
                 provisioning_details = None,

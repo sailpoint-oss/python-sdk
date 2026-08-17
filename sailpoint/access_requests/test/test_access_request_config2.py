@@ -39,7 +39,9 @@ class TestAccessRequestConfig2(unittest.TestCase):
                 reauthorization_enabled = True,
                 request_on_behalf_of_config = sailpoint.access_requests.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
-                    allow_request_on_behalf_of_employee_by_manager = True, ),
+                    allow_request_on_behalf_of_employee_by_manager = True, 
+                    allow_request_on_behalf_of_for_machine_identity = True, 
+                    allow_request_for_machine_by_owner = False, ),
                 entitlement_request_config = sailpoint.access_requests.models.entitlement_request_config.Entitlement Request Config(
                     access_request_config = sailpoint.access_requests.models.entitlement_access_request_config.Entitlement Access Request Config(
                         approval_schemes = [
@@ -55,7 +57,8 @@ class TestAccessRequestConfig2(unittest.TestCase):
                             value = 5, 
                             time_unit = 'DAYS', ), ), 
                     revocation_request_config = sailpoint.access_requests.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(), ),
-                gov_group_visibility_enabled = True
+                gov_group_visibility_enabled = True,
+                machine_identity_access_request_enabled = True
             )
         else:
             return AccessRequestConfig2(

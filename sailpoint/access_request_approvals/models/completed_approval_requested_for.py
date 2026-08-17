@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class CompletedApprovalRequestedFor(BaseModel):
     """
-    Identity access was requested for.
+    Identity access was requested for. For machine identity requests, `type` is `MACHINE_IDENTITY` and `id` is the machine identity id.
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Type of the object to which this reference applies")
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
@@ -38,8 +38,8 @@ class CompletedApprovalRequestedFor(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        if value not in set(['IDENTITY', 'MACHINE_IDENTITY']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'MACHINE_IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -32,7 +32,7 @@ class IdentityAccountSelections(BaseModel):
     requested_items: Optional[List[RequestedItemAccountSelections]] = Field(default=None, description="Available account selections for the identity, per requested item", alias="requestedItems")
     accounts_selection_required: Optional[StrictBool] = Field(default=False, description="A boolean indicating whether any account selections will be required for the user to raise an access request", alias="accountsSelectionRequired")
     type: Optional[Union[DtoType, str]] = None
-    id: Optional[StrictStr] = Field(default=None, description="The identity id for the user")
+    id: Optional[StrictStr] = Field(default=None, description="The identity id for the requested-for identity. * `IDENTITY`: the human identity id. * `MACHINE_IDENTITY`: the machine identity id (not the correlated human identity). ")
     name: Optional[StrictStr] = Field(default=None, description="The name of the identity")
     __properties: ClassVar[List[str]] = ["requestedItems", "accountsSelectionRequired", "type", "id", "name"]
 
