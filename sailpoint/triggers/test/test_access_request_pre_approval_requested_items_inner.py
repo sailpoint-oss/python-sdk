@@ -40,7 +40,8 @@ class TestAccessRequestPreApprovalRequestedItemsInner(unittest.TestCase):
                 description = 'Access to engineering database',
                 type = 'ACCESS_PROFILE',
                 operation = 'Add',
-                comment = 'William needs this access to do his job.'
+                comment = 'William needs this access to do his job.',
+                form = None
             )
         else:
             return AccessRequestPreApprovalRequestedItemsInner(

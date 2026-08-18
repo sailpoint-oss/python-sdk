@@ -98,7 +98,8 @@ requested_items=[
                         description = 'Access to engineering database', 
                         type = 'ACCESS_PROFILE', 
                         operation = 'Add', 
-                        comment = 'William needs this access to do his job.', )
+                        comment = 'William needs this access to do his job.', 
+                        form = null, )
                     ],
 requested_by=sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
@@ -113,6 +114,7 @@ requested_items_status=[
                         operation = 'Add', 
                         comment = 'William needs this access to do his job.', 
                         client_metadata = {"applicationName":"My application"}, 
+                        form = null, 
                         approval_info = [
                             sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                                 approval_comment = 'This access looks good.  Approved.', 

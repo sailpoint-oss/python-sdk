@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.triggers.models.access_request_dynamic_approver_requested_items_inner_form import AccessRequestDynamicApproverRequestedItemsInnerForm
 from sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,8 +36,9 @@ class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
     operation: StrictStr = Field(description="The action to perform on the access item.")
     comment: Optional[StrictStr] = Field(default=None, description="A comment from the identity requesting the access.")
     client_metadata: Optional[Dict[str, Any]] = Field(default=None, description="Additional customer defined metadata about the access item.", alias="clientMetadata")
+    form: Optional[AccessRequestDynamicApproverRequestedItemsInnerForm] = None
     approval_info: List[AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner] = Field(description="A list of one or more approvers for the access request.", alias="approvalInfo")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment", "clientMetadata", "approvalInfo"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment", "clientMetadata", "form", "approvalInfo"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -91,6 +93,9 @@ class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in approval_info (list)
         _items = []
         if self.approval_info:
@@ -132,6 +137,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
             "operation": obj.get("operation"),
             "comment": obj.get("comment"),
             "clientMetadata": obj.get("clientMetadata"),
+            "form": AccessRequestDynamicApproverRequestedItemsInnerForm.from_dict(obj["form"]) if obj.get("form") is not None else None,
             "approvalInfo": [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.from_dict(_item) for _item in obj["approvalInfo"]] if obj.get("approvalInfo") is not None else None
         })
         return _obj

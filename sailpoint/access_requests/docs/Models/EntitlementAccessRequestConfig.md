@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **reauthorization_required** | **bool** | Is Reauthorization Required | [optional] [default to False]
 **require_end_date** | **bool** | If true, then remove date or sunset date is required in access request of the entitlement. | [optional] [default to False]
 **max_permitted_access_duration** | [**EntitlementAccessRequestConfigMaxPermittedAccessDuration**](entitlement-access-request-config-max-permitted-access-duration) |  | [optional] 
+**form_definition_id** | **str** | The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process. | [optional] 
 }
 
 ## Example
@@ -41,7 +42,8 @@ reauthorization_required=False,
 require_end_date=True,
 max_permitted_access_duration=sailpoint.access_requests.models.entitlement_access_request_config_max_permitted_access_duration.EntitlementAccessRequestConfig_maxPermittedAccessDuration(
                     value = 5, 
-                    time_unit = 'DAYS', )
+                    time_unit = 'DAYS', ),
+form_definition_id='78258e80-e9e2-4e1a-a11f-ce0b7c62f25d'
 )
 
 ```

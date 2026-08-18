@@ -49,7 +49,8 @@ class TestAccessRequestPreApproval(unittest.TestCase):
                         description = 'Access to engineering database', 
                         type = 'ACCESS_PROFILE', 
                         operation = 'Add', 
-                        comment = 'William needs this access to do his job.', )
+                        comment = 'William needs this access to do his job.', 
+                        form = null, )
                     ],
                 requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
@@ -72,7 +73,8 @@ class TestAccessRequestPreApproval(unittest.TestCase):
                         description = 'Access to engineering database', 
                         type = 'ACCESS_PROFILE', 
                         operation = 'Add', 
-                        comment = 'William needs this access to do his job.', )
+                        comment = 'William needs this access to do his job.', 
+                        form = null, )
                     ],
                 requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 

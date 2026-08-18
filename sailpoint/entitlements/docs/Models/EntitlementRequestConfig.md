@@ -38,7 +38,8 @@ access_request_config=sailpoint.entitlements.models.entitlement_access_request_c
                     require_end_date = True, 
                     max_permitted_access_duration = sailpoint.entitlements.models.entitlement_access_request_config_max_permitted_access_duration.EntitlementAccessRequestConfig_maxPermittedAccessDuration(
                         value = 5, 
-                        time_unit = 'DAYS', ), ),
+                        time_unit = 'DAYS', ), 
+                    form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d', ),
 revocation_request_config=sailpoint.entitlements.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(
                     approval_schemes = [
                         sailpoint.entitlements.models.entitlement_approval_scheme.Entitlement Approval Scheme(

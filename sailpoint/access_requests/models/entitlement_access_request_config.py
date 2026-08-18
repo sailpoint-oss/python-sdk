@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.access_requests.models.entitlement_access_request_config_max_permitted_access_duration import EntitlementAccessRequestConfigMaxPermittedAccessDuration
 from sailpoint.access_requests.models.entitlement_approval_scheme import EntitlementApprovalScheme
@@ -35,7 +35,8 @@ class EntitlementAccessRequestConfig(BaseModel):
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Is Reauthorization Required", alias="reauthorizationRequired")
     require_end_date: Optional[StrictBool] = Field(default=False, description="If true, then remove date or sunset date is required in access request of the entitlement.", alias="requireEndDate")
     max_permitted_access_duration: Optional[EntitlementAccessRequestConfigMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
-    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration"]
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.", alias="formDefinitionId")
+    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "formDefinitionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +92,11 @@ class EntitlementAccessRequestConfig(BaseModel):
         if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
             _dict['maxPermittedAccessDuration'] = None
 
+        # set to None if form_definition_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_definition_id is None and "form_definition_id" in self.model_fields_set:
+            _dict['formDefinitionId'] = None
+
         return _dict
 
     @classmethod
@@ -108,7 +114,8 @@ class EntitlementAccessRequestConfig(BaseModel):
             "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
             "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
-            "maxPermittedAccessDuration": EntitlementAccessRequestConfigMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None
+            "maxPermittedAccessDuration": EntitlementAccessRequestConfigMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
+            "formDefinitionId": obj.get("formDefinitionId")
         })
         return _obj
 

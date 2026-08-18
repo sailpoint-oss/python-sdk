@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **type** |  **Enum** [  'ACCESS_PROFILE',    'ROLE',    'ENTITLEMENT' ] | The type of access item being requested. | [required]
 **operation** |  **Enum** [  'Add',    'Remove' ] | Grant or revoke the access item | [required]
 **comment** | **str** | A comment from the requestor on why the access is needed. | [optional] 
+**form** | [**AccessRequestDynamicApproverRequestedItemsInnerForm**](access-request-dynamic-approver-requested-items-inner-form) |  | [optional] 
 }
 
 ## Example
@@ -35,7 +36,8 @@ name='Engineering Access',
 description='Engineering Access',
 type='ACCESS_PROFILE',
 operation='Add',
-comment='William needs this access for his day to day job activities.'
+comment='William needs this access for his day to day job activities.',
+form=
 )
 
 ```

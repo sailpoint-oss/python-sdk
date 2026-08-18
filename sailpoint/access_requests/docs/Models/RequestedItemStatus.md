@@ -46,6 +46,7 @@ Name | Type | Description | Notes
 **requested_accounts** | [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources. | [optional] 
 **privilege_level** | **str** | The privilege level of the requested access item, if applicable. | [optional] 
 **jit_details** | **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
+**form** | [**RequestedItemStatusForm**](requested-item-status-form) |  | [optional] 
 }
 
 ## Example
@@ -149,7 +150,8 @@ requested_accounts=[
 privilege_level='High',
 jit_details=[
                     { }
-                    ]
+                    ],
+form=
 )
 
 ```

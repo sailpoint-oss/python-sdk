@@ -28,6 +28,7 @@ from sailpoint.access_requests.models.approval_status_dto import ApprovalStatusD
 from sailpoint.access_requests.models.error_message_dto import ErrorMessageDto
 from sailpoint.access_requests.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.access_requests.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
+from sailpoint.access_requests.models.requested_item_status_form import RequestedItemStatusForm
 from sailpoint.access_requests.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.access_requests.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.access_requests.models.requested_item_status_request_state import RequestedItemStatusRequestState
@@ -68,7 +69,8 @@ class AccessRequestAdminItemStatus(BaseModel):
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="True if re-auth is required.", alias="reauthorizationRequired")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata"]
+    form: Optional[RequestedItemStatusForm] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata", "form"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -180,6 +182,9 @@ class AccessRequestAdminItemStatus(BaseModel):
                 if _item_access_request_phases:
                     _items.append(_item_access_request_phases.to_dict())
             _dict['accessRequestPhases'] = _items
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -281,7 +286,8 @@ class AccessRequestAdminItemStatus(BaseModel):
             "cancelable": obj.get("cancelable") if obj.get("cancelable") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
             "accessRequestId": obj.get("accessRequestId"),
-            "clientMetadata": obj.get("clientMetadata")
+            "clientMetadata": obj.get("clientMetadata"),
+            "form": RequestedItemStatusForm.from_dict(obj["form"]) if obj.get("form") is not None else None
         })
         return _obj
 

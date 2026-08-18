@@ -37,7 +37,8 @@ class RequestedItemDtoRef(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`. ", alias="removeDate")
     account_selection: Optional[List[SourceItemRef]] = Field(default=None, description="The accounts where the access item will be provisioned to.  * Includes selections performed by the user in the event of multiple accounts existing on the same source.  * Also includes details for sources where user only has one account.  * For machine identity GRANT_ACCESS and MODIFY_ACCESS: required. Provide exactly one source entry and exactly one account on that source. `accountUuid` and/or `nativeIdentity` must match a real machine account for the requested machine identity on that source. Prefer values returned by the accounts-selection API.  * For machine identity REVOKE_ACCESS: not supported. Use `nativeIdentity` on the item instead. ", alias="accountSelection")
     native_identity: Optional[StrictStr] = Field(default=None, description="The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. * For machine identity REVOKE_ACCESS: required per entitlement item (or auto-resolved when the machine has exactly one account on the entitlement source). Must match a machine account on that source. Do not send `accountSelection` on machine revoke. Human REVOKE_ACCESS cannot use this nested item schema; use flat `requestedItems` instead. ", alias="nativeIdentity")
-    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "accountSelection", "nativeIdentity"]
+    form_instance_id: Optional[StrictStr] = Field(default=None, description="Optional ID of a completed form instance for this line item. * For human GRANT_ACCESS: include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. * Not supported for machine identity access requests.", alias="formInstanceId")
+    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "accountSelection", "nativeIdentity", "formInstanceId"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -102,6 +103,11 @@ class RequestedItemDtoRef(BaseModel):
         if self.native_identity is None and "native_identity" in self.model_fields_set:
             _dict['nativeIdentity'] = None
 
+        # set to None if form_instance_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_instance_id is None and "form_instance_id" in self.model_fields_set:
+            _dict['formInstanceId'] = None
+
         return _dict
 
     @classmethod
@@ -121,7 +127,8 @@ class RequestedItemDtoRef(BaseModel):
             "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "accountSelection": [SourceItemRef.from_dict(_item) for _item in obj["accountSelection"]] if obj.get("accountSelection") is not None else None,
-            "nativeIdentity": obj.get("nativeIdentity")
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "formInstanceId": obj.get("formInstanceId")
         })
         return _obj
 

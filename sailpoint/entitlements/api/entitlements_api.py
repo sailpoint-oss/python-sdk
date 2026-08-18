@@ -674,7 +674,7 @@ class EntitlementsApi:
     ) -> EntitlementRequestConfig:
         """Get entitlement request config
 
-        This API returns the entitlement request config for a specified entitlement.
+        This API returns the entitlement request config for a specified entitlement. The `accessRequestConfig.formDefinitionId` field associates an optional custom form with entitlement access requests.
 
         :param id: Entitlement Id (required)
         :type id: str
@@ -747,7 +747,7 @@ class EntitlementsApi:
     ) -> ApiResponse[EntitlementRequestConfig]:
         """Get entitlement request config
 
-        This API returns the entitlement request config for a specified entitlement.
+        This API returns the entitlement request config for a specified entitlement. The `accessRequestConfig.formDefinitionId` field associates an optional custom form with entitlement access requests.
 
         :param id: Entitlement Id (required)
         :type id: str
@@ -820,7 +820,7 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Get entitlement request config
 
-        This API returns the entitlement request config for a specified entitlement.
+        This API returns the entitlement request config for a specified entitlement. The `accessRequestConfig.formDefinitionId` field associates an optional custom form with entitlement access requests.
 
         :param id: Entitlement Id (required)
         :type id: str
@@ -3380,7 +3380,7 @@ class EntitlementsApi:
     ) -> EntitlementRequestConfig:
         """Replace entitlement request config
 
-        This API replaces the entitlement request config for a specified entitlement.
+        This API replaces the entitlement request config for a specified entitlement. Set `accessRequestConfig.formDefinitionId` to associate an optional custom form with entitlement access requests.
 
         :param id: Entitlement ID (required)
         :type id: str
@@ -3457,7 +3457,7 @@ class EntitlementsApi:
     ) -> ApiResponse[EntitlementRequestConfig]:
         """Replace entitlement request config
 
-        This API replaces the entitlement request config for a specified entitlement.
+        This API replaces the entitlement request config for a specified entitlement. Set `accessRequestConfig.formDefinitionId` to associate an optional custom form with entitlement access requests.
 
         :param id: Entitlement ID (required)
         :type id: str
@@ -3534,7 +3534,7 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Replace entitlement request config
 
-        This API replaces the entitlement request config for a specified entitlement.
+        This API replaces the entitlement request config for a specified entitlement. Set `accessRequestConfig.formDefinitionId` to associate an optional custom form with entitlement access requests.
 
         :param id: Entitlement ID (required)
         :type id: str

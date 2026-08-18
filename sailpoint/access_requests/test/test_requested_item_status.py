@@ -130,7 +130,8 @@ class TestRequestedItemStatus(unittest.TestCase):
                 privilege_level = 'High',
                 jit_details = [
                     { }
-                    ]
+                    ],
+                form = None
             )
         else:
             return RequestedItemStatus(

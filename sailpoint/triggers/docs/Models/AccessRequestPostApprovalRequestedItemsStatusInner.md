@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **operation** |  **Enum** [  'Add',    'Remove' ] | The action to perform on the access item. | [required]
 **comment** | **str** | A comment from the identity requesting the access. | [optional] 
 **client_metadata** | **map[string]object** | Additional customer defined metadata about the access item. | [optional] 
+**form** | [**AccessRequestDynamicApproverRequestedItemsInnerForm**](access-request-dynamic-approver-requested-items-inner-form) |  | [optional] 
 **approval_info** | [**[]AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner**](access-request-post-approval-requested-items-status-inner-approval-info-inner) | A list of one or more approvers for the access request. | [required]
 }
 
@@ -39,6 +40,7 @@ type='ACCESS_PROFILE',
 operation='Add',
 comment='William needs this access to do his job.',
 client_metadata={"applicationName":"My application"},
+form=,
 approval_info=[
                     sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                         approval_comment = 'This access looks good.  Approved.', 

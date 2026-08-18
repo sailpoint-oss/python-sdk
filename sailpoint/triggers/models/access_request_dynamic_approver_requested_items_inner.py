@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.triggers.models.access_request_dynamic_approver_requested_items_inner_form import AccessRequestDynamicApproverRequestedItemsInnerForm
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +34,8 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
     type: StrictStr = Field(description="The type of access item being requested.")
     operation: StrictStr = Field(description="Grant or revoke the access item")
     comment: Optional[StrictStr] = Field(default=None, description="A comment from the requestor on why the access is needed.")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment"]
+    form: Optional[AccessRequestDynamicApproverRequestedItemsInnerForm] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment", "form"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -88,6 +90,9 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -115,7 +120,8 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
             "description": obj.get("description"),
             "type": obj.get("type"),
             "operation": obj.get("operation"),
-            "comment": obj.get("comment")
+            "comment": obj.get("comment"),
+            "form": AccessRequestDynamicApproverRequestedItemsInnerForm.from_dict(obj["form"]) if obj.get("form") is not None else None
         })
         return _obj
 

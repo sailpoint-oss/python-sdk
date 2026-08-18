@@ -142,7 +142,8 @@ class TestCompletedApproval(unittest.TestCase):
                     time_unit = 'DAYS', ),
                 jit_details = [
                     { }
-                    ]
+                    ],
+                form = None
             )
         else:
             return CompletedApproval(

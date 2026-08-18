@@ -74,7 +74,8 @@ access_request_config=sailpoint.access_profiles.models.requestability.Requestabi
                         sailpoint.access_profiles.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
-                        ], ),
+                        ], 
+                    form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d', ),
 revocation_request_config=sailpoint.access_profiles.models.revocability.Revocability(
                     approval_schemes = [
                         sailpoint.access_profiles.models.access_profile_approval_scheme.AccessProfileApprovalScheme(

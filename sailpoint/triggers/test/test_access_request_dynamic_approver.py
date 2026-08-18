@@ -49,7 +49,8 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         description = 'Engineering Access', 
                         type = 'ACCESS_PROFILE', 
                         operation = 'Add', 
-                        comment = 'William needs this access for his day to day job activities.', )
+                        comment = 'William needs this access for his day to day job activities.', 
+                        form = null, )
                     ],
                 requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
@@ -72,7 +73,8 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         description = 'Engineering Access', 
                         type = 'ACCESS_PROFILE', 
                         operation = 'Add', 
-                        comment = 'William needs this access for his day to day job activities.', )
+                        comment = 'William needs this access for his day to day job activities.', 
+                        form = null, )
                     ],
                 requested_by = sailpoint.triggers.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 

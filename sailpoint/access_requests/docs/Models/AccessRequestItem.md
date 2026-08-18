@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **remove_date** | **datetime** | The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for.  | [optional] 
 **assignment_id** | **str** | The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity. * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source.  | [optional] 
 **native_identity** | **str** | The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source.  | [optional] 
+**form_instance_id** | **str** | Optional ID of a completed form instance for this line item. For human GRANT_ACCESS requests, include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. Not used for REVOKE_ACCESS. | [optional] 
 }
 
 ## Example
@@ -39,7 +40,8 @@ client_metadata={"requestedAppName":"test-app","requestedAppId":"2c91808f7892918
 start_date='2020-06-12T21:22:23Z',
 remove_date='2020-07-11T21:23:15Z',
 assignment_id='ee48a191c00d49bf9264eb0a4fc3a9fc',
-native_identity='CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN'
+native_identity='CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN',
+form_instance_id='9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e'
 )
 
 ```

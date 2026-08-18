@@ -28,6 +28,7 @@ from sailpoint.access_request_approvals.models.approval_forward_history import A
 from sailpoint.access_request_approvals.models.comment_dto import CommentDto
 from sailpoint.access_request_approvals.models.entitlement_state_snapshot_jit_detail import EntitlementStateSnapshotJitDetail
 from sailpoint.access_request_approvals.models.pending_approval_action import PendingApprovalAction
+from sailpoint.access_request_approvals.models.pending_approval_form import PendingApprovalForm
 from sailpoint.access_request_approvals.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from sailpoint.access_request_approvals.models.pending_approval_owner import PendingApprovalOwner
 from sailpoint.access_request_approvals.models.requestable_object_reference import RequestableObjectReference
@@ -69,7 +70,8 @@ class PendingApproval(BaseModel):
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     max_permitted_access_duration: Optional[PendingApprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
     jit_details: Optional[List[EntitlementStateSnapshotJitDetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
-    __properties: ClassVar[List[str]] = ["id", "accessRequestId", "name", "created", "modified", "requestCreated", "requestType", "identityType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration", "jitDetails"]
+    form: Optional[PendingApprovalForm] = None
+    __properties: ClassVar[List[str]] = ["id", "accessRequestId", "name", "created", "modified", "requestCreated", "requestType", "identityType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration", "jitDetails", "form"]
 
     @field_validator('identity_type')
     def identity_type_validate_enum(cls, value):
@@ -169,6 +171,9 @@ class PendingApproval(BaseModel):
                 if _item_jit_details:
                     _items.append(_item_jit_details.to_dict())
             _dict['jitDetails'] = _items
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
@@ -244,7 +249,8 @@ class PendingApproval(BaseModel):
             "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
             "privilegeLevel": obj.get("privilegeLevel"),
             "maxPermittedAccessDuration": PendingApprovalMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
-            "jitDetails": [EntitlementStateSnapshotJitDetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None
+            "jitDetails": [EntitlementStateSnapshotJitDetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None,
+            "form": PendingApprovalForm.from_dict(obj["form"]) if obj.get("form") is not None else None
         })
         return _obj
 

@@ -36,7 +36,8 @@ class AccessRequestItem(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. ", alias="removeDate")
     assignment_id: Optional[StrictStr] = Field(default=None, description="The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity. * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source. ", alias="assignmentId")
     native_identity: Optional[StrictStr] = Field(default=None, description="The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source. ", alias="nativeIdentity")
-    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "assignmentId", "nativeIdentity"]
+    form_instance_id: Optional[StrictStr] = Field(default=None, description="Optional ID of a completed form instance for this line item. For human GRANT_ACCESS requests, include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. Not used for REVOKE_ACCESS.", alias="formInstanceId")
+    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "startDate", "removeDate", "assignmentId", "nativeIdentity", "formInstanceId"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -94,6 +95,11 @@ class AccessRequestItem(BaseModel):
         if self.native_identity is None and "native_identity" in self.model_fields_set:
             _dict['nativeIdentity'] = None
 
+        # set to None if form_instance_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_instance_id is None and "form_instance_id" in self.model_fields_set:
+            _dict['formInstanceId'] = None
+
         return _dict
 
     @classmethod
@@ -113,7 +119,8 @@ class AccessRequestItem(BaseModel):
             "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "assignmentId": obj.get("assignmentId"),
-            "nativeIdentity": obj.get("nativeIdentity")
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "formInstanceId": obj.get("formInstanceId")
         })
         return _obj
 

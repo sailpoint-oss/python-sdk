@@ -46,7 +46,8 @@ class TestAccountsSelectionRequest(unittest.TestCase):
                         start_date = '2020-06-12T21:22:23Z', 
                         remove_date = '2020-07-11T21:23:15Z', 
                         assignment_id = 'ee48a191c00d49bf9264eb0a4fc3a9fc', 
-                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', 
+                        form_instance_id = '9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e', )
                     ],
                 client_metadata = {"requestedAppId":"2c91808f7892918f0178b78da4a305a1","requestedAppName":"test-app"},
                 requested_for_with_requested_items = [
@@ -70,7 +71,8 @@ class TestAccountsSelectionRequest(unittest.TestCase):
                                                 native_identity = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', )
                                             ], )
                                     ], 
-                                native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
+                                native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', 
+                                form_instance_id = '9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e', )
                             ], )
                     ]
             )

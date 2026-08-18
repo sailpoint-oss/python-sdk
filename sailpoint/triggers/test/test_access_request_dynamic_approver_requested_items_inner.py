@@ -40,7 +40,8 @@ class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
                 description = 'Engineering Access',
                 type = 'ACCESS_PROFILE',
                 operation = 'Add',
-                comment = 'William needs this access for his day to day job activities.'
+                comment = 'William needs this access for his day to day job activities.',
+                form = None
             )
         else:
             return AccessRequestDynamicApproverRequestedItemsInner(

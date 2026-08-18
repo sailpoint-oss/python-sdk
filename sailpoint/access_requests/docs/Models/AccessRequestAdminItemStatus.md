@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **reauthorization_required** | **bool** | True if re-auth is required. | [optional] [default to False]
 **access_request_id** | **str** | This is the account activity id. | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
+**form** | [**RequestedItemStatusForm**](requested-item-status-form) |  | [optional] 
 }
 
 ## Example
@@ -134,7 +135,8 @@ remove_date='2019-10-23T00:00Z',
 cancelable=True,
 reauthorization_required=True,
 access_request_id='2b838de9-db9b-abcf-e646-d4f274ad4238',
-client_metadata={"key1":"value1","key2":"value2"}
+client_metadata={"key1":"value1","key2":"value2"},
+form=
 )
 
 ```

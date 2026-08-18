@@ -30,6 +30,7 @@ from sailpoint.access_requests.models.error_message_dto import ErrorMessageDto
 from sailpoint.access_requests.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.access_requests.models.requested_account_ref import RequestedAccountRef
 from sailpoint.access_requests.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
+from sailpoint.access_requests.models.requested_item_status_form import RequestedItemStatusForm
 from sailpoint.access_requests.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.access_requests.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.access_requests.models.requested_item_status_request_state import RequestedItemStatusRequestState
@@ -73,7 +74,8 @@ class RequestedItemStatus(BaseModel):
     requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     jit_details: Optional[List[EntitlementStateSnapshotJitDetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel", "jitDetails"]
+    form: Optional[RequestedItemStatusForm] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel", "jitDetails", "form"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -199,6 +201,9 @@ class RequestedItemStatus(BaseModel):
                 if _item_jit_details:
                     _items.append(_item_jit_details.to_dict())
             _dict['jitDetails'] = _items
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -323,7 +328,8 @@ class RequestedItemStatus(BaseModel):
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
             "privilegeLevel": obj.get("privilegeLevel"),
-            "jitDetails": [EntitlementStateSnapshotJitDetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None
+            "jitDetails": [EntitlementStateSnapshotJitDetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None,
+            "form": RequestedItemStatusForm.from_dict(obj["form"]) if obj.get("form") is not None else None
         })
         return _obj
 

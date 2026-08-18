@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **privilege_level** | **str** | The privilege level of the requested access item, if applicable. | [optional] 
 **max_permitted_access_duration** | [**PendingApprovalMaxPermittedAccessDuration**](pending-approval-max-permitted-access-duration) |  | [optional] 
 **jit_details** | **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
+**form** | [**PendingApprovalForm**](pending-approval-form) |  | [optional] 
 }
 
 ## Example
@@ -157,7 +158,8 @@ max_permitted_access_duration=sailpoint.access_request_approvals.models.pending_
                     time_unit = 'DAYS', ),
 jit_details=[
                     { }
-                    ]
+                    ],
+form=
 )
 
 ```

@@ -42,6 +42,7 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
                 operation = 'Add',
                 comment = 'William needs this access to do his job.',
                 client_metadata = {"applicationName":"My application"},
+                form = None,
                 approval_info = [
                     sailpoint.triggers.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                         approval_comment = 'This access looks good.  Approved.', 

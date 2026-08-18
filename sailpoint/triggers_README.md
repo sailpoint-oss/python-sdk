@@ -84,6 +84,8 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover](sailpoint/triggers/docs/AccessRequestDynamicApprover.md)
  - [AccessRequestDynamicApprover2](sailpoint/triggers/docs/AccessRequestDynamicApprover2.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint/triggers/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
+ - [AccessRequestDynamicApproverRequestedItemsInnerForm](sailpoint/triggers/docs/AccessRequestDynamicApproverRequestedItemsInnerForm.md)
+ - [AccessRequestItemForm](sailpoint/triggers/docs/AccessRequestItemForm.md)
  - [AccessRequestPostApproval](sailpoint/triggers/docs/AccessRequestPostApproval.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInner](sailpoint/triggers/docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner](sailpoint/triggers/docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.md)
