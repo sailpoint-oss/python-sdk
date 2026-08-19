@@ -147,6 +147,37 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling IntelligenceApi->get_intel_identity_certification_history_v1: %s\n" % e)
+- path: /intelligence/v1/identities/{id}/non-human-identity-ownership/{category}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence/methods/intelligence#get-intel-identity-non-human-identity-ownership-v1
+      source: |
+        from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
+        from sailpoint.intelligence.api_client import ApiClient
+        from sailpoint.intelligence.models.intelnonhumanidentityownershipitem import Intelnonhumanidentityownershipitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
+          category = 'agents' # str | Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes.  # str | Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes. 
+          ownership_role = primary # str | Optional ownership role discriminator. When set to `primary` or `secondary`, returns one paged role bucket. When omitted, defaults to `primary`.  (optional) (default to primary) # str | Optional ownership role discriminator. When set to `primary` or `secondary`, returns one paged role bucket. When omitted, defaults to `primary`.  (optional) (default to primary)
+          limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
+          offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # List owned NHI identities
+              
+              results = IntelligenceApi(api_client).get_intel_identity_non_human_identity_ownership_v1(id=id, category=category)
+              # Below is a request that includes all optional parameters
+              # results = IntelligenceApi(api_client).get_intel_identity_non_human_identity_ownership_v1(id, category, ownership_role, limit, offset, count)
+              print("The response of IntelligenceApi->get_intel_identity_non_human_identity_ownership_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligenceApi->get_intel_identity_non_human_identity_ownership_v1: %s\n" % e)
 - path: /intelligence/v1/identities/{id}/outliers/rare-access
   method: GET
   xCodeSample:

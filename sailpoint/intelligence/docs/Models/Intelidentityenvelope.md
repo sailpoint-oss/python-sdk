@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **identity_status** | **str** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
 **is_manager** | **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to False]
 **identity_graph** | [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
+**non_human_identity_ownership** | [**Intelnonhumanidentityownership**](intelnonhumanidentityownership) | Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render.  | [optional] 
 **accounts** | [**Intelmachineaccountsslice**](intelmachineaccountsslice) |  | [required]
 **privileged_access** | [**IntelPrivilegedAccessSlice**](intel-privileged-access-slice) | Full privileged access result for the identity. | [required]
 **outliers** | [**IntelOutliersSlice**](intel-outliers-slice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
@@ -65,6 +66,9 @@ identity_status='ACTIVE',
 is_manager=False,
 identity_graph=sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
                     href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8', ),
+non_human_identity_ownership=sailpoint.intelligence.models.intelnonhumanidentityownership.Intelnonhumanidentityownership(
+                    agents = null, 
+                    applications = null, ),
 accounts=sailpoint.intelligence.models.intelmachineaccountsslice.Intelmachineaccountsslice(
                     items = [
                         sailpoint.intelligence.models.intelmachineaccountwire.Intelmachineaccountwire(

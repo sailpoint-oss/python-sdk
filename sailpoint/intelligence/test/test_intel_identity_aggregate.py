@@ -49,6 +49,9 @@ class TestIntelIdentityAggregate(unittest.TestCase):
                 is_manager = False,
                 identity_graph = sailpoint.intelligence.models.intelidentitygraphlink.Intelidentitygraphlink(
                     href = 'https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8', ),
+                non_human_identity_ownership = sailpoint.intelligence.models.intelnonhumanidentityownership.Intelnonhumanidentityownership(
+                    agents = null, 
+                    applications = null, ),
                 accounts = sailpoint.intelligence.models.intel_accounts_slice.IntelAccountsSlice(
                     items = [
                         sailpoint.intelligence.models.intel_access_account_wire.IntelAccessAccountWire(

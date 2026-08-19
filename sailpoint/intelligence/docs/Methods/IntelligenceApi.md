@@ -22,6 +22,10 @@ calls to MICE, Shelby List Accounts, SDS Search, IDA-outliers, and identity-hist
   tenant lacks this license, the &#x60;outliers&#x60; key is omitted.
 - **&#x60;idg:base&#x60;** (optional): governs the root-level &#x60;identityGraph&#x60; deep link on aggregate
   responses. When the tenant lacks this license, &#x60;identityGraph&#x60; is omitted.
+- **&#x60;idn:machine-identity-security&#x60;** (optional): governs the Human &#x60;nonHumanIdentityOwnership&#x60;
+  slice. When the tenant lacks this license, &#x60;nonHumanIdentityOwnership&#x60; is omitted on the
+  aggregate GET and the &#x60;/non-human-identity-ownership/{category}&#x60; child route returns
+  **403 Forbidden**.
 
 ## Pagination
 
@@ -29,11 +33,13 @@ The aggregated Human GET embeds the first **10** items per paged slice. Each ups
 sends &#x60;count&#x3D;true&#x60; and reads &#x60;X-Total-Count&#x60;. Parent slices expose &#x60;totalCount&#x60; when &#x60;items&#x60; is
 non-empty and set &#x60;next&#x60; when &#x60;totalCount &gt; offset + len(items)&#x60; (aggregate offset is always 0).
 Empty slices render as &#x60;items: []&#x60; with no &#x60;totalCount&#x60;. &#x60;privilegedAccess&#x60; is never paged and
-carries no &#x60;totalCount&#x60;.
+carries no &#x60;totalCount&#x60;. When licensed, &#x60;nonHumanIdentityOwnership&#x60; pages each
+&#x60;primaryOwned&#x60; / &#x60;secondaryOwned&#x60; bucket independently under &#x60;agents&#x60; and &#x60;applications&#x60;.
 
-Human child routes (&#x60;/accounts&#x60;, &#x60;/outliers/rare-access&#x60;, &#x60;/access-history/*&#x60;) follow the
-SailPoint V3 pattern: pass &#x60;count&#x3D;true&#x60; to receive &#x60;X-Total-Count&#x60; (including &#x60;0&#x60; on empty
-pages). When &#x60;count&#x60; is omitted, upstream count work is skipped and the header is omitted.
+Human child routes (&#x60;/accounts&#x60;, &#x60;/outliers/rare-access&#x60;, &#x60;/access-history/*&#x60;,
+&#x60;/non-human-identity-ownership/{category}&#x60;) follow the SailPoint V3 pattern: pass &#x60;count&#x3D;true&#x60;
+to receive &#x60;X-Total-Count&#x60; (including &#x60;0&#x60; on empty pages). When &#x60;count&#x60; is omitted, upstream
+count work is skipped and the header is omitted.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -44,6 +50,7 @@ Method | HTTP request | Description
 [**get-intel-identity-access-item-history-v1**](#get-intel-identity-access-item-history-v1) | **GET** `/intelligence/v1/identities/{id}/access-history/access-items` | List identity access item history
 [**get-intel-identity-accounts-v1**](#get-intel-identity-accounts-v1) | **GET** `/intelligence/v1/identities/{id}/accounts` | List identity accounts
 [**get-intel-identity-certification-history-v1**](#get-intel-identity-certification-history-v1) | **GET** `/intelligence/v1/identities/{id}/access-history/certifications` | List identity certification history
+[**get-intel-identity-non-human-identity-ownership-v1**](#get-intel-identity-non-human-identity-ownership-v1) | **GET** `/intelligence/v1/identities/{id}/non-human-identity-ownership/{category}` | List owned NHI identities
 [**get-intel-identity-rare-access-v1**](#get-intel-identity-rare-access-v1) | **GET** `/intelligence/v1/identities/{id}/outliers/rare-access` | List identity rare access
 [**get-response-action-status-v1**](#get-response-action-status-v1) | **GET** `/intelligence/v1/response-actions/{id}/status` | Get response action status
 
@@ -167,18 +174,24 @@ Embeds the first page (10 items) of each enrichment slice. Each paged slice incl
 from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when
 totalCount exceeds the items returned on this page. Slices are always present (empty uses
 items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
-next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500,
-except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license
-(upstream 401 or 403).
+next or totalCount. When the tenant has idn:machine-identity-security, nonHumanIdentityOwnership
+is included with agents and applications categories; each category is a flat object with
+independently paged primaryOwned and secondaryOwned buckets, and optional message/reason when
+upstream ownership fetch fails for that category (reason UPSTREAM_UNAVAILABLE). When the tenant
+lacks that license, nonHumanIdentityOwnership is omitted. Continue ownership paging with
+GET .../non-human-identity-ownership/{category} and optional ownershipRole=primary|secondary
+(defaults to primary). If any enrichment upstream fails, the whole request fails with HTTP 500,
+except outliers (omitted when the tenant lacks the IDA-outliers license) and
+nonHumanIdentityOwnership category-level degrade (aggregate still returns HTTP 200).
 
 **Non-human identity envelope (type NHI)**
 
 Returns flat non-human identity fields at the top level plus correlated machine accounts on the
 aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary).
-Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child
-routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity
-returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409
-with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
+Omits Human-only slices (privilegedAccess, outliers, accessHistory, nonHumanIdentityOwnership).
+Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates
+to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent
+identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-identity-intelligence-v-1)
@@ -265,7 +278,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of access-item history events. | List[IntelAccessItemHistoryEvent] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
+200 | One page of access-item history events. | List[IntelAccessItemHistoryEvent] |  * X-Total-Count - Total number of owned non-human identities for the requested ownership role; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Unauthorized access | ErrorResponseDto |  -  |
@@ -335,7 +348,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of accounts. | List[IntelAccessAccountWire] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
+200 | One page of accounts. | List[IntelAccessAccountWire] |  * X-Total-Count - Total number of owned non-human identities for the requested ownership role; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Unauthorized access | ErrorResponseDto |  -  |
@@ -407,7 +420,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of certification history events. | List[IntelCertificationHistoryEvent] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
+200 | One page of certification history events. | List[IntelCertificationHistoryEvent] |  * X-Total-Count - Total number of owned non-human identities for the requested ownership role; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Unauthorized access | ErrorResponseDto |  -  |
@@ -451,6 +464,90 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## get-intel-identity-non-human-identity-ownership-v1
+List owned NHI identities
+Continuation endpoint for a human parent's
+`nonHumanIdentityOwnership.{category}.primaryOwned.next` or
+`nonHumanIdentityOwnership.{category}.secondaryOwned.next` link. Returns a bare JSON array of
+owned non-human identity summary rows for the given `category`, optional `ownershipRole`,
+`limit`, and `offset`. Wire items match the aggregate ownership item shape
+(`{ id, displayName, source? }`).
+
+When `ownershipRole` is omitted, the request defaults to `primary`. Pass `count=true` to
+receive `X-Total-Count` (including `0` on empty pages). The `filters` query parameter is not
+supported on this route (HTTP 400).
+
+Requires tenant licenses `idn:response-and-remediation` and `idn:machine-identity-security`.
+Tenants without `idn:machine-identity-security` receive HTTP 403.
+
+Not applicable to non-human identities (no ownership slice on the NHI envelope).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-intel-identity-non-human-identity-ownership-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Non-empty identity id path segment for Intelligence sub-resources.
+Path   | category | **str** | True  | Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes. 
+  Query | ownership_role | **str** |   (optional) (default to primary) | Optional ownership role discriminator. When set to `primary` or `secondary`, returns one paged role bucket. When omitted, defaults to `primary`. 
+  Query | limit | **int** |   (optional) (default to 250) | Page size. Defaults to 250; values above 250 are rejected with 400.
+  Query | offset | **int** |   (optional) (default to 0) | Zero-based page offset. Defaults to 0.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+### Return type
+[**List[Intelnonhumanidentityownershipitem]**](../models/intelnonhumanidentityownershipitem)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | One page of owned non-human identities for the requested category and role. | List[Intelnonhumanidentityownershipitem] |  * X-Total-Count - Total number of owned non-human identities for the requested ownership role; present only when `count=true` was sent (including `0` on empty pages).  |
+400 | Invalid path or query parameters, including invalid &#x60;category&#x60;, invalid &#x60;ownershipRole&#x60;, unsupported &#x60;filters&#x60;, or invalid &#x60;limit&#x60;/&#x60;offset&#x60;/&#x60;count&#x60;.  | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
+403 | Unauthorized access, or tenant lacks the &#x60;idn:machine-identity-security&#x60; license required for this route.  | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetIdentityIntelligenceV1429Response |  -  |
+500 | Internal or upstream server failure. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.intelligence.api.intelligence_api import IntelligenceApi
+from sailpoint.intelligence.api_client import ApiClient
+from sailpoint.intelligence.models.intelnonhumanidentityownershipitem import Intelnonhumanidentityownershipitem
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence sub-resources. # str | Non-empty identity id path segment for Intelligence sub-resources.
+    category = 'agents' # str | Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes.  # str | Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes. 
+    ownership_role = primary # str | Optional ownership role discriminator. When set to `primary` or `secondary`, returns one paged role bucket. When omitted, defaults to `primary`.  (optional) (default to primary) # str | Optional ownership role discriminator. When set to `primary` or `secondary`, returns one paged role bucket. When omitted, defaults to `primary`.  (optional) (default to primary)
+    limit = 250 # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250) # int | Page size. Defaults to 250; values above 250 are rejected with 400. (optional) (default to 250)
+    offset = 0 # int | Zero-based page offset. Defaults to 0. (optional) (default to 0) # int | Zero-based page offset. Defaults to 0. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+
+    try:
+        # List owned NHI identities
+        
+        results = IntelligenceApi(api_client).get_intel_identity_non_human_identity_ownership_v1(id=id, category=category)
+        # Below is a request that includes all optional parameters
+        # results = IntelligenceApi(api_client).get_intel_identity_non_human_identity_ownership_v1(id, category, ownership_role, limit, offset, count)
+        print("The response of IntelligenceApi->get_intel_identity_non_human_identity_ownership_v1:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling IntelligenceApi->get_intel_identity_non_human_identity_ownership_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## get-intel-identity-rare-access-v1
 List identity rare access
 Continuation endpoint for the parent response's `outliers.rareAccess.next` link.
@@ -480,7 +577,7 @@ Path   | id | **str** | True  | Non-empty identity id path segment for Intellige
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | One page of rare access items. | List[IntelOutlierAccessItem] |  * X-Total-Count - Total number of certification history events for this identity; present only when `count=true` was sent (including `0` on empty pages).  |
+200 | One page of rare access items. | List[IntelOutlierAccessItem] |  * X-Total-Count - Total number of owned non-human identities for the requested ownership role; present only when `count=true` was sent (including `0` on empty pages).  |
 400 | Invalid path or query parameters. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetIdentityIntelligenceV1401Response |  -  |
 403 | Unauthorized access | ErrorResponseDto |  -  |

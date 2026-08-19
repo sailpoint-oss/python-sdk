@@ -61,6 +61,13 @@ class TestIntelligenceApi(unittest.TestCase):
         """
         pass
 
+    def test_get_intel_identity_non_human_identity_ownership_v1(self) -> None:
+        """Test case for get_intel_identity_non_human_identity_ownership_v1
+
+        List owned NHI identities
+        """
+        pass
+
     def test_get_intel_identity_rare_access_v1(self) -> None:
         """Test case for get_intel_identity_rare_access_v1
 

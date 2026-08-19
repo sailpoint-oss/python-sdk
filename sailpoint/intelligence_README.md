@@ -70,6 +70,7 @@ Class | Method | HTTP request | Description
 *IntelligenceApi* | [**get_intel_identity_access_item_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_access_item_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceApi* | [**get_intel_identity_accounts_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_accounts_v1) | **GET** /intelligence/v1/identities/{id}/accounts | List identity accounts
 *IntelligenceApi* | [**get_intel_identity_certification_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_certification_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
+*IntelligenceApi* | [**get_intel_identity_non_human_identity_ownership_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_non_human_identity_ownership_v1) | **GET** /intelligence/v1/identities/{id}/non-human-identity-ownership/{category} | List owned NHI identities
 *IntelligenceApi* | [**get_intel_identity_rare_access_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_rare_access_v1) | **GET** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
 *IntelligenceApi* | [**get_response_action_status_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_response_action_status_v1) | **GET** /intelligence/v1/response-actions/{id}/status | Get response action status
 
@@ -109,6 +110,10 @@ Class | Method | HTTP request | Description
  - [Intelmachineidentityowners](sailpoint/intelligence/docs/Intelmachineidentityowners.md)
  - [Intelmachinesourcewire](sailpoint/intelligence/docs/Intelmachinesourcewire.md)
  - [Intelmachineuserentitlement](sailpoint/intelligence/docs/Intelmachineuserentitlement.md)
+ - [Intelnonhumanidentityownedslice](sailpoint/intelligence/docs/Intelnonhumanidentityownedslice.md)
+ - [Intelnonhumanidentityownership](sailpoint/intelligence/docs/Intelnonhumanidentityownership.md)
+ - [Intelnonhumanidentityownershipcategory](sailpoint/intelligence/docs/Intelnonhumanidentityownershipcategory.md)
+ - [Intelnonhumanidentityownershipitem](sailpoint/intelligence/docs/Intelnonhumanidentityownershipitem.md)
  - [Intelprivilegelevel](sailpoint/intelligence/docs/Intelprivilegelevel.md)
  - [LocaleOrigin](sailpoint/intelligence/docs/LocaleOrigin.md)
  - [Responseactionaccepted](sailpoint/intelligence/docs/Responseactionaccepted.md)
