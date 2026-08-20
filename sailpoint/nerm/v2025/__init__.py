@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.1.23"
+__version__ = "2.1.24"
 
 # import apis into sdk package
 from sailpoint.nerm.v2025.api.delegations_api import DelegationsApi

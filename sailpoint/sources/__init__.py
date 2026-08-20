@@ -51,6 +51,7 @@ from sailpoint.sources.models.base_reference_dto import BaseReferenceDto
 from sailpoint.sources.models.connector_detail import ConnectorDetail
 from sailpoint.sources.models.correlation_config import CorrelationConfig
 from sailpoint.sources.models.correlation_config_attribute_assignments_inner import CorrelationConfigAttributeAssignmentsInner
+from sailpoint.sources.models.dataset_aggregation_request import DatasetAggregationRequest
 from sailpoint.sources.models.delete_source_v1202_response import DeleteSourceV1202Response
 from sailpoint.sources.models.dependant_app_connections import DependantAppConnections
 from sailpoint.sources.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
@@ -103,6 +104,9 @@ from sailpoint.sources.models.source_account_correlation_rule import SourceAccou
 from sailpoint.sources.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.sources.models.source_cluster import SourceCluster
 from sailpoint.sources.models.source_connections_dto import SourceConnectionsDto
+from sailpoint.sources.models.source_dataset import SourceDataset
+from sailpoint.sources.models.source_dataset_resource import SourceDatasetResource
+from sailpoint.sources.models.source_dataset_resource_reference import SourceDatasetResourceReference
 from sailpoint.sources.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.sources.models.source_health_dto import SourceHealthDto
 from sailpoint.sources.models.source_management_workgroup import SourceManagementWorkgroup
@@ -110,10 +114,12 @@ from sailpoint.sources.models.source_manager_correlation_mapping import SourceMa
 from sailpoint.sources.models.source_manager_correlation_rule import SourceManagerCorrelationRule
 from sailpoint.sources.models.source_owner import SourceOwner
 from sailpoint.sources.models.source_password_policies_inner import SourcePasswordPoliciesInner
+from sailpoint.sources.models.source_resource_mapping_value import SourceResourceMappingValue
 from sailpoint.sources.models.source_schemas_inner import SourceSchemasInner
 from sailpoint.sources.models.source_sync_job import SourceSyncJob
 from sailpoint.sources.models.source_sync_payload import SourceSyncPayload
 from sailpoint.sources.models.status_response import StatusResponse
+from sailpoint.sources.models.task_result_details import TaskResultDetails
 from sailpoint.sources.models.task_result_dto import TaskResultDto
 from sailpoint.sources.models.transform import Transform
 from sailpoint.sources.models.transform_read import TransformRead

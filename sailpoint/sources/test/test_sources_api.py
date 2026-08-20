@@ -40,6 +40,20 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_source_dataset_v1(self) -> None:
+        """Test case for create_source_dataset_v1
+
+        Create dataset on source
+        """
+        pass
+
+    def test_create_source_resource_v1(self) -> None:
+        """Test case for create_source_resource_v1
+
+        Create resource on source
+        """
+        pass
+
     def test_create_source_schedule_v1(self) -> None:
         """Test case for create_source_schedule_v1
 
@@ -86,6 +100,27 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for delete_provisioning_policy_v2
 
         Delete provisioning policy by ID
+        """
+        pass
+
+    def test_delete_source_dataset_objects_v1(self) -> None:
+        """Test case for delete_source_dataset_objects_v1
+
+        Delete objects for source dataset
+        """
+        pass
+
+    def test_delete_source_dataset_v1(self) -> None:
+        """Test case for delete_source_dataset_v1
+
+        Delete source dataset by id
+        """
+        pass
+
+    def test_delete_source_resource_v1(self) -> None:
+        """Test case for delete_source_resource_v1
+
+        Delete source resource by id
         """
         pass
 
@@ -187,6 +222,20 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_dataset_v1(self) -> None:
+        """Test case for get_source_dataset_v1
+
+        Get source dataset by id
+        """
+        pass
+
+    def test_get_source_datasets_v1(self) -> None:
+        """Test case for get_source_datasets_v1
+
+        List datasets on source
+        """
+        pass
+
     def test_get_source_entitlement_request_config_v1(self) -> None:
         """Test case for get_source_entitlement_request_config_v1
 
@@ -198,6 +247,27 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for get_source_health_v1
 
         Fetches source health by id
+        """
+        pass
+
+    def test_get_source_resource_mappings_v1(self) -> None:
+        """Test case for get_source_resource_mappings_v1
+
+        Get source resource mappings
+        """
+        pass
+
+    def test_get_source_resource_v1(self) -> None:
+        """Test case for get_source_resource_v1
+
+        Get source resource by id
+        """
+        pass
+
+    def test_get_source_resources_v1(self) -> None:
+        """Test case for get_source_resources_v1
+
+        List resources for a source
         """
         pass
 
@@ -268,6 +338,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for import_entitlements_v1
 
         Entitlement aggregation
+        """
+        pass
+
+    def test_import_source_dataset_v1(self) -> None:
+        """Test case for import_source_dataset_v1
+
+        Aggregate source dataset
         """
         pass
 
@@ -345,6 +422,20 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for put_source_attr_sync_config_v1
 
         Update attribute sync config
+        """
+        pass
+
+    def test_put_source_dataset_v1(self) -> None:
+        """Test case for put_source_dataset_v1
+
+        Update source dataset (full)
+        """
+        pass
+
+    def test_put_source_resource_v1(self) -> None:
+        """Test case for put_source_resource_v1
+
+        Update source resource (full)
         """
         pass
 
@@ -432,10 +523,24 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_update_source_dataset_v1(self) -> None:
+        """Test case for update_source_dataset_v1
+
+        Update source dataset (partial)
+        """
+        pass
+
     def test_update_source_entitlement_request_config_v1(self) -> None:
         """Test case for update_source_entitlement_request_config_v1
 
         Update source entitlement request configuration
+        """
+        pass
+
+    def test_update_source_resource_v1(self) -> None:
+        """Test case for update_source_resource_v1
+
+        Update source resource (partial)
         """
         pass
 
