@@ -68,4 +68,6 @@ from sailpoint.access_model_metadata.models.search_aggregation_specification imp
 from sailpoint.access_model_metadata.models.search_filter_type import SearchFilterType
 from sailpoint.access_model_metadata.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from sailpoint.access_model_metadata.models.text_query import TextQuery
+from sailpoint.access_model_metadata.models.tracker_key_dto import TrackerKeyDTO
+from sailpoint.access_model_metadata.models.tracker_value_dto import TrackerValueDTO
 from sailpoint.access_model_metadata.models.type_ahead_query import TypeAheadQuery

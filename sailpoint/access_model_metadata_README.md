@@ -47,7 +47,7 @@ configuration = sailpoint.access_model_metadata.Configuration(
 with sailpoint.access_model_metadata.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.access_model_metadata.AccessModelMetadataApi(api_client)
-    attribute_dto = sailpoint.access_model_metadata.AttributeDTO() # AttributeDTO | Attribute to create
+    attribute_dto = {"key":"iscPrivacy","name":"Privacy","multiselect":false,"isAdhoc":true,"type":"custom","objectTypes":["all"],"description":"Specifies the level of privacy associated with an access item.","values":[{"value":"public","name":"Public","status":"active","type":"static"}]} # AttributeDTO | Attribute to create
 
     try:
         # Create access model metadata attribute
@@ -67,6 +67,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessModelMetadataApi* | [**create_access_model_metadata_attribute_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute_v1) | **POST** /access-model-metadata/v1/attributes | Create access model metadata attribute
 *AccessModelMetadataApi* | [**create_access_model_metadata_attribute_value_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute_value_v1) | **POST** /access-model-metadata/v1/attributes/{key}/values | Create access model metadata value
+*AccessModelMetadataApi* | [**delete_access_model_metadata_attribute_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#delete_access_model_metadata_attribute_v1) | **DELETE** /access-model-metadata/v1/attributes/{key} | Delete access model metadata attribute
+*AccessModelMetadataApi* | [**delete_access_model_metadata_attribute_value_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#delete_access_model_metadata_attribute_value_v1) | **DELETE** /access-model-metadata/v1/attributes/{key}/values/{value} | Delete access model metadata value
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_v1) | **GET** /access-model-metadata/v1/attributes/{key} | Get access model metadata attribute
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value_v1) | **GET** /access-model-metadata/v1/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute_v1**](sailpoint/access_model_metadata/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_v1) | **GET** /access-model-metadata/v1/attributes | List access model metadata attributes
@@ -117,6 +119,8 @@ Class | Method | HTTP request | Description
  - [SearchFilterType](sailpoint/access_model_metadata/docs/SearchFilterType.md)
  - [SubSearchAggregationSpecification](sailpoint/access_model_metadata/docs/SubSearchAggregationSpecification.md)
  - [TextQuery](sailpoint/access_model_metadata/docs/TextQuery.md)
+ - [TrackerKeyDTO](sailpoint/access_model_metadata/docs/TrackerKeyDTO.md)
+ - [TrackerValueDTO](sailpoint/access_model_metadata/docs/TrackerValueDTO.md)
  - [TypeAheadQuery](sailpoint/access_model_metadata/docs/TypeAheadQuery.md)
 
 

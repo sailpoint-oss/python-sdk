@@ -26,6 +26,8 @@ from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_fi
 from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
 from sailpoint.access_model_metadata.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
 from sailpoint.access_model_metadata.models.json_patch_operation import JsonPatchOperation
+from sailpoint.access_model_metadata.models.tracker_key_dto import TrackerKeyDTO
+from sailpoint.access_model_metadata.models.tracker_value_dto import TrackerValueDTO
 
 from sailpoint.access_model_metadata.api_client import ApiClient, RequestSerialized
 from sailpoint.access_model_metadata.api_response import ApiResponse
@@ -64,7 +66,7 @@ class AccessModelMetadataApi:
     ) -> AttributeDTO:
         """Create access model metadata attribute
 
-        Create a new Access Model Metadata Attribute. 
+        Create a new Access Model Metadata Attribute.  The **isAdhoc** field can be set on creation to indicate whether the Attribute supports ad-hoc (dynamically created) values in addition to static values; if omitted, it defaults to *false*.  Any **values** provided at creation time must each have a *type* of *static* (or omit/leave *type* blank); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow, not through this API. 
 
         :param attribute_dto: Attribute to create (required)
         :type attribute_dto: AttributeDTO
@@ -136,7 +138,7 @@ class AccessModelMetadataApi:
     ) -> ApiResponse[AttributeDTO]:
         """Create access model metadata attribute
 
-        Create a new Access Model Metadata Attribute. 
+        Create a new Access Model Metadata Attribute.  The **isAdhoc** field can be set on creation to indicate whether the Attribute supports ad-hoc (dynamically created) values in addition to static values; if omitted, it defaults to *false*.  Any **values** provided at creation time must each have a *type* of *static* (or omit/leave *type* blank); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow, not through this API. 
 
         :param attribute_dto: Attribute to create (required)
         :type attribute_dto: AttributeDTO
@@ -208,7 +210,7 @@ class AccessModelMetadataApi:
     ) -> RESTResponseType:
         """Create access model metadata attribute
 
-        Create a new Access Model Metadata Attribute. 
+        Create a new Access Model Metadata Attribute.  The **isAdhoc** field can be set on creation to indicate whether the Attribute supports ad-hoc (dynamically created) values in addition to static values; if omitted, it defaults to *false*.  Any **values** provided at creation time must each have a *type* of *static* (or omit/leave *type* blank); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow, not through this API. 
 
         :param attribute_dto: Attribute to create (required)
         :type attribute_dto: AttributeDTO
@@ -353,7 +355,7 @@ class AccessModelMetadataApi:
     ) -> AttributeValueDTO:
         """Create access model metadata value
 
-        Create a new value for an existing Access Model Metadata Attribute.     
+        Create a new value for an existing Access Model Metadata Attribute.  The **type** field must be omitted, blank, or *static* (case-insensitive); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow when the parent Attribute has *isAdhoc* set to *true*, not through this API. 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
@@ -430,7 +432,7 @@ class AccessModelMetadataApi:
     ) -> ApiResponse[AttributeValueDTO]:
         """Create access model metadata value
 
-        Create a new value for an existing Access Model Metadata Attribute.     
+        Create a new value for an existing Access Model Metadata Attribute.  The **type** field must be omitted, blank, or *static* (case-insensitive); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow when the parent Attribute has *isAdhoc* set to *true*, not through this API. 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
@@ -507,7 +509,7 @@ class AccessModelMetadataApi:
     ) -> RESTResponseType:
         """Create access model metadata value
 
-        Create a new value for an existing Access Model Metadata Attribute.     
+        Create a new value for an existing Access Model Metadata Attribute.  The **type** field must be omitted, blank, or *static* (case-insensitive); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc values are created dynamically through an internal service-to-service flow when the parent Attribute has *isAdhoc* set to *true*, not through this API. 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
@@ -624,6 +626,583 @@ class AccessModelMetadataApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/access-model-metadata/v1/attributes/{key}/values',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_v1(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TrackerKeyDTO:
+        """Delete access model metadata attribute
+
+        Delete an existing Access Model Metadata Attribute and all of its values. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_v1_serialize(
+            key=key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerKeyDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_v1_with_http_info(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TrackerKeyDTO]:
+        """Delete access model metadata attribute
+
+        Delete an existing Access Model Metadata Attribute and all of its values. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_v1_serialize(
+            key=key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerKeyDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_v1_without_preload_content(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete access model metadata attribute
+
+        Delete an existing Access Model Metadata Attribute and all of its values. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_v1_serialize(
+            key=key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerKeyDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_access_model_metadata_attribute_v1_serialize(
+        self,
+        key,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if key is not None:
+            _path_params['key'] = key
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/access-model-metadata/v1/attributes/{key}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_value_v1(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TrackerValueDTO:
+        """Delete access model metadata value
+
+        Delete an existing Access Model Metadata Attribute Value. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param value: Technical name of the Attribute value. (required)
+        :type value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_value_v1_serialize(
+            key=key,
+            value=value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerValueDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_value_v1_with_http_info(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TrackerValueDTO]:
+        """Delete access model metadata value
+
+        Delete an existing Access Model Metadata Attribute Value. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param value: Technical name of the Attribute value. (required)
+        :type value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_value_v1_serialize(
+            key=key,
+            value=value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerValueDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_access_model_metadata_attribute_value_v1_without_preload_content(
+        self,
+        key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        value: Annotated[StrictStr, Field(description="Technical name of the Attribute value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete access model metadata value
+
+        Delete an existing Access Model Metadata Attribute Value. 
+
+        :param key: Technical name of the Attribute. (required)
+        :type key: str
+        :param value: Technical name of the Attribute value. (required)
+        :type value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_attribute_value_v1_serialize(
+            key=key,
+            value=value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TrackerValueDTO",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttributeV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '410': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttributeV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_access_model_metadata_attribute_value_v1_serialize(
+        self,
+        key,
+        value,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if key is not None:
+            _path_params['key'] = key
+        if value is not None:
+            _path_params['value'] = value
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/access-model-metadata/v1/attributes/{key}/values/{value}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1213,9 +1792,10 @@ class AccessModelMetadataApi:
     @validate_call
     def list_access_model_metadata_attribute_v1(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1232,14 +1812,16 @@ class AccessModelMetadataApi:
     ) -> List[AttributeDTO]:
         """List access model metadata attributes
 
-        Get a list of Access Model Metadata Attributes
+        Get a list of Access Model Metadata Attributes. Supports pagination through limit and offset parameters.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
         :type filters: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**
         :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1268,6 +1850,7 @@ class AccessModelMetadataApi:
             filters=filters,
             sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1298,9 +1881,10 @@ class AccessModelMetadataApi:
     @validate_call
     def list_access_model_metadata_attribute_v1_with_http_info(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1317,14 +1901,16 @@ class AccessModelMetadataApi:
     ) -> ApiResponse[List[AttributeDTO]]:
         """List access model metadata attributes
 
-        Get a list of Access Model Metadata Attributes
+        Get a list of Access Model Metadata Attributes. Supports pagination through limit and offset parameters.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
         :type filters: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**
         :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1353,6 +1939,7 @@ class AccessModelMetadataApi:
             filters=filters,
             sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1383,9 +1970,10 @@ class AccessModelMetadataApi:
     @validate_call
     def list_access_model_metadata_attribute_v1_without_preload_content(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1402,14 +1990,16 @@ class AccessModelMetadataApi:
     ) -> RESTResponseType:
         """List access model metadata attributes
 
-        Get a list of Access Model Metadata Attributes
+        Get a list of Access Model Metadata Attributes. Supports pagination through limit and offset parameters.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
         :type filters: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**
         :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1438,6 +2028,7 @@ class AccessModelMetadataApi:
             filters=filters,
             sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1466,6 +2057,7 @@ class AccessModelMetadataApi:
         filters,
         sorters,
         limit,
+        offset,
         count,
         _request_auth,
         _content_type,
@@ -1500,6 +2092,10 @@ class AccessModelMetadataApi:
         if limit is not None:
             
             _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
             
         if count is not None:
             
@@ -1545,7 +2141,10 @@ class AccessModelMetadataApi:
     def list_access_model_metadata_attribute_value_v1(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1562,12 +2161,18 @@ class AccessModelMetadataApi:
     ) -> List[AttributeValueDTO]:
         """List access model metadata values
 
-        Get a list of Access Model Metadata Attribute Values
+        Get a list of Access Model Metadata Attribute Values. Supports pagination through limit and offset parameters.
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1594,7 +2199,10 @@ class AccessModelMetadataApi:
 
         _param = self._list_access_model_metadata_attribute_value_v1_serialize(
             key=key,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1626,7 +2234,10 @@ class AccessModelMetadataApi:
     def list_access_model_metadata_attribute_value_v1_with_http_info(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1643,12 +2254,18 @@ class AccessModelMetadataApi:
     ) -> ApiResponse[List[AttributeValueDTO]]:
         """List access model metadata values
 
-        Get a list of Access Model Metadata Attribute Values
+        Get a list of Access Model Metadata Attribute Values. Supports pagination through limit and offset parameters.
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1675,7 +2292,10 @@ class AccessModelMetadataApi:
 
         _param = self._list_access_model_metadata_attribute_value_v1_serialize(
             key=key,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1707,7 +2327,10 @@ class AccessModelMetadataApi:
     def list_access_model_metadata_attribute_value_v1_without_preload_content(
         self,
         key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1724,12 +2347,18 @@ class AccessModelMetadataApi:
     ) -> RESTResponseType:
         """List access model metadata values
 
-        Get a list of Access Model Metadata Attribute Values
+        Get a list of Access Model Metadata Attribute Values. Supports pagination through limit and offset parameters.
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1756,7 +2385,10 @@ class AccessModelMetadataApi:
 
         _param = self._list_access_model_metadata_attribute_value_v1_serialize(
             key=key,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
+            offset=offset,
             count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1783,7 +2415,10 @@ class AccessModelMetadataApi:
     def _list_access_model_metadata_attribute_value_v1_serialize(
         self,
         key,
+        filters,
+        sorters,
         limit,
+        offset,
         count,
         _request_auth,
         _content_type,
@@ -1809,9 +2444,21 @@ class AccessModelMetadataApi:
         if key is not None:
             _path_params['key'] = key
         # process the query parameters
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
         if limit is not None:
             
             _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
             
         if count is not None:
             
@@ -1873,7 +2520,7 @@ class AccessModelMetadataApi:
     ) -> AttributeDTO:
         """Update access model metadata attribute
 
-        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **values** 
+        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **isAdhoc**, **values** 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
@@ -1950,7 +2597,7 @@ class AccessModelMetadataApi:
     ) -> ApiResponse[AttributeDTO]:
         """Update access model metadata attribute
 
-        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **values** 
+        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **isAdhoc**, **values** 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str
@@ -2027,7 +2674,7 @@ class AccessModelMetadataApi:
     ) -> RESTResponseType:
         """Update access model metadata attribute
 
-        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **values** 
+        Update an existing Access Model Metadata Attribute.   The following fields are patchable: **name**, **description**, **multiselect**, **isAdhoc**, **values** 
 
         :param key: Technical name of the Attribute. (required)
         :type key: str

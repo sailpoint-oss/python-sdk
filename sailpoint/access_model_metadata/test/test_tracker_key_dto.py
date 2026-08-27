@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Roles
+    Identity Security Cloud API - Access Model Metadata
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.roles.models.attribute_value_dto import AttributeValueDTO
+from sailpoint.access_model_metadata.models.tracker_key_dto import TrackerKeyDTO
 
-class TestAttributeValueDTO(unittest.TestCase):
-    """AttributeValueDTO unit test stubs"""
+class TestTrackerKeyDTO(unittest.TestCase):
+    """TrackerKeyDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,32 @@ class TestAttributeValueDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AttributeValueDTO:
-        """Test AttributeValueDTO
+    def make_instance(self, include_optional) -> TrackerKeyDTO:
+        """Test TrackerKeyDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AttributeValueDTO`
+        # uncomment below to create an instance of `TrackerKeyDTO`
         """
-        model = AttributeValueDTO()
+        model = TrackerKeyDTO()
         if include_optional:
-            return AttributeValueDTO(
-                value = 'public',
-                name = 'Public',
-                status = 'active',
-                type = 'static'
+            return TrackerKeyDTO(
+                id = '2c9180867817ac4d017817c491119a20',
+                type = 'metadata-attribute',
+                status = 'DELETING',
+                errors = [
+                    ''
+                    ],
+                created = '2020-10-08T18:33:52.029Z',
+                key = 'iscPrivacy'
             )
         else:
-            return AttributeValueDTO(
+            return TrackerKeyDTO(
         )
         """
 
-    def testAttributeValueDTO(self):
-        """Test AttributeValueDTO"""
+    def testTrackerKeyDTO(self):
+        """Test TrackerKeyDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

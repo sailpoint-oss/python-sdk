@@ -18,41 +18,23 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AttributeValueDTO(BaseModel):
+class TrackerKeyDTO(BaseModel):
     """
-    AttributeValueDTO
+    TrackerKeyDTO
     """ # noqa: E501
-    value: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The display name of the Attribute value. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the Attribute value.")
-    type: Optional[StrictStr] = Field(default=None, description="Indicates how this Attribute value was created. static values are pre-defined and created directly through this API. adhoc values are created dynamically through an internal service-to-service flow when the parent Attribute has isAdhoc set to true, and cannot be created directly through the public create-value API.")
-    __properties: ClassVar[List[str]] = ["value", "name", "status", "type"]
-
-    @field_validator('value')
-    def value_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$", value):
-            raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$/")
-        return value
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['static', 'adhoc']):
-            warnings.warn(f"must be one of enum values ('static', 'adhoc') unknown value: {value}")
-        return value
+    id: Optional[StrictStr] = Field(default=None, description="ID of the tracker created to record this delete operation.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of object being tracked.")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the delete operation.")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="Any errors encountered while processing the delete operation.")
+    created: Optional[datetime] = Field(default=None, description="The time the delete operation was initiated.")
+    key: Optional[StrictStr] = Field(default=None, description="Technical name of the deleted Attribute.")
+    __properties: ClassVar[List[str]] = ["id", "type", "status", "errors", "created", "key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,7 +54,7 @@ class AttributeValueDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AttributeValueDTO from a JSON string"""
+        """Create an instance of TrackerKeyDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -93,16 +75,21 @@ class AttributeValueDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if type (nullable) is None
+        # set to None if errors (nullable) is None
         # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
+        if self.errors is None and "errors" in self.model_fields_set:
+            _dict['errors'] = None
+
+        # set to None if key (nullable) is None
+        # and model_fields_set contains the field
+        if self.key is None and "key" in self.model_fields_set:
+            _dict['key'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AttributeValueDTO from a dict"""
+        """Create an instance of TrackerKeyDTO from a dict"""
         if obj is None:
             return None
 
@@ -110,10 +97,12 @@ class AttributeValueDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "type": obj.get("type"),
             "status": obj.get("status"),
-            "type": obj.get("type")
+            "errors": obj.get("errors"),
+            "created": obj.get("created"),
+            "key": obj.get("key")
         })
         return _obj
 

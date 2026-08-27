@@ -40,6 +40,20 @@ class TestAccessModelMetadataApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_access_model_metadata_attribute_v1(self) -> None:
+        """Test case for delete_access_model_metadata_attribute_v1
+
+        Delete access model metadata attribute
+        """
+        pass
+
+    def test_delete_access_model_metadata_attribute_value_v1(self) -> None:
+        """Test case for delete_access_model_metadata_attribute_value_v1
+
+        Delete access model metadata value
+        """
+        pass
+
     def test_get_access_model_metadata_attribute_v1(self) -> None:
         """Test case for get_access_model_metadata_attribute_v1
 

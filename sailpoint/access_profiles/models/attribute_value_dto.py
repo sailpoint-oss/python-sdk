@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +28,31 @@ class AttributeValueDTO(BaseModel):
     """
     AttributeValueDTO
     """ # noqa: E501
-    value: Optional[StrictStr] = Field(default=None, description="Technical name of the Attribute value. This is unique and cannot be changed after creation.")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the Attribute value.")
+    value: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The display name of the Attribute value. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -")
     status: Optional[StrictStr] = Field(default=None, description="The status of the Attribute value.")
-    __properties: ClassVar[List[str]] = ["value", "name", "status"]
+    type: Optional[StrictStr] = Field(default=None, description="Indicates how this Attribute value was created. static values are pre-defined and created directly through this API. adhoc values are created dynamically through an internal service-to-service flow when the parent Attribute has isAdhoc set to true, and cannot be created directly through the public create-value API.")
+    __properties: ClassVar[List[str]] = ["value", "name", "status", "type"]
+
+    @field_validator('value')
+    def value_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$", value):
+            raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$/")
+        return value
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['static', 'adhoc']):
+            warnings.warn(f"must be one of enum values ('static', 'adhoc') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,6 +93,11 @@ class AttributeValueDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if type (nullable) is None
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
+
         return _dict
 
     @classmethod
@@ -85,7 +112,8 @@ class AttributeValueDTO(BaseModel):
         _obj = cls.model_validate({
             "value": obj.get("value"),
             "name": obj.get("name"),
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "type": obj.get("type")
         })
         return _obj
 

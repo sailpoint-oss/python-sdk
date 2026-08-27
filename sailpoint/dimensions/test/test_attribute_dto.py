@@ -38,6 +38,7 @@ class TestAttributeDTO(unittest.TestCase):
                 key = 'iscPrivacy',
                 name = 'Privacy',
                 multiselect = False,
+                is_adhoc = False,
                 status = 'active',
                 type = 'governance',
                 object_types = ["entitlement"],
@@ -46,7 +47,8 @@ class TestAttributeDTO(unittest.TestCase):
                     sailpoint.dimensions.models.attribute_value_dto.AttributeValueDTO(
                         value = 'public', 
                         name = 'Public', 
-                        status = 'active', )
+                        status = 'active', 
+                        type = 'static', )
                     ]
             )
         else:

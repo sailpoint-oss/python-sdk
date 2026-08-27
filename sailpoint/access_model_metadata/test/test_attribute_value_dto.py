@@ -37,7 +37,8 @@ class TestAttributeValueDTO(unittest.TestCase):
             return AttributeValueDTO(
                 value = 'public',
                 name = 'Public',
-                status = 'active'
+                status = 'active',
+                type = 'static'
             )
         else:
             return AttributeValueDTO(

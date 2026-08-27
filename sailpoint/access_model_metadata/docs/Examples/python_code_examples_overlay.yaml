@@ -14,12 +14,15 @@
         with ApiClient(configuration) as api_client:
           attribute_dto = '''{
           "multiselect" : false,
+          "isAdhoc" : false,
           "values" : [ {
             "name" : "Public",
+            "type" : "static",
             "value" : "public",
             "status" : "active"
           }, {
             "name" : "Public",
+            "type" : "static",
             "value" : "public",
             "status" : "active"
           } ],
@@ -57,6 +60,7 @@
           key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
           attribute_value_dto = '''{
           "name" : "Public",
+          "type" : "static",
           "value" : "public",
           "status" : "active"
         }''' # AttributeValueDTO | Attribute value to create
@@ -70,6 +74,57 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessModelMetadataApi->create_access_model_metadata_attribute_value_v1: %s\n" % e)
+- path: /access-model-metadata/v1/attributes/{key}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-model-metadata/methods/access-model-metadata#delete-access-model-metadata-attribute-v1
+      source: |
+        from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
+        from sailpoint.access_model_metadata.api_client import ApiClient
+        from sailpoint.access_model_metadata.models.tracker_key_dto import TrackerKeyDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          try:
+              # Delete access model metadata attribute
+              
+              results = AccessModelMetadataApi(api_client).delete_access_model_metadata_attribute_v1(key=key)
+              # Below is a request that includes all optional parameters
+              # results = AccessModelMetadataApi(api_client).delete_access_model_metadata_attribute_v1(key)
+              print("The response of AccessModelMetadataApi->delete_access_model_metadata_attribute_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessModelMetadataApi->delete_access_model_metadata_attribute_v1: %s\n" % e)
+- path: /access-model-metadata/v1/attributes/{key}/values/{value}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-model-metadata/methods/access-model-metadata#delete-access-model-metadata-attribute-value-v1
+      source: |
+        from sailpoint.access_model_metadata.api.access_model_metadata_api import AccessModelMetadataApi
+        from sailpoint.access_model_metadata.api_client import ApiClient
+        from sailpoint.access_model_metadata.models.tracker_value_dto import TrackerValueDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          value = 'public' # str | Technical name of the Attribute value. # str | Technical name of the Attribute value.
+          try:
+              # Delete access model metadata value
+              
+              results = AccessModelMetadataApi(api_client).delete_access_model_metadata_attribute_value_v1(key=key, value=value)
+              # Below is a request that includes all optional parameters
+              # results = AccessModelMetadataApi(api_client).delete_access_model_metadata_attribute_value_v1(key, value)
+              print("The response of AccessModelMetadataApi->delete_access_model_metadata_attribute_value_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessModelMetadataApi->delete_access_model_metadata_attribute_value_v1: %s\n" % e)
 - path: /access-model-metadata/v1/attributes/{key}
   method: GET
   xCodeSample:
@@ -135,16 +190,17 @@
 
 
         with ApiClient(configuration) as api_client:
-          filters = 'name eq \"Privacy\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional)
-          sorters = 'name,-key' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key** (optional)
+          filters = 'name eq \"Privacy\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional)
+          sorters = 'name,-key' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status** (optional)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
           try:
               # List access model metadata attributes
               
               results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_v1()
               # Below is a request that includes all optional parameters
-              # results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_v1(filters, sorters, limit, count)
+              # results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_v1(filters, sorters, limit, offset, count)
               print("The response of AccessModelMetadataApi->list_access_model_metadata_attribute_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -165,14 +221,17 @@
 
         with ApiClient(configuration) as api_client:
           key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          filters = 'name eq \"Public\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or* (optional)
+          sorters = 'name,-value' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type** (optional)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
           try:
               # List access model metadata values
               
               results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_value_v1(key=key)
               # Below is a request that includes all optional parameters
-              # results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_value_v1(key, limit, count)
+              # results = AccessModelMetadataApi(api_client).list_access_model_metadata_attribute_value_v1(key, filters, sorters, limit, offset, count)
               print("The response of AccessModelMetadataApi->list_access_model_metadata_attribute_value_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))

@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.dimensions.models.attribute_value_dto import AttributeValueDTO
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,15 +29,26 @@ class AttributeDTO(BaseModel):
     """
     AttributeDTO
     """ # noqa: E501
-    key: Optional[StrictStr] = Field(default=None, description="Technical name of the Attribute. This is unique and cannot be changed after creation.")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the key.")
+    key: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Technical name of the Attribute. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The display name of the key. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -")
     multiselect: Optional[StrictBool] = Field(default=False, description="Indicates whether the attribute can have multiple values.")
+    is_adhoc: Optional[StrictBool] = Field(default=False, description="Indicates whether this Attribute supports ad-hoc (dynamically created) values, in addition to pre-defined static values. Ad-hoc values are created dynamically through an internal service-to-service flow rather than through the public create-value API. This field can be set when creating an Attribute; if omitted, it defaults to false.", alias="isAdhoc")
     status: Optional[StrictStr] = Field(default=None, description="The status of the Attribute.")
     type: Optional[StrictStr] = Field(default=None, description="The type of the Attribute. This can be either \"custom\" or \"governance\".")
     object_types: Optional[List[StrictStr]] = Field(default=None, description="An array of object types this attributes values can be applied to. Possible values are \"all\" or \"entitlement\". Value \"all\" means this attribute can be used with all object types that are supported.", alias="objectTypes")
-    description: Optional[StrictStr] = Field(default=None, description="The description of the Attribute.")
+    description: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(default=None, description="The description of the Attribute. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ : -")
     values: Optional[List[AttributeValueDTO]] = None
-    __properties: ClassVar[List[str]] = ["key", "name", "multiselect", "status", "type", "objectTypes", "description", "values"]
+    __properties: ClassVar[List[str]] = ["key", "name", "multiselect", "isAdhoc", "status", "type", "objectTypes", "description", "values"]
+
+    @field_validator('key')
+    def key_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$", value):
+            raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +96,11 @@ class AttributeDTO(BaseModel):
                 if _item_values:
                     _items.append(_item_values.to_dict())
             _dict['values'] = _items
+        # set to None if is_adhoc (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_adhoc is None and "is_adhoc" in self.model_fields_set:
+            _dict['isAdhoc'] = None
+
         # set to None if object_types (nullable) is None
         # and model_fields_set contains the field
         if self.object_types is None and "object_types" in self.model_fields_set:
@@ -109,6 +126,7 @@ class AttributeDTO(BaseModel):
             "key": obj.get("key"),
             "name": obj.get("name"),
             "multiselect": obj.get("multiselect") if obj.get("multiselect") is not None else False,
+            "isAdhoc": obj.get("isAdhoc") if obj.get("isAdhoc") is not None else False,
             "status": obj.get("status"),
             "type": obj.get("type"),
             "objectTypes": obj.get("objectTypes"),
