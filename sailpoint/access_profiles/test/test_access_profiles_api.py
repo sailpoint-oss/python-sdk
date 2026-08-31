@@ -47,6 +47,13 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_metadata_from_access_profile_by_key_and_value_v1(self) -> None:
+        """Test case for delete_metadata_from_access_profile_by_key_and_value_v1
+
+        Remove metadata from access profile
+        """
+        pass
+
     def test_get_access_profile_entitlements_v1(self) -> None:
         """Test case for get_access_profile_entitlements_v1
 
@@ -79,6 +86,34 @@ class TestAccessProfilesApi(unittest.TestCase):
         """Test case for update_access_profiles_in_bulk_v1
 
         Update access profile(s) requestable field.
+        """
+        pass
+
+    def test_update_access_profiles_metadata_by_filter_v1(self) -> None:
+        """Test case for update_access_profiles_metadata_by_filter_v1
+
+        Bulk-update metadata by filter
+        """
+        pass
+
+    def test_update_access_profiles_metadata_by_ids_v1(self) -> None:
+        """Test case for update_access_profiles_metadata_by_ids_v1
+
+        Bulk-update metadata by ids
+        """
+        pass
+
+    def test_update_access_profiles_metadata_by_query_v1(self) -> None:
+        """Test case for update_access_profiles_metadata_by_query_v1
+
+        Bulk-update metadata by query
+        """
+        pass
+
+    def test_update_attribute_key_and_value_to_access_profile_v1(self) -> None:
+        """Test case for update_attribute_key_and_value_to_access_profile_v1
+
+        Add metadata to access profile
         """
         pass
 

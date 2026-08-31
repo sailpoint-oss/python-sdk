@@ -190,6 +190,30 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->delete_access_profiles_in_bulk_v1: %s\n" % e)
+- path: /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#delete-metadata-from-access-profile-by-key-and-value-v1
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808c74ff913f0175097daa9d59cd' # str | The access profile's ID. # str | The access profile's ID.
+          attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+          try:
+              # Remove metadata from access profile
+              
+              AccessProfilesApi(api_client).delete_metadata_from_access_profile_by_key_and_value_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+              # Below is a request that includes all optional parameters
+              # AccessProfilesApi(api_client).delete_metadata_from_access_profile_by_key_and_value_v1(id, attribute_key, attribute_value)
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->delete_metadata_from_access_profile_by_key_and_value_v1: %s\n" % e)
 - path: /access-profiles/v1/{id}/entitlements
   method: GET
   xCodeSample:
@@ -333,4 +357,143 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->update_access_profiles_in_bulk_v1: %s\n" % e)
+- path: /access-profiles/v1/access-model-metadata/bulk-update/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#update-access-profiles-metadata-by-filter-v1
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyfilterrequest import Accessprofilemetadatabulkupdatebyfilterrequest
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessprofilemetadatabulkupdatebyfilterrequest = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "requestable eq false",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyfilterrequest | 
+          try:
+              # Bulk-update metadata by filter
+              new_accessprofilemetadatabulkupdatebyfilterrequest = Accessprofilemetadatabulkupdatebyfilterrequest.from_json(accessprofilemetadatabulkupdatebyfilterrequest)
+              results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(accessprofilemetadatabulkupdatebyfilterrequest=new_accessprofilemetadatabulkupdatebyfilterrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(new_accessprofilemetadatabulkupdatebyfilterrequest)
+              print("The response of AccessProfilesApi->update_access_profiles_metadata_by_filter_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_filter_v1: %s\n" % e)
+- path: /access-profiles/v1/access-model-metadata/bulk-update/ids
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#update-access-profiles-metadata-by-ids-v1
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest import Accessprofilemetadatabulkupdatebyidrequest
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessprofilemetadatabulkupdatebyidrequest = '''{
+          "accessProfiles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyidrequest | 
+          try:
+              # Bulk-update metadata by ids
+              new_accessprofilemetadatabulkupdatebyidrequest = Accessprofilemetadatabulkupdatebyidrequest.from_json(accessprofilemetadatabulkupdatebyidrequest)
+              results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(accessprofilemetadatabulkupdatebyidrequest=new_accessprofilemetadatabulkupdatebyidrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(new_accessprofilemetadatabulkupdatebyidrequest)
+              print("The response of AccessProfilesApi->update_access_profiles_metadata_by_ids_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_ids_v1: %s\n" % e)
+- path: /access-profiles/v1/access-model-metadata/bulk-update/query
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#update-access-profiles-metadata-by-query-v1
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyqueryrequest import Accessprofilemetadatabulkupdatebyqueryrequest
+        from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessprofilemetadatabulkupdatebyqueryrequest = '''{
+          "query" : {
+            "indices" : [ "accessprofiles" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyqueryrequest | 
+          try:
+              # Bulk-update metadata by query
+              new_accessprofilemetadatabulkupdatebyqueryrequest = Accessprofilemetadatabulkupdatebyqueryrequest.from_json(accessprofilemetadatabulkupdatebyqueryrequest)
+              results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(accessprofilemetadatabulkupdatebyqueryrequest=new_accessprofilemetadatabulkupdatebyqueryrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(new_accessprofilemetadatabulkupdatebyqueryrequest)
+              print("The response of AccessProfilesApi->update_access_profiles_metadata_by_query_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_query_v1: %s\n" % e)
+- path: /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#update-attribute-key-and-value-to-access-profile-v1
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.access_profile import AccessProfile
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'c24359c389374d0fb8585698a2189e3d' # str | The access profile's ID. # str | The access profile's ID.
+          attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+          try:
+              # Add metadata to access profile
+              
+              results = AccessProfilesApi(api_client).update_attribute_key_and_value_to_access_profile_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).update_attribute_key_and_value_to_access_profile_v1(id, attribute_key, attribute_value)
+              print("The response of AccessProfilesApi->update_attribute_key_and_value_to_access_profile_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->update_attribute_key_and_value_to_access_profile_v1: %s\n" % e)
 

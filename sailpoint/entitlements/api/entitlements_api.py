@@ -24,6 +24,10 @@ from sailpoint.entitlements.models.entitlement_bulk_update_request import Entitl
 from sailpoint.entitlements.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.entitlements.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 from sailpoint.entitlements.models.entitlement_v2 import EntitlementV2
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyfilterrequest import Entitlementmetadatabulkupdatebyfilterrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyidrequest import Entitlementmetadatabulkupdatebyidrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyqueryrequest import Entitlementmetadatabulkupdatebyqueryrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
 from sailpoint.entitlements.models.json_patch_operation import JsonPatchOperation
 from sailpoint.entitlements.models.load_entitlement_task import LoadEntitlementTask
 
@@ -4217,6 +4221,870 @@ class EntitlementsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/entitlements/v1/bulk-update',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_entitlements_metadata_by_filter_v1(
+        self,
+        entitlementmetadatabulkupdatebyfilterrequest: Annotated[Entitlementmetadatabulkupdatebyfilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Entitlementmetadatabulkupdateresponse:
+        """Bulk-update metadata by filter
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+
+        :param entitlementmetadatabulkupdatebyfilterrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyfilterrequest: Entitlementmetadatabulkupdatebyfilterrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_filter_v1_serialize(
+            entitlementmetadatabulkupdatebyfilterrequest=entitlementmetadatabulkupdatebyfilterrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_entitlements_metadata_by_filter_v1_with_http_info(
+        self,
+        entitlementmetadatabulkupdatebyfilterrequest: Annotated[Entitlementmetadatabulkupdatebyfilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Entitlementmetadatabulkupdateresponse]:
+        """Bulk-update metadata by filter
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+
+        :param entitlementmetadatabulkupdatebyfilterrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyfilterrequest: Entitlementmetadatabulkupdatebyfilterrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_filter_v1_serialize(
+            entitlementmetadatabulkupdatebyfilterrequest=entitlementmetadatabulkupdatebyfilterrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_entitlements_metadata_by_filter_v1_without_preload_content(
+        self,
+        entitlementmetadatabulkupdatebyfilterrequest: Annotated[Entitlementmetadatabulkupdatebyfilterrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk-update metadata by filter
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+
+        :param entitlementmetadatabulkupdatebyfilterrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyfilterrequest: Entitlementmetadatabulkupdatebyfilterrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_filter_v1_serialize(
+            entitlementmetadatabulkupdatebyfilterrequest=entitlementmetadatabulkupdatebyfilterrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_entitlements_metadata_by_filter_v1_serialize(
+        self,
+        entitlementmetadatabulkupdatebyfilterrequest,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if entitlementmetadatabulkupdatebyfilterrequest is not None:
+            _body_params = entitlementmetadatabulkupdatebyfilterrequest
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/v1/access-model-metadata/bulk-update/filter',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_entitlements_metadata_by_ids_v1(
+        self,
+        entitlementmetadatabulkupdatebyidrequest: Annotated[Entitlementmetadatabulkupdatebyidrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Entitlementmetadatabulkupdateresponse:
+        """Bulk-update metadata by ids
+
+        This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+
+        :param entitlementmetadatabulkupdatebyidrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyidrequest: Entitlementmetadatabulkupdatebyidrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_ids_v1_serialize(
+            entitlementmetadatabulkupdatebyidrequest=entitlementmetadatabulkupdatebyidrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_entitlements_metadata_by_ids_v1_with_http_info(
+        self,
+        entitlementmetadatabulkupdatebyidrequest: Annotated[Entitlementmetadatabulkupdatebyidrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Entitlementmetadatabulkupdateresponse]:
+        """Bulk-update metadata by ids
+
+        This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+
+        :param entitlementmetadatabulkupdatebyidrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyidrequest: Entitlementmetadatabulkupdatebyidrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_ids_v1_serialize(
+            entitlementmetadatabulkupdatebyidrequest=entitlementmetadatabulkupdatebyidrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_entitlements_metadata_by_ids_v1_without_preload_content(
+        self,
+        entitlementmetadatabulkupdatebyidrequest: Annotated[Entitlementmetadatabulkupdatebyidrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk-update metadata by ids
+
+        This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+
+        :param entitlementmetadatabulkupdatebyidrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyidrequest: Entitlementmetadatabulkupdatebyidrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_ids_v1_serialize(
+            entitlementmetadatabulkupdatebyidrequest=entitlementmetadatabulkupdatebyidrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_entitlements_metadata_by_ids_v1_serialize(
+        self,
+        entitlementmetadatabulkupdatebyidrequest,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if entitlementmetadatabulkupdatebyidrequest is not None:
+            _body_params = entitlementmetadatabulkupdatebyidrequest
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/v1/access-model-metadata/bulk-update/ids',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_entitlements_metadata_by_query_v1(
+        self,
+        entitlementmetadatabulkupdatebyqueryrequest: Annotated[Entitlementmetadatabulkupdatebyqueryrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Entitlementmetadatabulkupdateresponse:
+        """Bulk-update metadata by query
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+
+        :param entitlementmetadatabulkupdatebyqueryrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyqueryrequest: Entitlementmetadatabulkupdatebyqueryrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_query_v1_serialize(
+            entitlementmetadatabulkupdatebyqueryrequest=entitlementmetadatabulkupdatebyqueryrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_entitlements_metadata_by_query_v1_with_http_info(
+        self,
+        entitlementmetadatabulkupdatebyqueryrequest: Annotated[Entitlementmetadatabulkupdatebyqueryrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Entitlementmetadatabulkupdateresponse]:
+        """Bulk-update metadata by query
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+
+        :param entitlementmetadatabulkupdatebyqueryrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyqueryrequest: Entitlementmetadatabulkupdatebyqueryrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_query_v1_serialize(
+            entitlementmetadatabulkupdatebyqueryrequest=entitlementmetadatabulkupdatebyqueryrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_entitlements_metadata_by_query_v1_without_preload_content(
+        self,
+        entitlementmetadatabulkupdatebyqueryrequest: Annotated[Entitlementmetadatabulkupdatebyqueryrequest, Field(description="Attribute metadata bulk update request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk-update metadata by query
+
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  Adding or replacing custom metadata requires a suite license.  This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+
+        :param entitlementmetadatabulkupdatebyqueryrequest: Attribute metadata bulk update request body. (required)
+        :type entitlementmetadatabulkupdatebyqueryrequest: Entitlementmetadatabulkupdatebyqueryrequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_entitlements_metadata_by_query_v1_serialize(
+            entitlementmetadatabulkupdatebyqueryrequest=entitlementmetadatabulkupdatebyqueryrequest,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "Entitlementmetadatabulkupdateresponse",
+            '400': "ErrorResponseDto",
+            '401': "ListEntitlementsV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListEntitlementsV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_entitlements_metadata_by_query_v1_serialize(
+        self,
+        entitlementmetadatabulkupdatebyqueryrequest,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if entitlementmetadatabulkupdatebyqueryrequest is not None:
+            _body_params = entitlementmetadatabulkupdatebyqueryrequest
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/v1/access-model-metadata/bulk-update/query',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

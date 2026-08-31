@@ -117,6 +117,27 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_entitlements_metadata_by_filter_v1(self) -> None:
+        """Test case for update_entitlements_metadata_by_filter_v1
+
+        Bulk-update metadata by filter
+        """
+        pass
+
+    def test_update_entitlements_metadata_by_ids_v1(self) -> None:
+        """Test case for update_entitlements_metadata_by_ids_v1
+
+        Bulk-update metadata by ids
+        """
+        pass
+
+    def test_update_entitlements_metadata_by_query_v1(self) -> None:
+        """Test case for update_entitlements_metadata_by_query_v1
+
+        Bulk-update metadata by query
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

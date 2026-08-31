@@ -52,11 +52,16 @@ Method | HTTP request | Description
 [**create-access-profile-v1**](#create-access-profile-v1) | **POST** `/access-profiles/v1` | Create access profile
 [**delete-access-profile-v1**](#delete-access-profile-v1) | **DELETE** `/access-profiles/v1/{id}` | Delete the specified access profile
 [**delete-access-profiles-in-bulk-v1**](#delete-access-profiles-in-bulk-v1) | **POST** `/access-profiles/v1/bulk-delete` | Delete access profile(s)
+[**delete-metadata-from-access-profile-by-key-and-value-v1**](#delete-metadata-from-access-profile-by-key-and-value-v1) | **DELETE** `/access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from access profile
 [**get-access-profile-entitlements-v1**](#get-access-profile-entitlements-v1) | **GET** `/access-profiles/v1/{id}/entitlements` | List access profile&#39;s entitlements
 [**get-access-profile-v1**](#get-access-profile-v1) | **GET** `/access-profiles/v1/{id}` | Get an access profile
 [**list-access-profiles-v1**](#list-access-profiles-v1) | **GET** `/access-profiles/v1` | List access profiles
 [**patch-access-profile-v1**](#patch-access-profile-v1) | **PATCH** `/access-profiles/v1/{id}` | Patch a specified access profile
 [**update-access-profiles-in-bulk-v1**](#update-access-profiles-in-bulk-v1) | **POST** `/access-profiles/v1/bulk-update-requestable` | Update access profile(s) requestable field.
+[**update-access-profiles-metadata-by-filter-v1**](#update-access-profiles-metadata-by-filter-v1) | **POST** `/access-profiles/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
+[**update-access-profiles-metadata-by-ids-v1**](#update-access-profiles-metadata-by-ids-v1) | **POST** `/access-profiles/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
+[**update-access-profiles-metadata-by-query-v1**](#update-access-profiles-metadata-by-query-v1) | **POST** `/access-profiles/v1/access-model-metadata/bulk-update/query` | Bulk-update metadata by query
+[**update-attribute-key-and-value-to-access-profile-v1**](#update-attribute-key-and-value-to-access-profile-v1) | **POST** `/access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to access profile
 
 
 ## create-access-profile-v1
@@ -357,6 +362,66 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling AccessProfilesApi->delete_access_profiles_in_bulk_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## delete-metadata-from-access-profile-by-key-and-value-v1
+Remove metadata from access profile
+This API removes a single Access Model Metadata value from an access profile by attribute key and attribute value.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-metadata-from-access-profile-by-key-and-value-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The access profile's ID.
+Path   | attribute_key | **str** | True  | Technical name of the Attribute.
+Path   | attribute_value | **str** | True  | Technical name of the Attribute Value.
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Request accepted |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808c74ff913f0175097daa9d59cd' # str | The access profile's ID. # str | The access profile's ID.
+    attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+    attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+
+    try:
+        # Remove metadata from access profile
+        
+        AccessProfilesApi(api_client).delete_metadata_from_access_profile_by_key_and_value_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+        # Below is a request that includes all optional parameters
+        # AccessProfilesApi(api_client).delete_metadata_from_access_profile_by_key_and_value_v1(id, attribute_key, attribute_value)
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->delete_metadata_from_access_profile_by_key_and_value_v1: %s\n" % e)
 ```
 
 
@@ -722,6 +787,292 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling AccessProfilesApi->update_access_profiles_in_bulk_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-profiles-metadata-by-filter-v1
+Bulk-update metadata by filter
+This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied filter expression.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-filter-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | accessprofilemetadatabulkupdatebyfilterrequest | [**Accessprofilemetadatabulkupdatebyfilterrequest**](../models/accessprofilemetadatabulkupdatebyfilterrequest) | True  | 
+
+### Return type
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyfilterrequest import Accessprofilemetadatabulkupdatebyfilterrequest
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    accessprofilemetadatabulkupdatebyfilterrequest = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "requestable eq false",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyfilterrequest | 
+
+    try:
+        # Bulk-update metadata by filter
+        new_accessprofilemetadatabulkupdatebyfilterrequest = Accessprofilemetadatabulkupdatebyfilterrequest.from_json(accessprofilemetadatabulkupdatebyfilterrequest)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(accessprofilemetadatabulkupdatebyfilterrequest=new_accessprofilemetadatabulkupdatebyfilterrequest)
+        # Below is a request that includes all optional parameters
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(new_accessprofilemetadatabulkupdatebyfilterrequest)
+        print("The response of AccessProfilesApi->update_access_profiles_metadata_by_filter_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_filter_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-profiles-metadata-by-ids-v1
+Bulk-update metadata by ids
+This API initiates a bulk update of Access Model Metadata for one or more access profiles by a list of access profile IDs.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-ids-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | accessprofilemetadatabulkupdatebyidrequest | [**Accessprofilemetadatabulkupdatebyidrequest**](../models/accessprofilemetadatabulkupdatebyidrequest) | True  | 
+
+### Return type
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest import Accessprofilemetadatabulkupdatebyidrequest
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    accessprofilemetadatabulkupdatebyidrequest = '''{
+          "accessProfiles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyidrequest | 
+
+    try:
+        # Bulk-update metadata by ids
+        new_accessprofilemetadatabulkupdatebyidrequest = Accessprofilemetadatabulkupdatebyidrequest.from_json(accessprofilemetadatabulkupdatebyidrequest)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(accessprofilemetadatabulkupdatebyidrequest=new_accessprofilemetadatabulkupdatebyidrequest)
+        # Below is a request that includes all optional parameters
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(new_accessprofilemetadatabulkupdatebyidrequest)
+        print("The response of AccessProfilesApi->update_access_profiles_metadata_by_ids_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_ids_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-profiles-metadata-by-query-v1
+Bulk-update metadata by query
+This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied search query.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-query-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | accessprofilemetadatabulkupdatebyqueryrequest | [**Accessprofilemetadatabulkupdatebyqueryrequest**](../models/accessprofilemetadatabulkupdatebyqueryrequest) | True  | 
+
+### Return type
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyqueryrequest import Accessprofilemetadatabulkupdatebyqueryrequest
+from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    accessprofilemetadatabulkupdatebyqueryrequest = '''{
+          "query" : {
+            "indices" : [ "accessprofiles" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Accessprofilemetadatabulkupdatebyqueryrequest | 
+
+    try:
+        # Bulk-update metadata by query
+        new_accessprofilemetadatabulkupdatebyqueryrequest = Accessprofilemetadatabulkupdatebyqueryrequest.from_json(accessprofilemetadatabulkupdatebyqueryrequest)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(accessprofilemetadatabulkupdatebyqueryrequest=new_accessprofilemetadatabulkupdatebyqueryrequest)
+        # Below is a request that includes all optional parameters
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(new_accessprofilemetadatabulkupdatebyqueryrequest)
+        print("The response of AccessProfilesApi->update_access_profiles_metadata_by_query_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->update_access_profiles_metadata_by_query_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-attribute-key-and-value-to-access-profile-v1
+Add metadata to access profile
+This API adds a single Access Model Metadata value to an access profile by attribute key and attribute value. A single access profile cannot be assigned more than 25 metadata values. Adding custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-key-and-value-to-access-profile-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The access profile's ID.
+Path   | attribute_key | **str** | True  | Technical name of the Attribute.
+Path   | attribute_value | **str** | True  | Technical name of the Attribute Value.
+
+### Return type
+[**AccessProfile**](../models/access-profile)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Responds with the access profile as updated. | AccessProfile |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.access_profiles.models.access_profile import AccessProfile
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = 'c24359c389374d0fb8585698a2189e3d' # str | The access profile's ID. # str | The access profile's ID.
+    attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+    attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+
+    try:
+        # Add metadata to access profile
+        
+        results = AccessProfilesApi(api_client).update_attribute_key_and_value_to_access_profile_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+        # Below is a request that includes all optional parameters
+        # results = AccessProfilesApi(api_client).update_attribute_key_and_value_to_access_profile_v1(id, attribute_key, attribute_value)
+        print("The response of AccessProfilesApi->update_attribute_key_and_value_to_access_profile_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->update_attribute_key_and_value_to_access_profile_v1: %s\n" % e)
 ```
 
 

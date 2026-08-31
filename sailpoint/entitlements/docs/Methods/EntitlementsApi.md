@@ -28,6 +28,9 @@ Method | HTTP request | Description
 [**put-entitlement-request-config-v1**](#put-entitlement-request-config-v1) | **PUT** `/entitlements/v1/{id}/entitlement-request-config` | Replace entitlement request config
 [**reset-source-entitlements-v1**](#reset-source-entitlements-v1) | **POST** `/entitlements/v1/reset/sources/{id}` | Reset source entitlements
 [**update-entitlements-in-bulk-v1**](#update-entitlements-in-bulk-v1) | **POST** `/entitlements/v1/bulk-update` | Bulk update an entitlement list
+[**update-entitlements-metadata-by-filter-v1**](#update-entitlements-metadata-by-filter-v1) | **POST** `/entitlements/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
+[**update-entitlements-metadata-by-ids-v1**](#update-entitlements-metadata-by-ids-v1) | **POST** `/entitlements/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
+[**update-entitlements-metadata-by-query-v1**](#update-entitlements-metadata-by-query-v1) | **POST** `/entitlements/v1/access-model-metadata/bulk-update/query` | Bulk-update metadata by query
 
 
 ## create-access-model-metadata-for-entitlement-v1
@@ -915,6 +918,235 @@ with ApiClient(configuration) as api_client:
         # EntitlementsApi(api_client).update_entitlements_in_bulk_v1(new_entitlement_bulk_update_request)
     except Exception as e:
         print("Exception when calling EntitlementsApi->update_entitlements_in_bulk_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-entitlements-metadata-by-filter-v1
+Bulk-update metadata by filter
+This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-filter-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlementmetadatabulkupdatebyfilterrequest | [**Entitlementmetadatabulkupdatebyfilterrequest**](../models/entitlementmetadatabulkupdatebyfilterrequest) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Entitlementmetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+from sailpoint.entitlements.api_client import ApiClient
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyfilterrequest import Entitlementmetadatabulkupdatebyfilterrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlementmetadatabulkupdatebyfilterrequest = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyfilterrequest | Attribute metadata bulk update request body.
+
+    try:
+        # Bulk-update metadata by filter
+        new_entitlementmetadatabulkupdatebyfilterrequest = Entitlementmetadatabulkupdatebyfilterrequest.from_json(entitlementmetadatabulkupdatebyfilterrequest)
+        results = EntitlementsApi(api_client).update_entitlements_metadata_by_filter_v1(entitlementmetadatabulkupdatebyfilterrequest=new_entitlementmetadatabulkupdatebyfilterrequest)
+        # Below is a request that includes all optional parameters
+        # results = EntitlementsApi(api_client).update_entitlements_metadata_by_filter_v1(new_entitlementmetadatabulkupdatebyfilterrequest)
+        print("The response of EntitlementsApi->update_entitlements_metadata_by_filter_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_filter_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-entitlements-metadata-by-ids-v1
+Bulk-update metadata by ids
+This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-ids-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlementmetadatabulkupdatebyidrequest | [**Entitlementmetadatabulkupdatebyidrequest**](../models/entitlementmetadatabulkupdatebyidrequest) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Entitlementmetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+from sailpoint.entitlements.api_client import ApiClient
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyidrequest import Entitlementmetadatabulkupdatebyidrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlementmetadatabulkupdatebyidrequest = '''{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyidrequest | Attribute metadata bulk update request body.
+
+    try:
+        # Bulk-update metadata by ids
+        new_entitlementmetadatabulkupdatebyidrequest = Entitlementmetadatabulkupdatebyidrequest.from_json(entitlementmetadatabulkupdatebyidrequest)
+        results = EntitlementsApi(api_client).update_entitlements_metadata_by_ids_v1(entitlementmetadatabulkupdatebyidrequest=new_entitlementmetadatabulkupdatebyidrequest)
+        # Below is a request that includes all optional parameters
+        # results = EntitlementsApi(api_client).update_entitlements_metadata_by_ids_v1(new_entitlementmetadatabulkupdatebyidrequest)
+        print("The response of EntitlementsApi->update_entitlements_metadata_by_ids_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_ids_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-entitlements-metadata-by-query-v1
+Bulk-update metadata by query
+This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-query-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlementmetadatabulkupdatebyqueryrequest | [**Entitlementmetadatabulkupdatebyqueryrequest**](../models/entitlementmetadatabulkupdatebyqueryrequest) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Returned if the bulk update request was created. | Entitlementmetadatabulkupdateresponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListEntitlementsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListEntitlementsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+from sailpoint.entitlements.api_client import ApiClient
+from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyqueryrequest import Entitlementmetadatabulkupdatebyqueryrequest
+from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlementmetadatabulkupdatebyqueryrequest = '''{
+          "query" : {
+            "indices" : [ "entitlements" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyqueryrequest | Attribute metadata bulk update request body.
+
+    try:
+        # Bulk-update metadata by query
+        new_entitlementmetadatabulkupdatebyqueryrequest = Entitlementmetadatabulkupdatebyqueryrequest.from_json(entitlementmetadatabulkupdatebyqueryrequest)
+        results = EntitlementsApi(api_client).update_entitlements_metadata_by_query_v1(entitlementmetadatabulkupdatebyqueryrequest=new_entitlementmetadatabulkupdatebyqueryrequest)
+        # Below is a request that includes all optional parameters
+        # results = EntitlementsApi(api_client).update_entitlements_metadata_by_query_v1(new_entitlementmetadatabulkupdatebyqueryrequest)
+        print("The response of EntitlementsApi->update_entitlements_metadata_by_query_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_query_v1: %s\n" % e)
 ```
 
 

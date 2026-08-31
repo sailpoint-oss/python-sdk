@@ -80,6 +80,9 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**put_entitlement_request_config_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#put_entitlement_request_config_v1) | **PUT** /entitlements/v1/{id}/entitlement-request-config | Replace entitlement request config
 *EntitlementsApi* | [**reset_source_entitlements_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#reset_source_entitlements_v1) | **POST** /entitlements/v1/reset/sources/{id} | Reset source entitlements
 *EntitlementsApi* | [**update_entitlements_in_bulk_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#update_entitlements_in_bulk_v1) | **POST** /entitlements/v1/bulk-update | Bulk update an entitlement list
+*EntitlementsApi* | [**update_entitlements_metadata_by_filter_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#update_entitlements_metadata_by_filter_v1) | **POST** /entitlements/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
+*EntitlementsApi* | [**update_entitlements_metadata_by_ids_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#update_entitlements_metadata_by_ids_v1) | **POST** /entitlements/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
+*EntitlementsApi* | [**update_entitlements_metadata_by_query_v1**](sailpoint/entitlements/docs/EntitlementsApi.md#update_entitlements_metadata_by_query_v1) | **POST** /entitlements/v1/access-model-metadata/bulk-update/query | Bulk-update metadata by query
 
 
 ## Documentation For Models
@@ -103,6 +106,11 @@ Class | Method | HTTP request | Description
  - [EntitlementV2Owner](sailpoint/entitlements/docs/EntitlementV2Owner.md)
  - [EntitlementV2PrivilegeLevel](sailpoint/entitlements/docs/EntitlementV2PrivilegeLevel.md)
  - [EntitlementV2Source](sailpoint/entitlements/docs/EntitlementV2Source.md)
+ - [Entitlementmetadatabulkupdatebyfilterrequest](sailpoint/entitlements/docs/Entitlementmetadatabulkupdatebyfilterrequest.md)
+ - [Entitlementmetadatabulkupdatebyidrequest](sailpoint/entitlements/docs/Entitlementmetadatabulkupdatebyidrequest.md)
+ - [EntitlementmetadatabulkupdatebyidrequestValuesInner](sailpoint/entitlements/docs/EntitlementmetadatabulkupdatebyidrequestValuesInner.md)
+ - [Entitlementmetadatabulkupdatebyqueryrequest](sailpoint/entitlements/docs/Entitlementmetadatabulkupdatebyqueryrequest.md)
+ - [Entitlementmetadatabulkupdateresponse](sailpoint/entitlements/docs/Entitlementmetadatabulkupdateresponse.md)
  - [ErrorMessageDto](sailpoint/entitlements/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/entitlements/docs/ErrorResponseDto.md)
  - [ImportEntitlementsBySourceV1Request](sailpoint/entitlements/docs/ImportEntitlementsBySourceV1Request.md)

@@ -394,4 +394,116 @@
               # EntitlementsApi(api_client).update_entitlements_in_bulk_v1(new_entitlement_bulk_update_request)
           except Exception as e:
               print("Exception when calling EntitlementsApi->update_entitlements_in_bulk_v1: %s\n" % e)
+- path: /entitlements/v1/access-model-metadata/bulk-update/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#update-entitlements-metadata-by-filter-v1
+      source: |
+        from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+        from sailpoint.entitlements.api_client import ApiClient
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyfilterrequest import Entitlementmetadatabulkupdatebyfilterrequest
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlementmetadatabulkupdatebyfilterrequest = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyfilterrequest | Attribute metadata bulk update request body.
+          try:
+              # Bulk-update metadata by filter
+              new_entitlementmetadatabulkupdatebyfilterrequest = Entitlementmetadatabulkupdatebyfilterrequest.from_json(entitlementmetadatabulkupdatebyfilterrequest)
+              results = EntitlementsApi(api_client).update_entitlements_metadata_by_filter_v1(entitlementmetadatabulkupdatebyfilterrequest=new_entitlementmetadatabulkupdatebyfilterrequest)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementsApi(api_client).update_entitlements_metadata_by_filter_v1(new_entitlementmetadatabulkupdatebyfilterrequest)
+              print("The response of EntitlementsApi->update_entitlements_metadata_by_filter_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_filter_v1: %s\n" % e)
+- path: /entitlements/v1/access-model-metadata/bulk-update/ids
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#update-entitlements-metadata-by-ids-v1
+      source: |
+        from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+        from sailpoint.entitlements.api_client import ApiClient
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyidrequest import Entitlementmetadatabulkupdatebyidrequest
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlementmetadatabulkupdatebyidrequest = '''{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyidrequest | Attribute metadata bulk update request body.
+          try:
+              # Bulk-update metadata by ids
+              new_entitlementmetadatabulkupdatebyidrequest = Entitlementmetadatabulkupdatebyidrequest.from_json(entitlementmetadatabulkupdatebyidrequest)
+              results = EntitlementsApi(api_client).update_entitlements_metadata_by_ids_v1(entitlementmetadatabulkupdatebyidrequest=new_entitlementmetadatabulkupdatebyidrequest)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementsApi(api_client).update_entitlements_metadata_by_ids_v1(new_entitlementmetadatabulkupdatebyidrequest)
+              print("The response of EntitlementsApi->update_entitlements_metadata_by_ids_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_ids_v1: %s\n" % e)
+- path: /entitlements/v1/access-model-metadata/bulk-update/query
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#update-entitlements-metadata-by-query-v1
+      source: |
+        from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
+        from sailpoint.entitlements.api_client import ApiClient
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdatebyqueryrequest import Entitlementmetadatabulkupdatebyqueryrequest
+        from sailpoint.entitlements.models.entitlementmetadatabulkupdateresponse import Entitlementmetadatabulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlementmetadatabulkupdatebyqueryrequest = '''{
+          "query" : {
+            "indices" : [ "entitlements" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }''' # Entitlementmetadatabulkupdatebyqueryrequest | Attribute metadata bulk update request body.
+          try:
+              # Bulk-update metadata by query
+              new_entitlementmetadatabulkupdatebyqueryrequest = Entitlementmetadatabulkupdatebyqueryrequest.from_json(entitlementmetadatabulkupdatebyqueryrequest)
+              results = EntitlementsApi(api_client).update_entitlements_metadata_by_query_v1(entitlementmetadatabulkupdatebyqueryrequest=new_entitlementmetadatabulkupdatebyqueryrequest)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementsApi(api_client).update_entitlements_metadata_by_query_v1(new_entitlementmetadatabulkupdatebyqueryrequest)
+              print("The response of EntitlementsApi->update_entitlements_metadata_by_query_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementsApi->update_entitlements_metadata_by_query_v1: %s\n" % e)
 
