@@ -106,4 +106,38 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling PersonalAccessTokensApi->patch_personal_access_token_v1: %s\n" % e)
+- path: /personal-access-tokens/v1/bulk-update
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/personal-access-tokens/methods/personal-access-tokens#update-bulk-personal-access-tokens-v1
+      source: |
+        from sailpoint.personal_access_tokens.api.personal_access_tokens_api import PersonalAccessTokensApi
+        from sailpoint.personal_access_tokens.api_client import ApiClient
+        from sailpoint.personal_access_tokens.models.bulk_update_personal_access_tokens_request import BulkUpdatePersonalAccessTokensRequest
+        from sailpoint.personal_access_tokens.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulk_update_personal_access_tokens_request = '''{
+          "patch" : [ {
+            "op" : "replace",
+            "path" : "/expirationDate",
+            "value" : "2026-08-01T00:00:00.000Z"
+          } ],
+          "ids" : [ "695dab70d33d466b81d958dc9fb392db", "abc123def456abc123def456abc12345" ]
+        }''' # BulkUpdatePersonalAccessTokensRequest | The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.
+          try:
+              # Bulk update personal access tokens
+              new_bulk_update_personal_access_tokens_request = BulkUpdatePersonalAccessTokensRequest.from_json(bulk_update_personal_access_tokens_request)
+              results = PersonalAccessTokensApi(api_client).update_bulk_personal_access_tokens_v1(bulk_update_personal_access_tokens_request=new_bulk_update_personal_access_tokens_request)
+              # Below is a request that includes all optional parameters
+              # results = PersonalAccessTokensApi(api_client).update_bulk_personal_access_tokens_v1(new_bulk_update_personal_access_tokens_request)
+              print("The response of PersonalAccessTokensApi->update_bulk_personal_access_tokens_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PersonalAccessTokensApi->update_bulk_personal_access_tokens_v1: %s\n" % e)
 

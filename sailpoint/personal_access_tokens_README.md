@@ -69,11 +69,13 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensApi* | [**delete_personal_access_token_v1**](sailpoint/personal_access_tokens/docs/PersonalAccessTokensApi.md#delete_personal_access_token_v1) | **DELETE** /personal-access-tokens/v1/{id} | Delete personal access token
 *PersonalAccessTokensApi* | [**list_personal_access_tokens_v1**](sailpoint/personal_access_tokens/docs/PersonalAccessTokensApi.md#list_personal_access_tokens_v1) | **GET** /personal-access-tokens/v1 | List personal access tokens
 *PersonalAccessTokensApi* | [**patch_personal_access_token_v1**](sailpoint/personal_access_tokens/docs/PersonalAccessTokensApi.md#patch_personal_access_token_v1) | **PATCH** /personal-access-tokens/v1/{id} | Patch personal access token
+*PersonalAccessTokensApi* | [**update_bulk_personal_access_tokens_v1**](sailpoint/personal_access_tokens/docs/PersonalAccessTokensApi.md#update_bulk_personal_access_tokens_v1) | **PATCH** /personal-access-tokens/v1/bulk-update | Bulk update personal access tokens
 
 
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/personal_access_tokens/docs/ArrayInner.md)
+ - [BulkUpdatePersonalAccessTokensRequest](sailpoint/personal_access_tokens/docs/BulkUpdatePersonalAccessTokensRequest.md)
  - [CreatePersonalAccessTokenRequest](sailpoint/personal_access_tokens/docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](sailpoint/personal_access_tokens/docs/CreatePersonalAccessTokenResponse.md)
  - [ErrorMessageDto](sailpoint/personal_access_tokens/docs/ErrorMessageDto.md)

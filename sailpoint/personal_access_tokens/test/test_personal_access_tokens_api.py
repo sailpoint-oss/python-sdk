@@ -54,6 +54,13 @@ class TestPersonalAccessTokensApi(unittest.TestCase):
         """
         pass
 
+    def test_update_bulk_personal_access_tokens_v1(self) -> None:
+        """Test case for update_bulk_personal_access_tokens_v1
+
+        Bulk update personal access tokens
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,7 @@
 
 # import models into model package
 from sailpoint.personal_access_tokens.models.array_inner import ArrayInner
+from sailpoint.personal_access_tokens.models.bulk_update_personal_access_tokens_request import BulkUpdatePersonalAccessTokensRequest
 from sailpoint.personal_access_tokens.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.personal_access_tokens.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.personal_access_tokens.models.error_message_dto import ErrorMessageDto

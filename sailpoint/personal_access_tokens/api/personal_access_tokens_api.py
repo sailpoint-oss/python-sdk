@@ -19,6 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
+from sailpoint.personal_access_tokens.models.bulk_update_personal_access_tokens_request import BulkUpdatePersonalAccessTokensRequest
 from sailpoint.personal_access_tokens.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.personal_access_tokens.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.personal_access_tokens.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
@@ -1194,6 +1195,294 @@ class PersonalAccessTokensApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/personal-access-tokens/v1/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_bulk_personal_access_tokens_v1(
+        self,
+        bulk_update_personal_access_tokens_request: Annotated[BulkUpdatePersonalAccessTokensRequest, Field(description="The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[GetPersonalAccessTokenResponse]:
+        """Bulk update personal access tokens
+
+        This applies a single [JSON Patch](https://tools.ietf.org/html/rfc6902) document to multiple personal access tokens (PATs) in the current tenant in one request. The same `patch` is applied to every token referenced in `ids`. Up to **25** tokens can be updated per request. This is an administrative operation intended for org admins managing PATs across their tenant. The caller must have the `idn:all-personal-access-tokens:update` right. API OAuth client credentials are not permitted to call this endpoint. Note: This operation is also accessible via `POST` to the same path; both methods behave identically. Unlike the single-token patch endpoint, the request body uses `Content-Type: application/json` (not `application/json-patch+json`). **Allowed patch paths** Only expiration-related paths may be modified in bulk: * `/expirationDate` - Set or clear the token's expiration date. Any other path (for example `/name` or `/scope`) results in a `400` response. * `/userAwareTokenNeverExpires` - Explicit acknowledgment that the token will never expire. **expirationDate and userAwareTokenNeverExpires Relationship:** When clearing `expirationDate` (either by removing it or replacing it with `null`), `userAwareTokenNeverExpires` must also be set to `true` in the same patch. This serves as an explicit acknowledgment that the caller is aware of the security implications of creating a token that will never expire. When `expirationDate` is set to a valid future date-time, `userAwareTokenNeverExpires` can be omitted. **Note:** `userAwareTokenNeverExpires` is stored internally and is not returned in the response.
+
+        :param bulk_update_personal_access_tokens_request: The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them. (required)
+        :type bulk_update_personal_access_tokens_request: BulkUpdatePersonalAccessTokensRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_bulk_personal_access_tokens_v1_serialize(
+            bulk_update_personal_access_tokens_request=bulk_update_personal_access_tokens_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
+            '401': "ListPersonalAccessTokensV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListPersonalAccessTokensV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_bulk_personal_access_tokens_v1_with_http_info(
+        self,
+        bulk_update_personal_access_tokens_request: Annotated[BulkUpdatePersonalAccessTokensRequest, Field(description="The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[GetPersonalAccessTokenResponse]]:
+        """Bulk update personal access tokens
+
+        This applies a single [JSON Patch](https://tools.ietf.org/html/rfc6902) document to multiple personal access tokens (PATs) in the current tenant in one request. The same `patch` is applied to every token referenced in `ids`. Up to **25** tokens can be updated per request. This is an administrative operation intended for org admins managing PATs across their tenant. The caller must have the `idn:all-personal-access-tokens:update` right. API OAuth client credentials are not permitted to call this endpoint. Note: This operation is also accessible via `POST` to the same path; both methods behave identically. Unlike the single-token patch endpoint, the request body uses `Content-Type: application/json` (not `application/json-patch+json`). **Allowed patch paths** Only expiration-related paths may be modified in bulk: * `/expirationDate` - Set or clear the token's expiration date. Any other path (for example `/name` or `/scope`) results in a `400` response. * `/userAwareTokenNeverExpires` - Explicit acknowledgment that the token will never expire. **expirationDate and userAwareTokenNeverExpires Relationship:** When clearing `expirationDate` (either by removing it or replacing it with `null`), `userAwareTokenNeverExpires` must also be set to `true` in the same patch. This serves as an explicit acknowledgment that the caller is aware of the security implications of creating a token that will never expire. When `expirationDate` is set to a valid future date-time, `userAwareTokenNeverExpires` can be omitted. **Note:** `userAwareTokenNeverExpires` is stored internally and is not returned in the response.
+
+        :param bulk_update_personal_access_tokens_request: The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them. (required)
+        :type bulk_update_personal_access_tokens_request: BulkUpdatePersonalAccessTokensRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_bulk_personal_access_tokens_v1_serialize(
+            bulk_update_personal_access_tokens_request=bulk_update_personal_access_tokens_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
+            '401': "ListPersonalAccessTokensV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListPersonalAccessTokensV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_bulk_personal_access_tokens_v1_without_preload_content(
+        self,
+        bulk_update_personal_access_tokens_request: Annotated[BulkUpdatePersonalAccessTokensRequest, Field(description="The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk update personal access tokens
+
+        This applies a single [JSON Patch](https://tools.ietf.org/html/rfc6902) document to multiple personal access tokens (PATs) in the current tenant in one request. The same `patch` is applied to every token referenced in `ids`. Up to **25** tokens can be updated per request. This is an administrative operation intended for org admins managing PATs across their tenant. The caller must have the `idn:all-personal-access-tokens:update` right. API OAuth client credentials are not permitted to call this endpoint. Note: This operation is also accessible via `POST` to the same path; both methods behave identically. Unlike the single-token patch endpoint, the request body uses `Content-Type: application/json` (not `application/json-patch+json`). **Allowed patch paths** Only expiration-related paths may be modified in bulk: * `/expirationDate` - Set or clear the token's expiration date. Any other path (for example `/name` or `/scope`) results in a `400` response. * `/userAwareTokenNeverExpires` - Explicit acknowledgment that the token will never expire. **expirationDate and userAwareTokenNeverExpires Relationship:** When clearing `expirationDate` (either by removing it or replacing it with `null`), `userAwareTokenNeverExpires` must also be set to `true` in the same patch. This serves as an explicit acknowledgment that the caller is aware of the security implications of creating a token that will never expire. When `expirationDate` is set to a valid future date-time, `userAwareTokenNeverExpires` can be omitted. **Note:** `userAwareTokenNeverExpires` is stored internally and is not returned in the response.
+
+        :param bulk_update_personal_access_tokens_request: The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them. (required)
+        :type bulk_update_personal_access_tokens_request: BulkUpdatePersonalAccessTokensRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_bulk_personal_access_tokens_v1_serialize(
+            bulk_update_personal_access_tokens_request=bulk_update_personal_access_tokens_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[GetPersonalAccessTokenResponse]",
+            '400': "ErrorResponseDto",
+            '401': "ListPersonalAccessTokensV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListPersonalAccessTokensV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_bulk_personal_access_tokens_v1_serialize(
+        self,
+        bulk_update_personal_access_tokens_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if bulk_update_personal_access_tokens_request is not None:
+            _body_params = bulk_update_personal_access_tokens_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/personal-access-tokens/v1/bulk-update',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
