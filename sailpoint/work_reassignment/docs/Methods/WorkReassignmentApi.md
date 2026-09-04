@@ -493,7 +493,7 @@ This API is currently in an experimental state. The API is subject to change bas
  ```
 :::
 List reassignment configurations
-Gets all Reassignment configuration for the current org.
+Gets a paginated list of Reassignment configurations for the current org.
 
 [API Spec](https://developer.sailpoint.com/docs/api/list-reassignment-configurations-v-1)
 
@@ -501,6 +501,8 @@ Gets all Reassignment configuration for the current org.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int** |   (optional) (default to 20) | Max number of results to return.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
    | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -533,6 +535,8 @@ configuration = Configuration()
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
+    limit = 20 # int | Max number of results to return. (optional) (default to 20) # int | Max number of results to return. (optional) (default to 20)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
@@ -540,7 +544,7 @@ with ApiClient(configuration) as api_client:
         
         results = WorkReassignmentApi(api_client).list_reassignment_configurations_v1()
         # Below is a request that includes all optional parameters
-        # results = WorkReassignmentApi(api_client).list_reassignment_configurations_v1(x_sail_point_experimental)
+        # results = WorkReassignmentApi(api_client).list_reassignment_configurations_v1(limit, offset, x_sail_point_experimental)
         print("The response of WorkReassignmentApi->list_reassignment_configurations_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

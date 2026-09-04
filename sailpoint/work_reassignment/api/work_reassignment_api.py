@@ -1826,6 +1826,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations_v1(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1842,8 +1844,12 @@ class WorkReassignmentApi:
     ) -> List[ConfigurationResponse]:
         """List reassignment configurations
 
-        Gets all Reassignment configuration for the current org.
+        Gets a paginated list of Reassignment configurations for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1869,6 +1875,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_v1_serialize(
+            limit=limit,
+            offset=offset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1899,6 +1907,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations_v1_with_http_info(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1915,8 +1925,12 @@ class WorkReassignmentApi:
     ) -> ApiResponse[List[ConfigurationResponse]]:
         """List reassignment configurations
 
-        Gets all Reassignment configuration for the current org.
+        Gets a paginated list of Reassignment configurations for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1942,6 +1956,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_v1_serialize(
+            limit=limit,
+            offset=offset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1972,6 +1988,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations_v1_without_preload_content(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
@@ -1988,8 +2006,12 @@ class WorkReassignmentApi:
     ) -> RESTResponseType:
         """List reassignment configurations
 
-        Gets all Reassignment configuration for the current org.
+        Gets a paginated list of Reassignment configurations for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param x_sail_point_experimental: Use this header to enable this experimental API.
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2015,6 +2037,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_v1_serialize(
+            limit=limit,
+            offset=offset,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2040,6 +2064,8 @@ class WorkReassignmentApi:
 
     def _list_reassignment_configurations_v1_serialize(
         self,
+        limit,
+        offset,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2063,6 +2089,14 @@ class WorkReassignmentApi:
 
         # process the path parameters
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         if x_sail_point_experimental is not None:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental

@@ -149,7 +149,10 @@ with ApiClient(configuration) as api_client:
     tenant_ui_metadata_item_update_request = '''{
           "usernameEmptyText" : "Please provide your work email address...",
           "usernameLabel" : "Email",
-          "iframeWhiteList" : "http://example.com http://example2.com"
+          "iframeWhiteList" : "http://example.com http://example2.com",
+          "instanceBadgeVisible" : true,
+          "instanceBadgeDisplayName" : "Sandbox",
+          "instanceBadgeColor" : "FFAA00"
         }''' # TenantUiMetadataItemUpdateRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 

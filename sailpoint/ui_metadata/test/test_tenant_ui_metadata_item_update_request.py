@@ -37,7 +37,10 @@ class TestTenantUiMetadataItemUpdateRequest(unittest.TestCase):
             return TenantUiMetadataItemUpdateRequest(
                 iframe_white_list = 'http://example.com http://example2.com',
                 username_label = 'Email',
-                username_empty_text = 'Please provide your work email address...'
+                username_empty_text = 'Please provide your work email address...',
+                instance_badge_display_name = 'Sandbox',
+                instance_badge_color = 'FFAA00',
+                instance_badge_visible = True
             )
         else:
             return TenantUiMetadataItemUpdateRequest(

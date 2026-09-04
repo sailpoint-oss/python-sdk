@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,10 @@ class TenantUiMetadataItemUpdateRequest(BaseModel):
     iframe_white_list: Optional[StrictStr] = Field(default=None, description="Parameter that organizational administrators can adjust to permit another domain to encapsulate IDN within an iframe. If you would like to reset the value use \"null\". It will only allow include into iframe non authenticated portions of the product, such as password reset.", alias="iframeWhiteList")
     username_label: Optional[StrictStr] = Field(default=None, description="Descriptor for the username input field. If you would like to reset the value use \"null\".", alias="usernameLabel")
     username_empty_text: Optional[StrictStr] = Field(default=None, description="Placeholder text displayed in the username input field. If you would like to reset the value use \"null\".", alias="usernameEmptyText")
-    __properties: ClassVar[List[str]] = ["iframeWhiteList", "usernameLabel", "usernameEmptyText"]
+    instance_badge_display_name: Optional[StrictStr] = Field(default=None, description="Display name for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it.", alias="instanceBadgeDisplayName")
+    instance_badge_color: Optional[StrictStr] = Field(default=None, description="Hex value of color for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it.", alias="instanceBadgeColor")
+    instance_badge_visible: Optional[StrictBool] = Field(default=None, description="Visibility toggle for the instance badge. Optional. Omit this property to leave the stored value unchanged. Null is stored as false.", alias="instanceBadgeVisible")
+    __properties: ClassVar[List[str]] = ["iframeWhiteList", "usernameLabel", "usernameEmptyText", "instanceBadgeDisplayName", "instanceBadgeColor", "instanceBadgeVisible"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,6 +89,21 @@ class TenantUiMetadataItemUpdateRequest(BaseModel):
         if self.username_empty_text is None and "username_empty_text" in self.model_fields_set:
             _dict['usernameEmptyText'] = None
 
+        # set to None if instance_badge_display_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.instance_badge_display_name is None and "instance_badge_display_name" in self.model_fields_set:
+            _dict['instanceBadgeDisplayName'] = None
+
+        # set to None if instance_badge_color (nullable) is None
+        # and model_fields_set contains the field
+        if self.instance_badge_color is None and "instance_badge_color" in self.model_fields_set:
+            _dict['instanceBadgeColor'] = None
+
+        # set to None if instance_badge_visible (nullable) is None
+        # and model_fields_set contains the field
+        if self.instance_badge_visible is None and "instance_badge_visible" in self.model_fields_set:
+            _dict['instanceBadgeVisible'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +118,10 @@ class TenantUiMetadataItemUpdateRequest(BaseModel):
         _obj = cls.model_validate({
             "iframeWhiteList": obj.get("iframeWhiteList"),
             "usernameLabel": obj.get("usernameLabel"),
-            "usernameEmptyText": obj.get("usernameEmptyText")
+            "usernameEmptyText": obj.get("usernameEmptyText"),
+            "instanceBadgeDisplayName": obj.get("instanceBadgeDisplayName"),
+            "instanceBadgeColor": obj.get("instanceBadgeColor"),
+            "instanceBadgeVisible": obj.get("instanceBadgeVisible")
         })
         return _obj
 
