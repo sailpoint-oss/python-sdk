@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.sources.models.entitlement_approval_scheme import EntitlementApprovalScheme
+from sailpoint.sources.models.source_entitlement_approval_scheme import SourceEntitlementApprovalScheme
 
-class TestEntitlementApprovalScheme(unittest.TestCase):
-    """EntitlementApprovalScheme unit test stubs"""
+class TestSourceEntitlementApprovalScheme(unittest.TestCase):
+    """SourceEntitlementApprovalScheme unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestEntitlementApprovalScheme(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementApprovalScheme:
-        """Test EntitlementApprovalScheme
+    def make_instance(self, include_optional) -> SourceEntitlementApprovalScheme:
+        """Test SourceEntitlementApprovalScheme
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementApprovalScheme`
+        # uncomment below to create an instance of `SourceEntitlementApprovalScheme`
         """
-        model = EntitlementApprovalScheme()
+        model = SourceEntitlementApprovalScheme()
         if include_optional:
-            return EntitlementApprovalScheme(
+            return SourceEntitlementApprovalScheme(
                 approver_type = 'GOVERNANCE_GROUP',
                 approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8'
             )
         else:
-            return EntitlementApprovalScheme(
+            return SourceEntitlementApprovalScheme(
         )
         """
 
-    def testEntitlementApprovalScheme(self):
-        """Test EntitlementApprovalScheme"""
+    def testSourceEntitlementApprovalScheme(self):
+        """Test SourceEntitlementApprovalScheme"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

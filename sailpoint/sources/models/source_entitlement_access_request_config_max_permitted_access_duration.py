@@ -18,27 +18,27 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EntitlementApprovalScheme(BaseModel):
+class SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration(BaseModel):
     """
-    EntitlementApprovalScheme
+    The maximum duration for which the access is permitted.
     """ # noqa: E501
-    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field, Workflows are exclusive to other types of approvals and License required.     ", alias="approverType")
-    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP or WORKFLOW", alias="approverId")
-    __properties: ClassVar[List[str]] = ["approverType", "approverId"]
+    value: Optional[StrictInt] = Field(default=None, description="The numeric value of the duration.")
+    time_unit: Optional[StrictStr] = Field(default=None, description="The time unit for the duration.", alias="timeUnit")
+    __properties: ClassVar[List[str]] = ["value", "timeUnit"]
 
-    @field_validator('approver_type')
-    def approver_type_validate_enum(cls, value):
+    @field_validator('time_unit')
+    def time_unit_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW']):
-            warnings.warn(f"must be one of enum values ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW') unknown value: {value}")
+        if value not in set(['HOURS', 'DAYS', 'WEEKS', 'MONTHS']):
+            warnings.warn(f"must be one of enum values ('HOURS', 'DAYS', 'WEEKS', 'MONTHS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -59,7 +59,7 @@ class EntitlementApprovalScheme(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EntitlementApprovalScheme from a JSON string"""
+        """Create an instance of SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,16 +80,11 @@ class EntitlementApprovalScheme(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if approver_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.approver_id is None and "approver_id" in self.model_fields_set:
-            _dict['approverId'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EntitlementApprovalScheme from a dict"""
+        """Create an instance of SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration from a dict"""
         if obj is None:
             return None
 
@@ -97,8 +92,8 @@ class EntitlementApprovalScheme(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approverType": obj.get("approverType"),
-            "approverId": obj.get("approverId")
+            "value": obj.get("value"),
+            "timeUnit": obj.get("timeUnit")
         })
         return _obj
 

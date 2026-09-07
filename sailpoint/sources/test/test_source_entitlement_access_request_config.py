@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.sources.models.entitlement_access_request_config import EntitlementAccessRequestConfig
+from sailpoint.sources.models.source_entitlement_access_request_config import SourceEntitlementAccessRequestConfig
 
-class TestEntitlementAccessRequestConfig(unittest.TestCase):
-    """EntitlementAccessRequestConfig unit test stubs"""
+class TestSourceEntitlementAccessRequestConfig(unittest.TestCase):
+    """SourceEntitlementAccessRequestConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,18 +25,18 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementAccessRequestConfig:
-        """Test EntitlementAccessRequestConfig
+    def make_instance(self, include_optional) -> SourceEntitlementAccessRequestConfig:
+        """Test SourceEntitlementAccessRequestConfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementAccessRequestConfig`
+        # uncomment below to create an instance of `SourceEntitlementAccessRequestConfig`
         """
-        model = EntitlementAccessRequestConfig()
+        model = SourceEntitlementAccessRequestConfig()
         if include_optional:
-            return EntitlementAccessRequestConfig(
+            return SourceEntitlementAccessRequestConfig(
                 approval_schemes = [
-                    sailpoint.sources.models.entitlement_approval_scheme.Entitlement Approval Scheme(
+                    sailpoint.sources.models.source_entitlement_approval_scheme.Source Entitlement Approval Scheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                     ],
@@ -44,18 +44,18 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
                 denial_comment_required = False,
                 reauthorization_required = False,
                 require_end_date = True,
-                max_permitted_access_duration = sailpoint.sources.models.entitlement_access_request_config_max_permitted_access_duration.EntitlementAccessRequestConfig_maxPermittedAccessDuration(
+                max_permitted_access_duration = sailpoint.sources.models.source_entitlement_access_request_config_max_permitted_access_duration.SourceEntitlementAccessRequestConfig_maxPermittedAccessDuration(
                     value = 5, 
                     time_unit = 'DAYS', ),
                 form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d'
             )
         else:
-            return EntitlementAccessRequestConfig(
+            return SourceEntitlementAccessRequestConfig(
         )
         """
 
-    def testEntitlementAccessRequestConfig(self):
-        """Test EntitlementAccessRequestConfig"""
+    def testSourceEntitlementAccessRequestConfig(self):
+        """Test SourceEntitlementAccessRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

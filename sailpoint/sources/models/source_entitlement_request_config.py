@@ -20,8 +20,8 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.sources.models.entitlement_access_request_config import EntitlementAccessRequestConfig
-from sailpoint.sources.models.entitlement_revocation_request_config import EntitlementRevocationRequestConfig
+from sailpoint.sources.models.source_entitlement_access_request_config import SourceEntitlementAccessRequestConfig
+from sailpoint.sources.models.source_entitlement_revocation_request_config import SourceEntitlementRevocationRequestConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,8 +29,8 @@ class SourceEntitlementRequestConfig(BaseModel):
     """
     Entitlement Request Configuration
     """ # noqa: E501
-    access_request_config: Optional[EntitlementAccessRequestConfig] = Field(default=None, alias="accessRequestConfig")
-    revocation_request_config: Optional[EntitlementRevocationRequestConfig] = Field(default=None, alias="revocationRequestConfig")
+    access_request_config: Optional[SourceEntitlementAccessRequestConfig] = Field(default=None, alias="accessRequestConfig")
+    revocation_request_config: Optional[SourceEntitlementRevocationRequestConfig] = Field(default=None, alias="revocationRequestConfig")
     __properties: ClassVar[List[str]] = ["accessRequestConfig", "revocationRequestConfig"]
 
     model_config = ConfigDict(
@@ -90,8 +90,8 @@ class SourceEntitlementRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequestConfig": EntitlementAccessRequestConfig.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
-            "revocationRequestConfig": EntitlementRevocationRequestConfig.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None
+            "accessRequestConfig": SourceEntitlementAccessRequestConfig.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
+            "revocationRequestConfig": SourceEntitlementRevocationRequestConfig.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None
         })
         return _obj
 

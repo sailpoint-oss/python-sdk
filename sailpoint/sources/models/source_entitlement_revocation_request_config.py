@@ -20,15 +20,15 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.sources.models.entitlement_approval_scheme import EntitlementApprovalScheme
+from sailpoint.sources.models.source_entitlement_approval_scheme import SourceEntitlementApprovalScheme
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EntitlementRevocationRequestConfig(BaseModel):
+class SourceEntitlementRevocationRequestConfig(BaseModel):
     """
-    EntitlementRevocationRequestConfig
+    SourceEntitlementRevocationRequestConfig
     """ # noqa: E501
-    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
+    approval_schemes: Optional[List[SourceEntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the revocation request. Empty when no approval is required.", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = ConfigDict(
@@ -49,7 +49,7 @@ class EntitlementRevocationRequestConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EntitlementRevocationRequestConfig from a JSON string"""
+        """Create an instance of SourceEntitlementRevocationRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class EntitlementRevocationRequestConfig(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EntitlementRevocationRequestConfig from a dict"""
+        """Create an instance of SourceEntitlementRevocationRequestConfig from a dict"""
         if obj is None:
             return None
 
@@ -89,7 +89,7 @@ class EntitlementRevocationRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
+            "approvalSchemes": [SourceEntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
 

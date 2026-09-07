@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.sources.models.entitlement_access_request_config_max_permitted_access_duration import EntitlementAccessRequestConfigMaxPermittedAccessDuration
+from sailpoint.sources.models.source_entitlement_access_request_config_max_permitted_access_duration import SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration
 
-class TestEntitlementAccessRequestConfigMaxPermittedAccessDuration(unittest.TestCase):
-    """EntitlementAccessRequestConfigMaxPermittedAccessDuration unit test stubs"""
+class TestSourceEntitlementAccessRequestConfigMaxPermittedAccessDuration(unittest.TestCase):
+    """SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestEntitlementAccessRequestConfigMaxPermittedAccessDuration(unittest.Test
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementAccessRequestConfigMaxPermittedAccessDuration:
-        """Test EntitlementAccessRequestConfigMaxPermittedAccessDuration
+    def make_instance(self, include_optional) -> SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration:
+        """Test SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementAccessRequestConfigMaxPermittedAccessDuration`
+        # uncomment below to create an instance of `SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration`
         """
-        model = EntitlementAccessRequestConfigMaxPermittedAccessDuration()
+        model = SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration()
         if include_optional:
-            return EntitlementAccessRequestConfigMaxPermittedAccessDuration(
+            return SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration(
                 value = 5,
                 time_unit = 'DAYS'
             )
         else:
-            return EntitlementAccessRequestConfigMaxPermittedAccessDuration(
+            return SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration(
         )
         """
 
-    def testEntitlementAccessRequestConfigMaxPermittedAccessDuration(self):
-        """Test EntitlementAccessRequestConfigMaxPermittedAccessDuration"""
+    def testSourceEntitlementAccessRequestConfigMaxPermittedAccessDuration(self):
+        """Test SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

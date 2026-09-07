@@ -9026,7 +9026,7 @@ class SourcesApi:
     ) -> SourceEntitlementRequestConfig:
         """Get source entitlement request configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str
@@ -9098,7 +9098,7 @@ class SourcesApi:
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Get source entitlement request configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str
@@ -9170,7 +9170,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get source entitlement request configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str
@@ -22078,7 +22078,7 @@ class SourcesApi:
     ) -> SourceEntitlementRequestConfig:
         """Update source entitlement request configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str
@@ -22154,7 +22154,7 @@ class SourcesApi:
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Update source entitlement request configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str
@@ -22230,7 +22230,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update source entitlement request configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
 
         :param id: The Source id (required)
         :type id: str

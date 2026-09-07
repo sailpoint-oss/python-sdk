@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.sources.models.entitlement_revocation_request_config import EntitlementRevocationRequestConfig
+from sailpoint.sources.models.source_entitlement_revocation_request_config import SourceEntitlementRevocationRequestConfig
 
-class TestEntitlementRevocationRequestConfig(unittest.TestCase):
-    """EntitlementRevocationRequestConfig unit test stubs"""
+class TestSourceEntitlementRevocationRequestConfig(unittest.TestCase):
+    """SourceEntitlementRevocationRequestConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,29 @@ class TestEntitlementRevocationRequestConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementRevocationRequestConfig:
-        """Test EntitlementRevocationRequestConfig
+    def make_instance(self, include_optional) -> SourceEntitlementRevocationRequestConfig:
+        """Test SourceEntitlementRevocationRequestConfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementRevocationRequestConfig`
+        # uncomment below to create an instance of `SourceEntitlementRevocationRequestConfig`
         """
-        model = EntitlementRevocationRequestConfig()
+        model = SourceEntitlementRevocationRequestConfig()
         if include_optional:
-            return EntitlementRevocationRequestConfig(
+            return SourceEntitlementRevocationRequestConfig(
                 approval_schemes = [
-                    sailpoint.sources.models.entitlement_approval_scheme.Entitlement Approval Scheme(
+                    sailpoint.sources.models.source_entitlement_approval_scheme.Source Entitlement Approval Scheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                     ]
             )
         else:
-            return EntitlementRevocationRequestConfig(
+            return SourceEntitlementRevocationRequestConfig(
         )
         """
 
-    def testEntitlementRevocationRequestConfig(self):
-        """Test EntitlementRevocationRequestConfig"""
+    def testSourceEntitlementRevocationRequestConfig(self):
+        """Test SourceEntitlementRevocationRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

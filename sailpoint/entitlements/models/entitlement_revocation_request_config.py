@@ -28,7 +28,7 @@ class EntitlementRevocationRequestConfig(BaseModel):
     """
     EntitlementRevocationRequestConfig
     """ # noqa: E501
-    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
+    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the revocation request. Empty when no approval is required.", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = ConfigDict(

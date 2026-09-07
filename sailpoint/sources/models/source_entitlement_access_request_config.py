@@ -20,21 +20,21 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.sources.models.entitlement_access_request_config_max_permitted_access_duration import EntitlementAccessRequestConfigMaxPermittedAccessDuration
-from sailpoint.sources.models.entitlement_approval_scheme import EntitlementApprovalScheme
+from sailpoint.sources.models.source_entitlement_access_request_config_max_permitted_access_duration import SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration
+from sailpoint.sources.models.source_entitlement_approval_scheme import SourceEntitlementApprovalScheme
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EntitlementAccessRequestConfig(BaseModel):
+class SourceEntitlementAccessRequestConfig(BaseModel):
     """
-    EntitlementAccessRequestConfig
+    SourceEntitlementAccessRequestConfig
     """ # noqa: E501
-    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
+    approval_schemes: Optional[List[SourceEntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
     request_comment_required: Optional[StrictBool] = Field(default=False, description="If the requester must provide a comment during access request.", alias="requestCommentRequired")
     denial_comment_required: Optional[StrictBool] = Field(default=False, description="If the reviewer must provide a comment when denying the access request.", alias="denialCommentRequired")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Is Reauthorization Required", alias="reauthorizationRequired")
     require_end_date: Optional[StrictBool] = Field(default=False, description="If true, then remove date or sunset date is required in access request of the entitlement.", alias="requireEndDate")
-    max_permitted_access_duration: Optional[EntitlementAccessRequestConfigMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
+    max_permitted_access_duration: Optional[SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
     form_definition_id: Optional[StrictStr] = Field(default=None, description="The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.", alias="formDefinitionId")
     __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "formDefinitionId"]
 
@@ -56,7 +56,7 @@ class EntitlementAccessRequestConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EntitlementAccessRequestConfig from a JSON string"""
+        """Create an instance of SourceEntitlementAccessRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -101,7 +101,7 @@ class EntitlementAccessRequestConfig(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EntitlementAccessRequestConfig from a dict"""
+        """Create an instance of SourceEntitlementAccessRequestConfig from a dict"""
         if obj is None:
             return None
 
@@ -109,12 +109,12 @@ class EntitlementAccessRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
+            "approvalSchemes": [SourceEntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
             "requestCommentRequired": obj.get("requestCommentRequired") if obj.get("requestCommentRequired") is not None else False,
             "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
             "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
-            "maxPermittedAccessDuration": EntitlementAccessRequestConfigMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
+            "maxPermittedAccessDuration": SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
             "formDefinitionId": obj.get("formDefinitionId")
         })
         return _obj
