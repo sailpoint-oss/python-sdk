@@ -43,6 +43,7 @@ class TestConnectorDetail(unittest.TestCase):
 <!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
 <Application connector="sailpoint.connector.OpenConnectorAdapter" name="custom Atlassian Suite - Cloud" type="custom Atlassian Suite - Cloud"/>
 ',
+                provisioning_policies = [{"name":"Account","description":"Create Account Profile","usageType":"CREATE","fields":[{"name":"distinguishedName","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":true,"type":"string","isMultiValued":false}]}],
                 correlation_config_xml = '<?xml version='1.0' encoding='UTF-8'?>
 <!-- Copyright (C) 2021 SailPoint Technologies, Inc.  All rights reserved. -->
 

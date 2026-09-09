@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,6 +33,7 @@ class ConnectorDetail(BaseModel):
     class_name: Optional[StrictStr] = Field(default=None, description="The connector class name", alias="className")
     script_name: Optional[StrictStr] = Field(default=None, description="The connector script name", alias="scriptName")
     application_xml: Optional[StrictStr] = Field(default=None, description="The connector application xml", alias="applicationXml")
+    provisioning_policies: Optional[List[ProvisioningPolicyDto]] = Field(default=None, description="Default provisioning policies parsed from the connector application XML templates. Always an array; empty when the connector ships no templates.", alias="provisioningPolicies")
     correlation_config_xml: Optional[StrictStr] = Field(default=None, description="The connector correlation config xml", alias="correlationConfigXml")
     source_config_xml: Optional[StrictStr] = Field(default=None, description="The connector source config xml", alias="sourceConfigXml")
     source_config: Optional[StrictStr] = Field(default=None, description="The connector source config", alias="sourceConfig")
@@ -43,7 +45,7 @@ class ConnectorDetail(BaseModel):
     translation_properties: Optional[Dict[str, Any]] = Field(default=None, description="A map containing translation attributes by loacale key", alias="translationProperties")
     connector_metadata: Optional[Dict[str, Any]] = Field(default=None, description="A map containing metadata pertinent to the UI to be used", alias="connectorMetadata")
     status: Optional[StrictStr] = Field(default=None, description="The connector status")
-    __properties: ClassVar[List[str]] = ["name", "type", "className", "scriptName", "applicationXml", "correlationConfigXml", "sourceConfigXml", "sourceConfig", "sourceConfigFrom", "s3Location", "uploadedFiles", "fileUpload", "directConnect", "translationProperties", "connectorMetadata", "status"]
+    __properties: ClassVar[List[str]] = ["name", "type", "className", "scriptName", "applicationXml", "provisioningPolicies", "correlationConfigXml", "sourceConfigXml", "sourceConfig", "sourceConfigFrom", "s3Location", "uploadedFiles", "fileUpload", "directConnect", "translationProperties", "connectorMetadata", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -94,6 +96,13 @@ class ConnectorDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in provisioning_policies (list)
+        _items = []
+        if self.provisioning_policies:
+            for _item_provisioning_policies in self.provisioning_policies:
+                if _item_provisioning_policies:
+                    _items.append(_item_provisioning_policies.to_dict())
+            _dict['provisioningPolicies'] = _items
         # set to None if source_config (nullable) is None
         # and model_fields_set contains the field
         if self.source_config is None and "source_config" in self.model_fields_set:
@@ -126,6 +135,7 @@ class ConnectorDetail(BaseModel):
             "className": obj.get("className"),
             "scriptName": obj.get("scriptName"),
             "applicationXml": obj.get("applicationXml"),
+            "provisioningPolicies": [ProvisioningPolicyDto.from_dict(_item) for _item in obj["provisioningPolicies"]] if obj.get("provisioningPolicies") is not None else None,
             "correlationConfigXml": obj.get("correlationConfigXml"),
             "sourceConfigXml": obj.get("sourceConfigXml"),
             "sourceConfig": obj.get("sourceConfig"),

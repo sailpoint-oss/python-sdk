@@ -210,7 +210,7 @@ with ApiClient(configuration) as api_client:
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "template" : "{firstname}.{lastname}{uniqueCounter}",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"
@@ -227,7 +227,7 @@ with ApiClient(configuration) as api_client:
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "template" : "{firstname}.{lastname}{uniqueCounter}",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"
@@ -4047,7 +4047,7 @@ with ApiClient(configuration) as api_client:
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "template" : "{firstname}.{lastname}{uniqueCounter}",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"
@@ -4064,7 +4064,7 @@ with ApiClient(configuration) as api_client:
             "isMultiValued" : false,
             "name" : "userName",
             "attributes" : {
-              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "template" : "{firstname}.{lastname}{uniqueCounter}",
               "cloudMaxUniqueChecks" : "50",
               "cloudMaxSize" : "20",
               "cloudRequired" : "true"

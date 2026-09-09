@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Sources
+    Identity Security Cloud API - Connectors
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -14,7 +14,7 @@
 
 import unittest
 
-from sailpoint.sources.models.field_details_dto import FieldDetailsDto
+from sailpoint.connectors.models.field_details_dto import FieldDetailsDto
 
 class TestFieldDetailsDto(unittest.TestCase):
     """FieldDetailsDto unit test stubs"""

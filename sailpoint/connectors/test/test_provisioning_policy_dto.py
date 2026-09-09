@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Sources
+    Identity Security Cloud API - Connectors
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -14,7 +14,7 @@
 
 import unittest
 
-from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.connectors.models.provisioning_policy_dto import ProvisioningPolicyDto
 
 class TestProvisioningPolicyDto(unittest.TestCase):
     """ProvisioningPolicyDto unit test stubs"""
@@ -39,7 +39,7 @@ class TestProvisioningPolicyDto(unittest.TestCase):
                 description = 'this provisioning policy creates access based on an identity going inactive',
                 usage_type = 'CREATE',
                 fields = [
-                    sailpoint.sources.models.field_details_dto.Field Details Dto(
+                    sailpoint.connectors.models.field_details_dto.Field Details Dto(
                         name = 'userName', 
                         transform = {"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}}, 
                         attributes = {"template":"{firstname}.{lastname}{uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"}, 

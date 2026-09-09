@@ -5,7 +5,7 @@ pagination_label: ProvisioningPolicyDto
 sidebar_label: ProvisioningPolicyDto
 sidebar_class_name: pythonsdk
 keywords: ['python', 'Python', 'sdk', 'ProvisioningPolicyDto', 'ProvisioningPolicyDto'] 
-slug: /tools/sdk/python/sources/models/provisioning-policy-dto
+slug: /tools/sdk/python/connectors/models/provisioning-policy-dto
 tags: ['SDK', 'Software Development Kit', 'ProvisioningPolicyDto', 'ProvisioningPolicyDto']
 ---
 
@@ -25,14 +25,14 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.sources.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.connectors.models.provisioning_policy_dto import ProvisioningPolicyDto
 
 provisioning_policy_dto = ProvisioningPolicyDto(
 name='example provisioning policy for inactive identities',
 description='this provisioning policy creates access based on an identity going inactive',
 usage_type='CREATE',
 fields=[
-                    sailpoint.sources.models.field_details_dto.Field Details Dto(
+                    sailpoint.connectors.models.field_details_dto.Field Details Dto(
                         name = 'userName', 
                         transform = {"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}}, 
                         attributes = {"template":"{firstname}.{lastname}{uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"}, 

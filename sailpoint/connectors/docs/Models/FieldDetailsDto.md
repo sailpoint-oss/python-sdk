@@ -5,7 +5,7 @@ pagination_label: FieldDetailsDto
 sidebar_label: FieldDetailsDto
 sidebar_class_name: pythonsdk
 keywords: ['python', 'Python', 'sdk', 'FieldDetailsDto', 'FieldDetailsDto'] 
-slug: /tools/sdk/python/sources/models/field-details-dto
+slug: /tools/sdk/python/connectors/models/field-details-dto
 tags: ['SDK', 'Software Development Kit', 'FieldDetailsDto', 'FieldDetailsDto']
 ---
 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.sources.models.field_details_dto import FieldDetailsDto
+from sailpoint.connectors.models.field_details_dto import FieldDetailsDto
 
 field_details_dto = FieldDetailsDto(
 name='userName',
