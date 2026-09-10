@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *AccessProfilesApi* | [**get_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#get_access_profile_v1) | **GET** /access-profiles/v1/{id} | Get an access profile
 *AccessProfilesApi* | [**list_access_profiles_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#list_access_profiles_v1) | **GET** /access-profiles/v1 | List access profiles
 *AccessProfilesApi* | [**patch_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#patch_access_profile_v1) | **PATCH** /access-profiles/v1/{id} | Patch a specified access profile
+*AccessProfilesApi* | [**search_access_profiles_by_filter_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#search_access_profiles_by_filter_v1) | **POST** /access-profiles/v1/filter | Filter access profiles by metadata
 *AccessProfilesApi* | [**update_access_profiles_in_bulk_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_in_bulk_v1) | **POST** /access-profiles/v1/bulk-update-requestable | Update access profile(s) requestable field.
 *AccessProfilesApi* | [**update_access_profiles_metadata_by_filter_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_metadata_by_filter_v1) | **POST** /access-profiles/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
 *AccessProfilesApi* | [**update_access_profiles_metadata_by_ids_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_metadata_by_ids_v1) | **POST** /access-profiles/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
@@ -90,15 +91,17 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](sailpoint/access_profiles/docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](sailpoint/access_profiles/docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](sailpoint/access_profiles/docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileListFilterDTO](sailpoint/access_profiles/docs/AccessProfileListFilterDTO.md)
+ - [AccessProfileListFilterDTOAmmKeyValuesInner](sailpoint/access_profiles/docs/AccessProfileListFilterDTOAmmKeyValuesInner.md)
+ - [AccessProfileMetadataBulkUpdateByFilterRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByFilterRequest.md)
+ - [AccessProfileMetadataBulkUpdateByIdRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByIdRequest.md)
+ - [AccessProfileMetadataBulkUpdateByIdRequestValuesInner](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByIdRequestValuesInner.md)
+ - [AccessProfileMetadataBulkUpdateByQueryRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByQueryRequest.md)
+ - [AccessProfileMetadataBulkUpdateResponse](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateResponse.md)
  - [AccessProfileSourceRef](sailpoint/access_profiles/docs/AccessProfileSourceRef.md)
  - [AccessProfileUpdateItem](sailpoint/access_profiles/docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](sailpoint/access_profiles/docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](sailpoint/access_profiles/docs/AccessProfileUsageUsedByInner.md)
- - [Accessprofilemetadatabulkupdatebyfilterrequest](sailpoint/access_profiles/docs/Accessprofilemetadatabulkupdatebyfilterrequest.md)
- - [Accessprofilemetadatabulkupdatebyidrequest](sailpoint/access_profiles/docs/Accessprofilemetadatabulkupdatebyidrequest.md)
- - [AccessprofilemetadatabulkupdatebyidrequestValuesInner](sailpoint/access_profiles/docs/AccessprofilemetadatabulkupdatebyidrequestValuesInner.md)
- - [Accessprofilemetadatabulkupdatebyqueryrequest](sailpoint/access_profiles/docs/Accessprofilemetadatabulkupdatebyqueryrequest.md)
- - [Accessprofilemetadatabulkupdateresponse](sailpoint/access_profiles/docs/Accessprofilemetadatabulkupdateresponse.md)
  - [AdditionalOwnerRef](sailpoint/access_profiles/docs/AdditionalOwnerRef.md)
  - [ArrayInner](sailpoint/access_profiles/docs/ArrayInner.md)
  - [AttributeDTO](sailpoint/access_profiles/docs/AttributeDTO.md)

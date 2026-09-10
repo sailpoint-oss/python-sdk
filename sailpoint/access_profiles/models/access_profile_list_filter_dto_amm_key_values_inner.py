@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Data Access Security
+    Identity Security Cloud API - Access Profiles
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -19,21 +19,17 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
-from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Updateidentitycollectorrequest(BaseModel):
+class AccessProfileListFilterDTOAmmKeyValuesInner(BaseModel):
     """
-    Complete identity collector representation for [Replace Identity Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1). The server fully replaces the existing resource with this payload. Partial updates are not supported; `users` and `groups` must always be supplied and replace the current collection settings in their entirety.
+    AccessProfileListFilterDTOAmmKeyValuesInner
     """ # noqa: E501
-    name: StrictStr = Field(description="The display name of the identity collector. Must be unique within the tenant.")
-    source_id: StrictStr = Field(description="The identifier of the associated source, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. This value cannot be modified for an existing identity collector and must match the current value.", alias="sourceId")
-    type: StrictStr = Field(description="The identity collector type. This value cannot be modified for an existing identity collector and must match the current value.")
-    users: Identitycollectorcollectionsettings
-    groups: Identitycollectorcollectionsettings
-    __properties: ClassVar[List[str]] = ["name", "sourceId", "type", "users", "groups"]
+    attribute: Optional[StrictStr] = Field(default=None, description="The technical name of the metadata attribute. A blank or missing value is rejected with a 400 error.")
+    values: Optional[List[StrictStr]] = Field(default=None, description="The attribute values used to filter access profiles. If the list is empty, results are filtered by attribute key only.")
+    __properties: ClassVar[List[str]] = ["attribute", "values"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +49,7 @@ class Updateidentitycollectorrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a JSON string"""
+        """Create an instance of AccessProfileListFilterDTOAmmKeyValuesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,17 +70,11 @@ class Updateidentitycollectorrequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of users
-        if self.users:
-            _dict['users'] = self.users.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of groups
-        if self.groups:
-            _dict['groups'] = self.groups.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a dict"""
+        """Create an instance of AccessProfileListFilterDTOAmmKeyValuesInner from a dict"""
         if obj is None:
             return None
 
@@ -92,11 +82,8 @@ class Updateidentitycollectorrequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "sourceId": obj.get("sourceId"),
-            "type": obj.get("type"),
-            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
-            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
+            "attribute": obj.get("attribute"),
+            "values": obj.get("values")
         })
         return _obj
 

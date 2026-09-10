@@ -20,20 +20,19 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
-from typing_extensions import Annotated
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest_values_inner import AccessprofilemetadatabulkupdatebyidrequestValuesInner
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request_values_inner import AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Accessprofilemetadatabulkupdatebyidrequest(BaseModel):
+class AccessProfileMetadataBulkUpdateByQueryRequest(BaseModel):
     """
-    Request to bulk update Access Model Metadata on a list of access profiles identified by ID. The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+    Request to bulk update Access Model Metadata on every access profile matching a search query. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
     """ # noqa: E501
-    access_profiles: Annotated[List[StrictStr], Field(max_length=3000)] = Field(description="The IDs of the access profiles to update.", alias="accessProfiles")
+    query: Dict[str, Any] = Field(description="The search query selecting the access profiles to update.")
     operation: StrictStr = Field(description="The operation to be performed")
     replace_scope: StrictStr = Field(description="The choice of update scope. **ATTRIBUTE** replaces only the values of the attributes named in `values`, and **ALL** replaces every metadata attribute on the access profile.", alias="replaceScope")
-    values: List[AccessprofilemetadatabulkupdatebyidrequestValuesInner] = Field(description="The metadata to be updated, including attribute key and value.")
-    __properties: ClassVar[List[str]] = ["accessProfiles", "operation", "replaceScope", "values"]
+    values: List[AccessProfileMetadataBulkUpdateByIdRequestValuesInner] = Field(description="The metadata to be updated, including attribute key and value.")
+    __properties: ClassVar[List[str]] = ["query", "operation", "replaceScope", "values"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
@@ -67,7 +66,7 @@ class Accessprofilemetadatabulkupdatebyidrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdatebyidrequest from a JSON string"""
+        """Create an instance of AccessProfileMetadataBulkUpdateByQueryRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -99,7 +98,7 @@ class Accessprofilemetadatabulkupdatebyidrequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdatebyidrequest from a dict"""
+        """Create an instance of AccessProfileMetadataBulkUpdateByQueryRequest from a dict"""
         if obj is None:
             return None
 
@@ -107,10 +106,10 @@ class Accessprofilemetadatabulkupdatebyidrequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessProfiles": obj.get("accessProfiles"),
+            "query": obj.get("query"),
             "operation": obj.get("operation"),
             "replaceScope": obj.get("replaceScope"),
-            "values": [AccessprofilemetadatabulkupdatebyidrequestValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
+            "values": [AccessProfileMetadataBulkUpdateByIdRequestValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
         })
         return _obj
 

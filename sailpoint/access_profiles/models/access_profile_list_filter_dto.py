@@ -20,17 +20,17 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.access_profiles.models.access_profile_list_filter_dto_amm_key_values_inner import AccessProfileListFilterDTOAmmKeyValuesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessprofilemetadatabulkupdatebyidrequestValuesInner(BaseModel):
+class AccessProfileListFilterDTO(BaseModel):
     """
-    AccessprofilemetadatabulkupdatebyidrequestValuesInner
+    Filter criteria and Access Model Metadata key/values used to select access profiles.
     """ # noqa: E501
-    attribute: StrictStr = Field(description="The technical name of the metadata attribute.")
-    values: Optional[List[StrictStr]] = Field(description="The values of the attribute to be updated.")
-    object_type: Optional[StrictStr] = Field(default=None, description="The type of the metadata attribute. Set to `custom` for custom metadata attributes, which require a suite license.", alias="objectType")
-    __properties: ClassVar[List[str]] = ["attribute", "values", "objectType"]
+    filters: Optional[StrictStr] = Field(default=None, description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*")
+    amm_key_values: Optional[List[AccessProfileListFilterDTOAmmKeyValuesInner]] = Field(default=None, description="The Access Model Metadata attributes and values used to filter the results.", alias="ammKeyValues")
+    __properties: ClassVar[List[str]] = ["filters", "ammKeyValues"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class AccessprofilemetadatabulkupdatebyidrequestValuesInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessprofilemetadatabulkupdatebyidrequestValuesInner from a JSON string"""
+        """Create an instance of AccessProfileListFilterDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,16 +71,28 @@ class AccessprofilemetadatabulkupdatebyidrequestValuesInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if values (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in amm_key_values (list)
+        _items = []
+        if self.amm_key_values:
+            for _item_amm_key_values in self.amm_key_values:
+                if _item_amm_key_values:
+                    _items.append(_item_amm_key_values.to_dict())
+            _dict['ammKeyValues'] = _items
+        # set to None if filters (nullable) is None
         # and model_fields_set contains the field
-        if self.values is None and "values" in self.model_fields_set:
-            _dict['values'] = None
+        if self.filters is None and "filters" in self.model_fields_set:
+            _dict['filters'] = None
+
+        # set to None if amm_key_values (nullable) is None
+        # and model_fields_set contains the field
+        if self.amm_key_values is None and "amm_key_values" in self.model_fields_set:
+            _dict['ammKeyValues'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessprofilemetadatabulkupdatebyidrequestValuesInner from a dict"""
+        """Create an instance of AccessProfileListFilterDTO from a dict"""
         if obj is None:
             return None
 
@@ -88,9 +100,8 @@ class AccessprofilemetadatabulkupdatebyidrequestValuesInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attribute": obj.get("attribute"),
-            "values": obj.get("values"),
-            "objectType": obj.get("objectType")
+            "filters": obj.get("filters"),
+            "ammKeyValues": [AccessProfileListFilterDTOAmmKeyValuesInner.from_dict(_item) for _item in obj["ammKeyValues"]] if obj.get("ammKeyValues") is not None else None
         })
         return _obj
 

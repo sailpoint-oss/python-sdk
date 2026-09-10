@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,9 +30,11 @@ class Identitycollectorlistitem(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the identity collector.")
     name: Optional[StrictStr] = Field(default=None, description="The display name of the identity collector.")
-    type: Optional[StrictStr] = Field(default=None, description="The identity collector type, derived from its underlying source. Possible values include \"Active Directory\", \"Azure Active Directory\", \"Google Drive\", \"Dropbox\", \"Box\", \"Microsoft Entra SaaS\", \"Snowflake\", and \"Databricks\".")
+    type: Optional[StrictStr] = Field(default=None, description="The identity collector type, derived from its underlying source.")
     source_id: Optional[StrictStr] = Field(default=None, description="The identifier of the source the identity collector is associated with, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted.", alias="sourceId")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "sourceId"]
+    users: Optional[Identitycollectorcollectionsettings] = None
+    groups: Optional[Identitycollectorcollectionsettings] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "sourceId", "users", "groups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +75,12 @@ class Identitycollectorlistitem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of users
+        if self.users:
+            _dict['users'] = self.users.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of groups
+        if self.groups:
+            _dict['groups'] = self.groups.to_dict()
         return _dict
 
     @classmethod
@@ -87,7 +96,9 @@ class Identitycollectorlistitem(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "sourceId": obj.get("sourceId")
+            "sourceId": obj.get("sourceId"),
+            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
+            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
         })
         return _obj
 

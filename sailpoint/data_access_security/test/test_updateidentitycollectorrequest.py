@@ -37,13 +37,41 @@ class TestUpdateidentitycollectorrequest(unittest.TestCase):
             return Updateidentitycollectorrequest(
                 name = 'Active Directory Identity Collector',
                 source_id = '2c9180835d2e5168015d32f890ca1581',
-                type = 'Active Directory'
+                type = 'Active Directory',
+                users = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], ),
+                groups = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], )
             )
         else:
             return Updateidentitycollectorrequest(
                 name = 'Active Directory Identity Collector',
                 source_id = '2c9180835d2e5168015d32f890ca1581',
                 type = 'Active Directory',
+                users = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], ),
+                groups = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], ),
         )
         """
 

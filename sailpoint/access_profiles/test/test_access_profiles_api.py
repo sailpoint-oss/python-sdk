@@ -82,6 +82,13 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_search_access_profiles_by_filter_v1(self) -> None:
+        """Test case for search_access_profiles_by_filter_v1
+
+        Filter access profiles by metadata
+        """
+        pass
+
     def test_update_access_profiles_in_bulk_v1(self) -> None:
         """Test case for update_access_profiles_in_bulk_v1
 

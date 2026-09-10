@@ -38,7 +38,21 @@ class TestIdentitycollectorlistitem(unittest.TestCase):
                 id = '12345',
                 name = 'Active Directory Identity Collector',
                 type = 'Active Directory',
-                source_id = '2c9180835d2e5168015d32f890ca1581'
+                source_id = '2c9180835d2e5168015d32f890ca1581',
+                users = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], ),
+                groups = sailpoint.data_access_security.models.identitycollectorcollectionsettings.Identitycollectorcollectionsettings(
+                    properties = ["UserAddress","department"], 
+                    field_mappings = [
+                        sailpoint.data_access_security.models.identitycollectorfieldmapping.Identitycollectorfieldmapping(
+                            field_dictionary_name = 'UPTF-1', 
+                            source_attribute_name = 'department', )
+                        ], )
             )
         else:
             return Identitycollectorlistitem(

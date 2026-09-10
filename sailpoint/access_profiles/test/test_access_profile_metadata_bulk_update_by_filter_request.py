@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyfilterrequest import Accessprofilemetadatabulkupdatebyfilterrequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_filter_request import AccessProfileMetadataBulkUpdateByFilterRequest
 
-class TestAccessprofilemetadatabulkupdatebyfilterrequest(unittest.TestCase):
-    """Accessprofilemetadatabulkupdatebyfilterrequest unit test stubs"""
+class TestAccessProfileMetadataBulkUpdateByFilterRequest(unittest.TestCase):
+    """AccessProfileMetadataBulkUpdateByFilterRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,23 +25,23 @@ class TestAccessprofilemetadatabulkupdatebyfilterrequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Accessprofilemetadatabulkupdatebyfilterrequest:
-        """Test Accessprofilemetadatabulkupdatebyfilterrequest
+    def make_instance(self, include_optional) -> AccessProfileMetadataBulkUpdateByFilterRequest:
+        """Test AccessProfileMetadataBulkUpdateByFilterRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Accessprofilemetadatabulkupdatebyfilterrequest`
+        # uncomment below to create an instance of `AccessProfileMetadataBulkUpdateByFilterRequest`
         """
-        model = Accessprofilemetadatabulkupdatebyfilterrequest()
+        model = AccessProfileMetadataBulkUpdateByFilterRequest()
         if include_optional:
-            return Accessprofilemetadatabulkupdatebyfilterrequest(
+            return AccessProfileMetadataBulkUpdateByFilterRequest(
                 filters = 'requestable eq false',
                 operation = 'REPLACE',
                 replace_scope = 'ATTRIBUTE',
                 values = [{"attribute":"iscFederalClassifications","values":["topSecret"]}]
             )
         else:
-            return Accessprofilemetadatabulkupdatebyfilterrequest(
+            return AccessProfileMetadataBulkUpdateByFilterRequest(
                 filters = 'requestable eq false',
                 operation = 'REPLACE',
                 replace_scope = 'ATTRIBUTE',
@@ -49,8 +49,8 @@ class TestAccessprofilemetadatabulkupdatebyfilterrequest(unittest.TestCase):
         )
         """
 
-    def testAccessprofilemetadatabulkupdatebyfilterrequest(self):
-        """Test Accessprofilemetadatabulkupdatebyfilterrequest"""
+    def testAccessProfileMetadataBulkUpdateByFilterRequest(self):
+        """Test AccessProfileMetadataBulkUpdateByFilterRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

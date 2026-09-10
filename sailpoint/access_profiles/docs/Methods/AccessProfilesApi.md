@@ -57,6 +57,7 @@ Method | HTTP request | Description
 [**get-access-profile-v1**](#get-access-profile-v1) | **GET** `/access-profiles/v1/{id}` | Get an access profile
 [**list-access-profiles-v1**](#list-access-profiles-v1) | **GET** `/access-profiles/v1` | List access profiles
 [**patch-access-profile-v1**](#patch-access-profile-v1) | **PATCH** `/access-profiles/v1/{id}` | Patch a specified access profile
+[**search-access-profiles-by-filter-v1**](#search-access-profiles-by-filter-v1) | **POST** `/access-profiles/v1/filter` | Filter access profiles by metadata
 [**update-access-profiles-in-bulk-v1**](#update-access-profiles-in-bulk-v1) | **POST** `/access-profiles/v1/bulk-update-requestable` | Update access profile(s) requestable field.
 [**update-access-profiles-metadata-by-filter-v1**](#update-access-profiles-metadata-by-filter-v1) | **POST** `/access-profiles/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
 [**update-access-profiles-metadata-by-ids-v1**](#update-access-profiles-metadata-by-ids-v1) | **POST** `/access-profiles/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
@@ -726,6 +727,86 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## search-access-profiles-by-filter-v1
+Filter access profiles by metadata
+Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+[API Spec](https://developer.sailpoint.com/docs/api/search-access-profiles-by-filter-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | access_profile_list_filter_dto | [**AccessProfileListFilterDTO**](../models/access-profile-list-filter-dto) | True  | 
+  Query | for_subadmin | **str** |   (optional) | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+  Query | limit | **int** |   (optional) (default to 50) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
+  Query | for_segment_ids | **str** |   (optional) | Filters the returned list to those access profiles assigned to the specified segment IDs.
+  Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether the returned list includes unsegmented access profiles.
+
+### Return type
+[**List[AccessProfile]**](../models/access-profile)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of access profiles matching the filter criteria. | List[AccessProfile] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfilesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+from sailpoint.access_profiles.api_client import ApiClient
+from sailpoint.access_profiles.models.access_profile import AccessProfile
+from sailpoint.access_profiles.models.access_profile_list_filter_dto import AccessProfileListFilterDTO
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    access_profile_list_filter_dto = '''{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "requestable eq false"
+        }''' # AccessProfileListFilterDTO | 
+    for_subadmin = '8c190e6787aa4ed9a90bd9d5344523fb' # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional) # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional)
+    limit = 50 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+    sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+    for_segment_ids = '0b5c9f2d-1e1b-4b2f-9b1a-0e7f4a6c2d3e' # str | Filters the returned list to those access profiles assigned to the specified segment IDs. (optional) # str | Filters the returned list to those access profiles assigned to the specified segment IDs. (optional)
+    include_unsegmented = True # bool | Whether the returned list includes unsegmented access profiles. (optional) (default to True) # bool | Whether the returned list includes unsegmented access profiles. (optional) (default to True)
+
+    try:
+        # Filter access profiles by metadata
+        new_access_profile_list_filter_dto = AccessProfileListFilterDto.from_json(access_profile_list_filter_dto)
+        results = AccessProfilesApi(api_client).search_access_profiles_by_filter_v1(access_profile_list_filter_dto=new_access_profile_list_filter_dto)
+        # Below is a request that includes all optional parameters
+        # results = AccessProfilesApi(api_client).search_access_profiles_by_filter_v1(new_access_profile_list_filter_dto, for_subadmin, limit, offset, count, sorters, for_segment_ids, include_unsegmented)
+        print("The response of AccessProfilesApi->search_access_profiles_by_filter_v1:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->search_access_profiles_by_filter_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## update-access-profiles-in-bulk-v1
 Update access profile(s) requestable field.
 This API initiates a bulk update of field requestable for one or more Access Profiles.
@@ -807,15 +888,15 @@ A single access profile cannot be assigned more than 25 metadata values. Adding 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofilemetadatabulkupdatebyfilterrequest | [**Accessprofilemetadatabulkupdatebyfilterrequest**](../models/accessprofilemetadatabulkupdatebyfilterrequest) | True  | 
+ Body  | access_profile_metadata_bulk_update_by_filter_request | [**AccessProfileMetadataBulkUpdateByFilterRequest**](../models/access-profile-metadata-bulk-update-by-filter-request) | True  | 
 
 ### Return type
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+202 | Returned if the bulk update request was created. | AccessProfileMetadataBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -831,14 +912,14 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyfilterrequest import Accessprofilemetadatabulkupdatebyfilterrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_filter_request import AccessProfileMetadataBulkUpdateByFilterRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessprofilemetadatabulkupdatebyfilterrequest = '''{
+    access_profile_metadata_bulk_update_by_filter_request = '''{
           "values" : [ {
             "attribute" : "iscFederalClassifications",
             "values" : [ "topSecret" ]
@@ -846,14 +927,14 @@ with ApiClient(configuration) as api_client:
           "filters" : "requestable eq false",
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }''' # Accessprofilemetadatabulkupdatebyfilterrequest | 
+        }''' # AccessProfileMetadataBulkUpdateByFilterRequest | 
 
     try:
         # Bulk-update metadata by filter
-        new_accessprofilemetadatabulkupdatebyfilterrequest = Accessprofilemetadatabulkupdatebyfilterrequest.from_json(accessprofilemetadatabulkupdatebyfilterrequest)
-        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(accessprofilemetadatabulkupdatebyfilterrequest=new_accessprofilemetadatabulkupdatebyfilterrequest)
+        new_access_profile_metadata_bulk_update_by_filter_request = AccessProfileMetadataBulkUpdateByFilterRequest.from_json(access_profile_metadata_bulk_update_by_filter_request)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(access_profile_metadata_bulk_update_by_filter_request=new_access_profile_metadata_bulk_update_by_filter_request)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(new_accessprofilemetadatabulkupdatebyfilterrequest)
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_filter_v1(new_access_profile_metadata_bulk_update_by_filter_request)
         print("The response of AccessProfilesApi->update_access_profiles_metadata_by_filter_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -878,15 +959,15 @@ The maximum access profile count in a single request is 3000. A single access pr
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofilemetadatabulkupdatebyidrequest | [**Accessprofilemetadatabulkupdatebyidrequest**](../models/accessprofilemetadatabulkupdatebyidrequest) | True  | 
+ Body  | access_profile_metadata_bulk_update_by_id_request | [**AccessProfileMetadataBulkUpdateByIdRequest**](../models/access-profile-metadata-bulk-update-by-id-request) | True  | 
 
 ### Return type
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+202 | Returned if the bulk update request was created. | AccessProfileMetadataBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -902,14 +983,14 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest import Accessprofilemetadatabulkupdatebyidrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request import AccessProfileMetadataBulkUpdateByIdRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessprofilemetadatabulkupdatebyidrequest = '''{
+    access_profile_metadata_bulk_update_by_id_request = '''{
           "accessProfiles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
           "values" : [ {
             "attribute" : "iscFederalClassifications",
@@ -917,14 +998,14 @@ with ApiClient(configuration) as api_client:
           } ],
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }''' # Accessprofilemetadatabulkupdatebyidrequest | 
+        }''' # AccessProfileMetadataBulkUpdateByIdRequest | 
 
     try:
         # Bulk-update metadata by ids
-        new_accessprofilemetadatabulkupdatebyidrequest = Accessprofilemetadatabulkupdatebyidrequest.from_json(accessprofilemetadatabulkupdatebyidrequest)
-        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(accessprofilemetadatabulkupdatebyidrequest=new_accessprofilemetadatabulkupdatebyidrequest)
+        new_access_profile_metadata_bulk_update_by_id_request = AccessProfileMetadataBulkUpdateByIdRequest.from_json(access_profile_metadata_bulk_update_by_id_request)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(access_profile_metadata_bulk_update_by_id_request=new_access_profile_metadata_bulk_update_by_id_request)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(new_accessprofilemetadatabulkupdatebyidrequest)
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_ids_v1(new_access_profile_metadata_bulk_update_by_id_request)
         print("The response of AccessProfilesApi->update_access_profiles_metadata_by_ids_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -949,15 +1030,15 @@ A single access profile cannot be assigned more than 25 metadata values. Adding 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | accessprofilemetadatabulkupdatebyqueryrequest | [**Accessprofilemetadatabulkupdatebyqueryrequest**](../models/accessprofilemetadatabulkupdatebyqueryrequest) | True  | 
+ Body  | access_profile_metadata_bulk_update_by_query_request | [**AccessProfileMetadataBulkUpdateByQueryRequest**](../models/access-profile-metadata-bulk-update-by-query-request) | True  | 
 
 ### Return type
-[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+[**AccessProfileMetadataBulkUpdateResponse**](../models/access-profile-metadata-bulk-update-response)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Returned if the bulk update request was created. | Accessprofilemetadatabulkupdateresponse |  -  |
+202 | Returned if the bulk update request was created. | AccessProfileMetadataBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfilesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -973,14 +1054,14 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
 from sailpoint.access_profiles.api_client import ApiClient
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyqueryrequest import Accessprofilemetadatabulkupdatebyqueryrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_query_request import AccessProfileMetadataBulkUpdateByQueryRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    accessprofilemetadatabulkupdatebyqueryrequest = '''{
+    access_profile_metadata_bulk_update_by_query_request = '''{
           "query" : {
             "indices" : [ "accessprofiles" ],
             "queryType" : "TEXT",
@@ -998,14 +1079,14 @@ with ApiClient(configuration) as api_client:
           } ],
           "replaceScope" : "ATTRIBUTE",
           "operation" : "REPLACE"
-        }''' # Accessprofilemetadatabulkupdatebyqueryrequest | 
+        }''' # AccessProfileMetadataBulkUpdateByQueryRequest | 
 
     try:
         # Bulk-update metadata by query
-        new_accessprofilemetadatabulkupdatebyqueryrequest = Accessprofilemetadatabulkupdatebyqueryrequest.from_json(accessprofilemetadatabulkupdatebyqueryrequest)
-        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(accessprofilemetadatabulkupdatebyqueryrequest=new_accessprofilemetadatabulkupdatebyqueryrequest)
+        new_access_profile_metadata_bulk_update_by_query_request = AccessProfileMetadataBulkUpdateByQueryRequest.from_json(access_profile_metadata_bulk_update_by_query_request)
+        results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(access_profile_metadata_bulk_update_by_query_request=new_access_profile_metadata_bulk_update_by_query_request)
         # Below is a request that includes all optional parameters
-        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(new_accessprofilemetadatabulkupdatebyqueryrequest)
+        # results = AccessProfilesApi(api_client).update_access_profiles_metadata_by_query_v1(new_access_profile_metadata_bulk_update_by_query_request)
         print("The response of AccessProfilesApi->update_access_profiles_metadata_by_query_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

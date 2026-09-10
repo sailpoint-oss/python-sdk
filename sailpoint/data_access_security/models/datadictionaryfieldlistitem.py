@@ -18,22 +18,27 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
-from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Updateidentitycollectorrequest(BaseModel):
+class Datadictionaryfieldlistitem(BaseModel):
     """
-    Complete identity collector representation for [Replace Identity Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1). The server fully replaces the existing resource with this payload. Partial updates are not supported; `users` and `groups` must always be supplied and replace the current collection settings in their entirety.
+    A custom data dictionary field used for permission and identity collector mappings.
     """ # noqa: E501
-    name: StrictStr = Field(description="The display name of the identity collector. Must be unique within the tenant.")
-    source_id: StrictStr = Field(description="The identifier of the associated source, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. This value cannot be modified for an existing identity collector and must match the current value.", alias="sourceId")
-    type: StrictStr = Field(description="The identity collector type. This value cannot be modified for an existing identity collector and must match the current value.")
-    users: Identitycollectorcollectionsettings
-    groups: Identitycollectorcollectionsettings
-    __properties: ClassVar[List[str]] = ["name", "sourceId", "type", "users", "groups"]
+    name: StrictStr = Field(description="The unique field name.")
+    field_type: StrictStr = Field(description="The field data type. Custom fields are always String.", alias="fieldType")
+    data_dictionary_type: StrictStr = Field(description="The data dictionary that owns this field.", alias="dataDictionaryType")
+    required: StrictBool = Field(description="Whether the field is required. Custom fields returned by list are always false.")
+    __properties: ClassVar[List[str]] = ["name", "fieldType", "dataDictionaryType", "required"]
+
+    @field_validator('data_dictionary_type')
+    def data_dictionary_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['Users', 'Roles', 'Permission Types', 'Business Resources']):
+            warnings.warn(f"must be one of enum values ('Users', 'Roles', 'Permission Types', 'Business Resources') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +58,7 @@ class Updateidentitycollectorrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a JSON string"""
+        """Create an instance of Datadictionaryfieldlistitem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,17 +79,11 @@ class Updateidentitycollectorrequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of users
-        if self.users:
-            _dict['users'] = self.users.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of groups
-        if self.groups:
-            _dict['groups'] = self.groups.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a dict"""
+        """Create an instance of Datadictionaryfieldlistitem from a dict"""
         if obj is None:
             return None
 
@@ -93,10 +92,9 @@ class Updateidentitycollectorrequest(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "sourceId": obj.get("sourceId"),
-            "type": obj.get("type"),
-            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
-            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
+            "fieldType": obj.get("fieldType"),
+            "dataDictionaryType": obj.get("dataDictionaryType"),
+            "required": obj.get("required")
         })
         return _obj
 

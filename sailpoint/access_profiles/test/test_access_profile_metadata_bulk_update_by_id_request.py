@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyqueryrequest import Accessprofilemetadatabulkupdatebyqueryrequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request import AccessProfileMetadataBulkUpdateByIdRequest
 
-class TestAccessprofilemetadatabulkupdatebyqueryrequest(unittest.TestCase):
-    """Accessprofilemetadatabulkupdatebyqueryrequest unit test stubs"""
+class TestAccessProfileMetadataBulkUpdateByIdRequest(unittest.TestCase):
+    """AccessProfileMetadataBulkUpdateByIdRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,32 @@ class TestAccessprofilemetadatabulkupdatebyqueryrequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Accessprofilemetadatabulkupdatebyqueryrequest:
-        """Test Accessprofilemetadatabulkupdatebyqueryrequest
+    def make_instance(self, include_optional) -> AccessProfileMetadataBulkUpdateByIdRequest:
+        """Test AccessProfileMetadataBulkUpdateByIdRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Accessprofilemetadatabulkupdatebyqueryrequest`
+        # uncomment below to create an instance of `AccessProfileMetadataBulkUpdateByIdRequest`
         """
-        model = Accessprofilemetadatabulkupdatebyqueryrequest()
+        model = AccessProfileMetadataBulkUpdateByIdRequest()
         if include_optional:
-            return Accessprofilemetadatabulkupdatebyqueryrequest(
-                query = {"indices":["accessprofiles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},
+            return AccessProfileMetadataBulkUpdateByIdRequest(
+                access_profiles = ["b1db89554cfa431cb8b9921ea38d9367"],
                 operation = 'REPLACE',
                 replace_scope = 'ATTRIBUTE',
                 values = [{"attribute":"iscFederalClassifications","values":["topSecret"]}]
             )
         else:
-            return Accessprofilemetadatabulkupdatebyqueryrequest(
-                query = {"indices":["accessprofiles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},
+            return AccessProfileMetadataBulkUpdateByIdRequest(
+                access_profiles = ["b1db89554cfa431cb8b9921ea38d9367"],
                 operation = 'REPLACE',
                 replace_scope = 'ATTRIBUTE',
                 values = [{"attribute":"iscFederalClassifications","values":["topSecret"]}],
         )
         """
 
-    def testAccessprofilemetadatabulkupdatebyqueryrequest(self):
-        """Test Accessprofilemetadatabulkupdatebyqueryrequest"""
+    def testAccessProfileMetadataBulkUpdateByIdRequest(self):
+        """Test AccessProfileMetadataBulkUpdateByIdRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -23,11 +23,12 @@ from sailpoint.access_profiles.models.access_profile import AccessProfile
 from sailpoint.access_profiles.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 from sailpoint.access_profiles.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 from sailpoint.access_profiles.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+from sailpoint.access_profiles.models.access_profile_list_filter_dto import AccessProfileListFilterDTO
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_filter_request import AccessProfileMetadataBulkUpdateByFilterRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request import AccessProfileMetadataBulkUpdateByIdRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_query_request import AccessProfileMetadataBulkUpdateByQueryRequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 from sailpoint.access_profiles.models.access_profile_update_item import AccessProfileUpdateItem
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyfilterrequest import Accessprofilemetadatabulkupdatebyfilterrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest import Accessprofilemetadatabulkupdatebyidrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyqueryrequest import Accessprofilemetadatabulkupdatebyqueryrequest
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
 from sailpoint.access_profiles.models.entitlement import Entitlement
 from sailpoint.access_profiles.models.json_patch_operation import JsonPatchOperation
 
@@ -2547,6 +2548,413 @@ class AccessProfilesApi:
 
 
     @validate_call
+    def search_access_profiles_by_filter_v1(
+        self,
+        access_profile_list_filter_dto: AccessProfileListFilterDTO,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters the returned list to those access profiles assigned to the specified segment IDs.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the returned list includes unsegmented access profiles.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[AccessProfile]:
+        """Filter access profiles by metadata
+
+        Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+        :param access_profile_list_filter_dto: (required)
+        :type access_profile_list_filter_dto: AccessProfileListFilterDTO
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
+        :type sorters: str
+        :param for_segment_ids: Filters the returned list to those access profiles assigned to the specified segment IDs.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether the returned list includes unsegmented access profiles.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v1_serialize(
+            access_profile_list_filter_dto=access_profile_list_filter_dto,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_access_profiles_by_filter_v1_with_http_info(
+        self,
+        access_profile_list_filter_dto: AccessProfileListFilterDTO,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters the returned list to those access profiles assigned to the specified segment IDs.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the returned list includes unsegmented access profiles.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[AccessProfile]]:
+        """Filter access profiles by metadata
+
+        Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+        :param access_profile_list_filter_dto: (required)
+        :type access_profile_list_filter_dto: AccessProfileListFilterDTO
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
+        :type sorters: str
+        :param for_segment_ids: Filters the returned list to those access profiles assigned to the specified segment IDs.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether the returned list includes unsegmented access profiles.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v1_serialize(
+            access_profile_list_filter_dto=access_profile_list_filter_dto,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_access_profiles_by_filter_v1_without_preload_content(
+        self,
+        access_profile_list_filter_dto: AccessProfileListFilterDTO,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters the returned list to those access profiles assigned to the specified segment IDs.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the returned list includes unsegmented access profiles.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Filter access profiles by metadata
+
+        Get a list of access profiles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together.
+
+        :param access_profile_list_filter_dto: (required)
+        :type access_profile_list_filter_dto: AccessProfileListFilterDTO
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
+        :type sorters: str
+        :param for_segment_ids: Filters the returned list to those access profiles assigned to the specified segment IDs.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether the returned list includes unsegmented access profiles.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v1_serialize(
+            access_profile_list_filter_dto=access_profile_list_filter_dto,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessProfile]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_access_profiles_by_filter_v1_serialize(
+        self,
+        access_profile_list_filter_dto,
+        for_subadmin,
+        limit,
+        offset,
+        count,
+        sorters,
+        for_segment_ids,
+        include_unsegmented,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if for_subadmin is not None:
+            
+            _query_params.append(('for-subadmin', for_subadmin))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if access_profile_list_filter_dto is not None:
+            _body_params = access_profile_list_filter_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/access-profiles/v1/filter',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_access_profiles_in_bulk_v1(
         self,
         access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
@@ -2841,7 +3249,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_filter_v1(
         self,
-        accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest,
+        access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2854,13 +3262,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofilemetadatabulkupdateresponse:
+    ) -> AccessProfileMetadataBulkUpdateResponse:
         """Bulk-update metadata by filter
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyfilterrequest: (required)
-        :type accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest
+        :param access_profile_metadata_bulk_update_by_filter_request: (required)
+        :type access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2884,7 +3292,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_filter_v1_serialize(
-            accessprofilemetadatabulkupdatebyfilterrequest=accessprofilemetadatabulkupdatebyfilterrequest,
+            access_profile_metadata_bulk_update_by_filter_request=access_profile_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2892,7 +3300,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -2913,7 +3321,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_filter_v1_with_http_info(
         self,
-        accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest,
+        access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2926,13 +3334,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofilemetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessProfileMetadataBulkUpdateResponse]:
         """Bulk-update metadata by filter
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyfilterrequest: (required)
-        :type accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest
+        :param access_profile_metadata_bulk_update_by_filter_request: (required)
+        :type access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2956,7 +3364,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_filter_v1_serialize(
-            accessprofilemetadatabulkupdatebyfilterrequest=accessprofilemetadatabulkupdatebyfilterrequest,
+            access_profile_metadata_bulk_update_by_filter_request=access_profile_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2964,7 +3372,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -2985,7 +3393,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_filter_v1_without_preload_content(
         self,
-        accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest,
+        access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3003,8 +3411,8 @@ class AccessProfilesApi:
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied filter expression.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyfilterrequest: (required)
-        :type accessprofilemetadatabulkupdatebyfilterrequest: Accessprofilemetadatabulkupdatebyfilterrequest
+        :param access_profile_metadata_bulk_update_by_filter_request: (required)
+        :type access_profile_metadata_bulk_update_by_filter_request: AccessProfileMetadataBulkUpdateByFilterRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3028,7 +3436,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_filter_v1_serialize(
-            accessprofilemetadatabulkupdatebyfilterrequest=accessprofilemetadatabulkupdatebyfilterrequest,
+            access_profile_metadata_bulk_update_by_filter_request=access_profile_metadata_bulk_update_by_filter_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3036,7 +3444,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3052,7 +3460,7 @@ class AccessProfilesApi:
 
     def _update_access_profiles_metadata_by_filter_v1_serialize(
         self,
-        accessprofilemetadatabulkupdatebyfilterrequest,
+        access_profile_metadata_bulk_update_by_filter_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3078,8 +3486,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessprofilemetadatabulkupdatebyfilterrequest is not None:
-            _body_params = accessprofilemetadatabulkupdatebyfilterrequest
+        if access_profile_metadata_bulk_update_by_filter_request is not None:
+            _body_params = access_profile_metadata_bulk_update_by_filter_request
 
 
         # set the HTTP header `Accept`
@@ -3129,7 +3537,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_ids_v1(
         self,
-        accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest,
+        access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3142,13 +3550,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofilemetadatabulkupdateresponse:
+    ) -> AccessProfileMetadataBulkUpdateResponse:
         """Bulk-update metadata by ids
 
         This API initiates a bulk update of Access Model Metadata for one or more access profiles by a list of access profile IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyidrequest: (required)
-        :type accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest
+        :param access_profile_metadata_bulk_update_by_id_request: (required)
+        :type access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3172,7 +3580,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_ids_v1_serialize(
-            accessprofilemetadatabulkupdatebyidrequest=accessprofilemetadatabulkupdatebyidrequest,
+            access_profile_metadata_bulk_update_by_id_request=access_profile_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3180,7 +3588,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3201,7 +3609,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_ids_v1_with_http_info(
         self,
-        accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest,
+        access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3214,13 +3622,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofilemetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessProfileMetadataBulkUpdateResponse]:
         """Bulk-update metadata by ids
 
         This API initiates a bulk update of Access Model Metadata for one or more access profiles by a list of access profile IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyidrequest: (required)
-        :type accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest
+        :param access_profile_metadata_bulk_update_by_id_request: (required)
+        :type access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3244,7 +3652,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_ids_v1_serialize(
-            accessprofilemetadatabulkupdatebyidrequest=accessprofilemetadatabulkupdatebyidrequest,
+            access_profile_metadata_bulk_update_by_id_request=access_profile_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3252,7 +3660,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3273,7 +3681,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_ids_v1_without_preload_content(
         self,
-        accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest,
+        access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3291,8 +3699,8 @@ class AccessProfilesApi:
 
         This API initiates a bulk update of Access Model Metadata for one or more access profiles by a list of access profile IDs.  The update is processed asynchronously. The response returns the ID of the task performing the update.  The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyidrequest: (required)
-        :type accessprofilemetadatabulkupdatebyidrequest: Accessprofilemetadatabulkupdatebyidrequest
+        :param access_profile_metadata_bulk_update_by_id_request: (required)
+        :type access_profile_metadata_bulk_update_by_id_request: AccessProfileMetadataBulkUpdateByIdRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3316,7 +3724,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_ids_v1_serialize(
-            accessprofilemetadatabulkupdatebyidrequest=accessprofilemetadatabulkupdatebyidrequest,
+            access_profile_metadata_bulk_update_by_id_request=access_profile_metadata_bulk_update_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3324,7 +3732,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3340,7 +3748,7 @@ class AccessProfilesApi:
 
     def _update_access_profiles_metadata_by_ids_v1_serialize(
         self,
-        accessprofilemetadatabulkupdatebyidrequest,
+        access_profile_metadata_bulk_update_by_id_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3366,8 +3774,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessprofilemetadatabulkupdatebyidrequest is not None:
-            _body_params = accessprofilemetadatabulkupdatebyidrequest
+        if access_profile_metadata_bulk_update_by_id_request is not None:
+            _body_params = access_profile_metadata_bulk_update_by_id_request
 
 
         # set the HTTP header `Accept`
@@ -3417,7 +3825,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_query_v1(
         self,
-        accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest,
+        access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3430,13 +3838,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Accessprofilemetadatabulkupdateresponse:
+    ) -> AccessProfileMetadataBulkUpdateResponse:
         """Bulk-update metadata by query
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyqueryrequest: (required)
-        :type accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest
+        :param access_profile_metadata_bulk_update_by_query_request: (required)
+        :type access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3460,7 +3868,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_query_v1_serialize(
-            accessprofilemetadatabulkupdatebyqueryrequest=accessprofilemetadatabulkupdatebyqueryrequest,
+            access_profile_metadata_bulk_update_by_query_request=access_profile_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3468,7 +3876,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3489,7 +3897,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_query_v1_with_http_info(
         self,
-        accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest,
+        access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3502,13 +3910,13 @@ class AccessProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Accessprofilemetadatabulkupdateresponse]:
+    ) -> ApiResponse[AccessProfileMetadataBulkUpdateResponse]:
         """Bulk-update metadata by query
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyqueryrequest: (required)
-        :type accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest
+        :param access_profile_metadata_bulk_update_by_query_request: (required)
+        :type access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3532,7 +3940,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_query_v1_serialize(
-            accessprofilemetadatabulkupdatebyqueryrequest=accessprofilemetadatabulkupdatebyqueryrequest,
+            access_profile_metadata_bulk_update_by_query_request=access_profile_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3540,7 +3948,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3561,7 +3969,7 @@ class AccessProfilesApi:
     @validate_call
     def update_access_profiles_metadata_by_query_v1_without_preload_content(
         self,
-        accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest,
+        access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3579,8 +3987,8 @@ class AccessProfilesApi:
 
         This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied search query.  The update is processed asynchronously. The response returns the ID of the task performing the update.  A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
-        :param accessprofilemetadatabulkupdatebyqueryrequest: (required)
-        :type accessprofilemetadatabulkupdatebyqueryrequest: Accessprofilemetadatabulkupdatebyqueryrequest
+        :param access_profile_metadata_bulk_update_by_query_request: (required)
+        :type access_profile_metadata_bulk_update_by_query_request: AccessProfileMetadataBulkUpdateByQueryRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3604,7 +4012,7 @@ class AccessProfilesApi:
         """ # noqa: E501
 
         _param = self._update_access_profiles_metadata_by_query_v1_serialize(
-            accessprofilemetadatabulkupdatebyqueryrequest=accessprofilemetadatabulkupdatebyqueryrequest,
+            access_profile_metadata_bulk_update_by_query_request=access_profile_metadata_bulk_update_by_query_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3612,7 +4020,7 @@ class AccessProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "Accessprofilemetadatabulkupdateresponse",
+            '202': "AccessProfileMetadataBulkUpdateResponse",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfilesV1401Response",
             '403': "ErrorResponseDto",
@@ -3628,7 +4036,7 @@ class AccessProfilesApi:
 
     def _update_access_profiles_metadata_by_query_v1_serialize(
         self,
-        accessprofilemetadatabulkupdatebyqueryrequest,
+        access_profile_metadata_bulk_update_by_query_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3654,8 +4062,8 @@ class AccessProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if accessprofilemetadatabulkupdatebyqueryrequest is not None:
-            _body_params = accessprofilemetadatabulkupdatebyqueryrequest
+        if access_profile_metadata_bulk_update_by_query_request is not None:
+            _body_params = access_profile_metadata_bulk_update_by_query_request
 
 
         # set the HTTP header `Accept`

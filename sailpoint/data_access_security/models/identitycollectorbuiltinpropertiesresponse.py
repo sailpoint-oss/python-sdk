@@ -18,22 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
+from sailpoint.data_access_security.models.identitycollectorbuiltinpropertiesbytype import Identitycollectorbuiltinpropertiesbytype
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Updateidentitycollectorrequest(BaseModel):
+class Identitycollectorbuiltinpropertiesresponse(BaseModel):
     """
-    Complete identity collector representation for [Replace Identity Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1). The server fully replaces the existing resource with this payload. Partial updates are not supported; `users` and `groups` must always be supplied and replace the current collection settings in their entirety.
+    Identitycollectorbuiltinpropertiesresponse
     """ # noqa: E501
-    name: StrictStr = Field(description="The display name of the identity collector. Must be unique within the tenant.")
-    source_id: StrictStr = Field(description="The identifier of the associated source, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. This value cannot be modified for an existing identity collector and must match the current value.", alias="sourceId")
-    type: StrictStr = Field(description="The identity collector type. This value cannot be modified for an existing identity collector and must match the current value.")
-    users: Identitycollectorcollectionsettings
-    groups: Identitycollectorcollectionsettings
-    __properties: ClassVar[List[str]] = ["name", "sourceId", "type", "users", "groups"]
+    types: List[Identitycollectorbuiltinpropertiesbytype] = Field(description="Built-in source attribute names grouped by identity collector type.")
+    __properties: ClassVar[List[str]] = ["types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +49,7 @@ class Updateidentitycollectorrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a JSON string"""
+        """Create an instance of Identitycollectorbuiltinpropertiesresponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,17 +70,18 @@ class Updateidentitycollectorrequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of users
-        if self.users:
-            _dict['users'] = self.users.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of groups
-        if self.groups:
-            _dict['groups'] = self.groups.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in types (list)
+        _items = []
+        if self.types:
+            for _item_types in self.types:
+                if _item_types:
+                    _items.append(_item_types.to_dict())
+            _dict['types'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a dict"""
+        """Create an instance of Identitycollectorbuiltinpropertiesresponse from a dict"""
         if obj is None:
             return None
 
@@ -92,11 +89,7 @@ class Updateidentitycollectorrequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "sourceId": obj.get("sourceId"),
-            "type": obj.get("type"),
-            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
-            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
+            "types": [Identitycollectorbuiltinpropertiesbytype.from_dict(_item) for _item in obj["types"]] if obj.get("types") is not None else None
         })
         return _obj
 

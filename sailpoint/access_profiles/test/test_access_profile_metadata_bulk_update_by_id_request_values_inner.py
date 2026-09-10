@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest_values_inner import AccessprofilemetadatabulkupdatebyidrequestValuesInner
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request_values_inner import AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 
-class TestAccessprofilemetadatabulkupdatebyidrequestValuesInner(unittest.TestCase):
-    """AccessprofilemetadatabulkupdatebyidrequestValuesInner unit test stubs"""
+class TestAccessProfileMetadataBulkUpdateByIdRequestValuesInner(unittest.TestCase):
+    """AccessProfileMetadataBulkUpdateByIdRequestValuesInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,29 @@ class TestAccessprofilemetadatabulkupdatebyidrequestValuesInner(unittest.TestCas
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessprofilemetadatabulkupdatebyidrequestValuesInner:
-        """Test AccessprofilemetadatabulkupdatebyidrequestValuesInner
+    def make_instance(self, include_optional) -> AccessProfileMetadataBulkUpdateByIdRequestValuesInner:
+        """Test AccessProfileMetadataBulkUpdateByIdRequestValuesInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccessprofilemetadatabulkupdatebyidrequestValuesInner`
+        # uncomment below to create an instance of `AccessProfileMetadataBulkUpdateByIdRequestValuesInner`
         """
-        model = AccessprofilemetadatabulkupdatebyidrequestValuesInner()
+        model = AccessProfileMetadataBulkUpdateByIdRequestValuesInner()
         if include_optional:
-            return AccessprofilemetadatabulkupdatebyidrequestValuesInner(
+            return AccessProfileMetadataBulkUpdateByIdRequestValuesInner(
                 attribute = 'iscFederalClassifications',
                 values = ["secret"],
                 object_type = 'custom'
             )
         else:
-            return AccessprofilemetadatabulkupdatebyidrequestValuesInner(
+            return AccessProfileMetadataBulkUpdateByIdRequestValuesInner(
                 attribute = 'iscFederalClassifications',
                 values = ["secret"],
         )
         """
 
-    def testAccessprofilemetadatabulkupdatebyidrequestValuesInner(self):
-        """Test AccessprofilemetadatabulkupdatebyidrequestValuesInner"""
+    def testAccessProfileMetadataBulkUpdateByIdRequestValuesInner(self):
+        """Test AccessProfileMetadataBulkUpdateByIdRequestValuesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

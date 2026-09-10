@@ -1,15 +1,15 @@
 ---
-id: accessprofilemetadatabulkupdateresponse
-title: Accessprofilemetadatabulkupdateresponse
-pagination_label: Accessprofilemetadatabulkupdateresponse
-sidebar_label: Accessprofilemetadatabulkupdateresponse
+id: access-profile-metadata-bulk-update-response
+title: AccessProfileMetadataBulkUpdateResponse
+pagination_label: AccessProfileMetadataBulkUpdateResponse
+sidebar_label: AccessProfileMetadataBulkUpdateResponse
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Accessprofilemetadatabulkupdateresponse', 'Accessprofilemetadatabulkupdateresponse'] 
-slug: /tools/sdk/python/access-profiles/models/accessprofilemetadatabulkupdateresponse
-tags: ['SDK', 'Software Development Kit', 'Accessprofilemetadatabulkupdateresponse', 'Accessprofilemetadatabulkupdateresponse']
+keywords: ['python', 'Python', 'sdk', 'AccessProfileMetadataBulkUpdateResponse', 'AccessProfileMetadataBulkUpdateResponse'] 
+slug: /tools/sdk/python/access-profiles/models/access-profile-metadata-bulk-update-response
+tags: ['SDK', 'Software Development Kit', 'AccessProfileMetadataBulkUpdateResponse', 'AccessProfileMetadataBulkUpdateResponse']
 ---
 
-# Accessprofilemetadatabulkupdateresponse
+# AccessProfileMetadataBulkUpdateResponse
 
 
 ## Properties
@@ -25,9 +25,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 
-accessprofilemetadatabulkupdateresponse = Accessprofilemetadatabulkupdateresponse(
+access_profile_metadata_bulk_update_response = AccessProfileMetadataBulkUpdateResponse(
 id='2d82ac17-eb0d-4ba6-9918-dcad6ee0294d',
 type='ACCESS_PROFILE',
 status='CREATED',

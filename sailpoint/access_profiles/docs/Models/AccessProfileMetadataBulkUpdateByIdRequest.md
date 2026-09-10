@@ -1,15 +1,15 @@
 ---
-id: accessprofilemetadatabulkupdatebyidrequest
-title: Accessprofilemetadatabulkupdatebyidrequest
-pagination_label: Accessprofilemetadatabulkupdatebyidrequest
-sidebar_label: Accessprofilemetadatabulkupdatebyidrequest
+id: access-profile-metadata-bulk-update-by-id-request
+title: AccessProfileMetadataBulkUpdateByIdRequest
+pagination_label: AccessProfileMetadataBulkUpdateByIdRequest
+sidebar_label: AccessProfileMetadataBulkUpdateByIdRequest
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Accessprofilemetadatabulkupdatebyidrequest', 'Accessprofilemetadatabulkupdatebyidrequest'] 
-slug: /tools/sdk/python/access-profiles/models/accessprofilemetadatabulkupdatebyidrequest
-tags: ['SDK', 'Software Development Kit', 'Accessprofilemetadatabulkupdatebyidrequest', 'Accessprofilemetadatabulkupdatebyidrequest']
+keywords: ['python', 'Python', 'sdk', 'AccessProfileMetadataBulkUpdateByIdRequest', 'AccessProfileMetadataBulkUpdateByIdRequest'] 
+slug: /tools/sdk/python/access-profiles/models/access-profile-metadata-bulk-update-by-id-request
+tags: ['SDK', 'Software Development Kit', 'AccessProfileMetadataBulkUpdateByIdRequest', 'AccessProfileMetadataBulkUpdateByIdRequest']
 ---
 
-# Accessprofilemetadatabulkupdatebyidrequest
+# AccessProfileMetadataBulkUpdateByIdRequest
 
 Request to bulk update Access Model Metadata on a list of access profiles identified by ID. The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
 
@@ -20,15 +20,15 @@ Name | Type | Description | Notes
 **access_profiles** | **[]str** | The IDs of the access profiles to update. | [required]
 **operation** |  **Enum** [  'ADD',    'REMOVE',    'REPLACE' ] | The operation to be performed | [required]
 **replace_scope** |  **Enum** [  'ALL',    'ATTRIBUTE' ] | The choice of update scope. **ATTRIBUTE** replaces only the values of the attributes named in `values`, and **ALL** replaces every metadata attribute on the access profile. | [required]
-**values** | [**[]AccessprofilemetadatabulkupdatebyidrequestValuesInner**](accessprofilemetadatabulkupdatebyidrequest-values-inner) | The metadata to be updated, including attribute key and value. | [required]
+**values** | [**[]AccessProfileMetadataBulkUpdateByIdRequestValuesInner**](access-profile-metadata-bulk-update-by-id-request-values-inner) | The metadata to be updated, including attribute key and value. | [required]
 }
 
 ## Example
 
 ```python
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest import Accessprofilemetadatabulkupdatebyidrequest
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request import AccessProfileMetadataBulkUpdateByIdRequest
 
-accessprofilemetadatabulkupdatebyidrequest = Accessprofilemetadatabulkupdatebyidrequest(
+access_profile_metadata_bulk_update_by_id_request = AccessProfileMetadataBulkUpdateByIdRequest(
 access_profiles=["b1db89554cfa431cb8b9921ea38d9367"],
 operation='REPLACE',
 replace_scope='ATTRIBUTE',

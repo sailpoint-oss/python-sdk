@@ -20,20 +20,17 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
+from sailpoint.data_access_security.models.identitycollectorfieldmapping import Identitycollectorfieldmapping
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Updateidentitycollectorrequest(BaseModel):
+class Identitycollectorcollectionsettings(BaseModel):
     """
-    Complete identity collector representation for [Replace Identity Collector](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1). The server fully replaces the existing resource with this payload. Partial updates are not supported; `users` and `groups` must always be supplied and replace the current collection settings in their entirety.
+    Identitycollectorcollectionsettings
     """ # noqa: E501
-    name: StrictStr = Field(description="The display name of the identity collector. Must be unique within the tenant.")
-    source_id: StrictStr = Field(description="The identifier of the associated source, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. This value cannot be modified for an existing identity collector and must match the current value.", alias="sourceId")
-    type: StrictStr = Field(description="The identity collector type. This value cannot be modified for an existing identity collector and must match the current value.")
-    users: Identitycollectorcollectionsettings
-    groups: Identitycollectorcollectionsettings
-    __properties: ClassVar[List[str]] = ["name", "sourceId", "type", "users", "groups"]
+    properties: List[StrictStr] = Field(description="Source attribute names to register as datasource columns for this collection. These names must match the attributes sent by Identity Security Cloud. Use an empty array when no custom attributes are required.")
+    field_mappings: List[Identitycollectorfieldmapping] = Field(description="Maps source attributes to data dictionary fields and DAS custom field slots. Each `sourceAttributeName` must be either a built-in attribute for the identity collector type or listed in `properties`. Use an empty array when no dynamic field mappings are configured.", alias="fieldMappings")
+    __properties: ClassVar[List[str]] = ["properties", "fieldMappings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +50,7 @@ class Updateidentitycollectorrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a JSON string"""
+        """Create an instance of Identitycollectorcollectionsettings from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,17 +71,18 @@ class Updateidentitycollectorrequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of users
-        if self.users:
-            _dict['users'] = self.users.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of groups
-        if self.groups:
-            _dict['groups'] = self.groups.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in field_mappings (list)
+        _items = []
+        if self.field_mappings:
+            for _item_field_mappings in self.field_mappings:
+                if _item_field_mappings:
+                    _items.append(_item_field_mappings.to_dict())
+            _dict['fieldMappings'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Updateidentitycollectorrequest from a dict"""
+        """Create an instance of Identitycollectorcollectionsettings from a dict"""
         if obj is None:
             return None
 
@@ -92,11 +90,8 @@ class Updateidentitycollectorrequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "sourceId": obj.get("sourceId"),
-            "type": obj.get("type"),
-            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
-            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
+            "properties": obj.get("properties"),
+            "fieldMappings": [Identitycollectorfieldmapping.from_dict(_item) for _item in obj["fieldMappings"]] if obj.get("fieldMappings") is not None else None
         })
         return _obj
 

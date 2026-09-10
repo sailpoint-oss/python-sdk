@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Identity Security Cloud API - Access Profiles
+    Identity Security Cloud API - Data Access Security
 
     Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -18,30 +18,26 @@ import re  # noqa: F401
 import json
 import warnings
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Accessprofilemetadatabulkupdateresponse(BaseModel):
+class Updatedatadictionaryfieldrequest(BaseModel):
     """
-    Accessprofilemetadatabulkupdateresponse
+    Complete data dictionary field representation for [Replace Data Dictionary Field](https://developer.sailpoint.com/docs/api/put-data-dictionary-field-v-1). The server fully replaces the field using this body. For custom fields, `fieldType`, `dataDictionaryType`, and `required` must match the current values; only `name` may change. Built-in fields where `required` is true cannot be updated.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="ID of the task that is processing the bulk update.")
-    type: Optional[StrictStr] = Field(default=None, description="Type of the object the bulk update applies to.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the bulk update request.")
-    created: Optional[datetime] = Field(default=None, description="Time when the bulk update request was created")
-    __properties: ClassVar[List[str]] = ["id", "type", "status", "created"]
+    name: StrictStr = Field(description="The field name.")
+    field_type: StrictStr = Field(description="The field data type. Must match the current value.", alias="fieldType")
+    data_dictionary_type: StrictStr = Field(description="The data dictionary that owns this field. Must match the current value.", alias="dataDictionaryType")
+    required: StrictBool = Field(description="Must match the current value. Custom fields must be false.")
+    __properties: ClassVar[List[str]] = ["name", "fieldType", "dataDictionaryType", "required"]
 
-    @field_validator('status')
-    def status_validate_enum(cls, value):
+    @field_validator('data_dictionary_type')
+    def data_dictionary_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['CREATED', 'PRE_PROCESS', 'PRE_PROCESS_COMPLETED', 'POST_PROCESS', 'COMPLETED', 'CHUNK_PENDING', 'CHUNK_PROCESSING', 'RE_PROCESSING', 'PRE_PROCESS_FAILED', 'FAILED']):
-            warnings.warn(f"must be one of enum values ('CREATED', 'PRE_PROCESS', 'PRE_PROCESS_COMPLETED', 'POST_PROCESS', 'COMPLETED', 'CHUNK_PENDING', 'CHUNK_PROCESSING', 'RE_PROCESSING', 'PRE_PROCESS_FAILED', 'FAILED') unknown value: {value}")
+        if value not in set(['Users', 'Roles', 'Permission Types', 'Business Resources']):
+            warnings.warn(f"must be one of enum values ('Users', 'Roles', 'Permission Types', 'Business Resources') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -62,7 +58,7 @@ class Accessprofilemetadatabulkupdateresponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdateresponse from a JSON string"""
+        """Create an instance of Updatedatadictionaryfieldrequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,7 +83,7 @@ class Accessprofilemetadatabulkupdateresponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdateresponse from a dict"""
+        """Create an instance of Updatedatadictionaryfieldrequest from a dict"""
         if obj is None:
             return None
 
@@ -95,10 +91,10 @@ class Accessprofilemetadatabulkupdateresponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "status": obj.get("status"),
-            "created": obj.get("created")
+            "name": obj.get("name"),
+            "fieldType": obj.get("fieldType"),
+            "dataDictionaryType": obj.get("dataDictionaryType"),
+            "required": obj.get("required")
         })
         return _obj
 

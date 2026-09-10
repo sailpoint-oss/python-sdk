@@ -20,18 +20,18 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdatebyidrequest_values_inner import AccessprofilemetadatabulkupdatebyidrequestValuesInner
+from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request_values_inner import AccessProfileMetadataBulkUpdateByIdRequestValuesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Accessprofilemetadatabulkupdatebyfilterrequest(BaseModel):
+class AccessProfileMetadataBulkUpdateByFilterRequest(BaseModel):
     """
     Request to bulk update Access Model Metadata on every access profile matching a filter expression. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
     """ # noqa: E501
     filters: StrictStr = Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*")
     operation: StrictStr = Field(description="The operation to be performed")
     replace_scope: StrictStr = Field(description="The choice of update scope. **ATTRIBUTE** replaces only the values of the attributes named in `values`, and **ALL** replaces every metadata attribute on the access profile.", alias="replaceScope")
-    values: List[AccessprofilemetadatabulkupdatebyidrequestValuesInner] = Field(description="The metadata to be updated, including attribute key and value.")
+    values: List[AccessProfileMetadataBulkUpdateByIdRequestValuesInner] = Field(description="The metadata to be updated, including attribute key and value.")
     __properties: ClassVar[List[str]] = ["filters", "operation", "replaceScope", "values"]
 
     @field_validator('operation')
@@ -66,7 +66,7 @@ class Accessprofilemetadatabulkupdatebyfilterrequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdatebyfilterrequest from a JSON string"""
+        """Create an instance of AccessProfileMetadataBulkUpdateByFilterRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -98,7 +98,7 @@ class Accessprofilemetadatabulkupdatebyfilterrequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Accessprofilemetadatabulkupdatebyfilterrequest from a dict"""
+        """Create an instance of AccessProfileMetadataBulkUpdateByFilterRequest from a dict"""
         if obj is None:
             return None
 
@@ -109,7 +109,7 @@ class Accessprofilemetadatabulkupdatebyfilterrequest(BaseModel):
             "filters": obj.get("filters"),
             "operation": obj.get("operation"),
             "replaceScope": obj.get("replaceScope"),
-            "values": [AccessprofilemetadatabulkupdatebyidrequestValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
+            "values": [AccessProfileMetadataBulkUpdateByIdRequestValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
         })
         return _obj
 

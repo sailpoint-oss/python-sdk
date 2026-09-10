@@ -19,7 +19,8 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.data_access_security.models.identitycollectorcollectionsettings import Identitycollectorcollectionsettings
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +30,9 @@ class Createidentitycollectorrequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="The display name for the new identity collector. Must be unique within the tenant.")
     source_id: StrictStr = Field(description="The identifier of the source to create the identity collector for, represented as a UUID. Both hyphenated and non-hyphenated formats are accepted. The identity collector type is derived from this source.", alias="sourceId")
-    __properties: ClassVar[List[str]] = ["name", "sourceId"]
+    users: Optional[Identitycollectorcollectionsettings] = None
+    groups: Optional[Identitycollectorcollectionsettings] = None
+    __properties: ClassVar[List[str]] = ["name", "sourceId", "users", "groups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +73,12 @@ class Createidentitycollectorrequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of users
+        if self.users:
+            _dict['users'] = self.users.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of groups
+        if self.groups:
+            _dict['groups'] = self.groups.to_dict()
         return _dict
 
     @classmethod
@@ -83,7 +92,9 @@ class Createidentitycollectorrequest(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "sourceId": obj.get("sourceId")
+            "sourceId": obj.get("sourceId"),
+            "users": Identitycollectorcollectionsettings.from_dict(obj["users"]) if obj.get("users") is not None else None,
+            "groups": Identitycollectorcollectionsettings.from_dict(obj["groups"]) if obj.get("groups") is not None else None
         })
         return _obj
 

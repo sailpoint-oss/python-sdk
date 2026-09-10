@@ -40,6 +40,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_create_data_dictionary_field_v1(self) -> None:
+        """Test case for create_data_dictionary_field_v1
+
+        Create data dictionary field
+        """
+        pass
+
     def test_create_identity_collector_v1(self) -> None:
         """Test case for create_identity_collector_v1
 
@@ -96,6 +103,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_data_dictionary_field_v1(self) -> None:
+        """Test case for delete_data_dictionary_field_v1
+
+        Delete data dictionary field
+        """
+        pass
+
     def test_delete_identity_collector_v1(self) -> None:
         """Test case for delete_identity_collector_v1
 
@@ -128,6 +142,20 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """Test case for get_applications_v1
 
         Search applications in DAS.
+        """
+        pass
+
+    def test_get_identity_collector_builtin_properties_v1(self) -> None:
+        """Test case for get_identity_collector_builtin_properties_v1
+
+        List built-in identity collector properties
+        """
+        pass
+
+    def test_get_identity_collector_types_v1(self) -> None:
+        """Test case for get_identity_collector_types_v1
+
+        List identity collector types
         """
         pass
 
@@ -166,6 +194,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_list_data_dictionary_fields_v1(self) -> None:
+        """Test case for list_data_dictionary_fields_v1
+
+        List data dictionary fields
+        """
+        pass
+
     def test_list_identity_collectors_v1(self) -> None:
         """Test case for list_identity_collectors_v1
 
@@ -180,10 +215,17 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_put_data_dictionary_field_v1(self) -> None:
+        """Test case for put_data_dictionary_field_v1
+
+        Replace data dictionary field
+        """
+        pass
+
     def test_put_identity_collector_v1(self) -> None:
         """Test case for put_identity_collector_v1
 
-        Update identity collector by identifier
+        Replace identity collector
         """
         pass
 

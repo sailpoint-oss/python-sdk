@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.access_profiles.models.accessprofilemetadatabulkupdateresponse import Accessprofilemetadatabulkupdateresponse
+from sailpoint.access_profiles.models.access_profile_list_filter_dto_amm_key_values_inner import AccessProfileListFilterDTOAmmKeyValuesInner
 
-class TestAccessprofilemetadatabulkupdateresponse(unittest.TestCase):
-    """Accessprofilemetadatabulkupdateresponse unit test stubs"""
+class TestAccessProfileListFilterDTOAmmKeyValuesInner(unittest.TestCase):
+    """AccessProfileListFilterDTOAmmKeyValuesInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,26 @@ class TestAccessprofilemetadatabulkupdateresponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Accessprofilemetadatabulkupdateresponse:
-        """Test Accessprofilemetadatabulkupdateresponse
+    def make_instance(self, include_optional) -> AccessProfileListFilterDTOAmmKeyValuesInner:
+        """Test AccessProfileListFilterDTOAmmKeyValuesInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Accessprofilemetadatabulkupdateresponse`
+        # uncomment below to create an instance of `AccessProfileListFilterDTOAmmKeyValuesInner`
         """
-        model = Accessprofilemetadatabulkupdateresponse()
+        model = AccessProfileListFilterDTOAmmKeyValuesInner()
         if include_optional:
-            return Accessprofilemetadatabulkupdateresponse(
-                id = '2d82ac17-eb0d-4ba6-9918-dcad6ee0294d',
-                type = 'ACCESS_PROFILE',
-                status = 'CREATED',
-                created = '2020-10-08T18:33:52.029Z'
+            return AccessProfileListFilterDTOAmmKeyValuesInner(
+                attribute = 'iscFederalClassifications',
+                values = ["secret"]
             )
         else:
-            return Accessprofilemetadatabulkupdateresponse(
+            return AccessProfileListFilterDTOAmmKeyValuesInner(
         )
         """
 
-    def testAccessprofilemetadatabulkupdateresponse(self):
-        """Test Accessprofilemetadatabulkupdateresponse"""
+    def testAccessProfileListFilterDTOAmmKeyValuesInner(self):
+        """Test AccessProfileListFilterDTOAmmKeyValuesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
