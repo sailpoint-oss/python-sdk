@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.data_access_security.models.put_identity_collector_v1409_response_messages_inner import PutIdentityCollectorV1409ResponseMessagesInner
+from sailpoint.data_access_security.models.create_identity_collector_v1409_response_messages_inner import CreateIdentityCollectorV1409ResponseMessagesInner
 
-class TestPutIdentityCollectorV1409ResponseMessagesInner(unittest.TestCase):
-    """PutIdentityCollectorV1409ResponseMessagesInner unit test stubs"""
+class TestCreateIdentityCollectorV1409ResponseMessagesInner(unittest.TestCase):
+    """CreateIdentityCollectorV1409ResponseMessagesInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,27 @@ class TestPutIdentityCollectorV1409ResponseMessagesInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PutIdentityCollectorV1409ResponseMessagesInner:
-        """Test PutIdentityCollectorV1409ResponseMessagesInner
+    def make_instance(self, include_optional) -> CreateIdentityCollectorV1409ResponseMessagesInner:
+        """Test CreateIdentityCollectorV1409ResponseMessagesInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PutIdentityCollectorV1409ResponseMessagesInner`
+        # uncomment below to create an instance of `CreateIdentityCollectorV1409ResponseMessagesInner`
         """
-        model = PutIdentityCollectorV1409ResponseMessagesInner()
+        model = CreateIdentityCollectorV1409ResponseMessagesInner()
         if include_optional:
-            return PutIdentityCollectorV1409ResponseMessagesInner(
+            return CreateIdentityCollectorV1409ResponseMessagesInner(
                 locale = 'en-US',
                 locale_origin = 'DEFAULT',
                 text = 'An identity collector with the same name already exists.'
             )
         else:
-            return PutIdentityCollectorV1409ResponseMessagesInner(
+            return CreateIdentityCollectorV1409ResponseMessagesInner(
         )
         """
 
-    def testPutIdentityCollectorV1409ResponseMessagesInner(self):
-        """Test PutIdentityCollectorV1409ResponseMessagesInner"""
+    def testCreateIdentityCollectorV1409ResponseMessagesInner(self):
+        """Test CreateIdentityCollectorV1409ResponseMessagesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

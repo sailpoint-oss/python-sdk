@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.data_access_security.models.put_identity_collector_v1409_response import PutIdentityCollectorV1409Response
+from sailpoint.data_access_security.models.create_identity_collector_v1409_response import CreateIdentityCollectorV1409Response
 
-class TestPutIdentityCollectorV1409Response(unittest.TestCase):
-    """PutIdentityCollectorV1409Response unit test stubs"""
+class TestCreateIdentityCollectorV1409Response(unittest.TestCase):
+    """CreateIdentityCollectorV1409Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,32 @@ class TestPutIdentityCollectorV1409Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PutIdentityCollectorV1409Response:
-        """Test PutIdentityCollectorV1409Response
+    def make_instance(self, include_optional) -> CreateIdentityCollectorV1409Response:
+        """Test CreateIdentityCollectorV1409Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PutIdentityCollectorV1409Response`
+        # uncomment below to create an instance of `CreateIdentityCollectorV1409Response`
         """
-        model = PutIdentityCollectorV1409Response()
+        model = CreateIdentityCollectorV1409Response()
         if include_optional:
-            return PutIdentityCollectorV1409Response(
+            return CreateIdentityCollectorV1409Response(
                 detail_code = '409.1 Conflict',
                 tracking_id = 'e7eab60924f64aa284175b9fa3309599',
                 messages = [
-                    sailpoint.data_access_security.models.put_identity_collector_v1_409_response_messages_inner.putIdentityCollectorV1_409_response_messages_inner(
+                    sailpoint.data_access_security.models.create_identity_collector_v1_409_response_messages_inner.createIdentityCollectorV1_409_response_messages_inner(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'An identity collector with the same name already exists.', )
                     ]
             )
         else:
-            return PutIdentityCollectorV1409Response(
+            return CreateIdentityCollectorV1409Response(
         )
         """
 
-    def testPutIdentityCollectorV1409Response(self):
-        """Test PutIdentityCollectorV1409Response"""
+    def testCreateIdentityCollectorV1409Response(self):
+        """Test CreateIdentityCollectorV1409Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

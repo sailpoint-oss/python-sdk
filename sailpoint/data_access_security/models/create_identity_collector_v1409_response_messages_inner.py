@@ -23,9 +23,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PutIdentityCollectorV1409ResponseMessagesInner(BaseModel):
+class CreateIdentityCollectorV1409ResponseMessagesInner(BaseModel):
     """
-    PutIdentityCollectorV1409ResponseMessagesInner
+    CreateIdentityCollectorV1409ResponseMessagesInner
     """ # noqa: E501
     locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
     locale_origin: Optional[StrictStr] = Field(default=None, description="An indicator of how the locale was selected.", alias="localeOrigin")
@@ -50,7 +50,7 @@ class PutIdentityCollectorV1409ResponseMessagesInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PutIdentityCollectorV1409ResponseMessagesInner from a JSON string"""
+        """Create an instance of CreateIdentityCollectorV1409ResponseMessagesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +75,7 @@ class PutIdentityCollectorV1409ResponseMessagesInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PutIdentityCollectorV1409ResponseMessagesInner from a dict"""
+        """Create an instance of CreateIdentityCollectorV1409ResponseMessagesInner from a dict"""
         if obj is None:
             return None
 

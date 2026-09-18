@@ -20,17 +20,17 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.data_access_security.models.put_identity_collector_v1409_response_messages_inner import PutIdentityCollectorV1409ResponseMessagesInner
+from sailpoint.data_access_security.models.create_identity_collector_v1409_response_messages_inner import CreateIdentityCollectorV1409ResponseMessagesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PutIdentityCollectorV1409Response(BaseModel):
+class CreateIdentityCollectorV1409Response(BaseModel):
     """
-    PutIdentityCollectorV1409Response
+    CreateIdentityCollectorV1409Response
     """ # noqa: E501
     detail_code: Optional[StrictStr] = Field(default=None, description="Fine-grained error code providing more detail of the error.", alias="detailCode")
     tracking_id: Optional[StrictStr] = Field(default=None, description="Unique tracking id for the error.", alias="trackingId")
-    messages: Optional[List[PutIdentityCollectorV1409ResponseMessagesInner]] = Field(default=None, description="Generic localized reason for error.")
+    messages: Optional[List[CreateIdentityCollectorV1409ResponseMessagesInner]] = Field(default=None, description="Generic localized reason for error.")
     __properties: ClassVar[List[str]] = ["detailCode", "trackingId", "messages"]
 
     model_config = ConfigDict(
@@ -51,7 +51,7 @@ class PutIdentityCollectorV1409Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PutIdentityCollectorV1409Response from a JSON string"""
+        """Create an instance of CreateIdentityCollectorV1409Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,7 +83,7 @@ class PutIdentityCollectorV1409Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PutIdentityCollectorV1409Response from a dict"""
+        """Create an instance of CreateIdentityCollectorV1409Response from a dict"""
         if obj is None:
             return None
 
@@ -93,7 +93,7 @@ class PutIdentityCollectorV1409Response(BaseModel):
         _obj = cls.model_validate({
             "detailCode": obj.get("detailCode"),
             "trackingId": obj.get("trackingId"),
-            "messages": [PutIdentityCollectorV1409ResponseMessagesInner.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None
+            "messages": [CreateIdentityCollectorV1409ResponseMessagesInner.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None
         })
         return _obj
 

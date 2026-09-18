@@ -683,7 +683,7 @@ class DataAccessSecurityApi:
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -756,7 +756,7 @@ class DataAccessSecurityApi:
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -829,7 +829,7 @@ class DataAccessSecurityApi:
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -975,6 +975,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -1048,6 +1049,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -1121,6 +1123,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3316,7 +3319,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3390,7 +3393,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3464,7 +3467,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3597,6 +3600,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "Identitycollectordependenciesconflicterror",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3670,6 +3674,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "Identitycollectordependenciesconflicterror",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -3743,6 +3748,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '409': "Identitycollectordependenciesconflicterror",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -7410,7 +7416,7 @@ class DataAccessSecurityApi:
     @validate_call
     def list_identity_collectors_v1(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -7431,7 +7437,7 @@ class DataAccessSecurityApi:
 
         This endpoint lists the identity collectors in Data Access Security with optional filtering and pagination.  Sorting is not supported for this endpoint; supplying the `sorters` query parameter results in a validation error.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*
         :type filters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -7495,7 +7501,7 @@ class DataAccessSecurityApi:
     @validate_call
     def list_identity_collectors_v1_with_http_info(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -7516,7 +7522,7 @@ class DataAccessSecurityApi:
 
         This endpoint lists the identity collectors in Data Access Security with optional filtering and pagination.  Sorting is not supported for this endpoint; supplying the `sorters` query parameter results in a validation error.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*
         :type filters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -7580,7 +7586,7 @@ class DataAccessSecurityApi:
     @validate_call
     def list_identity_collectors_v1_without_preload_content(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -7601,7 +7607,7 @@ class DataAccessSecurityApi:
 
         This endpoint lists the identity collectors in Data Access Security with optional filtering and pagination.  Sorting is not supported for this endpoint; supplying the `sorters` query parameter results in a validation error.
 
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  **name**: *eq, co*  For `name`, `eq` performs an exact match and `co` performs a contains (substring) match. Use public type display names from [List Identity Collector Types](https://developer.sailpoint.com/docs/api/get-identity-collector-types-v-1) with `type` filters (for example, `AWS`, not `AWS SaaS`).  Supported composite operators are *and, or*
         :type filters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -8107,7 +8113,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -8185,7 +8191,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -8263,7 +8269,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -8416,7 +8422,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -8494,7 +8500,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
@@ -8572,7 +8578,7 @@ class DataAccessSecurityApi:
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '409': "PutIdentityCollectorV1409Response",
+            '409': "CreateIdentityCollectorV1409Response",
             '429': "GetTasksV1429Response",
             '500': "ErrorResponseDto",
         }
