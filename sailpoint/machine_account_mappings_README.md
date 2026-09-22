@@ -70,7 +70,7 @@ Class | Method | HTTP request | Description
 *MachineAccountMappingsApi* | [**create_machine_account_mappings_v1**](sailpoint/machine_account_mappings/docs/MachineAccountMappingsApi.md#create_machine_account_mappings_v1) | **POST** /sources/v1/{sourceId}/machine-account-mappings | Create machine account mappings
 *MachineAccountMappingsApi* | [**delete_machine_account_mappings_v1**](sailpoint/machine_account_mappings/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings_v1) | **DELETE** /sources/v1/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
 *MachineAccountMappingsApi* | [**list_machine_account_mappings_v1**](sailpoint/machine_account_mappings/docs/MachineAccountMappingsApi.md#list_machine_account_mappings_v1) | **GET** /sources/v1/{sourceId}/machine-account-mappings | Machine account mapping for source
-*MachineAccountMappingsApi* | [**set_machine_account_mappings_v1**](sailpoint/machine_account_mappings/docs/MachineAccountMappingsApi.md#set_machine_account_mappings_v1) | **PUT** /sources/v1/{sourceId}/machine-mappings | Update source&#39;s machine account mappings
+*MachineAccountMappingsApi* | [**set_machine_account_mappings_v1**](sailpoint/machine_account_mappings/docs/MachineAccountMappingsApi.md#set_machine_account_mappings_v1) | **PUT** /sources/v1/{sourceId}/machine-account-mappings | Update source&#39;s machine account mappings
 
 
 ## Documentation For Models
