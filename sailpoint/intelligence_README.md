@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponseDto](sailpoint/intelligence/docs/ErrorResponseDto.md)
  - [GetIdentityIntelligenceV1401Response](sailpoint/intelligence/docs/GetIdentityIntelligenceV1401Response.md)
  - [GetIdentityIntelligenceV1429Response](sailpoint/intelligence/docs/GetIdentityIntelligenceV1429Response.md)
+ - [GetIntelIdentityAccountsV1200Response](sailpoint/intelligence/docs/GetIntelIdentityAccountsV1200Response.md)
  - [IntelAccessAccountWire](sailpoint/intelligence/docs/IntelAccessAccountWire.md)
  - [IntelAccessHistory](sailpoint/intelligence/docs/IntelAccessHistory.md)
  - [IntelAccessHistoryAccessItemsSlice](sailpoint/intelligence/docs/IntelAccessHistoryAccessItemsSlice.md)

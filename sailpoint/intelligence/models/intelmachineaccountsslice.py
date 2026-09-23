@@ -18,18 +18,21 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.intelligence.models.intelmachineaccountwire import Intelmachineaccountwire
 from typing import Optional, Set
 from typing_extensions import Self
 
 class Intelmachineaccountsslice(BaseModel):
     """
-    Correlated machine accounts embedded on the non-human identity aggregate. Returns the correlated account set on the wire today (account paging via child routes is not yet released). 
+    Machine accounts embedded on the non-human identity aggregate (first page).
     """ # noqa: E501
-    items: List[Intelmachineaccountwire] = Field(description="Machine account rows correlated to the non-human identity.")
-    __properties: ClassVar[List[str]] = ["items"]
+    items: List[Intelmachineaccountwire] = Field(description="Machine accounts correlated to the non-human identity.")
+    total_count: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Correlated machine account count from aggregation; omitted when items is empty.", alias="totalCount")
+    next: Optional[StrictStr] = Field(default=None, description="Next page URL when totalCount exceeds items returned. Includes isNHI=true.")
+    __properties: ClassVar[List[str]] = ["items", "totalCount", "next"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +92,9 @@ class Intelmachineaccountsslice(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "items": [Intelmachineaccountwire.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "items": [Intelmachineaccountwire.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "totalCount": obj.get("totalCount"),
+            "next": obj.get("next")
         })
         return _obj
 

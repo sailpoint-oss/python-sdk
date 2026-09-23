@@ -92,7 +92,9 @@ accounts=sailpoint.intelligence.models.intelmachineaccountsslice.Intelmachineacc
                             modified = '2026-05-01T00:00Z', 
                             attributes = {}, 
                             connector_attributes = {}, )
-                        ], ),
+                        ], 
+                    total_count = 11, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/accounts?limit=10&offset=10&count=true&isNHI=true', ),
 privileged_access=sailpoint.intelligence.models.intel_privileged_access_slice.IntelPrivilegedAccessSlice(
                     items = [
                         sailpoint.intelligence.models.intel_privileged_access_item_wire.IntelPrivilegedAccessItemWire(

@@ -11,13 +11,15 @@ tags: ['SDK', 'Software Development Kit', 'Intelmachineaccountsslice', 'Intelmac
 
 # Intelmachineaccountsslice
 
-Correlated machine accounts embedded on the non-human identity aggregate. Returns the correlated account set on the wire today (account paging via child routes is not yet released). 
+Machine accounts embedded on the non-human identity aggregate (first page).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[]Intelmachineaccountwire**](intelmachineaccountwire) | Machine account rows correlated to the non-human identity. | [required]
+**items** | [**[]Intelmachineaccountwire**](intelmachineaccountwire) | Machine accounts correlated to the non-human identity. | [required]
+**total_count** | **int** | Correlated machine account count from aggregation; omitted when items is empty. | [optional] 
+**next** | **str** | Next page URL when totalCount exceeds items returned. Includes isNHI=true. | [optional] 
 }
 
 ## Example
@@ -48,7 +50,9 @@ items=[
                         modified = '2026-05-01T00:00Z', 
                         attributes = {}, 
                         connector_attributes = {}, )
-                    ]
+                    ],
+total_count=11,
+next='https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/accounts?limit=10&offset=10&count=true&isNHI=true'
 )
 
 ```
