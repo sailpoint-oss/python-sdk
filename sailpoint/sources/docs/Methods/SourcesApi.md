@@ -78,7 +78,7 @@ Method | HTTP request | Description
 [**create-source-resource-v1**](#create-source-resource-v1) | **POST** `/sources/v1/{sourceId}/resources` | Create resource on source
 [**create-source-schedule-v1**](#create-source-schedule-v1) | **POST** `/sources/v1/{sourceId}/schedules` | Create schedule on source
 [**create-source-schema-v1**](#create-source-schema-v1) | **POST** `/sources/v1/{sourceId}/schemas` | Create schema on source
-[**create-source-v1**](#create-source-v1) | **POST** `/sources/v1` | Creates a source in identitynow.
+[**create-source-v1**](#create-source-v1) | **POST** `/sources/v1` | Create source
 [**delete-accounts-async-v1**](#delete-accounts-async-v1) | **POST** `/sources/v1/{id}/remove-accounts` | Remove all accounts in source
 [**delete-native-change-detection-config-v1**](#delete-native-change-detection-config-v1) | **DELETE** `/sources/v1/{sourceId}/native-change-detection-config` | Delete native change detection configuration
 [**delete-provisioning-policy-v1**](#delete-provisioning-policy-v1) | **DELETE** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Delete provisioning policy by usagetype
@@ -122,7 +122,7 @@ Method | HTTP request | Description
 [**list-password-policy-holders-on-source-v1**](#list-password-policy-holders-on-source-v1) | **GET** `/sources/v1/{sourceId}/password-policies` | Get Password Policy for source
 [**list-provisioning-policies-v1**](#list-provisioning-policies-v1) | **GET** `/sources/v1/{sourceId}/provisioning-policies` | Lists provisioningpolicies
 [**list-provisioning-policies-v2**](#list-provisioning-policies-v2) | **GET** `/sources/v2/{sourceId}/provisioning-policies` | Lists Provisioning Policies
-[**list-sources-v1**](#list-sources-v1) | **GET** `/sources/v1` | Lists all sources in identitynow.
+[**list-sources-v1**](#list-sources-v1) | **GET** `/sources/v1` | List sources
 [**ping-cluster-v1**](#ping-cluster-v1) | **POST** `/sources/v1/{sourceId}/connector/ping-cluster` | Ping cluster for source connector
 [**put-correlation-config-v1**](#put-correlation-config-v1) | **PUT** `/sources/v1/{id}/correlation-config` | Update source correlation configuration
 [**put-native-change-detection-config-v1**](#put-native-change-detection-config-v1) | **PUT** `/sources/v1/{sourceId}/native-change-detection-config` | Update native change detection configuration
@@ -716,8 +716,8 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## create-source-v1
-Creates a source in identitynow.
-This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+Create source
+This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt.
 
 [API Spec](https://developer.sailpoint.com/docs/api/create-source-v-1)
 
@@ -726,7 +726,7 @@ This creates a specific source with a full source JSON representation. Any passw
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | source | [**Source**](../models/source) | True  | 
-  Query | provision_as_csv | **bool** |   (optional) | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  
+  Query | provision_as_csv | **bool** |   (optional) (default to False) | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  
 
 ### Return type
 [**Source**](../models/source)
@@ -839,10 +839,10 @@ with ApiClient(configuration) as api_client:
           "status" : "SOURCE_STATE_HEALTHY",
           "since" : "2021-09-28T15:48:29.3801666300Z"
         }''' # Source | 
-    provision_as_csv = false # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
+    provision_as_csv = False # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) (default to False) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) (default to False)
 
     try:
-        # Creates a source in identitynow.
+        # Create source
         new_source = Source.from_json(source)
         results = SourcesApi(api_client).create_source_v1(source=new_source)
         # Below is a request that includes all optional parameters
@@ -3706,8 +3706,8 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-sources-v1
-Lists all sources in identitynow.
-This end-point lists all the sources in IdentityNow.
+List sources
+This end-point lists all the sources.
 
 [API Spec](https://developer.sailpoint.com/docs/api/list-sources-v-1)
 
@@ -3761,7 +3761,7 @@ with ApiClient(configuration) as api_client:
     include_idn_source = False # bool | Include the IdentityNow source in the response. (optional) (default to False) # bool | Include the IdentityNow source in the response. (optional) (default to False)
 
     try:
-        # Lists all sources in identitynow.
+        # List sources
         
         results = SourcesApi(api_client).list_sources_v1()
         # Below is a request that includes all optional parameters

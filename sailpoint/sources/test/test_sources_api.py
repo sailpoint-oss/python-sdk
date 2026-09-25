@@ -71,7 +71,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_source_v1(self) -> None:
         """Test case for create_source_v1
 
-        Creates a source in identitynow.
+        Create source
         """
         pass
 
@@ -379,7 +379,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_list_sources_v1(self) -> None:
         """Test case for list_sources_v1
 
-        Lists all sources in identitynow.
+        List sources
         """
         pass
 

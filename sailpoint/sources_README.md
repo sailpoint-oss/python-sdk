@@ -72,7 +72,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**create_source_resource_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_resource_v1) | **POST** /sources/v1/{sourceId}/resources | Create resource on source
 *SourcesApi* | [**create_source_schedule_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_schedule_v1) | **POST** /sources/v1/{sourceId}/schedules | Create schedule on source
 *SourcesApi* | [**create_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_schema_v1) | **POST** /sources/v1/{sourceId}/schemas | Create schema on source
-*SourcesApi* | [**create_source_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_v1) | **POST** /sources/v1 | Creates a source in identitynow.
+*SourcesApi* | [**create_source_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_v1) | **POST** /sources/v1 | Create source
 *SourcesApi* | [**delete_accounts_async_v1**](sailpoint/sources/docs/SourcesApi.md#delete_accounts_async_v1) | **POST** /sources/v1/{id}/remove-accounts | Remove all accounts in source
 *SourcesApi* | [**delete_native_change_detection_config_v1**](sailpoint/sources/docs/SourcesApi.md#delete_native_change_detection_config_v1) | **DELETE** /sources/v1/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesApi* | [**delete_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#delete_provisioning_policy_v1) | **DELETE** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
@@ -116,7 +116,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**list_password_policy_holders_on_source_v1**](sailpoint/sources/docs/SourcesApi.md#list_password_policy_holders_on_source_v1) | **GET** /sources/v1/{sourceId}/password-policies | Get Password Policy for source
 *SourcesApi* | [**list_provisioning_policies_v1**](sailpoint/sources/docs/SourcesApi.md#list_provisioning_policies_v1) | **GET** /sources/v1/{sourceId}/provisioning-policies | Lists provisioningpolicies
 *SourcesApi* | [**list_provisioning_policies_v2**](sailpoint/sources/docs/SourcesApi.md#list_provisioning_policies_v2) | **GET** /sources/v2/{sourceId}/provisioning-policies | Lists Provisioning Policies
-*SourcesApi* | [**list_sources_v1**](sailpoint/sources/docs/SourcesApi.md#list_sources_v1) | **GET** /sources/v1 | Lists all sources in identitynow.
+*SourcesApi* | [**list_sources_v1**](sailpoint/sources/docs/SourcesApi.md#list_sources_v1) | **GET** /sources/v1 | List sources
 *SourcesApi* | [**ping_cluster_v1**](sailpoint/sources/docs/SourcesApi.md#ping_cluster_v1) | **POST** /sources/v1/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesApi* | [**put_correlation_config_v1**](sailpoint/sources/docs/SourcesApi.md#put_correlation_config_v1) | **PUT** /sources/v1/{id}/correlation-config | Update source correlation configuration
 *SourcesApi* | [**put_native_change_detection_config_v1**](sailpoint/sources/docs/SourcesApi.md#put_native_change_detection_config_v1) | **PUT** /sources/v1/{sourceId}/native-change-detection-config | Update native change detection configuration

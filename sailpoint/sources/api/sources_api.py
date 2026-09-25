@@ -1978,9 +1978,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Source:
-        """Creates a source in identitynow.
+        """Create source
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt.
 
         :param source: (required)
         :type source: Source
@@ -2054,9 +2054,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Source]:
-        """Creates a source in identitynow.
+        """Create source
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt.
 
         :param source: (required)
         :type source: Source
@@ -2130,9 +2130,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates a source in identitynow.
+        """Create source
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt.
 
         :param source: (required)
         :type source: Source
@@ -15153,9 +15153,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Source]:
-        """Lists all sources in identitynow.
+        """List sources
 
-        This end-point lists all the sources in IdentityNow.
+        This end-point lists all the sources.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -15250,9 +15250,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Source]]:
-        """Lists all sources in identitynow.
+        """List sources
 
-        This end-point lists all the sources in IdentityNow.
+        This end-point lists all the sources.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -15347,9 +15347,9 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists all sources in identitynow.
+        """List sources
 
-        This end-point lists all the sources in IdentityNow.
+        This end-point lists all the sources.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
