@@ -22,4 +22,5 @@ from sailpoint.machine_accounts.models.list_machine_accounts_v1401_response impo
 from sailpoint.machine_accounts.models.list_machine_accounts_v1429_response import ListMachineAccountsV1429Response
 from sailpoint.machine_accounts.models.locale_origin import LocaleOrigin
 from sailpoint.machine_accounts.models.machine_account import MachineAccount
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
 from sailpoint.machine_accounts.models.source_subtype import SourceSubtype

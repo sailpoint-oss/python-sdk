@@ -33,10 +33,31 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_machine_account_async_v1(self) -> None:
+        """Test case for delete_machine_account_async_v1
+
+        Remove machine account
+        """
+        pass
+
     def test_delete_machine_account_subtype_by_technical_name_v1(self) -> None:
         """Test case for delete_machine_account_subtype_by_technical_name_v1
 
         Delete subtype
+        """
+        pass
+
+    def test_disable_machine_account_v1(self) -> None:
+        """Test case for disable_machine_account_v1
+
+        Disable machine account
+        """
+        pass
+
+    def test_enable_machine_account_v1(self) -> None:
+        """Test case for enable_machine_account_v1
+
+        Enable machine account
         """
         pass
 
@@ -79,6 +100,20 @@ class TestMachineAccountsApi(unittest.TestCase):
         """Test case for patch_machine_account_subtype_by_technical_name_v1
 
         Patch subtype
+        """
+        pass
+
+    def test_reload_machine_account_v1(self) -> None:
+        """Test case for reload_machine_account_v1
+
+        Reload machine account
+        """
+        pass
+
+    def test_unlock_machine_account_v1(self) -> None:
+        """Test case for unlock_machine_account_v1
+
+        Unlock machine account
         """
         pass
 

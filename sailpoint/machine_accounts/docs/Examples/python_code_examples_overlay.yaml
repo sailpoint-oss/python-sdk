@@ -27,6 +27,33 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->create_machine_account_subtype_v1: %s\n" % e)
+- path: /machine-accounts/v1/{id}/remove
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-accounts/methods/machine-accounts#delete-machine-account-async-v1
+      source: |
+        from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.machine_accounts.api_client import ApiClient
+        from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Remove machine account
+              
+              results = MachineAccountsApi(api_client).delete_machine_account_async_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).delete_machine_account_async_v1(id, x_sail_point_experimental)
+              print("The response of MachineAccountsApi->delete_machine_account_async_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->delete_machine_account_async_v1: %s\n" % e)
 - path: /sources/v1/{sourceId}/subtypes/{technicalName}
   method: DELETE
   xCodeSample:
@@ -52,6 +79,60 @@
               # MachineAccountsApi(api_client).delete_machine_account_subtype_by_technical_name_v1(source_id, technical_name, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling MachineAccountsApi->delete_machine_account_subtype_by_technical_name_v1: %s\n" % e)
+- path: /machine-accounts/v1/{id}/disable
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-accounts/methods/machine-accounts#disable-machine-account-v1
+      source: |
+        from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.machine_accounts.api_client import ApiClient
+        from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Disable machine account
+              
+              results = MachineAccountsApi(api_client).disable_machine_account_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).disable_machine_account_v1(id, x_sail_point_experimental)
+              print("The response of MachineAccountsApi->disable_machine_account_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->disable_machine_account_v1: %s\n" % e)
+- path: /machine-accounts/v1/{id}/enable
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-accounts/methods/machine-accounts#enable-machine-account-v1
+      source: |
+        from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.machine_accounts.api_client import ApiClient
+        from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Enable machine account
+              
+              results = MachineAccountsApi(api_client).enable_machine_account_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).enable_machine_account_v1(id, x_sail_point_experimental)
+              print("The response of MachineAccountsApi->enable_machine_account_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->enable_machine_account_v1: %s\n" % e)
 - path: /sources/v1/subtypes/{subtypeId}
   method: GET
   xCodeSample:
@@ -228,6 +309,60 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->patch_machine_account_subtype_by_technical_name_v1: %s\n" % e)
+- path: /machine-accounts/v1/{id}/reload
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-accounts/methods/machine-accounts#reload-machine-account-v1
+      source: |
+        from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.machine_accounts.api_client import ApiClient
+        from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Reload machine account
+              
+              results = MachineAccountsApi(api_client).reload_machine_account_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).reload_machine_account_v1(id, x_sail_point_experimental)
+              print("The response of MachineAccountsApi->reload_machine_account_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->reload_machine_account_v1: %s\n" % e)
+- path: /machine-accounts/v1/{id}/unlock
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-accounts/methods/machine-accounts#unlock-machine-account-v1
+      source: |
+        from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.machine_accounts.api_client import ApiClient
+        from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Unlock machine account
+              
+              results = MachineAccountsApi(api_client).unlock_machine_account_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).unlock_machine_account_v1(id, x_sail_point_experimental)
+              print("The response of MachineAccountsApi->unlock_machine_account_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->unlock_machine_account_v1: %s\n" % e)
 - path: /machine-accounts/v1/{id}
   method: PATCH
   xCodeSample:

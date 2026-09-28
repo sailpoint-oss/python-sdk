@@ -16,13 +16,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype-v1**](#create-machine-account-subtype-v1) | **POST** `/sources/v1/{sourceId}/subtypes` | Create subtype
+[**delete-machine-account-async-v1**](#delete-machine-account-async-v1) | **POST** `/machine-accounts/v1/{id}/remove` | Remove machine account
 [**delete-machine-account-subtype-by-technical-name-v1**](#delete-machine-account-subtype-by-technical-name-v1) | **DELETE** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Delete subtype
+[**disable-machine-account-v1**](#disable-machine-account-v1) | **POST** `/machine-accounts/v1/{id}/disable` | Disable machine account
+[**enable-machine-account-v1**](#enable-machine-account-v1) | **POST** `/machine-accounts/v1/{id}/enable` | Enable machine account
 [**get-machine-account-subtype-by-id-v1**](#get-machine-account-subtype-by-id-v1) | **GET** `/sources/v1/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name-v1**](#get-machine-account-subtype-by-technical-name-v1) | **GET** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**get-machine-account-v1**](#get-machine-account-v1) | **GET** `/machine-accounts/v1/{id}` | Get machine account details
 [**list-machine-account-subtypes-v1**](#list-machine-account-subtypes-v1) | **GET** `/sources/v1/{sourceId}/subtypes` | Retrieve all subtypes by source
 [**list-machine-accounts-v1**](#list-machine-accounts-v1) | **GET** `/machine-accounts/v1` | List machine accounts
 [**patch-machine-account-subtype-by-technical-name-v1**](#patch-machine-account-subtype-by-technical-name-v1) | **PATCH** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Patch subtype
+[**reload-machine-account-v1**](#reload-machine-account-v1) | **POST** `/machine-accounts/v1/{id}/reload` | Reload machine account
+[**unlock-machine-account-v1**](#unlock-machine-account-v1) | **POST** `/machine-accounts/v1/{id}/unlock` | Unlock machine account
 [**update-machine-account-v1**](#update-machine-account-v1) | **PATCH** `/machine-accounts/v1/{id}` | Update machine account details
 
 
@@ -104,6 +109,90 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## delete-machine-account-async-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Remove machine account
+Use this API to remove a machine account from Identity Security Cloud. The source account is left unchanged, and a removed machine account can be re-created during the next aggregation. The response returns the task ID.
+
+This endpoint is intended for:
+
+* Removing machine accounts that no longer exist on the source.
+
+* Removing machine accounts that will not be aggregated after a source configuration change.
+
+* Forcing machine accounts to be re-created on the next aggregation so account processing can run again.
+
+A caller who owns the machine account can remove it. Other callers need the **idn:mis-account:remove** right.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-machine-account-async-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Machine Account ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**MachineAccountsAsyncResult**](../models/machine-accounts-async-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Async task details. | MachineAccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.machine_accounts.api_client import ApiClient
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Remove machine account
+        
+        results = MachineAccountsApi(api_client).delete_machine_account_async_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = MachineAccountsApi(api_client).delete_machine_account_async_v1(id, x_sail_point_experimental)
+        print("The response of MachineAccountsApi->delete_machine_account_async_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MachineAccountsApi->delete_machine_account_async_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## delete-machine-account-subtype-by-technical-name-v1
 :::caution deprecated 
 This endpoint has been deprecated and may be replaced or removed in future versions of the API.
@@ -172,6 +261,158 @@ with ApiClient(configuration) as api_client:
         # MachineAccountsApi(api_client).delete_machine_account_subtype_by_technical_name_v1(source_id, technical_name, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineAccountsApi->delete_machine_account_subtype_by_technical_name_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## disable-machine-account-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Disable machine account
+This API submits a task to disable a machine account and returns the task ID.
+
+A caller who owns the machine account can disable it. Other callers need the **idn:mis-account:disable** right.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/disable-machine-account-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Machine Account ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**MachineAccountsAsyncResult**](../models/machine-accounts-async-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Async task details. | MachineAccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.machine_accounts.api_client import ApiClient
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Disable machine account
+        
+        results = MachineAccountsApi(api_client).disable_machine_account_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = MachineAccountsApi(api_client).disable_machine_account_v1(id, x_sail_point_experimental)
+        print("The response of MachineAccountsApi->disable_machine_account_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MachineAccountsApi->disable_machine_account_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## enable-machine-account-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Enable machine account
+This API submits a task to enable a machine account and returns the task ID.
+
+A caller who owns the machine account can enable it. Other callers need the **idn:mis-account:enable** right.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/enable-machine-account-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Machine Account ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**MachineAccountsAsyncResult**](../models/machine-accounts-async-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Async task details. | MachineAccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.machine_accounts.api_client import ApiClient
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Enable machine account
+        
+        results = MachineAccountsApi(api_client).enable_machine_account_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = MachineAccountsApi(api_client).enable_machine_account_v1(id, x_sail_point_experimental)
+        print("The response of MachineAccountsApi->enable_machine_account_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MachineAccountsApi->enable_machine_account_v1: %s\n" % e)
 ```
 
 
@@ -645,6 +886,158 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling MachineAccountsApi->patch_machine_account_subtype_by_technical_name_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## reload-machine-account-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Reload machine account
+This API asynchronously reloads the machine account directly from the connector and performs a one-time aggregation. It returns the task ID.
+
+A caller who owns the machine account can reload it. Other callers need the **idn:mis-account:reload** right.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/reload-machine-account-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Machine Account ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**MachineAccountsAsyncResult**](../models/machine-accounts-async-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Async task details. | MachineAccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.machine_accounts.api_client import ApiClient
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Reload machine account
+        
+        results = MachineAccountsApi(api_client).reload_machine_account_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = MachineAccountsApi(api_client).reload_machine_account_v1(id, x_sail_point_experimental)
+        print("The response of MachineAccountsApi->reload_machine_account_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MachineAccountsApi->reload_machine_account_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## unlock-machine-account-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Unlock machine account
+This API submits a task to unlock a machine account and returns the task ID.
+
+A caller who owns the machine account can unlock it. Other callers need the **idn:mis-account:unlock** right.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/unlock-machine-account-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Machine Account ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**MachineAccountsAsyncResult**](../models/machine-accounts-async-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Async task details. | MachineAccountsAsyncResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.machine_accounts.api_client import ApiClient
+from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Unlock machine account
+        
+        results = MachineAccountsApi(api_client).unlock_machine_account_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # results = MachineAccountsApi(api_client).unlock_machine_account_v1(id, x_sail_point_experimental)
+        print("The response of MachineAccountsApi->unlock_machine_account_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MachineAccountsApi->unlock_machine_account_v1: %s\n" % e)
 ```
 
 
