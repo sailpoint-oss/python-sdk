@@ -28,6 +28,17 @@ Method | HTTP request | Description
 
 
 ## list-jit-activation-history-for-current-identity-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List JIT activation history (self)
 Returns JIT activation history records for the authenticated identity only.
 
@@ -49,6 +60,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).
   Query | search_after | **str** |   (optional) | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[Jitactivationhistorydocument]**](../models/jitactivationhistorydocument)
@@ -76,6 +88,7 @@ from sailpoint.jit_activations.models.jitactivationhistorydocument import Jitact
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -84,13 +97,14 @@ with ApiClient(configuration) as api_client:
     sorters = '-activationInitiated' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional)
     search_after = '2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3' # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional) # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional)
     filters = 'status eq \"PROVISIONED\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List JIT activation history (self)
         
         results = JITActivationsApi(api_client).list_jit_activation_history_for_current_identity_v1()
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).list_jit_activation_history_for_current_identity_v1(limit, offset, count, sorters, search_after, filters)
+        # results = JITActivationsApi(api_client).list_jit_activation_history_for_current_identity_v1(limit, offset, count, sorters, search_after, filters, x_sail_point_experimental)
         print("The response of JITActivationsApi->list_jit_activation_history_for_current_identity_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -103,6 +117,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-jit-activation-history-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List JIT activation history (admin)
 Returns JIT activation history records for the tenant.
 
@@ -124,6 +149,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).
   Query | search_after | **str** |   (optional) | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[Jitactivationhistorydocument]**](../models/jitactivationhistorydocument)
@@ -151,6 +177,7 @@ from sailpoint.jit_activations.models.jitactivationhistorydocument import Jitact
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -159,13 +186,14 @@ with ApiClient(configuration) as api_client:
     sorters = '-activationInitiated' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional)
     search_after = '2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3' # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional) # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional)
     filters = 'status eq \"PROVISIONED\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List JIT activation history (admin)
         
         results = JITActivationsApi(api_client).list_jit_activation_history_v1()
         # Below is a request that includes all optional parameters
-        # results = JITActivationsApi(api_client).list_jit_activation_history_v1(limit, offset, count, sorters, search_after, filters)
+        # results = JITActivationsApi(api_client).list_jit_activation_history_v1(limit, offset, count, sorters, search_after, filters, x_sail_point_experimental)
         print("The response of JITActivationsApi->list_jit_activation_history_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

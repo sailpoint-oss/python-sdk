@@ -341,14 +341,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Get access request configuration
               
               results = AccessRequestsApi(api_client).get_access_request_config_v2()
               # Below is a request that includes all optional parameters
-              # results = AccessRequestsApi(api_client).get_access_request_config_v2()
+              # results = AccessRequestsApi(api_client).get_access_request_config_v2(x_sail_point_experimental)
               print("The response of AccessRequestsApi->get_access_request_config_v2:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -772,15 +774,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           access_request_config2 = '''sailpoint.access_requests.AccessRequestConfig2()''' # AccessRequestConfig2 | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Update access request configuration
               new_access_request_config2 = AccessRequestConfig2.from_json(access_request_config2)
               results = AccessRequestsApi(api_client).set_access_request_config_v2(access_request_config2=new_access_request_config2)
               # Below is a request that includes all optional parameters
-              # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_access_request_config2)
+              # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_access_request_config2, x_sail_point_experimental)
               print("The response of AccessRequestsApi->set_access_request_config_v2:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

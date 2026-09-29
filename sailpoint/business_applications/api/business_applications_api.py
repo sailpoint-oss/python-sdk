@@ -44,6 +44,7 @@ class BusinessApplicationsApi:
     def create_business_application_v1(
         self,
         business_application: BusinessApplication,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +64,8 @@ class BusinessApplicationsApi:
 
         :param business_application: (required)
         :type business_application: BusinessApplication
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class BusinessApplicationsApi:
 
         _param = self._create_business_application_v1_serialize(
             business_application=business_application,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,6 +121,7 @@ class BusinessApplicationsApi:
     def create_business_application_v1_with_http_info(
         self,
         business_application: BusinessApplication,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,6 +141,8 @@ class BusinessApplicationsApi:
 
         :param business_application: (required)
         :type business_application: BusinessApplication
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,6 +167,7 @@ class BusinessApplicationsApi:
 
         _param = self._create_business_application_v1_serialize(
             business_application=business_application,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,6 +198,7 @@ class BusinessApplicationsApi:
     def create_business_application_v1_without_preload_content(
         self,
         business_application: BusinessApplication,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,6 +218,8 @@ class BusinessApplicationsApi:
 
         :param business_application: (required)
         :type business_application: BusinessApplication
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,6 +244,7 @@ class BusinessApplicationsApi:
 
         _param = self._create_business_application_v1_serialize(
             business_application=business_application,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -258,6 +270,7 @@ class BusinessApplicationsApi:
     def _create_business_application_v1_serialize(
         self,
         business_application,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -281,6 +294,8 @@ class BusinessApplicationsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if business_application is not None:
@@ -335,6 +350,7 @@ class BusinessApplicationsApi:
     def get_business_application_v1(
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -354,6 +370,8 @@ class BusinessApplicationsApi:
 
         :param id: Business Application ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -378,6 +396,7 @@ class BusinessApplicationsApi:
 
         _param = self._get_business_application_v1_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -408,6 +427,7 @@ class BusinessApplicationsApi:
     def get_business_application_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -427,6 +447,8 @@ class BusinessApplicationsApi:
 
         :param id: Business Application ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -451,6 +473,7 @@ class BusinessApplicationsApi:
 
         _param = self._get_business_application_v1_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -481,6 +504,7 @@ class BusinessApplicationsApi:
     def get_business_application_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -500,6 +524,8 @@ class BusinessApplicationsApi:
 
         :param id: Business Application ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -524,6 +550,7 @@ class BusinessApplicationsApi:
 
         _param = self._get_business_application_v1_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -549,6 +576,7 @@ class BusinessApplicationsApi:
     def _get_business_application_v1_serialize(
         self,
         id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -574,6 +602,8 @@ class BusinessApplicationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -617,6 +647,7 @@ class BusinessApplicationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -644,6 +675,8 @@ class BusinessApplicationsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -672,6 +705,7 @@ class BusinessApplicationsApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -705,6 +739,7 @@ class BusinessApplicationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -732,6 +767,8 @@ class BusinessApplicationsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -760,6 +797,7 @@ class BusinessApplicationsApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -793,6 +831,7 @@ class BusinessApplicationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -820,6 +859,8 @@ class BusinessApplicationsApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -848,6 +889,7 @@ class BusinessApplicationsApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -876,6 +918,7 @@ class BusinessApplicationsApi:
         count,
         limit,
         offset,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -919,6 +962,8 @@ class BusinessApplicationsApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -959,6 +1004,7 @@ class BusinessApplicationsApi:
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON array of patch operations per RFC 6902.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -980,6 +1026,8 @@ class BusinessApplicationsApi:
         :type id: str
         :param json_patch_operation: A JSON array of patch operations per RFC 6902. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1005,6 +1053,7 @@ class BusinessApplicationsApi:
         _param = self._update_business_application_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1037,6 +1086,7 @@ class BusinessApplicationsApi:
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON array of patch operations per RFC 6902.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1058,6 +1108,8 @@ class BusinessApplicationsApi:
         :type id: str
         :param json_patch_operation: A JSON array of patch operations per RFC 6902. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1083,6 +1135,7 @@ class BusinessApplicationsApi:
         _param = self._update_business_application_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1115,6 +1168,7 @@ class BusinessApplicationsApi:
         self,
         id: Annotated[StrictStr, Field(description="Business Application ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON array of patch operations per RFC 6902.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1136,6 +1190,8 @@ class BusinessApplicationsApi:
         :type id: str
         :param json_patch_operation: A JSON array of patch operations per RFC 6902. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1161,6 +1217,7 @@ class BusinessApplicationsApi:
         _param = self._update_business_application_v1_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1188,6 +1245,7 @@ class BusinessApplicationsApi:
         self,
         id,
         json_patch_operation,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1214,6 +1272,8 @@ class BusinessApplicationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

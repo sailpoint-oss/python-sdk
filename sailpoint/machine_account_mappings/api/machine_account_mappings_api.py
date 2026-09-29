@@ -982,6 +982,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1003,6 +1004,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1028,6 +1031,7 @@ class MachineAccountMappingsApi:
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1059,6 +1063,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1080,6 +1085,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1105,6 +1112,7 @@ class MachineAccountMappingsApi:
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1136,6 +1144,7 @@ class MachineAccountMappingsApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         attribute_mappings: AttributeMappings,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1157,6 +1166,8 @@ class MachineAccountMappingsApi:
         :type source_id: str
         :param attribute_mappings: (required)
         :type attribute_mappings: AttributeMappings
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1182,6 +1193,7 @@ class MachineAccountMappingsApi:
         _param = self._set_machine_account_mappings_v1_serialize(
             source_id=source_id,
             attribute_mappings=attribute_mappings,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1208,6 +1220,7 @@ class MachineAccountMappingsApi:
         self,
         source_id,
         attribute_mappings,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1233,6 +1246,8 @@ class MachineAccountMappingsApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if attribute_mappings is not None:

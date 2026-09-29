@@ -652,6 +652,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-access-request-config-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Get access request configuration
 This endpoint returns the current access-request configuration.
 
@@ -660,7 +671,10 @@ To manage approval configurations, use the [Put approval config](https://develop
 [API Spec](https://developer.sailpoint.com/docs/api/get-access-request-config-v-2)
 
 ### Parameters 
-This endpoint does not need any parameter. 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**AccessRequestConfig2**](../models/access-request-config2)
@@ -688,15 +702,17 @@ from sailpoint.access_requests.models.access_request_config2 import AccessReques
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get access request configuration
         
         results = AccessRequestsApi(api_client).get_access_request_config_v2()
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).get_access_request_config_v2()
+        # results = AccessRequestsApi(api_client).get_access_request_config_v2(x_sail_point_experimental)
         print("The response of AccessRequestsApi->get_access_request_config_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1357,6 +1373,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## set-access-request-config-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Update access request configuration
 This endpoint replaces the current access-request configuration.
 
@@ -1369,6 +1396,7 @@ To manage approval configurations, use the [Put approval config](https://develop
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | access_request_config2 | [**AccessRequestConfig2**](../models/access-request-config2) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**AccessRequestConfig2**](../models/access-request-config2)
@@ -1396,16 +1424,18 @@ from sailpoint.access_requests.models.access_request_config2 import AccessReques
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     access_request_config2 = '''sailpoint.access_requests.AccessRequestConfig2()''' # AccessRequestConfig2 | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Update access request configuration
         new_access_request_config2 = AccessRequestConfig2.from_json(access_request_config2)
         results = AccessRequestsApi(api_client).set_access_request_config_v2(access_request_config2=new_access_request_config2)
         # Below is a request that includes all optional parameters
-        # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_access_request_config2)
+        # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_access_request_config2, x_sail_point_experimental)
         print("The response of AccessRequestsApi->set_access_request_config_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

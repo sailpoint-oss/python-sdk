@@ -53,10 +53,11 @@ with sailpoint.jit_activations.ApiClient(configuration) as api_client:
     sorters = '-activationInitiated' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional)
     search_after = '2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3' # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional)
     filters = 'status eq \"PROVISIONED\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List JIT activation history (self)
-        api_response = api_instance.list_jit_activation_history_for_current_identity_v1(limit=limit, offset=offset, count=count, sorters=sorters, search_after=search_after, filters=filters)
+        api_response = api_instance.list_jit_activation_history_for_current_identity_v1(limit=limit, offset=offset, count=count, sorters=sorters, search_after=search_after, filters=filters, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of JITActivationsApi->list_jit_activation_history_for_current_identity_v1:\n")
         pprint(api_response)
     except ApiException as e:

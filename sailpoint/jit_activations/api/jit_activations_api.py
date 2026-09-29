@@ -54,6 +54,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -83,6 +84,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -112,6 +115,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -146,6 +150,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -175,6 +180,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -204,6 +211,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,6 +246,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -267,6 +276,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -296,6 +307,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -325,6 +337,7 @@ class JITActivationsApi:
         sorters,
         search_after,
         filters,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -372,6 +385,8 @@ class JITActivationsApi:
             _query_params.append(('filters', filters))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -416,6 +431,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -445,6 +461,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -474,6 +492,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -508,6 +527,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -537,6 +557,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -566,6 +588,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -600,6 +623,7 @@ class JITActivationsApi:
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first).")] = None,
         search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -629,6 +653,8 @@ class JITActivationsApi:
         :type search_after: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identityId**: *eq, in*  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in*
         :type filters: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -658,6 +684,7 @@ class JITActivationsApi:
             sorters=sorters,
             search_after=search_after,
             filters=filters,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -687,6 +714,7 @@ class JITActivationsApi:
         sorters,
         search_after,
         filters,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -734,6 +762,8 @@ class JITActivationsApi:
             _query_params.append(('filters', filters))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

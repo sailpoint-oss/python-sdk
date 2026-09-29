@@ -141,6 +141,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## create-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Create machine identity
 Use this API to create a machine identity. Additional owners may be either up to ten human (IDENTITY) references or exactly one GOVERNANCE_GROUP reference - not both. The maximum supported length for the description field is 2000 characters.
 
@@ -153,6 +164,7 @@ When Business Applications is enabled for the tenant, callers may optionally inc
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | machineidentityv2 | [**Machineidentityv2**](../models/machineidentityv2) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Machineidentityv2**](../models/machineidentityv2)
@@ -181,6 +193,7 @@ from sailpoint.machine_identities.models.machineidentityv2 import Machineidentit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     machineidentityv2 = '''{
@@ -261,13 +274,14 @@ with ApiClient(configuration) as api_client:
           "existsOnSource" : "TRUE",
           "status" : "ACTIVE"
         }''' # Machineidentityv2 | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create machine identity
         new_machineidentityv2 = Machineidentityv2.from_json(machineidentityv2)
         results = MachineIdentitiesApi(api_client).create_machine_identity_v2(machineidentityv2=new_machineidentityv2)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).create_machine_identity_v2(new_machineidentityv2)
+        # results = MachineIdentitiesApi(api_client).create_machine_identity_v2(new_machineidentityv2, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->create_machine_identity_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -349,6 +363,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Delete machine identity
 The API returns a successful response if the requested machine identity was deleted.
 
@@ -359,6 +384,7 @@ The API returns a successful response if the requested machine identity was dele
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Machine Identity ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -386,16 +412,18 @@ from sailpoint.machine_identities.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID. # str | Machine Identity ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete machine identity
         
         MachineIdentitiesApi(api_client).delete_machine_identity_v2(id=id)
         # Below is a request that includes all optional parameters
-        # MachineIdentitiesApi(api_client).delete_machine_identity_v2(id)
+        # MachineIdentitiesApi(api_client).delete_machine_identity_v2(id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineIdentitiesApi->delete_machine_identity_v2: %s\n" % e)
 ```
@@ -405,6 +433,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Delete ownership correlation config
 Deletes the ownership correlation config with the specified ID for the given source resource.
 
@@ -417,6 +456,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source ID.
 Path   | resource_id | **str** | True  | The source resource ID (for example, account or aws:iam-role).
 Path   | config_id | **str** | True  | The correlation config ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -444,18 +484,20 @@ from sailpoint.machine_identities.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     resource_id = 'aws:iam-role' # str | The source resource ID (for example, account or aws:iam-role). # str | The source resource ID (for example, account or aws:iam-role).
     config_id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The correlation config ID. # str | The correlation config ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete ownership correlation config
         
         MachineIdentitiesApi(api_client).delete_ownership_correlation_config_v1(source_id=source_id, resource_id=resource_id, config_id=config_id)
         # Below is a request that includes all optional parameters
-        # MachineIdentitiesApi(api_client).delete_ownership_correlation_config_v1(source_id, resource_id, config_id)
+        # MachineIdentitiesApi(api_client).delete_ownership_correlation_config_v1(source_id, resource_id, config_id, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineIdentitiesApi->delete_ownership_correlation_config_v1: %s\n" % e)
 ```
@@ -538,6 +580,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
@@ -548,6 +601,7 @@ This API returns a single machine identity using the Machine Identity ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Machine Identity ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Machineidentityv2**](../models/machineidentityv2)
@@ -576,16 +630,18 @@ from sailpoint.machine_identities.models.machineidentityv2 import Machineidentit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID. # str | Machine Identity ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get machine identity details
         
         results = MachineIdentitiesApi(api_client).get_machine_identity_v2(id=id)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).get_machine_identity_v2(id)
+        # results = MachineIdentitiesApi(api_client).get_machine_identity_v2(id, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->get_machine_identity_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -597,6 +653,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Get ownership correlation config
 This end-point retrieves a single ownership correlation config by ID for the specified source resource.
 
@@ -609,6 +676,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | source_id | **str** | True  | The Source ID.
 Path   | resource_id | **str** | True  | The source resource ID (for example, account or aws:iam-role).
 Path   | config_id | **str** | True  | The correlation config ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**CorrelationConfig**](../models/correlation-config)
@@ -637,18 +705,20 @@ from sailpoint.machine_identities.models.correlation_config import CorrelationCo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     resource_id = 'aws:iam-role' # str | The source resource ID (for example, account or aws:iam-role). # str | The source resource ID (for example, account or aws:iam-role).
     config_id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The correlation config ID. # str | The correlation config ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get ownership correlation config
         
         results = MachineIdentitiesApi(api_client).get_ownership_correlation_config_v1(source_id=source_id, resource_id=resource_id, config_id=config_id)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).get_ownership_correlation_config_v1(source_id, resource_id, config_id)
+        # results = MachineIdentitiesApi(api_client).get_ownership_correlation_config_v1(source_id, resource_id, config_id, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->get_ownership_correlation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -813,6 +883,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-machine-identities-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List machine identities
 This API returns a list of machine identities.
 
@@ -827,6 +908,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[Machineidentityv2]**](../models/machineidentityv2)
@@ -855,6 +937,7 @@ from sailpoint.machine_identities.models.machineidentityv2 import Machineidentit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return `400`. (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in*  **businessApplicationRefs.id**: *eq*  **effectiveSanctionedStatus**: *eq*  Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return `400`. (optional)
@@ -862,13 +945,14 @@ with ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List machine identities
         
         results = MachineIdentitiesApi(api_client).list_machine_identities_v2()
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).list_machine_identities_v2(filters, sorters, count, limit, offset)
+        # results = MachineIdentitiesApi(api_client).list_machine_identities_v2(filters, sorters, count, limit, offset, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->list_machine_identities_v2:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -1047,6 +1131,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-ownership-correlation-configs-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 List ownership correlation configs
 Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs for the specified source resource, creating default rows if they are missing. Use the optional type query parameter to return a single matching config.
 
@@ -1062,6 +1157,7 @@ Path   | resource_id | **str** | True  | The source resource ID (for example, ac
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**List[CorrelationConfig]**](../models/correlation-config)
@@ -1089,6 +1185,7 @@ from sailpoint.machine_identities.models.correlation_config import CorrelationCo
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
@@ -1097,13 +1194,14 @@ with ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # List ownership correlation configs
         
         results = MachineIdentitiesApi(api_client).list_ownership_correlation_configs_v1(source_id=source_id, resource_id=resource_id)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).list_ownership_correlation_configs_v1(source_id, resource_id, type, count, limit, offset)
+        # results = MachineIdentitiesApi(api_client).list_ownership_correlation_configs_v1(source_id, resource_id, type, count, limit, offset, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->list_ownership_correlation_configs_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -1116,6 +1214,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## patch-ownership-correlation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Patch ownership correlation config
 Selectively updates an ownership correlation config using an RFC 6902 JSONPatch payload. Only replace on /attributes (full object) and replace on /rules (full array; merge by stable rule id, remove rules omitted from the array) are allowed.
 
@@ -1129,6 +1238,7 @@ Path   | source_id | **str** | True  | The Source ID.
 Path   | resource_id | **str** | True  | The source resource ID (for example, account or aws:iam-role).
 Path   | config_id | **str** | True  | The correlation config ID.
  Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The JSONPatch payload used to update the correlation config.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**CorrelationConfig**](../models/correlation-config)
@@ -1158,19 +1268,21 @@ from sailpoint.machine_identities.models.json_patch_operation import JsonPatchOp
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     resource_id = 'aws:iam-role' # str | The source resource ID (for example, account or aws:iam-role). # str | The source resource ID (for example, account or aws:iam-role).
     config_id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The correlation config ID. # str | The correlation config ID.
     json_patch_operation = '''[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the correlation config.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Patch ownership correlation config
         new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
         results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id=source_id, resource_id=resource_id, config_id=config_id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id, resource_id, config_id, new_json_patch_operation)
+        # results = MachineIdentitiesApi(api_client).patch_ownership_correlation_config_v1(source_id, resource_id, config_id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->patch_ownership_correlation_config_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1337,6 +1449,17 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-machine-identity-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Partial update of machine identity
 Use this API to selectively update machine identity details using a JSONPatch payload.
 
@@ -1356,6 +1479,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | Machine Identity ID.
  Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Machineidentityv2**](../models/machineidentityv2)
@@ -1385,17 +1509,19 @@ from sailpoint.machine_identities.models.machineidentityv2 import Machineidentit
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID. # str | Machine Identity ID.
     json_patch_operation = '''[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]''' # List[JsonPatchOperation] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Partial update of machine identity
         new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
         results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id=id, json_patch_operation=new_json_patch_operation)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id, new_json_patch_operation)
+        # results = MachineIdentitiesApi(api_client).update_machine_identity_v2(id, new_json_patch_operation, x_sail_point_experimental)
         print("The response of MachineIdentitiesApi->update_machine_identity_v2:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

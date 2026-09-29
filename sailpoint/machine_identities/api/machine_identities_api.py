@@ -358,6 +358,7 @@ class MachineIdentitiesApi:
     def create_machine_identity_v2(
         self,
         machineidentityv2: Machineidentityv2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -377,6 +378,8 @@ class MachineIdentitiesApi:
 
         :param machineidentityv2: (required)
         :type machineidentityv2: Machineidentityv2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -401,6 +404,7 @@ class MachineIdentitiesApi:
 
         _param = self._create_machine_identity_v2_serialize(
             machineidentityv2=machineidentityv2,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -431,6 +435,7 @@ class MachineIdentitiesApi:
     def create_machine_identity_v2_with_http_info(
         self,
         machineidentityv2: Machineidentityv2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -450,6 +455,8 @@ class MachineIdentitiesApi:
 
         :param machineidentityv2: (required)
         :type machineidentityv2: Machineidentityv2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -474,6 +481,7 @@ class MachineIdentitiesApi:
 
         _param = self._create_machine_identity_v2_serialize(
             machineidentityv2=machineidentityv2,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -504,6 +512,7 @@ class MachineIdentitiesApi:
     def create_machine_identity_v2_without_preload_content(
         self,
         machineidentityv2: Machineidentityv2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -523,6 +532,8 @@ class MachineIdentitiesApi:
 
         :param machineidentityv2: (required)
         :type machineidentityv2: Machineidentityv2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -547,6 +558,7 @@ class MachineIdentitiesApi:
 
         _param = self._create_machine_identity_v2_serialize(
             machineidentityv2=machineidentityv2,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -572,6 +584,7 @@ class MachineIdentitiesApi:
     def _create_machine_identity_v2_serialize(
         self,
         machineidentityv2,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -595,6 +608,8 @@ class MachineIdentitiesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if machineidentityv2 is not None:
@@ -942,6 +957,7 @@ class MachineIdentitiesApi:
     def delete_machine_identity_v2(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -961,6 +977,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -985,6 +1003,7 @@ class MachineIdentitiesApi:
 
         _param = self._delete_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1015,6 +1034,7 @@ class MachineIdentitiesApi:
     def delete_machine_identity_v2_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1034,6 +1054,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1058,6 +1080,7 @@ class MachineIdentitiesApi:
 
         _param = self._delete_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1088,6 +1111,7 @@ class MachineIdentitiesApi:
     def delete_machine_identity_v2_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1107,6 +1131,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1131,6 +1157,7 @@ class MachineIdentitiesApi:
 
         _param = self._delete_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1156,6 +1183,7 @@ class MachineIdentitiesApi:
     def _delete_machine_identity_v2_serialize(
         self,
         id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1181,6 +1209,8 @@ class MachineIdentitiesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1222,6 +1252,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1245,6 +1276,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1271,6 +1304,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1303,6 +1337,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1326,6 +1361,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1352,6 +1389,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1384,6 +1422,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1407,6 +1446,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1433,6 +1474,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1460,6 +1502,7 @@ class MachineIdentitiesApi:
         source_id,
         resource_id,
         config_id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1489,6 +1532,8 @@ class MachineIdentitiesApi:
             _path_params['configId'] = config_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1821,6 +1866,7 @@ class MachineIdentitiesApi:
     def get_machine_identity_v2(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1840,6 +1886,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1864,6 +1912,7 @@ class MachineIdentitiesApi:
 
         _param = self._get_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1894,6 +1943,7 @@ class MachineIdentitiesApi:
     def get_machine_identity_v2_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1913,6 +1963,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1937,6 +1989,7 @@ class MachineIdentitiesApi:
 
         _param = self._get_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1967,6 +2020,7 @@ class MachineIdentitiesApi:
     def get_machine_identity_v2_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1986,6 +2040,8 @@ class MachineIdentitiesApi:
 
         :param id: Machine Identity ID. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2010,6 +2066,7 @@ class MachineIdentitiesApi:
 
         _param = self._get_machine_identity_v2_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2035,6 +2092,7 @@ class MachineIdentitiesApi:
     def _get_machine_identity_v2_serialize(
         self,
         id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2060,6 +2118,8 @@ class MachineIdentitiesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2101,6 +2161,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2124,6 +2185,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2150,6 +2213,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2182,6 +2246,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2205,6 +2270,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2231,6 +2298,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2263,6 +2331,7 @@ class MachineIdentitiesApi:
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2286,6 +2355,8 @@ class MachineIdentitiesApi:
         :type resource_id: str
         :param config_id: The correlation config ID. (required)
         :type config_id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2312,6 +2383,7 @@ class MachineIdentitiesApi:
             source_id=source_id,
             resource_id=resource_id,
             config_id=config_id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2339,6 +2411,7 @@ class MachineIdentitiesApi:
         source_id,
         resource_id,
         config_id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2368,6 +2441,8 @@ class MachineIdentitiesApi:
             _path_params['configId'] = config_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -3052,6 +3127,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3079,6 +3155,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3107,6 +3185,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3141,6 +3220,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3168,6 +3248,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3196,6 +3278,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3230,6 +3313,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3257,6 +3341,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3285,6 +3371,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3314,6 +3401,7 @@ class MachineIdentitiesApi:
         count,
         limit,
         offset,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -3357,6 +3445,8 @@ class MachineIdentitiesApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -4125,6 +4215,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4154,6 +4245,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4183,6 +4276,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4217,6 +4311,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4246,6 +4341,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4275,6 +4372,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4309,6 +4407,7 @@ class MachineIdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4338,6 +4437,8 @@ class MachineIdentitiesApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4367,6 +4468,7 @@ class MachineIdentitiesApi:
             count=count,
             limit=limit,
             offset=offset,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4396,6 +4498,7 @@ class MachineIdentitiesApi:
         count,
         limit,
         offset,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -4439,6 +4542,8 @@ class MachineIdentitiesApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -4481,6 +4586,7 @@ class MachineIdentitiesApi:
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4506,6 +4612,8 @@ class MachineIdentitiesApi:
         :type config_id: str
         :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4533,6 +4641,7 @@ class MachineIdentitiesApi:
             resource_id=resource_id,
             config_id=config_id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4566,6 +4675,7 @@ class MachineIdentitiesApi:
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4591,6 +4701,8 @@ class MachineIdentitiesApi:
         :type config_id: str
         :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4618,6 +4730,7 @@ class MachineIdentitiesApi:
             resource_id=resource_id,
             config_id=config_id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4651,6 +4764,7 @@ class MachineIdentitiesApi:
         resource_id: Annotated[StrictStr, Field(description="The source resource ID (for example, account or aws:iam-role).")],
         config_id: Annotated[StrictStr, Field(description="The correlation config ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the correlation config.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4676,6 +4790,8 @@ class MachineIdentitiesApi:
         :type config_id: str
         :param json_patch_operation: The JSONPatch payload used to update the correlation config. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4703,6 +4819,7 @@ class MachineIdentitiesApi:
             resource_id=resource_id,
             config_id=config_id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4731,6 +4848,7 @@ class MachineIdentitiesApi:
         resource_id,
         config_id,
         json_patch_operation,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -4761,6 +4879,8 @@ class MachineIdentitiesApi:
             _path_params['configId'] = config_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
@@ -5459,6 +5579,7 @@ class MachineIdentitiesApi:
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5480,6 +5601,8 @@ class MachineIdentitiesApi:
         :type id: str
         :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5505,6 +5628,7 @@ class MachineIdentitiesApi:
         _param = self._update_machine_identity_v2_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5536,6 +5660,7 @@ class MachineIdentitiesApi:
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5557,6 +5682,8 @@ class MachineIdentitiesApi:
         :type id: str
         :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5582,6 +5709,7 @@ class MachineIdentitiesApi:
         _param = self._update_machine_identity_v2_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5613,6 +5741,7 @@ class MachineIdentitiesApi:
         self,
         id: Annotated[StrictStr, Field(description="Machine Identity ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5634,6 +5763,8 @@ class MachineIdentitiesApi:
         :type id: str
         :param json_patch_operation: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5659,6 +5790,7 @@ class MachineIdentitiesApi:
         _param = self._update_machine_identity_v2_serialize(
             id=id,
             json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5685,6 +5817,7 @@ class MachineIdentitiesApi:
         self,
         id,
         json_patch_operation,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -5711,6 +5844,8 @@ class MachineIdentitiesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

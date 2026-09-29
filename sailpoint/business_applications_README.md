@@ -48,10 +48,11 @@ with sailpoint.business_applications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.business_applications.BusinessApplicationsApi(api_client)
     business_application = {"name":"Cursor","description":"AI coding assistant used by the platform engineering team.","vendor":"Cursor","sanctionedStatus":"SANCTIONED","owner":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"},"signatures":[{"type":"AI Agent","name":"cursor"}]} # BusinessApplication | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create Business Application
-        api_response = api_instance.create_business_application_v1(business_application)
+        api_response = api_instance.create_business_application_v1(business_application, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of BusinessApplicationsApi->create_business_application_v1:\n")
         pprint(api_response)
     except ApiException as e:
