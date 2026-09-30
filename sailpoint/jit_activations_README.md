@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponseDto](sailpoint/jit_activations/docs/ErrorResponseDto.md)
  - [JitActivationActivateRequest](sailpoint/jit_activations/docs/JitActivationActivateRequest.md)
  - [JitActivationActivateResponse](sailpoint/jit_activations/docs/JitActivationActivateResponse.md)
+ - [JitActivationCallerMetadata](sailpoint/jit_activations/docs/JitActivationCallerMetadata.md)
  - [JitActivationDeactivateRequest](sailpoint/jit_activations/docs/JitActivationDeactivateRequest.md)
  - [JitActivationDeactivateResponse](sailpoint/jit_activations/docs/JitActivationDeactivateResponse.md)
  - [JitActivationExtendRequest](sailpoint/jit_activations/docs/JitActivationExtendRequest.md)

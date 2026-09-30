@@ -20,20 +20,21 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
-from sailpoint.jit_activations.models.jit_activation_caller_metadata import JitActivationCallerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
-class JitActivationActivateRequest(BaseModel):
+class JitActivationCallerMetadata(BaseModel):
     """
-    JitActivationActivateRequest
+    Caller-specific context for the request. Field names depend on the request origin. The properties below apply when the request origin is Slack. 
     """ # noqa: E501
-    connection_id: StrictStr = Field(description="Entitlement connection identifier for the activation.", alias="connectionId")
-    activation_period_mins: Annotated[int, Field(strict=True, ge=1)] = Field(description="Requested activation duration in minutes.", alias="activationPeriodMins")
-    request_origin: Optional[StrictStr] = Field(default=None, description="Origin of the request.", alias="requestOrigin")
-    meta_data: Optional[JitActivationCallerMetadata] = Field(default=None, alias="metaData")
-    __properties: ClassVar[List[str]] = ["connectionId", "activationPeriodMins", "requestOrigin", "metaData"]
+    type: Optional[StrictStr] = Field(default=None, description="Request origin type. Matches `requestOrigin` when both are sent.")
+    slack_user_id: Optional[StrictStr] = Field(default=None, description="Slack user identifier of the caller.", alias="slackUserId")
+    command_text: Optional[StrictStr] = Field(default=None, description="Slack command text that produced this request.", alias="commandText")
+    channel_id: Optional[StrictStr] = Field(default=None, description="Slack channel identifier.", alias="channelId")
+    thread_id: Optional[StrictStr] = Field(default=None, description="Slack thread identifier of the message that produced this request.", alias="threadId")
+    message_id: Optional[StrictStr] = Field(default=None, description="Slack message identifier of the message that produced this request.", alias="messageId")
+    workspace_id: Optional[StrictStr] = Field(default=None, description="Slack workspace identifier.", alias="workspaceId")
+    __properties: ClassVar[List[str]] = ["type", "slackUserId", "commandText", "channelId", "threadId", "messageId", "workspaceId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +54,7 @@ class JitActivationActivateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of JitActivationActivateRequest from a JSON string"""
+        """Create an instance of JitActivationCallerMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,14 +75,11 @@ class JitActivationActivateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of meta_data
-        if self.meta_data:
-            _dict['metaData'] = self.meta_data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of JitActivationActivateRequest from a dict"""
+        """Create an instance of JitActivationCallerMetadata from a dict"""
         if obj is None:
             return None
 
@@ -89,10 +87,13 @@ class JitActivationActivateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "connectionId": obj.get("connectionId"),
-            "activationPeriodMins": obj.get("activationPeriodMins"),
-            "requestOrigin": obj.get("requestOrigin"),
-            "metaData": JitActivationCallerMetadata.from_dict(obj["metaData"]) if obj.get("metaData") is not None else None
+            "type": obj.get("type"),
+            "slackUserId": obj.get("slackUserId"),
+            "commandText": obj.get("commandText"),
+            "channelId": obj.get("channelId"),
+            "threadId": obj.get("threadId"),
+            "messageId": obj.get("messageId"),
+            "workspaceId": obj.get("workspaceId")
         })
         return _obj
 

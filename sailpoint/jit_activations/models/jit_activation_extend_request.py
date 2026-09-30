@@ -19,8 +19,9 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from sailpoint.jit_activations.models.jit_activation_caller_metadata import JitActivationCallerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,9 @@ class JitActivationExtendRequest(BaseModel):
     """ # noqa: E501
     connection_id: StrictStr = Field(description="Entitlement connection identifier for the activation to extend.", alias="connectionId")
     activation_period_extension_mins: Annotated[int, Field(strict=True, ge=1)] = Field(description="Number of minutes to extend the activation period.", alias="activationPeriodExtensionMins")
-    __properties: ClassVar[List[str]] = ["connectionId", "activationPeriodExtensionMins"]
+    request_origin: Optional[StrictStr] = Field(default=None, description="Origin of the request.", alias="requestOrigin")
+    meta_data: Optional[JitActivationCallerMetadata] = Field(default=None, alias="metaData")
+    __properties: ClassVar[List[str]] = ["connectionId", "activationPeriodExtensionMins", "requestOrigin", "metaData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,6 +74,9 @@ class JitActivationExtendRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of meta_data
+        if self.meta_data:
+            _dict['metaData'] = self.meta_data.to_dict()
         return _dict
 
     @classmethod
@@ -84,7 +90,9 @@ class JitActivationExtendRequest(BaseModel):
 
         _obj = cls.model_validate({
             "connectionId": obj.get("connectionId"),
-            "activationPeriodExtensionMins": obj.get("activationPeriodExtensionMins")
+            "activationPeriodExtensionMins": obj.get("activationPeriodExtensionMins"),
+            "requestOrigin": obj.get("requestOrigin"),
+            "metaData": JitActivationCallerMetadata.from_dict(obj["metaData"]) if obj.get("metaData") is not None else None
         })
         return _obj
 

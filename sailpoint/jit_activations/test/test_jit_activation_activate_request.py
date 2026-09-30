@@ -36,7 +36,16 @@ class TestJitActivationActivateRequest(unittest.TestCase):
         if include_optional:
             return JitActivationActivateRequest(
                 connection_id = '757fb803-9024-5861-e510-83a56e4c5bd3',
-                activation_period_mins = 120
+                activation_period_mins = 120,
+                request_origin = 'slack',
+                meta_data = sailpoint.jit_activations.models.jit_activation_caller_metadata.JIT Activation Caller Metadata(
+                    type = 'slack', 
+                    slack_user_id = 'U123', 
+                    command_text = '/jit activate', 
+                    channel_id = 'C456', 
+                    thread_id = '1699887766.123456', 
+                    message_id = '1699887770.654321', 
+                    workspace_id = 'T789', )
             )
         else:
             return JitActivationActivateRequest(

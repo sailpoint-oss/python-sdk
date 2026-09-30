@@ -19,7 +19,8 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.jit_activations.models.jit_activation_caller_metadata import JitActivationCallerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,9 @@ class JitActivationDeactivateRequest(BaseModel):
     JitActivationDeactivateRequest
     """ # noqa: E501
     connection_id: StrictStr = Field(description="Entitlement connection identifier for the activation to deactivate.", alias="connectionId")
-    __properties: ClassVar[List[str]] = ["connectionId"]
+    request_origin: Optional[StrictStr] = Field(default=None, description="Origin of the request.", alias="requestOrigin")
+    meta_data: Optional[JitActivationCallerMetadata] = Field(default=None, alias="metaData")
+    __properties: ClassVar[List[str]] = ["connectionId", "requestOrigin", "metaData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +72,9 @@ class JitActivationDeactivateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of meta_data
+        if self.meta_data:
+            _dict['metaData'] = self.meta_data.to_dict()
         return _dict
 
     @classmethod
@@ -81,7 +87,9 @@ class JitActivationDeactivateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "connectionId": obj.get("connectionId")
+            "connectionId": obj.get("connectionId"),
+            "requestOrigin": obj.get("requestOrigin"),
+            "metaData": JitActivationCallerMetadata.from_dict(obj["metaData"]) if obj.get("metaData") is not None else None
         })
         return _obj
 
