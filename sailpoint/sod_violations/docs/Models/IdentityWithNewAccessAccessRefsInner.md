@@ -11,14 +11,14 @@ tags: ['SDK', 'Software Development Kit', 'IdentityWithNewAccessAccessRefsInner'
 
 # IdentityWithNewAccessAccessRefsInner
 
-Entitlement including a specific set of access.
+Reference to an access item that may contribute to an SOD violation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'ENTITLEMENT' ] | Entitlement's DTO type. | [optional] 
-**id** | **str** | Entitlement's ID. | [optional] 
+**type** |  **Enum** [  'ENTITLEMENT',    'ACCESS_PROFILE',    'ROLE' ] | Access item DTO type. | [optional] 
+**id** | **str** | Access item ID. | [optional] 
 }
 
 ## Example

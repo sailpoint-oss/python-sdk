@@ -1728,7 +1728,7 @@ class SODViolationsApi:
     ) -> ViolationPrediction:
         """Predict sod violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
+        This API is used to check if granting some additional accesses (entitlements, access profiles, or roles) would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess
@@ -1801,7 +1801,7 @@ class SODViolationsApi:
     ) -> ApiResponse[ViolationPrediction]:
         """Predict sod violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
+        This API is used to check if granting some additional accesses (entitlements, access profiles, or roles) would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess
@@ -1874,7 +1874,7 @@ class SODViolationsApi:
     ) -> RESTResponseType:
         """Predict sod violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
+        This API is used to check if granting some additional accesses (entitlements, access profiles, or roles) would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess

@@ -25,10 +25,10 @@ from typing_extensions import Self
 
 class IdentityWithNewAccessAccessRefsInner(BaseModel):
     """
-    Entitlement including a specific set of access.
+    Reference to an access item that may contribute to an SOD violation.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Entitlement's DTO type.")
-    id: Optional[StrictStr] = Field(default=None, description="Entitlement's ID.")
+    type: Optional[StrictStr] = Field(default=None, description="Access item DTO type.")
+    id: Optional[StrictStr] = Field(default=None, description="Access item ID.")
     __properties: ClassVar[List[str]] = ["type", "id"]
 
     @field_validator('type')
@@ -37,8 +37,8 @@ class IdentityWithNewAccessAccessRefsInner(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ENTITLEMENT']):
-            warnings.warn(f"must be one of enum values ('ENTITLEMENT') unknown value: {value}")
+        if value not in set(['ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE']):
+            warnings.warn(f"must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -453,7 +453,7 @@ with ApiClient(configuration) as api_client:
 
 ## start-predict-sod-violations-v1
 Predict sod violations for identity.
-This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
+This API is used to check if granting some additional accesses (entitlements, access profiles, or roles) would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
 [API Spec](https://developer.sailpoint.com/docs/api/start-predict-sod-violations-v-1)
 
@@ -499,8 +499,11 @@ with ApiClient(configuration) as api_client:
             "type" : "ENTITLEMENT",
             "id" : "2c918087682f9a86016839c050861ab1"
           }, {
-            "type" : "ENTITLEMENT",
+            "type" : "ACCESS_PROFILE",
             "id" : "2c918087682f9a86016839c0509c1ab2"
+          }, {
+            "type" : "ROLE",
+            "id" : "2c918087682f9a86016839c050a01ab3"
           } ]
         }''' # IdentityWithNewAccess | 
 
@@ -568,8 +571,11 @@ with ApiClient(configuration) as api_client:
             "type" : "ENTITLEMENT",
             "id" : "2c918087682f9a86016839c050861ab1"
           }, {
-            "type" : "ENTITLEMENT",
+            "type" : "ACCESS_PROFILE",
             "id" : "2c918087682f9a86016839c0509c1ab2"
+          }, {
+            "type" : "ROLE",
+            "id" : "2c918087682f9a86016839c050a01ab3"
           } ]
         }''' # IdentityWithNewAccess | 
 

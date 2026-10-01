@@ -36,12 +36,12 @@ class TestIdentityWithNewAccess(unittest.TestCase):
         if include_optional:
             return IdentityWithNewAccess(
                 identity_id = '2c91808568c529c60168cca6f90c1313',
-                access_refs = [{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]
+                access_refs = [{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ACCESS_PROFILE","id":"2c918087682f9a86016839c0509c1ab2"},{"type":"ROLE","id":"2c918087682f9a86016839c050a01ab3"}]
             )
         else:
             return IdentityWithNewAccess(
                 identity_id = '2c91808568c529c60168cca6f90c1313',
-                access_refs = [{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],
+                access_refs = [{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ACCESS_PROFILE","id":"2c918087682f9a86016839c0509c1ab2"},{"type":"ROLE","id":"2c918087682f9a86016839c050a01ab3"}],
         )
         """
 

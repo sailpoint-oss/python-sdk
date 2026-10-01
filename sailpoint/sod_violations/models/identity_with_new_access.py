@@ -29,7 +29,7 @@ class IdentityWithNewAccess(BaseModel):
     An identity with a set of access to be added
     """ # noqa: E501
     identity_id: StrictStr = Field(description="Identity id to be checked.", alias="identityId")
-    access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(description="The list of entitlements to consider for possible violations in a preventive check.", alias="accessRefs")
+    access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(description="The list of access items to consider for possible violations in a preventive check. Supported types are ENTITLEMENT, ACCESS_PROFILE, and ROLE.", alias="accessRefs")
     __properties: ClassVar[List[str]] = ["identityId", "accessRefs"]
 
     model_config = ConfigDict(
