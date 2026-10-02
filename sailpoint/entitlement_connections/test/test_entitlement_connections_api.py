@@ -47,20 +47,6 @@ class TestEntitlementConnectionsApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_entitlement_connection_by_query_v1(self) -> None:
-        """Test case for patch_entitlement_connection_by_query_v1
-
-        Update connection by query
-        """
-        pass
-
-    def test_update_entitlement_connections_bulk_v1(self) -> None:
-        """Test case for update_entitlement_connections_bulk_v1
-
-        Update connections in bulk
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

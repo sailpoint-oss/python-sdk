@@ -73,16 +73,12 @@ Class | Method | HTTP request | Description
 *EntitlementConnectionsApi* | [**list_entitlement_connections_for_current_identity_v1**](sailpoint/entitlement_connections/docs/EntitlementConnectionsApi.md#list_entitlement_connections_for_current_identity_v1) | **GET** /entitlement-connections/v1/current-identity | List my entitlement connections
 *EntitlementConnectionsApi* | [**list_entitlement_connections_v1**](sailpoint/entitlement_connections/docs/EntitlementConnectionsApi.md#list_entitlement_connections_v1) | **GET** /entitlement-connections/v1 | List entitlement connections
 *EntitlementConnectionsApi* | [**patch_entitlement_connection_by_id_v1**](sailpoint/entitlement_connections/docs/EntitlementConnectionsApi.md#patch_entitlement_connection_by_id_v1) | **PATCH** /entitlement-connections/v1/{connectionId} | Update entitlement connection
-*EntitlementConnectionsApi* | [**patch_entitlement_connection_by_query_v1**](sailpoint/entitlement_connections/docs/EntitlementConnectionsApi.md#patch_entitlement_connection_by_query_v1) | **PATCH** /entitlement-connections/v1 | Update connection by query
-*EntitlementConnectionsApi* | [**update_entitlement_connections_bulk_v1**](sailpoint/entitlement_connections/docs/EntitlementConnectionsApi.md#update_entitlement_connections_bulk_v1) | **POST** /entitlement-connections/v1 | Update connections in bulk
 
 
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/entitlement_connections/docs/ArrayInner.md)
  - [EntitlementConnection](sailpoint/entitlement_connections/docs/EntitlementConnection.md)
- - [EntitlementConnectionBulkUpdateItem](sailpoint/entitlement_connections/docs/EntitlementConnectionBulkUpdateItem.md)
- - [EntitlementConnectionBulkUpdateResultItem](sailpoint/entitlement_connections/docs/EntitlementConnectionBulkUpdateResultItem.md)
  - [EntitlementConnectionSearchHit](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHit.md)
  - [EntitlementConnectionSearchHitEntitlement](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHitEntitlement.md)
  - [EntitlementConnectionSearchHitEntitlementPrivilegeLevel](sailpoint/entitlement_connections/docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md)
