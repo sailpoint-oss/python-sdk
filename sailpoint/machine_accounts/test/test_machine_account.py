@@ -55,7 +55,16 @@ class TestMachineAccount(unittest.TestCase):
                 locked = False,
                 enabled = False,
                 has_entitlements = False,
-                source = {"id":"8d3e0094e99445de98eef6c75e25jc04","type":"SOURCE","name":"Active Directory"}
+                source = {"id":"8d3e0094e99445de98eef6c75e25jc04","type":"SOURCE","name":"Active Directory"},
+                risk = sailpoint.machine_accounts.models.machine_account_all_of_risk.MachineAccount_allOf_risk(
+                    score = 72.5, 
+                    severity = 'HIGH', ),
+                permission_level = 'PRIVILEGED',
+                compliance = [
+                    sailpoint.machine_accounts.models.machine_account_all_of_compliance.MachineAccount_allOf_compliance(
+                        id = 'SOC2-CC6.1', )
+                    ],
+                last_used_at = '2026-03-10T21:38:25Z'
             )
         else:
             return MachineAccount(

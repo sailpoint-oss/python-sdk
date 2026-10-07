@@ -21,6 +21,8 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.machine_accounts.models.machine_account_all_of_compliance import MachineAccountAllOfCompliance
+from sailpoint.machine_accounts.models.machine_account_all_of_risk import MachineAccountAllOfRisk
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -49,13 +51,27 @@ class MachineAccount(BaseModel):
     enabled: StrictBool = Field(description="Indicates if the account is enabled")
     has_entitlements: StrictBool = Field(description="Indicates if the account has entitlements", alias="hasEntitlements")
     source: Optional[Any] = Field(description="The source this machine account belongs to.")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "nativeIdentity", "uuid", "classificationMethod", "machineIdentity", "ownerIdentity", "accessType", "subtype", "environment", "attributes", "connectorAttributes", "manuallyCorrelated", "manuallyEdited", "locked", "enabled", "hasEntitlements", "source"]
+    risk: Optional[MachineAccountAllOfRisk] = None
+    permission_level: Optional[StrictStr] = Field(default=None, description="Entro permission level. Null when not enriched. Read-only; written only by aggregation.", alias="permissionLevel")
+    compliance: Optional[List[MachineAccountAllOfCompliance]] = Field(default=None, description="Entro compliance control ids. Null when absent; empty when Entro recorded no violations. A violations count is the length of this array. There is no `complianceViolationsCount` field, and `compliance` is not a list filter or sort field. Read-only; written only by aggregation.")
+    last_used_at: Optional[datetime] = Field(default=None, description="When the machine account was last used, from Entro. Null when not enriched. Read-only; written only by aggregation.", alias="lastUsedAt")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "nativeIdentity", "uuid", "classificationMethod", "machineIdentity", "ownerIdentity", "accessType", "subtype", "environment", "attributes", "connectorAttributes", "manuallyCorrelated", "manuallyEdited", "locked", "enabled", "hasEntitlements", "source", "risk", "permissionLevel", "compliance", "lastUsedAt"]
 
     @field_validator('classification_method')
     def classification_method_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SOURCE', 'CRITERIA', 'DISCOVERY', 'MANUAL']):
             warnings.warn(f"must be one of enum values ('SOURCE', 'CRITERIA', 'DISCOVERY', 'MANUAL') unknown value: {value}")
+        return value
+
+    @field_validator('permission_level')
+    def permission_level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['PRIVILEGED', 'ELEVATED', 'BASIC', 'UNKNOWN']):
+            warnings.warn(f"must be one of enum values ('PRIVILEGED', 'ELEVATED', 'BASIC', 'UNKNOWN') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -91,11 +107,17 @@ class MachineAccount(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created",
             "modified",
+            "permission_level",
+            "compliance",
+            "last_used_at",
         ])
 
         _dict = self.model_dump(
@@ -103,6 +125,16 @@ class MachineAccount(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of risk
+        if self.risk:
+            _dict['risk'] = self.risk.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in compliance (list)
+        _items = []
+        if self.compliance:
+            for _item_compliance in self.compliance:
+                if _item_compliance:
+                    _items.append(_item_compliance.to_dict())
+            _dict['compliance'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -153,6 +185,26 @@ class MachineAccount(BaseModel):
         if self.source is None and "source" in self.model_fields_set:
             _dict['source'] = None
 
+        # set to None if risk (nullable) is None
+        # and model_fields_set contains the field
+        if self.risk is None and "risk" in self.model_fields_set:
+            _dict['risk'] = None
+
+        # set to None if permission_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.permission_level is None and "permission_level" in self.model_fields_set:
+            _dict['permissionLevel'] = None
+
+        # set to None if compliance (nullable) is None
+        # and model_fields_set contains the field
+        if self.compliance is None and "compliance" in self.model_fields_set:
+            _dict['compliance'] = None
+
+        # set to None if last_used_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_used_at is None and "last_used_at" in self.model_fields_set:
+            _dict['lastUsedAt'] = None
+
         return _dict
 
     @classmethod
@@ -185,7 +237,11 @@ class MachineAccount(BaseModel):
             "locked": obj.get("locked"),
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "hasEntitlements": obj.get("hasEntitlements") if obj.get("hasEntitlements") is not None else True,
-            "source": obj.get("source")
+            "source": obj.get("source"),
+            "risk": MachineAccountAllOfRisk.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
+            "permissionLevel": obj.get("permissionLevel"),
+            "compliance": [MachineAccountAllOfCompliance.from_dict(_item) for _item in obj["compliance"]] if obj.get("compliance") is not None else None,
+            "lastUsedAt": obj.get("lastUsedAt")
         })
         return _obj
 

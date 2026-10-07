@@ -79,7 +79,11 @@ class TestMachineidentityv2(unittest.TestCase):
                 effective_sanctioned_status = 'SANCTIONED',
                 risk = sailpoint.machine_identities.models.machine_identity_v2_risk.Machine_Identity_V2_risk(
                     score = 72.5, 
-                    severity = 'HIGH', )
+                    severity = 'HIGH', ),
+                entro_id = '117923dfeaaf4a1ab09b6252ea369e44',
+                insights = ["Sanctioned Service Access"],
+                session_count = 152,
+                suspicious_session_count = 22
             )
         else:
             return Machineidentityv2(

@@ -40,6 +40,10 @@ Name | Type | Description | Notes
 **business_application_refs** | [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write. | [optional] 
 **effective_sanctioned_status** | **SanctionedStatus** | Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input. | [optional] [readonly] 
 **risk** | [**MachineIdentityV2Risk**](machine-identity-v2-risk) |  | [optional] 
+**entro_id** | **str** | Entro back-reference. Present when Entro enrichment is enabled for the tenant. Null means the identity is not Entro-correlated. Read-only; written only by aggregation. Not returned on older machine-identity versions. | [optional] [readonly] 
+**insights** | **[]str** | Entro insights. Null means not Entro-correlated; an empty array means enriched with no insights. Read-only; written only by aggregation. Filter matches a whole element, not a substring. | [optional] [readonly] 
+**session_count** | **int** | Entro session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation. | [optional] [readonly] 
+**suspicious_session_count** | **int** | Entro suspicious session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation. | [optional] [readonly] 
 }
 
 ## Example
@@ -92,7 +96,11 @@ business_application_refs=[
 effective_sanctioned_status='SANCTIONED',
 risk=sailpoint.machine_identities.models.machine_identity_v2_risk.Machine_Identity_V2_risk(
                     score = 72.5, 
-                    severity = 'HIGH', )
+                    severity = 'HIGH', ),
+entro_id='117923dfeaaf4a1ab09b6252ea369e44',
+insights=["Sanctioned Service Access"],
+session_count=152,
+suspicious_session_count=22
 )
 
 ```

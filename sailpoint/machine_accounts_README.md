@@ -93,6 +93,8 @@ Class | Method | HTTP request | Description
  - [ListMachineAccountsV1429Response](sailpoint/machine_accounts/docs/ListMachineAccountsV1429Response.md)
  - [LocaleOrigin](sailpoint/machine_accounts/docs/LocaleOrigin.md)
  - [MachineAccount](sailpoint/machine_accounts/docs/MachineAccount.md)
+ - [MachineAccountAllOfCompliance](sailpoint/machine_accounts/docs/MachineAccountAllOfCompliance.md)
+ - [MachineAccountAllOfRisk](sailpoint/machine_accounts/docs/MachineAccountAllOfRisk.md)
  - [MachineAccountsAsyncResult](sailpoint/machine_accounts/docs/MachineAccountsAsyncResult.md)
  - [SourceSubtype](sailpoint/machine_accounts/docs/SourceSubtype.md)
 

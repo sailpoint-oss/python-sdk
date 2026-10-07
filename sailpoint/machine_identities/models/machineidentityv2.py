@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from sailpoint.machine_identities.models.business_application_ref import BusinessApplicationRef
@@ -60,7 +60,11 @@ class Machineidentityv2(BaseModel):
     business_application_refs: Optional[Annotated[List[BusinessApplicationRef], Field(max_length=1)]] = Field(default=None, description="Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write.", alias="businessApplicationRefs")
     effective_sanctioned_status: Optional[Union[SanctionedStatus, str]] = Field(default=None, description="Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input.", alias="effectiveSanctionedStatus")
     risk: Optional[MachineIdentityV2Risk] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "attributes", "connectorAttributes", "manuallyEdited", "manuallyCreated", "owners", "subtype", "sourceId", "uuid", "nativeIdentity", "datasetId", "environment", "existsOnSource", "status", "resource", "source", "userEntitlements", "businessApplicationRefs", "effectiveSanctionedStatus", "risk"]
+    entro_id: Optional[StrictStr] = Field(default=None, description="Entro back-reference. Present when Entro enrichment is enabled for the tenant. Null means the identity is not Entro-correlated. Read-only; written only by aggregation. Not returned on older machine-identity versions.", alias="entroId")
+    insights: Optional[List[StrictStr]] = Field(default=None, description="Entro insights. Null means not Entro-correlated; an empty array means enriched with no insights. Read-only; written only by aggregation. Filter matches a whole element, not a substring.")
+    session_count: Optional[StrictInt] = Field(default=None, description="Entro session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation.", alias="sessionCount")
+    suspicious_session_count: Optional[StrictInt] = Field(default=None, description="Entro suspicious session count. Null means not Entro-correlated and is not the same as 0. Read-only; written only by aggregation.", alias="suspiciousSessionCount")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "attributes", "connectorAttributes", "manuallyEdited", "manuallyCreated", "owners", "subtype", "sourceId", "uuid", "nativeIdentity", "datasetId", "environment", "existsOnSource", "status", "resource", "source", "userEntitlements", "businessApplicationRefs", "effectiveSanctionedStatus", "risk", "entroId", "insights", "sessionCount", "suspiciousSessionCount"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,12 +100,20 @@ class Machineidentityv2(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created",
             "modified",
             "effective_sanctioned_status",
+            "entro_id",
+            "insights",
+            "session_count",
+            "suspicious_session_count",
         ])
 
         _dict = self.model_dump(
@@ -155,6 +167,26 @@ class Machineidentityv2(BaseModel):
         if self.effective_sanctioned_status is None and "effective_sanctioned_status" in self.model_fields_set:
             _dict['effectiveSanctionedStatus'] = None
 
+        # set to None if entro_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.entro_id is None and "entro_id" in self.model_fields_set:
+            _dict['entroId'] = None
+
+        # set to None if insights (nullable) is None
+        # and model_fields_set contains the field
+        if self.insights is None and "insights" in self.model_fields_set:
+            _dict['insights'] = None
+
+        # set to None if session_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.session_count is None and "session_count" in self.model_fields_set:
+            _dict['sessionCount'] = None
+
+        # set to None if suspicious_session_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.suspicious_session_count is None and "suspicious_session_count" in self.model_fields_set:
+            _dict['suspiciousSessionCount'] = None
+
         return _dict
 
     @classmethod
@@ -190,7 +222,11 @@ class Machineidentityv2(BaseModel):
             "userEntitlements": [UserEntitlementV2.from_dict(_item) for _item in obj["userEntitlements"]] if obj.get("userEntitlements") is not None else None,
             "businessApplicationRefs": [BusinessApplicationRef.from_dict(_item) for _item in obj["businessApplicationRefs"]] if obj.get("businessApplicationRefs") is not None else None,
             "effectiveSanctionedStatus": obj.get("effectiveSanctionedStatus"),
-            "risk": MachineIdentityV2Risk.from_dict(obj["risk"]) if obj.get("risk") is not None else None
+            "risk": MachineIdentityV2Risk.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
+            "entroId": obj.get("entroId"),
+            "insights": obj.get("insights"),
+            "sessionCount": obj.get("sessionCount"),
+            "suspiciousSessionCount": obj.get("suspiciousSessionCount")
         })
         return _obj
 
