@@ -29,7 +29,7 @@ class AttributeDTO(BaseModel):
     """
     AttributeDTO
     """ # noqa: E501
-    key: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Technical name of the Attribute. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.")
+    key: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Technical name of the Attribute. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_). Spaces are not supported. The value cannot start or end with a dash or underscore.")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The display name of the key. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -")
     multiselect: Optional[StrictBool] = Field(default=False, description="Indicates whether the attribute can have multiple values.")
     is_adhoc: Optional[StrictBool] = Field(default=False, description="Indicates whether this Attribute supports ad-hoc (dynamically created) values, in addition to pre-defined static values. Ad-hoc values are created dynamically through an internal service-to-service flow rather than through the public create-value API. This field can be set when creating an Attribute; if omitted, it defaults to false.", alias="isAdhoc")
