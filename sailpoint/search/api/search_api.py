@@ -671,7 +671,7 @@ class SearchApi:
     @validate_call
     def search_get_v1(
         self,
-        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*. ")],
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
         _request_timeout: Union[
             None,
@@ -690,7 +690,7 @@ class SearchApi:
 
         Fetches a single document from the specified index, using the specified document ID. **Note:** Response fields with an underscore (`_`) prefix, such as `_type` and `_index`, are internal metadata fields. These fields are for SailPoint internal use only and are subject to change without notice. Do not rely on them in your integrations.
 
-        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  (required)
+        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*.  (required)
         :type index: str
         :param id: ID of the requested document. (required)
         :type id: str
@@ -748,7 +748,7 @@ class SearchApi:
     @validate_call
     def search_get_v1_with_http_info(
         self,
-        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*. ")],
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
         _request_timeout: Union[
             None,
@@ -767,7 +767,7 @@ class SearchApi:
 
         Fetches a single document from the specified index, using the specified document ID. **Note:** Response fields with an underscore (`_`) prefix, such as `_type` and `_index`, are internal metadata fields. These fields are for SailPoint internal use only and are subject to change without notice. Do not rely on them in your integrations.
 
-        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  (required)
+        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*.  (required)
         :type index: str
         :param id: ID of the requested document. (required)
         :type id: str
@@ -825,7 +825,7 @@ class SearchApi:
     @validate_call
     def search_get_v1_without_preload_content(
         self,
-        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*. ")],
         id: Annotated[StrictStr, Field(description="ID of the requested document.")],
         _request_timeout: Union[
             None,
@@ -844,7 +844,7 @@ class SearchApi:
 
         Fetches a single document from the specified index, using the specified document ID. **Note:** Response fields with an underscore (`_`) prefix, such as `_type` and `_index`, are internal metadata fields. These fields are for SailPoint internal use only and are subject to change without notice. Do not rely on them in your integrations.
 
-        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  (required)
+        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, *roles*, and *workflowsummaries*.  (required)
         :type index: str
         :param id: ID of the requested document. (required)
         :type id: str

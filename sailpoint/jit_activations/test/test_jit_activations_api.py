@@ -26,6 +26,13 @@ class TestJITActivationsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_jit_activation_frictions_v1(self) -> None:
+        """Test case for get_jit_activation_frictions_v1
+
+        Get JIT activation frictions
+        """
+        pass
+
     def test_list_jit_activation_history_for_current_identity_v1(self) -> None:
         """Test case for list_jit_activation_history_for_current_identity_v1
 
@@ -37,6 +44,13 @@ class TestJITActivationsApi(unittest.TestCase):
         """Test case for list_jit_activation_history_v1
 
         List JIT activation history (admin)
+        """
+        pass
+
+    def test_patch_jit_activation_frictions_v1(self) -> None:
+        """Test case for patch_jit_activation_frictions_v1
+
+        Submit JIT activation friction
         """
         pass
 

@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Index', 'Index']
 
 # Index
 
-Enum representing the currently supported indices. Additional values may be added in the future without notice.
+Enum representing the currently supported indices. Additional values may be added in the future without notice.  The `*` value does not include the `workflowsummaries` index. To search workflow summaries, specify `workflowsummaries` explicitly.
 
 ## Enum
 
@@ -26,6 +26,8 @@ Enum representing the currently supported indices. Additional values may be adde
 * `IDENTITIES` (value: `'identities'`)
 
 * `ROLES` (value: `'roles'`)
+
+* `WORKFLOWSUMMARIES` (value: `'workflowsummaries'`)
 
 * `STAR` (value: `'*'`)
 

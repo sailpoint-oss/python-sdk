@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**create-form-definition-v1**](#create-form-definition-v1) | **POST** `/form-definitions/v1` | Creates a form definition.
 [**create-form-instance-v1**](#create-form-instance-v1) | **POST** `/form-instances/v1` | Creates a form instance.
 [**delete-form-definition-v1**](#delete-form-definition-v1) | **DELETE** `/form-definitions/v1/{formDefinitionID}` | Deletes a form definition.
-[**export-form-definitions-by-tenant-v1**](#export-form-definitions-by-tenant-v1) | **GET** `/form-definitions/v1/export` | List form definitions by tenant.
+[**export-form-definitions-by-tenant-v1**](#export-form-definitions-by-tenant-v1) | **GET** `/form-definitions/v1/export` | Export form definitions by tenant.
 [**get-file-from-s3-v1**](#get-file-from-s3-v1) | **GET** `/form-definitions/v1/{formDefinitionID}/file/{fileID}` | Download definition file by fileid.
 [**get-form-definition-by-key-v1**](#get-form-definition-by-key-v1) | **GET** `/form-definitions/v1/{formDefinitionID}` | Return a form definition.
 [**get-form-instance-by-key-v1**](#get-form-instance-by-key-v1) | **GET** `/form-instances/v1/{formInstanceID}` | Returns a form instance.
@@ -36,7 +36,7 @@ Method | HTTP request | Description
 [**import-form-definitions-v1**](#import-form-definitions-v1) | **POST** `/form-definitions/v1/import` | Import form definitions from export.
 [**patch-form-definition-v1**](#patch-form-definition-v1) | **PATCH** `/form-definitions/v1/{formDefinitionID}` | Patch a form definition.
 [**patch-form-instance-v1**](#patch-form-instance-v1) | **PATCH** `/form-instances/v1/{formInstanceID}` | Patch a form instance.
-[**search-form-definitions-by-tenant-v1**](#search-form-definitions-by-tenant-v1) | **GET** `/form-definitions/v1` | Export form definitions by tenant.
+[**search-form-definitions-by-tenant-v1**](#search-form-definitions-by-tenant-v1) | **GET** `/form-definitions/v1` | List form definitions by tenant.
 [**search-form-element-data-by-element-idv1**](#search-form-element-data-by-element-idv1) | **GET** `/form-instances/v1/{formInstanceID}/data-source/{formElementID}` | Retrieves dynamic data by element.
 [**search-form-instances-by-tenant-v1**](#search-form-instances-by-tenant-v1) | **GET** `/form-instances/v1` | List form instances by tenant.
 [**search-pre-defined-select-options-v1**](#search-pre-defined-select-options-v1) | **GET** `/form-definitions/v1/predefined-select-options` | List predefined select options.
@@ -482,7 +482,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## export-form-definitions-by-tenant-v1
-List form definitions by tenant.
+Export form definitions by tenant.
 No parameters required.
 
 [API Spec](https://developer.sailpoint.com/docs/api/export-form-definitions-by-tenant-v-1)
@@ -530,7 +530,7 @@ with ApiClient(configuration) as api_client:
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified** (optional) (default to 'name') # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified** (optional) (default to 'name')
 
     try:
-        # List form definitions by tenant.
+        # Export form definitions by tenant.
         
         results = CustomFormsApi(api_client).export_form_definitions_by_tenant_v1()
         # Below is a request that includes all optional parameters
@@ -973,7 +973,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## search-form-definitions-by-tenant-v1
-Export form definitions by tenant.
+List form definitions by tenant.
 No parameters required.
 
 [API Spec](https://developer.sailpoint.com/docs/api/search-form-definitions-by-tenant-v-1)
@@ -1021,7 +1021,7 @@ with ApiClient(configuration) as api_client:
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified** (optional) (default to 'name') # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified** (optional) (default to 'name')
 
     try:
-        # Export form definitions by tenant.
+        # List form definitions by tenant.
         
         results = CustomFormsApi(api_client).search_form_definitions_by_tenant_v1()
         # Below is a request that includes all optional parameters
@@ -1114,7 +1114,6 @@ Returns a list of form instances for the tenant. Optionally filter by form defin
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-  Query | offset | **int** |   (optional) (default to 0) | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
   Query | limit | **int** |   (optional) (default to 250) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
 
@@ -1146,7 +1145,6 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
     limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
     filters = 'formDefinitionId eq \"351c1daa-56f6-4bbf-b32c-49844c0b716e\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq* (optional)
 
@@ -1155,7 +1153,7 @@ with ApiClient(configuration) as api_client:
         
         results = CustomFormsApi(api_client).search_form_instances_by_tenant_v1()
         # Below is a request that includes all optional parameters
-        # results = CustomFormsApi(api_client).search_form_instances_by_tenant_v1(offset, limit, filters)
+        # results = CustomFormsApi(api_client).search_form_instances_by_tenant_v1(limit, filters)
         print("The response of CustomFormsApi->search_form_instances_by_tenant_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

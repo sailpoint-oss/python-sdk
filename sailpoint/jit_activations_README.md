@@ -47,21 +47,16 @@ configuration = sailpoint.jit_activations.Configuration(
 with sailpoint.jit_activations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.jit_activations.JITActivationsApi(api_client)
-    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    sorters = '-activationInitiated' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **activationInitiated, provisionCompleted, status**  Default sort is **-activationInitiated** (newest first). (optional)
-    search_after = '2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3' # str | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters. Used to paginate beyond the offset limit of 10,000.  It is recommended to always include the ID of the object in addition to any other sort fields to ensure no duplicate results while paging.  For example, if sorting by activationInitiated you will also want to include ID: searchAfter=2026-07-08T14:33:52.029Z,367fb802-1026-1835-a619-11a56e4c5be3&sorters=activationInitiated,id (optional)
-    filters = 'status eq \"PROVISIONED\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementId**: *eq, in*  **sourceId**: *eq*  **connectionId**: *eq*  **status**: *eq, in*  **activationInitiated**: *gt, lt, ge, le*  **policyFrictionOutcome**: *eq, in* (optional)
+    activation_id = '857fb802-1034-786a-151e-d3a56e4c5bd9' # str | Identifier of the activation.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
-        # List JIT activation history (self)
-        api_response = api_instance.list_jit_activation_history_for_current_identity_v1(limit=limit, offset=offset, count=count, sorters=sorters, search_after=search_after, filters=filters, x_sail_point_experimental=x_sail_point_experimental)
-        print("The response of JITActivationsApi->list_jit_activation_history_for_current_identity_v1:\n")
+        # Get JIT activation frictions
+        api_response = api_instance.get_jit_activation_frictions_v1(activation_id, x_sail_point_experimental=x_sail_point_experimental)
+        print("The response of JITActivationsApi->get_jit_activation_frictions_v1:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling JITActivationsApi->list_jit_activation_history_for_current_identity_v1: %s\n" % e)
+        print("Exception when calling JITActivationsApi->get_jit_activation_frictions_v1: %s\n" % e)
 
 ```
 
@@ -71,8 +66,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*JITActivationsApi* | [**get_jit_activation_frictions_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#get_jit_activation_frictions_v1) | **GET** /jit-activations/v1/{activationId}/frictions | Get JIT activation frictions
 *JITActivationsApi* | [**list_jit_activation_history_for_current_identity_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#list_jit_activation_history_for_current_identity_v1) | **GET** /jit-activation-history/v1/current-identity | List JIT activation history (self)
 *JITActivationsApi* | [**list_jit_activation_history_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#list_jit_activation_history_v1) | **GET** /jit-activation-history/v1 | List JIT activation history (admin)
+*JITActivationsApi* | [**patch_jit_activation_frictions_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#patch_jit_activation_frictions_v1) | **PATCH** /jit-activations/v1/{activationId}/frictions | Submit JIT activation friction
 *JITActivationsApi* | [**start_activate_workflow_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#start_activate_workflow_v1) | **POST** /jit-activations/v1/activate | Start JIT activation workflow
 *JITActivationsApi* | [**start_deactivate_workflow_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#start_deactivate_workflow_v1) | **POST** /jit-activations/v1/deactivate | Deactivate JIT activation workflow
 *JITActivationsApi* | [**start_extend_workflow_v1**](sailpoint/jit_activations/docs/JITActivationsApi.md#start_extend_workflow_v1) | **POST** /jit-activations/v1/extend | Extend JIT activation workflow
@@ -83,6 +80,13 @@ Class | Method | HTTP request | Description
  - [ActivationWorkflowStatus](sailpoint/jit_activations/docs/ActivationWorkflowStatus.md)
  - [ErrorMessageDto](sailpoint/jit_activations/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/jit_activations/docs/ErrorResponseDto.md)
+ - [FrictionSubmittedData](sailpoint/jit_activations/docs/FrictionSubmittedData.md)
+ - [JITActivationFrictionPatchRequest](sailpoint/jit_activations/docs/JITActivationFrictionPatchRequest.md)
+ - [JITActivationFrictionResponse](sailpoint/jit_activations/docs/JITActivationFrictionResponse.md)
+ - [JITActivationFrictionState](sailpoint/jit_activations/docs/JITActivationFrictionState.md)
+ - [JITActivationFrictionStatus](sailpoint/jit_activations/docs/JITActivationFrictionStatus.md)
+ - [JITActivationFrictionType](sailpoint/jit_activations/docs/JITActivationFrictionType.md)
+ - [JITActivationFrictionsResponse](sailpoint/jit_activations/docs/JITActivationFrictionsResponse.md)
  - [JitActivationActivateRequest](sailpoint/jit_activations/docs/JitActivationActivateRequest.md)
  - [JitActivationActivateResponse](sailpoint/jit_activations/docs/JitActivationActivateResponse.md)
  - [JitActivationCallerMetadata](sailpoint/jit_activations/docs/JitActivationCallerMetadata.md)

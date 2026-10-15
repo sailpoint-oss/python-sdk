@@ -70,7 +70,7 @@ Class | Method | HTTP request | Description
 *CustomFormsApi* | [**create_form_definition_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#create_form_definition_v1) | **POST** /form-definitions/v1 | Creates a form definition.
 *CustomFormsApi* | [**create_form_instance_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#create_form_instance_v1) | **POST** /form-instances/v1 | Creates a form instance.
 *CustomFormsApi* | [**delete_form_definition_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#delete_form_definition_v1) | **DELETE** /form-definitions/v1/{formDefinitionID} | Deletes a form definition.
-*CustomFormsApi* | [**export_form_definitions_by_tenant_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#export_form_definitions_by_tenant_v1) | **GET** /form-definitions/v1/export | List form definitions by tenant.
+*CustomFormsApi* | [**export_form_definitions_by_tenant_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#export_form_definitions_by_tenant_v1) | **GET** /form-definitions/v1/export | Export form definitions by tenant.
 *CustomFormsApi* | [**get_file_from_s3_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#get_file_from_s3_v1) | **GET** /form-definitions/v1/{formDefinitionID}/file/{fileID} | Download definition file by fileid.
 *CustomFormsApi* | [**get_form_definition_by_key_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#get_form_definition_by_key_v1) | **GET** /form-definitions/v1/{formDefinitionID} | Return a form definition.
 *CustomFormsApi* | [**get_form_instance_by_key_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#get_form_instance_by_key_v1) | **GET** /form-instances/v1/{formInstanceID} | Returns a form instance.
@@ -78,7 +78,7 @@ Class | Method | HTTP request | Description
 *CustomFormsApi* | [**import_form_definitions_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#import_form_definitions_v1) | **POST** /form-definitions/v1/import | Import form definitions from export.
 *CustomFormsApi* | [**patch_form_definition_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#patch_form_definition_v1) | **PATCH** /form-definitions/v1/{formDefinitionID} | Patch a form definition.
 *CustomFormsApi* | [**patch_form_instance_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#patch_form_instance_v1) | **PATCH** /form-instances/v1/{formInstanceID} | Patch a form instance.
-*CustomFormsApi* | [**search_form_definitions_by_tenant_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#search_form_definitions_by_tenant_v1) | **GET** /form-definitions/v1 | Export form definitions by tenant.
+*CustomFormsApi* | [**search_form_definitions_by_tenant_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#search_form_definitions_by_tenant_v1) | **GET** /form-definitions/v1 | List form definitions by tenant.
 *CustomFormsApi* | [**search_form_element_data_by_element_idv1**](sailpoint/custom_forms/docs/CustomFormsApi.md#search_form_element_data_by_element_idv1) | **GET** /form-instances/v1/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
 *CustomFormsApi* | [**search_form_instances_by_tenant_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#search_form_instances_by_tenant_v1) | **GET** /form-instances/v1 | List form instances by tenant.
 *CustomFormsApi* | [**search_pre_defined_select_options_v1**](sailpoint/custom_forms/docs/CustomFormsApi.md#search_pre_defined_select_options_v1) | **GET** /form-definitions/v1/predefined-select-options | List predefined select options.

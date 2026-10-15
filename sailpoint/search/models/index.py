@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class Index(str, Enum):
     """
-    Enum representing the currently supported indices. Additional values may be added in the future without notice.
+    Enum representing the currently supported indices. Additional values may be added in the future without notice.  The `*` value does not include the `workflowsummaries` index. To search workflow summaries, specify `workflowsummaries` explicitly.
     """
 
     """
@@ -32,6 +32,7 @@ class Index(str, Enum):
     EVENTS = 'events'
     IDENTITIES = 'identities'
     ROLES = 'roles'
+    WORKFLOWSUMMARIES = 'workflowsummaries'
     STAR = '*'
 
     @classmethod

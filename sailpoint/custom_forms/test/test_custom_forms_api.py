@@ -64,7 +64,7 @@ class TestCustomFormsApi(unittest.TestCase):
     def test_export_form_definitions_by_tenant_v1(self) -> None:
         """Test case for export_form_definitions_by_tenant_v1
 
-        List form definitions by tenant.
+        Export form definitions by tenant.
         """
         pass
 
@@ -120,7 +120,7 @@ class TestCustomFormsApi(unittest.TestCase):
     def test_search_form_definitions_by_tenant_v1(self) -> None:
         """Test case for search_form_definitions_by_tenant_v1
 
-        Export form definitions by tenant.
+        List form definitions by tenant.
         """
         pass
 
