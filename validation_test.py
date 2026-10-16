@@ -294,5 +294,110 @@ class TestNermSDK(unittest.TestCase):
         self.assertIsNotNone(result.data)
         self.assertEqual(200, result.status_code)
 
+
+class TestLazyImports(unittest.TestCase):
+    """
+    sailpoint/__init__.py resolves API classes lazily (PEP 562), so importing the
+    package must not import any partition package. These tests need no tenant.
+    """
+
+    # Shared, non-partition modules that `import sailpoint` is allowed to load
+    ROOT_MODULES = {"api_client", "api_response", "configuration", "exceptions", "paginator", "rest"}
+
+    @classmethod
+    def setUpClass(cls):
+        if not HAS_V1:
+            raise unittest.SkipTest(
+                "V1 partition packages not built yet. "
+                "Run: node sdk-resources/build-versioned-sdk.js <path-to-apis>"
+            )
+
+    def _loaded_partitions(self, code):
+        """Run `code` in a fresh interpreter and return the sailpoint partitions it loaded."""
+        import os
+        import subprocess
+        import sys
+        script = (
+            code + "\n"
+            "import sys\n"
+            "print(','.join(sorted({m.split('.')[1] for m in sys.modules if m.startswith('sailpoint.')})))\n"
+        )
+        out = subprocess.run(
+            [sys.executable, "-c", script],
+            cwd=os.path.dirname(os.path.abspath(__file__)),
+            capture_output=True, text=True, check=True,
+        ).stdout.strip().splitlines()[-1]
+        return set(filter(None, out.split(","))) - self.ROOT_MODULES
+
+    def test_import_sailpoint_loads_no_partitions(self):
+        self.assertEqual(set(), self._loaded_partitions("import sailpoint"))
+
+    def test_import_one_api_loads_only_its_partition(self):
+        self.assertEqual({"search"}, self._loaded_partitions("from sailpoint import SearchApi"))
+
+    def test_namespace_access_loads_only_its_partition(self):
+        self.assertEqual(
+            {"sources"},
+            self._loaded_partitions("from sailpoint import SailPoint\nSailPoint.SourcesApi"),
+        )
+
+    def test_flat_imports(self):
+        from sailpoint import SourcesApi, ApiClient, Configuration, ConfigurationParams, Paginator
+        from sailpoint.sources import SourcesApi as PartitionSourcesApi
+        from sailpoint.sources.api.sources_api import SourcesApi as ModuleSourcesApi
+        self.assertIs(SourcesApi, PartitionSourcesApi)
+        self.assertIs(SourcesApi, ModuleSourcesApi)
+        self.assertIsNotNone(ApiClient)
+        self.assertIsNotNone(Configuration)
+        self.assertIsNotNone(ConfigurationParams)
+        self.assertIsNotNone(Paginator)
+
+    def test_namespace_matches_flat_exports(self):
+        import sailpoint
+        from sailpoint import SailPoint
+        self.assertIs(SailPoint.SourcesApi, sailpoint.SourcesApi)
+        self.assertIs(SailPoint.RolesApi, sailpoint.RolesApi)
+        self.assertIn("SourcesApi", dir(SailPoint))
+
+    def test_combined_classes_expose_both_partitions(self):
+        import sailpoint
+        from sailpoint import RolesApi, WorkflowsApi
+        from sailpoint.roles.api.roles_api import RolesApi as IscRolesApi
+        from sailpoint.nerm.api.roles_api import RolesApi as NermRolesApi
+        from sailpoint.workflows.api.workflows_api import WorkflowsApi as IscWorkflowsApi
+        from sailpoint.nerm.api.workflows_api import WorkflowsApi as NermWorkflowsApi
+        self.assertTrue(issubclass(RolesApi, IscRolesApi))
+        self.assertTrue(issubclass(RolesApi, NermRolesApi))
+        self.assertTrue(issubclass(WorkflowsApi, IscWorkflowsApi))
+        self.assertTrue(issubclass(WorkflowsApi, NermWorkflowsApi))
+        # Built once and cached, so every access returns the same class
+        self.assertIs(RolesApi, sailpoint.RolesApi)
+        self.assertIs(WorkflowsApi, sailpoint.WorkflowsApi)
+
+    def test_every_export_resolves(self):
+        import sailpoint
+        for name in sailpoint.__all__:
+            with self.subTest(name=name):
+                self.assertIsNotNone(getattr(sailpoint, name))
+        self.assertTrue(set(sailpoint.__all__) <= set(dir(sailpoint)))
+
+    def test_star_import(self):
+        namespace = {}
+        exec("from sailpoint import *", namespace)
+        self.assertIn("SourcesApi", namespace)
+        self.assertIn("ApiClient", namespace)
+        self.assertIn("SailPoint", namespace)
+
+    def test_unknown_names_raise_attribute_error(self):
+        import sailpoint
+        from sailpoint import SailPoint
+        with self.assertRaises(AttributeError):
+            sailpoint.NotARealApi
+        with self.assertRaises(AttributeError):
+            SailPoint.NotARealApi
+        with self.assertRaises(ImportError):
+            from sailpoint import NotARealApi  # noqa: F401
+
+
 if __name__ == '__main__':
     unittest.main()
