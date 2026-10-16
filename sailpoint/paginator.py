@@ -1,7 +1,13 @@
+from __future__ import annotations
+
 import logging
-from sailpoint.search.api.search_api import SearchApi
-from sailpoint.search.models.search import Search
-from typing import Any, Callable, Iterator, Optional, Tuple, Type, TypeVar, overload
+from typing import TYPE_CHECKING, Any, Callable, Iterator, Optional, Tuple, Type, TypeVar, overload
+
+# Type-only imports: loading the search partition here would make every
+# `import sailpoint` pay for it (sailpoint/__init__.py imports Paginator eagerly).
+if TYPE_CHECKING:
+    from sailpoint.search.api.search_api import SearchApi
+    from sailpoint.search.models.search import Search
 
 T = TypeVar('T')
 TItem = TypeVar('TItem')
