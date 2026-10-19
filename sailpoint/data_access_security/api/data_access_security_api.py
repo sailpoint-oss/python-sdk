@@ -22,7 +22,7 @@ from typing_extensions import Annotated
 from sailpoint.data_access_security.models.application_item import ApplicationItem
 from sailpoint.data_access_security.models.assign_resource_owner_request import AssignResourceOwnerRequest
 from sailpoint.data_access_security.models.base_create_application_request import BaseCreateApplicationRequest
-from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+from sailpoint.data_access_security.models.create_identity_collector_v1201_response import CreateIdentityCollectorV1201Response
 from sailpoint.data_access_security.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.data_access_security.models.createdatadictionaryfieldrequest import Createdatadictionaryfieldrequest
 from sailpoint.data_access_security.models.createidentitycollectorrequest import Createidentitycollectorrequest
@@ -30,6 +30,7 @@ from sailpoint.data_access_security.models.data_owner_model import DataOwnerMode
 from sailpoint.data_access_security.models.datadictionaryfieldlistitem import Datadictionaryfieldlistitem
 from sailpoint.data_access_security.models.identitycollectorbuiltinpropertiesresponse import Identitycollectorbuiltinpropertiesresponse
 from sailpoint.data_access_security.models.identitycollectorlistitem import Identitycollectorlistitem
+from sailpoint.data_access_security.models.identitycollectortypesresponse import Identitycollectortypesresponse
 from sailpoint.data_access_security.models.reelect_request import ReelectRequest
 from sailpoint.data_access_security.models.resource_model import ResourceModel
 from sailpoint.data_access_security.models.schedule_info import ScheduleInfo
@@ -932,7 +933,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateIdentityCollectorV1200Response:
+    ) -> CreateIdentityCollectorV1201Response:
         """Create identity collector
 
         This endpoint creates a new identity collector in Data Access Security for the specified source. The identity collector type is derived from the source.  Optionally configure `users` and `groups` to register source attributes (`properties`) and map them to data dictionary fields by name (`fieldMappings.fieldDictionaryName`). When omitted, both collections are created with fixed columns only.
@@ -970,7 +971,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateIdentityCollectorV1200Response",
+            '201': "CreateIdentityCollectorV1201Response",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
@@ -1006,7 +1007,7 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateIdentityCollectorV1200Response]:
+    ) -> ApiResponse[CreateIdentityCollectorV1201Response]:
         """Create identity collector
 
         This endpoint creates a new identity collector in Data Access Security for the specified source. The identity collector type is derived from the source.  Optionally configure `users` and `groups` to register source attributes (`properties`) and map them to data dictionary fields by name (`fieldMappings.fieldDictionaryName`). When omitted, both collections are created with fixed columns only.
@@ -1044,7 +1045,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateIdentityCollectorV1200Response",
+            '201': "CreateIdentityCollectorV1201Response",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
@@ -1118,7 +1119,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateIdentityCollectorV1200Response",
+            '201': "CreateIdentityCollectorV1201Response",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
@@ -5281,10 +5282,10 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[str]:
+    ) -> Identitycollectortypesresponse:
         """List identity collector types
 
-        Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.  Pagination is not supported for this endpoint; the full set of public types is always returned.
+        Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.  Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.  Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -5322,7 +5323,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "Identitycollectortypesresponse",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
@@ -5357,10 +5358,10 @@ class DataAccessSecurityApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[str]]:
+    ) -> ApiResponse[Identitycollectortypesresponse]:
         """List identity collector types
 
-        Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.  Pagination is not supported for this endpoint; the full set of public types is always returned.
+        Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.  Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.  Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -5398,7 +5399,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "Identitycollectortypesresponse",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",
@@ -5436,7 +5437,7 @@ class DataAccessSecurityApi:
     ) -> RESTResponseType:
         """List identity collector types
 
-        Returns the public identity collector type display names exposed for metadata and UI discovery. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed here; the identity collector type is derived from `sourceId` when creating an identity collector. Existing identity collectors may still report SaaS variant types in list and update responses.  Pagination is not supported for this endpoint; the full set of public types is always returned.
+        Returns the public identity collector types exposed for metadata and UI discovery, including the ISC `connectorName` values to use when listing sources for each type. This endpoint lists base types only (for example, `Box` rather than `Box SaaS`). SaaS variants are not listed as separate types; create derives the identity collector type from `sourceId`. Existing identity collectors may still report SaaS variant types in list and update responses.  Flagged types (Snowflake, Databricks, Atlassian Suite) are included only when the corresponding tenant feature flag is enabled.  Pagination is not supported for this endpoint; the full set of enabled public types is always returned.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -5474,7 +5475,7 @@ class DataAccessSecurityApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[str]",
+            '200': "Identitycollectortypesresponse",
             '400': "ErrorResponseDto",
             '401': "GetTasksV1401Response",
             '403': "ErrorResponseDto",

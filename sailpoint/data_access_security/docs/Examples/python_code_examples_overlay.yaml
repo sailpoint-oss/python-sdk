@@ -126,7 +126,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
-        from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+        from sailpoint.data_access_security.models.create_identity_collector_v1201_response import CreateIdentityCollectorV1201Response
         from sailpoint.data_access_security.models.createidentitycollectorrequest import Createidentitycollectorrequest
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -538,6 +538,7 @@
       source: |
         from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
         from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.identitycollectortypesresponse import Identitycollectortypesresponse
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -552,8 +553,7 @@
               # Below is a request that includes all optional parameters
               # results = DataAccessSecurityApi(api_client).get_identity_collector_types_v1(limit, offset)
               print("The response of DataAccessSecurityApi->get_identity_collector_types_v1:\n")
-              for item in results:
-                  print(item.model_dump_json(by_alias=True, indent=4))
+              print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->get_identity_collector_types_v1: %s\n" % e)
 - path: /das/v1/owners/applications/{appId}

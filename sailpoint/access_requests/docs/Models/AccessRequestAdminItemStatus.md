@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **error_messages** | **[]List[ErrorMessageDto]** | List of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
 **state** | **RequestedItemStatusRequestState** |  | [optional] 
 **approval_details** | [**[]ApprovalStatusDto**](approval-status-dto) | Approval details for each item. | [optional] 
+**approval_ids** | **[]str** | List of approval IDs associated with the request. | [optional] 
 **manual_work_item_details** | [**[]ManualWorkItemDetails**](manual-work-item-details) | Manual work items created for provisioning the item. | [optional] 
 **account_activity_item_id** | **str** | Id of associated account activity item. | [optional] 
 **request_type** | **AccessRequestType** |  | [optional] 
@@ -62,6 +63,7 @@ error_messages=[
 state='EXECUTING',
 approval_details=[
                     sailpoint.access_requests.models.approval_status_dto.Approval Status Dto(
+                        approval_id = '2c9180877b2b6ea4017b2c545f971429', 
                         forwarded = False, 
                         original_owner = sailpoint.access_requests.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 
@@ -80,6 +82,7 @@ approval_details=[
                         comment = 'I approve this request', 
                         remove_date = '2020-07-11T00:00Z', )
                     ],
+approval_ids=["85f0cf482dd44327b593624c07906c21","fa57e1bfa36f41ee85e33ee59fcbeac5"],
 manual_work_item_details=[
                     sailpoint.access_requests.models.manual_work_item_details.Manual Work Item Details(
                         forwarded = True, 

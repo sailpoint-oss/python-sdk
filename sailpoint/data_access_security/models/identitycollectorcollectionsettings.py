@@ -29,7 +29,7 @@ class Identitycollectorcollectionsettings(BaseModel):
     Identitycollectorcollectionsettings
     """ # noqa: E501
     properties: List[StrictStr] = Field(description="Source attribute names to register as datasource columns for this collection. These names must match the attributes sent by Identity Security Cloud. Use an empty array when no custom attributes are required.")
-    field_mappings: List[Identitycollectorfieldmapping] = Field(description="Maps source attributes to data dictionary fields and DAS custom field slots. Each `sourceAttributeName` must be either a built-in attribute for the identity collector type or listed in `properties`. Use an empty array when no dynamic field mappings are configured.", alias="fieldMappings")
+    field_mappings: List[Identitycollectorfieldmapping] = Field(description="Maps source attributes to data dictionary fields and DAS custom field slots. The same `sourceAttributeName` may be mapped to multiple dictionary fields. Each `sourceAttributeName` must be either a built-in attribute for the identity collector type or listed in `properties`. Use an empty array when no dynamic field mappings are configured.", alias="fieldMappings")
     __properties: ClassVar[List[str]] = ["properties", "fieldMappings"]
 
     model_config = ConfigDict(

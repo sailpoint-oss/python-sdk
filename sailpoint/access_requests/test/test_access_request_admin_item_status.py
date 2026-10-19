@@ -45,6 +45,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                 state = 'EXECUTING',
                 approval_details = [
                     sailpoint.access_requests.models.approval_status_dto.Approval Status Dto(
+                        approval_id = '2c9180877b2b6ea4017b2c545f971429', 
                         forwarded = False, 
                         original_owner = sailpoint.access_requests.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 
@@ -63,6 +64,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                         comment = 'I approve this request', 
                         remove_date = '2020-07-11T00:00Z', )
                     ],
+                approval_ids = ["85f0cf482dd44327b593624c07906c21","fa57e1bfa36f41ee85e33ee59fcbeac5"],
                 manual_work_item_details = [
                     sailpoint.access_requests.models.manual_work_item_details.Manual Work Item Details(
                         forwarded = True, 

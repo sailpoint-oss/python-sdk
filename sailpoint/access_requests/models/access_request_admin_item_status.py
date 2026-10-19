@@ -49,6 +49,7 @@ class AccessRequestAdminItemStatus(BaseModel):
     error_messages: Optional[List[List[ErrorMessageDto]]] = Field(default=None, description="List of localized error messages, if any, encountered during the approval/provisioning process.", alias="errorMessages")
     state: Optional[Union[RequestedItemStatusRequestState, str]] = None
     approval_details: Optional[List[ApprovalStatusDto]] = Field(default=None, description="Approval details for each item.", alias="approvalDetails")
+    approval_ids: Optional[List[StrictStr]] = Field(default=None, description="List of approval IDs associated with the request.", alias="approvalIds")
     manual_work_item_details: Optional[List[ManualWorkItemDetails]] = Field(default=None, description="Manual work items created for provisioning the item.", alias="manualWorkItemDetails")
     account_activity_item_id: Optional[StrictStr] = Field(default=None, description="Id of associated account activity item.", alias="accountActivityItemId")
     request_type: Optional[Union[AccessRequestType, str]] = Field(default=None, alias="requestType")
@@ -70,7 +71,7 @@ class AccessRequestAdminItemStatus(BaseModel):
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
     form: Optional[RequestedItemStatusForm] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata", "form"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "identityType", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata", "form"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -205,6 +206,11 @@ class AccessRequestAdminItemStatus(BaseModel):
         if self.error_messages is None and "error_messages" in self.model_fields_set:
             _dict['errorMessages'] = None
 
+        # set to None if approval_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.approval_ids is None and "approval_ids" in self.model_fields_set:
+            _dict['approvalIds'] = None
+
         # set to None if manual_work_item_details (nullable) is None
         # and model_fields_set contains the field
         if self.manual_work_item_details is None and "manual_work_item_details" in self.model_fields_set:
@@ -267,6 +273,7 @@ class AccessRequestAdminItemStatus(BaseModel):
                 ] if obj.get("errorMessages") is not None else None,
             "state": obj.get("state"),
             "approvalDetails": [ApprovalStatusDto.from_dict(_item) for _item in obj["approvalDetails"]] if obj.get("approvalDetails") is not None else None,
+            "approvalIds": obj.get("approvalIds"),
             "manualWorkItemDetails": [ManualWorkItemDetails.from_dict(_item) for _item in obj["manualWorkItemDetails"]] if obj.get("manualWorkItemDetails") is not None else None,
             "accountActivityItemId": obj.get("accountActivityItemId"),
             "requestType": obj.get("requestType"),

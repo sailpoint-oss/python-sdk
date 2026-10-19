@@ -18,18 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from sailpoint.data_access_security.models.identitycollectortype import Identitycollectortype
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CreateIdentityCollectorV1200Response(BaseModel):
+class Identitycollectortypesresponse(BaseModel):
     """
-    CreateIdentityCollectorV1200Response
+    Public identity collector types available for discovery and create flows.
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, description="The unique identifier of the created identity collector.")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the created identity collector.")
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    types: List[Identitycollectortype] = Field(description="Enabled public identity collector types. Flagged types (Snowflake, Databricks, Atlassian Suite) are omitted when their feature flags are disabled.")
+    __properties: ClassVar[List[str]] = ["types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class CreateIdentityCollectorV1200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateIdentityCollectorV1200Response from a JSON string"""
+        """Create an instance of Identitycollectortypesresponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,11 +70,18 @@ class CreateIdentityCollectorV1200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in types (list)
+        _items = []
+        if self.types:
+            for _item_types in self.types:
+                if _item_types:
+                    _items.append(_item_types.to_dict())
+            _dict['types'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateIdentityCollectorV1200Response from a dict"""
+        """Create an instance of Identitycollectortypesresponse from a dict"""
         if obj is None:
             return None
 
@@ -82,8 +89,7 @@ class CreateIdentityCollectorV1200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "types": [Identitycollectortype.from_dict(_item) for _item in obj["types"]] if obj.get("types") is not None else None
         })
         return _obj
 

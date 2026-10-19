@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+from sailpoint.data_access_security.models.identitycollectortype import Identitycollectortype
 
-class TestCreateIdentityCollectorV1200Response(unittest.TestCase):
-    """CreateIdentityCollectorV1200Response unit test stubs"""
+class TestIdentitycollectortype(unittest.TestCase):
+    """Identitycollectortype unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,28 @@ class TestCreateIdentityCollectorV1200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CreateIdentityCollectorV1200Response:
-        """Test CreateIdentityCollectorV1200Response
+    def make_instance(self, include_optional) -> Identitycollectortype:
+        """Test Identitycollectortype
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CreateIdentityCollectorV1200Response`
+        # uncomment below to create an instance of `Identitycollectortype`
         """
-        model = CreateIdentityCollectorV1200Response()
+        model = Identitycollectortype()
         if include_optional:
-            return CreateIdentityCollectorV1200Response(
-                id = 12345,
-                name = 'Active Directory Identity Collector'
+            return Identitycollectortype(
+                type = 'Google Drive',
+                isc_connector_names = ["G Suite","Google Workspace SaaS"]
             )
         else:
-            return CreateIdentityCollectorV1200Response(
+            return Identitycollectortype(
+                type = 'Google Drive',
+                isc_connector_names = ["G Suite","Google Workspace SaaS"],
         )
         """
 
-    def testCreateIdentityCollectorV1200Response(self):
-        """Test CreateIdentityCollectorV1200Response"""
+    def testIdentitycollectortype(self):
+        """Test Identitycollectortype"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
