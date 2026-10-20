@@ -783,11 +783,9 @@ function generateInitPy() {
   function patchAndCopyRootFile(filename) {
     let content = readFileSafe(path.join(SAILPOINT_DIR, firstPartDir, filename));
 
-    // Strip partition docstring header reference (cosmetic)
-    content = content.replace(
-      /Identity Security Cloud API - \S+/,
-      "Identity Security Cloud API"
-    );
+    // Strip the partition suffix from the docstring title line (cosmetic).
+    // Matches any "<title> - <partition>" so it does not depend on the brand name.
+    content = content.replace(/^(""" *\r?\n[ \t]*)(.+?) - .+$/m, "$1$2");
 
     if (filename === "rest.py" || filename === "api_client.py") {
       // Fix: from sailpoint.<partition>.exceptions import → from sailpoint.exceptions import
