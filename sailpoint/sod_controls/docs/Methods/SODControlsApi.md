@@ -24,17 +24,6 @@ Method | HTTP request | Description
 
 
 ## create-control-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Create Compensating Control
 Creates a compensating control associated with separation-of-duties policies.
 
@@ -45,7 +34,6 @@ Creates a compensating control associated with separation-of-duties policies.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | compensatingcontrolcreate | [**Compensatingcontrolcreate**](../models/compensatingcontrolcreate) | True  | Data needed to create a Compensating Control
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Compensatingcontrolresponse**](../models/compensatingcontrolresponse)
@@ -75,7 +63,6 @@ from sailpoint.sod_controls.models.compensatingcontrolresponse import Compensati
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     compensatingcontrolcreate = '''{
@@ -95,14 +82,13 @@ with ApiClient(configuration) as api_client:
           "justificationRequired" : true,
           "workflowID" : "3e07886555ed43cfb83c85c58d2016e6"
         }''' # Compensatingcontrolcreate | Data needed to create a Compensating Control
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create Compensating Control
         new_compensatingcontrolcreate = Compensatingcontrolcreate.from_json(compensatingcontrolcreate)
         results = SODControlsApi(api_client).create_control_v1(compensatingcontrolcreate=new_compensatingcontrolcreate)
         # Below is a request that includes all optional parameters
-        # results = SODControlsApi(api_client).create_control_v1(new_compensatingcontrolcreate, x_sail_point_experimental)
+        # results = SODControlsApi(api_client).create_control_v1(new_compensatingcontrolcreate)
         print("The response of SODControlsApi->create_control_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -114,17 +100,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-control-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete compensating control by ID
 Deletes the specified compensating control from the data store.
 
@@ -135,7 +110,6 @@ Deletes the specified compensating control from the data store.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | the ID (UUID) of the compensating control to delete.
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -163,18 +137,16 @@ from sailpoint.sod_controls.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | the ID (UUID) of the compensating control to delete. # str | the ID (UUID) of the compensating control to delete.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Delete compensating control by ID
         
         SODControlsApi(api_client).delete_control_v1(id=id)
         # Below is a request that includes all optional parameters
-        # SODControlsApi(api_client).delete_control_v1(id, x_sail_point_experimental)
+        # SODControlsApi(api_client).delete_control_v1(id)
     except Exception as e:
         print("Exception when calling SODControlsApi->delete_control_v1: %s\n" % e)
 ```
@@ -184,17 +156,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-control-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Get compensating control by ID
 Returns a single compensating control by ID.
 
@@ -205,7 +166,6 @@ Returns a single compensating control by ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the compensating control to fetch
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Compensatingcontrolresponse**](../models/compensatingcontrolresponse)
@@ -234,18 +194,16 @@ from sailpoint.sod_controls.models.compensatingcontrolresponse import Compensati
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the compensating control to fetch # str | The ID of the compensating control to fetch
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get compensating control by ID
         
         results = SODControlsApi(api_client).get_control_v1(id=id)
         # Below is a request that includes all optional parameters
-        # results = SODControlsApi(api_client).get_control_v1(id, x_sail_point_experimental)
+        # results = SODControlsApi(api_client).get_control_v1(id)
         print("The response of SODControlsApi->get_control_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -257,17 +215,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-controls-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 List Compensating Controls
 Returns a list of compensating controls associated with separation-of-duties policies.
 
@@ -277,7 +224,6 @@ Returns a list of compensating controls associated with separation-of-duties pol
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -311,10 +257,8 @@ from sailpoint.sod_controls.models.compensatingcontrolresponse import Compensati
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -326,7 +270,7 @@ with ApiClient(configuration) as api_client:
         
         results = SODControlsApi(api_client).list_controls_v1()
         # Below is a request that includes all optional parameters
-        # results = SODControlsApi(api_client).list_controls_v1(x_sail_point_experimental, limit, offset, count, filters, sort)
+        # results = SODControlsApi(api_client).list_controls_v1(limit, offset, count, filters, sort)
         print("The response of SODControlsApi->list_controls_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -339,17 +283,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## put-control-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Put Compensating Control
 Updates the specified compensating control.
 
@@ -361,7 +294,6 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The unique identifier of the Compensating Control to be updated.
  Body  | compensatingcontrolupdate | [**Compensatingcontrolupdate**](../models/compensatingcontrolupdate) | True  | Data needed to put a Compensating Control
-   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**Compensatingcontrolresponse**](../models/compensatingcontrolresponse)
@@ -391,7 +323,6 @@ from sailpoint.sod_controls.models.compensatingcontrolupdate import Compensating
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The unique identifier of the Compensating Control to be updated. # str | The unique identifier of the Compensating Control to be updated.
@@ -412,14 +343,13 @@ with ApiClient(configuration) as api_client:
           "justificationRequired" : true,
           "workflowID" : "3e07886555ed43cfb83c85c58d2016e6"
         }''' # Compensatingcontrolupdate | Data needed to put a Compensating Control
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Put Compensating Control
         new_compensatingcontrolupdate = Compensatingcontrolupdate.from_json(compensatingcontrolupdate)
         results = SODControlsApi(api_client).put_control_v1(id=id, compensatingcontrolupdate=new_compensatingcontrolupdate)
         # Below is a request that includes all optional parameters
-        # results = SODControlsApi(api_client).put_control_v1(id, new_compensatingcontrolupdate, x_sail_point_experimental)
+        # results = SODControlsApi(api_client).put_control_v1(id, new_compensatingcontrolupdate)
         print("The response of SODControlsApi->put_control_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

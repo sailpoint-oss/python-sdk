@@ -2774,7 +2774,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2792,8 +2792,6 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -2814,6 +2812,8 @@ class AccessRequestsApi:
         :type sorters: str
         :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
         :type request_state: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2837,7 +2837,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -2848,6 +2847,7 @@ class AccessRequestsApi:
             filters=filters,
             sorters=sorters,
             request_state=request_state,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2886,7 +2886,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2904,8 +2904,6 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -2926,6 +2924,8 @@ class AccessRequestsApi:
         :type sorters: str
         :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
         :type request_state: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2949,7 +2949,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -2960,6 +2959,7 @@ class AccessRequestsApi:
             filters=filters,
             sorters=sorters,
             request_state=request_state,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2998,7 +2998,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3016,8 +3016,6 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -3038,6 +3036,8 @@ class AccessRequestsApi:
         :type sorters: str
         :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
         :type request_state: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3061,7 +3061,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -3072,6 +3071,7 @@ class AccessRequestsApi:
             filters=filters,
             sorters=sorters,
             request_state=request_state,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3095,7 +3095,6 @@ class AccessRequestsApi:
 
     def _list_administrators_access_request_status_v1_serialize(
         self,
-        x_sail_point_experimental,
         requested_for,
         requested_by,
         regarding_identity,
@@ -3106,6 +3105,7 @@ class AccessRequestsApi:
         filters,
         sorters,
         request_state,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,

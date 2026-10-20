@@ -1,0 +1,1707 @@
+- path: /certification-campaigns/v1/campaigns/{id}/complete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#complete-gov-certification-campaign-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.complete_campaign_options import CompleteCampaignOptions
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The campaign id # str | The campaign id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          complete_campaign_options = '''{
+          "autoCompleteAction" : "REVOKE"
+        }''' # CompleteCampaignOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless we specify explicitly REVOKE in autoCompleteAction (optional)
+          try:
+              # Complete a Campaign
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).complete_gov_certification_campaign_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).complete_gov_certification_campaign_v1(id, x_sail_point_experimental, new_complete_campaign_options)
+              print("The response of NextGenerationCertificationCampaignsApi->complete_gov_certification_campaign_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->complete_gov_certification_campaign_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}/generate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#create-campaign-from-template-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_get import CampaignGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The desired campaign template's ID. # str | The desired campaign template's ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Generate campaign from template
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).create_campaign_from_template_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).create_campaign_from_template_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->create_campaign_from_template_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->create_campaign_from_template_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-filters
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-filter-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_filter_create import CampaignFilterCreate
+        from sailpoint.gov_certification.models.campaign_filter_get import CampaignFilterGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_filter_create = '''{
+          "mode" : "INCLUSION",
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on specified property of Identity Attribute.",
+          "criteriaList" : [ {
+            "criteriaType" : "IDENTITY",
+            "criteriaProperty" : "DISPLAY_NAME",
+            "criteriaValue" : "support",
+            "operation" : "EQUALS"
+          } ]
+        }''' # CampaignFilterCreate | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a Campaign Filter
+              new_campaign_filter_create = CampaignFilterCreate.from_json(campaign_filter_create)
+              results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_filter_v1(campaign_filter_create=new_campaign_filter_create)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_filter_v1(new_campaign_filter_create, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_filter_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_filter_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-template-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_template_create import CampaignTemplateCreate
+        from sailpoint.gov_certification.models.campaign_template_get import CampaignTemplateGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_template_create = '''{
+          "recommendationsEnabled" : true,
+          "sunsetCommentsRequired" : true,
+          "deadlineDuration" : "P2W",
+          "searchBasedParams" : {
+            "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+            "searchType" : "ACCESS",
+            "query" : "admin",
+            "accessConstraints" : [ {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            } ]
+          },
+          "description" : "Template for the annual manager campaign.",
+          "reviewer" : {
+            "name" : "William Wilson",
+            "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+            "type" : "IDENTITY"
+          },
+          "type" : "IDENTITY",
+          "filterRef" : {
+            "id" : "e9f9a139-7b84-2fd5-a658-42087040d3ac"
+          },
+          "emailNotificationEnabled" : false,
+          "remediatorRef" : {
+            "name" : "Role Admin",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010"
+          },
+          "autoRevokeAllowed" : false,
+          "name" : "Manager Campaign Template",
+          "mandatoryCommentRequirement" : "NO_DECISIONS",
+          "campaignDescription" : "Everyone needs to be reviewed by their manager",
+          "campaignName" : "Manager Campaign",
+          "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+        }''' # CampaignTemplateCreate | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a Campaign Template.
+              new_campaign_template_create = CampaignTemplateCreate.from_json(campaign_template_create)
+              results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_template_v1(campaign_template_create=new_campaign_template_create)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_template_v1(new_campaign_template_create, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_template_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_template_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#create-gov-certification-campaign-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_create import CampaignCreate
+        from sailpoint.gov_certification.models.campaign_get import CampaignGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_create = '''{
+          "inlineFilter" : {
+            "mode" : "INCLUSION",
+            "criteriaList" : [ {
+              "criteriaType" : "IDENTITY",
+              "criteriaProperty" : "DISPLAY_NAME",
+              "criteriaValue" : "support",
+              "operation" : "EQUALS"
+            } ]
+          },
+          "recommendationsEnabled" : true,
+          "sunsetCommentsRequired" : true,
+          "searchBasedParams" : {
+            "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+            "searchType" : "ACCESS",
+            "query" : "admin",
+            "accessConstraints" : [ {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            } ]
+          },
+          "description" : "Everyone needs to be reviewed by their manager",
+          "reviewer" : {
+            "name" : "William Wilson",
+            "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+            "type" : "IDENTITY"
+          },
+          "autoActivate" : true,
+          "type" : "IDENTITY",
+          "filterRef" : {
+            "id" : "e9f9a139-7b84-2fd5-a658-42087040d3ac"
+          },
+          "emailNotificationEnabled" : false,
+          "remediatorRef" : {
+            "name" : "Role Admin",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010"
+          },
+          "autoRevokeAllowed" : false,
+          "name" : "Manager Campaign",
+          "mandatoryCommentRequirement" : "NO_DECISIONS",
+          "deadlineTimezone" : "-05:00",
+          "deadline" : "2020-03-15",
+          "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+        }''' # CampaignCreate | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a campaign
+              new_campaign_create = CampaignCreate.from_json(campaign_create)
+              results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_v1(campaign_create=new_campaign_create)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).create_gov_certification_campaign_v1(new_campaign_create, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->create_gov_certification_campaign_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#create-report-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_report import CampaignReport
+        from sailpoint.gov_certification.models.trigger_campaign_report_request import TriggerCampaignReportRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the campaign to generate a report for # str | The ID of the campaign to generate a report for
+          trigger_campaign_report_request = '''{
+          "format" : "PDF",
+          "name" : "My Campaign Report",
+          "type" : "REMEDIATION"
+        }''' # TriggerCampaignReportRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create campaign report
+              new_trigger_campaign_report_request = TriggerCampaignReportRequest.from_json(trigger_campaign_report_request)
+              results = NextGenerationCertificationCampaignsApi(api_client).create_report_v1(campaign_id=campaign_id, trigger_campaign_report_request=new_trigger_campaign_report_request)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).create_report_v1(campaign_id, new_trigger_campaign_report_request, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->create_report_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->create_report_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-filters/delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-filters-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          request_body = '''['request_body_example']''' # List[str] | A JSON list of IDs of campaign filters to delete.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Deletes Campaign Filters
+              new_request_body = RequestBody.from_json(request_body)
+              NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_filters_v1(request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_filters_v1(new_request_body, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->delete_gov_certification_campaign_filters_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-template-schedule-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The ID of the campaign template whose schedule is being deleted. # str | The ID of the campaign template whose schedule is being deleted.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete a Campaign Template Schedule
+              
+              NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_template_schedule_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_template_schedule_v1(id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->delete_gov_certification_campaign_template_schedule_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#delete-gov-certification-campaign-template-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The ID of the campaign template being deleted. # str | The ID of the campaign template being deleted.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete a Campaign Template
+              
+              NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_template_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaign_template_v1(id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->delete_gov_certification_campaign_template_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#delete-gov-certification-campaigns-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaigns_delete_request import CampaignsDeleteRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaigns_delete_request = '''{
+          "ids" : [ "ef38f943-47e9-4562-b5bb-8424a56397d8", "ef38f943-47e9-4562-b5bb-8424a56397d9" ]
+        }''' # CampaignsDeleteRequest | IDs of the campaigns to delete.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete Campaigns
+              new_campaigns_delete_request = CampaignsDeleteRequest.from_json(campaigns_delete_request)
+              results = NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaigns_v1(campaigns_delete_request=new_campaigns_delete_request)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).delete_gov_certification_campaigns_v1(new_campaigns_delete_request, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->delete_gov_certification_campaigns_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->delete_gov_certification_campaigns_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/access-summaries/{type}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-access-summaries-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_item_type import CertificationItemType
+        from sailpoint.gov_certification.models.review_data import ReviewData
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          type = sailpoint.gov_certification.CertificationItemType() # CertificationItemType | The type of review item to retrieve summaries for # CertificationItemType | The type of review item to retrieve summaries for
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'completed eq false and sourceName sw \'AD\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **targetReference.id**: *eq, ne, in*  **targetReference.name**: *eq, sw, co*  **sourceName**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **targetReference.id**: *eq, ne, in*  **targetReference.name**: *eq, sw, co*  **sourceName**: *eq, sw, co* (optional)
+          sorters = 'targetReference.name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetReference.name** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **targetReference.name** (optional)
+          try:
+              # Access Summaries
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_access_summaries_v1(certification_id=certification_id, type=type)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_access_summaries_v1(certification_id, type, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->get_access_summaries_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_access_summaries_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/children
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-entitlement-children-details-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.pass_through_entitlement import PassThroughEntitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID # str | The certification item ID
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \'Read Only\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional)
+          try:
+              # Entitlement Children in a Certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_children_details_v1(certification_id=certification_id, review_item_id=review_item_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_children_details_v1(certification_id, review_item_id, entitlement_id, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_entitlement_children_details_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_entitlement_children_details_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-entitlement-details-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.pass_through_entitlement import PassThroughEntitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID # str | The certification item ID
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get Entitlement in a Certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_details_v1(certification_id=certification_id, review_item_id=review_item_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_details_v1(certification_id, review_item_id, entitlement_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_entitlement_details_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_entitlement_details_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/parents
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-entitlement-parents-details-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.pass_through_entitlement import PassThroughEntitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID # str | The certification item ID
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'attribute eq \'role\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id** (optional)
+          try:
+              # Entitlement Parents in a Certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_parents_details_v1(certification_id=certification_id, review_item_id=review_item_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_parents_details_v1(certification_id, review_item_id, entitlement_id, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_entitlement_parents_details_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_entitlement_parents_details_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/entitlements/{entitlementId}/permissions
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-entitlement-permissions-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.permission_dto import PermissionDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID # str | The certification item ID
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # Permissions in a Certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_permissions_v1(certification_id=certification_id, review_item_id=review_item_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_entitlement_permissions_v1(certification_id, review_item_id, entitlement_id, x_sail_point_experimental, limit, offset)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_entitlement_permissions_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_entitlement_permissions_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/item-id/{entitlementId}/cert-account-details
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-item-account-details-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.account_details_dto import AccountDetailsDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID # str | The certification item ID
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Certification Item Account Details
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_item_account_details_v1(certification_id=certification_id, review_item_id=review_item_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_item_account_details_v1(certification_id, review_item_id, entitlement_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_item_account_details_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_item_account_details_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-certification-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Certification by ID
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_certification_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_certification_v1(certification_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_certification_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_certification_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/decision-summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-decision-summary-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.detailed_decision_summary import DetailedDecisionSummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          filters = 'certificationSubjectSummary.id in (\'2c918085-71bc-fcf8-0171-c23e4b4221fc\',\'2c918085-71bc-fcf8-0171-c23e4b4221fd\')' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **certificationSubjectSummary.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **certificationSubjectSummary.id**: *eq, in* (optional)
+          try:
+              # Summary of Certification Decisions
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_decision_summary_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_decision_summary_v1(certification_id, x_sail_point_experimental, filters)
+              print("The response of NextGenerationCertificationCampaignsApi->get_decision_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_decision_summary_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports/{reportId}/download-url
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-download-url-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_report_download_response import CampaignReportDownloadResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the campaign to be retrieved # str | The ID of the campaign to be retrieved
+          report_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the report to be retrieved # str | The ID of the report to be retrieved
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Download URL for campaign report
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_download_url_v1(campaign_id=campaign_id, report_id=report_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_download_url_v1(campaign_id, report_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_download_url_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_download_url_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/{reviewItemId}/access-profiles/{accessProfileId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-access-profile-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.access_profile2 import AccessProfile2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          review_item_id = '2478b87b-f0d2-4585-b42d-45e4d580c5cf' # str | The certification item ID. This must of review item type either ROLE or ACCESS_PROFILE. # str | The certification item ID. This must of review item type either ROLE or ACCESS_PROFILE.
+          access_profile_id = '2c9180837ca6693d017ca8d097500149' # str | The Access Profile ID # str | The Access Profile ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get an Access Profile
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_access_profile_v1(certification_id=certification_id, review_item_id=review_item_id, access_profile_id=access_profile_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_access_profile_v1(certification_id, review_item_id, access_profile_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_access_profile_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_access_profile_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-filters/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-filter-by-id-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_filter_get import CampaignFilterGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'e9f9a139-7b84-2fd5-a658-42087040d3ac' # str | The ID of the campaign filter to be retrieved. # str | The ID of the campaign filter to be retrieved.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get Campaign Filter by ID
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_filter_by_id_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_filter_by_id_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_filter_by_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_filter_by_id_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports/{reportId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-report-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_report import CampaignReport
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the campaign to be retrieved # str | The ID of the campaign to be retrieved
+          report_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the report to be retrieved # str | The ID of the report to be retrieved
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a campaign report
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_report_v1(campaign_id=campaign_id, report_id=report_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_report_v1(campaign_id, report_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_report_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_report_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-template-schedule-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.schedule import Schedule
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The campaign template's ID for the desired campaign template schedule. # str | The campaign template's ID for the desired campaign template schedule.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a Campaign Template Schedule
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_template_schedule_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_template_schedule_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_template_schedule_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_template_schedule_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-template-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_template_get import CampaignTemplateGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The desired campaign template's ID. # str | The desired campaign template's ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a Campaign Template
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_template_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_template_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_template_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_template_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-campaign-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_get import CampaignGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918085-71bc-4cf8-a171-c23e4b4221fc' # str | The ID of the campaign to be retrieved # str | The ID of the campaign to be retrieved
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a campaign
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_campaign_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_campaign_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certification-tasks/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-gov-certification-task-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_task import CertificationTask
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '63b32151-26c0-42f4-9299-8898dc1c9daa' # str | The task ID # str | The task ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Task details by ID
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_task_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_gov_certification_task_v1(id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_gov_certification_task_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_gov_certification_task_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certification-tasks
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-pending-tasks-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_task import CertificationTask
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          reviewer_identity = 'Ada.1de82e55078344' # str | The ID of reviewer identity. *me* indicates the current user. (optional) # str | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'type eq \"REASSIGN_SUBJECTS_AND_ITEMS\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional)
+          try:
+              # List of Pending Tasks
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_pending_tasks_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_pending_tasks_v1(x_sail_point_experimental, reviewer_identity, limit, offset, count, filters)
+              print("The response of NextGenerationCertificationCampaignsApi->get_pending_tasks_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_pending_tasks_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/status-summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-status-summary-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_status_summary import CertificationStatusSummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Status Summary For Certifications
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_status_summary_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_status_summary_v1(x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_status_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_status_summary_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summary/{subjectId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#get-subject-summary-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_subject_summary import CertificationSubjectSummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          subject_id = '2c918087-72a5-44f5-a172-a9540e501ba8' # str | The subject summary ID # str | The subject summary ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Summary for a Certification Subject
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).get_subject_summary_v1(certification_id=certification_id, subject_id=subject_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).get_subject_summary_v1(certification_id, subject_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->get_subject_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->get_subject_summary_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-campaign-templates-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_template_get import CampaignTemplateGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          filters = 'name eq \"Campaign Template\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional)
+          try:
+              # List Campaign Templates
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_campaign_templates_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_campaign_templates_v1(x_sail_point_experimental, limit, offset, count, sorters, filters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_campaign_templates_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_campaign_templates_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-campaigns-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_summary import CampaignSummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \"Manager Campaign\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **status**: *eq, in, ne*  Possible values are [PENDING, STAGED, CANCELING, ACTIVATING, ACTIVE, COMPLETING, COMPLETED, ERROR] (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **status**: *eq, in, ne*  Possible values are [PENDING, STAGED, CANCELING, ACTIVATING, ACTIVE, COMPLETING, COMPLETED, ERROR] (optional)
+          sorters = 'name,-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, deadline, status, totalCertifications, completedCertifications** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, deadline, status, totalCertifications, completedCertifications** (optional)
+          try:
+              # List the campaigns
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_campaigns_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_campaigns_v1(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_campaigns_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_campaigns_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-certifications-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          reviewer_identity = 'me' # str | The ID of reviewer identity. *me* indicates the current user. (optional) # str | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \"Bob\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional)
+          try:
+              # List Certifications
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_certifications_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_certifications_v1(x_sail_point_experimental, reviewer_identity, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_certifications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_certifications_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-filters
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-gov-certification-campaign-filters-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_filter_get import CampaignFilterGet
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # List Campaign Filters
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_gov_certification_campaign_filters_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_gov_certification_campaign_filters_v1(x_sail_point_experimental, limit, offset, count)
+              print("The response of NextGenerationCertificationCampaignsApi->list_gov_certification_campaign_filters_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_gov_certification_campaign_filters_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/reviewers
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-gov-certification-reviewers-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.identity_reference import IdentityReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \"Bob\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **email**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **email**: *eq, sw, co* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional)
+          try:
+              # List of Reviewers for certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_gov_certification_reviewers_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_gov_certification_reviewers_v1(certification_id, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_gov_certification_reviewers_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_gov_certification_reviewers_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reports
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-reports-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_report import CampaignReport
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_id = 'e1aeb0b6-0021-4f40-8bc7-5c56533214b3' # str | The ID of the campaign to be retrieved # str | The ID of the campaign to be retrieved
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'type eq \"SIGN_OFF\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **name**: *eq, sw, co*  **type**: *eq, in, ne*  Possible values are [STATUS, SIGN_OFF, COMPOSITION, REMEDIATION]  **format**: *eq, in, ne*  Possible values are [PDF, CSV]  **status**: *eq, in, ne*  Possible values are [IN_PROGRESS, FAILED, SUCCESS] (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **name**: *eq, sw, co*  **type**: *eq, in, ne*  Possible values are [STATUS, SIGN_OFF, COMPOSITION, REMEDIATION]  **format**: *eq, in, ne*  Possible values are [PDF, CSV]  **status**: *eq, in, ne*  Possible values are [IN_PROGRESS, FAILED, SUCCESS] (optional)
+          sorters = 'name,-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, type, format, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, type, format, created, modified** (optional)
+          try:
+              # List reports for a campaign
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_reports_v1(campaign_id=campaign_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_reports_v1(campaign_id, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_reports_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_reports_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-review-items-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.review_item import ReviewItem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"ef38f943-47e9-4562-b5bb-8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional)
+          sorters = 'certificationSubjectSummary.subjectName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional)
+          activity_data = False # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to False) # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to False)
+          try:
+              # List of Review Items
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_review_items_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_review_items_v1(certification_id, x_sail_point_experimental, limit, offset, count, filters, sorters, activity_data)
+              print("The response of NextGenerationCertificationCampaignsApi->list_review_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_review_items_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summaries
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#list-subject-summaries-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_subject_summary import CertificationSubjectSummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'completed eq false and subjectName sw \'Derek\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional)
+          sorters = 'subjectName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional)
+          try:
+              # Subject Summaries for a Certification
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).list_subject_summaries_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).list_subject_summaries_v1(certification_id, x_sail_point_experimental, limit, offset, count, filters, sorters)
+              print("The response of NextGenerationCertificationCampaignsApi->list_subject_summaries_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->list_subject_summaries_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{campaignId}/reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#move-certifications-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_task import CertificationTask
+        from sailpoint.gov_certification.models.reassign_certifications import ReassignCertifications
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          campaign_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification campaign ID. # str | The certification campaign ID.
+          reassign_certifications = '''{
+          "certificationIds" : [ "af385946-4779-4712-91bb-8424a563abc1", "af385946-4779-4712-91bb-8424a563abc2", "af385946-4779-4712-91bb-8424a563abc3" ],
+          "reason" : "Reassigning the certifications",
+          "reassignTo" : {
+            "id" : "0fbe863c-063c-4c88-a35f-d7f17e8a3df5",
+            "type" : "IDENTITY"
+          }
+        }''' # ReassignCertifications | A non-empty array of items and identities which reviewer is going to reassign.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Reassign certifications to an identity
+              new_reassign_certifications = ReassignCertifications.from_json(reassign_certifications)
+              results = NextGenerationCertificationCampaignsApi(api_client).move_certifications_v1(campaign_id=campaign_id, reassign_certifications=new_reassign_certifications)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).move_certifications_v1(campaign_id, new_reassign_certifications, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->move_certifications_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->move_certifications_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/reassign-async
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#move-subject-and-items-async-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_task import CertificationTask
+        from sailpoint.gov_certification.models.reassign_reference import ReassignReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the certification which we are going to reassign. # str | The ID of the certification which we are going to reassign.
+          reassign_reference = '''{
+          "reason" : "Reassigning this item to the appropriate reviewer.",
+          "reassignTo" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReassignReference | A non-empty array of items and identities which reviewer is going to reassign.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Reassign certification items asynchronously
+              new_reassign_reference = ReassignReference.from_json(reassign_reference)
+              results = NextGenerationCertificationCampaignsApi(api_client).move_subject_and_items_async_v1(certification_id=certification_id, reassign_reference=new_reassign_reference)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).move_subject_and_items_async_v1(certification_id, new_reassign_reference, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->move_subject_and_items_async_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->move_subject_and_items_async_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#move-subject-and-items-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.gov_certification.models.reassign_reference import ReassignReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the certification which we are going to reassign. # str | The ID of the certification which we are going to reassign.
+          reassign_reference = '''{
+          "reason" : "Reassigning this item to the appropriate reviewer.",
+          "reassignTo" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f943-47e9-4562-b5bb-8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }''' # ReassignReference | A non-empty array of items and identities which reviewer is going to reassign.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Reassign certification subjects or items
+              new_reassign_reference = ReassignReference.from_json(reassign_reference)
+              results = NextGenerationCertificationCampaignsApi(api_client).move_subject_and_items_v1(certification_id=certification_id, reassign_reference=new_reassign_reference)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).move_subject_and_items_v1(certification_id, new_reassign_reference, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->move_subject_and_items_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->move_subject_and_items_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#patch-campaign-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_get import CampaignGet
+        from sailpoint.gov_certification.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | ID of the campaign being modified. # str | ID of the campaign being modified.
+          json_patch_operation = '''[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]''' # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update a campaign
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = NextGenerationCertificationCampaignsApi(api_client).patch_campaign_v1(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).patch_campaign_v1(id, new_json_patch_operation, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->patch_campaign_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->patch_campaign_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#patch-gov-certification-campaign-template-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_template_get import CampaignTemplateGet
+        from sailpoint.gov_certification.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The ID of the campaign template being modified. # str | The ID of the campaign template being modified.
+          json_patch_operation = '''[sailpoint.gov_certification.JsonPatchOperation()]''' # List[JsonPatchOperation] | A list of campaign template update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: - name - description - campaignName - campaignDescription - remediatorRef - reviewer (id and type only; name is resolved server-side) - mandatoryCommentRequirement - emailNotificationEnabled - autoRevokeAllowed - recommendationsEnabled - sunsetCommentsRequired - deadlineDuration - filterRef - searchBasedParams - sourceIds 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update a Campaign Template
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = NextGenerationCertificationCampaignsApi(api_client).patch_gov_certification_campaign_template_v1(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).patch_gov_certification_campaign_template_v1(id, new_json_patch_operation, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->patch_gov_certification_campaign_template_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->patch_gov_certification_campaign_template_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/sign-off
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#process-sign-off-certification-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Finalize Certification Decisions
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).process_sign_off_certification_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).process_sign_off_certification_v1(certification_id, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->process_sign_off_certification_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->process_sign_off_certification_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-filters/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#put-campaign-filter-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_filter_get import CampaignFilterGet
+        from sailpoint.gov_certification.models.campaign_filter_update import CampaignFilterUpdate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'e9f9a139-7b84-2fd5-a658-42087040d3ac' # str | The ID of the campaign filter being modified. # str | The ID of the campaign filter being modified.
+          campaign_filter_update = '''{
+          "mode" : "INCLUSION",
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on specified property of Identity Attribute.",
+          "criteriaList" : [ {
+            "criteriaType" : "IDENTITY",
+            "criteriaProperty" : "DISPLAY_NAME",
+            "criteriaValue" : "support",
+            "operation" : "EQUALS"
+          } ]
+        }''' # CampaignFilterUpdate | A campaign filter details with updated field values.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Updates a Campaign Filter
+              new_campaign_filter_update = CampaignFilterUpdate.from_json(campaign_filter_update)
+              results = NextGenerationCertificationCampaignsApi(api_client).put_campaign_filter_v1(id=id, campaign_filter_update=new_campaign_filter_update)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).put_campaign_filter_v1(id, new_campaign_filter_update, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->put_campaign_filter_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->put_campaign_filter_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/search
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#search-campaign-templates-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.campaign_template_get import CampaignTemplateGet
+        from sailpoint.gov_certification.models.search_request import SearchRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          search_request = '''{
+          "queryString" : "identity 2023"
+        }''' # SearchRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          filters = 'name eq \"Campaign Template\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in, gt, ge, lt, le, sw, co*  **name**: *eq, ne, in, gt, ge, lt, le, sw, co* (optional)
+          try:
+              # Search campaign templates
+              new_search_request = SearchRequest.from_json(search_request)
+              results = NextGenerationCertificationCampaignsApi(api_client).search_campaign_templates_v1(search_request=new_search_request)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).search_campaign_templates_v1(new_search_request, x_sail_point_experimental, limit, offset, count, sorters, filters)
+              print("The response of NextGenerationCertificationCampaignsApi->search_campaign_templates_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->search_campaign_templates_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/search
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#search-certifications-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.gov_certification.models.search_request import SearchRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          reviewer_identity = 'me' # str | The ID of reviewer identity. *me* indicates the current user. (optional) # str | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'reviewerName sw \"Bob\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **phase**: *eq*  **completed**: *eq*  **campaignRef.campaignType**: *eq, in*  **campaignRef.id**: *eq, in*  **reviewProgress**: *eq, in*  **reviewerDeleted**: *eq*  **reviewerName**: *sw, co* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, dueDate, dateSigned** (optional)
+          search_request = '''{
+          "queryString" : "identity 2023"
+        }''' # SearchRequest |  (optional)
+          try:
+              # Search Certifications
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).search_certifications_v1()
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).search_certifications_v1(x_sail_point_experimental, reviewer_identity, limit, offset, count, filters, sorters, new_search_request)
+              print("The response of NextGenerationCertificationCampaignsApi->search_certifications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->search_certifications_v1: %s\n" % e)
+- path: /certification-campaigns/v1/insights/access-summary
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#search-insights-access-summary-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.insight_details import InsightDetails
+        from sailpoint.gov_certification.models.scoped_access import ScopedAccess
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_details = '''{
+          "campaignType" : "IDENTITY",
+          "identityIdFilter" : [ "2c918085718230600171993742c63558" ],
+          "query" : "admin",
+          "type" : "ENTITLEMENT"
+        }''' # InsightDetails | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get Insights Access Summary
+              new_insight_details = InsightDetails.from_json(insight_details)
+              results = NextGenerationCertificationCampaignsApi(api_client).search_insights_access_summary_v1(insight_details=new_insight_details)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).search_insights_access_summary_v1(new_insight_details, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->search_insights_access_summary_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->search_insights_access_summary_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/review-items/search
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#search-review-items-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.review_item import ReviewItem
+        from sailpoint.gov_certification.models.search_request import SearchRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"ef38f943-47e9-4562-b5bb-8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, in*  **completed**: *eq, ne*  **certificationSubjectSummary.id**: *eq, ne, in*  **certificationSubjectSummary.subjectName**: *eq, sw, co*  **certificationSubjectSummary.subjectManagerName**: *eq, sw, co*  **certificationSubjectSummary.subjectEmail**: *eq, sw, co*  **certificationSubjectSummary.identityState**: *eq, in, ne*  **reviewData.targetReference.id**: *eq, ne, in*  **reviewData.targetReference.name**: *eq, sw, co*  **reviewData.targetReference.type**: *eq*  **reviewData.entitlement.provisioningType**: *eq, ne, in*  **sourceName**: *eq, sw, co*  **accountName**: *eq, sw, co*  **reauthRequired**: *eq, ne* (optional)
+          sorters = 'certificationSubjectSummary.subjectName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **certificationSubjectSummary.subjectName, certificationSubjectSummary.subjectManagerName, reviewData.targetReference.id, reviewData.targetReference.name, sourceName, accountName** (optional)
+          activity_data = False # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to False) # bool | If set to true, the response will include HTTP header \"SLPT-Activity-Data-ID\" which will allow the caller to query for certification items activity data in a separate call. (optional) (default to False)
+          search_request = '''{
+          "queryString" : "identity 2023"
+        }''' # SearchRequest |  (optional)
+          try:
+              # Search certification review items
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).search_review_items_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).search_review_items_v1(certification_id, x_sail_point_experimental, limit, offset, count, filters, sorters, activity_data, new_search_request)
+              print("The response of NextGenerationCertificationCampaignsApi->search_review_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->search_review_items_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/subject-summaries/search
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#search-subject-summaries-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification_subject_summary import CertificationSubjectSummary
+        from sailpoint.gov_certification.models.search_request import SearchRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The certification ID # str | The certification ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'completed eq false and subjectName sw \'Derek\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, ne, in*  **completed**: *eq, ne*  **subjectName**: *eq, sw, co* (optional)
+          sorters = 'subjectName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **subjectName, targetDisplayName** (optional)
+          search_request = '''{
+          "queryString" : "identity 2023"
+        }''' # SearchRequest |  (optional)
+          try:
+              # Search certification subject summaries
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).search_subject_summaries_v1(certification_id=certification_id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).search_subject_summaries_v1(certification_id, x_sail_point_experimental, limit, offset, count, filters, sorters, new_search_request)
+              print("The response of NextGenerationCertificationCampaignsApi->search_subject_summaries_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->search_subject_summaries_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaign-templates/{id}/schedule
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#set-or-update-campaign-template-schedule-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.schedule import Schedule
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-a15d-28455b4a2329' # str | The ID of the campaign template whose schedule is being modified or created. # str | The ID of the campaign template whose schedule is being modified or created.
+          schedule = '''{
+          "hours" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "months" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "timeZoneId" : "America/Chicago",
+          "days" : {
+            "values" : [ "1", "2", "3" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "expiration" : "2025-09-15T16:00:00Z",
+          "type" : "DAILY"
+        }''' # Schedule | The data for the schedule for the given campaign template ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Set a campaign template schedule
+              new_schedule = Schedule.from_json(schedule)
+              NextGenerationCertificationCampaignsApi(api_client).set_or_update_campaign_template_schedule_v1(id=id, schedule=new_schedule)
+              # Below is a request that includes all optional parameters
+              # NextGenerationCertificationCampaignsApi(api_client).set_or_update_campaign_template_schedule_v1(id, new_schedule, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->set_or_update_campaign_template_schedule_v1: %s\n" % e)
+- path: /certification-campaigns/v1/campaigns/{id}/activate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#start-gov-certification-campaign-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.activate_campaign_options import ActivateCampaignOptions
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The campaign id # str | The campaign id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          activate_campaign_options = '''{
+          "timeZone" : "-05:00"
+        }''' # ActivateCampaignOptions | Optional. If the timezone is not specified, we will continue using the campaign's timezone, which was set during campaign creation. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+          try:
+              # Activate a Campaign
+              
+              results = NextGenerationCertificationCampaignsApi(api_client).start_gov_certification_campaign_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).start_gov_certification_campaign_v1(id, x_sail_point_experimental, new_activate_campaign_options)
+              print("The response of NextGenerationCertificationCampaignsApi->start_gov_certification_campaign_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->start_gov_certification_campaign_v1: %s\n" % e)
+- path: /certification-campaigns/v1/certifications/{certificationId}/decide
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/gov-certification/methods/next-generation-certification-campaigns#submit-decisions-v1
+      source: |
+        from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi
+        from sailpoint.gov_certification.api_client import ApiClient
+        from sailpoint.gov_certification.models.certification import Certification
+        from sailpoint.gov_certification.models.review_decision import ReviewDecision
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the certification on which to make decisions # str | The ID of the certification on which to make decisions
+          review_decision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVED","comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVED","comments":"This user still needs access to this source too."}]''' # List[ReviewDecision] | A non-empty array of decisions to be made.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Decide on a Certification Item
+              new_review_decision = ReviewDecision.from_json(review_decision)
+              results = NextGenerationCertificationCampaignsApi(api_client).submit_decisions_v1(certification_id=certification_id, review_decision=new_review_decision)
+              # Below is a request that includes all optional parameters
+              # results = NextGenerationCertificationCampaignsApi(api_client).submit_decisions_v1(certification_id, new_review_decision, x_sail_point_experimental)
+              print("The response of NextGenerationCertificationCampaignsApi->submit_decisions_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NextGenerationCertificationCampaignsApi->submit_decisions_v1: %s\n" % e)
+

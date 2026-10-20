@@ -48,11 +48,10 @@ with sailpoint.sod_violations.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sod_violations.SODViolationsApi(api_client)
     id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the policy violation to fetch
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Get policy violation by ID
-        api_response = api_instance.get_violation_v1(id, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.get_violation_v1(id)
         print("The response of SODViolationsApi->get_violation_v1:\n")
         pprint(api_response)
     except ApiException as e:

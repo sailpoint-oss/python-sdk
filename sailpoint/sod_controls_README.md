@@ -48,11 +48,10 @@ with sailpoint.sod_controls.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.sod_controls.SODControlsApi(api_client)
     compensatingcontrolcreate = {"name":"a name","description":"a description","owner":{"id":"3e07886555ed43cfb83c85c58d2016e6","type":"IDENTITY"},"secondaryOwners":[{"id":"943a7c57da334d07ba2454bf7fcf144f","type":"GOVERNANCE_GROUP"}],"type":"Mitigation","action":"Workflow","expiration":"20d","justificationRequired":true,"workflowID":"3e07886555ed43cfb83c85c58d2016e6"} # Compensatingcontrolcreate | Data needed to create a Compensating Control
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
         # Create Compensating Control
-        api_response = api_instance.create_control_v1(compensatingcontrolcreate, x_sail_point_experimental=x_sail_point_experimental)
+        api_response = api_instance.create_control_v1(compensatingcontrolcreate)
         print("The response of SODControlsApi->create_control_v1:\n")
         pprint(api_response)
     except ApiException as e:

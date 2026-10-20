@@ -49,7 +49,6 @@ class SODViolationsApi:
     def get_violation_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +68,6 @@ class SODViolationsApi:
 
         :param id: The ID of the policy violation to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,7 +92,6 @@ class SODViolationsApi:
 
         _param = self._get_violation_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -126,7 +122,6 @@ class SODViolationsApi:
     def get_violation_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +141,6 @@ class SODViolationsApi:
 
         :param id: The ID of the policy violation to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,7 +165,6 @@ class SODViolationsApi:
 
         _param = self._get_violation_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -203,7 +195,6 @@ class SODViolationsApi:
     def get_violation_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,8 +214,6 @@ class SODViolationsApi:
 
         :param id: The ID of the policy violation to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -249,7 +238,6 @@ class SODViolationsApi:
 
         _param = self._get_violation_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -275,7 +263,6 @@ class SODViolationsApi:
     def _get_violation_v1_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -301,8 +288,6 @@ class SODViolationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -346,7 +331,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If omitted, default ordering matches GET /violations (created descending, then id descending).")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -364,8 +348,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations where the current user is the owner (directly assigned or via a governance group they belong to). No permission scope is required; caller identity is required. Supports the same collection parameters as GET /violations (limit, offset, count, filters, sorters), including the same filter field whitelist and processing (normalization, pruning of not-yet-persisted name predicates). The owner filter is implicit (current user); **do not** use `ownerId` in filters for this endpoint. Embedded references in each violation follow `ReferenceResponse` (`id`, `type`, and optional `name` when metadata resolves). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -399,7 +381,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_my_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -439,7 +420,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If omitted, default ordering matches GET /violations (created descending, then id descending).")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -457,8 +437,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations where the current user is the owner (directly assigned or via a governance group they belong to). No permission scope is required; caller identity is required. Supports the same collection parameters as GET /violations (limit, offset, count, filters, sorters), including the same filter field whitelist and processing (normalization, pruning of not-yet-persisted name predicates). The owner filter is implicit (current user); **do not** use `ownerId` in filters for this endpoint. Embedded references in each violation follow `ReferenceResponse` (`id`, `type`, and optional `name` when metadata resolves). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -492,7 +470,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_my_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -532,7 +509,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If omitted, default ordering matches GET /violations (created descending, then id descending).")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -550,8 +526,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations where the current user is the owner (directly assigned or via a governance group they belong to). No permission scope is required; caller identity is required. Supports the same collection parameters as GET /violations (limit, offset, count, filters, sorters), including the same filter field whitelist and processing (normalization, pruning of not-yet-persisted name predicates). The owner filter is implicit (current user); **do not** use `ownerId` in filters for this endpoint. Embedded references in each violation follow `ReferenceResponse` (`id`, `type`, and optional `name` when metadata resolves). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -585,7 +559,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_my_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -615,7 +588,6 @@ class SODViolationsApi:
 
     def _list_my_violations_v1_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -664,8 +636,6 @@ class SODViolationsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -709,7 +679,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **ownerId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If no sorters are provided, results default to created descending, then id descending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -727,8 +696,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations for the current tenant. Requires the read scope (idn:sod-violation:read). This endpoint uses the standard collection parameters defined in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters/). This endpoint supports standard V3 collection parameters: `limit`, `offset`, `count`, `filters`, and `sorters`. Embedded references in each violation (`owner`, `target`, `policy`, and references inside `appliedControls`) follow the `ReferenceResponse` schema: `id` and `type` are always present; `name` is included when display metadata resolves. Filters and sorters are validated against a fixed whitelist of fields to ensure safe queries and to align with underlying database indexes. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -762,7 +729,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -802,7 +768,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **ownerId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If no sorters are provided, results default to created descending, then id descending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -820,8 +785,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations for the current tenant. Requires the read scope (idn:sod-violation:read). This endpoint uses the standard collection parameters defined in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters/). This endpoint supports standard V3 collection parameters: `limit`, `offset`, `count`, `filters`, and `sorters`. Embedded references in each violation (`owner`, `target`, `policy`, and references inside `appliedControls`) follow the `ReferenceResponse` schema: `id` and `type` are always present; `name` is included when display metadata resolves. Filters and sorters are validated against a fixed whitelist of fields to ensure safe queries and to align with underlying database indexes. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -855,7 +818,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -895,7 +857,6 @@ class SODViolationsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, in*  **policyId**: *eq*  **ownerId**: *eq*  **level**: *eq, in*  **policyName**: *eq, in, sw, co*  **ownerName**: *eq, in, sw, co*  **targetName**: *eq, in, sw, co*  **targetId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **level**  Prefix a field with - for descending order, for example -level. If no sorters are provided, results default to created descending, then id descending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -913,8 +874,6 @@ class SODViolationsApi:
 
         Returns a paged list of policy violations for the current tenant. Requires the read scope (idn:sod-violation:read). This endpoint uses the standard collection parameters defined in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters/). This endpoint supports standard V3 collection parameters: `limit`, `offset`, `count`, `filters`, and `sorters`. Embedded references in each violation (`owner`, `target`, `policy`, and references inside `appliedControls`) follow the `ReferenceResponse` schema: `id` and `type` are always present; `name` is included when display metadata resolves. Filters and sorters are validated against a fixed whitelist of fields to ensure safe queries and to align with underlying database indexes. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -948,7 +907,6 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._list_violations_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -978,7 +936,6 @@ class SODViolationsApi:
 
     def _list_violations_v1_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1027,8 +984,6 @@ class SODViolationsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1069,7 +1024,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         violationreassigninput: Annotated[Violationreassigninput, Field(description="Data needed to reassign a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1091,8 +1045,6 @@ class SODViolationsApi:
         :type id: str
         :param violationreassigninput: Data needed to reassign a Policy Violation (required)
         :type violationreassigninput: Violationreassigninput
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1118,7 +1070,6 @@ class SODViolationsApi:
         _param = self._move_violation_v1_serialize(
             id=id,
             violationreassigninput=violationreassigninput,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1151,7 +1102,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         violationreassigninput: Annotated[Violationreassigninput, Field(description="Data needed to reassign a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1173,8 +1123,6 @@ class SODViolationsApi:
         :type id: str
         :param violationreassigninput: Data needed to reassign a Policy Violation (required)
         :type violationreassigninput: Violationreassigninput
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1200,7 +1148,6 @@ class SODViolationsApi:
         _param = self._move_violation_v1_serialize(
             id=id,
             violationreassigninput=violationreassigninput,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1233,7 +1180,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         violationreassigninput: Annotated[Violationreassigninput, Field(description="Data needed to reassign a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1255,8 +1201,6 @@ class SODViolationsApi:
         :type id: str
         :param violationreassigninput: Data needed to reassign a Policy Violation (required)
         :type violationreassigninput: Violationreassigninput
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1282,7 +1226,6 @@ class SODViolationsApi:
         _param = self._move_violation_v1_serialize(
             id=id,
             violationreassigninput=violationreassigninput,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1310,7 +1253,6 @@ class SODViolationsApi:
         self,
         id,
         violationreassigninput,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1336,8 +1278,6 @@ class SODViolationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if violationreassigninput is not None:
@@ -1393,7 +1333,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         appliedcontrolcreate: Annotated[Appliedcontrolcreate, Field(description="Data needed to apply a control to a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1415,8 +1354,6 @@ class SODViolationsApi:
         :type id: str
         :param appliedcontrolcreate: Data needed to apply a control to a Policy Violation (required)
         :type appliedcontrolcreate: Appliedcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1442,7 +1379,6 @@ class SODViolationsApi:
         _param = self._start_apply_control_v1_serialize(
             id=id,
             appliedcontrolcreate=appliedcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1474,7 +1410,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         appliedcontrolcreate: Annotated[Appliedcontrolcreate, Field(description="Data needed to apply a control to a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1496,8 +1431,6 @@ class SODViolationsApi:
         :type id: str
         :param appliedcontrolcreate: Data needed to apply a control to a Policy Violation (required)
         :type appliedcontrolcreate: Appliedcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1523,7 +1456,6 @@ class SODViolationsApi:
         _param = self._start_apply_control_v1_serialize(
             id=id,
             appliedcontrolcreate=appliedcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1555,7 +1487,6 @@ class SODViolationsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the policy violation to fetch")],
         appliedcontrolcreate: Annotated[Appliedcontrolcreate, Field(description="Data needed to apply a control to a Policy Violation")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1577,8 +1508,6 @@ class SODViolationsApi:
         :type id: str
         :param appliedcontrolcreate: Data needed to apply a control to a Policy Violation (required)
         :type appliedcontrolcreate: Appliedcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1604,7 +1533,6 @@ class SODViolationsApi:
         _param = self._start_apply_control_v1_serialize(
             id=id,
             appliedcontrolcreate=appliedcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1631,7 +1559,6 @@ class SODViolationsApi:
         self,
         id,
         appliedcontrolcreate,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1657,8 +1584,6 @@ class SODViolationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if appliedcontrolcreate is not None:

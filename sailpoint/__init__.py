@@ -69,6 +69,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "EntitlementConnectionsApi": (("sailpoint.entitlement_connections.api.entitlement_connections_api", "EntitlementConnectionsApi"),),
     "EntitlementsApi": (("sailpoint.entitlements.api.entitlements_api", "EntitlementsApi"),),
     "GlobalTenantSecuritySettingsApi": (("sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api", "GlobalTenantSecuritySettingsApi"),),
+    "NextGenerationCertificationCampaignsApi": (("sailpoint.gov_certification.api.next_generation_certification_campaigns_api", "NextGenerationCertificationCampaignsApi"),),
     "GovernanceGroupsApi": (("sailpoint.governance_groups.api.governance_groups_api", "GovernanceGroupsApi"),),
     "IAIAccessRequestRecommendationsApi": (("sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api", "IAIAccessRequestRecommendationsApi"),),
     "IAICommonAccessApi": (("sailpoint.iai_common_access.api.iai_common_access_api", "IAICommonAccessApi"),),
@@ -226,6 +227,7 @@ __all__ = [
     "EntitlementConnectionsApi",
     "EntitlementsApi",
     "GlobalTenantSecuritySettingsApi",
+    "NextGenerationCertificationCampaignsApi",
     "GovernanceGroupsApi",
     "IAIAccessRequestRecommendationsApi",
     "IAICommonAccessApi",
@@ -411,6 +413,7 @@ if TYPE_CHECKING:
     from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi as _entitlement_connections__EntitlementConnectionsApi
     from sailpoint.entitlements.api.entitlements_api import EntitlementsApi as _entitlements__EntitlementsApi
     from sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi as _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
+    from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi as _gov_certification__NextGenerationCertificationCampaignsApi
     from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi as _governance_groups__GovernanceGroupsApi
     from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi as _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
     from sailpoint.iai_common_access.api.iai_common_access_api import IAICommonAccessApi as _iai_common_access__IAICommonAccessApi
@@ -568,6 +571,7 @@ if TYPE_CHECKING:
     EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
     EntitlementsApi = _entitlements__EntitlementsApi
     GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
+    NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
     GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
     IAIAccessRequestRecommendationsApi = _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
     IAICommonAccessApi = _iai_common_access__IAICommonAccessApi
@@ -720,6 +724,7 @@ if TYPE_CHECKING:
         EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
         EntitlementsApi = _entitlements__EntitlementsApi
         GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
+        NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
         GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
         IAIAccessRequestRecommendationsApi = _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
         IAICommonAccessApi = _iai_common_access__IAICommonAccessApi

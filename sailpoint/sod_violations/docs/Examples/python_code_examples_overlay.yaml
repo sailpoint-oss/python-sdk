@@ -10,17 +10,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the policy violation to fetch # str | The ID of the policy violation to fetch
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Get policy violation by ID
               
               results = SODViolationsApi(api_client).get_violation_v1(id=id)
               # Below is a request that includes all optional parameters
-              # results = SODViolationsApi(api_client).get_violation_v1(id, x_sail_point_experimental)
+              # results = SODViolationsApi(api_client).get_violation_v1(id)
               print("The response of SODViolationsApi->get_violation_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -37,10 +35,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -51,7 +47,7 @@
               
               results = SODViolationsApi(api_client).list_my_violations_v1()
               # Below is a request that includes all optional parameters
-              # results = SODViolationsApi(api_client).list_my_violations_v1(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = SODViolationsApi(api_client).list_my_violations_v1(limit, offset, count, filters, sorters)
               print("The response of SODViolationsApi->list_my_violations_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -69,10 +65,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -83,7 +77,7 @@
               
               results = SODViolationsApi(api_client).list_violations_v1()
               # Below is a request that includes all optional parameters
-              # results = SODViolationsApi(api_client).list_violations_v1(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = SODViolationsApi(api_client).list_violations_v1(limit, offset, count, filters, sorters)
               print("The response of SODViolationsApi->list_violations_v1:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -102,7 +96,6 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the policy violation to fetch # str | The ID of the policy violation to fetch
@@ -113,13 +106,12 @@
             "assigneeId" : "3e07886555ed43cfb83c85c58d2016e6"
           }
         }''' # Violationreassigninput | Data needed to reassign a Policy Violation
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Reassign policy violation
               new_violationreassigninput = Violationreassigninput.from_json(violationreassigninput)
               results = SODViolationsApi(api_client).move_violation_v1(id=id, violationreassigninput=new_violationreassigninput)
               # Below is a request that includes all optional parameters
-              # results = SODViolationsApi(api_client).move_violation_v1(id, new_violationreassigninput, x_sail_point_experimental)
+              # results = SODViolationsApi(api_client).move_violation_v1(id, new_violationreassigninput)
               print("The response of SODViolationsApi->move_violation_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -137,7 +129,6 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '3e078865-55ed-43cf-b83c-85c58d2016e6' # str | The ID of the policy violation to fetch # str | The ID of the policy violation to fetch
@@ -145,13 +136,12 @@
           "comments" : "Some comments about the applied control",
           "control" : "3e07886555ed43cfb83c85c58d2016e6"
         }''' # Appliedcontrolcreate | Data needed to apply a control to a Policy Violation
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
           try:
               # Apply control to violation
               new_appliedcontrolcreate = Appliedcontrolcreate.from_json(appliedcontrolcreate)
               results = SODViolationsApi(api_client).start_apply_control_v1(id=id, appliedcontrolcreate=new_appliedcontrolcreate)
               # Below is a request that includes all optional parameters
-              # results = SODViolationsApi(api_client).start_apply_control_v1(id, new_appliedcontrolcreate, x_sail_point_experimental)
+              # results = SODViolationsApi(api_client).start_apply_control_v1(id, new_appliedcontrolcreate)
               print("The response of SODViolationsApi->start_apply_control_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

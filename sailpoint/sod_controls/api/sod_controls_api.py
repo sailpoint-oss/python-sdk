@@ -45,7 +45,6 @@ class SODControlsApi:
     def create_control_v1(
         self,
         compensatingcontrolcreate: Annotated[Compensatingcontrolcreate, Field(description="Data needed to create a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,8 +64,6 @@ class SODControlsApi:
 
         :param compensatingcontrolcreate: Data needed to create a Compensating Control (required)
         :type compensatingcontrolcreate: Compensatingcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +88,6 @@ class SODControlsApi:
 
         _param = self._create_control_v1_serialize(
             compensatingcontrolcreate=compensatingcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -122,7 +118,6 @@ class SODControlsApi:
     def create_control_v1_with_http_info(
         self,
         compensatingcontrolcreate: Annotated[Compensatingcontrolcreate, Field(description="Data needed to create a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -142,8 +137,6 @@ class SODControlsApi:
 
         :param compensatingcontrolcreate: Data needed to create a Compensating Control (required)
         :type compensatingcontrolcreate: Compensatingcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -168,7 +161,6 @@ class SODControlsApi:
 
         _param = self._create_control_v1_serialize(
             compensatingcontrolcreate=compensatingcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -199,7 +191,6 @@ class SODControlsApi:
     def create_control_v1_without_preload_content(
         self,
         compensatingcontrolcreate: Annotated[Compensatingcontrolcreate, Field(description="Data needed to create a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,8 +210,6 @@ class SODControlsApi:
 
         :param compensatingcontrolcreate: Data needed to create a Compensating Control (required)
         :type compensatingcontrolcreate: Compensatingcontrolcreate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -245,7 +234,6 @@ class SODControlsApi:
 
         _param = self._create_control_v1_serialize(
             compensatingcontrolcreate=compensatingcontrolcreate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -271,7 +259,6 @@ class SODControlsApi:
     def _create_control_v1_serialize(
         self,
         compensatingcontrolcreate,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -295,8 +282,6 @@ class SODControlsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if compensatingcontrolcreate is not None:
@@ -351,7 +336,6 @@ class SODControlsApi:
     def delete_control_v1(
         self,
         id: Annotated[StrictStr, Field(description="the ID (UUID) of the compensating control to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -371,8 +355,6 @@ class SODControlsApi:
 
         :param id: the ID (UUID) of the compensating control to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -397,7 +379,6 @@ class SODControlsApi:
 
         _param = self._delete_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -428,7 +409,6 @@ class SODControlsApi:
     def delete_control_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="the ID (UUID) of the compensating control to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -448,8 +428,6 @@ class SODControlsApi:
 
         :param id: the ID (UUID) of the compensating control to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -474,7 +452,6 @@ class SODControlsApi:
 
         _param = self._delete_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -505,7 +482,6 @@ class SODControlsApi:
     def delete_control_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="the ID (UUID) of the compensating control to delete.")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -525,8 +501,6 @@ class SODControlsApi:
 
         :param id: the ID (UUID) of the compensating control to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -551,7 +525,6 @@ class SODControlsApi:
 
         _param = self._delete_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -577,7 +550,6 @@ class SODControlsApi:
     def _delete_control_v1_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -603,8 +575,6 @@ class SODControlsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -644,7 +614,6 @@ class SODControlsApi:
     def get_control_v1(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the compensating control to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -664,8 +633,6 @@ class SODControlsApi:
 
         :param id: The ID of the compensating control to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -690,7 +657,6 @@ class SODControlsApi:
 
         _param = self._get_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -721,7 +687,6 @@ class SODControlsApi:
     def get_control_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the compensating control to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -741,8 +706,6 @@ class SODControlsApi:
 
         :param id: The ID of the compensating control to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -767,7 +730,6 @@ class SODControlsApi:
 
         _param = self._get_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -798,7 +760,6 @@ class SODControlsApi:
     def get_control_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the compensating control to fetch")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -818,8 +779,6 @@ class SODControlsApi:
 
         :param id: The ID of the compensating control to fetch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -844,7 +803,6 @@ class SODControlsApi:
 
         _param = self._get_control_v1_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -870,7 +828,6 @@ class SODControlsApi:
     def _get_control_v1_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -896,8 +853,6 @@ class SODControlsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -941,7 +896,6 @@ class SODControlsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **type**: *eq*  **owner**: *eq, in*  **description**: *eq, in, sw, co*  **action**: *eq, in*")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**  Prefix a field with - for descending order, for example -name. If no sort is provided, results default to name ascending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -959,8 +913,6 @@ class SODControlsApi:
 
         Returns a list of compensating controls associated with separation-of-duties policies.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -994,7 +946,6 @@ class SODControlsApi:
         """ # noqa: E501
 
         _param = self._list_controls_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1034,7 +985,6 @@ class SODControlsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **type**: *eq*  **owner**: *eq, in*  **description**: *eq, in, sw, co*  **action**: *eq, in*")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**  Prefix a field with - for descending order, for example -name. If no sort is provided, results default to name ascending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1052,8 +1002,6 @@ class SODControlsApi:
 
         Returns a list of compensating controls associated with separation-of-duties policies.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1087,7 +1035,6 @@ class SODControlsApi:
         """ # noqa: E501
 
         _param = self._list_controls_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1127,7 +1074,6 @@ class SODControlsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **type**: *eq*  **owner**: *eq, in*  **description**: *eq, in, sw, co*  **action**: *eq, in*")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**  Prefix a field with - for descending order, for example -name. If no sort is provided, results default to name ascending.")] = None,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1145,8 +1091,6 @@ class SODControlsApi:
 
         Returns a list of compensating controls associated with separation-of-duties policies.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1180,7 +1124,6 @@ class SODControlsApi:
         """ # noqa: E501
 
         _param = self._list_controls_v1_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1210,7 +1153,6 @@ class SODControlsApi:
 
     def _list_controls_v1_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1259,8 +1201,6 @@ class SODControlsApi:
             _query_params.append(('sort', sort))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1301,7 +1241,6 @@ class SODControlsApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the Compensating Control to be updated.")],
         compensatingcontrolupdate: Annotated[Compensatingcontrolupdate, Field(description="Data needed to put a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1323,8 +1262,6 @@ class SODControlsApi:
         :type id: str
         :param compensatingcontrolupdate: Data needed to put a Compensating Control (required)
         :type compensatingcontrolupdate: Compensatingcontrolupdate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1350,7 +1287,6 @@ class SODControlsApi:
         _param = self._put_control_v1_serialize(
             id=id,
             compensatingcontrolupdate=compensatingcontrolupdate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1382,7 +1318,6 @@ class SODControlsApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the Compensating Control to be updated.")],
         compensatingcontrolupdate: Annotated[Compensatingcontrolupdate, Field(description="Data needed to put a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1404,8 +1339,6 @@ class SODControlsApi:
         :type id: str
         :param compensatingcontrolupdate: Data needed to put a Compensating Control (required)
         :type compensatingcontrolupdate: Compensatingcontrolupdate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1431,7 +1364,6 @@ class SODControlsApi:
         _param = self._put_control_v1_serialize(
             id=id,
             compensatingcontrolupdate=compensatingcontrolupdate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1463,7 +1395,6 @@ class SODControlsApi:
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the Compensating Control to be updated.")],
         compensatingcontrolupdate: Annotated[Compensatingcontrolupdate, Field(description="Data needed to put a Compensating Control")],
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1485,8 +1416,6 @@ class SODControlsApi:
         :type id: str
         :param compensatingcontrolupdate: Data needed to put a Compensating Control (required)
         :type compensatingcontrolupdate: Compensatingcontrolupdate
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1512,7 +1441,6 @@ class SODControlsApi:
         _param = self._put_control_v1_serialize(
             id=id,
             compensatingcontrolupdate=compensatingcontrolupdate,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1539,7 +1467,6 @@ class SODControlsApi:
         self,
         id,
         compensatingcontrolupdate,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1565,8 +1492,6 @@ class SODControlsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if compensatingcontrolupdate is not None:
