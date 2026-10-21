@@ -116,6 +116,7 @@ from sailpoint.sources.models.source_owner import SourceOwner
 from sailpoint.sources.models.source_password_policies_inner import SourcePasswordPoliciesInner
 from sailpoint.sources.models.source_resource_mapping_value import SourceResourceMappingValue
 from sailpoint.sources.models.source_schemas_inner import SourceSchemasInner
+from sailpoint.sources.models.source_service_desk_integration_dto import SourceServiceDeskIntegrationDto
 from sailpoint.sources.models.source_sync_job import SourceSyncJob
 from sailpoint.sources.models.source_sync_payload import SourceSyncPayload
 from sailpoint.sources.models.status_response import StatusResponse

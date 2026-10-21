@@ -111,6 +111,7 @@ Method | HTTP request | Description
 [**get-source-schedules-v1**](#get-source-schedules-v1) | **GET** `/sources/v1/{sourceId}/schedules` | List schedules on source
 [**get-source-schema-v1**](#get-source-schema-v1) | **GET** `/sources/v1/{sourceId}/schemas/{schemaId}` | Get source schema by id
 [**get-source-schemas-v1**](#get-source-schemas-v1) | **GET** `/sources/v1/{sourceId}/schemas` | List schemas on source
+[**get-source-service-desk-integrations-v1**](#get-source-service-desk-integrations-v1) | **GET** `/sources/v1/{sourceId}/service-desk-integrations` | List source service desk integrations
 [**get-source-v1**](#get-source-v1) | **GET** `/sources/v1/{id}` | Get source by id
 [**import-accounts-schema-v1**](#import-accounts-schema-v1) | **POST** `/sources/v1/{id}/schemas/accounts` | Uploads source accounts schema template
 [**import-accounts-v1**](#import-accounts-v1) | **POST** `/sources/v1/{id}/load-accounts` | Account aggregation
@@ -2963,6 +2964,74 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->get_source_schemas_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-source-service-desk-integrations-v1
+List source service desk integrations
+Use this API to list the Service Desk Integrations that carry out provisioning for a source in Identity Security Cloud (ISC).
+
+A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.
+
+Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-service-desk-integrations-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+### Return type
+[**List[SourceServiceDeskIntegrationDto]**](../models/source-service-desk-integration-dto)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The Service Desk Integrations that manage provisioning for the source, empty if the source&#39;s own connector handles provisioning. | List[SourceServiceDeskIntegrationDto] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.source_service_desk_integration_dto import SourceServiceDeskIntegrationDto
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+    try:
+        # List source service desk integrations
+        
+        results = SourcesApi(api_client).get_source_service_desk_integrations_v1(source_id=source_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_source_service_desk_integrations_v1(source_id, limit, offset)
+        print("The response of SourcesApi->get_source_service_desk_integrations_v1:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_service_desk_integrations_v1: %s\n" % e)
 ```
 
 

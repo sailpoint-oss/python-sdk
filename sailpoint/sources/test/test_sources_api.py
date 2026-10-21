@@ -299,6 +299,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_service_desk_integrations_v1(self) -> None:
+        """Test case for get_source_service_desk_integrations_v1
+
+        List source service desk integrations
+        """
+        pass
+
     def test_get_source_v1(self) -> None:
         """Test case for get_source_v1
 

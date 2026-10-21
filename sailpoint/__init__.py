@@ -85,6 +85,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "IntelligenceApi": (("sailpoint.intelligence.api.intelligence_api", "IntelligenceApi"),),
     "IntelligencePackageApi": (("sailpoint.intelligence_package.api.intelligence_package_api", "IntelligencePackageApi"),),
     "JITAccessApi": (("sailpoint.jit_access.api.jit_access_api", "JITAccessApi"),),
+    "JITActivationConvertApi": (("sailpoint.jit_activation_convert.api.jit_activation_convert_api", "JITActivationConvertApi"),),
     "JITActivationsApi": (("sailpoint.jit_activations.api.jit_activations_api", "JITActivationsApi"),),
     "LaunchersApi": (("sailpoint.launchers.api.launchers_api", "LaunchersApi"),),
     "LifecycleStatesApi": (("sailpoint.lifecycle_states.api.lifecycle_states_api", "LifecycleStatesApi"),),
@@ -243,6 +244,7 @@ __all__ = [
     "IntelligenceApi",
     "IntelligencePackageApi",
     "JITAccessApi",
+    "JITActivationConvertApi",
     "JITActivationsApi",
     "LaunchersApi",
     "LifecycleStatesApi",
@@ -429,6 +431,7 @@ if TYPE_CHECKING:
     from sailpoint.intelligence.api.intelligence_api import IntelligenceApi as _intelligence__IntelligenceApi
     from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi as _intelligence_package__IntelligencePackageApi
     from sailpoint.jit_access.api.jit_access_api import JITAccessApi as _jit_access__JITAccessApi
+    from sailpoint.jit_activation_convert.api.jit_activation_convert_api import JITActivationConvertApi as _jit_activation_convert__JITActivationConvertApi
     from sailpoint.jit_activations.api.jit_activations_api import JITActivationsApi as _jit_activations__JITActivationsApi
     from sailpoint.launchers.api.launchers_api import LaunchersApi as _launchers__LaunchersApi
     from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi as _lifecycle_states__LifecycleStatesApi
@@ -587,6 +590,7 @@ if TYPE_CHECKING:
     IntelligenceApi = _intelligence__IntelligenceApi
     IntelligencePackageApi = _intelligence_package__IntelligencePackageApi
     JITAccessApi = _jit_access__JITAccessApi
+    JITActivationConvertApi = _jit_activation_convert__JITActivationConvertApi
     JITActivationsApi = _jit_activations__JITActivationsApi
     LaunchersApi = _launchers__LaunchersApi
     LifecycleStatesApi = _lifecycle_states__LifecycleStatesApi
@@ -740,6 +744,7 @@ if TYPE_CHECKING:
         IntelligenceApi = _intelligence__IntelligenceApi
         IntelligencePackageApi = _intelligence_package__IntelligencePackageApi
         JITAccessApi = _jit_access__JITAccessApi
+        JITActivationConvertApi = _jit_activation_convert__JITActivationConvertApi
         JITActivationsApi = _jit_activations__JITActivationsApi
         LaunchersApi = _launchers__LaunchersApi
         LifecycleStatesApi = _lifecycle_states__LifecycleStatesApi

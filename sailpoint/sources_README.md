@@ -105,6 +105,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**get_source_schedules_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_schedules_v1) | **GET** /sources/v1/{sourceId}/schedules | List schedules on source
 *SourcesApi* | [**get_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_schema_v1) | **GET** /sources/v1/{sourceId}/schemas/{schemaId} | Get source schema by id
 *SourcesApi* | [**get_source_schemas_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_schemas_v1) | **GET** /sources/v1/{sourceId}/schemas | List schemas on source
+*SourcesApi* | [**get_source_service_desk_integrations_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_service_desk_integrations_v1) | **GET** /sources/v1/{sourceId}/service-desk-integrations | List source service desk integrations
 *SourcesApi* | [**get_source_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_v1) | **GET** /sources/v1/{id} | Get source by id
 *SourcesApi* | [**import_accounts_schema_v1**](sailpoint/sources/docs/SourcesApi.md#import_accounts_schema_v1) | **POST** /sources/v1/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesApi* | [**import_accounts_v1**](sailpoint/sources/docs/SourcesApi.md#import_accounts_v1) | **POST** /sources/v1/{id}/load-accounts | Account aggregation
@@ -232,6 +233,7 @@ Class | Method | HTTP request | Description
  - [SourcePasswordPoliciesInner](sailpoint/sources/docs/SourcePasswordPoliciesInner.md)
  - [SourceResourceMappingValue](sailpoint/sources/docs/SourceResourceMappingValue.md)
  - [SourceSchemasInner](sailpoint/sources/docs/SourceSchemasInner.md)
+ - [SourceServiceDeskIntegrationDto](sailpoint/sources/docs/SourceServiceDeskIntegrationDto.md)
  - [SourceSyncJob](sailpoint/sources/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/sources/docs/SourceSyncPayload.md)
  - [StatusResponse](sailpoint/sources/docs/StatusResponse.md)

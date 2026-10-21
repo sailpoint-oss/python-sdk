@@ -1227,6 +1227,34 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SourcesApi->get_source_schemas_v1: %s\n" % e)
+- path: /sources/v1/{sourceId}/service-desk-integrations
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/sources/methods/sources#get-source-service-desk-integrations-v1
+      source: |
+        from sailpoint.sources.api.sources_api import SourcesApi
+        from sailpoint.sources.api_client import ApiClient
+        from sailpoint.sources.models.source_service_desk_integration_dto import SourceServiceDeskIntegrationDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List source service desk integrations
+              
+              results = SourcesApi(api_client).get_source_service_desk_integrations_v1(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).get_source_service_desk_integrations_v1(source_id, limit, offset)
+              print("The response of SourcesApi->get_source_service_desk_integrations_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->get_source_service_desk_integrations_v1: %s\n" % e)
 - path: /sources/v1/{id}
   method: GET
   xCodeSample:
