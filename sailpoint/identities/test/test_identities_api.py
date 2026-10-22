@@ -47,6 +47,13 @@ class TestIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_identity_v2(self) -> None:
+        """Test case for get_identity_v2
+
+        Identity details (search)
+        """
+        pass
+
     def test_get_role_assignment_v1(self) -> None:
         """Test case for get_role_assignment_v1
 
@@ -72,6 +79,13 @@ class TestIdentitiesApi(unittest.TestCase):
         """Test case for list_identities_v1
 
         List identities
+        """
+        pass
+
+    def test_list_identities_v2(self) -> None:
+        """Test case for list_identities_v2
+
+        List identities (search)
         """
         pass
 

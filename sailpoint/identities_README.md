@@ -66,10 +66,12 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**delete_identity_v1**](sailpoint/identities/docs/IdentitiesApi.md#delete_identity_v1) | **DELETE** /identities/v1/{id} | Delete identity
 *IdentitiesApi* | [**get_identity_ownership_details_v1**](sailpoint/identities/docs/IdentitiesApi.md#get_identity_ownership_details_v1) | **GET** /identities/v1/{identityId}/ownership | Get ownership details
 *IdentitiesApi* | [**get_identity_v1**](sailpoint/identities/docs/IdentitiesApi.md#get_identity_v1) | **GET** /identities/v1/{id} | Identity details
+*IdentitiesApi* | [**get_identity_v2**](sailpoint/identities/docs/IdentitiesApi.md#get_identity_v2) | **GET** /identities/v2/{id} | Identity details (search)
 *IdentitiesApi* | [**get_role_assignment_v1**](sailpoint/identities/docs/IdentitiesApi.md#get_role_assignment_v1) | **GET** /identities/v1/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesApi* | [**get_role_assignments_v1**](sailpoint/identities/docs/IdentitiesApi.md#get_role_assignments_v1) | **GET** /identities/v1/{identityId}/role-assignments | List role assignments
 *IdentitiesApi* | [**list_entitlements_by_identity_v1**](sailpoint/identities/docs/IdentitiesApi.md#list_entitlements_by_identity_v1) | **GET** /entitlements/v1/identities/{id}/entitlements | List of entitlements by identity.
 *IdentitiesApi* | [**list_identities_v1**](sailpoint/identities/docs/IdentitiesApi.md#list_identities_v1) | **GET** /identities/v1 | List identities
+*IdentitiesApi* | [**list_identities_v2**](sailpoint/identities/docs/IdentitiesApi.md#list_identities_v2) | **GET** /identities/v2 | List identities (search)
 *IdentitiesApi* | [**reset_identity_v1**](sailpoint/identities/docs/IdentitiesApi.md#reset_identity_v1) | **POST** /identities/v1/{id}/reset | Reset an identity
 *IdentitiesApi* | [**send_identity_verification_account_token_v1**](sailpoint/identities/docs/IdentitiesApi.md#send_identity_verification_account_token_v1) | **POST** /identities/v1/{id}/verification/account/send | Send password reset email
 *IdentitiesApi* | [**start_identities_invite_v1**](sailpoint/identities/docs/IdentitiesApi.md#start_identities_invite_v1) | **POST** /identities/v1/invite | Invite identities to register
@@ -101,6 +103,10 @@ Class | Method | HTTP request | Description
  - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](sailpoint/identities/docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentitySyncJob](sailpoint/identities/docs/IdentitySyncJob.md)
  - [IdentitySyncPayload](sailpoint/identities/docs/IdentitySyncPayload.md)
+ - [IdentityV2](sailpoint/identities/docs/IdentityV2.md)
+ - [IdentityV2LifecycleState](sailpoint/identities/docs/IdentityV2LifecycleState.md)
+ - [IdentityV2Manager](sailpoint/identities/docs/IdentityV2Manager.md)
+ - [IdentityV2PrivilegeLevel](sailpoint/identities/docs/IdentityV2PrivilegeLevel.md)
  - [InviteIdentitiesRequest](sailpoint/identities/docs/InviteIdentitiesRequest.md)
  - [LifecycleStateDto](sailpoint/identities/docs/LifecycleStateDto.md)
  - [ListIdentitiesV1401Response](sailpoint/identities/docs/ListIdentitiesV1401Response.md)
