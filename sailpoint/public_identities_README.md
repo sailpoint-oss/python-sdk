@@ -71,6 +71,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *PublicIdentitiesApi* | [**get_public_identities_v1**](sailpoint/public_identities/docs/PublicIdentitiesApi.md#get_public_identities_v1) | **GET** /public-identities/v1 | Get list of public identities
+*PublicIdentitiesApi* | [**get_public_identities_visible_attributes_v2**](sailpoint/public_identities/docs/PublicIdentitiesApi.md#get_public_identities_visible_attributes_v2) | **GET** /public-identities/v2/visible-attributes | Get public identity visible attributes
+*PublicIdentitiesApi* | [**search_public_identities_v2**](sailpoint/public_identities/docs/PublicIdentitiesApi.md#search_public_identities_v2) | **POST** /public-identities/v2/search | Search public identities
 
 
 ## Documentation For Models
@@ -82,8 +84,21 @@ Class | Method | HTTP request | Description
  - [GetPublicIdentitiesV1429Response](sailpoint/public_identities/docs/GetPublicIdentitiesV1429Response.md)
  - [IdentityReference](sailpoint/public_identities/docs/IdentityReference.md)
  - [LocaleOrigin](sailpoint/public_identities/docs/LocaleOrigin.md)
+ - [PublicIdentitiesCompositeEntry](sailpoint/public_identities/docs/PublicIdentitiesCompositeEntry.md)
+ - [PublicIdentitiesNestedCompositeEntry](sailpoint/public_identities/docs/PublicIdentitiesNestedCompositeEntry.md)
+ - [PublicIdentitiesNestedQuerySet](sailpoint/public_identities/docs/PublicIdentitiesNestedQuerySet.md)
+ - [PublicIdentitiesQuerySet](sailpoint/public_identities/docs/PublicIdentitiesQuerySet.md)
+ - [PublicIdentitiesSearchRequest](sailpoint/public_identities/docs/PublicIdentitiesSearchRequest.md)
+ - [PublicIdentitiesSearchRequestQuerySet](sailpoint/public_identities/docs/PublicIdentitiesSearchRequestQuerySet.md)
+ - [PublicIdentitiesTextEntry](sailpoint/public_identities/docs/PublicIdentitiesTextEntry.md)
+ - [PublicIdentitiesTextQuery](sailpoint/public_identities/docs/PublicIdentitiesTextQuery.md)
+ - [PublicIdentitiesTextQueryTermsInner](sailpoint/public_identities/docs/PublicIdentitiesTextQueryTermsInner.md)
  - [PublicIdentity](sailpoint/public_identities/docs/PublicIdentity.md)
+ - [PublicIdentityAttributeConfig](sailpoint/public_identities/docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityAttributesInner](sailpoint/public_identities/docs/PublicIdentityAttributesInner.md)
+ - [PublicIdentityV2](sailpoint/public_identities/docs/PublicIdentityV2.md)
+ - [PublicIdentityV2Manager](sailpoint/public_identities/docs/PublicIdentityV2Manager.md)
+ - [PublicIdentityVisibleAttributes](sailpoint/public_identities/docs/PublicIdentityVisibleAttributes.md)
 
 
 <a id="documentation-for-authorization"></a>

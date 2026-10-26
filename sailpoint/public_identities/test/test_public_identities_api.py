@@ -33,6 +33,20 @@ class TestPublicIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_public_identities_visible_attributes_v2(self) -> None:
+        """Test case for get_public_identities_visible_attributes_v2
+
+        Get public identity visible attributes
+        """
+        pass
+
+    def test_search_public_identities_v2(self) -> None:
+        """Test case for search_public_identities_v2
+
+        Search public identities
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

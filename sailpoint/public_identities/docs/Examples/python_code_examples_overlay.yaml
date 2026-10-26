@@ -29,4 +29,80 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling PublicIdentitiesApi->get_public_identities_v1: %s\n" % e)
+- path: /public-identities/v2/visible-attributes
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/public-identities/methods/public-identities#get-public-identities-visible-attributes-v2
+      source: |
+        from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi
+        from sailpoint.public_identities.api_client import ApiClient
+        from sailpoint.public_identities.models.public_identity_visible_attributes import PublicIdentityVisibleAttributes
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get public identity visible attributes
+              
+              results = PublicIdentitiesApi(api_client).get_public_identities_visible_attributes_v2()
+              # Below is a request that includes all optional parameters
+              # results = PublicIdentitiesApi(api_client).get_public_identities_visible_attributes_v2(x_sail_point_experimental)
+              print("The response of PublicIdentitiesApi->get_public_identities_visible_attributes_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PublicIdentitiesApi->get_public_identities_visible_attributes_v2: %s\n" % e)
+- path: /public-identities/v2/search
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/public-identities/methods/public-identities#search-public-identities-v2
+      source: |
+        from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi
+        from sailpoint.public_identities.api_client import ApiClient
+        from sailpoint.public_identities.models.public_identities_search_request import PublicIdentitiesSearchRequest
+        from sailpoint.public_identities.models.public_identity_v2 import PublicIdentityV2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          public_identities_search_request = '''{
+          "indices" : [ "identities" ],
+          "sort" : [ "name" ],
+          "querySet" : {
+            "entries" : [ {
+              "queryType" : "TEXT",
+              "textQuery" : {
+                "fields" : [ "attributes.identityState.exact" ],
+                "terms" : [ "ACTIVE" ],
+                "matchAny" : false,
+                "contains" : false,
+                "strict" : true
+              }
+            } ],
+            "matchAny" : false
+          },
+          "queryType" : "COMPOSITE",
+          "includeNested" : false
+        }''' # PublicIdentitiesSearchRequest | 
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Search public identities
+              new_public_identities_search_request = PublicIdentitiesSearchRequest.from_json(public_identities_search_request)
+              results = PublicIdentitiesApi(api_client).search_public_identities_v2(public_identities_search_request=new_public_identities_search_request)
+              # Below is a request that includes all optional parameters
+              # results = PublicIdentitiesApi(api_client).search_public_identities_v2(new_public_identities_search_request, limit, offset, count, x_sail_point_experimental)
+              print("The response of PublicIdentitiesApi->search_public_identities_v2:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PublicIdentitiesApi->search_public_identities_v2: %s\n" % e)
 
