@@ -38,6 +38,100 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountCreationRequestApi->create_machine_account_request_v1: %s\n" % e)
+- path: /account-requests/v2/machine-account-create
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-account-creation-request/methods/machine-account-creation-request#create-machine-account-request-v2
+      source: |
+        from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
+        from sailpoint.machine_account_creation_request.api_client import ApiClient
+        from sailpoint.machine_account_creation_request.models.account_request_async_result import AccountRequestAsyncResult
+        from sailpoint.machine_account_creation_request.models.machine_account_create_request_input_v2 import MachineAccountCreateRequestInputV2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          machine_account_create_request_input_v2 = '''{
+          "sourceId" : "2c9180835d191a86015d28455b4a2329",
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlements" : [ {
+            "id" : "2c91808a7624751a01762f19d67c220e",
+            "comment" : "Needed to read the inventory share.",
+            "startDate" : "2026-11-01T00:00:00Z",
+            "removeDate" : "2027-11-01T00:00:00Z"
+          } ],
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }''' # MachineAccountCreateRequestInputV2 | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Submit Machine Account Creation Request
+              new_machine_account_create_request_input_v2 = MachineAccountCreateRequestInputV2.from_json(machine_account_create_request_input_v2)
+              results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v2(machine_account_create_request_input_v2=new_machine_account_create_request_input_v2)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountCreationRequestApi(api_client).create_machine_account_request_v2(new_machine_account_create_request_input_v2, x_sail_point_experimental)
+              print("The response of MachineAccountCreationRequestApi->create_machine_account_request_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountCreationRequestApi->create_machine_account_request_v2: %s\n" % e)
+- path: /machine-accounts/v2/machine-account-create
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-account-creation-request/methods/machine-account-creation-request#create-machine-account-v2
+      source: |
+        from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
+        from sailpoint.machine_account_creation_request.api_client import ApiClient
+        from sailpoint.machine_account_creation_request.models.account_request_async_result import AccountRequestAsyncResult
+        from sailpoint.machine_account_creation_request.models.machine_account_create_request_input_v2 import MachineAccountCreateRequestInputV2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          machine_account_create_request_input_v2 = '''{
+          "sourceId" : "2c9180835d191a86015d28455b4a2329",
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlements" : [ {
+            "id" : "2c91808a7624751a01762f19d67c220e",
+            "comment" : "Needed to read the inventory share.",
+            "startDate" : "2026-11-01T00:00:00Z",
+            "removeDate" : "2027-11-01T00:00:00Z"
+          } ],
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }''' # MachineAccountCreateRequestInputV2 | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create Machine Account V2
+              new_machine_account_create_request_input_v2 = MachineAccountCreateRequestInputV2.from_json(machine_account_create_request_input_v2)
+              results = MachineAccountCreationRequestApi(api_client).create_machine_account_v2(machine_account_create_request_input_v2=new_machine_account_create_request_input_v2)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountCreationRequestApi(api_client).create_machine_account_v2(new_machine_account_create_request_input_v2, x_sail_point_experimental)
+              print("The response of MachineAccountCreationRequestApi->create_machine_account_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountCreationRequestApi->create_machine_account_v2: %s\n" % e)
 - path: /account-requests/v1/machine-account-create/{accountRequestId}
   method: GET
   xCodeSample:
@@ -81,8 +175,8 @@
 
         with ApiClient(configuration) as api_client:
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
-          limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+          offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+          limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
           try:
               # Machine Account Create Access
               

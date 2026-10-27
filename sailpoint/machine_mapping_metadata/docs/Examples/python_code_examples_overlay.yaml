@@ -1,0 +1,53 @@
+- path: /machine-mapping-metadata/v1/target-account-attributes
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-mapping-metadata/methods/machine-mapping-metadata#get-machine-mapping-target-account-attributes-v1
+      source: |
+        from sailpoint.machine_mapping_metadata.api.machine_mapping_metadata_api import MachineMappingMetadataApi
+        from sailpoint.machine_mapping_metadata.api_client import ApiClient
+        from sailpoint.machine_mapping_metadata.models.target_attributes import TargetAttributes
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List target account attributes
+              
+              results = MachineMappingMetadataApi(api_client).get_machine_mapping_target_account_attributes_v1()
+              # Below is a request that includes all optional parameters
+              # results = MachineMappingMetadataApi(api_client).get_machine_mapping_target_account_attributes_v1(x_sail_point_experimental)
+              print("The response of MachineMappingMetadataApi->get_machine_mapping_target_account_attributes_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineMappingMetadataApi->get_machine_mapping_target_account_attributes_v1: %s\n" % e)
+- path: /machine-mapping-metadata/v1/target-identity-attributes
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-mapping-metadata/methods/machine-mapping-metadata#get-machine-mapping-target-identity-attributes-v1
+      source: |
+        from sailpoint.machine_mapping_metadata.api.machine_mapping_metadata_api import MachineMappingMetadataApi
+        from sailpoint.machine_mapping_metadata.api_client import ApiClient
+        from sailpoint.machine_mapping_metadata.models.target_attributes import TargetAttributes
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List target identity attributes
+              
+              results = MachineMappingMetadataApi(api_client).get_machine_mapping_target_identity_attributes_v1()
+              # Below is a request that includes all optional parameters
+              # results = MachineMappingMetadataApi(api_client).get_machine_mapping_target_identity_attributes_v1(x_sail_point_experimental)
+              print("The response of MachineMappingMetadataApi->get_machine_mapping_target_identity_attributes_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineMappingMetadataApi->get_machine_mapping_target_identity_attributes_v1: %s\n" % e)
+

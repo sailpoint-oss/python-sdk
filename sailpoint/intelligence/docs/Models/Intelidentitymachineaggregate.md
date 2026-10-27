@@ -17,13 +17,13 @@ Non-human identity response (type NHI). Machine identity fields are hoisted to t
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Identity Security Cloud identifier for this non-human identity. | [required]
+**id** | **str** | SailPoint Identity Security identifier for this non-human identity. | [required]
 **type** |  **Enum** [  'NHI' ] | Identity type for the matched record. | [required]
 **display_name** | **str** | Preferred display name for the non-human identity. | [optional] 
 **description** | **str** | Optional description from upstream when present. | [optional] 
 **subtype** | **str** | Sub-classification label for that NHI. | [optional] 
-**created** | **datetime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
-**modified** | **datetime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
+**created** | **datetime** | Timestamp when the identity record was created in SailPoint Identity Security. | [optional] 
+**modified** | **datetime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [optional] 
 **match_confidence** |  **Enum** [  'exact',    'partial' ] | Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches. | [optional] 
 **identity_graph** | [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **accounts** | [**Intelmachineaccountsslice**](intelmachineaccountsslice) |  | [required]
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **source** | [**Intelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
 **exists_on_source** | **str** | Upstream existsOnSource value. Wire uses uppercase strings such as TRUE or FALSE. | [optional] 
 **manually_edited** | **bool** | True when an administrator manually edited machine identity attributes. | [optional] [default to False]
-**manually_created** | **bool** | True when the machine identity was created manually in Identity Security Cloud. | [optional] [default to False]
+**manually_created** | **bool** | True when the machine identity was created manually in SailPoint Identity Security. | [optional] [default to False]
 **owners** | [**Intelmachineidentityowners**](intelmachineidentityowners) |  | [required]
 **user_entitlements** | [**[]Intelmachineuserentitlement**](intelmachineuserentitlement) | Entitlements associated with the machine identity from upstream. | [optional] 
 **attributes** | **map[string]object** | Connector or runtime metadata; empty object when absent upstream. | [required]

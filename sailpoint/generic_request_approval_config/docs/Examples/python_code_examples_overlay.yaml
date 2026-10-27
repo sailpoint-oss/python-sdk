@@ -1,0 +1,59 @@
+- path: /generic-request-approval-config/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic-request-approval-config/methods/generic-request-approval-config#get-generic-request-approval-config-v1
+      source: |
+        from sailpoint.generic_request_approval_config.api.generic_request_approval_config_api import GenericRequestApprovalConfigApi
+        from sailpoint.generic_request_approval_config.api_client import ApiClient
+        from sailpoint.generic_request_approval_config.models.generic_request_approval_config import GenericRequestApprovalConfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          target_type = 'RESOURCE' # str | The kind of scope to read. # str | The kind of scope to read.
+          target_id = 'aws:bedrock-agent-alias-version' # str | The scope target. Required for **RESOURCE** (the source resource ID) and **SUBTYPE** (the subtype ID). For **SOURCE** the target is the `sourceId`, and for **GLOBAL** it is the tenant; when you supply it for those target types, it must match that value or the request returns `400`. (optional) # str | The scope target. Required for **RESOURCE** (the source resource ID) and **SUBTYPE** (the subtype ID). For **SOURCE** the target is the `sourceId`, and for **GLOBAL** it is the tenant; when you supply it for those target types, it must match that value or the request returns `400`. (optional)
+          source_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The source that owns the scope. Required for **RESOURCE**, **SUBTYPE**, and **SOURCE**. Must be omitted for **GLOBAL**. (optional) # str | The source that owns the scope. Required for **RESOURCE**, **SUBTYPE**, and **SOURCE**. Must be omitted for **GLOBAL**. (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get generic request approval config
+              
+              results = GenericRequestApprovalConfigApi(api_client).get_generic_request_approval_config_v1(target_type=target_type)
+              # Below is a request that includes all optional parameters
+              # results = GenericRequestApprovalConfigApi(api_client).get_generic_request_approval_config_v1(target_type, target_id, source_id, x_sail_point_experimental)
+              print("The response of GenericRequestApprovalConfigApi->get_generic_request_approval_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericRequestApprovalConfigApi->get_generic_request_approval_config_v1: %s\n" % e)
+- path: /generic-request-approval-config/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic-request-approval-config/methods/generic-request-approval-config#update-generic-request-approval-config-v1
+      source: |
+        from sailpoint.generic_request_approval_config.api.generic_request_approval_config_api import GenericRequestApprovalConfigApi
+        from sailpoint.generic_request_approval_config.api_client import ApiClient
+        from sailpoint.generic_request_approval_config.models.generic_request_approval_config import GenericRequestApprovalConfig
+        from sailpoint.generic_request_approval_config.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '0f2c7a9e-3b4d-4e5f-8a6b-7c8d9e0f1a2b' # str | Approval configuration ID. # str | Approval configuration ID.
+          json_patch_operation = '''[{"op":"replace","path":"/approvalConfig/ACTIVATE","value":{"scheme":"APPROVAL","approvers":"machineIdentityPrimaryOwner,workgroup:8d3e0094-8a5e-4c6f-9a0b-2e5a1c7d4f10","comments":"REJECTION"}}]''' # List[JsonPatchOperation] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Patch generic request approval config
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = GenericRequestApprovalConfigApi(api_client).update_generic_request_approval_config_v1(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = GenericRequestApprovalConfigApi(api_client).update_generic_request_approval_config_v1(id, new_json_patch_operation, x_sail_point_experimental)
+              print("The response of GenericRequestApprovalConfigApi->update_generic_request_approval_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericRequestApprovalConfigApi->update_generic_request_approval_config_v1: %s\n" % e)
+

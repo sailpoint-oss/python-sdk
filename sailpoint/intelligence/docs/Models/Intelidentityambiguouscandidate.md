@@ -17,7 +17,7 @@ One disambiguation hint when multiple identities matched the same filter.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Identity Security Cloud identifier for a matching candidate. | [required]
+**id** | **str** | SailPoint Identity Security identifier for a matching candidate. | [required]
 **display_name** | **str** | Human-facing label when available; omitted when empty upstream. | [optional] 
 }
 

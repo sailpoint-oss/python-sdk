@@ -50,6 +50,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "AuthUsersApi": (("sailpoint.auth_users.api.auth_users_api", "AuthUsersApi"),),
     "BrandingApi": (("sailpoint.branding.api.branding_api", "BrandingApi"),),
     "BusinessApplicationsApi": (("sailpoint.business_applications.api.business_applications_api", "BusinessApplicationsApi"),),
+    "CapabilitiesApi": (("sailpoint.capabilities.api.capabilities_api", "CapabilitiesApi"),),
     "CertificationCampaignFiltersApi": (("sailpoint.certification_campaign_filters.api.certification_campaign_filters_api", "CertificationCampaignFiltersApi"),),
     "CertificationCampaignsApi": (("sailpoint.certification_campaigns.api.certification_campaigns_api", "CertificationCampaignsApi"),),
     "CertificationSummariesApi": (("sailpoint.certification_summaries.api.certification_summaries_api", "CertificationSummariesApi"),),
@@ -59,15 +60,18 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "ConnectorCustomizersApi": (("sailpoint.connector_customizers.api.connector_customizers_api", "ConnectorCustomizersApi"),),
     "ConnectorRuleManagementApi": (("sailpoint.connector_rule_management.api.connector_rule_management_api", "ConnectorRuleManagementApi"),),
     "ConnectorsApi": (("sailpoint.connectors.api.connectors_api", "ConnectorsApi"),),
+    "CredentialsApi": (("sailpoint.credentials.api.credentials_api", "CredentialsApi"),),
     "CustomFormsApi": (("sailpoint.custom_forms.api.custom_forms_api", "CustomFormsApi"),),
     "CustomPasswordInstructionsApi": (("sailpoint.custom_password_instructions.api.custom_password_instructions_api", "CustomPasswordInstructionsApi"),),
     "CustomUserLevelsApi": (("sailpoint.custom_user_levels.api.custom_user_levels_api", "CustomUserLevelsApi"),),
     "DataAccessSecurityApi": (("sailpoint.data_access_security.api.data_access_security_api", "DataAccessSecurityApi"),),
     "DataSegmentationApi": (("sailpoint.data_segmentation.api.data_segmentation_api", "DataSegmentationApi"),),
     "DeclassifySourceApi": (("sailpoint.declassify_source.api.declassify_source_api", "DeclassifySourceApi"),),
+    "DevicesApi": (("sailpoint.devices.api.devices_api", "DevicesApi"),),
     "DimensionsApi": (("sailpoint.dimensions.api.dimensions_api", "DimensionsApi"),),
     "EntitlementConnectionsApi": (("sailpoint.entitlement_connections.api.entitlement_connections_api", "EntitlementConnectionsApi"),),
     "EntitlementsApi": (("sailpoint.entitlements.api.entitlements_api", "EntitlementsApi"),),
+    "GenericRequestApprovalConfigApi": (("sailpoint.generic_request_approval_config.api.generic_request_approval_config_api", "GenericRequestApprovalConfigApi"),),
     "GlobalTenantSecuritySettingsApi": (("sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api", "GlobalTenantSecuritySettingsApi"),),
     "NextGenerationCertificationCampaignsApi": (("sailpoint.gov_certification.api.next_generation_certification_campaigns_api", "NextGenerationCertificationCampaignsApi"),),
     "GovernanceGroupsApi": (("sailpoint.governance_groups.api.governance_groups_api", "GovernanceGroupsApi"),),
@@ -92,11 +96,14 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "MachineAccountClassifyApi": (("sailpoint.machine_account_classify.api.machine_account_classify_api", "MachineAccountClassifyApi"),),
     "MachineAccountCreationRequestApi": (("sailpoint.machine_account_creation_request.api.machine_account_creation_request_api", "MachineAccountCreationRequestApi"),),
     "MachineAccountMappingsApi": (("sailpoint.machine_account_mappings.api.machine_account_mappings_api", "MachineAccountMappingsApi"),),
+    "MachineAccountRecommendationApi": (("sailpoint.machine_account_recommendation.api.machine_account_recommendation_api", "MachineAccountRecommendationApi"),),
     "MachineAccountSubtypesApi": (("sailpoint.machine_account_subtypes.api.machine_account_subtypes_api", "MachineAccountSubtypesApi"),),
     "MachineAccountsApi": (("sailpoint.machine_accounts.api.machine_accounts_api", "MachineAccountsApi"),),
     "MachineClassificationConfigApi": (("sailpoint.machine_classification_config.api.machine_classification_config_api", "MachineClassificationConfigApi"),),
     "MachineIdentitiesApi": (("sailpoint.machine_identities.api.machine_identities_api", "MachineIdentitiesApi"),),
     "MachineIdentityLifecycleActionsApi": (("sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api", "MachineIdentityLifecycleActionsApi"),),
+    "MachineIdentityMetadataApi": (("sailpoint.machine_identity_metadata.api.machine_identity_metadata_api", "MachineIdentityMetadataApi"),),
+    "MachineMappingMetadataApi": (("sailpoint.machine_mapping_metadata.api.machine_mapping_metadata_api", "MachineMappingMetadataApi"),),
     "ManagedClientsApi": (("sailpoint.managed_clients.api.managed_clients_api", "ManagedClientsApi"),),
     "ManagedClusterTypesApi": (("sailpoint.managed_cluster_types.api.managed_cluster_types_api", "ManagedClusterTypesApi"),),
     "ManagedClustersApi": (("sailpoint.managed_clusters.api.managed_clusters_api", "ManagedClustersApi"),),
@@ -209,6 +216,7 @@ __all__ = [
     "AuthUsersApi",
     "BrandingApi",
     "BusinessApplicationsApi",
+    "CapabilitiesApi",
     "CertificationCampaignFiltersApi",
     "CertificationCampaignsApi",
     "CertificationSummariesApi",
@@ -218,15 +226,18 @@ __all__ = [
     "ConnectorCustomizersApi",
     "ConnectorRuleManagementApi",
     "ConnectorsApi",
+    "CredentialsApi",
     "CustomFormsApi",
     "CustomPasswordInstructionsApi",
     "CustomUserLevelsApi",
     "DataAccessSecurityApi",
     "DataSegmentationApi",
     "DeclassifySourceApi",
+    "DevicesApi",
     "DimensionsApi",
     "EntitlementConnectionsApi",
     "EntitlementsApi",
+    "GenericRequestApprovalConfigApi",
     "GlobalTenantSecuritySettingsApi",
     "NextGenerationCertificationCampaignsApi",
     "GovernanceGroupsApi",
@@ -251,11 +262,14 @@ __all__ = [
     "MachineAccountClassifyApi",
     "MachineAccountCreationRequestApi",
     "MachineAccountMappingsApi",
+    "MachineAccountRecommendationApi",
     "MachineAccountSubtypesApi",
     "MachineAccountsApi",
     "MachineClassificationConfigApi",
     "MachineIdentitiesApi",
     "MachineIdentityLifecycleActionsApi",
+    "MachineIdentityMetadataApi",
+    "MachineMappingMetadataApi",
     "ManagedClientsApi",
     "ManagedClusterTypesApi",
     "ManagedClustersApi",
@@ -396,6 +410,7 @@ if TYPE_CHECKING:
     from sailpoint.auth_users.api.auth_users_api import AuthUsersApi as _auth_users__AuthUsersApi
     from sailpoint.branding.api.branding_api import BrandingApi as _branding__BrandingApi
     from sailpoint.business_applications.api.business_applications_api import BusinessApplicationsApi as _business_applications__BusinessApplicationsApi
+    from sailpoint.capabilities.api.capabilities_api import CapabilitiesApi as _capabilities__CapabilitiesApi
     from sailpoint.certification_campaign_filters.api.certification_campaign_filters_api import CertificationCampaignFiltersApi as _certification_campaign_filters__CertificationCampaignFiltersApi
     from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi as _certification_campaigns__CertificationCampaignsApi
     from sailpoint.certification_summaries.api.certification_summaries_api import CertificationSummariesApi as _certification_summaries__CertificationSummariesApi
@@ -405,15 +420,18 @@ if TYPE_CHECKING:
     from sailpoint.connector_customizers.api.connector_customizers_api import ConnectorCustomizersApi as _connector_customizers__ConnectorCustomizersApi
     from sailpoint.connector_rule_management.api.connector_rule_management_api import ConnectorRuleManagementApi as _connector_rule_management__ConnectorRuleManagementApi
     from sailpoint.connectors.api.connectors_api import ConnectorsApi as _connectors__ConnectorsApi
+    from sailpoint.credentials.api.credentials_api import CredentialsApi as _credentials__CredentialsApi
     from sailpoint.custom_forms.api.custom_forms_api import CustomFormsApi as _custom_forms__CustomFormsApi
     from sailpoint.custom_password_instructions.api.custom_password_instructions_api import CustomPasswordInstructionsApi as _custom_password_instructions__CustomPasswordInstructionsApi
     from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi as _custom_user_levels__CustomUserLevelsApi
     from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi as _data_access_security__DataAccessSecurityApi
     from sailpoint.data_segmentation.api.data_segmentation_api import DataSegmentationApi as _data_segmentation__DataSegmentationApi
     from sailpoint.declassify_source.api.declassify_source_api import DeclassifySourceApi as _declassify_source__DeclassifySourceApi
+    from sailpoint.devices.api.devices_api import DevicesApi as _devices__DevicesApi
     from sailpoint.dimensions.api.dimensions_api import DimensionsApi as _dimensions__DimensionsApi
     from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi as _entitlement_connections__EntitlementConnectionsApi
     from sailpoint.entitlements.api.entitlements_api import EntitlementsApi as _entitlements__EntitlementsApi
+    from sailpoint.generic_request_approval_config.api.generic_request_approval_config_api import GenericRequestApprovalConfigApi as _generic_request_approval_config__GenericRequestApprovalConfigApi
     from sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi as _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi as _gov_certification__NextGenerationCertificationCampaignsApi
     from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi as _governance_groups__GovernanceGroupsApi
@@ -438,11 +456,14 @@ if TYPE_CHECKING:
     from sailpoint.machine_account_classify.api.machine_account_classify_api import MachineAccountClassifyApi as _machine_account_classify__MachineAccountClassifyApi
     from sailpoint.machine_account_creation_request.api.machine_account_creation_request_api import MachineAccountCreationRequestApi as _machine_account_creation_request__MachineAccountCreationRequestApi
     from sailpoint.machine_account_mappings.api.machine_account_mappings_api import MachineAccountMappingsApi as _machine_account_mappings__MachineAccountMappingsApi
+    from sailpoint.machine_account_recommendation.api.machine_account_recommendation_api import MachineAccountRecommendationApi as _machine_account_recommendation__MachineAccountRecommendationApi
     from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi as _machine_account_subtypes__MachineAccountSubtypesApi
     from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi as _machine_accounts__MachineAccountsApi
     from sailpoint.machine_classification_config.api.machine_classification_config_api import MachineClassificationConfigApi as _machine_classification_config__MachineClassificationConfigApi
     from sailpoint.machine_identities.api.machine_identities_api import MachineIdentitiesApi as _machine_identities__MachineIdentitiesApi
     from sailpoint.machine_identities_lifecycle_actions.api.machine_identity_lifecycle_actions_api import MachineIdentityLifecycleActionsApi as _machine_identities_lifecycle_actions__MachineIdentityLifecycleActionsApi
+    from sailpoint.machine_identity_metadata.api.machine_identity_metadata_api import MachineIdentityMetadataApi as _machine_identity_metadata__MachineIdentityMetadataApi
+    from sailpoint.machine_mapping_metadata.api.machine_mapping_metadata_api import MachineMappingMetadataApi as _machine_mapping_metadata__MachineMappingMetadataApi
     from sailpoint.managed_clients.api.managed_clients_api import ManagedClientsApi as _managed_clients__ManagedClientsApi
     from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi as _managed_cluster_types__ManagedClusterTypesApi
     from sailpoint.managed_clusters.api.managed_clusters_api import ManagedClustersApi as _managed_clusters__ManagedClustersApi
@@ -555,6 +576,7 @@ if TYPE_CHECKING:
     AuthUsersApi = _auth_users__AuthUsersApi
     BrandingApi = _branding__BrandingApi
     BusinessApplicationsApi = _business_applications__BusinessApplicationsApi
+    CapabilitiesApi = _capabilities__CapabilitiesApi
     CertificationCampaignFiltersApi = _certification_campaign_filters__CertificationCampaignFiltersApi
     CertificationCampaignsApi = _certification_campaigns__CertificationCampaignsApi
     CertificationSummariesApi = _certification_summaries__CertificationSummariesApi
@@ -564,15 +586,18 @@ if TYPE_CHECKING:
     ConnectorCustomizersApi = _connector_customizers__ConnectorCustomizersApi
     ConnectorRuleManagementApi = _connector_rule_management__ConnectorRuleManagementApi
     ConnectorsApi = _connectors__ConnectorsApi
+    CredentialsApi = _credentials__CredentialsApi
     CustomFormsApi = _custom_forms__CustomFormsApi
     CustomPasswordInstructionsApi = _custom_password_instructions__CustomPasswordInstructionsApi
     CustomUserLevelsApi = _custom_user_levels__CustomUserLevelsApi
     DataAccessSecurityApi = _data_access_security__DataAccessSecurityApi
     DataSegmentationApi = _data_segmentation__DataSegmentationApi
     DeclassifySourceApi = _declassify_source__DeclassifySourceApi
+    DevicesApi = _devices__DevicesApi
     DimensionsApi = _dimensions__DimensionsApi
     EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
     EntitlementsApi = _entitlements__EntitlementsApi
+    GenericRequestApprovalConfigApi = _generic_request_approval_config__GenericRequestApprovalConfigApi
     GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
     GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
@@ -597,11 +622,14 @@ if TYPE_CHECKING:
     MachineAccountClassifyApi = _machine_account_classify__MachineAccountClassifyApi
     MachineAccountCreationRequestApi = _machine_account_creation_request__MachineAccountCreationRequestApi
     MachineAccountMappingsApi = _machine_account_mappings__MachineAccountMappingsApi
+    MachineAccountRecommendationApi = _machine_account_recommendation__MachineAccountRecommendationApi
     MachineAccountSubtypesApi = _machine_account_subtypes__MachineAccountSubtypesApi
     MachineAccountsApi = _machine_accounts__MachineAccountsApi
     MachineClassificationConfigApi = _machine_classification_config__MachineClassificationConfigApi
     MachineIdentitiesApi = _machine_identities__MachineIdentitiesApi
     MachineIdentityLifecycleActionsApi = _machine_identities_lifecycle_actions__MachineIdentityLifecycleActionsApi
+    MachineIdentityMetadataApi = _machine_identity_metadata__MachineIdentityMetadataApi
+    MachineMappingMetadataApi = _machine_mapping_metadata__MachineMappingMetadataApi
     ManagedClientsApi = _managed_clients__ManagedClientsApi
     ManagedClusterTypesApi = _managed_cluster_types__ManagedClusterTypesApi
     ManagedClustersApi = _managed_clusters__ManagedClustersApi
@@ -709,6 +737,7 @@ if TYPE_CHECKING:
         AuthUsersApi = _auth_users__AuthUsersApi
         BrandingApi = _branding__BrandingApi
         BusinessApplicationsApi = _business_applications__BusinessApplicationsApi
+        CapabilitiesApi = _capabilities__CapabilitiesApi
         CertificationCampaignFiltersApi = _certification_campaign_filters__CertificationCampaignFiltersApi
         CertificationCampaignsApi = _certification_campaigns__CertificationCampaignsApi
         CertificationSummariesApi = _certification_summaries__CertificationSummariesApi
@@ -718,15 +747,18 @@ if TYPE_CHECKING:
         ConnectorCustomizersApi = _connector_customizers__ConnectorCustomizersApi
         ConnectorRuleManagementApi = _connector_rule_management__ConnectorRuleManagementApi
         ConnectorsApi = _connectors__ConnectorsApi
+        CredentialsApi = _credentials__CredentialsApi
         CustomFormsApi = _custom_forms__CustomFormsApi
         CustomPasswordInstructionsApi = _custom_password_instructions__CustomPasswordInstructionsApi
         CustomUserLevelsApi = _custom_user_levels__CustomUserLevelsApi
         DataAccessSecurityApi = _data_access_security__DataAccessSecurityApi
         DataSegmentationApi = _data_segmentation__DataSegmentationApi
         DeclassifySourceApi = _declassify_source__DeclassifySourceApi
+        DevicesApi = _devices__DevicesApi
         DimensionsApi = _dimensions__DimensionsApi
         EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
         EntitlementsApi = _entitlements__EntitlementsApi
+        GenericRequestApprovalConfigApi = _generic_request_approval_config__GenericRequestApprovalConfigApi
         GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
         NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
         GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
@@ -751,11 +783,14 @@ if TYPE_CHECKING:
         MachineAccountClassifyApi = _machine_account_classify__MachineAccountClassifyApi
         MachineAccountCreationRequestApi = _machine_account_creation_request__MachineAccountCreationRequestApi
         MachineAccountMappingsApi = _machine_account_mappings__MachineAccountMappingsApi
+        MachineAccountRecommendationApi = _machine_account_recommendation__MachineAccountRecommendationApi
         MachineAccountSubtypesApi = _machine_account_subtypes__MachineAccountSubtypesApi
         MachineAccountsApi = _machine_accounts__MachineAccountsApi
         MachineClassificationConfigApi = _machine_classification_config__MachineClassificationConfigApi
         MachineIdentitiesApi = _machine_identities__MachineIdentitiesApi
         MachineIdentityLifecycleActionsApi = _machine_identities_lifecycle_actions__MachineIdentityLifecycleActionsApi
+        MachineIdentityMetadataApi = _machine_identity_metadata__MachineIdentityMetadataApi
+        MachineMappingMetadataApi = _machine_mapping_metadata__MachineMappingMetadataApi
         ManagedClientsApi = _managed_clients__ManagedClientsApi
         ManagedClusterTypesApi = _managed_cluster_types__ManagedClusterTypesApi
         ManagedClustersApi = _managed_clusters__ManagedClustersApi

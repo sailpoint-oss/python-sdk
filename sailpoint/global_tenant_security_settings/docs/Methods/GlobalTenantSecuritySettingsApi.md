@@ -12,7 +12,7 @@ tags: ['SDK', 'Software Development Kit', 'Global_Tenant_Security_Settings', 'Gl
 # sailpoint.global_tenant_security_settings.GlobalTenantSecuritySettingsApi
   Use this API to implement and customize global tenant security settings.
 With this functionality in place, administrators can manage the global security settings that a tenant/org has.
-This API can be used to configure the networks and Geographies allowed to access Identity Security Cloud URLs.
+This API can be used to configure the networks and Geographies allowed to access SailPoint Identity Security URLs.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 

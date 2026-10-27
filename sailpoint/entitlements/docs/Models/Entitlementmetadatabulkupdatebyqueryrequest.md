@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Entitlementmetadatabulkupdatebyqueryr
 
 # Entitlementmetadatabulkupdatebyqueryrequest
 
-Request to bulk update Access Model Metadata on every entitlement matching a search query. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
+Request to bulk update Access Model Metadata on every entitlement matching a search query. Adding or replacing custom metadata requires a suite license.  For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1).
 
 ## Properties
 

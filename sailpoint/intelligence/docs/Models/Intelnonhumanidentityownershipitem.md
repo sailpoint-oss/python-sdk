@@ -17,7 +17,7 @@ Owned non-human identity summary row (aggregate slices and child route).
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Identity Security Cloud identifier for the owned non-human identity. | [required]
+**id** | **str** | SailPoint Identity Security identifier for the owned non-human identity. | [required]
 **display_name** | **str** | Preferred display name for the owned non-human identity. | [required]
 **source** | [**Intelmachinesourcewire**](intelmachinesourcewire) | Source of the owned non-human identity. | [optional] 
 }

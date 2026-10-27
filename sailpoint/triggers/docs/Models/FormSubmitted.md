@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'FormSubmitted', 'FormSubmitted']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **submitted_at** | **datetime** | Date and time when the user submitted the form. | [required]
-**tenant_id** | **str** | ISC tenant's unique identifier. | [required]
+**tenant_id** | **str** | SailPoint Identity Security tenant's unique identifier. | [required]
 **form_instance_id** | **str** | Form instance's unique identifier. | [required]
 **form_definition_id** | **str** | Form definition's unique identifier. | [required]
 **name** | **str** | Form's name. | [required]

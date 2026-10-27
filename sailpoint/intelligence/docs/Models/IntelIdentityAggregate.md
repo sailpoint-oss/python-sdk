@@ -17,17 +17,17 @@ Human identity response (type Human). Identity attributes are hoisted to the top
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Identity Security Cloud identifier for this identity. | [required]
+**id** | **str** | SailPoint Identity Security identifier for this identity. | [required]
 **type** |  **Enum** [  'Human' ] | Identity type for the matched record. | [required]
 **display_name** | **str** | Preferred display name for the identity across administrative experiences. | [optional] 
 **description** | **str** | Optional free-text description assigned to the identity profile when present. | [optional] 
 **subtype** |  **Enum** [  'Employee',    'Non Employee',    'Cannot Determine' ] | NERM classification for the identity. | [optional] 
 **attributes** | **map[string]object** | Arbitrary SCIM-style attribute bag returned for the identity context view. | [optional] 
-**created** | **datetime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
-**modified** | **datetime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
+**created** | **datetime** | Timestamp when the identity record was created in SailPoint Identity Security. | [optional] 
+**modified** | **datetime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [optional] 
 **alias** | **str** | Primary login or account alias for the identity. | [optional] 
 **email** | **str** | Primary business email address for the identity. | [optional] 
-**identity_status** | **str** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
+**identity_status** | **str** | Current identity lifecycle status label from SailPoint Identity Security. | [optional] 
 **is_manager** | **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to False]
 **identity_graph** | [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **non_human_identity_ownership** | [**Intelnonhumanidentityownership**](intelnonhumanidentityownership) | Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render.  | [optional] 

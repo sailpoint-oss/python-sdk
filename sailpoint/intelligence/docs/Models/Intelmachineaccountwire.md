@@ -17,7 +17,7 @@ Machine account row on the non-human identity aggregate accounts.items list. Eve
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Unique account identifier in Identity Security Cloud. | [required]
+**id** | **str** | Unique account identifier in SailPoint Identity Security. | [required]
 **name** | **str** | Account name on the correlated source. | [required]
 **native_identity** | **str** | Native identifier on the source system. | [required]
 **source** | [**Intelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine account when present upstream. | [required]

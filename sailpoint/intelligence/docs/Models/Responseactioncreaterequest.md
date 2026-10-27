@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action_type** |  **Enum** [  'DISABLE_IDENTITY',    'DISABLE_ACCOUNT' ] | Which response action to run. | [required]
 **identity_type** |  **Enum** [  'HUMAN' ] | Subject type of the response action. v1 supports HUMAN. | [required]
-**identity_id** | **str** | ISC identity id, resolved by the caller from a prior intelligence query. | [required]
+**identity_id** | **str** | SailPoint Identity Security identity id, resolved by the caller from a prior intelligence query. | [required]
 **account_ids** | **[]str** | One or more account ids. Required for DISABLE_ACCOUNT (1-50 after trim/dedupe); must be omitted for DISABLE_IDENTITY. A single account is sent as a one-element array.  | [optional] 
 **context** | [**Responseactioncontext**](responseactioncontext) |  | [required]
 }
