@@ -35,11 +35,11 @@ class TestManualDiscoverApplications(unittest.TestCase):
         model = ManualDiscoverApplications()
         if include_optional:
             return ManualDiscoverApplications(
-                file = '[B@1968a49c'
+                file = '[B@11963225'
             )
         else:
             return ManualDiscoverApplications(
-                file = '[B@1968a49c',
+                file = '[B@11963225',
         )
         """
 
