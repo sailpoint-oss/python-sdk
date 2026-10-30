@@ -5677,7 +5677,7 @@ class CertificationCampaignsApi:
     ) -> object:
         """Activate a campaign
 
-        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.  :::note  A STAGED campaign can be activated only when its `deadline` is in the future. Activating with a deadline of today or in the past returns a 400 error. List and get campaign APIs still report `STAGED` after the deadline; set a future deadline with `PATCH /campaigns/v1/{id}` before activating.  ::: 
 
         :param id: Campaign ID. (required)
         :type id: str
@@ -5754,7 +5754,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """Activate a campaign
 
-        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.  :::note  A STAGED campaign can be activated only when its `deadline` is in the future. Activating with a deadline of today or in the past returns a 400 error. List and get campaign APIs still report `STAGED` after the deadline; set a future deadline with `PATCH /campaigns/v1/{id}` before activating.  ::: 
 
         :param id: Campaign ID. (required)
         :type id: str
@@ -5831,7 +5831,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Activate a campaign
 
-        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.  :::note  A STAGED campaign can be activated only when its `deadline` is in the future. Activating with a deadline of today or in the past returns a 400 error. List and get campaign APIs still report `STAGED` after the deadline; set a future deadline with `PATCH /campaigns/v1/{id}` before activating.  ::: 
 
         :param id: Campaign ID. (required)
         :type id: str
