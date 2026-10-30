@@ -21,6 +21,30 @@ The Python SDK allows you to use Python to interact with the SailPoint APIs and 
 
 To get started with the Python SDK and learn about its various functionalities, refer to the [documentation](https://developer.sailpoint.com/docs/tools/sdk/python) on <https://developer.sailpoint.com>.
 
+## Calling any API with the generic client
+
+The generic client calls any SailPoint versioned API by its path, including APIs
+that do not have a resource-specific client or documentation yet. The path
+includes the API version, for example `accounts/v1`. The client uses the same
+configuration, authentication and retries as the other clients.
+
+- Each path segment is URL-encoded. Pass the segments unencoded.
+- Anything after a `?` in the path is sent as query parameters.
+- A PATCH body is a JSON Patch list, sent as `application/json-patch+json`.
+
+```python
+from sailpoint import ApiClient, Configuration, GenericApi
+
+with ApiClient(Configuration()) as api_client:
+    api = GenericApi(api_client)
+
+    accounts = api.generic_get(path="accounts/v1", limit=10, filters='sourceId eq "2c91808a"')
+    api.generic_patch(
+        path="transforms/v1/2c91808a",
+        request_body=[{"op": "replace", "path": "/attributes/input", "value": "lower"}],
+    )
+```
+
 ## Contributing
 
 The SailPoint Developer Relations Team is always actively working to improve the SailPoint Python SDK to make it as useful as possible to the SailPoint Developer Community.
