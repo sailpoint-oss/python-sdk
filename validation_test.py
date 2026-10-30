@@ -15,7 +15,7 @@ try:
         ApiClient,
         AccountsApi, SearchApi, TransformsApi,
         ConnectorsApi, SourcesApi, IdentityProfilesApi,
-        IdentitiesApi, TaskManagementApi,
+        IdentitiesApi, TaskManagementApi, GenericApi,
     )
     HAS_V1 = True
 except ImportError:
@@ -165,6 +165,24 @@ class TestPythonSDKV1(unittest.TestCase):
         result = SourcesApi(self.api_client).list_sources_v1_with_http_info()
         self.assertIsNotNone(result.data)
         self.assertEqual(200, result.status_code)
+
+    # The generic client calls any versioned endpoint by path, with the same
+    # configuration and token as the resource clients.
+    def test_generic_get_v1(self):
+        result = GenericApi(self.api_client).generic_get_with_http_info(path="sources/v1", limit=10)
+        self.assertEqual(200, result.status_code)
+        self.assertIsInstance(result.data, list)
+        self.assertLessEqual(len(result.data), 10)
+
+    # access-request-config/v2 is experimental, so this also covers the
+    # experimental opt-in.
+    def test_generic_get_v2(self):
+        self.configuration.experimental = True
+        result = GenericApi(self.api_client).generic_get_with_http_info(
+            path="access-request-config/v2", x_sail_point_experimental="true"
+        )
+        self.assertEqual(200, result.status_code)
+        self.assertIsInstance(result.data, dict)
 
     def test_list_identity_profiles_v1(self):
         result = Paginator.paginate(

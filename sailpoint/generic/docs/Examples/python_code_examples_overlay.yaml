@@ -1,0 +1,139 @@
+- path: /{path}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic/methods/generic#generic-delete
+      source: |
+        from sailpoint.generic.api.generic_api import GenericApi
+        from sailpoint.generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          path = 'accounts/v1' # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          x_sail_point_experimental = 'true' # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          try:
+              # Generic DELETE request
+              
+              results = GenericApi(api_client).generic_delete(path=path)
+              # Below is a request that includes all optional parameters
+              # results = GenericApi(api_client).generic_delete(path, x_sail_point_experimental)
+              print("The response of GenericApi->generic_delete:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericApi->generic_delete: %s\n" % e)
+- path: /{path}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic/methods/generic#generic-get
+      source: |
+        from sailpoint.generic.api.generic_api import GenericApi
+        from sailpoint.generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          path = 'accounts/v1' # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          limit = 250 # int | Max number of results to return. See [Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters) for more information. (optional) # int | Max number of results to return. See [Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters) for more information. (optional)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional)
+          count = true # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional)
+          filters = 'name eq \"Example\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#filtering-results). (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#filtering-results). (optional)
+          sorters = 'name,-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#sorting-results). (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard-collection-parameters#sorting-results). (optional)
+          x_sail_point_experimental = 'true' # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          try:
+              # Generic GET request
+              
+              results = GenericApi(api_client).generic_get(path=path)
+              # Below is a request that includes all optional parameters
+              # results = GenericApi(api_client).generic_get(path, limit, offset, count, filters, sorters, x_sail_point_experimental)
+              print("The response of GenericApi->generic_get:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericApi->generic_get: %s\n" % e)
+- path: /{path}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic/methods/generic#generic-patch
+      source: |
+        from sailpoint.generic.api.generic_api import GenericApi
+        from sailpoint.generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          path = 'accounts/v1' # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          x_sail_point_experimental = 'true' # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          request_body = None # object |  (optional) # object |  (optional)
+          try:
+              # Generic PATCH request
+              
+              results = GenericApi(api_client).generic_patch(path=path)
+              # Below is a request that includes all optional parameters
+              # results = GenericApi(api_client).generic_patch(path, x_sail_point_experimental, new_request_body)
+              print("The response of GenericApi->generic_patch:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericApi->generic_patch: %s\n" % e)
+- path: /{path}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic/methods/generic#generic-post
+      source: |
+        from sailpoint.generic.api.generic_api import GenericApi
+        from sailpoint.generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          path = 'accounts/v1' # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          x_sail_point_experimental = 'true' # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          request_body = None # object |  (optional) # object |  (optional)
+          try:
+              # Generic POST request
+              
+              results = GenericApi(api_client).generic_post(path=path)
+              # Below is a request that includes all optional parameters
+              # results = GenericApi(api_client).generic_post(path, x_sail_point_experimental, new_request_body)
+              print("The response of GenericApi->generic_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericApi->generic_post: %s\n" % e)
+- path: /{path}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/generic/methods/generic#generic-put
+      source: |
+        from sailpoint.generic.api.generic_api import GenericApi
+        from sailpoint.generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          path = 'accounts/v1' # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`. # str | API path relative to the tenant base URL, including the API version, for example `accounts/v1`, `sources/v1/2c9180835d2e5168015d32f890ca1581` or `sources/v2/2c9180835d2e5168015d32f890ca1581/provisioning-policies`. Use whichever version the endpoint has. A leading slash is optional. Slashes separate path segments, and the SDK URL-encodes each segment, so pass the segments unencoded. Anything after a `?` is sent as query parameters, for example `accounts/v1?detailLevel=SLIM`.
+          x_sail_point_experimental = 'true' # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional) # str | Set this header to `true` to call an experimental API. The SDK configuration must also enable experimental APIs. (optional)
+          request_body = None # object |  (optional) # object |  (optional)
+          try:
+              # Generic PUT request
+              
+              results = GenericApi(api_client).generic_put(path=path)
+              # Below is a request that includes all optional parameters
+              # results = GenericApi(api_client).generic_put(path, x_sail_point_experimental, new_request_body)
+              print("The response of GenericApi->generic_put:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GenericApi->generic_put: %s\n" % e)
+
