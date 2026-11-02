@@ -14,7 +14,7 @@ long_description = (this_directory / "README.md").read_text()
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "sailpoint"
-VERSION = "2.1.75"
+VERSION = "2.1.76"
 PYTHON_REQUIRES = ">=3.8"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 3.0.0", "python-dateutil", "pydantic >= 2",
@@ -35,7 +35,7 @@ setup(
     license="MIT",
     long_description_content_type='text/markdown',
     long_description=long_description,
-    package_data={"sailpoint": ["py.typed"]},
+    package_data={"sailpoint": ["py.typed", "sailpoint-scopes.json"]},
     classifiers=[
         "Development Status :: 4 - Beta",
 
