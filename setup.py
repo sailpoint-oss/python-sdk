@@ -35,7 +35,7 @@ setup(
     license="MIT",
     long_description_content_type='text/markdown',
     long_description=long_description,
-    package_data={"sailpoint": ["py.typed"]},
+    package_data={"sailpoint": ["py.typed", "sailpoint-scopes.json"]},
     classifiers=[
         "Development Status :: 4 - Beta",
 

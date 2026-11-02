@@ -36,6 +36,7 @@
 const fs   = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
+const scopeManifest = require("./emit-scope-manifest");
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -1085,6 +1086,9 @@ function main() {
     console.log(`  cleaned ${staleDirs.length} director${staleDirs.length === 1 ? "y" : "ies"}, ${looseFiles.length} loose file(s)\n`);
   }
 
+  // operationId → scope data, written to sailpoint-scopes.json after the loop
+  const scopeOperations = {};
+
   const results = {
     total:   partitions.length,
     success: [],
@@ -1152,9 +1156,25 @@ function main() {
       continue;
     }
 
+    // --- Scope data for `sail scopes analyze` ---
+    try {
+      Object.assign(scopeOperations, scopeManifest.collectOperations(bundle.outputSpec, partition, scopeManifest.pythonName));
+    } catch (err) {
+      console.warn(`  ! could not read scopes: ${err.message}`);
+    }
+
     results.success.push(partition);
     console.log(`  ✓ ${partition} → sailpoint/${gen.packageDir}/`);
   }
+
+  // Scope manifest for `sail scopes analyze`
+  const scopes = scopeManifest.writeScopeManifest(SAILPOINT_DIR, {
+    sdk:           "python",
+    sdkVersion:    (fs.readFileSync(path.join(SDK_ROOT, "setup.py"), "utf8").match(/^VERSION = "([^"]+)"/m) || [])[1],
+    operations:    scopeOperations,
+    onlyPartition,
+  });
+  console.log(`\n[SCOPES] Wrote ${scopes.count} operation(s) to ${path.relative(SDK_ROOT, scopes.outPath)}`);
 
   // Cleanup
   if (!keepTmp) {
