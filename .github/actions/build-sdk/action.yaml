@@ -75,5 +75,6 @@ runs:
         pip install -r requirements.txt
         pip install -e .
         if [ "${{ inputs.skip-tests }}" != "true" ]; then
+          python generic_test.py -v
           python validation_test.py -v
         fi

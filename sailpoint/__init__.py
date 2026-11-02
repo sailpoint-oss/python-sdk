@@ -71,6 +71,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "DimensionsApi": (("sailpoint.dimensions.api.dimensions_api", "DimensionsApi"),),
     "EntitlementConnectionsApi": (("sailpoint.entitlement_connections.api.entitlement_connections_api", "EntitlementConnectionsApi"),),
     "EntitlementsApi": (("sailpoint.entitlements.api.entitlements_api", "EntitlementsApi"),),
+    "GenericApi": (("sailpoint.generic.api.generic_api", "GenericApi"),),
     "GenericRequestApprovalConfigApi": (("sailpoint.generic_request_approval_config.api.generic_request_approval_config_api", "GenericRequestApprovalConfigApi"),),
     "GlobalTenantSecuritySettingsApi": (("sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api", "GlobalTenantSecuritySettingsApi"),),
     "NextGenerationCertificationCampaignsApi": (("sailpoint.gov_certification.api.next_generation_certification_campaigns_api", "NextGenerationCertificationCampaignsApi"),),
@@ -237,6 +238,7 @@ __all__ = [
     "DimensionsApi",
     "EntitlementConnectionsApi",
     "EntitlementsApi",
+    "GenericApi",
     "GenericRequestApprovalConfigApi",
     "GlobalTenantSecuritySettingsApi",
     "NextGenerationCertificationCampaignsApi",
@@ -431,6 +433,7 @@ if TYPE_CHECKING:
     from sailpoint.dimensions.api.dimensions_api import DimensionsApi as _dimensions__DimensionsApi
     from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi as _entitlement_connections__EntitlementConnectionsApi
     from sailpoint.entitlements.api.entitlements_api import EntitlementsApi as _entitlements__EntitlementsApi
+    from sailpoint.generic.api.generic_api import GenericApi as _generic__GenericApi
     from sailpoint.generic_request_approval_config.api.generic_request_approval_config_api import GenericRequestApprovalConfigApi as _generic_request_approval_config__GenericRequestApprovalConfigApi
     from sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi as _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi as _gov_certification__NextGenerationCertificationCampaignsApi
@@ -597,6 +600,7 @@ if TYPE_CHECKING:
     DimensionsApi = _dimensions__DimensionsApi
     EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
     EntitlementsApi = _entitlements__EntitlementsApi
+    GenericApi = _generic__GenericApi
     GenericRequestApprovalConfigApi = _generic_request_approval_config__GenericRequestApprovalConfigApi
     GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
@@ -758,6 +762,7 @@ if TYPE_CHECKING:
         DimensionsApi = _dimensions__DimensionsApi
         EntitlementConnectionsApi = _entitlement_connections__EntitlementConnectionsApi
         EntitlementsApi = _entitlements__EntitlementsApi
+        GenericApi = _generic__GenericApi
         GenericRequestApprovalConfigApi = _generic_request_approval_config__GenericRequestApprovalConfigApi
         GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
         NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
