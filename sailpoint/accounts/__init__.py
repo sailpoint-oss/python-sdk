@@ -43,6 +43,14 @@ from sailpoint.accounts.models.account_attributes_create import AccountAttribute
 from sailpoint.accounts.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
 from sailpoint.accounts.models.account_toggle_request import AccountToggleRequest
 from sailpoint.accounts.models.account_unlock_request import AccountUnlockRequest
+from sailpoint.accounts.models.account_v2 import AccountV2
+from sailpoint.accounts.models.account_v2_correlated_entity import AccountV2CorrelatedEntity
+from sailpoint.accounts.models.account_v2_correlated_identity import AccountV2CorrelatedIdentity
+from sailpoint.accounts.models.account_v2_identity import AccountV2Identity
+from sailpoint.accounts.models.account_v2_owner import AccountV2Owner
+from sailpoint.accounts.models.account_v2_privilege_level import AccountV2PrivilegeLevel
+from sailpoint.accounts.models.account_v2_recommendation import AccountV2Recommendation
+from sailpoint.accounts.models.account_v2_source import AccountV2Source
 from sailpoint.accounts.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.accounts.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.accounts.models.base_common_dto import BaseCommonDto

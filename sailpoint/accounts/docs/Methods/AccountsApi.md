@@ -54,6 +54,7 @@ Method | HTTP request | Description
 [**get-account-entitlements-v1**](#get-account-entitlements-v1) | **GET** `/accounts/v1/{id}/entitlements` | Account entitlements
 [**get-account-v1**](#get-account-v1) | **GET** `/accounts/v1/{id}` | Account details
 [**list-accounts-v1**](#list-accounts-v1) | **GET** `/accounts/v1` | Accounts list
+[**list-accounts-v2**](#list-accounts-v2) | **GET** `/accounts/v2` | List accounts (search)
 [**put-account-v1**](#put-account-v1) | **PUT** `/accounts/v1/{id}` | Update account
 [**submit-reload-account-v1**](#submit-reload-account-v1) | **POST** `/accounts/v1/{id}/reload` | Reload account
 [**unlock-account-v1**](#unlock-account-v1) | **POST** `/accounts/v1/{id}/unlock` | Unlock account
@@ -823,6 +824,91 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling AccountsApi->list_accounts_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## list-accounts-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+List accounts (search)
+List accounts from the accounts search index.
+
+Use standard collection parameters for paging (`limit`, `offset`, `count`). Default page size is 25 when no collection parameters are sent. Maximum `limit` is 250. Requests that specify a larger `limit` are capped at 250. `offset + limit` cannot exceed 10,000. To page beyond that window, use `searchAfter` instead of a large offset. `searchAfter` cannot be combined with `offset`. Always include `id` in `sorters` when using `searchAfter`. Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-accounts-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | search_after | **str** |   (optional) | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to page beyond the offset limit of 10,000 records by shifting the search window to begin at this value.  `searchAfter` cannot be combined with `offset`. When `searchAfter` is provided, `id` must be included in `sorters`.  It is recommended that you always include the ID of the object in addition to any other sort fields in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging.
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, in, sw, isnull, pr*  **uuid**: *eq, in, sw, isnull, pr*  **nativeIdentity**: *eq, in, sw, isnull, pr*  **description**: *eq, in, sw, isnull, pr*  **type**: *eq, ne*  **recommendation.type**: *eq, in, sw, isnull, pr*  **recommendation.method**: *eq, in, sw, isnull, pr*  **locked**: *eq*  **disabled**: *eq*  **hasEntitlements**: *eq*  **manuallyCorrelated**: *eq*  **privilegeLevel.effective**: *eq, in, isnull, pr*  **correlated**: *eq*  **classificationMethod**: *eq, ne, in, sw, isnull, pr*  **subType**: *eq, ne, in, sw, isnull, pr*  **created**: *eq, ge, gt, le, lt*  **modified**: *eq, ge, gt, le, lt*  **synced**: *eq, ge, gt, le, lt*  **owner.id**: *eq, in, sw*  **owner.name**: *eq, in, sw, isnull, pr*  **owner.state**: *eq, in, sw, isnull, pr*  **correlatedIdentity.id**: *eq, in, sw*  **correlatedIdentity.name**: *eq, in, sw, isnull, pr*  **correlatedIdentity.state**: *eq, in, sw, isnull, pr*  **source.id**: *eq, in, sw*  **source.name**: *eq, in, sw*  **source.authoritative**: *eq*  **source.connectionType**: *eq, in, isnull, pr*  **origin**: *eq, in*  Filter values are case-insensitive for **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**.  Filter values remain case-sensitive for the identifier fields **id, uuid, nativeIdentity, source.id, owner.id, correlatedIdentity.id**.
+  Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, uuid, nativeIdentity, created, modified, manuallyCorrelated, description, type, recommendation.type, recommendation.method, locked, disabled, correlated, hasEntitlements, origin, privilegeLevel.effective, classificationMethod, subType, owner.id, owner.name, owner.state, correlatedIdentity.id, correlatedIdentity.name, correlatedIdentity.state, source.id, source.name, source.authoritative, source.connectionType, synced**  Sorting on the following fields is case-insensitive: **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**. Identifier fields such as **id, uuid, nativeIdentity, source.id, owner.id,** and **correlatedIdentity.id** remain case-sensitive.  Default sort is **created** when no collection parameters are sent.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**List[AccountV2]**](../models/account-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of account objects. | List[AccountV2] |  * x-total-count - The total result count (returned when count=true is passed).  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccountsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccountsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.accounts.api.accounts_api import AccountsApi
+from sailpoint.accounts.api_client import ApiClient
+from sailpoint.accounts.models.account_v2 import AccountV2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    limit = 250 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+    search_after = 'Account Payable,2c91808375d8e80a0175e1f88a575221' # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to page beyond the offset limit of 10,000 records by shifting the search window to begin at this value.  `searchAfter` cannot be combined with `offset`. When `searchAfter` is provided, `id` must be included in `sorters`.  It is recommended that you always include the ID of the object in addition to any other sort fields in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. (optional) # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to page beyond the offset limit of 10,000 records by shifting the search window to begin at this value.  `searchAfter` cannot be combined with `offset`. When `searchAfter` is provided, `id` must be included in `sorters`.  It is recommended that you always include the ID of the object in addition to any other sort fields in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. (optional)
+    filters = 'name sw \"test\"' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, in, sw, isnull, pr*  **uuid**: *eq, in, sw, isnull, pr*  **nativeIdentity**: *eq, in, sw, isnull, pr*  **description**: *eq, in, sw, isnull, pr*  **type**: *eq, ne*  **recommendation.type**: *eq, in, sw, isnull, pr*  **recommendation.method**: *eq, in, sw, isnull, pr*  **locked**: *eq*  **disabled**: *eq*  **hasEntitlements**: *eq*  **manuallyCorrelated**: *eq*  **privilegeLevel.effective**: *eq, in, isnull, pr*  **correlated**: *eq*  **classificationMethod**: *eq, ne, in, sw, isnull, pr*  **subType**: *eq, ne, in, sw, isnull, pr*  **created**: *eq, ge, gt, le, lt*  **modified**: *eq, ge, gt, le, lt*  **synced**: *eq, ge, gt, le, lt*  **owner.id**: *eq, in, sw*  **owner.name**: *eq, in, sw, isnull, pr*  **owner.state**: *eq, in, sw, isnull, pr*  **correlatedIdentity.id**: *eq, in, sw*  **correlatedIdentity.name**: *eq, in, sw, isnull, pr*  **correlatedIdentity.state**: *eq, in, sw, isnull, pr*  **source.id**: *eq, in, sw*  **source.name**: *eq, in, sw*  **source.authoritative**: *eq*  **source.connectionType**: *eq, in, isnull, pr*  **origin**: *eq, in*  Filter values are case-insensitive for **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**.  Filter values remain case-sensitive for the identifier fields **id, uuid, nativeIdentity, source.id, owner.id, correlatedIdentity.id**. (optional) # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, in, sw, isnull, pr*  **uuid**: *eq, in, sw, isnull, pr*  **nativeIdentity**: *eq, in, sw, isnull, pr*  **description**: *eq, in, sw, isnull, pr*  **type**: *eq, ne*  **recommendation.type**: *eq, in, sw, isnull, pr*  **recommendation.method**: *eq, in, sw, isnull, pr*  **locked**: *eq*  **disabled**: *eq*  **hasEntitlements**: *eq*  **manuallyCorrelated**: *eq*  **privilegeLevel.effective**: *eq, in, isnull, pr*  **correlated**: *eq*  **classificationMethod**: *eq, ne, in, sw, isnull, pr*  **subType**: *eq, ne, in, sw, isnull, pr*  **created**: *eq, ge, gt, le, lt*  **modified**: *eq, ge, gt, le, lt*  **synced**: *eq, ge, gt, le, lt*  **owner.id**: *eq, in, sw*  **owner.name**: *eq, in, sw, isnull, pr*  **owner.state**: *eq, in, sw, isnull, pr*  **correlatedIdentity.id**: *eq, in, sw*  **correlatedIdentity.name**: *eq, in, sw, isnull, pr*  **correlatedIdentity.state**: *eq, in, sw, isnull, pr*  **source.id**: *eq, in, sw*  **source.name**: *eq, in, sw*  **source.authoritative**: *eq*  **source.connectionType**: *eq, in, isnull, pr*  **origin**: *eq, in*  Filter values are case-insensitive for **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**.  Filter values remain case-sensitive for the identifier fields **id, uuid, nativeIdentity, source.id, owner.id, correlatedIdentity.id**. (optional)
+    sorters = 'name,id' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, uuid, nativeIdentity, created, modified, manuallyCorrelated, description, type, recommendation.type, recommendation.method, locked, disabled, correlated, hasEntitlements, origin, privilegeLevel.effective, classificationMethod, subType, owner.id, owner.name, owner.state, correlatedIdentity.id, correlatedIdentity.name, correlatedIdentity.state, source.id, source.name, source.authoritative, source.connectionType, synced**  Sorting on the following fields is case-insensitive: **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**. Identifier fields such as **id, uuid, nativeIdentity, source.id, owner.id,** and **correlatedIdentity.id** remain case-sensitive.  Default sort is **created** when no collection parameters are sent. (optional) # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, uuid, nativeIdentity, created, modified, manuallyCorrelated, description, type, recommendation.type, recommendation.method, locked, disabled, correlated, hasEntitlements, origin, privilegeLevel.effective, classificationMethod, subType, owner.id, owner.name, owner.state, correlatedIdentity.id, correlatedIdentity.name, correlatedIdentity.state, source.id, source.name, source.authoritative, source.connectionType, synced**  Sorting on the following fields is case-insensitive: **name, description, type, origin, source.name, source.connectionType, owner.name, correlatedIdentity.name, correlatedIdentity.state, privilegeLevel.effective, recommendation.type, recommendation.method, classificationMethod, subType**. Identifier fields such as **id, uuid, nativeIdentity, source.id, owner.id,** and **correlatedIdentity.id** remain case-sensitive.  Default sort is **created** when no collection parameters are sent. (optional)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # List accounts (search)
+        
+        results = AccountsApi(api_client).list_accounts_v2()
+        # Below is a request that includes all optional parameters
+        # results = AccountsApi(api_client).list_accounts_v2(limit, offset, count, search_after, filters, sorters, x_sail_point_experimental)
+        print("The response of AccountsApi->list_accounts_v2:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccountsApi->list_accounts_v2: %s\n" % e)
 ```
 
 

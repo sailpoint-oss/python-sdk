@@ -77,6 +77,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**get_account_entitlements_v1**](sailpoint/accounts/docs/AccountsApi.md#get_account_entitlements_v1) | **GET** /accounts/v1/{id}/entitlements | Account entitlements
 *AccountsApi* | [**get_account_v1**](sailpoint/accounts/docs/AccountsApi.md#get_account_v1) | **GET** /accounts/v1/{id} | Account details
 *AccountsApi* | [**list_accounts_v1**](sailpoint/accounts/docs/AccountsApi.md#list_accounts_v1) | **GET** /accounts/v1 | Accounts list
+*AccountsApi* | [**list_accounts_v2**](sailpoint/accounts/docs/AccountsApi.md#list_accounts_v2) | **GET** /accounts/v2 | List accounts (search)
 *AccountsApi* | [**put_account_v1**](sailpoint/accounts/docs/AccountsApi.md#put_account_v1) | **PUT** /accounts/v1/{id} | Update account
 *AccountsApi* | [**submit_reload_account_v1**](sailpoint/accounts/docs/AccountsApi.md#submit_reload_account_v1) | **POST** /accounts/v1/{id}/reload | Reload account
 *AccountsApi* | [**unlock_account_v1**](sailpoint/accounts/docs/AccountsApi.md#unlock_account_v1) | **POST** /accounts/v1/{id}/unlock | Unlock account
@@ -97,6 +98,14 @@ Class | Method | HTTP request | Description
  - [AccountAttributesCreateAttributes](sailpoint/accounts/docs/AccountAttributesCreateAttributes.md)
  - [AccountToggleRequest](sailpoint/accounts/docs/AccountToggleRequest.md)
  - [AccountUnlockRequest](sailpoint/accounts/docs/AccountUnlockRequest.md)
+ - [AccountV2](sailpoint/accounts/docs/AccountV2.md)
+ - [AccountV2CorrelatedEntity](sailpoint/accounts/docs/AccountV2CorrelatedEntity.md)
+ - [AccountV2CorrelatedIdentity](sailpoint/accounts/docs/AccountV2CorrelatedIdentity.md)
+ - [AccountV2Identity](sailpoint/accounts/docs/AccountV2Identity.md)
+ - [AccountV2Owner](sailpoint/accounts/docs/AccountV2Owner.md)
+ - [AccountV2PrivilegeLevel](sailpoint/accounts/docs/AccountV2PrivilegeLevel.md)
+ - [AccountV2Recommendation](sailpoint/accounts/docs/AccountV2Recommendation.md)
+ - [AccountV2Source](sailpoint/accounts/docs/AccountV2Source.md)
  - [AccountsAsyncResult](sailpoint/accounts/docs/AccountsAsyncResult.md)
  - [AdditionalOwnerRef](sailpoint/accounts/docs/AdditionalOwnerRef.md)
  - [BaseCommonDto](sailpoint/accounts/docs/BaseCommonDto.md)

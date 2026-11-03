@@ -110,6 +110,13 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_accounts_v2(self) -> None:
+        """Test case for list_accounts_v2
+
+        List accounts (search)
+        """
+        pass
+
     def test_put_account_v1(self) -> None:
         """Test case for put_account_v1
 
