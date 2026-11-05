@@ -66,15 +66,24 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessProfilesApi* | [**create_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#create_access_profile_v1) | **POST** /access-profiles/v1 | Create access profile
+*AccessProfilesApi* | [**create_access_profile_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#create_access_profile_v2) | **POST** /access-profiles/v2 | Create access profile
 *AccessProfilesApi* | [**delete_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#delete_access_profile_v1) | **DELETE** /access-profiles/v1/{id} | Delete the specified access profile
+*AccessProfilesApi* | [**delete_access_profile_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#delete_access_profile_v2) | **DELETE** /access-profiles/v2/{id} | Delete the specified access profile
 *AccessProfilesApi* | [**delete_access_profiles_in_bulk_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk_v1) | **POST** /access-profiles/v1/bulk-delete | Delete access profile(s)
+*AccessProfilesApi* | [**delete_access_profiles_in_bulk_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk_v2) | **POST** /access-profiles/v2/bulk-delete | Delete access profile(s)
 *AccessProfilesApi* | [**delete_metadata_from_access_profile_by_key_and_value_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#delete_metadata_from_access_profile_by_key_and_value_v1) | **DELETE** /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from access profile
 *AccessProfilesApi* | [**get_access_profile_entitlements_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#get_access_profile_entitlements_v1) | **GET** /access-profiles/v1/{id}/entitlements | List access profile&#39;s entitlements
+*AccessProfilesApi* | [**get_access_profile_entitlements_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#get_access_profile_entitlements_v2) | **GET** /access-profiles/v2/{id}/entitlements | List access profile&#39;s entitlements
 *AccessProfilesApi* | [**get_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#get_access_profile_v1) | **GET** /access-profiles/v1/{id} | Get an access profile
+*AccessProfilesApi* | [**get_access_profile_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#get_access_profile_v2) | **GET** /access-profiles/v2/{id} | Get an access profile
 *AccessProfilesApi* | [**list_access_profiles_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#list_access_profiles_v1) | **GET** /access-profiles/v1 | List access profiles
+*AccessProfilesApi* | [**list_access_profiles_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#list_access_profiles_v2) | **GET** /access-profiles/v2 | List access profiles
 *AccessProfilesApi* | [**patch_access_profile_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#patch_access_profile_v1) | **PATCH** /access-profiles/v1/{id} | Patch a specified access profile
+*AccessProfilesApi* | [**patch_access_profile_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#patch_access_profile_v2) | **PATCH** /access-profiles/v2/{id} | Patch a specified access profile
 *AccessProfilesApi* | [**search_access_profiles_by_filter_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#search_access_profiles_by_filter_v1) | **POST** /access-profiles/v1/filter | Filter access profiles by metadata
+*AccessProfilesApi* | [**search_access_profiles_by_filter_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#search_access_profiles_by_filter_v2) | **POST** /access-profiles/v2/filter | List access profiles by filter
 *AccessProfilesApi* | [**update_access_profiles_in_bulk_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_in_bulk_v1) | **POST** /access-profiles/v1/bulk-update-requestable | Update access profile(s) requestable field.
+*AccessProfilesApi* | [**update_access_profiles_in_bulk_v2**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_in_bulk_v2) | **POST** /access-profiles/v2/bulk-update-requestable | Update access profile(s) requestable field.
 *AccessProfilesApi* | [**update_access_profiles_metadata_by_filter_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_metadata_by_filter_v1) | **POST** /access-profiles/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
 *AccessProfilesApi* | [**update_access_profiles_metadata_by_ids_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_metadata_by_ids_v1) | **POST** /access-profiles/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
 *AccessProfilesApi* | [**update_access_profiles_metadata_by_query_v1**](sailpoint/access_profiles/docs/AccessProfilesApi.md#update_access_profiles_metadata_by_query_v1) | **POST** /access-profiles/v1/access-model-metadata/bulk-update/query | Bulk-update metadata by query
@@ -91,17 +100,23 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](sailpoint/access_profiles/docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](sailpoint/access_profiles/docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](sailpoint/access_profiles/docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileEntitlementPrivilegeLevel](sailpoint/access_profiles/docs/AccessProfileEntitlementPrivilegeLevel.md)
  - [AccessProfileListFilterDTO](sailpoint/access_profiles/docs/AccessProfileListFilterDTO.md)
  - [AccessProfileListFilterDTOAmmKeyValuesInner](sailpoint/access_profiles/docs/AccessProfileListFilterDTOAmmKeyValuesInner.md)
+ - [AccessProfileListFilterV2](sailpoint/access_profiles/docs/AccessProfileListFilterV2.md)
  - [AccessProfileMetadataBulkUpdateByFilterRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByFilterRequest.md)
  - [AccessProfileMetadataBulkUpdateByIdRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByIdRequest.md)
  - [AccessProfileMetadataBulkUpdateByIdRequestValuesInner](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByIdRequestValuesInner.md)
  - [AccessProfileMetadataBulkUpdateByQueryRequest](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateByQueryRequest.md)
  - [AccessProfileMetadataBulkUpdateResponse](sailpoint/access_profiles/docs/AccessProfileMetadataBulkUpdateResponse.md)
+ - [AccessProfilePrivilegeLevel](sailpoint/access_profiles/docs/AccessProfilePrivilegeLevel.md)
  - [AccessProfileSourceRef](sailpoint/access_profiles/docs/AccessProfileSourceRef.md)
  - [AccessProfileUpdateItem](sailpoint/access_profiles/docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](sailpoint/access_profiles/docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](sailpoint/access_profiles/docs/AccessProfileUsageUsedByInner.md)
+ - [Accessprofileentitlementv2](sailpoint/access_profiles/docs/Accessprofileentitlementv2.md)
+ - [Accessprofilev2](sailpoint/access_profiles/docs/Accessprofilev2.md)
+ - [Accessprofilev2PrivilegeLevel](sailpoint/access_profiles/docs/Accessprofilev2PrivilegeLevel.md)
  - [AdditionalOwnerRef](sailpoint/access_profiles/docs/AdditionalOwnerRef.md)
  - [ArrayInner](sailpoint/access_profiles/docs/ArrayInner.md)
  - [AttributeDTO](sailpoint/access_profiles/docs/AttributeDTO.md)
@@ -110,6 +125,7 @@ Class | Method | HTTP request | Description
  - [Entitlement](sailpoint/access_profiles/docs/Entitlement.md)
  - [EntitlementAccessModelMetadata](sailpoint/access_profiles/docs/EntitlementAccessModelMetadata.md)
  - [EntitlementOwner](sailpoint/access_profiles/docs/EntitlementOwner.md)
+ - [EntitlementPrivilegeLevel](sailpoint/access_profiles/docs/EntitlementPrivilegeLevel.md)
  - [EntitlementRef](sailpoint/access_profiles/docs/EntitlementRef.md)
  - [EntitlementSource](sailpoint/access_profiles/docs/EntitlementSource.md)
  - [ErrorMessageDto](sailpoint/access_profiles/docs/ErrorMessageDto.md)

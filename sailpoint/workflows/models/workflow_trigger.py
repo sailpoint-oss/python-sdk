@@ -29,14 +29,25 @@ class WorkflowTrigger(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="The trigger type")
     display_name: Optional[StrictStr] = Field(default=None, description="The trigger display name", alias="displayName")
+    mode: Optional[StrictStr] = Field(default=None, description="Mode used by the trigger.")
     attributes: Optional[Dict[str, Any]] = Field(description="Workflow Trigger Attributes.")
-    __properties: ClassVar[List[str]] = ["type", "displayName", "attributes"]
+    __properties: ClassVar[List[str]] = ["type", "displayName", "mode", "attributes"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['EVENT', 'EXTERNAL', 'SCHEDULED', '']):
             warnings.warn(f"must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED', '') unknown value: {value}")
+        return value
+
+    @field_validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['basic', 'advanced']):
+            warnings.warn(f"must be one of enum values ('basic', 'advanced') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -102,6 +113,7 @@ class WorkflowTrigger(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "displayName": obj.get("displayName"),
+            "mode": obj.get("mode"),
             "attributes": obj.get("attributes")
         })
         return _obj

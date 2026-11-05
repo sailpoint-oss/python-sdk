@@ -37,6 +37,7 @@ class TestWorkflowTrigger(unittest.TestCase):
             return WorkflowTrigger(
                 type = 'EVENT',
                 display_name = '',
+                mode = 'advanced',
                 attributes = None
             )
         else:

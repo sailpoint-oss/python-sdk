@@ -4132,6 +4132,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_v1(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4149,6 +4151,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4172,6 +4178,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_v1_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4200,6 +4208,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_v1_with_http_info(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4217,6 +4227,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4240,6 +4254,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_v1_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4268,6 +4284,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_v1_without_preload_content(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4285,6 +4303,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4308,6 +4330,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_v1_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4331,6 +4355,8 @@ class WorkflowsApi:
 
     def _list_workflows_v1_serialize(
         self,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -4353,6 +4379,14 @@ class WorkflowsApi:
 
         # process the path parameters
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

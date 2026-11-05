@@ -253,7 +253,7 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    create_workflow_v1_request = '''{"name":"Send Email","owner":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"},"description":"Send an email to the identity who's attributes changed.","definition":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}},"enabled":false,"trigger":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed","filter":"$.changes[?(@.attribute == 'manager')]"}}}''' # CreateWorkflowV1Request | 
+    create_workflow_v1_request = '''{"name":"Send Email","owner":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"},"description":"Send an email to the identity who's attributes changed.","definition":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}},"enabled":false,"trigger":{"type":"EVENT","mode":"advanced","attributes":{"id":"idn:identity-attributes-changed","filter.$":"$.changes[?(@.attribute == 'manager')]"}}}''' # CreateWorkflowV1Request | 
 
     try:
         # Create workflow
@@ -896,7 +896,11 @@ List all workflows in the tenant.
 [API Spec](https://developer.sailpoint.com/docs/api/list-workflows-v-1)
 
 ### Parameters 
-This endpoint does not need any parameter. 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
 
 ### Return type
 [**List[Workflow]**](../models/workflow)
@@ -926,13 +930,15 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
+    limit = 250 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
     try:
         # List workflows
         
         results = WorkflowsApi(api_client).list_workflows_v1()
         # Below is a request that includes all optional parameters
-        # results = WorkflowsApi(api_client).list_workflows_v1()
+        # results = WorkflowsApi(api_client).list_workflows_v1(limit, offset)
         print("The response of WorkflowsApi->list_workflows_v1:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -1077,6 +1083,7 @@ with ApiClient(configuration) as api_client:
             }
           },
           "trigger" : {
+            "mode" : "advanced",
             "displayName" : "displayName",
             "attributes" : "{}",
             "type" : "EVENT"

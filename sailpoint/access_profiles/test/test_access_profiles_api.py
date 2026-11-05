@@ -33,6 +33,13 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_access_profile_v2(self) -> None:
+        """Test case for create_access_profile_v2
+
+        Create access profile
+        """
+        pass
+
     def test_delete_access_profile_v1(self) -> None:
         """Test case for delete_access_profile_v1
 
@@ -40,8 +47,22 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_access_profile_v2(self) -> None:
+        """Test case for delete_access_profile_v2
+
+        Delete the specified access profile
+        """
+        pass
+
     def test_delete_access_profiles_in_bulk_v1(self) -> None:
         """Test case for delete_access_profiles_in_bulk_v1
+
+        Delete access profile(s)
+        """
+        pass
+
+    def test_delete_access_profiles_in_bulk_v2(self) -> None:
+        """Test case for delete_access_profiles_in_bulk_v2
 
         Delete access profile(s)
         """
@@ -61,8 +82,22 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_access_profile_entitlements_v2(self) -> None:
+        """Test case for get_access_profile_entitlements_v2
+
+        List access profile's entitlements
+        """
+        pass
+
     def test_get_access_profile_v1(self) -> None:
         """Test case for get_access_profile_v1
+
+        Get an access profile
+        """
+        pass
+
+    def test_get_access_profile_v2(self) -> None:
+        """Test case for get_access_profile_v2
 
         Get an access profile
         """
@@ -75,8 +110,22 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_access_profiles_v2(self) -> None:
+        """Test case for list_access_profiles_v2
+
+        List access profiles
+        """
+        pass
+
     def test_patch_access_profile_v1(self) -> None:
         """Test case for patch_access_profile_v1
+
+        Patch a specified access profile
+        """
+        pass
+
+    def test_patch_access_profile_v2(self) -> None:
+        """Test case for patch_access_profile_v2
 
         Patch a specified access profile
         """
@@ -89,8 +138,22 @@ class TestAccessProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_search_access_profiles_by_filter_v2(self) -> None:
+        """Test case for search_access_profiles_by_filter_v2
+
+        List access profiles by filter
+        """
+        pass
+
     def test_update_access_profiles_in_bulk_v1(self) -> None:
         """Test case for update_access_profiles_in_bulk_v1
+
+        Update access profile(s) requestable field.
+        """
+        pass
+
+    def test_update_access_profiles_in_bulk_v2(self) -> None:
+        """Test case for update_access_profiles_in_bulk_v2
 
         Update access profile(s) requestable field.
         """

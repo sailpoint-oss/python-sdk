@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **is_dynamic_schema** | **bool** | Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **output_schema** | **object** | Example output schema | [optional] 
 **input_example** | **object** | Example trigger payload if applicable | [optional] 
+**filter_mode** | **[]str** | Modes that the trigger uses, however no filterMode means the trigger is not filtered | [optional] 
 }
 
 ## Example
@@ -49,7 +50,8 @@ version_number=56,
 is_simulation_enabled=True,
 is_dynamic_schema=False,
 output_schema={},
-input_example={changes=[{attribute=department, newValue=marketing, oldValue=sales}, {attribute=manager, newValue={id=ee769173319b41d19ccec6c235423236c, name=mean.guy, type=IDENTITY}, oldValue={id=ee769173319b41d19ccec6c235423237b, name=nice.guy, type=IDENTITY}}, {attribute=email, newValue=john.doe@gmail.com, oldValue=john.doe@hotmail.com}], identity={id=ee769173319b41d19ccec6cea52f237b, name=john.doe, type=IDENTITY}}
+input_example={changes=[{attribute=department, newValue=marketing, oldValue=sales}, {attribute=manager, newValue={id=ee769173319b41d19ccec6c235423236c, name=mean.guy, type=IDENTITY}, oldValue={id=ee769173319b41d19ccec6c235423237b, name=nice.guy, type=IDENTITY}}, {attribute=email, newValue=john.doe@gmail.com, oldValue=john.doe@hotmail.com}], identity={id=ee769173319b41d19ccec6cea52f237b, name=john.doe, type=IDENTITY}},
+filter_mode=[basic, advanced]
 )
 
 ```

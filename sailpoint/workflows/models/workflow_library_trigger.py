@@ -40,7 +40,8 @@ class WorkflowLibraryTrigger(BaseModel):
     is_dynamic_schema: Optional[StrictBool] = Field(default=False, description="Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.", alias="isDynamicSchema")
     input_example: Optional[Dict[str, Any]] = Field(default=None, description="Example trigger payload if applicable", alias="inputExample")
     form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the trigger accepts", alias="formFields")
-    __properties: ClassVar[List[str]] = ["id", "type", "deprecated", "deprecatedBy", "isSimulationEnabled", "outputSchema", "name", "description", "isDynamicSchema", "inputExample", "formFields"]
+    filter_mode: Optional[List[StrictStr]] = Field(default=None, description="Modes that the trigger uses, however no filterMode means the trigger is not filtered", alias="filterMode")
+    __properties: ClassVar[List[str]] = ["id", "type", "deprecated", "deprecatedBy", "isSimulationEnabled", "outputSchema", "name", "description", "isDynamicSchema", "inputExample", "formFields", "filterMode"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -50,6 +51,17 @@ class WorkflowLibraryTrigger(BaseModel):
 
         if value not in set(['EVENT', 'SCHEDULED', 'EXTERNAL', 'AccessRequestTrigger']):
             warnings.warn(f"must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL', 'AccessRequestTrigger') unknown value: {value}")
+        return value
+
+    @field_validator('filter_mode')
+    def filter_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['basic', 'advanced']):
+                warnings.warn(f"each list item must be one of ('basic', 'advanced') unknown value: {i}")
         return value
 
     model_config = ConfigDict(
@@ -130,7 +142,8 @@ class WorkflowLibraryTrigger(BaseModel):
             "description": obj.get("description"),
             "isDynamicSchema": obj.get("isDynamicSchema") if obj.get("isDynamicSchema") is not None else False,
             "inputExample": obj.get("inputExample"),
-            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj["formFields"]] if obj.get("formFields") is not None else None
+            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj["formFields"]] if obj.get("formFields") is not None else None,
+            "filterMode": obj.get("filterMode")
         })
         return _obj
 

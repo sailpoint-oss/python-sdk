@@ -45,7 +45,8 @@ class TestWorkflowLibraryTrigger(unittest.TestCase):
                 description = 'One or more identity attributes changed.',
                 is_dynamic_schema = False,
                 input_example = {"changes":[{"attribute":"department","newValue":"marketing","oldValue":"sales"},{"attribute":"manager","newValue":{"id":"ee769173319b41d19ccec6c235423236c","name":"mean.guy","type":"IDENTITY"},"oldValue":{"id":"ee769173319b41d19ccec6c235423237b","name":"nice.guy","type":"IDENTITY"}},{"attribute":"email","newValue":"john.doe@gmail.com","oldValue":"john.doe@hotmail.com"}],"identity":{"id":"ee769173319b41d19ccec6cea52f237b","name":"john.doe","type":"IDENTITY"}},
-                form_fields = []
+                form_fields = [],
+                filter_mode = ["basic","advanced"]
             )
         else:
             return WorkflowLibraryTrigger(

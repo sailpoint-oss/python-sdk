@@ -50,6 +50,7 @@ enabled=False,
 trigger=sailpoint.workflows.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
                     display_name = '', 
+                    mode = 'advanced', 
                     attributes = sailpoint.workflows.models.attributes.attributes(), ),
 id='d201c5e9-d37b-4aff-af14-66414f39d569',
 execution_count=2,

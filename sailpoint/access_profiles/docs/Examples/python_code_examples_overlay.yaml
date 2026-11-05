@@ -139,6 +139,152 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->create_access_profile_v1: %s\n" % e)
+- path: /access-profiles/v2
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#create-access-profile-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          accessprofilev2 = '''{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "privilegeLevel" : {
+            "effective" : "MEDIUM"
+          },
+          "created" : "2021-03-01T22:32:58.104Z",
+          "description" : "Collection of entitlements to read/write the employee database",
+          "source" : {
+            "name" : "ODS-AD-SOURCE",
+            "id" : "2c91809773dee3610173fdb0b6061ef4",
+            "type" : "SOURCE"
+          },
+          "enabled" : true,
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "accessRequestConfig" : {
+            "commentsRequired" : true,
+            "reauthorizationRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "formDefinitionId" : "78258e80-e9e2-4e1a-a11f-ce0b7c62f25d",
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
+          },
+          "name" : "Employee-database-read-write",
+          "provisioningCriteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            }, {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            } ],
+            "attribute" : "email",
+            "operation" : "EQUALS",
+            "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+          },
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c91808a7190d06e01719938fcd20792",
+          "requestable" : true
+        }''' # Accessprofilev2 | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create access profile
+              new_accessprofilev2 = Accessprofilev2.from_json(accessprofilev2)
+              results = AccessProfilesApi(api_client).create_access_profile_v2(accessprofilev2=new_accessprofilev2)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).create_access_profile_v2(new_accessprofilev2, x_sail_point_experimental)
+              print("The response of AccessProfilesApi->create_access_profile_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->create_access_profile_v2: %s\n" % e)
 - path: /access-profiles/v1/{id}
   method: DELETE
   xCodeSample:
@@ -161,6 +307,30 @@
               # AccessProfilesApi(api_client).delete_access_profile_v1(id)
           except Exception as e:
               print("Exception when calling AccessProfilesApi->delete_access_profile_v1: %s\n" % e)
+- path: /access-profiles/v2/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#delete-access-profile-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to delete # str | ID of the Access Profile to delete
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete the specified access profile
+              
+              AccessProfilesApi(api_client).delete_access_profile_v2(id=id)
+              # Below is a request that includes all optional parameters
+              # AccessProfilesApi(api_client).delete_access_profile_v2(id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->delete_access_profile_v2: %s\n" % e)
 - path: /access-profiles/v1/bulk-delete
   method: POST
   xCodeSample:
@@ -190,6 +360,37 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->delete_access_profiles_in_bulk_v1: %s\n" % e)
+- path: /access-profiles/v2/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#delete-access-profiles-in-bulk-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
+        from sailpoint.access_profiles.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          access_profile_bulk_delete_request = '''{
+          "accessProfileIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ],
+          "bestEffortOnly" : true
+        }''' # AccessProfileBulkDeleteRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete access profile(s)
+              new_access_profile_bulk_delete_request = AccessProfileBulkDeleteRequest.from_json(access_profile_bulk_delete_request)
+              results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v2(access_profile_bulk_delete_request=new_access_profile_bulk_delete_request)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).delete_access_profiles_in_bulk_v2(new_access_profile_bulk_delete_request, x_sail_point_experimental)
+              print("The response of AccessProfilesApi->delete_access_profiles_in_bulk_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->delete_access_profiles_in_bulk_v2: %s\n" % e)
 - path: /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
   method: DELETE
   xCodeSample:
@@ -245,6 +446,40 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->get_access_profile_entitlements_v1: %s\n" % e)
+- path: /access-profiles/v2/{id}/entitlements
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#get-access-profile-entitlements-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofileentitlementv2 import Accessprofileentitlementv2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121919ecca' # str | ID of the access profile containing the entitlements. # str | ID of the access profile containing the entitlements.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile. (optional) # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile. (optional)
+          sorters = 'name,-id' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional) # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional)
+          cursor = 'W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ' # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional) # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional)
+          try:
+              # List access profile's entitlements
+              
+              results = AccessProfilesApi(api_client).get_access_profile_entitlements_v2(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).get_access_profile_entitlements_v2(id, x_sail_point_experimental, limit, offset, count, filters, sorters, cursor)
+              print("The response of AccessProfilesApi->get_access_profile_entitlements_v2:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->get_access_profile_entitlements_v2: %s\n" % e)
 - path: /access-profiles/v1/{id}
   method: GET
   xCodeSample:
@@ -270,6 +505,33 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->get_access_profile_v1: %s\n" % e)
+- path: /access-profiles/v2/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#get-access-profile-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Access Profile # str | ID of the Access Profile
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get an access profile
+              
+              results = AccessProfilesApi(api_client).get_access_profile_v2(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).get_access_profile_v2(id, x_sail_point_experimental)
+              print("The response of AccessProfilesApi->get_access_profile_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->get_access_profile_v2: %s\n" % e)
 - path: /access-profiles/v1
   method: GET
   xCodeSample:
@@ -303,6 +565,42 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->list_access_profiles_v1: %s\n" % e)
+- path: /access-profiles/v2
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#list-access-profiles-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          for_subadmin = '8c190e6787aa4ed9a90bd9d5344523fb' # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional) # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional)
+          limit = 50 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name co \"Developer\"' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or* (optional)
+          sorters = 'name,-id' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional) # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional)
+          for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          include_unsegmented = True # bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to True) # bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to True)
+          cursor = 'W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ' # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional) # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional)
+          try:
+              # List access profiles
+              
+              results = AccessProfilesApi(api_client).list_access_profiles_v2()
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).list_access_profiles_v2(x_sail_point_experimental, for_subadmin, limit, offset, count, filters, sorters, for_segment_ids, include_unsegmented, cursor)
+              print("The response of AccessProfilesApi->list_access_profiles_v2:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->list_access_profiles_v2: %s\n" % e)
 - path: /access-profiles/v1/{id}
   method: PATCH
   xCodeSample:
@@ -330,6 +628,35 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->patch_access_profile_v1: %s\n" % e)
+- path: /access-profiles/v2/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#patch-access-profile-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
+        from sailpoint.access_profiles.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to patch # str | ID of the Access Profile to patch
+          json_patch_operation = '''[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]''' # List[JsonPatchOperation] | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Patch a specified access profile
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = AccessProfilesApi(api_client).patch_access_profile_v2(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).patch_access_profile_v2(id, new_json_patch_operation, x_sail_point_experimental)
+              print("The response of AccessProfilesApi->patch_access_profile_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->patch_access_profile_v2: %s\n" % e)
 - path: /access-profiles/v1/filter
   method: POST
   xCodeSample:
@@ -370,6 +697,49 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->search_access_profiles_by_filter_v1: %s\n" % e)
+- path: /access-profiles/v2/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#search-access-profiles-by-filter-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.access_profile_list_filter_v2 import AccessProfileListFilterV2
+        from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          access_profile_list_filter_v2 = '''{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "privilegeLevel.effective eq \"HIGH\""
+        }''' # AccessProfileListFilterV2 | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          for_subadmin = '8c190e6787aa4ed9a90bd9d5344523fb' # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional) # str | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional)
+          limit = 50 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name,-id' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional) # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted. (optional)
+          for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          include_unsegmented = True # bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to True) # bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to True)
+          cursor = 'W3sic29ydCI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMjEtMDMtMDFUMjI6MzI6NTguMTA0WiJ9LHsic29ydCI6ImlkIiwidmFsdWUiOiIyYzkxODA4YTcxOTBkMDZlMDE3MTk5MzhmY2QyMDc5MiJ9XQ' # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional) # str | Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0. (optional)
+          try:
+              # List access profiles by filter
+              new_access_profile_list_filter_v2 = AccessProfileListFilterV2.from_json(access_profile_list_filter_v2)
+              results = AccessProfilesApi(api_client).search_access_profiles_by_filter_v2(access_profile_list_filter_v2=new_access_profile_list_filter_v2)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).search_access_profiles_by_filter_v2(new_access_profile_list_filter_v2, x_sail_point_experimental, for_subadmin, limit, offset, count, sorters, for_segment_ids, include_unsegmented, cursor)
+              print("The response of AccessProfilesApi->search_access_profiles_by_filter_v2:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->search_access_profiles_by_filter_v2: %s\n" % e)
 - path: /access-profiles/v1/bulk-update-requestable
   method: POST
   xCodeSample:
@@ -397,6 +767,35 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessProfilesApi->update_access_profiles_in_bulk_v1: %s\n" % e)
+- path: /access-profiles/v2/bulk-update-requestable
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-profiles/methods/access-profiles#update-access-profiles-in-bulk-v2
+      source: |
+        from sailpoint.access_profiles.api.access_profiles_api import AccessProfilesApi
+        from sailpoint.access_profiles.api_client import ApiClient
+        from sailpoint.access_profiles.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+        from sailpoint.access_profiles.models.access_profile_update_item import AccessProfileUpdateItem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          access_profile_bulk_update_request_inner = '''[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]''' # List[AccessProfileBulkUpdateRequestInner] | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update access profile(s) requestable field.
+              new_access_profile_bulk_update_request_inner = AccessProfileBulkUpdateRequestInner.from_json(access_profile_bulk_update_request_inner)
+              results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v2(access_profile_bulk_update_request_inner=new_access_profile_bulk_update_request_inner)
+              # Below is a request that includes all optional parameters
+              # results = AccessProfilesApi(api_client).update_access_profiles_in_bulk_v2(new_access_profile_bulk_update_request_inner, x_sail_point_experimental)
+              print("The response of AccessProfilesApi->update_access_profiles_in_bulk_v2:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessProfilesApi->update_access_profiles_in_bulk_v2: %s\n" % e)
 - path: /access-profiles/v1/access-model-metadata/bulk-update/filter
   method: POST
   xCodeSample:

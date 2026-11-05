@@ -24,11 +24,14 @@ from sailpoint.access_profiles.models.access_profile_bulk_delete_request import 
 from sailpoint.access_profiles.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 from sailpoint.access_profiles.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
 from sailpoint.access_profiles.models.access_profile_list_filter_dto import AccessProfileListFilterDTO
+from sailpoint.access_profiles.models.access_profile_list_filter_v2 import AccessProfileListFilterV2
 from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_filter_request import AccessProfileMetadataBulkUpdateByFilterRequest
 from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_id_request import AccessProfileMetadataBulkUpdateByIdRequest
 from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_by_query_request import AccessProfileMetadataBulkUpdateByQueryRequest
 from sailpoint.access_profiles.models.access_profile_metadata_bulk_update_response import AccessProfileMetadataBulkUpdateResponse
 from sailpoint.access_profiles.models.access_profile_update_item import AccessProfileUpdateItem
+from sailpoint.access_profiles.models.accessprofileentitlementv2 import Accessprofileentitlementv2
+from sailpoint.access_profiles.models.accessprofilev2 import Accessprofilev2
 from sailpoint.access_profiles.models.entitlement import Entitlement
 from sailpoint.access_profiles.models.json_patch_operation import JsonPatchOperation
 
@@ -339,6 +342,312 @@ class AccessProfilesApi:
 
 
     @validate_call
+    def create_access_profile_v2(
+        self,
+        accessprofilev2: Accessprofilev2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Accessprofilev2:
+        """Create access profile
+
+        Create an access profile.  This version accepts the same request body and applies the same validation as [Create Access Profile V1](https://developer.sailpoint.com/docs/api/create-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes. >**Note:** `privilegeLevel` is read-only and is ignored if supplied in the request body. It is calculated asynchronously from the access profile's entitlements, so it is typically absent from the create response.
+
+        :param accessprofilev2: (required)
+        :type accessprofilev2: Accessprofilev2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_access_profile_v2_serialize(
+            accessprofilev2=accessprofilev2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_access_profile_v2_with_http_info(
+        self,
+        accessprofilev2: Accessprofilev2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Accessprofilev2]:
+        """Create access profile
+
+        Create an access profile.  This version accepts the same request body and applies the same validation as [Create Access Profile V1](https://developer.sailpoint.com/docs/api/create-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes. >**Note:** `privilegeLevel` is read-only and is ignored if supplied in the request body. It is calculated asynchronously from the access profile's entitlements, so it is typically absent from the create response.
+
+        :param accessprofilev2: (required)
+        :type accessprofilev2: Accessprofilev2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_access_profile_v2_serialize(
+            accessprofilev2=accessprofilev2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_access_profile_v2_without_preload_content(
+        self,
+        accessprofilev2: Accessprofilev2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create access profile
+
+        Create an access profile.  This version accepts the same request body and applies the same validation as [Create Access Profile V1](https://developer.sailpoint.com/docs/api/create-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes. >**Note:** `privilegeLevel` is read-only and is ignored if supplied in the request body. It is calculated asynchronously from the access profile's entitlements, so it is typically absent from the create response.
+
+        :param accessprofilev2: (required)
+        :type accessprofilev2: Accessprofilev2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_access_profile_v2_serialize(
+            accessprofilev2=accessprofilev2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_access_profile_v2_serialize(
+        self,
+        accessprofilev2,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if accessprofilev2 is not None:
+            _body_params = accessprofilev2
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/access-profiles/v2',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_access_profile_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile to delete")],
@@ -598,6 +907,299 @@ class AccessProfilesApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/access-profiles/v1/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_access_profile_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to delete")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete the specified access profile
+
+        This API deletes an existing Access Profile.  This version behaves identically to [Delete the Specified Access Profile V1](https://developer.sailpoint.com/docs/api/delete-access-profile-v-1).  The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.  A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
+
+        :param id: ID of the Access Profile to delete (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_access_profile_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to delete")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete the specified access profile
+
+        This API deletes an existing Access Profile.  This version behaves identically to [Delete the Specified Access Profile V1](https://developer.sailpoint.com/docs/api/delete-access-profile-v-1).  The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.  A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
+
+        :param id: ID of the Access Profile to delete (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_access_profile_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to delete")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete the specified access profile
+
+        This API deletes an existing Access Profile.  This version behaves identically to [Delete the Specified Access Profile V1](https://developer.sailpoint.com/docs/api/delete-access-profile-v-1).  The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.  A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
+
+        :param id: ID of the Access Profile to delete (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_access_profile_v2_serialize(
+        self,
+        id,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/access-profiles/v2/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -889,6 +1491,315 @@ class AccessProfilesApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/access-profiles/v1/bulk-delete',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_access_profiles_in_bulk_v2(
+        self,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AccessProfileBulkDeleteResponse:
+        """Delete access profile(s)
+
+        This endpoint initiates a bulk deletion of one or more access profiles.  This version behaves identically to [Delete Access Profile(s) V1](https://developer.sailpoint.com/docs/api/delete-access-profiles-in-bulk-v-1).  When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/get-task-status-v-1), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
+
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_access_profiles_in_bulk_v2_with_http_info(
+        self,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[AccessProfileBulkDeleteResponse]:
+        """Delete access profile(s)
+
+        This endpoint initiates a bulk deletion of one or more access profiles.  This version behaves identically to [Delete Access Profile(s) V1](https://developer.sailpoint.com/docs/api/delete-access-profiles-in-bulk-v-1).  When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/get-task-status-v-1), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
+
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_access_profiles_in_bulk_v2_without_preload_content(
+        self,
+        access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete access profile(s)
+
+        This endpoint initiates a bulk deletion of one or more access profiles.  This version behaves identically to [Delete Access Profile(s) V1](https://developer.sailpoint.com/docs/api/delete-access-profiles-in-bulk-v-1).  When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/get-task-status-v-1), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 access profiles per request.  By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted. A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
+
+        :param access_profile_bulk_delete_request: (required)
+        :type access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_delete_request=access_profile_bulk_delete_request,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AccessProfileBulkDeleteResponse",
+            '202': "AccessProfileBulkDeleteResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_access_profiles_in_bulk_v2_serialize(
+        self,
+        access_profile_bulk_delete_request,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if access_profile_bulk_delete_request is not None:
+            _body_params = access_profile_bulk_delete_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/access-profiles/v2/bulk-delete',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1573,6 +2484,401 @@ class AccessProfilesApi:
 
 
     @validate_call
+    def get_access_profile_entitlements_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the access profile containing the entitlements.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Accessprofileentitlementv2]:
+        """List access profile's entitlements
+
+        Get a list of an access profile's entitlements.  This version reads from Search Lite and returns a superset of the entitlement returned by [List Access Profile's Entitlements V1](https://developer.sailpoint.com/docs/api/get-access-profile-entitlements-v-1), adding the entitlement's `tags` and calculated `privilegeLevel`. It also supports opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
+
+        :param id: ID of the access profile containing the entitlements. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofileentitlementv2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_access_profile_entitlements_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the access profile containing the entitlements.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Accessprofileentitlementv2]]:
+        """List access profile's entitlements
+
+        Get a list of an access profile's entitlements.  This version reads from Search Lite and returns a superset of the entitlement returned by [List Access Profile's Entitlements V1](https://developer.sailpoint.com/docs/api/get-access-profile-entitlements-v-1), adding the entitlement's `tags` and calculated `privilegeLevel`. It also supports opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
+
+        :param id: ID of the access profile containing the entitlements. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofileentitlementv2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_access_profile_entitlements_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the access profile containing the entitlements.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List access profile's entitlements
+
+        Get a list of an access profile's entitlements.  This version reads from Search Lite and returns a superset of the entitlement returned by [List Access Profile's Entitlements V1](https://developer.sailpoint.com/docs/api/get-access-profile-entitlements-v-1), adding the entitlement's `tags` and calculated `privilegeLevel`. It also supports opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
+
+        :param id: ID of the access profile containing the entitlements. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **attribute**: *eq, co*  **value**: *eq, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **privilegeLevel.effective**: *eq, in*  Results are automatically scoped to entitlements belonging to the access profile.
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofileentitlementv2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_access_profile_entitlements_v2_serialize(
+        self,
+        id,
+        x_sail_point_experimental,
+        limit,
+        offset,
+        count,
+        filters,
+        sorters,
+        cursor,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/access-profiles/v2/{id}/entitlements',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_access_profile_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile")],
@@ -1832,6 +3138,299 @@ class AccessProfilesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/access-profiles/v1/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_access_profile_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Accessprofilev2:
+        """Get an access profile
+
+        Get an access profile by its ID.  This version reads from Search Lite and returns the same access profile shape as [Get Access Profile V1](https://developer.sailpoint.com/docs/api/get-access-profile-v-1), with the calculated `privilegeLevel` field added.
+
+        :param id: ID of the Access Profile (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_access_profile_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Accessprofilev2]:
+        """Get an access profile
+
+        Get an access profile by its ID.  This version reads from Search Lite and returns the same access profile shape as [Get Access Profile V1](https://developer.sailpoint.com/docs/api/get-access-profile-v-1), with the calculated `privilegeLevel` field added.
+
+        :param id: ID of the Access Profile (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_access_profile_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get an access profile
+
+        Get an access profile by its ID.  This version reads from Search Lite and returns the same access profile shape as [Get Access Profile V1](https://developer.sailpoint.com/docs/api/get-access-profile-v-1), with the calculated `privilegeLevel` field added.
+
+        :param id: ID of the Access Profile (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_access_profile_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_access_profile_v2_serialize(
+        self,
+        id,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/access-profiles/v2/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2244,6 +3843,437 @@ class AccessProfilesApi:
 
 
     @validate_call
+    def list_access_profiles_v2(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Accessprofilev2]:
+        """List access profiles
+
+        Get a list of access profiles.  This version reads from Search Lite and returns the same access profile shape as [List Access Profiles V1](https://developer.sailpoint.com/docs/api/list-access-profiles-v-1), with two additions: the calculated `privilegeLevel` field, and opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  >**Note:** When you omit `sorters`, results are sorted by `created` ascending. For deterministic ordering across pages, always specify explicit sorters. When you use cursor pagination, include `id` in `sorters`; the service appends it automatically if you omit it.  >**Note:** `offset` and `cursor` are mutually exclusive. Use `offset=0` along with a cursor value taken from a prior response's `X-Next-Cursor` header.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_access_profiles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_access_profiles_v2_with_http_info(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Accessprofilev2]]:
+        """List access profiles
+
+        Get a list of access profiles.  This version reads from Search Lite and returns the same access profile shape as [List Access Profiles V1](https://developer.sailpoint.com/docs/api/list-access-profiles-v-1), with two additions: the calculated `privilegeLevel` field, and opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  >**Note:** When you omit `sorters`, results are sorted by `created` ascending. For deterministic ordering across pages, always specify explicit sorters. When you use cursor pagination, include `id` in `sorters`; the service appends it automatically if you omit it.  >**Note:** `offset` and `cursor` are mutually exclusive. Use `offset=0` along with a cursor value taken from a prior response's `X-Next-Cursor` header.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_access_profiles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_access_profiles_v2_without_preload_content(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List access profiles
+
+        Get a list of access profiles.  This version reads from Search Lite and returns the same access profile shape as [List Access Profiles V1](https://developer.sailpoint.com/docs/api/list-access-profiles-v-1), with two additions: the calculated `privilegeLevel` field, and opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.  >**Note:** When you omit `sorters`, results are sorted by `created` ascending. For deterministic ordering across pages, always specify explicit sorters. When you use cursor pagination, include `id` in `sorters`; the service appends it automatically if you omit it.  >**Note:** `offset` and `cursor` are mutually exclusive. Use `offset=0` along with a cursor value taken from a prior response's `X-Next-Cursor` header.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co*  **created**: *lt, le, gt, ge*  **modified**: *lt, le, gt, ge*  **requestable**: *eq*  **source.id**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **dimensional**: *eq*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_access_profiles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_access_profiles_v2_serialize(
+        self,
+        x_sail_point_experimental,
+        for_subadmin,
+        limit,
+        offset,
+        count,
+        filters,
+        sorters,
+        for_segment_ids,
+        include_unsegmented,
+        cursor,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if for_subadmin is not None:
+            
+            _query_params.append(('for-subadmin', for_subadmin))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/access-profiles/v2',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def patch_access_profile_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
@@ -2532,6 +4562,328 @@ class AccessProfilesApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/access-profiles/v1/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def patch_access_profile_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
+        json_patch_operation: List[JsonPatchOperation],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Accessprofilev2:
+        """Patch a specified access profile
+
+        This API updates an existing Access Profile.  This version patches the same fields as [Patch a Specified Access Profile V1](https://developer.sailpoint.com/docs/api/patch-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **additionalOwners**  **requestable**  **accessRequestConfig**  **revocationRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.  >**Note:** `privilegeLevel` is read-only and cannot be patched. Changing the access profile's entitlements recalculates it asynchronously, so the patch response may still show the previous value.
+
+        :param id: ID of the Access Profile to patch (required)
+        :type id: str
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._patch_access_profile_v2_serialize(
+            id=id,
+            json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def patch_access_profile_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
+        json_patch_operation: List[JsonPatchOperation],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Accessprofilev2]:
+        """Patch a specified access profile
+
+        This API updates an existing Access Profile.  This version patches the same fields as [Patch a Specified Access Profile V1](https://developer.sailpoint.com/docs/api/patch-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **additionalOwners**  **requestable**  **accessRequestConfig**  **revocationRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.  >**Note:** `privilegeLevel` is read-only and cannot be patched. Changing the access profile's entitlements recalculates it asynchronously, so the patch response may still show the previous value.
+
+        :param id: ID of the Access Profile to patch (required)
+        :type id: str
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._patch_access_profile_v2_serialize(
+            id=id,
+            json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def patch_access_profile_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Access Profile to patch")],
+        json_patch_operation: List[JsonPatchOperation],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Patch a specified access profile
+
+        This API updates an existing Access Profile.  This version patches the same fields as [Patch a Specified Access Profile V1](https://developer.sailpoint.com/docs/api/patch-access-profile-v-1). It returns the v2 access profile shape, which adds the read-only `privilegeLevel` field.  The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **additionalOwners**  **requestable**  **accessRequestConfig**  **revocationRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.  >**Note:** `privilegeLevel` is read-only and cannot be patched. Changing the access profile's entitlements recalculates it asynchronously, so the patch response may still show the previous value.
+
+        :param id: ID of the Access Profile to patch (required)
+        :type id: str
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._patch_access_profile_v2_serialize(
+            id=id,
+            json_patch_operation=json_patch_operation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Accessprofilev2",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _patch_access_profile_v2_serialize(
+        self,
+        id,
+        json_patch_operation,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/access-profiles/v2/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2955,6 +5307,448 @@ class AccessProfilesApi:
 
 
     @validate_call
+    def search_access_profiles_by_filter_v2(
+        self,
+        access_profile_list_filter_v2: AccessProfileListFilterV2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Accessprofilev2]:
+        """List access profiles by filter
+
+        Get a list of access profiles, supplying the filter criteria and access model metadata key/values in the request body rather than as query parameters.  Use this endpoint when you need to filter by access model metadata, or when your filter expression is too long to pass as a query parameter. Pagination, sorting, subadmin scoping, and segment scoping behave the same as [List Access Profiles V2](https://developer.sailpoint.com/docs/api/list-access-profiles-v-2), including opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+
+        :param access_profile_list_filter_v2: (required)
+        :type access_profile_list_filter_v2: AccessProfileListFilterV2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v2_serialize(
+            access_profile_list_filter_v2=access_profile_list_filter_v2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_access_profiles_by_filter_v2_with_http_info(
+        self,
+        access_profile_list_filter_v2: AccessProfileListFilterV2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Accessprofilev2]]:
+        """List access profiles by filter
+
+        Get a list of access profiles, supplying the filter criteria and access model metadata key/values in the request body rather than as query parameters.  Use this endpoint when you need to filter by access model metadata, or when your filter expression is too long to pass as a query parameter. Pagination, sorting, subadmin scoping, and segment scoping behave the same as [List Access Profiles V2](https://developer.sailpoint.com/docs/api/list-access-profiles-v-2), including opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+
+        :param access_profile_list_filter_v2: (required)
+        :type access_profile_list_filter_v2: AccessProfileListFilterV2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v2_serialize(
+            access_profile_list_filter_v2=access_profile_list_filter_v2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_access_profiles_by_filter_v2_without_preload_content(
+        self,
+        access_profile_list_filter_v2: AccessProfileListFilterV2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List access profiles by filter
+
+        Get a list of access profiles, supplying the filter criteria and access model metadata key/values in the request body rather than as query parameters.  Use this endpoint when you need to filter by access model metadata, or when your filter expression is too long to pass as a query parameter. Pagination, sorting, subadmin scoping, and segment scoping behave the same as [List Access Profiles V2](https://developer.sailpoint.com/docs/api/list-access-profiles-v-2), including opaque cursor pagination through the `cursor` parameter and `X-Next-Cursor` response header.
+
+        :param access_profile_list_filter_v2: (required)
+        :type access_profile_list_filter_v2: AccessProfileListFilterV2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 when you supply a `cursor`, and `offset` plus `limit` must not exceed 10000.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, privilegeLevel.effective**  Defaults to **created** ascending when omitted.
+        :type sorters: str
+        :param for_segment_ids: Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error.
+        :type include_unsegmented: bool
+        :param cursor: Opaque cursor taken from the `X-Next-Cursor` header of a previous response, used to retrieve the next page of results. When you supply a cursor, `offset` must be 0.
+        :type cursor: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_access_profiles_by_filter_v2_serialize(
+            access_profile_list_filter_v2=access_profile_list_filter_v2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            cursor=cursor,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Accessprofilev2]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_access_profiles_by_filter_v2_serialize(
+        self,
+        access_profile_list_filter_v2,
+        x_sail_point_experimental,
+        for_subadmin,
+        limit,
+        offset,
+        count,
+        sorters,
+        for_segment_ids,
+        include_unsegmented,
+        cursor,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if for_subadmin is not None:
+            
+            _query_params.append(('for-subadmin', for_subadmin))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if access_profile_list_filter_v2 is not None:
+            _body_params = access_profile_list_filter_v2
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/access-profiles/v2/filter',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_access_profiles_in_bulk_v1(
         self,
         access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
@@ -3231,6 +6025,316 @@ class AccessProfilesApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/access-profiles/v1/bulk-update-requestable',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_access_profiles_in_bulk_v2(
+        self,
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[AccessProfileUpdateItem]:
+        """Update access profile(s) requestable field.
+
+        This API initiates a bulk update of field requestable for one or more Access Profiles.  This version behaves identically to [Update Access Profile(s) Requestable Field V1](https://developer.sailpoint.com/docs/api/update-access-profiles-in-bulk-v-1).  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '412': "UpdateAccessProfilesInBulkV1412Response",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_access_profiles_in_bulk_v2_with_http_info(
+        self,
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[AccessProfileUpdateItem]]:
+        """Update access profile(s) requestable field.
+
+        This API initiates a bulk update of field requestable for one or more Access Profiles.  This version behaves identically to [Update Access Profile(s) Requestable Field V1](https://developer.sailpoint.com/docs/api/update-access-profiles-in-bulk-v-1).  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '412': "UpdateAccessProfilesInBulkV1412Response",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_access_profiles_in_bulk_v2_without_preload_content(
+        self,
+        access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update access profile(s) requestable field.
+
+        This API initiates a bulk update of field requestable for one or more Access Profiles.  This version behaves identically to [Update Access Profile(s) Requestable Field V1](https://developer.sailpoint.com/docs/api/update-access-profiles-in-bulk-v-1).  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.  A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+
+        :param access_profile_bulk_update_request_inner: (required)
+        :type access_profile_bulk_update_request_inner: List[AccessProfileBulkUpdateRequestInner]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_access_profiles_in_bulk_v2_serialize(
+            access_profile_bulk_update_request_inner=access_profile_bulk_update_request_inner,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '207': "List[AccessProfileUpdateItem]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfilesV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '412': "UpdateAccessProfilesInBulkV1412Response",
+            '429': "ListAccessProfilesV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_access_profiles_in_bulk_v2_serialize(
+        self,
+        access_profile_bulk_update_request_inner,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'AccessProfileBulkUpdateRequestInner': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if access_profile_bulk_update_request_inner is not None:
+            _body_params = access_profile_bulk_update_request_inner
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/access-profiles/v2/bulk-update-requestable',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
