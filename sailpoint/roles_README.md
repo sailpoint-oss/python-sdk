@@ -73,10 +73,14 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**get_bulk_update_status_v1**](sailpoint/roles/docs/RolesApi.md#get_bulk_update_status_v1) | **GET** /roles/v1/access-model-metadata/bulk-update | Get bulk-update statuses
 *RolesApi* | [**get_role_assigned_identities_v1**](sailpoint/roles/docs/RolesApi.md#get_role_assigned_identities_v1) | **GET** /roles/v1/{id}/assigned-identities | List identities assigned a role
 *RolesApi* | [**get_role_entitlements_v1**](sailpoint/roles/docs/RolesApi.md#get_role_entitlements_v1) | **GET** /roles/v1/{id}/entitlements | List role&#39;s entitlements
+*RolesApi* | [**get_role_entitlements_v2**](sailpoint/roles/docs/RolesApi.md#get_role_entitlements_v2) | **GET** /roles/v2/{id}/entitlements | List role&#39;s entitlements
 *RolesApi* | [**get_role_v1**](sailpoint/roles/docs/RolesApi.md#get_role_v1) | **GET** /roles/v1/{id} | Get a role
+*RolesApi* | [**get_role_v2**](sailpoint/roles/docs/RolesApi.md#get_role_v2) | **GET** /roles/v2/{id} | Get a role
 *RolesApi* | [**list_roles_v1**](sailpoint/roles/docs/RolesApi.md#list_roles_v1) | **GET** /roles/v1 | List roles
+*RolesApi* | [**list_roles_v2**](sailpoint/roles/docs/RolesApi.md#list_roles_v2) | **GET** /roles/v2 | List roles
 *RolesApi* | [**patch_role_v1**](sailpoint/roles/docs/RolesApi.md#patch_role_v1) | **PATCH** /roles/v1/{id} | Patch a specified role
 *RolesApi* | [**search_roles_by_filter_v1**](sailpoint/roles/docs/RolesApi.md#search_roles_by_filter_v1) | **POST** /roles/v1/filter | Filter roles by metadata
+*RolesApi* | [**search_roles_by_filter_v2**](sailpoint/roles/docs/RolesApi.md#search_roles_by_filter_v2) | **POST** /roles/v2/filter | Filter roles by metadata
 *RolesApi* | [**update_attribute_key_and_value_to_role_v1**](sailpoint/roles/docs/RolesApi.md#update_attribute_key_and_value_to_role_v1) | **POST** /roles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a metadata to role.
 *RolesApi* | [**update_roles_metadata_by_filter_v1**](sailpoint/roles/docs/RolesApi.md#update_roles_metadata_by_filter_v1) | **POST** /roles/v1/access-model-metadata/bulk-update/filter | Bulk-update roles&#39; metadata by filters
 *RolesApi* | [**update_roles_metadata_by_ids_v1**](sailpoint/roles/docs/RolesApi.md#update_roles_metadata_by_ids_v1) | **POST** /roles/v1/access-model-metadata/bulk-update/ids | Bulk-update roles&#39; metadata by id
@@ -100,16 +104,20 @@ Class | Method | HTTP request | Description
  - [DimensionSchema](sailpoint/roles/docs/DimensionSchema.md)
  - [DtoType](sailpoint/roles/docs/DtoType.md)
  - [Entitlement](sailpoint/roles/docs/Entitlement.md)
- - [EntitlementAccessModelMetadata](sailpoint/roles/docs/EntitlementAccessModelMetadata.md)
- - [EntitlementOwner](sailpoint/roles/docs/EntitlementOwner.md)
+ - [EntitlementPrivilegeLevel](sailpoint/roles/docs/EntitlementPrivilegeLevel.md)
  - [EntitlementRef](sailpoint/roles/docs/EntitlementRef.md)
  - [EntitlementSource](sailpoint/roles/docs/EntitlementSource.md)
+ - [EntitlementV2](sailpoint/roles/docs/EntitlementV2.md)
+ - [EntitlementV2AccessModelMetadata](sailpoint/roles/docs/EntitlementV2AccessModelMetadata.md)
+ - [EntitlementV2Owner](sailpoint/roles/docs/EntitlementV2Owner.md)
+ - [EntitlementV2PrivilegeLevel](sailpoint/roles/docs/EntitlementV2PrivilegeLevel.md)
+ - [EntitlementV2Source](sailpoint/roles/docs/EntitlementV2Source.md)
  - [ErrorMessageDto](sailpoint/roles/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/roles/docs/ErrorResponseDto.md)
  - [JsonPatchOperation](sailpoint/roles/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/roles/docs/JsonPatchOperationValue.md)
- - [ListRolesV1401Response](sailpoint/roles/docs/ListRolesV1401Response.md)
- - [ListRolesV1429Response](sailpoint/roles/docs/ListRolesV1429Response.md)
+ - [ListRolesV2401Response](sailpoint/roles/docs/ListRolesV2401Response.md)
+ - [ListRolesV2429Response](sailpoint/roles/docs/ListRolesV2429Response.md)
  - [LocaleOrigin](sailpoint/roles/docs/LocaleOrigin.md)
  - [OwnerReference](sailpoint/roles/docs/OwnerReference.md)
  - [PermissionDTO](sailpoint/roles/docs/PermissionDTO.md)
@@ -138,6 +146,10 @@ Class | Method | HTTP request | Description
  - [RoleMetadataBulkUpdateByIdRequestValuesInner](sailpoint/roles/docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
  - [RoleMetadataBulkUpdateByQueryRequest](sailpoint/roles/docs/RoleMetadataBulkUpdateByQueryRequest.md)
  - [RoleMetadataBulkUpdateByQueryRequestValuesInner](sailpoint/roles/docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
+ - [RolePrivilegeLevel](sailpoint/roles/docs/RolePrivilegeLevel.md)
+ - [RoleV2](sailpoint/roles/docs/RoleV2.md)
+ - [Rolelistfilterdtov2](sailpoint/roles/docs/Rolelistfilterdtov2.md)
+ - [Rolelistfilterdtov2AmmKeyValuesInner](sailpoint/roles/docs/Rolelistfilterdtov2AmmKeyValuesInner.md)
  - [TaskResultDto](sailpoint/roles/docs/TaskResultDto.md)
 
 

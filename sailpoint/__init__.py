@@ -189,6 +189,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "TransformsApi": (("sailpoint.transforms.api.transforms_api", "TransformsApi"),),
     "TriggersApi": (("sailpoint.triggers.api.triggers_api", "TriggersApi"),),
     "UIMetadataApi": (("sailpoint.ui_metadata.api.ui_metadata_api", "UIMetadataApi"),),
+    "UIPluginsApi": (("sailpoint.ui_plugins.api.ui_plugins_api", "UIPluginsApi"),),
     "WorkItemsApi": (("sailpoint.work_items.api.work_items_api", "WorkItemsApi"),),
     "WorkReassignmentApi": (("sailpoint.work_reassignment.api.work_reassignment_api", "WorkReassignmentApi"),),
 }
@@ -356,6 +357,7 @@ __all__ = [
     "TransformsApi",
     "TriggersApi",
     "UIMetadataApi",
+    "UIPluginsApi",
     "WorkItemsApi",
     "WorkReassignmentApi",
 ]
@@ -552,6 +554,7 @@ if TYPE_CHECKING:
     from sailpoint.transforms.api.transforms_api import TransformsApi as _transforms__TransformsApi
     from sailpoint.triggers.api.triggers_api import TriggersApi as _triggers__TriggersApi
     from sailpoint.ui_metadata.api.ui_metadata_api import UIMetadataApi as _ui_metadata__UIMetadataApi
+    from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi as _ui_plugins__UIPluginsApi
     from sailpoint.work_items.api.work_items_api import WorkItemsApi as _work_items__WorkItemsApi
     from sailpoint.work_reassignment.api.work_reassignment_api import WorkReassignmentApi as _work_reassignment__WorkReassignmentApi
     from sailpoint.workflows.api.workflows_api import WorkflowsApi as _workflows__WorkflowsApi
@@ -718,6 +721,7 @@ if TYPE_CHECKING:
     TransformsApi = _transforms__TransformsApi
     TriggersApi = _triggers__TriggersApi
     UIMetadataApi = _ui_metadata__UIMetadataApi
+    UIPluginsApi = _ui_plugins__UIPluginsApi
     WorkItemsApi = _work_items__WorkItemsApi
     WorkReassignmentApi = _work_reassignment__WorkReassignmentApi
 
@@ -880,6 +884,7 @@ if TYPE_CHECKING:
         TransformsApi = _transforms__TransformsApi
         TriggersApi = _triggers__TriggersApi
         UIMetadataApi = _ui_metadata__UIMetadataApi
+        UIPluginsApi = _ui_plugins__UIPluginsApi
         WorkItemsApi = _work_items__WorkItemsApi
         WorkReassignmentApi = _work_reassignment__WorkReassignmentApi
 else:

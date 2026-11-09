@@ -25,10 +25,10 @@ Name | Type | Description | Notes
 **privileged** | **bool** | True if the entitlement is privileged | [optional] [default to False]
 **cloud_governed** | **bool** | True if the entitlement is cloud governed | [optional] [default to False]
 **requestable** | **bool** | True if the entitlement is able to be directly requested | [optional] [default to False]
-**owner** | [**EntitlementOwner**](entitlement-owner) |  | [optional] 
+**owner** | [**EntitlementV2Owner**](entitlement-v2-owner) |  | [optional] 
 **additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **manually_updated_fields** | **map[string]object** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
-**access_model_metadata** | [**EntitlementAccessModelMetadata**](entitlement-access-model-metadata) |  | [optional] 
+**access_model_metadata** | [**EntitlementV2AccessModelMetadata**](entitlement-v2-access-model-metadata) |  | [optional] 
 **created** | **datetime** | Time when the entitlement was created | [optional] 
 **modified** | **datetime** | Time when the entitlement was last modified | [optional] 
 **source** | [**EntitlementSource**](entitlement-source) |  | [optional] 
@@ -52,7 +52,7 @@ description='Grants the ability to access and manage payroll-related controls an
 privileged=True,
 cloud_governed=True,
 requestable=True,
-owner=sailpoint.roles.models.entitlement_owner.Entitlement_owner(
+owner=sailpoint.roles.models.entitlement_v2_owner.EntitlementV2_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
@@ -63,7 +63,7 @@ additional_owners=[
                         name = 'support', )
                     ],
 manually_updated_fields={"DISPLAY_NAME":true,"DESCRIPTION":true},
-access_model_metadata=sailpoint.roles.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
+access_model_metadata=sailpoint.roles.models.entitlement_v2_access_model_metadata.EntitlementV2_accessModelMetadata(
                     attributes = [
                         sailpoint.roles.models.access_model_metadata.Access Model Metadata(
                             key = 'iscCsp', 

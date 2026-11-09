@@ -20,6 +20,7 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.roles.models.entitlement import Entitlement
+from sailpoint.roles.models.entitlement_v2 import EntitlementV2
 from sailpoint.roles.models.json_patch_operation import JsonPatchOperation
 from sailpoint.roles.models.role import Role
 from sailpoint.roles.models.role_bulk_delete_request import RoleBulkDeleteRequest
@@ -30,6 +31,8 @@ from sailpoint.roles.models.role_list_filter_dto import RoleListFilterDTO
 from sailpoint.roles.models.role_metadata_bulk_update_by_filter_request import RoleMetadataBulkUpdateByFilterRequest
 from sailpoint.roles.models.role_metadata_bulk_update_by_id_request import RoleMetadataBulkUpdateByIdRequest
 from sailpoint.roles.models.role_metadata_bulk_update_by_query_request import RoleMetadataBulkUpdateByQueryRequest
+from sailpoint.roles.models.role_v2 import RoleV2
+from sailpoint.roles.models.rolelistfilterdtov2 import Rolelistfilterdtov2
 from sailpoint.roles.models.task_result_dto import TaskResultDto
 
 from sailpoint.roles.api_client import ApiClient, RequestSerialized
@@ -106,9 +109,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -178,9 +181,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -250,9 +253,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -394,9 +397,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "TaskResultDto",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -466,9 +469,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "TaskResultDto",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -538,9 +541,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "TaskResultDto",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -690,9 +693,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -770,9 +773,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -850,9 +853,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -987,9 +990,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1059,9 +1062,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1131,9 +1134,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1262,9 +1265,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1334,9 +1337,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1406,9 +1409,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1533,9 +1536,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1601,9 +1604,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1669,9 +1672,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1816,9 +1819,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1907,9 +1910,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1998,9 +2001,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2174,9 +2177,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2266,9 +2269,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2358,9 +2361,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2459,6 +2462,452 @@ class RolesApi:
 
 
     @validate_call
+    def get_role_entitlements_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="Containing role's ID.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[EntitlementV2]:
+        """List role's entitlements
+
+        Get a list of entitlements assigned directly to a specified Role. Each entitlement includes its privilege level in `privilegeLevel`, with the direct, inherited, and effective levels.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param id: Containing role's ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.
+        :type for_segment_ids: str
+        :param segmented_for_identity: If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.
+        :type segmented_for_identity: str
+        :param include_unsegmented: Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            segmented_for_identity=segmented_for_identity,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[EntitlementV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_role_entitlements_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Containing role's ID.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[EntitlementV2]]:
+        """List role's entitlements
+
+        Get a list of entitlements assigned directly to a specified Role. Each entitlement includes its privilege level in `privilegeLevel`, with the direct, inherited, and effective levels.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param id: Containing role's ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.
+        :type for_segment_ids: str
+        :param segmented_for_identity: If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.
+        :type segmented_for_identity: str
+        :param include_unsegmented: Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            segmented_for_identity=segmented_for_identity,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[EntitlementV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_role_entitlements_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Containing role's ID.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List role's entitlements
+
+        Get a list of entitlements assigned directly to a specified Role. Each entitlement includes its privilege level in `privilegeLevel`, with the direct, inherited, and effective levels.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param id: Containing role's ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.
+        :type for_segment_ids: str
+        :param segmented_for_identity: If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.
+        :type segmented_for_identity: str
+        :param include_unsegmented: Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_entitlements_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            segmented_for_identity=segmented_for_identity,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[EntitlementV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_role_entitlements_v2_serialize(
+        self,
+        id,
+        x_sail_point_experimental,
+        limit,
+        offset,
+        count,
+        cursor,
+        filters,
+        sorters,
+        for_segment_ids,
+        segmented_for_identity,
+        include_unsegmented,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if segmented_for_identity is not None:
+            
+            _query_params.append(('segmented-for-identity', segmented_for_identity))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/roles/v2/{id}/entitlements',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_role_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Role")],
@@ -2514,9 +2963,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2586,9 +3035,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2658,9 +3107,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2718,6 +3167,299 @@ class RolesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/roles/v1/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_role_v2(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Role")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RoleV2:
+        """Get a role
+
+        This API returns a Role by its ID. The response includes the Role's effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+
+        :param id: ID of the Role (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RoleV2",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_role_v2_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Role")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[RoleV2]:
+        """Get a role
+
+        This API returns a Role by its ID. The response includes the Role's effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+
+        :param id: ID of the Role (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RoleV2",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_role_v2_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the Role")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get a role
+
+        This API returns a Role by its ID. The response includes the Role's effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+
+        :param id: ID of the Role (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_role_v2_serialize(
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "RoleV2",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_role_v2_serialize(
+        self,
+        id,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/roles/v2/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2817,9 +3559,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2917,9 +3659,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3017,9 +3759,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3130,6 +3872,434 @@ class RolesApi:
 
 
     @validate_call
+    def list_roles_v2(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[RoleV2]:
+        """List roles
+
+        This API returns a list of Roles. Each Role includes its effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000. Use cursor pagination to page beyond 10,000 results.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_roles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_roles_v2_with_http_info(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[RoleV2]]:
+        """List roles
+
+        This API returns a list of Roles. Each Role includes its effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000. Use cursor pagination to page beyond 10,000 results.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_roles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_roles_v2_without_preload_content(
+        self,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List roles
+
+        This API returns a list of Roles. Each Role includes its effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000. Use cursor pagination to page beyond 10,000 results.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_roles_v2_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            filters=filters,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_roles_v2_serialize(
+        self,
+        x_sail_point_experimental,
+        for_subadmin,
+        limit,
+        offset,
+        count,
+        cursor,
+        filters,
+        sorters,
+        for_segment_ids,
+        include_unsegmented,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if for_subadmin is not None:
+            
+            _query_params.append(('for-subadmin', for_subadmin))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/roles/v2',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def patch_role_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Role to patch")],
@@ -3189,9 +4359,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3265,9 +4435,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3341,9 +4511,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3517,9 +4687,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3617,9 +4787,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3717,9 +4887,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Role]",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3841,6 +5011,445 @@ class RolesApi:
 
 
     @validate_call
+    def search_roles_by_filter_v2(
+        self,
+        rolelistfilterdtov2: Rolelistfilterdtov2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[RoleV2]:
+        """Filter roles by metadata
+
+        This API returns a list of Roles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together. Each Role includes its effective privilege level in `privilegeLevel.effective`.  The `filters` expression in the request body supports the same fields and operators as the `filters` query parameter of [List roles](#operation/listRolesV2), including **privilegeLevel.effective**: *eq, in*.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same request body and `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param rolelistfilterdtov2: (required)
+        :type rolelistfilterdtov2: Rolelistfilterdtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_roles_by_filter_v2_serialize(
+            rolelistfilterdtov2=rolelistfilterdtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_roles_by_filter_v2_with_http_info(
+        self,
+        rolelistfilterdtov2: Rolelistfilterdtov2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[RoleV2]]:
+        """Filter roles by metadata
+
+        This API returns a list of Roles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together. Each Role includes its effective privilege level in `privilegeLevel.effective`.  The `filters` expression in the request body supports the same fields and operators as the `filters` query parameter of [List roles](#operation/listRolesV2), including **privilegeLevel.effective**: *eq, in*.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same request body and `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param rolelistfilterdtov2: (required)
+        :type rolelistfilterdtov2: Rolelistfilterdtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_roles_by_filter_v2_serialize(
+            rolelistfilterdtov2=rolelistfilterdtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_roles_by_filter_v2_without_preload_content(
+        self,
+        rolelistfilterdtov2: Rolelistfilterdtov2,
+        for_subadmin: Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None,
+        include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Filter roles by metadata
+
+        This API returns a list of Roles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together. Each Role includes its effective privilege level in `privilegeLevel.effective`.  The `filters` expression in the request body supports the same fields and operators as the `filters` query parameter of [List roles](#operation/listRolesV2), including **privilegeLevel.effective**: *eq, in*.  Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same request body and `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+        :param rolelistfilterdtov2: (required)
+        :type rolelistfilterdtov2: Rolelistfilterdtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param for_subadmin: If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        :type for_subadmin: str
+        :param limit: Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param cursor: Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+        :type cursor: str
+        :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+        :type sorters: str
+        :param for_segment_ids: If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+        :type for_segment_ids: str
+        :param include_unsegmented: Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+        :type include_unsegmented: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_roles_by_filter_v2_serialize(
+            rolelistfilterdtov2=rolelistfilterdtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            for_subadmin=for_subadmin,
+            limit=limit,
+            offset=offset,
+            count=count,
+            cursor=cursor,
+            sorters=sorters,
+            for_segment_ids=for_segment_ids,
+            include_unsegmented=include_unsegmented,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[RoleV2]",
+            '400': "ErrorResponseDto",
+            '401': "ListRolesV2401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListRolesV2429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_roles_by_filter_v2_serialize(
+        self,
+        rolelistfilterdtov2,
+        x_sail_point_experimental,
+        for_subadmin,
+        limit,
+        offset,
+        count,
+        cursor,
+        sorters,
+        for_segment_ids,
+        include_unsegmented,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if for_subadmin is not None:
+            
+            _query_params.append(('for-subadmin', for_subadmin))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if for_segment_ids is not None:
+            
+            _query_params.append(('for-segment-ids', for_segment_ids))
+            
+        if include_unsegmented is not None:
+            
+            _query_params.append(('include-unsegmented', include_unsegmented))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if rolelistfilterdtov2 is not None:
+            _body_params = rolelistfilterdtov2
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/roles/v2/filter',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_attribute_key_and_value_to_role_v1(
         self,
         id: Annotated[StrictStr, Field(description="The Id of a role")],
@@ -3904,9 +5513,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3984,9 +5593,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4064,9 +5673,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Role",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4201,9 +5810,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4273,9 +5882,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4345,9 +5954,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4489,9 +6098,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4561,9 +6170,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4633,9 +6242,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4777,9 +6386,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4849,9 +6458,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4921,9 +6530,9 @@ class RolesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleBulkUpdateResponse",
             '400': "ErrorResponseDto",
-            '401': "ListRolesV1401Response",
+            '401': "ListRolesV2401Response",
             '403': "ErrorResponseDto",
-            '429': "ListRolesV1429Response",
+            '429': "ListRolesV2429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

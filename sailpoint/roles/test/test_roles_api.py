@@ -82,6 +82,13 @@ class TestRolesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_role_entitlements_v2(self) -> None:
+        """Test case for get_role_entitlements_v2
+
+        List role's entitlements
+        """
+        pass
+
     def test_get_role_v1(self) -> None:
         """Test case for get_role_v1
 
@@ -89,8 +96,22 @@ class TestRolesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_role_v2(self) -> None:
+        """Test case for get_role_v2
+
+        Get a role
+        """
+        pass
+
     def test_list_roles_v1(self) -> None:
         """Test case for list_roles_v1
+
+        List roles
+        """
+        pass
+
+    def test_list_roles_v2(self) -> None:
+        """Test case for list_roles_v2
 
         List roles
         """
@@ -105,6 +126,13 @@ class TestRolesApi(unittest.TestCase):
 
     def test_search_roles_by_filter_v1(self) -> None:
         """Test case for search_roles_by_filter_v1
+
+        Filter roles by metadata
+        """
+        pass
+
+    def test_search_roles_by_filter_v2(self) -> None:
+        """Test case for search_roles_by_filter_v2
 
         Filter roles by metadata
         """

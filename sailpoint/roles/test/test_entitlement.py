@@ -44,7 +44,7 @@ class TestEntitlement(unittest.TestCase):
                 privileged = True,
                 cloud_governed = True,
                 requestable = True,
-                owner = sailpoint.roles.models.entitlement_owner.Entitlement_owner(
+                owner = sailpoint.roles.models.entitlement_v2_owner.EntitlementV2_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
@@ -55,7 +55,7 @@ class TestEntitlement(unittest.TestCase):
                         name = 'support', )
                     ],
                 manually_updated_fields = {"DISPLAY_NAME":true,"DESCRIPTION":true},
-                access_model_metadata = sailpoint.roles.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
+                access_model_metadata = sailpoint.roles.models.entitlement_v2_access_model_metadata.EntitlementV2_accessModelMetadata(
                     attributes = [
                         sailpoint.roles.models.access_model_metadata.Access Model Metadata(
                             key = 'iscCsp', 

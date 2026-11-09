@@ -1,0 +1,418 @@
+- path: /ui-plugins/v1/{pluginInstanceId}/asset-bundles
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#create-ui-plugin-asset-bundle-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin_asset_bundle import UIPluginAssetBundle
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          file = '''None''' # List[bytearray] | Repeatable form field. Send one part per file; use the part filename for the bundle-relative path (e.g. `assets/app.js`).
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a plugin asset bundle
+              
+              results = UIPluginsApi(api_client).create_ui_plugin_asset_bundle_v1(plugin_instance_id=plugin_instance_id, file=file)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).create_ui_plugin_asset_bundle_v1(plugin_instance_id, file, x_sail_point_experimental)
+              print("The response of UIPluginsApi->create_ui_plugin_asset_bundle_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->create_ui_plugin_asset_bundle_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}/link
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#create-ui-plugin-link-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.link_ui_plugin_request import LinkUIPluginRequest
+        from sailpoint.ui_plugins.models.link_ui_plugin_response import LinkUIPluginResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          link_ui_plugin_request = '''{
+          "port" : 4200
+        }''' # LinkUIPluginRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a plugin dev link
+              new_link_ui_plugin_request = LinkUiPluginRequest.from_json(link_ui_plugin_request)
+              results = UIPluginsApi(api_client).create_ui_plugin_link_v1(plugin_instance_id=plugin_instance_id, link_ui_plugin_request=new_link_ui_plugin_request)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).create_ui_plugin_link_v1(plugin_instance_id, new_link_ui_plugin_request, x_sail_point_experimental)
+              print("The response of UIPluginsApi->create_ui_plugin_link_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->create_ui_plugin_link_v1: %s\n" % e)
+- path: /ui-plugins/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#create-ui-plugin-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.create_ui_plugin_request import CreateUIPluginRequest
+        from sailpoint.ui_plugins.models.create_ui_plugin_response import CreateUIPluginResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          create_ui_plugin_request = '''{
+          "apiScopes" : [ "idn:account:read" ],
+          "iframeSandbox" : "",
+          "slots" : [ {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          } ],
+          "iframeAllow" : {
+            "default-src" : [ "'self'" ]
+          },
+          "name" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "alias" : "my-custom-plugin",
+          "description" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "permissionPolicy" : {
+            "default-src" : [ "'self'" ]
+          },
+          "contentSecurityPolicies" : {
+            "default-src" : [ "'self'" ]
+          }
+        }''' # CreateUIPluginRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a plugin instance
+              new_create_ui_plugin_request = CreateUiPluginRequest.from_json(create_ui_plugin_request)
+              results = UIPluginsApi(api_client).create_ui_plugin_v1(create_ui_plugin_request=new_create_ui_plugin_request)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).create_ui_plugin_v1(new_create_ui_plugin_request, x_sail_point_experimental)
+              print("The response of UIPluginsApi->create_ui_plugin_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->create_ui_plugin_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}/link
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#delete-ui-plugin-link-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete a plugin dev link
+              
+              UIPluginsApi(api_client).delete_ui_plugin_link_v1(plugin_instance_id=plugin_instance_id)
+              # Below is a request that includes all optional parameters
+              # UIPluginsApi(api_client).delete_ui_plugin_link_v1(plugin_instance_id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->delete_ui_plugin_link_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#delete-ui-plugin-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete a plugin instance
+              
+              UIPluginsApi(api_client).delete_ui_plugin_v1(plugin_instance_id=plugin_instance_id)
+              # Below is a request that includes all optional parameters
+              # UIPluginsApi(api_client).delete_ui_plugin_v1(plugin_instance_id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->delete_ui_plugin_v1: %s\n" % e)
+- path: /ui-plugins/v1/resolve-alias
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#get-ui-plugin-by-alias-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin import UIPlugin
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          alias = 'my-custom-plugin' # str | Alias to resolve within the caller's tenant # str | Alias to resolve within the caller's tenant
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get plugin by alias
+              
+              results = UIPluginsApi(api_client).get_ui_plugin_by_alias_v1(alias=alias)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).get_ui_plugin_by_alias_v1(alias, x_sail_point_experimental)
+              print("The response of UIPluginsApi->get_ui_plugin_by_alias_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->get_ui_plugin_by_alias_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#get-ui-plugin-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin import UIPlugin
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a plugin instance
+              
+              results = UIPluginsApi(api_client).get_ui_plugin_v1(plugin_instance_id=plugin_instance_id)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).get_ui_plugin_v1(plugin_instance_id, x_sail_point_experimental)
+              print("The response of UIPluginsApi->get_ui_plugin_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->get_ui_plugin_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}/asset-bundles
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#list-ui-plugin-asset-bundles-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin_asset_bundle import UIPluginAssetBundle
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          limit = 250 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List plugin asset bundles
+              
+              results = UIPluginsApi(api_client).list_ui_plugin_asset_bundles_v1(plugin_instance_id=plugin_instance_id)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).list_ui_plugin_asset_bundles_v1(plugin_instance_id, limit, offset, count, x_sail_point_experimental)
+              print("The response of UIPluginsApi->list_ui_plugin_asset_bundles_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->list_ui_plugin_asset_bundles_v1: %s\n" % e)
+- path: /ui-plugin-slots/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#list-ui-plugin-slots-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin_slot import UIPluginSlot
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          filters = 'state eq \"active\"' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **state**: *eq* (optional) # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **state**: *eq* (optional)
+          all_langs = False # bool | When `true`, `name` and `description` are returned as full locale maps instead of a single translated string. (optional) (default to False) # bool | When `true`, `name` and `description` are returned as full locale maps instead of a single translated string. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List UI plugin slots
+              
+              results = UIPluginsApi(api_client).list_ui_plugin_slots_v1()
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).list_ui_plugin_slots_v1(filters, all_langs, x_sail_point_experimental)
+              print("The response of UIPluginsApi->list_ui_plugin_slots_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->list_ui_plugin_slots_v1: %s\n" % e)
+- path: /ui-plugins/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#list-ui-plugins-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin import UIPlugin
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List plugin instances
+              
+              results = UIPluginsApi(api_client).list_ui_plugins_v1()
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).list_ui_plugins_v1(limit, offset, count, x_sail_point_experimental)
+              print("The response of UIPluginsApi->list_ui_plugins_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->list_ui_plugins_v1: %s\n" % e)
+- path: /ui-plugins/v1/validate-alias
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#test-ui-plugin-alias-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          alias = 'my-custom-plugin' # str | Alias to validate (3-63 chars; letters, numbers, dashes; no leading/trailing/consecutive dashes) # str | Alias to validate (3-63 chars; letters, numbers, dashes; no leading/trailing/consecutive dashes)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Test plugin alias availability
+              
+              UIPluginsApi(api_client).test_ui_plugin_alias_v1(alias=alias)
+              # Below is a request that includes all optional parameters
+              # UIPluginsApi(api_client).test_ui_plugin_alias_v1(alias, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->test_ui_plugin_alias_v1: %s\n" % e)
+- path: /ui-plugins/v1/{pluginInstanceId}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/ui-plugins/methods/ui-plugins#update-ui-plugin-v1
+      source: |
+        from sailpoint.ui_plugins.api.ui_plugins_api import UIPluginsApi
+        from sailpoint.ui_plugins.api_client import ApiClient
+        from sailpoint.ui_plugins.models.ui_plugin import UIPlugin
+        from sailpoint.ui_plugins.models.update_ui_plugin_request import UpdateUIPluginRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          plugin_instance_id = '2c918086-7b5f-4b3e-8a1c-2d3e4f5a6b7c' # str | UUID of the plugin instance # str | UUID of the plugin instance
+          update_ui_plugin_request = '''{
+          "apiScopes" : [ "idn:account:read" ],
+          "iframeSandbox" : "",
+          "slots" : [ {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          }, {
+            "slotId" : "full-page",
+            "restrictToUsers" : [ "2c9180867b5f4b3e8a1c2d3e4f5a6b7c" ],
+            "requiredCapabilities" : [ "ORG_ADMIN" ]
+          } ],
+          "iframeAllow" : {
+            "default-src" : [ "'self'" ]
+          },
+          "name" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "alias" : "my-custom-plugin",
+          "description" : {
+            "en" : "Example text",
+            "fr" : "Texte d'exemple"
+          },
+          "permissionPolicy" : {
+            "default-src" : [ "'self'" ]
+          },
+          "state" : "ENABLED",
+          "contentSecurityPolicies" : {
+            "default-src" : [ "'self'" ]
+          }
+        }''' # UpdateUIPluginRequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Partially update a plugin instance
+              new_update_ui_plugin_request = UpdateUiPluginRequest.from_json(update_ui_plugin_request)
+              results = UIPluginsApi(api_client).update_ui_plugin_v1(plugin_instance_id=plugin_instance_id, update_ui_plugin_request=new_update_ui_plugin_request)
+              # Below is a request that includes all optional parameters
+              # results = UIPluginsApi(api_client).update_ui_plugin_v1(plugin_instance_id, new_update_ui_plugin_request, x_sail_point_experimental)
+              print("The response of UIPluginsApi->update_ui_plugin_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling UIPluginsApi->update_ui_plugin_v1: %s\n" % e)
+

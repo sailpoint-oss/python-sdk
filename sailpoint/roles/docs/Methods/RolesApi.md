@@ -60,10 +60,14 @@ Method | HTTP request | Description
 [**get-bulk-update-status-v1**](#get-bulk-update-status-v1) | **GET** `/roles/v1/access-model-metadata/bulk-update` | Get bulk-update statuses
 [**get-role-assigned-identities-v1**](#get-role-assigned-identities-v1) | **GET** `/roles/v1/{id}/assigned-identities` | List identities assigned a role
 [**get-role-entitlements-v1**](#get-role-entitlements-v1) | **GET** `/roles/v1/{id}/entitlements` | List role&#39;s entitlements
+[**get-role-entitlements-v2**](#get-role-entitlements-v2) | **GET** `/roles/v2/{id}/entitlements` | List role&#39;s entitlements
 [**get-role-v1**](#get-role-v1) | **GET** `/roles/v1/{id}` | Get a role
+[**get-role-v2**](#get-role-v2) | **GET** `/roles/v2/{id}` | Get a role
 [**list-roles-v1**](#list-roles-v1) | **GET** `/roles/v1` | List roles
+[**list-roles-v2**](#list-roles-v2) | **GET** `/roles/v2` | List roles
 [**patch-role-v1**](#patch-role-v1) | **PATCH** `/roles/v1/{id}` | Patch a specified role
 [**search-roles-by-filter-v1**](#search-roles-by-filter-v1) | **POST** `/roles/v1/filter` | Filter roles by metadata
+[**search-roles-by-filter-v2**](#search-roles-by-filter-v2) | **POST** `/roles/v2/filter` | Filter roles by metadata
 [**update-attribute-key-and-value-to-role-v1**](#update-attribute-key-and-value-to-role-v1) | **POST** `/roles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add a metadata to role.
 [**update-roles-metadata-by-filter-v1**](#update-roles-metadata-by-filter-v1) | **POST** `/roles/v1/access-model-metadata/bulk-update/filter` | Bulk-update roles&#39; metadata by filters
 [**update-roles-metadata-by-ids-v1**](#update-roles-metadata-by-ids-v1) | **POST** `/roles/v1/access-model-metadata/bulk-update/ids` | Bulk-update roles&#39; metadata by id
@@ -96,9 +100,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 201 | Role created | Role |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -342,9 +346,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Returns an object with the id of the task performing the delete operation. | TaskResultDto |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -405,9 +409,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Request accepted |  |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -464,9 +468,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -521,9 +525,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | return if bulk update status could be found. | RoleBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -576,9 +580,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | successfully get the status of all unfinished bulk updates request. | List[RoleGetAllBulkUpdateResponse] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -639,9 +643,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Identities assigned the Role | List[RoleIdentity] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -708,9 +712,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Entitlements | List[Entitlement] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -752,6 +756,100 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## get-role-entitlements-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+List role's entitlements
+Get a list of entitlements assigned directly to a specified Role. Each entitlement includes its privilege level in `privilegeLevel`, with the direct, inherited, and effective levels.
+
+Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-entitlements-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | Containing role's ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+  Query | limit | **int** |   (optional) (default to 50) | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | cursor | **str** |   (optional) (default to '') | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+  Query | filters | **str** |   (optional) (default to '') | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in*
+  Query | sorters | **str** |   (optional) (default to 'created') | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable.
+  Query | for_segment_ids | **str** |   (optional) (default to '') | If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*.
+  Query | segmented_for_identity | **str** |   (optional) (default to '') | If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*.
+  Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+
+### Return type
+[**List[EntitlementV2]**](../models/entitlement-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of entitlements. | List[EntitlementV2] |  * x-total-count - The total result count (returned only if the *count* parameter is specified as *true*).  * x-next-cursor - Opaque cursor for the next page of results. Returned only when more results are available. Pass it in the *cursor* query parameter to get the next page.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.roles.api.roles_api import RolesApi
+from sailpoint.roles.api_client import ApiClient
+from sailpoint.roles.models.entitlement_v2 import EntitlementV2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808a7813090a017814121919ecca' # str | Containing role's ID. # str | Containing role's ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+    limit = 50 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+    cursor = '' # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '') # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '')
+    filters = '' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in* (optional) (default to '') # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **attribute**: *eq, sw, co*  **value**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **privilegeLevel.effective**: *eq, in* (optional) (default to '')
+    sorters = 'created' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'created') # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, attribute, value, created, modified, privilegeLevel.effective**  The default sort is **created**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'created')
+    for_segment_ids = '' # str | If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*. (optional) (default to '') # str | If present and not empty, filters entitlements to those assigned to the segment(s) with the specified IDs. Can't be used with *segmented-for-identity*. (optional) (default to '')
+    segmented_for_identity = '' # str | If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*. (optional) (default to '') # str | If present, filters entitlements to those in the segments visible to the specified identity. The value must be the calling identity's ID or the special value **me**. Can't be used with *for-segment-ids*. (optional) (default to '')
+    include_unsegmented = True # bool | Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether the response list should contain unsegmented entitlements. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+
+    try:
+        # List role's entitlements
+        
+        results = RolesApi(api_client).get_role_entitlements_v2(id=id)
+        # Below is a request that includes all optional parameters
+        # results = RolesApi(api_client).get_role_entitlements_v2(id, x_sail_point_experimental, limit, offset, count, cursor, filters, sorters, for_segment_ids, segmented_for_identity, include_unsegmented)
+        print("The response of RolesApi->get_role_entitlements_v2:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolesApi->get_role_entitlements_v2: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## get-role-v1
 Get a role
 This API returns a Role by its ID.
@@ -773,9 +871,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of all Roles | Role |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -811,6 +909,81 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## get-role-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Get a role
+This API returns a Role by its ID. The response includes the Role's effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.
+
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | ID of the Role
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**RoleV2**](../models/role-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A Role | RoleV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.roles.api.roles_api import RolesApi
+from sailpoint.roles.api_client import ApiClient
+from sailpoint.roles.models.role_v2 import RoleV2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808a7813090a017814121e121518' # str | ID of the Role # str | ID of the Role
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Get a role
+        
+        results = RolesApi(api_client).get_role_v2(id=id)
+        # Below is a request that includes all optional parameters
+        # results = RolesApi(api_client).get_role_v2(id, x_sail_point_experimental)
+        print("The response of RolesApi->get_role_v2:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolesApi->get_role_v2: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## list-roles-v1
 List roles
 This API returns a list of Roles.
@@ -840,9 +1013,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | List of Roles | List[Role] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -880,6 +1053,99 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling RolesApi->list_roles_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## list-roles-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+List roles
+This API returns a list of Roles. Each Role includes its effective privilege level in `privilegeLevel.effective`, which is the highest effective privilege level among the entitlements assigned directly to the Role and the entitlements included in the Role's access profiles.
+
+Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000. Use cursor pagination to page beyond 10,000 results.
+
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-roles-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+  Query | for_subadmin | **str** |   (optional) (default to '') | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+  Query | limit | **int** |   (optional) (default to 50) | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | cursor | **str** |   (optional) (default to '') | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+  Query | filters | **str** |   (optional) (default to '') | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or*
+  Query | sorters | **str** |   (optional) (default to 'name') | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+  Query | for_segment_ids | **str** |   (optional) (default to '') | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+  Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+
+### Return type
+[**List[RoleV2]**](../models/role-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of Roles | List[RoleV2] |  * x-total-count - The total result count (returned only if the *count* parameter is specified as *true*).  * x-next-cursor - Opaque cursor for the next page of results. Returned only when more results are available. Pass it in the *cursor* query parameter to get the next page.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.roles.api.roles_api import RolesApi
+from sailpoint.roles.api_client import ApiClient
+from sailpoint.roles.models.role_v2 import RoleV2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+    for_subadmin = '' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) (default to '') # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) (default to '')
+    limit = 50 # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+    cursor = '' # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '') # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '')
+    filters = '' # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or* (optional) (default to '') # str | Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **type**: *eq, in*  **owner.id**: *eq, in*  **additionalOwners.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, sw, co*  **accessProfile.id**: *eq, in*  **accessProfile.name**: *eq, sw, co*  **privilegeLevel.effective**: *eq, in*  Supported composite operators are *and, or* (optional) (default to '')
+    sorters = 'name' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'name') # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'name')
+    for_segment_ids = '' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) (default to '') # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) (default to '')
+    include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+
+    try:
+        # List roles
+        
+        results = RolesApi(api_client).list_roles_v2()
+        # Below is a request that includes all optional parameters
+        # results = RolesApi(api_client).list_roles_v2(x_sail_point_experimental, for_subadmin, limit, offset, count, cursor, filters, sorters, for_segment_ids, include_unsegmented)
+        print("The response of RolesApi->list_roles_v2:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolesApi->list_roles_v2: %s\n" % e)
 ```
 
 
@@ -928,9 +1194,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with the Role as updated. | Role |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -996,9 +1262,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with A list of Roles | List[Role] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -1049,6 +1315,106 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## search-roles-by-filter-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Filter roles by metadata
+This API returns a list of Roles filtered by Access Model Metadata and by filter expression. Filtering is supported by filter expression, by metadata attribute key and values, or by both together. Each Role includes its effective privilege level in `privilegeLevel.effective`.
+
+The `filters` expression in the request body supports the same fields and operators as the `filters` query parameter of [List roles](#operation/listRolesV2), including **privilegeLevel.effective**: *eq, in*.
+
+Use either offset pagination (`offset` and `limit`) or cursor pagination (`cursor` and `limit`). When more results are available, the `x-next-cursor` response header contains the cursor for the next page. Send that value in the `cursor` query parameter, with the same request body and `sorters`, to get the next page. You can't use `cursor` together with an `offset` greater than 0, and `offset` plus `limit` can't be greater than 10,000.
+
+[API Spec](https://developer.sailpoint.com/docs/api/search-roles-by-filter-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | rolelistfilterdtov2 | [**Rolelistfilterdtov2**](../models/rolelistfilterdtov2) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+  Query | for_subadmin | **str** |   (optional) (default to '') | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+  Query | limit | **int** |   (optional) (default to 50) | Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+  Query | cursor | **str** |   (optional) (default to '') | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0.
+  Query | sorters | **str** |   (optional) (default to 'name') | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable.
+  Query | for_segment_ids | **str** |   (optional) (default to '') | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+  Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+
+### Return type
+[**List[RoleV2]**](../models/role-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of Roles matching the filter criteria. | List[RoleV2] |  * x-total-count - The total result count (returned only if the *count* parameter is specified as *true*).  * x-next-cursor - Opaque cursor for the next page of results. Returned only when more results are available. Pass it in the *cursor* query parameter to get the next page.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.roles.api.roles_api import RolesApi
+from sailpoint.roles.api_client import ApiClient
+from sailpoint.roles.models.role_v2 import RoleV2
+from sailpoint.roles.models.rolelistfilterdtov2 import Rolelistfilterdtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    rolelistfilterdtov2 = '''{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "privilegeLevel.effective in (\"HIGH\",\"MEDIUM\")"
+        }''' # Rolelistfilterdtov2 | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+    for_subadmin = '' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) (default to '') # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) (default to '')
+    limit = 50 # int | Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 50)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Must be 0 or omitted when *cursor* is specified. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information. (optional) (default to False)
+    cursor = '' # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '') # str | Opaque cursor returned in the `x-next-cursor` response header of the previous page. Pass it with the same request body and `sorters` to get the next page of results. Can't be used with an *offset* greater than 0. (optional) (default to '')
+    sorters = 'name' # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'name') # str | Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, privilegeLevel.effective**  The default sort is **name**. **id** is always added as the final sort field so that cursor pagination is stable. (optional) (default to 'name')
+    for_segment_ids = '' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) (default to '') # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) (default to '')
+    include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+
+    try:
+        # Filter roles by metadata
+        new_rolelistfilterdtov2 = Rolelistfilterdtov2.from_json(rolelistfilterdtov2)
+        results = RolesApi(api_client).search_roles_by_filter_v2(rolelistfilterdtov2=new_rolelistfilterdtov2)
+        # Below is a request that includes all optional parameters
+        # results = RolesApi(api_client).search_roles_by_filter_v2(new_rolelistfilterdtov2, x_sail_point_experimental, for_subadmin, limit, offset, count, cursor, sorters, for_segment_ids, include_unsegmented)
+        print("The response of RolesApi->search_roles_by_filter_v2:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolesApi->search_roles_by_filter_v2: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## update-attribute-key-and-value-to-role-v1
 Add a metadata to role.
 This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
@@ -1071,9 +1437,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | Responds with the Role as updated. | Role |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -1134,9 +1500,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -1204,9 +1570,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -1274,9 +1640,9 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 202 | Returned if bulk update request created | RoleBulkUpdateResponse |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV1401Response |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListRolesV2401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV1429Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListRolesV2429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
