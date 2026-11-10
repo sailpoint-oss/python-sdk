@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sdk": "python",
-  "sdkVersion": "2.1.80",
+  "sdkVersion": "2.1.81",
   "operations": {
     "addAccessRequestRecommendationsIgnoredItemV1": {
       "resource": "iai-access-request-recommendations",
