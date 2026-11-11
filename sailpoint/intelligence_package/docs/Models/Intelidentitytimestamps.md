@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Intelidentitytimestamps', 'Intelident
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Timestamp when the identity record was first created in Identity Security Cloud. | [required]
-**modified_at** | **datetime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [required]
+**created_at** | **datetime** | Timestamp when the identity record was first created in SailPoint Identity Security. | [required]
+**modified_at** | **datetime** | Timestamp when the identity record was last modified in SailPoint Identity Security. | [required]
 }
 
 ## Example
