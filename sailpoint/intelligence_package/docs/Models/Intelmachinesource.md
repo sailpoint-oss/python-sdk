@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Intelmachinesource', 'Intelmachinesou
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Unique identifier of the correlated source in Identity Security Cloud. | [optional] 
-**name** | **str** | Display name of the source as configured in Identity Security Cloud. | [optional] 
+**id** | **str** | Unique identifier of the correlated source in SailPoint Identity Security. | [optional] 
+**name** | **str** | Display name of the source as configured in SailPoint Identity Security. | [optional] 
 **type** | **str** | Connector or source type classification for the backing system. | [optional] 
 }
 
