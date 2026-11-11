@@ -36,7 +36,7 @@ class TestLifecycleActionRequest(unittest.TestCase):
         if include_optional:
             return LifecycleActionRequest(
                 id = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-                tenant_id = 'tenant-001',
+                tenant_id = '3b6f2a1e-8c4d-4e9a-9f2b-7d5c1e0a6b38',
                 status_type = 'LIFECYCLE_ACTIONS_REQUEST',
                 requested_by = '2c9180858082150f0180893dbaf44201',
                 target_type = 'AI_AGENT',
@@ -60,7 +60,7 @@ class TestLifecycleActionRequest(unittest.TestCase):
                     cancel_comment = 'Cancelling - will resubmit after maintenance window', 
                     comments = [
                         sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment.Lifecycle Comment(
-                            comment_id = 'cmt-001', 
+                            comment_id = '9f3c2b7e-5a1d-4c8e-b6f0-2d4a7e9c1b53', 
                             author = sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment_author_reference.Lifecycle Comment Author Reference(
                                 type = 'IDENTITY', 
                                 id = '2c9180858082150f0180893dbaf44201', 
@@ -92,7 +92,7 @@ class TestLifecycleActionRequest(unittest.TestCase):
                         id = '2c9180858082150f0180893dbaf44201', 
                         name = 'Pat Manager', ), 
                     approval_request_id = 'a0220198-4b01-444b-8ac3-7a8a147a3791', 
-                    approval_settings_id = 'approval-settings-001', 
+                    approval_settings_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa_aws:bedrock:agent-42', 
                     provisioning = sailpoint.machine_identities_lifecycle_actions.models.lifecycle_provisioning.Lifecycle Provisioning(
                         started = '2026-05-26T19:05Z', 
                         ended = '2026-05-26T19:10Z', ), ),

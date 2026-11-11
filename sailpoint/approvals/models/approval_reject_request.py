@@ -27,8 +27,8 @@ class ApprovalRejectRequest(BaseModel):
     """
     Request body for rejecting an approval request.
     """ # noqa: E501
-    comment: Optional[StrictStr] = Field(default=None, description="Comment associated with the reject request.")
-    override_approver_id: Optional[StrictStr] = Field(default=None, description="Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of.", alias="overrideApproverID")
+    comment: Optional[StrictStr] = Field(default='', description="Comment associated with the reject request.")
+    override_approver_id: Optional[StrictStr] = Field(default='', description="Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of.", alias="overrideApproverID")
     __properties: ClassVar[List[str]] = ["comment", "overrideApproverID"]
 
     model_config = ConfigDict(
@@ -82,8 +82,8 @@ class ApprovalRejectRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "comment": obj.get("comment"),
-            "overrideApproverID": obj.get("overrideApproverID")
+            "comment": obj.get("comment") if obj.get("comment") is not None else '',
+            "overrideApproverID": obj.get("overrideApproverID") if obj.get("overrideApproverID") is not None else ''
         })
         return _obj
 

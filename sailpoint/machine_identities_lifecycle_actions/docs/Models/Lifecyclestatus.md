@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Lifecyclestatus', 'Lifecyclestatus']
 
 # Lifecyclestatus
 
-Detailed lifecycle request status stored on the lifecycle action request.
+Status of the lifecycle action request.
 
 ## Enum
 

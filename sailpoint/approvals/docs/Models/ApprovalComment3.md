@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**ApprovalIdentity**](approval-identity) |  | [optional] 
 **comment** | **str** | Comment to be left on an approval | [optional] 
-**created_date** | **str** | Date the comment was created | [optional] 
+**created_date** | **datetime** | Date the comment was created | [optional] 
 **comment_id** | **str** | ID of the comment | [optional] 
 }
 
@@ -49,7 +49,7 @@ author=sailpoint.approvals.models.approval_identity.Approval Identity(
                     serial_order = 0, 
                     type = 'IDENTITY', ),
 comment='Looks good',
-created_date='2023-04-12T23:20:50.52Z',
+created_date='2023-04-12T23:20:50.520Z',
 comment_id='38453251-6be2-5f8f-df93-5ce19e295837'
 )
 

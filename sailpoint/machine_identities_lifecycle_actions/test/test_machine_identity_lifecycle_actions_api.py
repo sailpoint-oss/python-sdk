@@ -29,21 +29,21 @@ class TestMachineIdentityLifecycleActionsApi(unittest.TestCase):
     def test_cancel_machine_identity_lifecycle_action_v1(self) -> None:
         """Test case for cancel_machine_identity_lifecycle_action_v1
 
-        Cancel lifecycle action
+        Cancel machine identity lifecycle action
         """
         pass
 
     def test_get_machine_identity_lifecycle_action_v1(self) -> None:
         """Test case for get_machine_identity_lifecycle_action_v1
 
-        Get lifecycle action by requestId
+        Get machine identity lifecycle action
         """
         pass
 
     def test_list_machine_identity_lifecycle_actions_v1(self) -> None:
         """Test case for list_machine_identity_lifecycle_actions_v1
 
-        List lifecycle actions
+        List machine identity lifecycle actions
         """
         pass
 

@@ -34,7 +34,7 @@ from typing_extensions import Self
 
 class LifecycleActionRequestDetails(BaseModel):
     """
-    Nested lifecycle execution context stored on the lifecycle request.
+    Details of the lifecycle request, including its status, approval, comments, and provisioning.
     """ # noqa: E501
     status: Optional[Union[Lifecyclestatus, str]] = None
     action: Optional[Union[Lifecycleaction, str]] = None
@@ -43,15 +43,15 @@ class LifecycleActionRequestDetails(BaseModel):
     canceller: Optional[LifecycleRequesterReference] = None
     canceled_at: Optional[datetime] = Field(default=None, description="Time when the request was canceled (ISO-8601).", alias="canceledAt")
     cancel_comment: Optional[StrictStr] = Field(default=None, description="Comment provided when the request was canceled.", alias="cancelComment")
-    comments: Optional[List[LifecycleComment]] = Field(default=None, description="Append-only comment thread for the lifecycle request.")
-    failure_phase: Optional[StrictStr] = Field(default=None, description="Workflow phase where the request failed, when applicable.", alias="failurePhase")
+    comments: Optional[List[LifecycleComment]] = Field(default=None, description="Comments on the lifecycle request, in the order they were added.")
+    failure_phase: Optional[StrictStr] = Field(default=None, description="Stage where the request failed, when applicable.", alias="failurePhase")
     failure_reason: Optional[StrictStr] = Field(default=None, description="Failure reason for the lifecycle request, when applicable.", alias="failureReason")
     resource: Optional[LifecycleResourceSummary] = None
-    resource_owners: Optional[List[LifecycleOwnerReference]] = Field(default=None, description="Cached resource owners for the lifecycle target.", alias="resourceOwners")
+    resource_owners: Optional[List[LifecycleOwnerReference]] = Field(default=None, description="Owners of the machine identity at the time the request was submitted.", alias="resourceOwners")
     source_owner: Optional[LifecycleOwnerReference] = Field(default=None, alias="sourceOwner")
     requester: Optional[LifecycleRequesterReference] = None
-    approval_request_id: Optional[StrictStr] = Field(default=None, description="Approvals identifier when the request was submitted.", alias="approvalRequestId")
-    approval_settings_id: Optional[StrictStr] = Field(default=None, description="Approval settings identifier used for the request.", alias="approvalSettingsId")
+    approval_request_id: Optional[StrictStr] = Field(default=None, description="ID of the approval request created for this lifecycle request.", alias="approvalRequestId")
+    approval_settings_id: Optional[StrictStr] = Field(default=None, description="ID of the approval settings used for the request.", alias="approvalSettingsId")
     provisioning: Optional[LifecycleProvisioning] = None
     __properties: ClassVar[List[str]] = ["status", "action", "approver", "approvedAt", "canceller", "canceledAt", "cancelComment", "comments", "failurePhase", "failureReason", "resource", "resourceOwners", "sourceOwner", "requester", "approvalRequestId", "approvalSettingsId", "provisioning"]
 

@@ -62,9 +62,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CancelLifecycleActionResponse:
-        """Cancel lifecycle action
+        """Cancel machine identity lifecycle action
 
-        Attempts to cancel a lifecycle request before provisioning starts.  The path `requestId` is authoritative for lookup and authorization. The request body is optional and may carry cancel metadata such as `comment`. Any `requestId` value in the body is ignored.  Workflow cancel signaling is attempted before the request is persisted as `CANCELING`. If signaling fails, the service returns **503** (`DOWNSTREAM_SERVICE_UNAVAILABLE`, cause `workflow-signal-failed`) and the lifecycle request status is unchanged.  Invalid cancel states are returned as **400** (`INVALID_REQUEST_IN_CURRENT_STATE` variants).  Cancel authorization matches https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1: the original submitter is always allowed; otherwise callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** target role-context access.  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context. - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`.  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType`/target-identity subtype   mismatch. 
+        Cancels a lifecycle action request that hasn't started provisioning yet. When the cancel is accepted, the request moves to `CANCELING` status.  A request can't be canceled once provisioning has started, after it has finished, or while a cancel is already in progress.  The request body is optional. Use it to add a comment explaining why the request was canceled.  You can always cancel requests that you submitted. To cancel a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner.  If the cancel can't be completed, the API returns an error and the request stays in `CANCELING` status. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -143,9 +143,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CancelLifecycleActionResponse]:
-        """Cancel lifecycle action
+        """Cancel machine identity lifecycle action
 
-        Attempts to cancel a lifecycle request before provisioning starts.  The path `requestId` is authoritative for lookup and authorization. The request body is optional and may carry cancel metadata such as `comment`. Any `requestId` value in the body is ignored.  Workflow cancel signaling is attempted before the request is persisted as `CANCELING`. If signaling fails, the service returns **503** (`DOWNSTREAM_SERVICE_UNAVAILABLE`, cause `workflow-signal-failed`) and the lifecycle request status is unchanged.  Invalid cancel states are returned as **400** (`INVALID_REQUEST_IN_CURRENT_STATE` variants).  Cancel authorization matches https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1: the original submitter is always allowed; otherwise callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** target role-context access.  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context. - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`.  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType`/target-identity subtype   mismatch. 
+        Cancels a lifecycle action request that hasn't started provisioning yet. When the cancel is accepted, the request moves to `CANCELING` status.  A request can't be canceled once provisioning has started, after it has finished, or while a cancel is already in progress.  The request body is optional. Use it to add a comment explaining why the request was canceled.  You can always cancel requests that you submitted. To cancel a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner.  If the cancel can't be completed, the API returns an error and the request stays in `CANCELING` status. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -224,9 +224,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Cancel lifecycle action
+        """Cancel machine identity lifecycle action
 
-        Attempts to cancel a lifecycle request before provisioning starts.  The path `requestId` is authoritative for lookup and authorization. The request body is optional and may carry cancel metadata such as `comment`. Any `requestId` value in the body is ignored.  Workflow cancel signaling is attempted before the request is persisted as `CANCELING`. If signaling fails, the service returns **503** (`DOWNSTREAM_SERVICE_UNAVAILABLE`, cause `workflow-signal-failed`) and the lifecycle request status is unchanged.  Invalid cancel states are returned as **400** (`INVALID_REQUEST_IN_CURRENT_STATE` variants).  Cancel authorization matches https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1: the original submitter is always allowed; otherwise callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** target role-context access.  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context. - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`.  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType`/target-identity subtype   mismatch. 
+        Cancels a lifecycle action request that hasn't started provisioning yet. When the cancel is accepted, the request moves to `CANCELING` status.  A request can't be canceled once provisioning has started, after it has finished, or while a cancel is already in progress.  The request body is optional. Use it to add a comment explaining why the request was canceled.  You can always cancel requests that you submitted. To cancel a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner.  If the cancel can't be completed, the API returns an error and the request stays in `CANCELING` status. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -382,9 +382,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecycleActionRequest:
-        """Get lifecycle action by requestId
+        """Get machine identity lifecycle action
 
-        Returns one lifecycle request snapshot by `requestId`. Used for request-level inspection, including cancel acceptance and subsequent status changes.  The original requester is always allowed to read their request. Otherwise, callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context (response includes `requestId` as a parameter). - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`   (`targetType` on read-by-request-id paths).  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType` does not match the   target machine identity's subtype-to-resource-type mapping. 
+        Returns a single lifecycle action request, including its current status, approval details, and provisioning progress. Use it to follow a request after you submit or cancel it.  You can always view requests that you submitted. To view a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -459,9 +459,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecycleActionRequest]:
-        """Get lifecycle action by requestId
+        """Get machine identity lifecycle action
 
-        Returns one lifecycle request snapshot by `requestId`. Used for request-level inspection, including cancel acceptance and subsequent status changes.  The original requester is always allowed to read their request. Otherwise, callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context (response includes `requestId` as a parameter). - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`   (`targetType` on read-by-request-id paths).  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType` does not match the   target machine identity's subtype-to-resource-type mapping. 
+        Returns a single lifecycle action request, including its current status, approval details, and provisioning progress. Use it to follow a request after you submit or cancel it.  You can always view requests that you submitted. To view a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -536,9 +536,9 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get lifecycle action by requestId
+        """Get machine identity lifecycle action
 
-        Returns one lifecycle request snapshot by `requestId`. Used for request-level inspection, including cancel acceptance and subsequent status changes.  The original requester is always allowed to read their request. Otherwise, callers must have the `idn:machine-identity-lifecycle-action:manage` scope **and** role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  **403 Forbidden**  - `FORBIDDEN.lifecycle-request-access-denied` - caller is not the submitter and lacks both the   `idn:machine-identity-lifecycle-action:manage` scope and target role-context (response includes `requestId` as a parameter). - `FORBIDDEN.unsupported-type` - the persisted lifecycle row is not scoped to `AI_AGENT`   (`targetType` on read-by-request-id paths).  **404 Not Found**  - `NOT_FOUND.detailed` - unknown `requestId`, or persisted `targetType` does not match the   target machine identity's subtype-to-resource-type mapping. 
+        Returns a single lifecycle action request, including its current status, approval details, and provisioning progress. Use it to follow a request after you submit or cancel it.  You can always view requests that you submitted. To view a request that someone else submitted, you need the `idn:machine-identity:lifecycle-action` right **and** admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param request_id: Lifecycle request identifier. (required)
         :type request_id: str
@@ -660,7 +660,7 @@ class MachineIdentityLifecycleActionsApi:
     @validate_call
     def list_machine_identity_lifecycle_actions_v1(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
@@ -679,11 +679,11 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[LifecycleActionRequest]:
-        """List lifecycle actions
+        """List machine identity lifecycle actions
 
-        Lists lifecycle requests visible to the requester identity in the current request context.  Results are automatically scoped to the calling identity. If requester identity context is missing, an empty list is returned.  When `limit` is omitted, this endpoint applies a default limit of 50. 
+        Returns the lifecycle action requests that you submitted. Requests that other users submitted aren't included, even if you're an admin. If the call isn't made on behalf of an identity, the list is empty.  When `limit` is omitted, up to 50 results are returned. 
 
-        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).
         :type sorters: str
@@ -752,7 +752,7 @@ class MachineIdentityLifecycleActionsApi:
     @validate_call
     def list_machine_identity_lifecycle_actions_v1_with_http_info(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
@@ -771,11 +771,11 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[LifecycleActionRequest]]:
-        """List lifecycle actions
+        """List machine identity lifecycle actions
 
-        Lists lifecycle requests visible to the requester identity in the current request context.  Results are automatically scoped to the calling identity. If requester identity context is missing, an empty list is returned.  When `limit` is omitted, this endpoint applies a default limit of 50. 
+        Returns the lifecycle action requests that you submitted. Requests that other users submitted aren't included, even if you're an admin. If the call isn't made on behalf of an identity, the list is empty.  When `limit` is omitted, up to 50 results are returned. 
 
-        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).
         :type sorters: str
@@ -844,7 +844,7 @@ class MachineIdentityLifecycleActionsApi:
     @validate_call
     def list_machine_identity_lifecycle_actions_v1_without_preload_content(
         self,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
@@ -863,11 +863,11 @@ class MachineIdentityLifecycleActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List lifecycle actions
+        """List machine identity lifecycle actions
 
-        Lists lifecycle requests visible to the requester identity in the current request context.  Results are automatically scoped to the calling identity. If requester identity context is missing, an empty list is returned.  When `limit` is omitted, this endpoint applies a default limit of 50. 
+        Returns the lifecycle action requests that you submitted. Requests that other users submitted aren't included, even if you're an admin. If the call isn't made on behalf of an identity, the list is empty.  When `limit` is omitted, up to 50 results are returned. 
 
-        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*
+        :param filters: Filter results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le*  The `resourceType` filter matches the `targetType` field in the response.
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first).
         :type sorters: str
@@ -1038,7 +1038,7 @@ class MachineIdentityLifecycleActionsApi:
     ) -> LifecycleActionSubmitResponse:
         """Submit machine identity lifecycle action
 
-        Creates a lifecycle request for the target machine identity and returns the created lifecycle snapshot.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes the generated `requestId`, which is used by https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1, https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1, and https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1  Authorization is enforced in the service layer. Callers must have the `idn:machine-identity-lifecycle-action:manage` scope or role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  Supported actions are `DEACTIVATE`, `ACTIVATE`. 
+        Submits a request to activate or deactivate a machine identity. Supported actions are `ACTIVATE` and `DEACTIVATE`.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes a `requestId`. Use it to [get the request](https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1) or [cancel it](https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1). To see all the requests you've submitted, use [list machine identity lifecycle actions](https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1).  Only one lifecycle action can be in progress for a machine identity at a time. If another action is already in progress for the machine identity, the request is rejected.  To submit a lifecycle action, you need the `idn:machine-identity:lifecycle-action` right, or admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param id: Machine identity ID. (required)
         :type id: str
@@ -1119,7 +1119,7 @@ class MachineIdentityLifecycleActionsApi:
     ) -> ApiResponse[LifecycleActionSubmitResponse]:
         """Submit machine identity lifecycle action
 
-        Creates a lifecycle request for the target machine identity and returns the created lifecycle snapshot.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes the generated `requestId`, which is used by https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1, https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1, and https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1  Authorization is enforced in the service layer. Callers must have the `idn:machine-identity-lifecycle-action:manage` scope or role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  Supported actions are `DEACTIVATE`, `ACTIVATE`. 
+        Submits a request to activate or deactivate a machine identity. Supported actions are `ACTIVATE` and `DEACTIVATE`.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes a `requestId`. Use it to [get the request](https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1) or [cancel it](https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1). To see all the requests you've submitted, use [list machine identity lifecycle actions](https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1).  Only one lifecycle action can be in progress for a machine identity at a time. If another action is already in progress for the machine identity, the request is rejected.  To submit a lifecycle action, you need the `idn:machine-identity:lifecycle-action` right, or admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param id: Machine identity ID. (required)
         :type id: str
@@ -1200,7 +1200,7 @@ class MachineIdentityLifecycleActionsApi:
     ) -> RESTResponseType:
         """Submit machine identity lifecycle action
 
-        Creates a lifecycle request for the target machine identity and returns the created lifecycle snapshot.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes the generated `requestId`, which is used by https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1, https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1, and https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1  Authorization is enforced in the service layer. Callers must have the `idn:machine-identity-lifecycle-action:manage` scope or role-context access to the target machine identity (organization admin, source admin, scoped source sub-admin, or effective owner).  Supported actions are `DEACTIVATE`, `ACTIVATE`. 
+        Submits a request to activate or deactivate a machine identity. Supported actions are `ACTIVATE` and `DEACTIVATE`.  **Note:** Lifecycle actions are currently supported only for machine identities of type **Agent**.  The response includes a `requestId`. Use it to [get the request](https://developer.sailpoint.com/docs/api/get-machine-identity-lifecycle-action-v-1) or [cancel it](https://developer.sailpoint.com/docs/api/cancel-machine-identity-lifecycle-action-v-1). To see all the requests you've submitted, use [list machine identity lifecycle actions](https://developer.sailpoint.com/docs/api/list-machine-identity-lifecycle-actions-v-1).  Only one lifecycle action can be in progress for a machine identity at a time. If another action is already in progress for the machine identity, the request is rejected.  To submit a lifecycle action, you need the `idn:machine-identity:lifecycle-action` right, or admin or owner access to the machine identity. Admin or owner access means you're an org admin, a source admin, a source sub-admin for the machine identity's source, or the machine identity's owner. 
 
         :param id: Machine identity ID. (required)
         :type id: str

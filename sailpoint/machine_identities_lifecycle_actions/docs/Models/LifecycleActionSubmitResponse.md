@@ -17,10 +17,10 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleActionSubmitResponse', 'Life
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request_id** | **str** | Unique identifier for the created lifecycle request. | [required]
-**status** | **str** | Initial lifecycle request status. | [required]
+**status** | **Lifecyclestatus** |  | [required]
 **action** | **Lifecycleaction** |  | [required]
-**target_id** | **str** | Internal machine identity UUID for the lifecycle target. | [required]
-**resource_id** | **str** | Connector resource id for the lifecycle target, when present. | [optional] 
+**target_id** | **str** | ID of the machine identity the request applies to. | [required]
+**resource_id** | **str** | ID of the machine identity in its source system, when available. | [optional] 
 **created_at** | **datetime** | Time when the lifecycle request was created (ISO-8601). | [required]
 }
 

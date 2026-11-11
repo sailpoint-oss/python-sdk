@@ -55,7 +55,7 @@ class TestApprovalComment3(unittest.TestCase):
                     serial_order = 0, 
                     type = 'IDENTITY', ),
                 comment = 'Looks good',
-                created_date = '2023-04-12T23:20:50.52Z',
+                created_date = '2023-04-12T23:20:50.520Z',
                 comment_id = '38453251-6be2-5f8f-df93-5ce19e295837'
             )
         else:

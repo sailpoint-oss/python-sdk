@@ -19,23 +19,53 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 class ApprovalRequestedTarget(BaseModel):
     """
-    Represents a requested target in an approval process, including details such as ID, name, reauthentication requirements, and removal date.
+    Specifies the actual object or target the approval request is for.
     """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Target ID (for example a role ID or access profile ID).")
+    ids: Optional[List[StrictStr]] = Field(default=None, description="Target IDs when the approval request applies to multiple targets.")
+    name: Optional[StrictStr] = Field(default=None, description="Target name (for example a role name or access profile name).")
+    names: Optional[List[StrictStr]] = Field(default=None, description="Target names when the approval request applies to multiple targets.")
+    target_type: Optional[StrictStr] = Field(default=None, description="Target type (for example Role or Access Profile).", alias="targetType")
+    target_types: Optional[List[StrictStr]] = Field(default=None, description="Target types when the approval request applies to multiple targets.", alias="targetTypes")
+    description: Optional[StrictStr] = Field(default=None, description="Optional description for the requested target.")
+    ep_level_at_creation: Optional[StrictStr] = Field(default=None, description="Effective privilege (EP) level at approval creation.", alias="epLevelAtCreation")
+    current_ep_level: Optional[StrictStr] = Field(default=None, description="Current effective privilege (EP) level for the requested target.", alias="currentEPLevel")
+    current_ep_modified_date: Optional[datetime] = Field(default=None, description="Date and time when the current effective privilege level was last modified.", alias="currentEPModifiedDate")
+    request_type: Optional[StrictStr] = Field(default=None, description="Access request type (for example GRANT_ACCESS or REVOKE_ACCESS).", alias="requestType")
     forced_auth_signature: Optional[StrictStr] = Field(default=None, description="Signature required for forced authentication.", alias="forcedAuthSignature")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the requested target.")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the requested target.")
-    reauth_required: Optional[StrictBool] = Field(default=False, description="Indicates if reauthentication is required.", alias="reauthRequired")
-    removal_date: Optional[datetime] = Field(default=None, description="Date when the target will be removed.", alias="removalDate")
-    request_type: Optional[StrictStr] = Field(default=None, description="Type of the request.", alias="requestType")
-    target_type: Optional[StrictStr] = Field(default=None, description="Type of the target.", alias="targetType")
-    __properties: ClassVar[List[str]] = ["forcedAuthSignature", "id", "name", "reauthRequired", "removalDate", "requestType", "targetType"]
+    reauth_required: Optional[StrictBool] = Field(default=False, description="Indicates whether forced reauthentication is required upon approval.", alias="reauthRequired")
+    start_date: Optional[datetime] = Field(default=None, description="When temporary access will be granted, if applicable.", alias="startDate")
+    removal_date: Optional[datetime] = Field(default=None, description="When temporary access will be removed, if applicable.", alias="removalDate")
+    modified_start_date: Optional[datetime] = Field(default=None, description="Updated start date when startDate is edited during the approval request.", alias="modifiedStartDate")
+    modified_removal_date: Optional[datetime] = Field(default=None, description="Updated removal date when removalDate is edited during the approval request.", alias="modifiedRemovalDate")
+    __properties: ClassVar[List[str]] = ["id", "ids", "name", "names", "targetType", "targetTypes", "description", "epLevelAtCreation", "currentEPLevel", "currentEPModifiedDate", "requestType", "forcedAuthSignature", "reauthRequired", "startDate", "removalDate", "modifiedStartDate", "modifiedRemovalDate"]
+
+    @field_validator('ep_level_at_creation')
+    def ep_level_at_creation_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HIGH', 'MEDIUM', 'LOW', 'NONE']):
+            warnings.warn(f"must be one of enum values ('HIGH', 'MEDIUM', 'LOW', 'NONE') unknown value: {value}")
+        return value
+
+    @field_validator('current_ep_level')
+    def current_ep_level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HIGH', 'MEDIUM', 'LOW', 'NONE']):
+            warnings.warn(f"must be one of enum values ('HIGH', 'MEDIUM', 'LOW', 'NONE') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,13 +118,23 @@ class ApprovalRequestedTarget(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "forcedAuthSignature": obj.get("forcedAuthSignature"),
             "id": obj.get("id"),
+            "ids": obj.get("ids"),
             "name": obj.get("name"),
-            "reauthRequired": obj.get("reauthRequired") if obj.get("reauthRequired") is not None else False,
-            "removalDate": obj.get("removalDate"),
+            "names": obj.get("names"),
+            "targetType": obj.get("targetType"),
+            "targetTypes": obj.get("targetTypes"),
+            "description": obj.get("description"),
+            "epLevelAtCreation": obj.get("epLevelAtCreation"),
+            "currentEPLevel": obj.get("currentEPLevel"),
+            "currentEPModifiedDate": obj.get("currentEPModifiedDate"),
             "requestType": obj.get("requestType"),
-            "targetType": obj.get("targetType")
+            "forcedAuthSignature": obj.get("forcedAuthSignature"),
+            "reauthRequired": obj.get("reauthRequired") if obj.get("reauthRequired") is not None else False,
+            "startDate": obj.get("startDate"),
+            "removalDate": obj.get("removalDate"),
+            "modifiedStartDate": obj.get("modifiedStartDate"),
+            "modifiedRemovalDate": obj.get("modifiedRemovalDate")
         })
         return _obj
 

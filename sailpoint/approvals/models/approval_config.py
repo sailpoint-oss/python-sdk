@@ -42,7 +42,7 @@ class ApprovalConfig(BaseModel):
     fallback_approver: Optional[ApprovalConfigFallbackApprover] = Field(default=None, alias="fallbackApprover")
     machine_identity_manager_assignment: Optional[StrictStr] = Field(default='MANAGER_OF_REQUESTER', description="Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.", alias="machineIdentityManagerAssignment")
     circumvent_approval_process: Optional[StrictBool] = Field(default=False, description="When true, all approvals will be created with the status \"PASSED\" effectively skipping the approval process. Note this field should only be used for Machine Account or Machine related approvals.", alias="circumventApprovalProcess")
-    auto_approve: Optional[StrictStr] = Field(default=None, description="OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved. INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.", alias="autoApprove")
+    auto_approve: Optional[StrictStr] = Field(default=None, description="OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved. INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved. SELF_REQUEST will cause steps assigned to the requester or a group containing the requester to be auto-approved whether or not the requester is the same as the requestee. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.", alias="autoApprove")
     __properties: ClassVar[List[str]] = ["reminderConfig", "escalationConfig", "timeoutConfig", "cronTimezone", "serialChain", "requiresComment", "fallbackApprover", "machineIdentityManagerAssignment", "circumventApprovalProcess", "autoApprove"]
 
     @field_validator('requires_comment')
@@ -71,8 +71,8 @@ class ApprovalConfig(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['OFF', 'DIRECT', 'INDIRECT']):
-            warnings.warn(f"must be one of enum values ('OFF', 'DIRECT', 'INDIRECT') unknown value: {value}")
+        if value not in set(['OFF', 'DIRECT', 'INDIRECT', 'SELF_REQUEST']):
+            warnings.warn(f"must be one of enum values ('OFF', 'DIRECT', 'INDIRECT', 'SELF_REQUEST') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

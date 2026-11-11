@@ -52,7 +52,7 @@ with sailpoint.machine_identities_lifecycle_actions.ApiClient(configuration) as 
     cancel_lifecycle_action_request = {"comment":"Cancelling - will resubmit after maintenance window"} # CancelLifecycleActionRequest |  (optional)
 
     try:
-        # Cancel lifecycle action
+        # Cancel machine identity lifecycle action
         api_response = api_instance.cancel_machine_identity_lifecycle_action_v1(request_id, x_sail_point_experimental=x_sail_point_experimental, cancel_lifecycle_action_request=cancel_lifecycle_action_request)
         print("The response of MachineIdentityLifecycleActionsApi->cancel_machine_identity_lifecycle_action_v1:\n")
         pprint(api_response)
@@ -67,9 +67,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineIdentityLifecycleActionsApi* | [**cancel_machine_identity_lifecycle_action_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#cancel_machine_identity_lifecycle_action_v1) | **POST** /machine-identities/v1/lifecycle-actions/{requestId}/cancel | Cancel lifecycle action
-*MachineIdentityLifecycleActionsApi* | [**get_machine_identity_lifecycle_action_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#get_machine_identity_lifecycle_action_v1) | **GET** /machine-identities/v1/lifecycle-actions/{requestId} | Get lifecycle action by requestId
-*MachineIdentityLifecycleActionsApi* | [**list_machine_identity_lifecycle_actions_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#list_machine_identity_lifecycle_actions_v1) | **GET** /machine-identities/v1/lifecycle-actions | List lifecycle actions
+*MachineIdentityLifecycleActionsApi* | [**cancel_machine_identity_lifecycle_action_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#cancel_machine_identity_lifecycle_action_v1) | **POST** /machine-identities/v1/lifecycle-actions/{requestId}/cancel | Cancel machine identity lifecycle action
+*MachineIdentityLifecycleActionsApi* | [**get_machine_identity_lifecycle_action_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#get_machine_identity_lifecycle_action_v1) | **GET** /machine-identities/v1/lifecycle-actions/{requestId} | Get machine identity lifecycle action
+*MachineIdentityLifecycleActionsApi* | [**list_machine_identity_lifecycle_actions_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#list_machine_identity_lifecycle_actions_v1) | **GET** /machine-identities/v1/lifecycle-actions | List machine identity lifecycle actions
 *MachineIdentityLifecycleActionsApi* | [**submit_machine_identity_lifecycle_action_v1**](sailpoint/machine_identities_lifecycle_actions/docs/MachineIdentityLifecycleActionsApi.md#submit_machine_identity_lifecycle_action_v1) | **POST** /machine-identities/v1/{id}/lifecycle-actions | Submit machine identity lifecycle action
 
 

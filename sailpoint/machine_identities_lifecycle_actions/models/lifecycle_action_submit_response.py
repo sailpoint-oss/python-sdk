@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.machine_identities_lifecycle_actions.models.lifecycleaction import Lifecycleaction
+from sailpoint.machine_identities_lifecycle_actions.models.lifecyclestatus import Lifecyclestatus
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,10 +31,10 @@ class LifecycleActionSubmitResponse(BaseModel):
     LifecycleActionSubmitResponse
     """ # noqa: E501
     request_id: StrictStr = Field(description="Unique identifier for the created lifecycle request.", alias="requestId")
-    status: StrictStr = Field(description="Initial lifecycle request status.")
+    status: Lifecyclestatus
     action: Lifecycleaction
-    target_id: StrictStr = Field(description="Internal machine identity UUID for the lifecycle target.", alias="targetId")
-    resource_id: Optional[StrictStr] = Field(default=None, description="Connector resource id for the lifecycle target, when present.", alias="resourceId")
+    target_id: StrictStr = Field(description="ID of the machine identity the request applies to.", alias="targetId")
+    resource_id: Optional[StrictStr] = Field(default=None, description="ID of the machine identity in its source system, when available.", alias="resourceId")
     created_at: datetime = Field(description="Time when the lifecycle request was created (ISO-8601).", alias="createdAt")
     __properties: ClassVar[List[str]] = ["requestId", "status", "action", "targetId", "resourceId", "createdAt"]
 

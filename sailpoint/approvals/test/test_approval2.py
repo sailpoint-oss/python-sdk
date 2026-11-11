@@ -59,8 +59,8 @@ class TestApproval2(unittest.TestCase):
                         serial_order = 0, 
                         type = 'IDENTITY', )
                     ],
-                created_date = '2023-04-12T23:20:50.52Z',
-                due_date = '2024-05-12T23:10:50.11Z',
+                created_date = '2023-04-12T23:20:50.520Z',
+                due_date = '2024-05-12T23:10:50.110Z',
                 escalation_step = '0',
                 serial_step = 0,
                 is_escalated = True,
@@ -173,7 +173,7 @@ class TestApproval2(unittest.TestCase):
                             serial_order = 0, 
                             type = 'IDENTITY', ), 
                         comment = 'Looks good', 
-                        created_date = '2023-04-12T23:20:50.52Z', 
+                        created_date = '2023-04-12T23:20:50.520Z', 
                         comment_id = '38453251-6be2-5f8f-df93-5ce19e295837', )
                     ],
                 approved_by = [
@@ -245,7 +245,7 @@ class TestApproval2(unittest.TestCase):
                         serial_order = 0, 
                         type = 'IDENTITY', )
                     ],
-                completed_date = '2023-04-12T23:20:50.52Z',
+                completed_date = '2023-04-12T23:20:50.520Z',
                 approval_criteria = sailpoint.approvals.models.approval_2_approval_criteria.Approval_2_approvalCriteria(
                     type = 'SERIAL', 
                     approval = sailpoint.approvals.models.approval_2_approval_criteria_approval.Approval_2_approvalCriteria_approval(
@@ -297,16 +297,24 @@ class TestApproval2(unittest.TestCase):
                     ],
                 static_attributes = {"serviceName":"ApprovalService","requestType":"AccessRequest","metadata":{"environment":"production","region":"us-east-1"}},
                 modified_date = '2023-10-01T12:34:56.789Z',
-                requested_target = [
-                    sailpoint.approvals.models.approval_requested_target.ApprovalRequestedTarget(
-                        forced_auth_signature = 'string', 
-                        id = 'string', 
-                        name = 'string', 
-                        reauth_required = True, 
-                        removal_date = '2025-07-07T18:10:13.687Z', 
-                        request_type = 'string', 
-                        target_type = 'string', )
-                    ]
+                requested_target = sailpoint.approvals.models.approval_requested_target.ApprovalRequestedTarget(
+                    id = 'string', 
+                    ids = ["2c9180835d191a86015d28455b4a2329"], 
+                    name = 'string', 
+                    names = ["Engineering Role"], 
+                    target_type = 'string', 
+                    target_types = ["ROLE","ACCESS_PROFILE"], 
+                    description = 'string', 
+                    ep_level_at_creation = 'HIGH', 
+                    current_ep_level = 'HIGH', 
+                    current_ep_modified_date = '2025-07-07T18:10:13.687Z', 
+                    request_type = 'GRANT_ACCESS', 
+                    forced_auth_signature = 'string', 
+                    reauth_required = True, 
+                    start_date = '2025-07-07T18:10:13.687Z', 
+                    removal_date = '2025-07-07T18:10:13.687Z', 
+                    modified_start_date = '2025-07-07T18:10:13.687Z', 
+                    modified_removal_date = '2025-07-07T18:10:13.687Z', )
             )
         else:
             return Approval2(

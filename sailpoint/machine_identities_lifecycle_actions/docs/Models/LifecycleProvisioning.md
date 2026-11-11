@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleProvisioning', 'LifecyclePro
 
 # LifecycleProvisioning
 
-Provisioning execution window for the lifecycle request.
+Provisioning status for the lifecycle request, with when provisioning started and ended.
 
 ## Properties
 

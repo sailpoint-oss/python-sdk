@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class Lifecycleprovisioningstatus(str, Enum):
     """
-    Provisioning execution status for the downstream workflow window.
+    Status of provisioning the change to the machine identity's source.
     """
 
     """

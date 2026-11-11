@@ -11,18 +11,18 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleResourceSummary', 'Lifecycle
 
 # LifecycleResourceSummary
 
-Cached resource context for the lifecycle target.
+Details of the machine identity at the time the request was submitted.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Internal machine identity UUID for the lifecycle target. | [optional] 
-**resource_id** | **str** | Connector resource id for the lifecycle target. | [optional] 
-**name** | **str** | Display name of the lifecycle target. | [optional] 
-**source_id** | **str** | Source identifier for the lifecycle target. | [optional] 
-**source_name** | **str** | Source name for the lifecycle target. | [optional] 
-**subtype** | **str** | Machine identity subtype for the lifecycle target. | [optional] 
+**id** | **str** | ID of the machine identity. | [optional] 
+**resource_id** | **str** | ID of the machine identity in its source system. | [optional] 
+**name** | **str** | Name of the machine identity. | [optional] 
+**source_id** | **str** | ID of the source the machine identity belongs to. | [optional] 
+**source_name** | **str** | Name of the source the machine identity belongs to. | [optional] 
+**subtype** | **str** | Type of machine identity. | [optional] 
 }
 
 ## Example

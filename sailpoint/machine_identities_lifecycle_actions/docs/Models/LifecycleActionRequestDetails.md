@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'LifecycleActionRequestDetails', 'Life
 
 # LifecycleActionRequestDetails
 
-Nested lifecycle execution context stored on the lifecycle request.
+Details of the lifecycle request, including its status, approval, comments, and provisioning.
 
 ## Properties
 
@@ -24,15 +24,15 @@ Name | Type | Description | Notes
 **canceller** | [**LifecycleRequesterReference**](lifecycle-requester-reference) |  | [optional] 
 **canceled_at** | **datetime** | Time when the request was canceled (ISO-8601). | [optional] 
 **cancel_comment** | **str** | Comment provided when the request was canceled. | [optional] 
-**comments** | [**[]LifecycleComment**](lifecycle-comment) | Append-only comment thread for the lifecycle request. | [optional] 
-**failure_phase** | **str** | Workflow phase where the request failed, when applicable. | [optional] 
+**comments** | [**[]LifecycleComment**](lifecycle-comment) | Comments on the lifecycle request, in the order they were added. | [optional] 
+**failure_phase** | **str** | Stage where the request failed, when applicable. | [optional] 
 **failure_reason** | **str** | Failure reason for the lifecycle request, when applicable. | [optional] 
 **resource** | [**LifecycleResourceSummary**](lifecycle-resource-summary) |  | [optional] 
-**resource_owners** | [**[]LifecycleOwnerReference**](lifecycle-owner-reference) | Cached resource owners for the lifecycle target. | [optional] 
+**resource_owners** | [**[]LifecycleOwnerReference**](lifecycle-owner-reference) | Owners of the machine identity at the time the request was submitted. | [optional] 
 **source_owner** | [**LifecycleOwnerReference**](lifecycle-owner-reference) |  | [optional] 
 **requester** | [**LifecycleRequesterReference**](lifecycle-requester-reference) |  | [optional] 
-**approval_request_id** | **str** | Approvals identifier when the request was submitted. | [optional] 
-**approval_settings_id** | **str** | Approval settings identifier used for the request. | [optional] 
+**approval_request_id** | **str** | ID of the approval request created for this lifecycle request. | [optional] 
+**approval_settings_id** | **str** | ID of the approval settings used for the request. | [optional] 
 **provisioning** | [**LifecycleProvisioning**](lifecycle-provisioning) |  | [optional] 
 }
 
@@ -57,7 +57,7 @@ canceled_at='2026-05-26T19:03Z',
 cancel_comment='Cancelling - will resubmit after maintenance window',
 comments=[
                     sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment.Lifecycle Comment(
-                        comment_id = 'cmt-001', 
+                        comment_id = '9f3c2b7e-5a1d-4c8e-b6f0-2d4a7e9c1b53', 
                         author = sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment_author_reference.Lifecycle Comment Author Reference(
                             type = 'IDENTITY', 
                             id = '2c9180858082150f0180893dbaf44201', 
@@ -89,7 +89,7 @@ requester=sailpoint.machine_identities_lifecycle_actions.models.lifecycle_reques
                     id = '2c9180858082150f0180893dbaf44201', 
                     name = 'Pat Manager', ),
 approval_request_id='a0220198-4b01-444b-8ac3-7a8a147a3791',
-approval_settings_id='approval-settings-001',
+approval_settings_id='6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa_aws:bedrock:agent-42',
 provisioning=sailpoint.machine_identities_lifecycle_actions.models.lifecycle_provisioning.Lifecycle Provisioning(
                     status = 'NOT_STARTED', 
                     started = '2026-05-26T19:05Z', 

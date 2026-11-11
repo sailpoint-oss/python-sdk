@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.machine_identities_lifecycle_actions.models.lifecycleaction import Lifecycleaction
 from typing import Optional, Set
@@ -29,11 +29,18 @@ class CancelLifecycleActionResponse(BaseModel):
     CancelLifecycleActionResponse
     """ # noqa: E501
     request_id: StrictStr = Field(description="Lifecycle request identifier.", alias="requestId")
-    status: StrictStr = Field(description="Updated lifecycle request status after cancel acceptance.")
+    status: StrictStr = Field(description="Status of the request after the cancel is accepted. Always `CANCELING`.")
     action: Lifecycleaction
-    target_id: StrictStr = Field(description="Internal machine identity UUID for the lifecycle target.", alias="targetId")
-    resource_id: Optional[StrictStr] = Field(default=None, description="Connector resource id for the lifecycle target, when present.", alias="resourceId")
+    target_id: StrictStr = Field(description="ID of the machine identity the request applies to.", alias="targetId")
+    resource_id: Optional[StrictStr] = Field(default=None, description="ID of the machine identity in its source system, when available.", alias="resourceId")
     __properties: ClassVar[List[str]] = ["requestId", "status", "action", "targetId", "resourceId"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['CANCELING']):
+            warnings.warn(f"must be one of enum values ('CANCELING') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

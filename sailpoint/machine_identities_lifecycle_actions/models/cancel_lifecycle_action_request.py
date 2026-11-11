@@ -26,7 +26,7 @@ from typing_extensions import Self
 
 class CancelLifecycleActionRequest(BaseModel):
     """
-    Optional cancel metadata. The path `requestId`.
+    Optional details for the cancel request. The request to cancel is identified by the `requestId` in the path.
     """ # noqa: E501
     comment: Optional[Annotated[str, Field(strict=True, max_length=1000)]] = Field(default=None, description="Optional cancel comment appended to the lifecycle request comment thread.")
     __properties: ClassVar[List[str]] = ["comment"]

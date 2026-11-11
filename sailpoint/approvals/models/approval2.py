@@ -41,8 +41,8 @@ class Approval2(BaseModel):
     tenant_id: Optional[StrictStr] = Field(default=None, description="The Tenant ID of the Approval", alias="tenantId")
     type: Optional[StrictStr] = Field(default=None, description="The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL")
     approvers: Optional[List[ApprovalIdentity]] = Field(default=None, description="Object representation of an approver of an approval")
-    created_date: Optional[StrictStr] = Field(default=None, description="Date the approval was created", alias="createdDate")
-    due_date: Optional[StrictStr] = Field(default=None, description="Date the approval is due", alias="dueDate")
+    created_date: Optional[datetime] = Field(default=None, description="Date the approval was created", alias="createdDate")
+    due_date: Optional[datetime] = Field(default=None, description="Date the approval is due", alias="dueDate")
     escalation_step: Optional[StrictStr] = Field(default=None, description="Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain.", alias="escalationStep")
     serial_step: Optional[StrictInt] = Field(default=None, description="The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0.", alias="serialStep")
     is_escalated: Optional[StrictBool] = Field(default=False, description="Whether or not the approval has been escalated. Will reset to false when the approval is actioned on.", alias="isEscalated")
@@ -58,14 +58,14 @@ class Approval2(BaseModel):
     approved_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
     rejected_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
     assigned_to: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.", alias="assignedTo")
-    completed_date: Optional[StrictStr] = Field(default=None, description="Date the approval was completed", alias="completedDate")
+    completed_date: Optional[datetime] = Field(default=None, description="Date the approval was completed", alias="completedDate")
     approval_criteria: Optional[Approval2ApprovalCriteria] = Field(default=None, alias="approvalCriteria")
     additional_attributes: Optional[StrictStr] = Field(default=None, description="Json string representing additional attributes known about the object to be approved.", alias="additionalAttributes")
     reference_data: Optional[List[ApprovalReference]] = Field(default=None, description="Reference data related to the approval", alias="referenceData")
     reassignment_history: Optional[List[ApprovalReassignmentHistory]] = Field(default=None, description="History of whom the approval request was assigned to", alias="reassignmentHistory")
     static_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Field that can include any static additional info that may be needed by the service that the approval request originated from", alias="staticAttributes")
     modified_date: Optional[datetime] = Field(default=None, description="Date/time that the approval request was last updated", alias="modifiedDate")
-    requested_target: Optional[List[ApprovalRequestedTarget]] = Field(default=None, description="RequestedTarget used to specify the actual object or target the approval request is for", alias="requestedTarget")
+    requested_target: Optional[ApprovalRequestedTarget] = Field(default=None, alias="requestedTarget")
     __properties: ClassVar[List[str]] = ["id", "tenantId", "type", "approvers", "createdDate", "dueDate", "escalationStep", "serialStep", "isEscalated", "name", "batchRequest", "approvalConfig", "description", "medium", "priority", "requester", "requestee", "comments", "approvedBy", "rejectedBy", "assignedTo", "completedDate", "approvalCriteria", "additionalAttributes", "referenceData", "reassignmentHistory", "staticAttributes", "modifiedDate", "requestedTarget"]
 
     @field_validator('medium')
@@ -205,13 +205,9 @@ class Approval2(BaseModel):
                 if _item_reassignment_history:
                     _items.append(_item_reassignment_history.to_dict())
             _dict['reassignmentHistory'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in requested_target (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of requested_target
         if self.requested_target:
-            for _item_requested_target in self.requested_target:
-                if _item_requested_target:
-                    _items.append(_item_requested_target.to_dict())
-            _dict['requestedTarget'] = _items
+            _dict['requestedTarget'] = self.requested_target.to_dict()
         return _dict
 
     @classmethod
@@ -252,7 +248,7 @@ class Approval2(BaseModel):
             "reassignmentHistory": [ApprovalReassignmentHistory.from_dict(_item) for _item in obj["reassignmentHistory"]] if obj.get("reassignmentHistory") is not None else None,
             "staticAttributes": obj.get("staticAttributes"),
             "modifiedDate": obj.get("modifiedDate"),
-            "requestedTarget": [ApprovalRequestedTarget.from_dict(_item) for _item in obj["requestedTarget"]] if obj.get("requestedTarget") is not None else None
+            "requestedTarget": ApprovalRequestedTarget.from_dict(obj["requestedTarget"]) if obj.get("requestedTarget") is not None else None
         })
         return _obj
 

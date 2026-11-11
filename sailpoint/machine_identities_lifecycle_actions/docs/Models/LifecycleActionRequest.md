@@ -18,13 +18,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Lifecycle request identifier. | [optional] 
 **tenant_id** | **str** | Tenant identifier for the lifecycle request. | [optional] 
-**status_type** | **str** | Generic request status type discriminator. | [optional] 
-**requested_by** | **str** | Identity id of the principal that submitted the request. | [optional] 
-**target_type** |  **Enum** [  'AI_AGENT' ] | Resource type targeted by the lifecycle request. | [optional] 
-**target_id** | **str** | Internal machine identity UUID for the lifecycle target. | [optional] 
+**status_type** | **str** | Type of request. Always `LIFECYCLE_ACTIONS_REQUEST` for lifecycle action requests. | [optional] 
+**requested_by** | **str** | ID of the identity that submitted the request. | [optional] 
+**target_type** |  **Enum** [  'AI_AGENT' ] | Type of machine identity the request applies to. | [optional] 
+**target_id** | **str** | ID of the machine identity the request applies to. | [optional] 
 **operation_type** | **Lifecycleaction** |  | [optional] 
-**workflow_id** | **str** | Temporal workflow identifier for the lifecycle request. | [optional] 
-**completed** | **bool** | Indicates whether the lifecycle request has reached a terminal state. | [optional] [default to False]
+**workflow_id** | **str** | Identifier of the workflow that processes the request. | [optional] 
+**completed** | **bool** | Indicates whether the request has finished. A request is finished when its status is `COMPLETED`, `REJECTED`, `FAILED`, or `CANCELED`. | [optional] [default to False]
 **details** | [**LifecycleActionRequestDetails**](lifecycle-action-request-details) |  | [optional] 
 **created** | **datetime** | Time when the lifecycle request was created (ISO-8601). | [optional] 
 **modified** | **datetime** | Time when the lifecycle request was last modified (ISO-8601). | [optional] 
@@ -37,7 +37,7 @@ from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_requ
 
 lifecycle_action_request = LifecycleActionRequest(
 id='a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-tenant_id='tenant-001',
+tenant_id='3b6f2a1e-8c4d-4e9a-9f2b-7d5c1e0a6b38',
 status_type='LIFECYCLE_ACTIONS_REQUEST',
 requested_by='2c9180858082150f0180893dbaf44201',
 target_type='AI_AGENT',
@@ -61,7 +61,7 @@ details=sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_r
                     cancel_comment = 'Cancelling - will resubmit after maintenance window', 
                     comments = [
                         sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment.Lifecycle Comment(
-                            comment_id = 'cmt-001', 
+                            comment_id = '9f3c2b7e-5a1d-4c8e-b6f0-2d4a7e9c1b53', 
                             author = sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment_author_reference.Lifecycle Comment Author Reference(
                                 type = 'IDENTITY', 
                                 id = '2c9180858082150f0180893dbaf44201', 
@@ -93,7 +93,7 @@ details=sailpoint.machine_identities_lifecycle_actions.models.lifecycle_action_r
                         id = '2c9180858082150f0180893dbaf44201', 
                         name = 'Pat Manager', ), 
                     approval_request_id = 'a0220198-4b01-444b-8ac3-7a8a147a3791', 
-                    approval_settings_id = 'approval-settings-001', 
+                    approval_settings_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa_aws:bedrock:agent-42', 
                     provisioning = sailpoint.machine_identities_lifecycle_actions.models.lifecycle_provisioning.Lifecycle Provisioning(
                         started = '2026-05-26T19:05Z', 
                         ended = '2026-05-26T19:10Z', ), ),

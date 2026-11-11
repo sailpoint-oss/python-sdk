@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class LifecycleProvisioning(BaseModel):
     """
-    Provisioning execution window for the lifecycle request.
+    Provisioning status for the lifecycle request, with when provisioning started and ended.
     """ # noqa: E501
     status: Optional[Union[Lifecycleprovisioningstatus, str]] = None
     started: Optional[datetime] = Field(default=None, description="Time when provisioning started (ISO-8601).")

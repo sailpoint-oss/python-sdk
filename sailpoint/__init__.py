@@ -162,6 +162,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "PublicIdentitiesApi": (("sailpoint.public_identities.api.public_identities_api", "PublicIdentitiesApi"),),
     "PublicIdentitiesConfigApi": (("sailpoint.public_identities_config.api.public_identities_config_api", "PublicIdentitiesConfigApi"),),
     "PublicMachineIdentitiesApi": (("sailpoint.public_machine_identities.api.public_machine_identities_api", "PublicMachineIdentitiesApi"),),
+    "ReminderEscalationsApi": (("sailpoint.reminder_escalations.api.reminder_escalations_api", "ReminderEscalationsApi"),),
     "ReportsDataExtractionApi": (("sailpoint.reports_data_extraction.api.reports_data_extraction_api", "ReportsDataExtractionApi"),),
     "RequestableObjectsApi": (("sailpoint.requestable_objects.api.requestable_objects_api", "RequestableObjectsApi"),),
     "RoleInsightsApi": (("sailpoint.role_insights.api.role_insights_api", "RoleInsightsApi"),),
@@ -330,6 +331,7 @@ __all__ = [
     "PublicIdentitiesApi",
     "PublicIdentitiesConfigApi",
     "PublicMachineIdentitiesApi",
+    "ReminderEscalationsApi",
     "ReportsDataExtractionApi",
     "RequestableObjectsApi",
     "RoleInsightsApi",
@@ -526,6 +528,7 @@ if TYPE_CHECKING:
     from sailpoint.public_identities.api.public_identities_api import PublicIdentitiesApi as _public_identities__PublicIdentitiesApi
     from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi as _public_identities_config__PublicIdentitiesConfigApi
     from sailpoint.public_machine_identities.api.public_machine_identities_api import PublicMachineIdentitiesApi as _public_machine_identities__PublicMachineIdentitiesApi
+    from sailpoint.reminder_escalations.api.reminder_escalations_api import ReminderEscalationsApi as _reminder_escalations__ReminderEscalationsApi
     from sailpoint.reports_data_extraction.api.reports_data_extraction_api import ReportsDataExtractionApi as _reports_data_extraction__ReportsDataExtractionApi
     from sailpoint.requestable_objects.api.requestable_objects_api import RequestableObjectsApi as _requestable_objects__RequestableObjectsApi
     from sailpoint.role_insights.api.role_insights_api import RoleInsightsApi as _role_insights__RoleInsightsApi
@@ -694,6 +697,7 @@ if TYPE_CHECKING:
     PublicIdentitiesApi = _public_identities__PublicIdentitiesApi
     PublicIdentitiesConfigApi = _public_identities_config__PublicIdentitiesConfigApi
     PublicMachineIdentitiesApi = _public_machine_identities__PublicMachineIdentitiesApi
+    ReminderEscalationsApi = _reminder_escalations__ReminderEscalationsApi
     ReportsDataExtractionApi = _reports_data_extraction__ReportsDataExtractionApi
     RequestableObjectsApi = _requestable_objects__RequestableObjectsApi
     RoleInsightsApi = _role_insights__RoleInsightsApi
@@ -857,6 +861,7 @@ if TYPE_CHECKING:
         PublicIdentitiesApi = _public_identities__PublicIdentitiesApi
         PublicIdentitiesConfigApi = _public_identities_config__PublicIdentitiesConfigApi
         PublicMachineIdentitiesApi = _public_machine_identities__PublicMachineIdentitiesApi
+        ReminderEscalationsApi = _reminder_escalations__ReminderEscalationsApi
         ReportsDataExtractionApi = _reports_data_extraction__ReportsDataExtractionApi
         RequestableObjectsApi = _requestable_objects__RequestableObjectsApi
         RoleInsightsApi = _role_insights__RoleInsightsApi

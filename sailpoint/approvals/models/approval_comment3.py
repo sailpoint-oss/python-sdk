@@ -18,6 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.approvals.models.approval_identity import ApprovalIdentity
@@ -30,7 +31,7 @@ class ApprovalComment3(BaseModel):
     """ # noqa: E501
     author: Optional[ApprovalIdentity] = None
     comment: Optional[StrictStr] = Field(default=None, description="Comment to be left on an approval")
-    created_date: Optional[StrictStr] = Field(default=None, description="Date the comment was created", alias="createdDate")
+    created_date: Optional[datetime] = Field(default=None, description="Date the comment was created", alias="createdDate")
     comment_id: Optional[StrictStr] = Field(default=None, description="ID of the comment", alias="commentId")
     __properties: ClassVar[List[str]] = ["author", "comment", "createdDate", "commentId"]
 

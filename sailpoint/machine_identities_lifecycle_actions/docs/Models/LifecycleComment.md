@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 from sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment import LifecycleComment
 
 lifecycle_comment = LifecycleComment(
-comment_id='cmt-001',
+comment_id='9f3c2b7e-5a1d-4c8e-b6f0-2d4a7e9c1b53',
 author=sailpoint.machine_identities_lifecycle_actions.models.lifecycle_comment_author_reference.Lifecycle Comment Author Reference(
                     type = 'IDENTITY', 
                     id = '2c9180858082150f0180893dbaf44201', 

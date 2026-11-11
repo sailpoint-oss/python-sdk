@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class Lifecyclestatus(str, Enum):
     """
-    Detailed lifecycle request status stored on the lifecycle action request.
+    Status of the lifecycle action request.
     """
 
     """

@@ -1,0 +1,237 @@
+- path: /reminder-escalations/v1/config/tenants
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/reminder-escalations/methods/reminder-escalations#create-reminder-escalation-tenant-config-v1
+      source: |
+        from sailpoint.reminder_escalations.api.reminder_escalations_api import ReminderEscalationsApi
+        from sailpoint.reminder_escalations.api_client import ApiClient
+        from sailpoint.reminder_escalations.models.reminderescalationtenantconfig import Reminderescalationtenantconfig
+        from sailpoint.reminder_escalations.models.reminderescalationtenantconfigcreate import Reminderescalationtenantconfigcreate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          reminderescalationtenantconfigcreate = '''{
+          "domainObjectType" : "CERTIFICATION",
+          "rules" : {
+            "reminders" : [ {
+              "cron" : "0 9 * * *",
+              "template" : "cert-reminder-daily",
+              "maxFirings" : 5,
+              "beforeDeadLine" : "P7D",
+              "activeAfter" : "P14D"
+            }, {
+              "cron" : "0 9 * * *",
+              "template" : "cert-reminder-daily",
+              "maxFirings" : 5,
+              "beforeDeadLine" : "P7D",
+              "activeAfter" : "P14D"
+            } ],
+            "escalations" : [ {
+              "template" : "cert-escalation-mgr",
+              "trigger" : {
+                "cron" : "0 9 * * 1",
+                "delay" : "PT12H",
+                "maxFirings" : 3,
+                "beforeDeadLine" : "P7D",
+                "count" : 3,
+                "triggerType" : "AFTER_REMINDER_COUNT",
+                "activeAfter" : "P14D"
+              },
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            }, {
+              "template" : "cert-escalation-mgr",
+              "trigger" : {
+                "cron" : "0 9 * * 1",
+                "delay" : "PT12H",
+                "maxFirings" : 3,
+                "beforeDeadLine" : "P7D",
+                "count" : 3,
+                "triggerType" : "AFTER_REMINDER_COUNT",
+                "activeAfter" : "P14D"
+              },
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            } ],
+            "fallback" : {
+              "template" : "cert-escalation-fallback-admin",
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            }
+          }
+        }''' # Reminderescalationtenantconfigcreate | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create Reminder Escalation Tenant Config
+              new_reminderescalationtenantconfigcreate = Reminderescalationtenantconfigcreate.from_json(reminderescalationtenantconfigcreate)
+              results = ReminderEscalationsApi(api_client).create_reminder_escalation_tenant_config_v1(reminderescalationtenantconfigcreate=new_reminderescalationtenantconfigcreate)
+              # Below is a request that includes all optional parameters
+              # results = ReminderEscalationsApi(api_client).create_reminder_escalation_tenant_config_v1(new_reminderescalationtenantconfigcreate, x_sail_point_experimental)
+              print("The response of ReminderEscalationsApi->create_reminder_escalation_tenant_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ReminderEscalationsApi->create_reminder_escalation_tenant_config_v1: %s\n" % e)
+- path: /reminder-escalations/v1/config/tenants/{domainObjectType}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/reminder-escalations/methods/reminder-escalations#delete-reminder-escalation-tenant-config-v1
+      source: |
+        from sailpoint.reminder_escalations.api.reminder_escalations_api import ReminderEscalationsApi
+        from sailpoint.reminder_escalations.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          domain_object_type = 'CERTIFICATION' # str | Domain object type key. # str | Domain object type key.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete Reminder Escalation Tenant Config
+              
+              ReminderEscalationsApi(api_client).delete_reminder_escalation_tenant_config_v1(domain_object_type=domain_object_type)
+              # Below is a request that includes all optional parameters
+              # ReminderEscalationsApi(api_client).delete_reminder_escalation_tenant_config_v1(domain_object_type, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling ReminderEscalationsApi->delete_reminder_escalation_tenant_config_v1: %s\n" % e)
+- path: /reminder-escalations/v1/config/tenants/{domainObjectType}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/reminder-escalations/methods/reminder-escalations#get-reminder-escalation-tenant-config-v1
+      source: |
+        from sailpoint.reminder_escalations.api.reminder_escalations_api import ReminderEscalationsApi
+        from sailpoint.reminder_escalations.api_client import ApiClient
+        from sailpoint.reminder_escalations.models.reminderescalationtenantconfig import Reminderescalationtenantconfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          domain_object_type = 'CERTIFICATION' # str | Domain object type key. # str | Domain object type key.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get Reminder Escalation Tenant Config
+              
+              results = ReminderEscalationsApi(api_client).get_reminder_escalation_tenant_config_v1(domain_object_type=domain_object_type)
+              # Below is a request that includes all optional parameters
+              # results = ReminderEscalationsApi(api_client).get_reminder_escalation_tenant_config_v1(domain_object_type, x_sail_point_experimental)
+              print("The response of ReminderEscalationsApi->get_reminder_escalation_tenant_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ReminderEscalationsApi->get_reminder_escalation_tenant_config_v1: %s\n" % e)
+- path: /reminder-escalations/v1/config/tenants/{domainObjectType}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/reminder-escalations/methods/reminder-escalations#put-reminder-escalation-tenant-config-v1
+      source: |
+        from sailpoint.reminder_escalations.api.reminder_escalations_api import ReminderEscalationsApi
+        from sailpoint.reminder_escalations.api_client import ApiClient
+        from sailpoint.reminder_escalations.models.reminderescalationtenantconfig import Reminderescalationtenantconfig
+        from sailpoint.reminder_escalations.models.reminderescalationtenantconfigupdate import Reminderescalationtenantconfigupdate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          domain_object_type = 'CERTIFICATION' # str | Domain object type key. # str | Domain object type key.
+          reminderescalationtenantconfigupdate = '''{
+          "rules" : {
+            "reminders" : [ {
+              "cron" : "0 9 * * *",
+              "template" : "cert-reminder-daily",
+              "maxFirings" : 5,
+              "beforeDeadLine" : "P7D",
+              "activeAfter" : "P14D"
+            }, {
+              "cron" : "0 9 * * *",
+              "template" : "cert-reminder-daily",
+              "maxFirings" : 5,
+              "beforeDeadLine" : "P7D",
+              "activeAfter" : "P14D"
+            } ],
+            "escalations" : [ {
+              "template" : "cert-escalation-mgr",
+              "trigger" : {
+                "cron" : "0 9 * * 1",
+                "delay" : "PT12H",
+                "maxFirings" : 3,
+                "beforeDeadLine" : "P7D",
+                "count" : 3,
+                "triggerType" : "AFTER_REMINDER_COUNT",
+                "activeAfter" : "P14D"
+              },
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            }, {
+              "template" : "cert-escalation-mgr",
+              "trigger" : {
+                "cron" : "0 9 * * 1",
+                "delay" : "PT12H",
+                "maxFirings" : 3,
+                "beforeDeadLine" : "P7D",
+                "count" : 3,
+                "triggerType" : "AFTER_REMINDER_COUNT",
+                "activeAfter" : "P14D"
+              },
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            } ],
+            "fallback" : {
+              "template" : "cert-escalation-fallback-admin",
+              "targets" : [ {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              }, {
+                "identityId" : "id-admin-99",
+                "targetType" : "MANAGER_OF"
+              } ]
+            }
+          },
+          "revision" : 1
+        }''' # Reminderescalationtenantconfigupdate | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update Reminder Escalation Tenant Config
+              new_reminderescalationtenantconfigupdate = Reminderescalationtenantconfigupdate.from_json(reminderescalationtenantconfigupdate)
+              results = ReminderEscalationsApi(api_client).put_reminder_escalation_tenant_config_v1(domain_object_type=domain_object_type, reminderescalationtenantconfigupdate=new_reminderescalationtenantconfigupdate)
+              # Below is a request that includes all optional parameters
+              # results = ReminderEscalationsApi(api_client).put_reminder_escalation_tenant_config_v1(domain_object_type, new_reminderescalationtenantconfigupdate, x_sail_point_experimental)
+              print("The response of ReminderEscalationsApi->put_reminder_escalation_tenant_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ReminderEscalationsApi->put_reminder_escalation_tenant_config_v1: %s\n" % e)
+

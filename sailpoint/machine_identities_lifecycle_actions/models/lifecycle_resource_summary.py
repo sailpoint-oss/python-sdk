@@ -25,14 +25,14 @@ from typing_extensions import Self
 
 class LifecycleResourceSummary(BaseModel):
     """
-    Cached resource context for the lifecycle target.
+    Details of the machine identity at the time the request was submitted.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Internal machine identity UUID for the lifecycle target.")
-    resource_id: Optional[StrictStr] = Field(default=None, description="Connector resource id for the lifecycle target.", alias="resourceId")
-    name: Optional[StrictStr] = Field(default=None, description="Display name of the lifecycle target.")
-    source_id: Optional[StrictStr] = Field(default=None, description="Source identifier for the lifecycle target.", alias="sourceId")
-    source_name: Optional[StrictStr] = Field(default=None, description="Source name for the lifecycle target.", alias="sourceName")
-    subtype: Optional[StrictStr] = Field(default=None, description="Machine identity subtype for the lifecycle target.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the machine identity.")
+    resource_id: Optional[StrictStr] = Field(default=None, description="ID of the machine identity in its source system.", alias="resourceId")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the machine identity.")
+    source_id: Optional[StrictStr] = Field(default=None, description="ID of the source the machine identity belongs to.", alias="sourceId")
+    source_name: Optional[StrictStr] = Field(default=None, description="Name of the source the machine identity belongs to.", alias="sourceName")
+    subtype: Optional[StrictStr] = Field(default=None, description="Type of machine identity.")
     __properties: ClassVar[List[str]] = ["id", "resourceId", "name", "sourceId", "sourceName", "subtype"]
 
     model_config = ConfigDict(
