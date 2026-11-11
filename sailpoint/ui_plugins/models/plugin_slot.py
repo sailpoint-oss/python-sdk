@@ -29,7 +29,7 @@ class PluginSlot(BaseModel):
     PluginSlot
     """ # noqa: E501
     slot_id: Annotated[str, Field(strict=True, max_length=128)] = Field(description="Identifier referencing an entry in the slot registry", alias="slotId")
-    required_capabilities: Optional[Annotated[List[StrictStr], Field(max_length=10)]] = Field(default=None, description="ISC capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.", alias="requiredCapabilities")
+    required_capabilities: Optional[Annotated[List[StrictStr], Field(max_length=10)]] = Field(default=None, description="SailPoint Identity Security capabilities the user must hold (AND logic) to see this plugin in the slot. Empty means unrestricted.", alias="requiredCapabilities")
     restrict_to_users: Optional[Annotated[List[Annotated[str, Field(min_length=32, strict=True, max_length=32)]], Field(max_length=10)]] = Field(default=None, description="User GUIDs (32-char hex) limiting visibility during development. Empty means no user restriction.", alias="restrictToUsers")
     __properties: ClassVar[List[str]] = ["slotId", "requiredCapabilities", "restrictToUsers"]
 
