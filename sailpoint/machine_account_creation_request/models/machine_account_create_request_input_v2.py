@@ -26,19 +26,19 @@ from typing_extensions import Self
 
 class MachineAccountCreateRequestInputV2(BaseModel):
     """
-    Contains the information for processing a user-initiated machine account creation request. Adds a target source and per-entitlement request details to the v1 request.
+    Machine account create request. `sourceId` is required while tiered subtype configuration is enabled and is ignored when that flag is off. `entitlements` is honored while per-entitlement request details are enabled. `entitlementIds` is honored while that flag is off. A non-empty list of the kind the current flag state does not honor is rejected.
     """ # noqa: E501
-    subtype_id: StrictStr = Field(description="Subtype ID for which machine account create is enabled and user have the entitlement to create the machine account.", alias="subtypeId")
-    source_id: Optional[StrictStr] = Field(default=None, description="ID of the source to create the machine account on. The subtype must be available on this source. Required when subtypes can be configured per source for the tenant; otherwise it is ignored and the subtype's own source is used.", alias="sourceId")
-    form_id: Optional[StrictStr] = Field(default=None, description="Form ID selected by user for the machine account create request.", alias="formId")
-    owner_identity_id: StrictStr = Field(description="Owner Identity ID. This identity will be assigned as an owner of the created machine account.", alias="ownerIdentityId")
-    machine_identity_id: Optional[StrictStr] = Field(default=None, description="Machine identity to correlate with the created machine account. If not provided, a new machine identity will be created.", alias="machineIdentityId")
-    environment: Optional[StrictStr] = Field(default=None, description="Environment type to use for the machine account.")
-    description: Optional[StrictStr] = Field(default=None, description="Description for the machine account.")
+    source_id: Optional[StrictStr] = Field(default='', description="Source the machine account is created on. Required while tiered subtype configuration is enabled, so a connector-tier subtype can name its source. Ignored when that flag is off; the source is then the subtype's own source.", alias="sourceId")
+    subtype_id: StrictStr = Field(description="Subtype that must be in the source effective set and for which the caller holds the create machine account entitlement.", alias="subtypeId")
+    form_id: Optional[StrictStr] = Field(default='', description="Form selected for the machine account create request.", alias="formId")
+    owner_identity_id: StrictStr = Field(description="Identity assigned as owner of the created machine account.", alias="ownerIdentityId")
+    machine_identity_id: Optional[StrictStr] = Field(default=None, description="Machine identity to correlate with the created machine account. When omitted, a new machine identity is created.", alias="machineIdentityId")
+    environment: Optional[StrictStr] = Field(default='', description="Environment type to use for the machine account.")
+    description: Optional[StrictStr] = Field(default='', description="Description for the machine account.")
     user_input: Optional[Dict[str, Any]] = Field(default=None, description="Fields of the form linked to the subtype in approval settings.", alias="userInput")
-    entitlements: Optional[List[MachineAccountCreateEntitlement]] = Field(default=None, description="Entitlements to request for the created machine account, each with an optional comment, start date, and remove date. Duplicate IDs are ignored and up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`.")
-    entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="List of entitlement IDs to provision for created machine account. Up to 20 unique entitlements are allowed. Use either `entitlements` or `entitlementIds`, depending on which one your tenant supports; sending a non-empty list that your tenant does not support returns `400`.", alias="entitlementIds")
-    __properties: ClassVar[List[str]] = ["subtypeId", "sourceId", "formId", "ownerIdentityId", "machineIdentityId", "environment", "description", "userInput", "entitlements", "entitlementIds"]
+    entitlements: Optional[List[MachineAccountCreateEntitlement]] = Field(default=None, description="Entitlements to provision, including an optional comment and access dates. Honored while per-entitlement request details are enabled. De-duplicated by `id` (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when that flag is off. An empty array is accepted.")
+    entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="Entitlement ids to provision. Honored while per-entitlement request details are off. Values are trimmed, blanks are dropped, and ids are de-duplicated (first occurrence wins), at most 20 unique ids. A non-empty array is rejected when per-entitlement request details are enabled. An empty array is accepted.", alias="entitlementIds")
+    __properties: ClassVar[List[str]] = ["sourceId", "subtypeId", "formId", "ownerIdentityId", "machineIdentityId", "environment", "description", "userInput", "entitlements", "entitlementIds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,13 +103,13 @@ class MachineAccountCreateRequestInputV2(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "sourceId": obj.get("sourceId") if obj.get("sourceId") is not None else '',
             "subtypeId": obj.get("subtypeId"),
-            "sourceId": obj.get("sourceId"),
-            "formId": obj.get("formId"),
+            "formId": obj.get("formId") if obj.get("formId") is not None else '',
             "ownerIdentityId": obj.get("ownerIdentityId"),
             "machineIdentityId": obj.get("machineIdentityId"),
-            "environment": obj.get("environment"),
-            "description": obj.get("description"),
+            "environment": obj.get("environment") if obj.get("environment") is not None else '',
+            "description": obj.get("description") if obj.get("description") is not None else '',
             "userInput": obj.get("userInput"),
             "entitlements": [MachineAccountCreateEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "entitlementIds": obj.get("entitlementIds")

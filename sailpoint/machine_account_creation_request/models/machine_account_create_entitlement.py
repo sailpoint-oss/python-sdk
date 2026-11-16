@@ -26,12 +26,12 @@ from typing_extensions import Self
 
 class MachineAccountCreateEntitlement(BaseModel):
     """
-    An entitlement to request for the machine account, with optional comment and access dates.
+    One entitlement to provision on the created machine account. `id` is the entitlement id. Comment and access dates are optional.
     """ # noqa: E501
-    id: StrictStr = Field(description="ID of the entitlement to request.")
-    comment: Optional[StrictStr] = Field(default=None, description="Comment to include with the entitlement request.")
-    start_date: Optional[datetime] = Field(default=None, description="Date and time when access to the entitlement starts. Must be in the future and, when `removeDate` is also set, before `removeDate`.", alias="startDate")
-    remove_date: Optional[datetime] = Field(default=None, description="Date and time when access to the entitlement is removed. Must be in the future.", alias="removeDate")
+    id: StrictStr = Field(description="Entitlement id to provision. Not required to be a UUID.")
+    comment: Optional[StrictStr] = Field(default='', description="Justification stored with the entitlement request.")
+    start_date: Optional[datetime] = Field(default=None, description="When access starts. Must be in the future and before `removeDate` when both are set.", alias="startDate")
+    remove_date: Optional[datetime] = Field(default=None, description="When access ends. Must be in the future and after `startDate` when both are set.", alias="removeDate")
     __properties: ClassVar[List[str]] = ["id", "comment", "startDate", "removeDate"]
 
     model_config = ConfigDict(
@@ -73,6 +73,16 @@ class MachineAccountCreateEntitlement(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
+        # set to None if remove_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
+            _dict['removeDate'] = None
+
         return _dict
 
     @classmethod
@@ -86,7 +96,7 @@ class MachineAccountCreateEntitlement(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "comment": obj.get("comment"),
+            "comment": obj.get("comment") if obj.get("comment") is not None else '',
             "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate")
         })

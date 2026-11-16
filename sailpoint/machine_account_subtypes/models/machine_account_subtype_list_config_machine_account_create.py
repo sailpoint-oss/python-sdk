@@ -23,11 +23,11 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(BaseModel):
+class MachineAccountSubtypeListConfigMachineAccountCreate(BaseModel):
     """
-    Machine account creation settings.
+    Stored create flag for this subtype. Omitted when no create config exists.
     """ # noqa: E501
-    account_create_enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether machine account creation is enabled for the subtype.", alias="accountCreateEnabled")
+    account_create_enabled: Optional[StrictBool] = Field(default=False, description="Whether machine account creation is enabled for this subtype.", alias="accountCreateEnabled")
     __properties: ClassVar[List[str]] = ["accountCreateEnabled"]
 
     model_config = ConfigDict(
@@ -48,7 +48,7 @@ class SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate from a JSON string"""
+        """Create an instance of MachineAccountSubtypeListConfigMachineAccountCreate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate from a dict"""
+        """Create an instance of MachineAccountSubtypeListConfigMachineAccountCreate from a dict"""
         if obj is None:
             return None
 

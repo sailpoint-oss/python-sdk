@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_account_subtypes.models.source_subtype_v2_with_config_all_of_config import SourceSubtypeV2WithConfigAllOfConfig
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_list_config_machine_account_create import MachineAccountSubtypeListConfigMachineAccountCreate
 
-class TestSourceSubtypeV2WithConfigAllOfConfig(unittest.TestCase):
-    """SourceSubtypeV2WithConfigAllOfConfig unit test stubs"""
+class TestMachineAccountSubtypeListConfigMachineAccountCreate(unittest.TestCase):
+    """MachineAccountSubtypeListConfigMachineAccountCreate unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,25 @@ class TestSourceSubtypeV2WithConfigAllOfConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceSubtypeV2WithConfigAllOfConfig:
-        """Test SourceSubtypeV2WithConfigAllOfConfig
+    def make_instance(self, include_optional) -> MachineAccountSubtypeListConfigMachineAccountCreate:
+        """Test MachineAccountSubtypeListConfigMachineAccountCreate
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceSubtypeV2WithConfigAllOfConfig`
+        # uncomment below to create an instance of `MachineAccountSubtypeListConfigMachineAccountCreate`
         """
-        model = SourceSubtypeV2WithConfigAllOfConfig()
+        model = MachineAccountSubtypeListConfigMachineAccountCreate()
         if include_optional:
-            return SourceSubtypeV2WithConfigAllOfConfig(
-                machine_account_create = sailpoint.machine_account_subtypes.models.source_subtype_v2_with_config_all_of_config_machine_account_create.SourceSubtypeV2WithConfig_allOf_config_machineAccountCreate(
-                    account_create_enabled = True, )
+            return MachineAccountSubtypeListConfigMachineAccountCreate(
+                account_create_enabled = True
             )
         else:
-            return SourceSubtypeV2WithConfigAllOfConfig(
+            return MachineAccountSubtypeListConfigMachineAccountCreate(
         )
         """
 
-    def testSourceSubtypeV2WithConfigAllOfConfig(self):
-        """Test SourceSubtypeV2WithConfigAllOfConfig"""
+    def testMachineAccountSubtypeListConfigMachineAccountCreate(self):
+        """Test MachineAccountSubtypeListConfigMachineAccountCreate"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

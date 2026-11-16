@@ -20,52 +20,32 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.machine_account_subtypes.models.source_subtype_v2_profile import SourceSubtypeV2Profile
-from sailpoint.machine_account_subtypes.models.subtype_target import SubtypeTarget
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from sailpoint.machine_account_subtypes.models.connector_variant_profile import ConnectorVariantProfile
+from sailpoint.machine_account_subtypes.models.subtype_classification import SubtypeClassification
+from sailpoint.machine_account_subtypes.models.subtype_target_type import SubtypeTargetType
 from typing import Optional, Set
 from typing_extensions import Self
 
 class SourceSubtypeV2(BaseModel):
     """
-    A machine account subtype defined at the source tier or the connector tier.
+    SourceSubtypeV2
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the subtype.")
-    technical_name: Optional[StrictStr] = Field(default=None, description="Technical name of the subtype.", alias="technicalName")
-    display_name: Optional[StrictStr] = Field(default=None, description="Display name of the subtype.", alias="displayName")
-    description: Optional[StrictStr] = Field(default=None, description="Description of the subtype.")
-    type: Optional[StrictStr] = Field(default=None, description="Entity type of the subtype.")
-    target_type: Optional[StrictStr] = Field(default=None, description="Tier the subtype is defined at. `SOURCE` subtypes apply to one source. `CONNECTOR` subtypes apply to every source of a connector type. `CONNECTOR_VARIANT` is reserved for future use.", alias="targetType")
-    target_id: Optional[StrictStr] = Field(default=None, description="Scope key of the subtype. The source ID for `SOURCE` subtypes, or the connector type for `CONNECTOR` subtypes.", alias="targetId")
-    target_name: Optional[StrictStr] = Field(default=None, description="Display name of the target source or connector.", alias="targetName")
-    classification: Optional[StrictStr] = Field(default=None, description="Classification of the subtype.")
-    origin: Optional[StrictStr] = Field(default=None, description="Tier of the parent subtype this subtype overrides. Set to `CONNECTOR` when a source subtype replaces a connector subtype with the same technical name in a source's effective subtype list. Otherwise `null`.")
-    profile: Optional[SourceSubtypeV2Profile] = None
-    system_managed: Optional[StrictBool] = Field(default=False, description="Indicates whether the subtype is managed by the system.", alias="systemManaged")
+    id: Optional[StrictStr] = Field(default=None, description="Server-generated subtype identifier. Must not be supplied on create.")
+    technical_name: StrictStr = Field(description="Technical name of the subtype. Unique within the target tier scope.", alias="technicalName")
+    display_name: StrictStr = Field(description="Display name of the subtype.", alias="displayName")
+    description: StrictStr = Field(description="Description of the subtype.")
+    type: Optional[StrictStr] = Field(default='MACHINE', description="Entity type of the subtype. Defaults to `MACHINE` when omitted.")
+    target_type: Optional[Union[SubtypeTargetType, str]] = Field(default=None, alias="targetType")
+    target_id: StrictStr = Field(description="Scope key for the subtype. Source id when `targetType` is `SOURCE`. Connector type or connector specification id when `targetType` is `CONNECTOR`.", alias="targetId")
+    target_name: Optional[StrictStr] = Field(default='', description="Human-readable target label. May be omitted on create; the service persists a display name.", alias="targetName")
+    classification: Optional[Union[SubtypeClassification, str]] = None
+    origin: Optional[StrictStr] = Field(default=None, description="Response-only origin badge. Set on effective-set list reads: `CONNECTOR` when a SOURCE winner overrides a CONNECTOR parent of the same technical name. `null` on connector-only and source-only winners, and on plain CRUD list, create, patch, and get-by-id.")
+    profile: Optional[ConnectorVariantProfile] = None
+    system_managed: Optional[StrictBool] = Field(default=False, description="Server-set flag indicating the subtype is managed by the system. Incoming values are ignored.", alias="systemManaged")
     created: Optional[datetime] = Field(default=None, description="Creation timestamp.")
     modified: Optional[datetime] = Field(default=None, description="Last modified timestamp.")
-    target: Optional[SubtypeTarget] = None
-    __properties: ClassVar[List[str]] = ["id", "technicalName", "displayName", "description", "type", "targetType", "targetId", "targetName", "classification", "origin", "profile", "systemManaged", "created", "modified", "target"]
-
-    @field_validator('target_type')
-    def target_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SOURCE', 'CONNECTOR', 'CONNECTOR_VARIANT']):
-            warnings.warn(f"must be one of enum values ('SOURCE', 'CONNECTOR', 'CONNECTOR_VARIANT') unknown value: {value}")
-        return value
-
-    @field_validator('classification')
-    def classification_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['MACHINE']):
-            warnings.warn(f"must be one of enum values ('MACHINE') unknown value: {value}")
-        return value
+    __properties: ClassVar[List[str]] = ["id", "technicalName", "displayName", "description", "type", "targetType", "targetId", "targetName", "classification", "origin", "profile", "systemManaged", "created", "modified"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
@@ -108,9 +88,17 @@ class SourceSubtypeV2(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "id",
+            "origin",
             "system_managed",
+            "created",
+            "modified",
         ])
 
         _dict = self.model_dump(
@@ -121,14 +109,6 @@ class SourceSubtypeV2(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of profile
         if self.profile:
             _dict['profile'] = self.profile.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of target
-        if self.target:
-            _dict['target'] = self.target.to_dict()
-        # set to None if target_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.target_name is None and "target_name" in self.model_fields_set:
-            _dict['targetName'] = None
-
         # set to None if origin (nullable) is None
         # and model_fields_set contains the field
         if self.origin is None and "origin" in self.model_fields_set:
@@ -138,6 +118,16 @@ class SourceSubtypeV2(BaseModel):
         # and model_fields_set contains the field
         if self.profile is None and "profile" in self.model_fields_set:
             _dict['profile'] = None
+
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
 
         return _dict
 
@@ -155,17 +145,16 @@ class SourceSubtypeV2(BaseModel):
             "technicalName": obj.get("technicalName"),
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
+            "type": obj.get("type") if obj.get("type") is not None else 'MACHINE',
             "targetType": obj.get("targetType"),
             "targetId": obj.get("targetId"),
-            "targetName": obj.get("targetName"),
+            "targetName": obj.get("targetName") if obj.get("targetName") is not None else '',
             "classification": obj.get("classification"),
             "origin": obj.get("origin"),
-            "profile": SourceSubtypeV2Profile.from_dict(obj["profile"]) if obj.get("profile") is not None else None,
+            "profile": ConnectorVariantProfile.from_dict(obj["profile"]) if obj.get("profile") is not None else None,
             "systemManaged": obj.get("systemManaged") if obj.get("systemManaged") is not None else False,
             "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "target": SubtypeTarget.from_dict(obj["target"]) if obj.get("target") is not None else None
+            "modified": obj.get("modified")
         })
         return _obj
 

@@ -23,38 +23,23 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CreateSourceSubtypeV2Request(BaseModel):
+class SubtypeTargetRef(BaseModel):
     """
-    Request body for creating a machine account subtype at the source tier or the connector tier.
+    Resolved target of a tiered subtype. Present on v2 responses; not accepted on create.
     """ # noqa: E501
-    target_type: Optional[StrictStr] = Field(default='SOURCE', description="Tier to create the subtype at. Defaults to `SOURCE`.", alias="targetType")
-    target_id: StrictStr = Field(description="Scope key of the subtype. The source ID for a `SOURCE` subtype, or a registered connector type for a `CONNECTOR` subtype.", alias="targetId")
-    target_name: Optional[StrictStr] = Field(default=None, description="Display name of the target. For a `CONNECTOR` subtype, a supplied value must match the connector's registered name and is replaced by the registered spelling. When omitted, the registered name is used.", alias="targetName")
-    technical_name: StrictStr = Field(description="Technical name of the subtype.", alias="technicalName")
-    display_name: StrictStr = Field(description="Display name of the subtype.", alias="displayName")
-    description: StrictStr = Field(description="Description of the subtype.")
-    type: Optional[StrictStr] = Field(default='MACHINE', description="Entity type of the subtype. Defaults to `MACHINE`.")
-    classification: Optional[StrictStr] = Field(default='MACHINE', description="Classification of the subtype. Defaults to `MACHINE`.")
-    __properties: ClassVar[List[str]] = ["targetType", "targetId", "targetName", "technicalName", "displayName", "description", "type", "classification"]
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of the target. `SOURCE` for source-tier rows; `CONNECTOR` for connector-tier rows.")
+    id: Optional[StrictStr] = Field(default=None, description="Target identifier. Source id for `SOURCE`. Connector specification id or connector type for `CONNECTOR`.")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable target name. Falls back to `id` when a display name is not available.")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
-    @field_validator('target_type')
-    def target_type_validate_enum(cls, value):
+    @field_validator('type')
+    def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
         if value not in set(['SOURCE', 'CONNECTOR']):
             warnings.warn(f"must be one of enum values ('SOURCE', 'CONNECTOR') unknown value: {value}")
-        return value
-
-    @field_validator('classification')
-    def classification_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['MACHINE']):
-            warnings.warn(f"must be one of enum values ('MACHINE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -75,7 +60,7 @@ class CreateSourceSubtypeV2Request(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateSourceSubtypeV2Request from a JSON string"""
+        """Create an instance of SubtypeTargetRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -100,7 +85,7 @@ class CreateSourceSubtypeV2Request(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateSourceSubtypeV2Request from a dict"""
+        """Create an instance of SubtypeTargetRef from a dict"""
         if obj is None:
             return None
 
@@ -108,14 +93,9 @@ class CreateSourceSubtypeV2Request(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "targetType": obj.get("targetType") if obj.get("targetType") is not None else 'SOURCE',
-            "targetId": obj.get("targetId"),
-            "targetName": obj.get("targetName"),
-            "technicalName": obj.get("technicalName"),
-            "displayName": obj.get("displayName"),
-            "description": obj.get("description"),
-            "type": obj.get("type") if obj.get("type") is not None else 'MACHINE',
-            "classification": obj.get("classification") if obj.get("classification") is not None else 'MACHINE'
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

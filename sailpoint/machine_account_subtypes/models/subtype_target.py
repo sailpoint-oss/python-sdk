@@ -25,12 +25,12 @@ from typing_extensions import Self
 
 class SubtypeTarget(BaseModel):
     """
-    Reference to the source or connector the subtype is defined for.
+    Resolved target of a tiered subtype on get-by-id. Extends the list/create/patch target reference with `supportsProvisioning`. Not accepted on create.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Type of the target.")
-    id: Optional[StrictStr] = Field(default=None, description="Source ID for a `SOURCE` target, or connector type for a `CONNECTOR` target.")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the source or connector.")
-    supports_provisioning: Optional[StrictBool] = Field(default=False, description="Indicates whether the target supports provisioning. Only returned when you get a single subtype by ID.", alias="supportsProvisioning")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of the target. `SOURCE` for source-tier rows; `CONNECTOR` for connector-tier rows.")
+    id: Optional[StrictStr] = Field(default=None, description="Target identifier. Source id for `SOURCE`. Connector specification id or connector type for `CONNECTOR`.")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable target name. Falls back to `id` when a display name is not available.")
+    supports_provisioning: Optional[StrictBool] = Field(default=False, description="Whether the target can provision accounts. `false` when the target does not support provisioning.", alias="supportsProvisioning")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "supportsProvisioning"]
 
     @field_validator('type')

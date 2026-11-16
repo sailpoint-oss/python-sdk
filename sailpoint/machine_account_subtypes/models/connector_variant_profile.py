@@ -23,13 +23,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SourceSubtypeV2Profile(BaseModel):
+class ConnectorVariantProfile(BaseModel):
     """
-    Connector variant profile. Reserved for future use and currently always `null`.
+    Response-only connector-variant profile. Always `null` for `SOURCE` and `CONNECTOR` tiers in this release. Populated when the connector-variant tier is available.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the connector variant profile.")
-    connector_type: Optional[StrictStr] = Field(default=None, description="Connector type of the variant.", alias="connectorType")
-    variant: Optional[StrictStr] = Field(default=None, description="Name of the connector variant.")
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the connector variant profile.")
+    connector_type: Optional[StrictStr] = Field(default='', description="Connector type of the variant profile, for example `JDBC`.", alias="connectorType")
+    variant: Optional[StrictStr] = Field(default='', description="Variant name within the connector type, for example `MySql`.")
     __properties: ClassVar[List[str]] = ["id", "connectorType", "variant"]
 
     model_config = ConfigDict(
@@ -50,7 +50,7 @@ class SourceSubtypeV2Profile(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2Profile from a JSON string"""
+        """Create an instance of ConnectorVariantProfile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +75,7 @@ class SourceSubtypeV2Profile(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2Profile from a dict"""
+        """Create an instance of ConnectorVariantProfile from a dict"""
         if obj is None:
             return None
 
@@ -84,8 +84,8 @@ class SourceSubtypeV2Profile(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "connectorType": obj.get("connectorType"),
-            "variant": obj.get("variant")
+            "connectorType": obj.get("connectorType") if obj.get("connectorType") is not None else '',
+            "variant": obj.get("variant") if obj.get("variant") is not None else ''
         })
         return _obj
 

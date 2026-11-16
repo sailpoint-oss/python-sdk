@@ -11,18 +11,18 @@ tags: ['SDK', 'Software Development Kit', 'SubtypeTargetSummary', 'SubtypeTarget
 
 # SubtypeTargetSummary
 
-Summary of the subtypes defined for one target. There is one item per connector type for `CONNECTOR` targets, and one item per source subtype for `SOURCE` targets.
+One row per connector type (`CONNECTOR`) or per source-tier subtype (`SOURCE`) from `GET /source-subtypes/v2/targets`.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**target_type** |  **Enum** [  'SOURCE',    'CONNECTOR' ] | Tier of the target. | [optional] 
-**target_id** | **str** | Connector type for a `CONNECTOR` target, or source ID for a `SOURCE` target. | [optional] 
-**target_name** | **str** | Display name of the target. Falls back to `targetId` when no name is stored. | [optional] 
-**subtype_count** | **int** | Number of subtypes defined for the target. | [optional] 
-**source_count** | **int** | Number of sources the target's subtypes apply to. | [optional] 
-**last_modified** | **datetime** | Most recent modification time across the target's subtypes. | [optional] 
+**target_type** | **SubtypeTargetType** |  | [optional] 
+**target_id** | **str** | Scope key. Connector type for `CONNECTOR`. Source id for `SOURCE`. | [optional] 
+**target_name** | **str** | Display label. Never null; falls back to `targetId`. | [optional] 
+**subtype_count** | **int** | Number of subtypes in this target group. | [optional] 
+**source_count** | **int** | Number of sources of this connector type for a `CONNECTOR` row. `1` on a `SOURCE` row. Sortable. Not filterable. | [optional] 
+**last_modified** | **datetime** | Latest `modified` timestamp in the `targetId` group for `CONNECTOR`, or that subtype row's `modified` for `SOURCE`. Not filterable or sortable. | [optional] [readonly] 
 }
 
 ## Example
@@ -32,11 +32,11 @@ from sailpoint.machine_account_subtypes.models.subtype_target_summary import Sub
 
 subtype_target_summary = SubtypeTargetSummary(
 target_type='CONNECTOR',
-target_id='active-directory',
-target_name='Active Directory',
+target_id='JDBC',
+target_name='JDBC',
 subtype_count=3,
 source_count=12,
-last_modified='2026-07-28T16:13:42.750Z'
+last_modified='2026-08-18T12:00Z'
 )
 
 ```

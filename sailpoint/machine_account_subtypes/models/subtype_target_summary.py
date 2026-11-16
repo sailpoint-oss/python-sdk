@@ -19,32 +19,23 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from sailpoint.machine_account_subtypes.models.subtype_target_type import SubtypeTargetType
 from typing import Optional, Set
 from typing_extensions import Self
 
 class SubtypeTargetSummary(BaseModel):
     """
-    Summary of the subtypes defined for one target. There is one item per connector type for `CONNECTOR` targets, and one item per source subtype for `SOURCE` targets.
+    One row per connector type (`CONNECTOR`) or per source-tier subtype (`SOURCE`) from `GET /source-subtypes/v2/targets`.
     """ # noqa: E501
-    target_type: Optional[StrictStr] = Field(default=None, description="Tier of the target.", alias="targetType")
-    target_id: Optional[StrictStr] = Field(default=None, description="Connector type for a `CONNECTOR` target, or source ID for a `SOURCE` target.", alias="targetId")
-    target_name: Optional[StrictStr] = Field(default=None, description="Display name of the target. Falls back to `targetId` when no name is stored.", alias="targetName")
-    subtype_count: Optional[StrictInt] = Field(default=None, description="Number of subtypes defined for the target.", alias="subtypeCount")
-    source_count: Optional[StrictInt] = Field(default=None, description="Number of sources the target's subtypes apply to.", alias="sourceCount")
-    last_modified: Optional[datetime] = Field(default=None, description="Most recent modification time across the target's subtypes.", alias="lastModified")
+    target_type: Optional[Union[SubtypeTargetType, str]] = Field(default=None, alias="targetType")
+    target_id: Optional[StrictStr] = Field(default=None, description="Scope key. Connector type for `CONNECTOR`. Source id for `SOURCE`.", alias="targetId")
+    target_name: Optional[StrictStr] = Field(default=None, description="Display label. Never null; falls back to `targetId`.", alias="targetName")
+    subtype_count: Optional[StrictInt] = Field(default=None, description="Number of subtypes in this target group.", alias="subtypeCount")
+    source_count: Optional[StrictInt] = Field(default=None, description="Number of sources of this connector type for a `CONNECTOR` row. `1` on a `SOURCE` row. Sortable. Not filterable.", alias="sourceCount")
+    last_modified: Optional[datetime] = Field(default=None, description="Latest `modified` timestamp in the `targetId` group for `CONNECTOR`, or that subtype row's `modified` for `SOURCE`. Not filterable or sortable.", alias="lastModified")
     __properties: ClassVar[List[str]] = ["targetType", "targetId", "targetName", "subtypeCount", "sourceCount", "lastModified"]
-
-    @field_validator('target_type')
-    def target_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SOURCE', 'CONNECTOR']):
-            warnings.warn(f"must be one of enum values ('SOURCE', 'CONNECTOR') unknown value: {value}")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,8 +67,10 @@ class SubtypeTargetSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "last_modified",
         ])
 
         _dict = self.model_dump(
@@ -85,11 +78,6 @@ class SubtypeTargetSummary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if last_modified (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_modified is None and "last_modified" in self.model_fields_set:
-            _dict['lastModified'] = None
-
         return _dict
 
     @classmethod

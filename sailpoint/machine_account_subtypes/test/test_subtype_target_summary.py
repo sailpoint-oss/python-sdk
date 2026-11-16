@@ -36,11 +36,11 @@ class TestSubtypeTargetSummary(unittest.TestCase):
         if include_optional:
             return SubtypeTargetSummary(
                 target_type = 'CONNECTOR',
-                target_id = 'active-directory',
-                target_name = 'Active Directory',
+                target_id = 'JDBC',
+                target_name = 'JDBC',
                 subtype_count = 3,
                 source_count = 12,
-                last_modified = '2026-07-28T16:13:42.750Z'
+                last_modified = '2026-08-18T12:00Z'
             )
         else:
             return SubtypeTargetSummary(

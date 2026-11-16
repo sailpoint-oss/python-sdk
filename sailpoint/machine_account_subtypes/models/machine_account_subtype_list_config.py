@@ -18,22 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_list_config_machine_account_create import MachineAccountSubtypeListConfigMachineAccountCreate
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SubtypeProvisioningPolicyField(BaseModel):
+class MachineAccountSubtypeListConfig(BaseModel):
     """
-    One field of a subtype provisioning policy.
+    Slim machine-account-create config embedded on a list item when `includeConfigs` is `true`. Full create, delete, approval, password, and form fields stay on the machine-config API.
     """ # noqa: E501
-    name: StrictStr = Field(description="Name of the attribute.")
-    transform: Optional[Dict[str, Any]] = Field(default=None, description="Transform to apply to the field.")
-    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Attributes required for the transform.")
-    is_required: Optional[StrictBool] = Field(default=False, description="Indicates whether the attribute is required.", alias="isRequired")
-    type: Optional[StrictStr] = Field(default=None, description="Type of the attribute.")
-    is_multi_valued: Optional[StrictBool] = Field(default=False, description="Indicates whether the attribute is multi-valued.", alias="isMultiValued")
-    __properties: ClassVar[List[str]] = ["name", "transform", "attributes", "isRequired", "type", "isMultiValued"]
+    machine_account_create: Optional[MachineAccountSubtypeListConfigMachineAccountCreate] = Field(default=None, alias="machineAccountCreate")
+    __properties: ClassVar[List[str]] = ["machineAccountCreate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +49,7 @@ class SubtypeProvisioningPolicyField(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SubtypeProvisioningPolicyField from a JSON string"""
+        """Create an instance of MachineAccountSubtypeListConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,26 +70,14 @@ class SubtypeProvisioningPolicyField(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if transform (nullable) is None
-        # and model_fields_set contains the field
-        if self.transform is None and "transform" in self.model_fields_set:
-            _dict['transform'] = None
-
-        # set to None if attributes (nullable) is None
-        # and model_fields_set contains the field
-        if self.attributes is None and "attributes" in self.model_fields_set:
-            _dict['attributes'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of machine_account_create
+        if self.machine_account_create:
+            _dict['machineAccountCreate'] = self.machine_account_create.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SubtypeProvisioningPolicyField from a dict"""
+        """Create an instance of MachineAccountSubtypeListConfig from a dict"""
         if obj is None:
             return None
 
@@ -101,12 +85,7 @@ class SubtypeProvisioningPolicyField(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "transform": obj.get("transform"),
-            "attributes": obj.get("attributes"),
-            "isRequired": obj.get("isRequired") if obj.get("isRequired") is not None else False,
-            "type": obj.get("type"),
-            "isMultiValued": obj.get("isMultiValued") if obj.get("isMultiValued") is not None else False
+            "machineAccountCreate": MachineAccountSubtypeListConfigMachineAccountCreate.from_dict(obj["machineAccountCreate"]) if obj.get("machineAccountCreate") is not None else None
         })
         return _obj
 

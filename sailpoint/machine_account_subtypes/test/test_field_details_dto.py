@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_account_subtypes.models.subtype_provisioning_policy_field import SubtypeProvisioningPolicyField
+from sailpoint.machine_account_subtypes.models.field_details_dto import FieldDetailsDto
 
-class TestSubtypeProvisioningPolicyField(unittest.TestCase):
-    """SubtypeProvisioningPolicyField unit test stubs"""
+class TestFieldDetailsDto(unittest.TestCase):
+    """FieldDetailsDto unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,31 +25,30 @@ class TestSubtypeProvisioningPolicyField(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubtypeProvisioningPolicyField:
-        """Test SubtypeProvisioningPolicyField
+    def make_instance(self, include_optional) -> FieldDetailsDto:
+        """Test FieldDetailsDto
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SubtypeProvisioningPolicyField`
+        # uncomment below to create an instance of `FieldDetailsDto`
         """
-        model = SubtypeProvisioningPolicyField()
+        model = FieldDetailsDto()
         if include_optional:
-            return SubtypeProvisioningPolicyField(
-                name = 'userName',
+            return FieldDetailsDto(
+                name = '',
                 transform = {"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}},
-                attributes = {"template":"{firstname}.{lastname}{uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"},
+                attributes = {"template":"firstname.lastname.uniqueCounter","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"},
                 is_required = False,
                 type = 'string',
                 is_multi_valued = False
             )
         else:
-            return SubtypeProvisioningPolicyField(
-                name = 'userName',
+            return FieldDetailsDto(
         )
         """
 
-    def testSubtypeProvisioningPolicyField(self):
-        """Test SubtypeProvisioningPolicyField"""
+    def testFieldDetailsDto(self):
+        """Test FieldDetailsDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

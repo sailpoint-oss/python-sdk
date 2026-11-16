@@ -47,12 +47,12 @@ configuration = sailpoint.machine_account_subtypes.Configuration(
 with sailpoint.machine_account_subtypes.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.machine_account_subtypes.MachineAccountSubtypesApi(api_client)
-    id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | The ID of the connector subtype to override.
-    source_subtype_override_request = sailpoint.machine_account_subtypes.SourceSubtypeOverrideRequest() # SourceSubtypeOverrideRequest | 
+    id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | CONNECTOR-tier subtype to snapshot onto the source.
+    source_subtype_override_request = {"sourceId":"6d0458373bec4b4b80460992b76016da"} # SourceSubtypeOverrideRequest | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
-        # Override source connector subtype
+        # Create a source-tier override
         api_response = api_instance.create_source_subtype_override_v2(id, source_subtype_override_request, x_sail_point_experimental=x_sail_point_experimental)
         print("The response of MachineAccountSubtypesApi->create_source_subtype_override_v2:\n")
         pprint(api_response)
@@ -67,23 +67,23 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineAccountSubtypesApi* | [**create_source_subtype_override_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_override_v2) | **POST** /source-subtypes/v2/{id}/overrides | Override source connector subtype
+*MachineAccountSubtypesApi* | [**create_source_subtype_override_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_override_v2) | **POST** /source-subtypes/v2/{id}/overrides | Create a source-tier override
 *MachineAccountSubtypesApi* | [**create_source_subtype_provisioning_policy_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_provisioning_policy_v2) | **POST** /source-subtypes/v2/{id}/provisioning-policy | Create subtype provisioning policy
 *MachineAccountSubtypesApi* | [**create_source_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_v1) | **POST** /source-subtypes/v1 | Create subtype
-*MachineAccountSubtypesApi* | [**create_source_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_v2) | **POST** /source-subtypes/v2 | Create subtype
+*MachineAccountSubtypesApi* | [**create_source_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_v2) | **POST** /source-subtypes/v2 | Create a tiered subtype
 *MachineAccountSubtypesApi* | [**delete_machine_account_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#delete_machine_account_subtype_v1) | **DELETE** /source-subtypes/v1/{subtypeId} | Delete subtype by ID
-*MachineAccountSubtypesApi* | [**delete_machine_account_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#delete_machine_account_subtype_v2) | **DELETE** /source-subtypes/v2/{id} | Delete subtype by ID
+*MachineAccountSubtypesApi* | [**delete_machine_account_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#delete_machine_account_subtype_v2) | **DELETE** /source-subtypes/v2/{id} | Delete tiered subtype by ID
 *MachineAccountSubtypesApi* | [**delete_source_subtype_provisioning_policy_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#delete_source_subtype_provisioning_policy_v2) | **DELETE** /source-subtypes/v2/{id}/provisioning-policy | Delete subtype provisioning policy
 *MachineAccountSubtypesApi* | [**get_machine_account_subtype_approval_config_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_machine_account_subtype_approval_config_v1) | **GET** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountSubtypesApi* | [**get_source_subtype_by_id_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_source_subtype_by_id_v1) | **GET** /source-subtypes/v1/{subtypeId} | Get subtype by ID
-*MachineAccountSubtypesApi* | [**get_source_subtype_by_id_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_source_subtype_by_id_v2) | **GET** /source-subtypes/v2/{id} | Get subtype by ID
+*MachineAccountSubtypesApi* | [**get_source_subtype_by_id_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_source_subtype_by_id_v2) | **GET** /source-subtypes/v2/{id} | Get tiered subtype by ID
 *MachineAccountSubtypesApi* | [**get_source_subtype_provisioning_policy_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_source_subtype_provisioning_policy_v2) | **GET** /source-subtypes/v2/{id}/provisioning-policy | Get subtype provisioning policy
 *MachineAccountSubtypesApi* | [**list_source_subtype_targets_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#list_source_subtype_targets_v2) | **GET** /source-subtypes/v2/targets | List subtype targets
 *MachineAccountSubtypesApi* | [**list_source_subtypes_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#list_source_subtypes_v1) | **GET** /source-subtypes/v1 | Retrieve all subtypes
-*MachineAccountSubtypesApi* | [**list_source_subtypes_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#list_source_subtypes_v2) | **GET** /source-subtypes/v2 | List subtypes
+*MachineAccountSubtypesApi* | [**list_source_subtypes_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#list_source_subtypes_v2) | **GET** /source-subtypes/v2 | Retrieve all tiered subtypes
 *MachineAccountSubtypesApi* | [**load_bulk_source_subtypes_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#load_bulk_source_subtypes_v1) | **POST** /source-subtypes/v1/bulk-retrieve | Bulk Retrieve of Source Subtypes
 *MachineAccountSubtypesApi* | [**patch_machine_account_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#patch_machine_account_subtype_v1) | **PATCH** /source-subtypes/v1/{subtypeId} | Patch subtype by ID
-*MachineAccountSubtypesApi* | [**patch_machine_account_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#patch_machine_account_subtype_v2) | **PATCH** /source-subtypes/v2/{id} | Patch subtype by ID
+*MachineAccountSubtypesApi* | [**patch_machine_account_subtype_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#patch_machine_account_subtype_v2) | **PATCH** /source-subtypes/v2/{id} | Patch tiered subtype by ID
 *MachineAccountSubtypesApi* | [**patch_source_subtype_provisioning_policy_v2**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#patch_source_subtype_provisioning_policy_v2) | **PATCH** /source-subtypes/v2/{id}/provisioning-policy | Patch subtype provisioning policy
 *MachineAccountSubtypesApi* | [**update_machine_account_subtype_approval_config_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#update_machine_account_subtype_approval_config_v1) | **PATCH** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 
@@ -91,10 +91,11 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](sailpoint/machine_account_subtypes/docs/ArrayInner.md)
+ - [ConnectorVariantProfile](sailpoint/machine_account_subtypes/docs/ConnectorVariantProfile.md)
  - [CreateSourceSubtypeV1Request](sailpoint/machine_account_subtypes/docs/CreateSourceSubtypeV1Request.md)
- - [CreateSourceSubtypeV2Request](sailpoint/machine_account_subtypes/docs/CreateSourceSubtypeV2Request.md)
  - [ErrorMessageDto](sailpoint/machine_account_subtypes/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/machine_account_subtypes/docs/ErrorResponseDto.md)
+ - [FieldDetailsDto](sailpoint/machine_account_subtypes/docs/FieldDetailsDto.md)
  - [JsonPatchOperation](sailpoint/machine_account_subtypes/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/machine_account_subtypes/docs/JsonPatchOperationValue.md)
  - [LoadBulkSourceSubtypesV1401Response](sailpoint/machine_account_subtypes/docs/LoadBulkSourceSubtypesV1401Response.md)
@@ -103,19 +104,22 @@ Class | Method | HTTP request | Description
  - [MachineAccountSubtypeConfigDto](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypeConfigDto.md)
  - [MachineAccountSubtypeConfigDtoMachineAccountCreate](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypeConfigDtoMachineAccountCreate.md)
  - [MachineAccountSubtypeConfigDtoMachineAccountDelete](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypeConfigDtoMachineAccountDelete.md)
+ - [MachineAccountSubtypeListConfig](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypeListConfig.md)
+ - [MachineAccountSubtypeListConfigMachineAccountCreate](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypeListConfigMachineAccountCreate.md)
  - [MachineSubtypeApprovalConfig](sailpoint/machine_account_subtypes/docs/MachineSubtypeApprovalConfig.md)
+ - [ProvisioningPolicyDto](sailpoint/machine_account_subtypes/docs/ProvisioningPolicyDto.md)
  - [SourceSubtypeOverrideRequest](sailpoint/machine_account_subtypes/docs/SourceSubtypeOverrideRequest.md)
  - [SourceSubtypeV2](sailpoint/machine_account_subtypes/docs/SourceSubtypeV2.md)
- - [SourceSubtypeV2Profile](sailpoint/machine_account_subtypes/docs/SourceSubtypeV2Profile.md)
- - [SourceSubtypeV2WithConfig](sailpoint/machine_account_subtypes/docs/SourceSubtypeV2WithConfig.md)
- - [SourceSubtypeV2WithConfigAllOfConfig](sailpoint/machine_account_subtypes/docs/SourceSubtypeV2WithConfigAllOfConfig.md)
- - [SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate](sailpoint/machine_account_subtypes/docs/SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate.md)
  - [SourceSubtypeWithSource](sailpoint/machine_account_subtypes/docs/SourceSubtypeWithSource.md)
  - [SourceSubtypeWithSourceSource](sailpoint/machine_account_subtypes/docs/SourceSubtypeWithSourceSource.md)
- - [SubtypeProvisioningPolicy](sailpoint/machine_account_subtypes/docs/SubtypeProvisioningPolicy.md)
- - [SubtypeProvisioningPolicyField](sailpoint/machine_account_subtypes/docs/SubtypeProvisioningPolicyField.md)
+ - [SubtypeClassification](sailpoint/machine_account_subtypes/docs/SubtypeClassification.md)
  - [SubtypeTarget](sailpoint/machine_account_subtypes/docs/SubtypeTarget.md)
+ - [SubtypeTargetRef](sailpoint/machine_account_subtypes/docs/SubtypeTargetRef.md)
  - [SubtypeTargetSummary](sailpoint/machine_account_subtypes/docs/SubtypeTargetSummary.md)
+ - [SubtypeTargetType](sailpoint/machine_account_subtypes/docs/SubtypeTargetType.md)
+ - [SubtypeWithTarget](sailpoint/machine_account_subtypes/docs/SubtypeWithTarget.md)
+ - [SubtypeWithTargetAndConfig](sailpoint/machine_account_subtypes/docs/SubtypeWithTargetAndConfig.md)
+ - [SubtypeWithTargetProvisioning](sailpoint/machine_account_subtypes/docs/SubtypeWithTargetProvisioning.md)
 
 
 <a id="documentation-for-authorization"></a>

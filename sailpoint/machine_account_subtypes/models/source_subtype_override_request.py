@@ -25,9 +25,9 @@ from typing_extensions import Self
 
 class SourceSubtypeOverrideRequest(BaseModel):
     """
-    Request body for overriding a connector subtype on one source.
+    Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for one source. Later edits to the connector-tier parent are not copied onto the snapshot.
     """ # noqa: E501
-    source_id: StrictStr = Field(description="ID of the source to create the overriding source subtype on.", alias="sourceId")
+    source_id: StrictStr = Field(description="Source that receives the override.", alias="sourceId")
     __properties: ClassVar[List[str]] = ["sourceId"]
 
     model_config = ConfigDict(

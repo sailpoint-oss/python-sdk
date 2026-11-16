@@ -36,30 +36,29 @@ class TestSourceSubtypeV2(unittest.TestCase):
         if include_optional:
             return SourceSubtypeV2(
                 id = '43bdd144-4b17-4fce-a744-17c7fd3e717b',
-                technical_name = 'service-account',
-                display_name = 'Service Account',
-                description = 'Accounts used by automated services.',
+                technical_name = 'nonPersonal',
+                display_name = 'Non Personal',
+                description = 'Machine accounts for JDBC connectors',
                 type = 'MACHINE',
                 target_type = 'CONNECTOR',
-                target_id = 'active-directory',
-                target_name = 'Active Directory',
+                target_id = 'JDBC',
+                target_name = '',
                 classification = 'MACHINE',
-                origin = 'SOURCE',
-                profile = sailpoint.machine_account_subtypes.models.source_subtype_v2_profile.SourceSubtypeV2_profile(
-                    id = '9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c', 
-                    connector_type = 'JDBC', 
-                    variant = 'MySql', ),
+                origin = 'CONNECTOR',
+                profile = sailpoint.machine_account_subtypes.models.connector_variant_profile.Connector Variant Profile(
+                    id = '65de7634-d315-482c-aad4-7fdbd1e42056', 
+                    connector_type = '', 
+                    variant = '', ),
                 system_managed = False,
-                created = '2026-07-28T16:13:42.801Z',
-                modified = '2026-07-28T16:13:42.750Z',
-                target = sailpoint.machine_account_subtypes.models.subtype_target.Subtype Target(
-                    type = 'CONNECTOR', 
-                    id = 'active-directory', 
-                    name = 'Active Directory', 
-                    supports_provisioning = True, )
+                created = '2026-08-18T12:00Z',
+                modified = '2026-08-18T12:00Z'
             )
         else:
             return SourceSubtypeV2(
+                technical_name = 'nonPersonal',
+                display_name = 'Non Personal',
+                description = 'Machine accounts for JDBC connectors',
+                target_id = 'JDBC',
         )
         """
 

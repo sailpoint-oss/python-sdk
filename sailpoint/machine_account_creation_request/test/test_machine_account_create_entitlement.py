@@ -35,14 +35,14 @@ class TestMachineAccountCreateEntitlement(unittest.TestCase):
         model = MachineAccountCreateEntitlement()
         if include_optional:
             return MachineAccountCreateEntitlement(
-                id = '2c91808a7624751a01762f19d67c220e',
-                comment = 'Needed to read the inventory share.',
-                start_date = '2026-11-01T00:00Z',
-                remove_date = '2027-11-01T00:00Z'
+                id = '858d2151-ff19-464b-ae0d-6938b3af2baf',
+                comment = '',
+                start_date = '2026-09-01T00:00Z',
+                remove_date = '2027-03-01T00:00Z'
             )
         else:
             return MachineAccountCreateEntitlement(
-                id = '2c91808a7624751a01762f19d67c220e',
+                id = '858d2151-ff19-464b-ae0d-6938b3af2baf',
         )
         """
 

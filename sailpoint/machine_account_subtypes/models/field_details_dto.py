@@ -18,18 +18,22 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.machine_account_subtypes.models.source_subtype_v2_with_config_all_of_config_machine_account_create import SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SourceSubtypeV2WithConfigAllOfConfig(BaseModel):
+class FieldDetailsDto(BaseModel):
     """
-    Summary of the subtype's machine account creation configuration. `null` when the subtype is not a `MACHINE` subtype or has no machine account creation configuration.
+    FieldDetailsDto
     """ # noqa: E501
-    machine_account_create: Optional[SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate] = Field(default=None, alias="machineAccountCreate")
-    __properties: ClassVar[List[str]] = ["machineAccountCreate"]
+    name: Optional[StrictStr] = Field(default='', description="The name of the attribute.")
+    transform: Optional[Dict[str, Any]] = Field(default=None, description="The transform to apply to the field.")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Attributes required for the transform.")
+    is_required: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is required.", alias="isRequired")
+    type: Optional[StrictStr] = Field(default='string', description="The type of the attribute.")
+    is_multi_valued: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMultiValued")
+    __properties: ClassVar[List[str]] = ["name", "transform", "attributes", "isRequired", "type", "isMultiValued"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +53,7 @@ class SourceSubtypeV2WithConfigAllOfConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2WithConfigAllOfConfig from a JSON string"""
+        """Create an instance of FieldDetailsDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +74,11 @@ class SourceSubtypeV2WithConfigAllOfConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of machine_account_create
-        if self.machine_account_create:
-            _dict['machineAccountCreate'] = self.machine_account_create.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SourceSubtypeV2WithConfigAllOfConfig from a dict"""
+        """Create an instance of FieldDetailsDto from a dict"""
         if obj is None:
             return None
 
@@ -85,7 +86,12 @@ class SourceSubtypeV2WithConfigAllOfConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "machineAccountCreate": SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate.from_dict(obj["machineAccountCreate"]) if obj.get("machineAccountCreate") is not None else None
+            "name": obj.get("name") if obj.get("name") is not None else '',
+            "transform": obj.get("transform"),
+            "attributes": obj.get("attributes"),
+            "isRequired": obj.get("isRequired") if obj.get("isRequired") is not None else False,
+            "type": obj.get("type") if obj.get("type") is not None else 'string',
+            "isMultiValued": obj.get("isMultiValued") if obj.get("isMultiValued") is not None else False
         })
         return _obj
 

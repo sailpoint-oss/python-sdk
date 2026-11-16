@@ -36,14 +36,14 @@ class TestMachineAccountCreationRequestApi(unittest.TestCase):
     def test_create_machine_account_request_v2(self) -> None:
         """Test case for create_machine_account_request_v2
 
-        Submit Machine Account Creation Request
+        Machine Account Creation Request (v2)
         """
         pass
 
     def test_create_machine_account_v2(self) -> None:
         """Test case for create_machine_account_v2
 
-        Create Machine Account V2
+        Create Machine Account (v2)
         """
         pass
 

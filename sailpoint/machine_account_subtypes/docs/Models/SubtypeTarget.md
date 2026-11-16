@@ -11,16 +11,16 @@ tags: ['SDK', 'Software Development Kit', 'SubtypeTarget', 'SubtypeTarget']
 
 # SubtypeTarget
 
-Reference to the source or connector the subtype is defined for.
+Resolved target of a tiered subtype on get-by-id. Extends the list/create/patch target reference with `supportsProvisioning`. Not accepted on create.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'SOURCE',    'CONNECTOR' ] | Type of the target. | [optional] 
-**id** | **str** | Source ID for a `SOURCE` target, or connector type for a `CONNECTOR` target. | [optional] 
-**name** | **str** | Name of the source or connector. | [optional] 
-**supports_provisioning** | **bool** | Indicates whether the target supports provisioning. Only returned when you get a single subtype by ID. | [optional] [default to False]
+**type** |  **Enum** [  'SOURCE',    'CONNECTOR' ] | DTO type of the target. `SOURCE` for source-tier rows; `CONNECTOR` for connector-tier rows. | [optional] 
+**id** | **str** | Target identifier. Source id for `SOURCE`. Connector specification id or connector type for `CONNECTOR`. | [optional] 
+**name** | **str** | Human-readable target name. Falls back to `id` when a display name is not available. | [optional] 
+**supports_provisioning** | **bool** | Whether the target can provision accounts. `false` when the target does not support provisioning. | [optional] [default to False]
 }
 
 ## Example
@@ -30,8 +30,8 @@ from sailpoint.machine_account_subtypes.models.subtype_target import SubtypeTarg
 
 subtype_target = SubtypeTarget(
 type='CONNECTOR',
-id='active-directory',
-name='Active Directory',
+id='65de7634-d315-482c-aad4-7fdbd1e42056',
+name='15Five',
 supports_provisioning=True
 )
 

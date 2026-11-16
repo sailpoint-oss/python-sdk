@@ -18,33 +18,23 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.machine_account_subtypes.models.subtype_provisioning_policy_field import SubtypeProvisioningPolicyField
+from sailpoint.machine_account_subtypes.models.field_details_dto import FieldDetailsDto
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SubtypeProvisioningPolicy(BaseModel):
+class ProvisioningPolicyDto(BaseModel):
     """
-    The machine account creation provisioning policy of a subtype.
+    CREATE_MACHINE_ACCOUNT provisioning policy stored on a source subtype. Field-compatible with source provisioning-policy documents.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the provisioning policy. Must not be supplied on create.")
-    subtype_id: Optional[StrictStr] = Field(default=None, description="ID of the subtype the policy belongs to. Must not be supplied on create.", alias="subtypeId")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the provisioning policy. Defaults to the subtype's display name when omitted or blank.")
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the stored provisioning policy.")
+    subtype_id: Optional[StrictStr] = Field(default=None, description="Identifier of the subtype that owns this policy.", alias="subtypeId")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the provisioning policy.")
     description: Optional[StrictStr] = Field(default=None, description="Description of the provisioning policy.")
-    usage_type: Optional[StrictStr] = Field(default='CREATE_MACHINE_ACCOUNT', description="Usage type of the provisioning policy. Only `CREATE_MACHINE_ACCOUNT` is supported.", alias="usageType")
-    fields: Optional[List[SubtypeProvisioningPolicyField]] = Field(default=None, description="Fields of the provisioning policy. Every field must have a non-blank `name`. When two fields share a name, only the first is kept.")
+    usage_type: Optional[StrictStr] = Field(default='', description="Usage type of the policy. This API stores only `CREATE_MACHINE_ACCOUNT`.", alias="usageType")
+    fields: Optional[List[FieldDetailsDto]] = Field(default=None, description="Fields in the provisioning policy. Field order is not semantically meaningful.")
     __properties: ClassVar[List[str]] = ["id", "subtypeId", "name", "description", "usageType", "fields"]
-
-    @field_validator('usage_type')
-    def usage_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['CREATE_MACHINE_ACCOUNT']):
-            warnings.warn(f"must be one of enum values ('CREATE_MACHINE_ACCOUNT') unknown value: {value}")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -64,7 +54,7 @@ class SubtypeProvisioningPolicy(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SubtypeProvisioningPolicy from a JSON string"""
+        """Create an instance of ProvisioningPolicyDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,12 +66,8 @@ class SubtypeProvisioningPolicy(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "id",
-            "subtype_id",
         ])
 
         _dict = self.model_dump(
@@ -110,7 +96,7 @@ class SubtypeProvisioningPolicy(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SubtypeProvisioningPolicy from a dict"""
+        """Create an instance of ProvisioningPolicyDto from a dict"""
         if obj is None:
             return None
 
@@ -122,8 +108,8 @@ class SubtypeProvisioningPolicy(BaseModel):
             "subtypeId": obj.get("subtypeId"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "usageType": obj.get("usageType") if obj.get("usageType") is not None else 'CREATE_MACHINE_ACCOUNT',
-            "fields": [SubtypeProvisioningPolicyField.from_dict(_item) for _item in obj["fields"]] if obj.get("fields") is not None else None
+            "usageType": obj.get("usageType") if obj.get("usageType") is not None else '',
+            "fields": [FieldDetailsDto.from_dict(_item) for _item in obj["fields"]] if obj.get("fields") is not None else None
         })
         return _obj
 

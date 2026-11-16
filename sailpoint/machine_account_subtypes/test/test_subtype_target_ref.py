@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_account_subtypes.models.source_subtype_v2_with_config_all_of_config_machine_account_create import SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate
+from sailpoint.machine_account_subtypes.models.subtype_target_ref import SubtypeTargetRef
 
-class TestSourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(unittest.TestCase):
-    """SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate unit test stubs"""
+class TestSubtypeTargetRef(unittest.TestCase):
+    """SubtypeTargetRef unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,27 @@ class TestSourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(unittest.Test
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate:
-        """Test SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate
+    def make_instance(self, include_optional) -> SubtypeTargetRef:
+        """Test SubtypeTargetRef
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate`
+        # uncomment below to create an instance of `SubtypeTargetRef`
         """
-        model = SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate()
+        model = SubtypeTargetRef()
         if include_optional:
-            return SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(
-                account_create_enabled = True
+            return SubtypeTargetRef(
+                type = 'CONNECTOR',
+                id = '65de7634-d315-482c-aad4-7fdbd1e42056',
+                name = '15Five'
             )
         else:
-            return SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(
+            return SubtypeTargetRef(
         )
         """
 
-    def testSourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate(self):
-        """Test SourceSubtypeV2WithConfigAllOfConfigMachineAccountCreate"""
+    def testSubtypeTargetRef(self):
+        """Test SubtypeTargetRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

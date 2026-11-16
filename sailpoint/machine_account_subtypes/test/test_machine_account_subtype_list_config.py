@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_account_subtypes.models.source_subtype_v2_profile import SourceSubtypeV2Profile
+from sailpoint.machine_account_subtypes.models.machine_account_subtype_list_config import MachineAccountSubtypeListConfig
 
-class TestSourceSubtypeV2Profile(unittest.TestCase):
-    """SourceSubtypeV2Profile unit test stubs"""
+class TestMachineAccountSubtypeListConfig(unittest.TestCase):
+    """MachineAccountSubtypeListConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,26 @@ class TestSourceSubtypeV2Profile(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceSubtypeV2Profile:
-        """Test SourceSubtypeV2Profile
+    def make_instance(self, include_optional) -> MachineAccountSubtypeListConfig:
+        """Test MachineAccountSubtypeListConfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceSubtypeV2Profile`
+        # uncomment below to create an instance of `MachineAccountSubtypeListConfig`
         """
-        model = SourceSubtypeV2Profile()
+        model = MachineAccountSubtypeListConfig()
         if include_optional:
-            return SourceSubtypeV2Profile(
-                id = '9a4b7d2e-1c3f-4e5a-8b6c-7d8e9f0a1b2c',
-                connector_type = 'JDBC',
-                variant = 'MySql'
+            return MachineAccountSubtypeListConfig(
+                machine_account_create = sailpoint.machine_account_subtypes.models.machine_account_subtype_list_config_machine_account_create.MachineAccountSubtypeListConfig_machineAccountCreate(
+                    account_create_enabled = True, )
             )
         else:
-            return SourceSubtypeV2Profile(
+            return MachineAccountSubtypeListConfig(
         )
         """
 
-    def testSourceSubtypeV2Profile(self):
-        """Test SourceSubtypeV2Profile"""
+    def testMachineAccountSubtypeListConfig(self):
+        """Test MachineAccountSubtypeListConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

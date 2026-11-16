@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_account_subtypes.models.subtype_provisioning_policy import SubtypeProvisioningPolicy
+from sailpoint.machine_account_subtypes.models.provisioning_policy_dto import ProvisioningPolicyDto
 
-class TestSubtypeProvisioningPolicy(unittest.TestCase):
-    """SubtypeProvisioningPolicy unit test stubs"""
+class TestProvisioningPolicyDto(unittest.TestCase):
+    """ProvisioningPolicyDto unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,38 +25,38 @@ class TestSubtypeProvisioningPolicy(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubtypeProvisioningPolicy:
-        """Test SubtypeProvisioningPolicy
+    def make_instance(self, include_optional) -> ProvisioningPolicyDto:
+        """Test ProvisioningPolicyDto
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SubtypeProvisioningPolicy`
+        # uncomment below to create an instance of `ProvisioningPolicyDto`
         """
-        model = SubtypeProvisioningPolicy()
+        model = ProvisioningPolicyDto()
         if include_optional:
-            return SubtypeProvisioningPolicy(
-                id = 'd7ae9ea3-507f-4d00-9d4f-b4464b344b88',
+            return ProvisioningPolicyDto(
+                id = '54f626b4-c9d8-4f7e-b768-046c20583abb',
                 subtype_id = '43bdd144-4b17-4fce-a744-17c7fd3e717b',
-                name = 'Service Account',
-                description = 'Fields collected when creating a service account.',
-                usage_type = 'CREATE_MACHINE_ACCOUNT',
+                name = 'Create Machine Account',
+                description = 'Fields used when creating a machine account for this subtype',
+                usage_type = '',
                 fields = [
-                    sailpoint.machine_account_subtypes.models.subtype_provisioning_policy_field.Subtype Provisioning Policy Field(
-                        name = 'userName', 
+                    sailpoint.machine_account_subtypes.models.field_details_dto.Field Details Dto(
+                        name = '', 
                         transform = {"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}}, 
-                        attributes = {"template":"{firstname}.{lastname}{uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"}, 
+                        attributes = {"template":"firstname.lastname.uniqueCounter","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"}, 
                         is_required = False, 
                         type = 'string', 
                         is_multi_valued = False, )
                     ]
             )
         else:
-            return SubtypeProvisioningPolicy(
+            return ProvisioningPolicyDto(
         )
         """
 
-    def testSubtypeProvisioningPolicy(self):
-        """Test SubtypeProvisioningPolicy"""
+    def testProvisioningPolicyDto(self):
+        """Test ProvisioningPolicyDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

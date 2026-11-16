@@ -29,7 +29,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_create_source_subtype_override_v2(self) -> None:
         """Test case for create_source_subtype_override_v2
 
-        Override source connector subtype
+        Create a source-tier override
         """
         pass
 
@@ -50,7 +50,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_create_source_subtype_v2(self) -> None:
         """Test case for create_source_subtype_v2
 
-        Create subtype
+        Create a tiered subtype
         """
         pass
 
@@ -64,7 +64,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_delete_machine_account_subtype_v2(self) -> None:
         """Test case for delete_machine_account_subtype_v2
 
-        Delete subtype by ID
+        Delete tiered subtype by ID
         """
         pass
 
@@ -92,7 +92,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_get_source_subtype_by_id_v2(self) -> None:
         """Test case for get_source_subtype_by_id_v2
 
-        Get subtype by ID
+        Get tiered subtype by ID
         """
         pass
 
@@ -120,7 +120,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_list_source_subtypes_v2(self) -> None:
         """Test case for list_source_subtypes_v2
 
-        List subtypes
+        Retrieve all tiered subtypes
         """
         pass
 
@@ -141,7 +141,7 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def test_patch_machine_account_subtype_v2(self) -> None:
         """Test case for patch_machine_account_subtype_v2
 
-        Patch subtype by ID
+        Patch tiered subtype by ID
         """
         pass
 

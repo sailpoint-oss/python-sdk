@@ -11,13 +11,13 @@ tags: ['SDK', 'Software Development Kit', 'SourceSubtypeOverrideRequest', 'Sourc
 
 # SourceSubtypeOverrideRequest
 
-Request body for overriding a connector subtype on one source.
+Creates a SOURCE-tier snapshot of a CONNECTOR-tier subtype for one source. Later edits to the connector-tier parent are not copied onto the snapshot.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_id** | **str** | ID of the source to create the overriding source subtype on. | [required]
+**source_id** | **str** | Source that receives the override. | [required]
 }
 
 ## Example

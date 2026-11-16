@@ -36,8 +36,8 @@ class TestSubtypeTarget(unittest.TestCase):
         if include_optional:
             return SubtypeTarget(
                 type = 'CONNECTOR',
-                id = 'active-directory',
-                name = 'Active Directory',
+                id = '65de7634-d315-482c-aad4-7fdbd1e42056',
+                name = '15Five',
                 supports_provisioning = True
             )
         else:
