@@ -6364,7 +6364,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineAccountRequestAsyncResult:
-        """Bulk reload machine accounts asynchronously
+        """Reload machine accounts in bulk
 
         Use this API to submit one task that reloads up to 100 machine accounts from their sources, and get the task ID. Machine accounts that can't be reloaded are skipped. When none of the machine accounts can be reloaded, the task completes with an error.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own are skipped.  When this capability is not enabled for the tenant, this API returns `403`. 
 
@@ -6441,7 +6441,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineAccountRequestAsyncResult]:
-        """Bulk reload machine accounts asynchronously
+        """Reload machine accounts in bulk
 
         Use this API to submit one task that reloads up to 100 machine accounts from their sources, and get the task ID. Machine accounts that can't be reloaded are skipped. When none of the machine accounts can be reloaded, the task completes with an error.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own are skipped.  When this capability is not enabled for the tenant, this API returns `403`. 
 
@@ -6518,7 +6518,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk reload machine accounts asynchronously
+        """Reload machine accounts in bulk
 
         Use this API to submit one task that reloads up to 100 machine accounts from their sources, and get the task ID. Machine accounts that can't be reloaded are skipped. When none of the machine accounts can be reloaded, the task completes with an error.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own are skipped.  When this capability is not enabled for the tenant, this API returns `403`. 
 
@@ -6637,312 +6637,6 @@ class MachineAccountsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/machine-accounts/v1/bulk-reload-async',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def reload_machine_accounts_in_bulk_v1(
-        self,
-        machine_account_bulk_request: MachineAccountBulkRequest,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[MachineAccountBulkResult]:
-        """Reload machine accounts in bulk
-
-        Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.  To track the whole reload with a single task instead, use the asynchronous bulk reload API.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
-
-        :param machine_account_bulk_request: (required)
-        :type machine_account_bulk_request: MachineAccountBulkRequest
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._reload_machine_accounts_in_bulk_v1_serialize(
-            machine_account_bulk_request=machine_account_bulk_request,
-            x_sail_point_experimental=x_sail_point_experimental,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[MachineAccountBulkResult]",
-            '400': "ErrorResponseDto",
-            '401': "ListMachineAccountsV1401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListMachineAccountsV1429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def reload_machine_accounts_in_bulk_v1_with_http_info(
-        self,
-        machine_account_bulk_request: MachineAccountBulkRequest,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[MachineAccountBulkResult]]:
-        """Reload machine accounts in bulk
-
-        Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.  To track the whole reload with a single task instead, use the asynchronous bulk reload API.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
-
-        :param machine_account_bulk_request: (required)
-        :type machine_account_bulk_request: MachineAccountBulkRequest
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._reload_machine_accounts_in_bulk_v1_serialize(
-            machine_account_bulk_request=machine_account_bulk_request,
-            x_sail_point_experimental=x_sail_point_experimental,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[MachineAccountBulkResult]",
-            '400': "ErrorResponseDto",
-            '401': "ListMachineAccountsV1401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListMachineAccountsV1429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def reload_machine_accounts_in_bulk_v1_without_preload_content(
-        self,
-        machine_account_bulk_request: MachineAccountBulkRequest,
-        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Reload machine accounts in bulk
-
-        Use this API to reload up to 100 machine accounts from their sources. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the reload was queued, or an error status such as `400`, `404` or `500`.  To track the whole reload with a single task instead, use the asynchronous bulk reload API.  The request fails with `400` when `ids` is empty or has more than 100 entries.  A caller who owns the machine accounts can reload them. Other callers need the **idn:mis-account:reload** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
-
-        :param machine_account_bulk_request: (required)
-        :type machine_account_bulk_request: MachineAccountBulkRequest
-        :param x_sail_point_experimental: Use this header to enable this experimental API.
-        :type x_sail_point_experimental: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._reload_machine_accounts_in_bulk_v1_serialize(
-            machine_account_bulk_request=machine_account_bulk_request,
-            x_sail_point_experimental=x_sail_point_experimental,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '207': "List[MachineAccountBulkResult]",
-            '400': "ErrorResponseDto",
-            '401': "ListMachineAccountsV1401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListMachineAccountsV1429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _reload_machine_accounts_in_bulk_v1_serialize(
-        self,
-        machine_account_bulk_request,
-        x_sail_point_experimental,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
-        # process the form parameters
-        # process the body parameter
-        if machine_account_bulk_request is not None:
-            _body_params = machine_account_bulk_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/machine-accounts/v1/bulk-reload',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7916,7 +7610,7 @@ class MachineAccountsApi:
     ) -> List[MachineAccountBulkResult]:
         """Update machine accounts in bulk
 
-        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * manuallyEdited  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
+        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, `404` when the account was not found or is not accessible to the caller, `409` when the same ID appears more than once in the batch, or `400` when that row cannot be updated.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * owners   * manuallyEdited  `owners` is accepted only when expanded machine account ownership is enabled for the tenant. When it is not, a patch that targets `owners` fails with `400`. `owners` may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. A request that patches both `ownerIdentity` and `owners` fails with `400`.  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
 
         :param machine_account_bulk_update_request: (required)
         :type machine_account_bulk_update_request: MachineAccountBulkUpdateRequest
@@ -7993,7 +7687,7 @@ class MachineAccountsApi:
     ) -> ApiResponse[List[MachineAccountBulkResult]]:
         """Update machine accounts in bulk
 
-        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * manuallyEdited  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
+        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, `404` when the account was not found or is not accessible to the caller, `409` when the same ID appears more than once in the batch, or `400` when that row cannot be updated.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * owners   * manuallyEdited  `owners` is accepted only when expanded machine account ownership is enabled for the tenant. When it is not, a patch that targets `owners` fails with `400`. `owners` may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. A request that patches both `ownerIdentity` and `owners` fails with `400`.  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
 
         :param machine_account_bulk_update_request: (required)
         :type machine_account_bulk_update_request: MachineAccountBulkUpdateRequest
@@ -8070,7 +7764,7 @@ class MachineAccountsApi:
     ) -> RESTResponseType:
         """Update machine accounts in bulk
 
-        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, or an error status such as `400` or `404`.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * manuallyEdited  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
+        Use this API to apply the same [JSON Patch](https://tools.ietf.org/html/rfc6902) to up to 100 machine accounts. The response has one result per requested machine account, in no particular order. Each result has its own HTTP-style `status`: `200` when the update succeeded, `404` when the account was not found or is not accessible to the caller, `409` when the same ID appears more than once in the batch, or `400` when that row cannot be updated.  Each patch operation must target one of these top-level fields:   * description   * subtype   * environment   * machineIdentity   * ownerIdentity   * owners   * manuallyEdited  `owners` is accepted only when expanded machine account ownership is enabled for the tenant. When it is not, a patch that targets `owners` fails with `400`. `owners` may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. A request that patches both `ownerIdentity` and `owners` fails with `400`.  The request fails with `400` when `ids` is empty or has more than 100 entries, when `jsonPatch` is missing, or when a patch operation targets any other field. A patch that changes `subtype` must only include machine accounts from one source; otherwise every result has status `400`.  A caller who owns the machine accounts can update them. Other callers need the **idn:mis-account:update** right. For a caller without the right, machine accounts they do not own get a result with status `404`.  When this capability is not enabled for the tenant, this API returns `403`. 
 
         :param machine_account_bulk_update_request: (required)
         :type machine_account_bulk_update_request: MachineAccountBulkUpdateRequest

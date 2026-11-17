@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class MachineClassificationCriteriaOperation(str, Enum):
     """
-    An operation to perform on the classification criteria
+    Operation applied to classification criteria.  `EQUALS`, `NOT_EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, and `NOT_CONTAINS` are leaf operators. They require `attribute` and `value`. `NOT_CONTAINS` matches when the attribute value does not contain `value`.  `EXISTS` and `NOT_EXISTS` are presence-only leaf operators. They require `attribute` and do not use `value`. `EXISTS` matches when the attribute is present. `NOT_EXISTS` matches when it is absent.  `EMPTY` and `NOT_EMPTY` are value-less leaf operators. They require `attribute` and do not use `value`. `EMPTY` matches when the attribute is null, blank, or an empty collection. `NOT_EMPTY` matches any other value.  `AND` and `OR` are composite operators. They require `children` and do not use `attribute` or `value`.
     """
 
     """
@@ -31,8 +31,13 @@ class MachineClassificationCriteriaOperation(str, Enum):
     STARTS_WITH = 'STARTS_WITH'
     ENDS_WITH = 'ENDS_WITH'
     CONTAINS = 'CONTAINS'
+    NOT_CONTAINS = 'NOT_CONTAINS'
     AND = 'AND'
     OR = 'OR'
+    EXISTS = 'EXISTS'
+    NOT_EXISTS = 'NOT_EXISTS'
+    EMPTY = 'EMPTY'
+    NOT_EMPTY = 'NOT_EMPTY'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

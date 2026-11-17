@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sdk": "python",
-  "sdkVersion": "2.1.85",
+  "sdkVersion": "2.1.86",
   "operations": {
     "addAccessRequestRecommendationsIgnoredItemV1": {
       "resource": "iai-access-request-recommendations",
@@ -13922,24 +13922,6 @@
       "sdkName": "reload_machine_accounts_in_bulk_async_v1",
       "httpMethod": "POST",
       "path": "/machine-accounts/v1/bulk-reload-async",
-      "userAuth": [
-        "idn:mis-account-state:manage"
-      ],
-      "applicationAuth": [
-        "idn:mis-account-state:manage"
-      ],
-      "userLevels": [
-        "ORG_ADMIN",
-        "SOURCE_ADMIN",
-        "SOURCE_SUBADMIN"
-      ]
-    },
-    "reloadMachineAccountsInBulkV1": {
-      "resource": "machine-accounts",
-      "tag": "Machine Accounts",
-      "sdkName": "reload_machine_accounts_in_bulk_v1",
-      "httpMethod": "POST",
-      "path": "/machine-accounts/v1/bulk-reload",
       "userAuth": [
         "idn:mis-account-state:manage"
       ],

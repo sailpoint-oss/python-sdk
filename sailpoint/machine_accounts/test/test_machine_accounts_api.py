@@ -169,13 +169,6 @@ class TestMachineAccountsApi(unittest.TestCase):
     def test_reload_machine_accounts_in_bulk_async_v1(self) -> None:
         """Test case for reload_machine_accounts_in_bulk_async_v1
 
-        Bulk reload machine accounts asynchronously
-        """
-        pass
-
-    def test_reload_machine_accounts_in_bulk_v1(self) -> None:
-        """Test case for reload_machine_accounts_in_bulk_v1
-
         Reload machine accounts in bulk
         """
         pass

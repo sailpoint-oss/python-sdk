@@ -326,7 +326,7 @@ Bulk delete machine identities
 This API deletes up to 100 machine identities and returns a result for each requested ID.
 
 The response is always `207` when the request is valid. Check the `status` of each result to see whether that
-machine identity was deleted.
+machine identity was deleted. A duplicate ID in the batch returns `409` for that row.
 
 A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right.
 For callers without that right, IDs of machine identities they do not own return a `404` result.
@@ -2461,7 +2461,7 @@ be patched. Patching any other path returns `400`. When access requests for non-
 for the tenant, a patch that changes `/userEntitlements` returns `403`.
 
 The response is always `207` when the request is valid. Check the `status` of each result to see whether that
-machine identity was updated.
+machine identity was updated. A duplicate ID in the batch returns `409` for that row.
 
 A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right.
 For callers without that right, IDs of machine identities they do not own return a `404` result.

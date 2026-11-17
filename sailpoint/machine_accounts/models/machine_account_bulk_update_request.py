@@ -30,7 +30,7 @@ class MachineAccountBulkUpdateRequest(BaseModel):
     The machine accounts to update and the JSON Patch to apply to each of them.
     """ # noqa: E501
     ids: Annotated[List[Annotated[str, Field(strict=True, max_length=128)]], Field(min_length=1, max_length=100)] = Field(description="IDs of the machine accounts to update. Provide between 1 and 100 IDs.")
-    json_patch: List[JsonPatchOperation] = Field(description="[JSON Patch](https://tools.ietf.org/html/rfc6902) operations to apply to every machine account in `ids`. Each operation must target one of these top-level fields: `description`, `subtype`, `environment`, `machineIdentity`, `ownerIdentity`, `manuallyEdited`.", alias="jsonPatch")
+    json_patch: List[JsonPatchOperation] = Field(description="[JSON Patch](https://tools.ietf.org/html/rfc6902) operations to apply to every machine account in `ids`. Each operation must target one of these top-level fields: `description`, `subtype`, `environment`, `machineIdentity`, `ownerIdentity`, `owners`, or `manuallyEdited`. `owners` is accepted only when expanded machine account ownership is enabled for the tenant, and may only be replaced at `/owners`, `/owners/primary`, or `/owners/secondary`. Do not patch `ownerIdentity` and `owners` in the same request.", alias="jsonPatch")
     __properties: ClassVar[List[str]] = ["ids", "jsonPatch"]
 
     model_config = ConfigDict(

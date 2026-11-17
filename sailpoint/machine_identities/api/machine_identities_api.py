@@ -691,7 +691,7 @@ class MachineIdentitiesApi:
     ) -> List[MachineIdentityBulkResult]:
         """Bulk delete machine identities
 
-        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_request: (required)
         :type machine_identity_bulk_request: MachineIdentityBulkRequest
@@ -768,7 +768,7 @@ class MachineIdentitiesApi:
     ) -> ApiResponse[List[MachineIdentityBulkResult]]:
         """Bulk delete machine identities
 
-        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_request: (required)
         :type machine_identity_bulk_request: MachineIdentityBulkRequest
@@ -845,7 +845,7 @@ class MachineIdentitiesApi:
     ) -> RESTResponseType:
         """Bulk delete machine identities
 
-        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API deletes up to 100 machine identities and returns a result for each requested ID.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was deleted. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can delete it. Other callers need the **idn:mis-identity:delete** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_request: (required)
         :type machine_identity_bulk_request: MachineIdentityBulkRequest
@@ -9289,7 +9289,7 @@ class MachineIdentitiesApi:
     ) -> List[MachineIdentityBulkResult]:
         """Bulk update machine identities
 
-        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_update_request: (required)
         :type machine_identity_bulk_update_request: MachineIdentityBulkUpdateRequest
@@ -9366,7 +9366,7 @@ class MachineIdentitiesApi:
     ) -> ApiResponse[List[MachineIdentityBulkResult]]:
         """Bulk update machine identities
 
-        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_update_request: (required)
         :type machine_identity_bulk_update_request: MachineIdentityBulkUpdateRequest
@@ -9443,7 +9443,7 @@ class MachineIdentitiesApi:
     ) -> RESTResponseType:
         """Bulk update machine identities
 
-        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
+        This API applies the same JSON Patch operations to up to 100 machine identities and returns a result for each requested ID. Only `/description`, `/userEntitlements`, `/owners`, `/owners/primary`, and `/owners/secondary` can be patched. Patching any other path returns `400`. When access requests for non-human identities are not enabled for the tenant, a patch that changes `/userEntitlements` returns `403`.  The response is always `207` when the request is valid. Check the `status` of each result to see whether that machine identity was updated. A duplicate ID in the batch returns `409` for that row.  A caller who owns a machine identity can update it. Other callers need the **idn:mis-identity:update** right. For callers without that right, IDs of machine identities they do not own return a `404` result. 
 
         :param machine_identity_bulk_update_request: (required)
         :type machine_identity_bulk_update_request: MachineIdentityBulkUpdateRequest
