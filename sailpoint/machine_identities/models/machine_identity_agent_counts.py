@@ -21,8 +21,8 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.machine_identities.models.machine_identity_agent_counts_ownership import MachineIdentityAgentCountsOwnership
-from sailpoint.machine_identities.models.machine_identity_discovered_counts import MachineIdentityDiscoveredCounts
 from sailpoint.machine_identities.models.machine_identity_risk_severity_counts import MachineIdentityRiskSeverityCounts
+from sailpoint.machine_identities.models.machineidentityagentdiscoveredcounts import Machineidentityagentdiscoveredcounts
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class MachineIdentityAgentCounts(BaseModel):
     """ # noqa: E501
     agent_count: Optional[StrictInt] = Field(default=None, description="Total number of AI agents.", alias="agentCount")
     unsanctioned_agent_count: Optional[StrictInt] = Field(default=None, description="Number of AI agents that are not sanctioned.", alias="unsanctionedAgentCount")
-    discovered: Optional[MachineIdentityDiscoveredCounts] = None
+    discovered: Optional[Machineidentityagentdiscoveredcounts] = None
     risk_severity: Optional[MachineIdentityRiskSeverityCounts] = Field(default=None, alias="riskSeverity")
     ownership: Optional[MachineIdentityAgentCountsOwnership] = None
     __properties: ClassVar[List[str]] = ["agentCount", "unsanctionedAgentCount", "discovered", "riskSeverity", "ownership"]
@@ -104,7 +104,7 @@ class MachineIdentityAgentCounts(BaseModel):
         _obj = cls.model_validate({
             "agentCount": obj.get("agentCount"),
             "unsanctionedAgentCount": obj.get("unsanctionedAgentCount"),
-            "discovered": MachineIdentityDiscoveredCounts.from_dict(obj["discovered"]) if obj.get("discovered") is not None else None,
+            "discovered": Machineidentityagentdiscoveredcounts.from_dict(obj["discovered"]) if obj.get("discovered") is not None else None,
             "riskSeverity": MachineIdentityRiskSeverityCounts.from_dict(obj["riskSeverity"]) if obj.get("riskSeverity") is not None else None,
             "ownership": MachineIdentityAgentCountsOwnership.from_dict(obj["ownership"]) if obj.get("ownership") is not None else None
         })

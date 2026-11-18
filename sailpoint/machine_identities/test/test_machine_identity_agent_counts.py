@@ -37,9 +37,7 @@ class TestMachineIdentityAgentCounts(unittest.TestCase):
             return MachineIdentityAgentCounts(
                 agent_count = 85,
                 unsanctioned_agent_count = 6,
-                discovered = sailpoint.machine_identities.models.machine_identity_discovered_counts.Machine Identity Discovered Counts(
-                    count = 8, 
-                    window_days = 30, ),
+                discovered = None,
                 risk_severity = sailpoint.machine_identities.models.machine_identity_risk_severity_counts.Machine Identity Risk Severity Counts(
                     critical = 3, 
                     high = 12, 

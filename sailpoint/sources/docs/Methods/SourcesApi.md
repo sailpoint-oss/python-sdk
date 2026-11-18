@@ -1214,7 +1214,7 @@ This API is currently in an experimental state. The API is subject to change bas
 :::
 Delete objects for source dataset
 Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity
-Security (SailPoint Identity Security). Linked dataset and resource definitions are not deleted.
+Security. Linked dataset and resource definitions are not deleted.
 
 
 [API Spec](https://developer.sailpoint.com/docs/api/delete-source-dataset-objects-v-1)
@@ -2668,7 +2668,7 @@ This API is currently in an experimental state. The API is subject to change bas
 :::
 Get source resource mappings
 Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity
-Security (SailPoint Identity Security). The response is keyed by resource id. Each value includes the linked
+Security. The response is keyed by resource id. Each value includes the linked
 dataset id, resource type, and connector object type. Resources without a matching schema are
 omitted.
 
@@ -3147,7 +3147,7 @@ with ApiClient(configuration) as api_client:
 
 ## get-source-service-desk-integrations-v1
 List source service desk integrations
-Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security (SailPoint Identity Security).
+Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security.
 
 A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.
 

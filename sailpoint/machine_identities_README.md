@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
  - [MachineIdentityUserEntitlementResponseSource](sailpoint/machine_identities/docs/MachineIdentityUserEntitlementResponseSource.md)
  - [MachineIdentityV2Risk](sailpoint/machine_identities/docs/MachineIdentityV2Risk.md)
  - [MachineIdentityV2Source](sailpoint/machine_identities/docs/MachineIdentityV2Source.md)
+ - [Machineidentityagentdiscoveredcounts](sailpoint/machine_identities/docs/Machineidentityagentdiscoveredcounts.md)
  - [Machineidentitycapability](sailpoint/machine_identities/docs/Machineidentitycapability.md)
  - [Machineidentityentitlement](sailpoint/machine_identities/docs/Machineidentityentitlement.md)
  - [Machineidentityv2](sailpoint/machine_identities/docs/Machineidentityv2.md)

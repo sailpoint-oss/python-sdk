@@ -3765,7 +3765,7 @@ class SourcesApi:
     ) -> TaskResultDetails:
         """Delete objects for source dataset
 
-        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security (SailPoint Identity Security). Linked dataset and resource definitions are not deleted. 
+        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security. Linked dataset and resource definitions are not deleted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -3846,7 +3846,7 @@ class SourcesApi:
     ) -> ApiResponse[TaskResultDetails]:
         """Delete objects for source dataset
 
-        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security (SailPoint Identity Security). Linked dataset and resource definitions are not deleted. 
+        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security. Linked dataset and resource definitions are not deleted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -3927,7 +3927,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Delete objects for source dataset
 
-        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security (SailPoint Identity Security). Linked dataset and resource definitions are not deleted. 
+        Starts a task to delete aggregated objects for the specified dataset on the source in SailPoint Identity Security. Linked dataset and resource definitions are not deleted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -10230,7 +10230,7 @@ class SourcesApi:
     ) -> Dict[str, SourceResourceMappingValue]:
         """Get source resource mappings
 
-        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security (SailPoint Identity Security). The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
+        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security. The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -10307,7 +10307,7 @@ class SourcesApi:
     ) -> ApiResponse[Dict[str, SourceResourceMappingValue]]:
         """Get source resource mappings
 
-        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security (SailPoint Identity Security). The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
+        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security. The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -10384,7 +10384,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get source resource mappings
 
-        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security (SailPoint Identity Security). The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
+        Use this API to get aggregation metadata for resources on the specified source in SailPoint Identity Security. The response is keyed by resource id. Each value includes the linked dataset id, resource type, and connector object type. Resources without a matching schema are omitted. 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -12352,7 +12352,7 @@ class SourcesApi:
     ) -> List[SourceServiceDeskIntegrationDto]:
         """List source service desk integrations
 
-        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security (SailPoint Identity Security).  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
+        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security.  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -12433,7 +12433,7 @@ class SourcesApi:
     ) -> ApiResponse[List[SourceServiceDeskIntegrationDto]]:
         """List source service desk integrations
 
-        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security (SailPoint Identity Security).  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
+        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security.  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -12514,7 +12514,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """List source service desk integrations
 
-        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security (SailPoint Identity Security).  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
+        Use this API to list the Service Desk Integrations that carry out provisioning for a source in SailPoint Identity Security.  A source is provisioned either entirely through its own connector or entirely through a Service Desk Integration; provisioning is never split between the two. An empty list therefore means the source's own connector handles provisioning, and a non-empty list means every provisioning request for the source is routed to the integrations named in the response.  Use this API to determine why provisioning settings on the source itself have no effect, and to identify the integration an administrator must change instead.
 
         :param source_id: Source ID. (required)
         :type source_id: str
