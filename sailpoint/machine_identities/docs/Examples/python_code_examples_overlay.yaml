@@ -164,7 +164,7 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineIdentitiesApi->create_machine_identity_v2: %s\n" % e)
-- path: /machine-identities/v2/bulk-delete
+- path: /machine-identities/v1/bulk-delete
   method: POST
   xCodeSample:
     - lang: Python
@@ -939,7 +939,7 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineIdentitiesApi->start_machine_identity_aggregation_v1: %s\n" % e)
-- path: /machine-identities/v2/bulk-update
+- path: /machine-identities/v1/bulk-update
   method: POST
   xCodeSample:
     - lang: Python

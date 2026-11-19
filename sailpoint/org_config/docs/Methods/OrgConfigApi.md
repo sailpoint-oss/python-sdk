@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Org_Config', 'Org_Config']
 
 # sailpoint.org_config.OrgConfigApi
   Use this API to implement organization configuration functionality. 
-Administrators can use this functionality to manage organization settings, such as time zones. 
+Administrators can use this functionality to manage organization settings, such as time zones, provisioning retry and status check settings. 
  
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 

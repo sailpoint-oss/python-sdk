@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    SailPoint Identity Security API - Machine Accounts
+    SailPoint Identity Security API - Org Config
 
     Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -23,15 +23,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CreateMachineAccountSubtypeV1Request(BaseModel):
+class IdnSourceToArmSystem(BaseModel):
     """
-    CreateMachineAccountSubtypeV1Request
+    A mapping from an IDN source id to an ARM system id.
     """ # noqa: E501
-    technical_name: StrictStr = Field(description="Technical name of the subtype.", alias="technicalName")
-    display_name: StrictStr = Field(description="Display name of the subtype.", alias="displayName")
-    description: StrictStr = Field(description="Description of the subtype.")
-    type: Optional[StrictStr] = Field(default=None, description="Type of the subtype.")
-    __properties: ClassVar[List[str]] = ["technicalName", "displayName", "description", "type"]
+    source_id: Optional[StrictStr] = Field(default=None, description="The IDN source id.", alias="sourceId")
+    system_id: Optional[StrictStr] = Field(default=None, description="The ARM system id.", alias="systemId")
+    __properties: ClassVar[List[str]] = ["sourceId", "systemId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +49,7 @@ class CreateMachineAccountSubtypeV1Request(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateMachineAccountSubtypeV1Request from a JSON string"""
+        """Create an instance of IdnSourceToArmSystem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +74,7 @@ class CreateMachineAccountSubtypeV1Request(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateMachineAccountSubtypeV1Request from a dict"""
+        """Create an instance of IdnSourceToArmSystem from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +82,8 @@ class CreateMachineAccountSubtypeV1Request(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "technicalName": obj.get("technicalName"),
-            "displayName": obj.get("displayName"),
-            "description": obj.get("description"),
-            "type": obj.get("type")
+            "sourceId": obj.get("sourceId"),
+            "systemId": obj.get("systemId")
         })
         return _obj
 

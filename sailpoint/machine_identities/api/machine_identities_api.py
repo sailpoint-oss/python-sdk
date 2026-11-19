@@ -961,7 +961,7 @@ class MachineIdentitiesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/machine-identities/v2/bulk-delete',
+            resource_path='/machine-identities/v1/bulk-delete',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -9559,7 +9559,7 @@ class MachineIdentitiesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/machine-identities/v2/bulk-update',
+            resource_path='/machine-identities/v1/bulk-update',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

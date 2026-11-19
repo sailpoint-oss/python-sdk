@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    SailPoint Identity Security API - Machine Accounts
+    SailPoint Identity Security API - MFA Configuration
 
     Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -18,25 +18,20 @@ import re  # noqa: F401
 import json
 import warnings
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.mfa_configuration.models.mfaclear1userprofilematchingattributes import Mfaclear1userprofilematchingattributes
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SourceSubtype(BaseModel):
+class Mfaclear1establishedidentityflowconfig(BaseModel):
     """
-    SourceSubtype
+    Mfaclear1establishedidentityflowconfig
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the subtype.")
-    source_id: Optional[StrictStr] = Field(default=None, description="The ID of the source.", alias="sourceId")
-    technical_name: StrictStr = Field(description="Technical name of the subtype.", alias="technicalName")
-    display_name: StrictStr = Field(description="Display name of the subtype.", alias="displayName")
-    description: StrictStr = Field(description="Description of the subtype.")
-    created: Optional[datetime] = Field(default=None, description="Creation timestamp.")
-    modified: Optional[datetime] = Field(default=None, description="Last modified timestamp.")
-    type: Optional[StrictStr] = Field(default=None, description="Type of the subtype. Either MACHINE OR null.")
-    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified", "type"]
+    enabled: Optional[StrictBool] = Field(default=False, description="If the established identity flow is enabled for the CLEAR1 MFA method.")
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the CLEAR1 project used for the established identity flow. This field is required if `enabled` is *true*. It may be null if `enabled` is *false*.", alias="projectId")
+    user_profile_matching_attributes: Optional[Mfaclear1userprofilematchingattributes] = Field(default=None, alias="userProfileMatchingAttributes")
+    __properties: ClassVar[List[str]] = ["enabled", "projectId", "userProfileMatchingAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +51,7 @@ class SourceSubtype(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SourceSubtype from a JSON string"""
+        """Create an instance of Mfaclear1establishedidentityflowconfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,10 +63,8 @@ class SourceSubtype(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "source_id",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +72,24 @@ class SourceSubtype(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of user_profile_matching_attributes
+        if self.user_profile_matching_attributes:
+            _dict['userProfileMatchingAttributes'] = self.user_profile_matching_attributes.to_dict()
+        # set to None if project_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.project_id is None and "project_id" in self.model_fields_set:
+            _dict['projectId'] = None
+
+        # set to None if user_profile_matching_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_profile_matching_attributes is None and "user_profile_matching_attributes" in self.model_fields_set:
+            _dict['userProfileMatchingAttributes'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SourceSubtype from a dict"""
+        """Create an instance of Mfaclear1establishedidentityflowconfig from a dict"""
         if obj is None:
             return None
 
@@ -91,14 +97,9 @@ class SourceSubtype(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "sourceId": obj.get("sourceId"),
-            "technicalName": obj.get("technicalName"),
-            "displayName": obj.get("displayName"),
-            "description": obj.get("description"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "type": obj.get("type")
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "projectId": obj.get("projectId"),
+            "userProfileMatchingAttributes": Mfaclear1userprofilematchingattributes.from_dict(obj["userProfileMatchingAttributes"]) if obj.get("userProfileMatchingAttributes") is not None else None
         })
         return _obj
 

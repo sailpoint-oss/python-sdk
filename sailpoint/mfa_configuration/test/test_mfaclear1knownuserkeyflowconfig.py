@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    SailPoint Identity Security API - Machine Accounts
+    SailPoint Identity Security API - MFA Configuration
 
     Use these APIs to interact with the SailPoint Identity Security platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_accounts.models.source_subtype import SourceSubtype
+from sailpoint.mfa_configuration.models.mfaclear1knownuserkeyflowconfig import Mfaclear1knownuserkeyflowconfig
 
-class TestSourceSubtype(unittest.TestCase):
-    """SourceSubtype unit test stubs"""
+class TestMfaclear1knownuserkeyflowconfig(unittest.TestCase):
+    """Mfaclear1knownuserkeyflowconfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,35 +25,27 @@ class TestSourceSubtype(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceSubtype:
-        """Test SourceSubtype
+    def make_instance(self, include_optional) -> Mfaclear1knownuserkeyflowconfig:
+        """Test Mfaclear1knownuserkeyflowconfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceSubtype`
+        # uncomment below to create an instance of `Mfaclear1knownuserkeyflowconfig`
         """
-        model = SourceSubtype()
+        model = Mfaclear1knownuserkeyflowconfig()
         if include_optional:
-            return SourceSubtype(
-                id = '43bdd144-4b17-4fce-a744-17c7fd3e717b',
-                source_id = '',
-                technical_name = 'foo',
-                display_name = 'Mr Foo',
-                description = 'fighters',
-                created = '2025-07-28T16:13:42.801300Z',
-                modified = '2025-07-28T16:13:42.750850Z',
-                type = 'MACHINE'
+            return Mfaclear1knownuserkeyflowconfig(
+                enabled = True,
+                project_id = '',
+                identity_attribute = ''
             )
         else:
-            return SourceSubtype(
-                technical_name = 'foo',
-                display_name = 'Mr Foo',
-                description = 'fighters',
+            return Mfaclear1knownuserkeyflowconfig(
         )
         """
 
-    def testSourceSubtype(self):
-        """Test SourceSubtype"""
+    def testMfaclear1knownuserkeyflowconfig(self):
+        """Test Mfaclear1knownuserkeyflowconfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

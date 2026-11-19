@@ -26,24 +26,10 @@ class TestMachineAccountsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_machine_account_subtype_v1(self) -> None:
-        """Test case for create_machine_account_subtype_v1
-
-        Create subtype
-        """
-        pass
-
     def test_delete_machine_account_async_v1(self) -> None:
         """Test case for delete_machine_account_async_v1
 
         Remove machine account
-        """
-        pass
-
-    def test_delete_machine_account_subtype_by_technical_name_v1(self) -> None:
-        """Test case for delete_machine_account_subtype_by_technical_name_v1
-
-        Delete subtype
         """
         pass
 
@@ -89,20 +75,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_get_machine_account_subtype_by_id_v1(self) -> None:
-        """Test case for get_machine_account_subtype_by_id_v1
-
-        Retrieve subtype by subtype id
-        """
-        pass
-
-    def test_get_machine_account_subtype_by_technical_name_v1(self) -> None:
-        """Test case for get_machine_account_subtype_by_technical_name_v1
-
-        Retrieve subtype by source and technicalName
-        """
-        pass
-
     def test_get_machine_account_v1(self) -> None:
         """Test case for get_machine_account_v1
 
@@ -131,13 +103,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_list_machine_account_subtypes_v1(self) -> None:
-        """Test case for list_machine_account_subtypes_v1
-
-        Retrieve all subtypes by source
-        """
-        pass
-
     def test_list_machine_accounts_v1(self) -> None:
         """Test case for list_machine_accounts_v1
 
@@ -149,13 +114,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """Test case for list_machine_accounts_v2
 
         List machine accounts
-        """
-        pass
-
-    def test_patch_machine_account_subtype_by_technical_name_v1(self) -> None:
-        """Test case for patch_machine_account_subtype_by_technical_name_v1
-
-        Patch subtype
         """
         pass
 

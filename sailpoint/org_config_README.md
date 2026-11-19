@@ -76,6 +76,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponseDto](sailpoint/org_config/docs/ErrorResponseDto.md)
  - [GetOrgConfigV1401Response](sailpoint/org_config/docs/GetOrgConfigV1401Response.md)
  - [GetOrgConfigV1429Response](sailpoint/org_config/docs/GetOrgConfigV1429Response.md)
+ - [IdnSourceToArmSystem](sailpoint/org_config/docs/IdnSourceToArmSystem.md)
  - [JsonPatchOperation](sailpoint/org_config/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/org_config/docs/JsonPatchOperationValue.md)
  - [LocaleOrigin](sailpoint/org_config/docs/LocaleOrigin.md)

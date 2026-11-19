@@ -20,26 +20,32 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from sailpoint.org_config.models.idn_source_to_arm_system import IdnSourceToArmSystem
 from sailpoint.org_config.models.report_config_dto import ReportConfigDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
 class OrgConfig(BaseModel):
     """
-    DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users
+    OrgConfig settings accessible to external customer org admins (`ORG_ADMIN`).  ### Provisioning setting precedence  1. **Source value:** used first when set. When the request spans more than one source, the largest value among those sources wins. 2. **OrgConfig value:** used when no source value is set. 3. **Default:** used when neither is set.  A value outside the allowed range is ignored, and the next level is used.  ### Defaults  * **Retries:** 3 * **Retry interval:** 60 minutes. The actual wait varies by up to 10 percent above or below the interval, so requests that fail together do not retry at the same time. * **Status check interval:** 240 minutes * **Status check limit:** 180 checks  ### Scope  * **Retry count and retry interval:** account enable, disable, unlock, or delete; lifecycle changes that provision accounts; access requests; and RSA token PIN resets. * **Not affected by these settings:** password changes, which use a fixed retry schedule. * **Status check interval and status check limit:** queued provisioning requests. 
     """ # noqa: E501
     org_name: Optional[StrictStr] = Field(default=None, description="The name of the org.", alias="orgName")
     time_zone: Optional[StrictStr] = Field(default=None, description="The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones", alias="timeZone")
     lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(default=False, description="Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.", alias="lcsChangeHonorsSourceEnableFeature")
     arm_customer_id: Optional[StrictStr] = Field(default=None, description="ARM Customer ID", alias="armCustomerId")
-    arm_sap_system_id_mappings: Optional[StrictStr] = Field(default=None, description="A list of IDN::sourceId to ARM::systemId mappings.", alias="armSapSystemIdMappings")
+    arm_sap_system_id_mappings: Optional[List[IdnSourceToArmSystem]] = Field(default=None, description="A list of IDN::sourceId to ARM::systemId mappings.", alias="armSapSystemIdMappings")
     arm_auth: Optional[StrictStr] = Field(default=None, description="ARM authentication string", alias="armAuth")
     arm_db: Optional[StrictStr] = Field(default=None, description="ARM database name", alias="armDb")
     arm_sso_url: Optional[StrictStr] = Field(default=None, description="ARM SSO URL", alias="armSsoUrl")
     iai_enable_certification_recommendations: Optional[StrictBool] = Field(default=True, description="Flag to determine whether IAI Certification Recommendations are enabled for the current org", alias="iaiEnableCertificationRecommendations")
     ai_agent_delete_request_enabled: Optional[StrictBool] = Field(default=False, description="Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org.", alias="aiAgentDeleteRequestEnabled")
+    provisioning_max_retries: Optional[Annotated[int, Field(le=24, strict=True, ge=0)]] = Field(default=None, description="The number of times a provisioning request is retried.", alias="provisioningMaxRetries")
+    provisioning_retry_threshold: Optional[Annotated[int, Field(le=1440, strict=True, ge=1)]] = Field(default=None, description="The number of minutes between provisioning retries.", alias="provisioningRetryThreshold")
+    provisioning_status_check_interval: Optional[Annotated[int, Field(le=1440, strict=True, ge=1)]] = Field(default=None, description="The number of minutes between status checks of a queued provisioning request.", alias="provisioningStatusCheckInterval")
+    provisioning_max_status_checks: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = Field(default=None, description="The number of status checks that run before a queued provisioning request times out.", alias="provisioningMaxStatusChecks")
     sod_report_configs: Optional[List[ReportConfigDTO]] = Field(default=None, alias="sodReportConfigs")
-    __properties: ClassVar[List[str]] = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "aiAgentDeleteRequestEnabled", "sodReportConfigs"]
+    __properties: ClassVar[List[str]] = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "aiAgentDeleteRequestEnabled", "provisioningMaxRetries", "provisioningRetryThreshold", "provisioningStatusCheckInterval", "provisioningMaxStatusChecks", "sodReportConfigs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +86,13 @@ class OrgConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in arm_sap_system_id_mappings (list)
+        _items = []
+        if self.arm_sap_system_id_mappings:
+            for _item_arm_sap_system_id_mappings in self.arm_sap_system_id_mappings:
+                if _item_arm_sap_system_id_mappings:
+                    _items.append(_item_arm_sap_system_id_mappings.to_dict())
+            _dict['armSapSystemIdMappings'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sod_report_configs (list)
         _items = []
         if self.sod_report_configs:
@@ -112,10 +125,25 @@ class OrgConfig(BaseModel):
         if self.arm_sso_url is None and "arm_sso_url" in self.model_fields_set:
             _dict['armSsoUrl'] = None
 
-        # set to None if ai_agent_delete_request_enabled (nullable) is None
+        # set to None if provisioning_max_retries (nullable) is None
         # and model_fields_set contains the field
-        if self.ai_agent_delete_request_enabled is None and "ai_agent_delete_request_enabled" in self.model_fields_set:
-            _dict['aiAgentDeleteRequestEnabled'] = None
+        if self.provisioning_max_retries is None and "provisioning_max_retries" in self.model_fields_set:
+            _dict['provisioningMaxRetries'] = None
+
+        # set to None if provisioning_retry_threshold (nullable) is None
+        # and model_fields_set contains the field
+        if self.provisioning_retry_threshold is None and "provisioning_retry_threshold" in self.model_fields_set:
+            _dict['provisioningRetryThreshold'] = None
+
+        # set to None if provisioning_status_check_interval (nullable) is None
+        # and model_fields_set contains the field
+        if self.provisioning_status_check_interval is None and "provisioning_status_check_interval" in self.model_fields_set:
+            _dict['provisioningStatusCheckInterval'] = None
+
+        # set to None if provisioning_max_status_checks (nullable) is None
+        # and model_fields_set contains the field
+        if self.provisioning_max_status_checks is None and "provisioning_max_status_checks" in self.model_fields_set:
+            _dict['provisioningMaxStatusChecks'] = None
 
         return _dict
 
@@ -133,12 +161,16 @@ class OrgConfig(BaseModel):
             "timeZone": obj.get("timeZone"),
             "lcsChangeHonorsSourceEnableFeature": obj.get("lcsChangeHonorsSourceEnableFeature") if obj.get("lcsChangeHonorsSourceEnableFeature") is not None else False,
             "armCustomerId": obj.get("armCustomerId"),
-            "armSapSystemIdMappings": obj.get("armSapSystemIdMappings"),
+            "armSapSystemIdMappings": [IdnSourceToArmSystem.from_dict(_item) for _item in obj["armSapSystemIdMappings"]] if obj.get("armSapSystemIdMappings") is not None else None,
             "armAuth": obj.get("armAuth"),
             "armDb": obj.get("armDb"),
             "armSsoUrl": obj.get("armSsoUrl"),
             "iaiEnableCertificationRecommendations": obj.get("iaiEnableCertificationRecommendations") if obj.get("iaiEnableCertificationRecommendations") is not None else True,
             "aiAgentDeleteRequestEnabled": obj.get("aiAgentDeleteRequestEnabled") if obj.get("aiAgentDeleteRequestEnabled") is not None else False,
+            "provisioningMaxRetries": obj.get("provisioningMaxRetries"),
+            "provisioningRetryThreshold": obj.get("provisioningRetryThreshold"),
+            "provisioningStatusCheckInterval": obj.get("provisioningStatusCheckInterval"),
+            "provisioningMaxStatusChecks": obj.get("provisioningMaxStatusChecks"),
             "sodReportConfigs": [ReportConfigDTO.from_dict(_item) for _item in obj["sodReportConfigs"]] if obj.get("sodReportConfigs") is not None else None
         })
         return _obj

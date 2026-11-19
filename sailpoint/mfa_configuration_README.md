@@ -49,12 +49,12 @@ with sailpoint.mfa_configuration.ApiClient(configuration) as api_client:
     api_instance = sailpoint.mfa_configuration.MFAConfigurationApi(api_client)
 
     try:
-        # Configuration of duo mfa method
-        api_response = api_instance.get_mfa_duo_config_v1()
-        print("The response of MFAConfigurationApi->get_mfa_duo_config_v1:\n")
+        # Configuration of CLEAR1 mfa method
+        api_response = api_instance.get_mfa_clear1_config_v1()
+        print("The response of MFAConfigurationApi->get_mfa_clear1_config_v1:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling MFAConfigurationApi->get_mfa_duo_config_v1: %s\n" % e)
+        print("Exception when calling MFAConfigurationApi->get_mfa_clear1_config_v1: %s\n" % e)
 
 ```
 
@@ -64,9 +64,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MFAConfigurationApi* | [**get_mfa_clear1_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#get_mfa_clear1_config_v1) | **GET** /mfa/v1/clear1/config | Configuration of CLEAR1 mfa method
 *MFAConfigurationApi* | [**get_mfa_duo_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#get_mfa_duo_config_v1) | **GET** /mfa/v1/duo-web/config | Configuration of duo mfa method
 *MFAConfigurationApi* | [**get_mfa_kba_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#get_mfa_kba_config_v1) | **GET** /mfa/v1/kba/config | Configuration of kba mfa method
 *MFAConfigurationApi* | [**get_mfa_okta_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#get_mfa_okta_config_v1) | **GET** /mfa/v1/okta-verify/config | Configuration of okta mfa method
+*MFAConfigurationApi* | [**set_mfa_clear1_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#set_mfa_clear1_config_v1) | **PUT** /mfa/v1/clear1/config | Set CLEAR1 mfa configuration
 *MFAConfigurationApi* | [**set_mfa_duo_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#set_mfa_duo_config_v1) | **PUT** /mfa/v1/duo-web/config | Set duo mfa configuration
 *MFAConfigurationApi* | [**set_mfa_okta_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#set_mfa_okta_config_v1) | **PUT** /mfa/v1/okta-verify/config | Set okta mfa configuration
 *MFAConfigurationApi* | [**set_mfakba_config_v1**](sailpoint/mfa_configuration/docs/MFAConfigurationApi.md#set_mfakba_config_v1) | **POST** /mfa/v1/kba/config/answers | Set mfa kba configuration
@@ -83,9 +85,13 @@ Class | Method | HTTP request | Description
  - [KbaAnswerResponseItem](sailpoint/mfa_configuration/docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](sailpoint/mfa_configuration/docs/KbaQuestion.md)
  - [LocaleOrigin](sailpoint/mfa_configuration/docs/LocaleOrigin.md)
+ - [MfaClear1Config](sailpoint/mfa_configuration/docs/MfaClear1Config.md)
  - [MfaConfigTestResponse](sailpoint/mfa_configuration/docs/MfaConfigTestResponse.md)
  - [MfaDuoConfig](sailpoint/mfa_configuration/docs/MfaDuoConfig.md)
  - [MfaOktaConfig](sailpoint/mfa_configuration/docs/MfaOktaConfig.md)
+ - [Mfaclear1establishedidentityflowconfig](sailpoint/mfa_configuration/docs/Mfaclear1establishedidentityflowconfig.md)
+ - [Mfaclear1knownuserkeyflowconfig](sailpoint/mfa_configuration/docs/Mfaclear1knownuserkeyflowconfig.md)
+ - [Mfaclear1userprofilematchingattributes](sailpoint/mfa_configuration/docs/Mfaclear1userprofilematchingattributes.md)
 
 
 <a id="documentation-for-authorization"></a>

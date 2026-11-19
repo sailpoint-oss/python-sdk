@@ -15,14 +15,70 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get-mfa-clear1-config-v1**](#get-mfa-clear1-config-v1) | **GET** `/mfa/v1/clear1/config` | Configuration of CLEAR1 mfa method
 [**get-mfa-duo-config-v1**](#get-mfa-duo-config-v1) | **GET** `/mfa/v1/duo-web/config` | Configuration of duo mfa method
 [**get-mfa-kba-config-v1**](#get-mfa-kba-config-v1) | **GET** `/mfa/v1/kba/config` | Configuration of kba mfa method
 [**get-mfa-okta-config-v1**](#get-mfa-okta-config-v1) | **GET** `/mfa/v1/okta-verify/config` | Configuration of okta mfa method
+[**set-mfa-clear1-config-v1**](#set-mfa-clear1-config-v1) | **PUT** `/mfa/v1/clear1/config` | Set CLEAR1 mfa configuration
 [**set-mfa-duo-config-v1**](#set-mfa-duo-config-v1) | **PUT** `/mfa/v1/duo-web/config` | Set duo mfa configuration
 [**set-mfa-okta-config-v1**](#set-mfa-okta-config-v1) | **PUT** `/mfa/v1/okta-verify/config` | Set okta mfa configuration
 [**set-mfakba-config-v1**](#set-mfakba-config-v1) | **POST** `/mfa/v1/kba/config/answers` | Set mfa kba configuration
 [**test-mfa-config-v1**](#test-mfa-config-v1) | **GET** `/mfa/v1/{method}/test` | Mfa method&#39;s test configuration
 
+
+## get-mfa-clear1-config-v1
+Configuration of CLEAR1 mfa method
+This API returns the configuration of a CLEAR1 MFA method.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-mfa-clear1-config-v-1)
+
+### Parameters 
+This endpoint does not need any parameter. 
+
+### Return type
+[**MfaClear1Config**](../models/mfa-clear1-config)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The configuration of a CLEAR1 MFA method. | MfaClear1Config |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.mfa_configuration.api_client import ApiClient
+from sailpoint.mfa_configuration.models.mfa_clear1_config import MfaClear1Config
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+
+    try:
+        # Configuration of CLEAR1 mfa method
+        
+        results = MFAConfigurationApi(api_client).get_mfa_clear1_config_v1()
+        # Below is a request that includes all optional parameters
+        # results = MFAConfigurationApi(api_client).get_mfa_clear1_config_v1()
+        print("The response of MFAConfigurationApi->get_mfa_clear1_config_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MFAConfigurationApi->get_mfa_clear1_config_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
 
 ## get-mfa-duo-config-v1
 Configuration of duo mfa method
@@ -185,6 +241,90 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling MFAConfigurationApi->get_mfa_okta_config_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## set-mfa-clear1-config-v1
+Set CLEAR1 mfa configuration
+This API sets the configuration of a CLEAR1 MFA method.
+
+[API Spec](https://developer.sailpoint.com/docs/api/set-mfa-clear1-config-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | mfa_clear1_config | [**MfaClear1Config**](../models/mfa-clear1-config) | True  | 
+
+### Return type
+[**MfaClear1Config**](../models/mfa-clear1-config)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | MFA configuration of a CLEAR1 MFA method. | MfaClear1Config |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.mfa_configuration.api_client import ApiClient
+from sailpoint.mfa_configuration.models.mfa_clear1_config import MfaClear1Config
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    mfa_clear1_config = '''{
+          "knownUserKeyFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "identityAttribute" : "identityAttribute"
+          },
+          "apiKey" : "sk123Y3QlA5UqocYpdU3rEkzrK2D497O",
+          "mfaMethod" : "clear1",
+          "enabled" : true,
+          "establishedIdentityFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "userProfileMatchingAttributes" : {
+              "country" : "country",
+              "phone" : "phone",
+              "city" : "city",
+              "dob" : "dob",
+              "last_name" : "last_name",
+              "state" : "state",
+              "postal_code" : "postal_code",
+              "first_name" : "first_name",
+              "line2" : "line2",
+              "email" : "email",
+              "line1" : "line1"
+            }
+          }
+        }''' # MfaClear1Config | 
+
+    try:
+        # Set CLEAR1 mfa configuration
+        new_mfa_clear1_config = MfaClear1Config.from_json(mfa_clear1_config)
+        results = MFAConfigurationApi(api_client).set_mfa_clear1_config_v1(mfa_clear1_config=new_mfa_clear1_config)
+        # Below is a request that includes all optional parameters
+        # results = MFAConfigurationApi(api_client).set_mfa_clear1_config_v1(new_mfa_clear1_config)
+        print("The response of MFAConfigurationApi->set_mfa_clear1_config_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling MFAConfigurationApi->set_mfa_clear1_config_v1: %s\n" % e)
 ```
 
 
@@ -393,7 +533,7 @@ This API validates that the configuration is valid and will properly authenticat
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-Path   | method | **str** | True  | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+Path   | method | **str** | True  | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'.
 
 ### Return type
 [**MfaConfigTestResponse**](../models/mfa-config-test-response)
@@ -405,6 +545,7 @@ Code | Description  | Data Type | Response headers |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetMFAOktaConfigV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
 429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetMFAOktaConfigV1429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
@@ -423,7 +564,7 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+    method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'. # str | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'.
 
     try:
         # Mfa method's test configuration

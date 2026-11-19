@@ -47,17 +47,16 @@ configuration = sailpoint.machine_accounts.Configuration(
 with sailpoint.machine_accounts.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.machine_accounts.MachineAccountsApi(api_client)
-    source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source.
-    create_machine_account_subtype_v1_request = {"technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"} # CreateMachineAccountSubtypeV1Request | 
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
-        # Create subtype
-        api_response = api_instance.create_machine_account_subtype_v1(source_id, create_machine_account_subtype_v1_request, x_sail_point_experimental=x_sail_point_experimental)
-        print("The response of MachineAccountsApi->create_machine_account_subtype_v1:\n")
+        # Remove machine account
+        api_response = api_instance.delete_machine_account_async_v1(id, x_sail_point_experimental=x_sail_point_experimental)
+        print("The response of MachineAccountsApi->delete_machine_account_async_v1:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling MachineAccountsApi->create_machine_account_subtype_v1: %s\n" % e)
+        print("Exception when calling MachineAccountsApi->delete_machine_account_async_v1: %s\n" % e)
 
 ```
 
@@ -67,25 +66,19 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineAccountsApi* | [**create_machine_account_subtype_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#create_machine_account_subtype_v1) | **POST** /sources/v1/{sourceId}/subtypes | Create subtype
 *MachineAccountsApi* | [**delete_machine_account_async_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#delete_machine_account_async_v1) | **POST** /machine-accounts/v1/{id}/remove | Remove machine account
-*MachineAccountsApi* | [**delete_machine_account_subtype_by_technical_name_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#delete_machine_account_subtype_by_technical_name_v1) | **DELETE** /sources/v1/{sourceId}/subtypes/{technicalName} | Delete subtype
 *MachineAccountsApi* | [**delete_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#delete_machine_account_v1) | **POST** /machine-accounts/v1/{id}/delete | Delete machine account
 *MachineAccountsApi* | [**disable_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#disable_machine_account_v1) | **POST** /machine-accounts/v1/{id}/disable | Disable machine account
 *MachineAccountsApi* | [**disable_machine_accounts_in_bulk_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#disable_machine_accounts_in_bulk_v1) | **POST** /machine-accounts/v1/bulk-disable | Disable machine accounts in bulk
 *MachineAccountsApi* | [**enable_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#enable_machine_account_v1) | **POST** /machine-accounts/v1/{id}/enable | Enable machine account
 *MachineAccountsApi* | [**enable_machine_accounts_in_bulk_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#enable_machine_accounts_in_bulk_v1) | **POST** /machine-accounts/v1/bulk-enable | Enable machine accounts in bulk
 *MachineAccountsApi* | [**get_machine_account_entitlements_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_account_entitlements_v1) | **GET** /machine-accounts/v1/{id}/entitlements | List machine account entitlements
-*MachineAccountsApi* | [**get_machine_account_subtype_by_id_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_account_subtype_by_id_v1) | **GET** /sources/v1/subtypes/{subtypeId} | Retrieve subtype by subtype id
-*MachineAccountsApi* | [**get_machine_account_subtype_by_technical_name_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_account_subtype_by_technical_name_v1) | **GET** /sources/v1/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
 *MachineAccountsApi* | [**get_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_account_v1) | **GET** /machine-accounts/v1/{id} | Get machine account details
 *MachineAccountsApi* | [**get_machine_account_v2**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_account_v2) | **GET** /machine-accounts/v2/{id} | Get machine account details
 *MachineAccountsApi* | [**get_machine_accounts_summary_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#get_machine_accounts_summary_v1) | **GET** /machine-accounts/v1/machine-accounts-summary | Get machine account candidate summary
 *MachineAccountsApi* | [**list_machine_account_machine_identities_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#list_machine_account_machine_identities_v1) | **GET** /machine-accounts/v1/{id}/machine-identities | List linked machine identities
-*MachineAccountsApi* | [**list_machine_account_subtypes_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#list_machine_account_subtypes_v1) | **GET** /sources/v1/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsApi* | [**list_machine_accounts_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#list_machine_accounts_v1) | **GET** /machine-accounts/v1 | List machine accounts
 *MachineAccountsApi* | [**list_machine_accounts_v2**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#list_machine_accounts_v2) | **GET** /machine-accounts/v2 | List machine accounts
-*MachineAccountsApi* | [**patch_machine_account_subtype_by_technical_name_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#patch_machine_account_subtype_by_technical_name_v1) | **PATCH** /sources/v1/{sourceId}/subtypes/{technicalName} | Patch subtype
 *MachineAccountsApi* | [**reload_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#reload_machine_account_v1) | **POST** /machine-accounts/v1/{id}/reload | Reload machine account
 *MachineAccountsApi* | [**reload_machine_accounts_in_bulk_async_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#reload_machine_accounts_in_bulk_async_v1) | **POST** /machine-accounts/v1/bulk-reload-async | Reload machine accounts in bulk
 *MachineAccountsApi* | [**unlock_machine_account_v1**](sailpoint/machine_accounts/docs/MachineAccountsApi.md#unlock_machine_account_v1) | **POST** /machine-accounts/v1/{id}/unlock | Unlock machine account
@@ -99,7 +92,6 @@ Class | Method | HTTP request | Description
  - [ArrayInner](sailpoint/machine_accounts/docs/ArrayInner.md)
  - [BaseCommonDto](sailpoint/machine_accounts/docs/BaseCommonDto.md)
  - [BaseReferenceDto](sailpoint/machine_accounts/docs/BaseReferenceDto.md)
- - [CreateMachineAccountSubtypeV1Request](sailpoint/machine_accounts/docs/CreateMachineAccountSubtypeV1Request.md)
  - [DtoType](sailpoint/machine_accounts/docs/DtoType.md)
  - [ErrorMessageDto](sailpoint/machine_accounts/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint/machine_accounts/docs/ErrorResponseDto.md)
@@ -131,7 +123,6 @@ Class | Method | HTTP request | Description
  - [MachineAccountV2AllOfSubtype](sailpoint/machine_accounts/docs/MachineAccountV2AllOfSubtype.md)
  - [MachineAccountsAsyncResult](sailpoint/machine_accounts/docs/MachineAccountsAsyncResult.md)
  - [MachineAccountsSummary](sailpoint/machine_accounts/docs/MachineAccountsSummary.md)
- - [SourceSubtype](sailpoint/machine_accounts/docs/SourceSubtype.md)
 
 
 <a id="documentation-for-authorization"></a>

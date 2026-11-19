@@ -26,6 +26,13 @@ class TestMFAConfigurationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_mfa_clear1_config_v1(self) -> None:
+        """Test case for get_mfa_clear1_config_v1
+
+        Configuration of CLEAR1 mfa method
+        """
+        pass
+
     def test_get_mfa_duo_config_v1(self) -> None:
         """Test case for get_mfa_duo_config_v1
 
@@ -44,6 +51,13 @@ class TestMFAConfigurationApi(unittest.TestCase):
         """Test case for get_mfa_okta_config_v1
 
         Configuration of okta mfa method
+        """
+        pass
+
+    def test_set_mfa_clear1_config_v1(self) -> None:
+        """Test case for set_mfa_clear1_config_v1
+
+        Set CLEAR1 mfa configuration
         """
         pass
 

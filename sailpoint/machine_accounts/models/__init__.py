@@ -17,7 +17,6 @@
 from sailpoint.machine_accounts.models.array_inner import ArrayInner
 from sailpoint.machine_accounts.models.base_common_dto import BaseCommonDto
 from sailpoint.machine_accounts.models.base_reference_dto import BaseReferenceDto
-from sailpoint.machine_accounts.models.create_machine_account_subtype_v1_request import CreateMachineAccountSubtypeV1Request
 from sailpoint.machine_accounts.models.dto_type import DtoType
 from sailpoint.machine_accounts.models.error_message_dto import ErrorMessageDto
 from sailpoint.machine_accounts.models.error_response_dto import ErrorResponseDto
@@ -49,4 +48,3 @@ from sailpoint.machine_accounts.models.machine_account_v2_all_of_risk import Mac
 from sailpoint.machine_accounts.models.machine_account_v2_all_of_subtype import MachineAccountV2AllOfSubtype
 from sailpoint.machine_accounts.models.machine_accounts_async_result import MachineAccountsAsyncResult
 from sailpoint.machine_accounts.models.machine_accounts_summary import MachineAccountsSummary
-from sailpoint.machine_accounts.models.source_subtype import SourceSubtype

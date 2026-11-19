@@ -68,7 +68,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineIdentitiesApi* | [**create_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#create_machine_identity_v1) | **POST** /machine-identities/v1 | Create machine identity
 *MachineIdentitiesApi* | [**create_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#create_machine_identity_v2) | **POST** /machine-identities/v2 | Create machine identity
-*MachineIdentitiesApi* | [**delete_machine_identities_in_bulk_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identities_in_bulk_v2) | **POST** /machine-identities/v2/bulk-delete | Bulk delete machine identities
+*MachineIdentitiesApi* | [**delete_machine_identities_in_bulk_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identities_in_bulk_v2) | **POST** /machine-identities/v1/bulk-delete | Bulk delete machine identities
 *MachineIdentitiesApi* | [**delete_machine_identity_async_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identity_async_v1) | **DELETE** /machine-identities/v1/{id}/delete-async | Delete AI agent asynchronously
 *MachineIdentitiesApi* | [**delete_machine_identity_async_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identity_async_v2) | **DELETE** /machine-identities/v2/{id}/delete-async | Delete AI agent asynchronously
 *MachineIdentitiesApi* | [**delete_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identity_v1) | **DELETE** /machine-identities/v1/{id} | Delete machine identity
@@ -95,7 +95,7 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesApi* | [**list_ownership_correlation_configs_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_ownership_correlation_configs_v1) | **GET** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
 *MachineIdentitiesApi* | [**patch_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#patch_ownership_correlation_config_v1) | **PATCH** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
 *MachineIdentitiesApi* | [**start_machine_identity_aggregation_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#start_machine_identity_aggregation_v1) | **POST** /sources/v1/{sourceId}/aggregate-agents | Start machine identity aggregation
-*MachineIdentitiesApi* | [**update_machine_identities_in_bulk_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identities_in_bulk_v2) | **POST** /machine-identities/v2/bulk-update | Bulk update machine identities
+*MachineIdentitiesApi* | [**update_machine_identities_in_bulk_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identities_in_bulk_v2) | **POST** /machine-identities/v1/bulk-update | Bulk update machine identities
 *MachineIdentitiesApi* | [**update_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identity_v1) | **PATCH** /machine-identities/v1/{id} | Update machine identity details
 *MachineIdentitiesApi* | [**update_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identity_v2) | **PATCH** /machine-identities/v2/{id} | Partial update of machine identity
 

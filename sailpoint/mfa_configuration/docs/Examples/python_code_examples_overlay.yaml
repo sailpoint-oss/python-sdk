@@ -1,3 +1,27 @@
+- path: /mfa/v1/clear1/config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/mfa-configuration/methods/mfa-configuration#get-mfa-clear1-config-v1
+      source: |
+        from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
+        from sailpoint.mfa_configuration.api_client import ApiClient
+        from sailpoint.mfa_configuration.models.mfa_clear1_config import MfaClear1Config
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Configuration of CLEAR1 mfa method
+              
+              results = MFAConfigurationApi(api_client).get_mfa_clear1_config_v1()
+              # Below is a request that includes all optional parameters
+              # results = MFAConfigurationApi(api_client).get_mfa_clear1_config_v1()
+              print("The response of MFAConfigurationApi->get_mfa_clear1_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MFAConfigurationApi->get_mfa_clear1_config_v1: %s\n" % e)
 - path: /mfa/v1/duo-web/config
   method: GET
   xCodeSample:
@@ -72,6 +96,57 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MFAConfigurationApi->get_mfa_okta_config_v1: %s\n" % e)
+- path: /mfa/v1/clear1/config
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/mfa-configuration/methods/mfa-configuration#set-mfa-clear1-config-v1
+      source: |
+        from sailpoint.mfa_configuration.api.mfa_configuration_api import MFAConfigurationApi
+        from sailpoint.mfa_configuration.api_client import ApiClient
+        from sailpoint.mfa_configuration.models.mfa_clear1_config import MfaClear1Config
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          mfa_clear1_config = '''{
+          "knownUserKeyFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "identityAttribute" : "identityAttribute"
+          },
+          "apiKey" : "sk123Y3QlA5UqocYpdU3rEkzrK2D497O",
+          "mfaMethod" : "clear1",
+          "enabled" : true,
+          "establishedIdentityFlowConfig" : {
+            "projectId" : "projectId",
+            "enabled" : true,
+            "userProfileMatchingAttributes" : {
+              "country" : "country",
+              "phone" : "phone",
+              "city" : "city",
+              "dob" : "dob",
+              "last_name" : "last_name",
+              "state" : "state",
+              "postal_code" : "postal_code",
+              "first_name" : "first_name",
+              "line2" : "line2",
+              "email" : "email",
+              "line1" : "line1"
+            }
+          }
+        }''' # MfaClear1Config | 
+          try:
+              # Set CLEAR1 mfa configuration
+              new_mfa_clear1_config = MfaClear1Config.from_json(mfa_clear1_config)
+              results = MFAConfigurationApi(api_client).set_mfa_clear1_config_v1(mfa_clear1_config=new_mfa_clear1_config)
+              # Below is a request that includes all optional parameters
+              # results = MFAConfigurationApi(api_client).set_mfa_clear1_config_v1(new_mfa_clear1_config)
+              print("The response of MFAConfigurationApi->set_mfa_clear1_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MFAConfigurationApi->set_mfa_clear1_config_v1: %s\n" % e)
 - path: /mfa/v1/duo-web/config
   method: PUT
   xCodeSample:
@@ -179,7 +254,7 @@
 
 
         with ApiClient(configuration) as api_client:
-          method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+          method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'. # str | The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', and 'clear1'.
           try:
               # Mfa method's test configuration
               
