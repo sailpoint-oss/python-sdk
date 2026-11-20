@@ -50,15 +50,19 @@ with sailpoint.branding.ApiClient(configuration) as api_client:
     name = 'name_example' # str | name of branding item
     product_name = 'product_name_example' # str | product name
     action_button_color = 'action_button_color_example' # str | hex value of color for action button (optional)
+    dark_action_button_color = 'dark_action_button_color_example' # str | hex value of color for action button in dark mode (optional)
     active_link_color = 'active_link_color_example' # str | hex value of color for link (optional)
+    dark_active_link_color = 'dark_active_link_color_example' # str | hex value of color for link in dark mode (optional)
     navigation_color = 'navigation_color_example' # str | hex value of color for navigation bar (optional)
+    dark_navigation_color = 'dark_navigation_color_example' # str | hex value of color for navigation bar in dark mode (optional)
     email_from_address = 'email_from_address_example' # str | email from address (optional)
     login_informational_message = 'login_informational_message_example' # str | login information message (optional)
-    file_standard = None # bytearray | png file with logo (optional)
+    file_standard = None # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+    dark_file_standard = None # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
 
     try:
         # Create a branding item
-        api_response = api_instance.create_branding_item_v1(name, product_name, action_button_color=action_button_color, active_link_color=active_link_color, navigation_color=navigation_color, email_from_address=email_from_address, login_informational_message=login_informational_message, file_standard=file_standard)
+        api_response = api_instance.create_branding_item_v1(name, product_name, action_button_color=action_button_color, dark_action_button_color=dark_action_button_color, active_link_color=active_link_color, dark_active_link_color=dark_active_link_color, navigation_color=navigation_color, dark_navigation_color=dark_navigation_color, email_from_address=email_from_address, login_informational_message=login_informational_message, file_standard=file_standard, dark_file_standard=dark_file_standard)
         print("The response of BrandingApi->create_branding_item_v1:\n")
         pprint(api_response)
     except ApiException as e:
@@ -74,6 +78,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BrandingApi* | [**create_branding_item_v1**](sailpoint/branding/docs/BrandingApi.md#create_branding_item_v1) | **POST** /brandings/v1 | Create a branding item
 *BrandingApi* | [**delete_branding_v1**](sailpoint/branding/docs/BrandingApi.md#delete_branding_v1) | **DELETE** /brandings/v1/{name} | Delete a branding item
+*BrandingApi* | [**delete_default_branding_v1**](sailpoint/branding/docs/BrandingApi.md#delete_default_branding_v1) | **DELETE** /brandings/v1/default | Clear the default branding item
 *BrandingApi* | [**get_branding_list_v1**](sailpoint/branding/docs/BrandingApi.md#get_branding_list_v1) | **GET** /brandings/v1 | List of branding items
 *BrandingApi* | [**get_branding_v1**](sailpoint/branding/docs/BrandingApi.md#get_branding_v1) | **GET** /brandings/v1/{name} | Get a branding item
 *BrandingApi* | [**set_branding_item_v1**](sailpoint/branding/docs/BrandingApi.md#set_branding_item_v1) | **PUT** /brandings/v1/{name} | Update a branding item

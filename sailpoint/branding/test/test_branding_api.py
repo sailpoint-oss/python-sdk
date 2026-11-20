@@ -40,6 +40,13 @@ class TestBrandingApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_default_branding_v1(self) -> None:
+        """Test case for delete_default_branding_v1
+
+        Clear the default branding item
+        """
+        pass
+
     def test_get_branding_list_v1(self) -> None:
         """Test case for get_branding_list_v1
 

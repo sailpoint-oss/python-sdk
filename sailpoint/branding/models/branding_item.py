@@ -30,12 +30,16 @@ class BrandingItem(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="name of branding item")
     product_name: Optional[StrictStr] = Field(default=None, description="product name", alias="productName")
     action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button", alias="actionButtonColor")
+    dark_action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button in dark mode", alias="darkActionButtonColor")
     active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link", alias="activeLinkColor")
+    dark_active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link in dark mode", alias="darkActiveLinkColor")
     navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar", alias="navigationColor")
+    dark_navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar in dark mode", alias="darkNavigationColor")
     email_from_address: Optional[StrictStr] = Field(default=None, description="email from address", alias="emailFromAddress")
     standard_logo_url: Optional[StrictStr] = Field(default=None, description="url to standard logo", alias="standardLogoURL")
+    dark_standard_logo_url: Optional[StrictStr] = Field(default=None, description="url to dark-mode logo", alias="darkStandardLogoURL")
     login_informational_message: Optional[StrictStr] = Field(default=None, description="login information message", alias="loginInformationalMessage")
-    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "activeLinkColor", "navigationColor", "emailFromAddress", "standardLogoURL", "loginInformationalMessage"]
+    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "darkActionButtonColor", "activeLinkColor", "darkActiveLinkColor", "navigationColor", "darkNavigationColor", "emailFromAddress", "standardLogoURL", "darkStandardLogoURL", "loginInformationalMessage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,15 +90,30 @@ class BrandingItem(BaseModel):
         if self.action_button_color is None and "action_button_color" in self.model_fields_set:
             _dict['actionButtonColor'] = None
 
+        # set to None if dark_action_button_color (nullable) is None
+        # and model_fields_set contains the field
+        if self.dark_action_button_color is None and "dark_action_button_color" in self.model_fields_set:
+            _dict['darkActionButtonColor'] = None
+
         # set to None if active_link_color (nullable) is None
         # and model_fields_set contains the field
         if self.active_link_color is None and "active_link_color" in self.model_fields_set:
             _dict['activeLinkColor'] = None
 
+        # set to None if dark_active_link_color (nullable) is None
+        # and model_fields_set contains the field
+        if self.dark_active_link_color is None and "dark_active_link_color" in self.model_fields_set:
+            _dict['darkActiveLinkColor'] = None
+
         # set to None if navigation_color (nullable) is None
         # and model_fields_set contains the field
         if self.navigation_color is None and "navigation_color" in self.model_fields_set:
             _dict['navigationColor'] = None
+
+        # set to None if dark_navigation_color (nullable) is None
+        # and model_fields_set contains the field
+        if self.dark_navigation_color is None and "dark_navigation_color" in self.model_fields_set:
+            _dict['darkNavigationColor'] = None
 
         # set to None if email_from_address (nullable) is None
         # and model_fields_set contains the field
@@ -105,6 +124,11 @@ class BrandingItem(BaseModel):
         # and model_fields_set contains the field
         if self.standard_logo_url is None and "standard_logo_url" in self.model_fields_set:
             _dict['standardLogoURL'] = None
+
+        # set to None if dark_standard_logo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.dark_standard_logo_url is None and "dark_standard_logo_url" in self.model_fields_set:
+            _dict['darkStandardLogoURL'] = None
 
         # set to None if login_informational_message (nullable) is None
         # and model_fields_set contains the field
@@ -126,10 +150,14 @@ class BrandingItem(BaseModel):
             "name": obj.get("name"),
             "productName": obj.get("productName"),
             "actionButtonColor": obj.get("actionButtonColor"),
+            "darkActionButtonColor": obj.get("darkActionButtonColor"),
             "activeLinkColor": obj.get("activeLinkColor"),
+            "darkActiveLinkColor": obj.get("darkActiveLinkColor"),
             "navigationColor": obj.get("navigationColor"),
+            "darkNavigationColor": obj.get("darkNavigationColor"),
             "emailFromAddress": obj.get("emailFromAddress"),
             "standardLogoURL": obj.get("standardLogoURL"),
+            "darkStandardLogoURL": obj.get("darkStandardLogoURL"),
             "loginInformationalMessage": obj.get("loginInformationalMessage")
         })
         return _obj

@@ -22,6 +22,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-branding-item-v1**](#create-branding-item-v1) | **POST** `/brandings/v1` | Create a branding item
 [**delete-branding-v1**](#delete-branding-v1) | **DELETE** `/brandings/v1/{name}` | Delete a branding item
+[**delete-default-branding-v1**](#delete-default-branding-v1) | **DELETE** `/brandings/v1/default` | Clear the default branding item
 [**get-branding-list-v1**](#get-branding-list-v1) | **GET** `/brandings/v1` | List of branding items
 [**get-branding-v1**](#get-branding-v1) | **GET** `/brandings/v1/{name}` | Get a branding item
 [**set-branding-item-v1**](#set-branding-item-v1) | **PUT** `/brandings/v1/{name}` | Update a branding item
@@ -40,11 +41,15 @@ Param Type | Name | Data Type | Required  | Description
    | name | **str** | True  | name of branding item
    | product_name | **str** | True  | product name
    | action_button_color | **str** |   (optional) | hex value of color for action button
+   | dark_action_button_color | **str** |   (optional) | hex value of color for action button in dark mode
    | active_link_color | **str** |   (optional) | hex value of color for link
+   | dark_active_link_color | **str** |   (optional) | hex value of color for link in dark mode
    | navigation_color | **str** |   (optional) | hex value of color for navigation bar
+   | dark_navigation_color | **str** |   (optional) | hex value of color for navigation bar in dark mode
    | email_from_address | **str** |   (optional) | email from address
    | login_informational_message | **str** |   (optional) | login information message
-   | file_standard | **bytearray** |   (optional) | png file with logo
+   | file_standard | **bytearray** |   (optional) | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.
+   | dark_file_standard | **bytearray** |   (optional) | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.
 
 ### Return type
 [**BrandingItem**](../models/branding-item)
@@ -77,18 +82,22 @@ with ApiClient(configuration) as api_client:
     name = 'name_example' # str | name of branding item # str | name of branding item
     product_name = 'product_name_example' # str | product name # str | product name
     action_button_color = 'action_button_color_example' # str | hex value of color for action button (optional) # str | hex value of color for action button (optional)
+    dark_action_button_color = 'dark_action_button_color_example' # str | hex value of color for action button in dark mode (optional) # str | hex value of color for action button in dark mode (optional)
     active_link_color = 'active_link_color_example' # str | hex value of color for link (optional) # str | hex value of color for link (optional)
+    dark_active_link_color = 'dark_active_link_color_example' # str | hex value of color for link in dark mode (optional) # str | hex value of color for link in dark mode (optional)
     navigation_color = 'navigation_color_example' # str | hex value of color for navigation bar (optional) # str | hex value of color for navigation bar (optional)
+    dark_navigation_color = 'dark_navigation_color_example' # str | hex value of color for navigation bar in dark mode (optional) # str | hex value of color for navigation bar in dark mode (optional)
     email_from_address = 'email_from_address_example' # str | email from address (optional) # str | email from address (optional)
     login_informational_message = 'login_informational_message_example' # str | login information message (optional) # str | login information message (optional)
-    file_standard = None # bytearray | png file with logo (optional) # bytearray | png file with logo (optional)
+    file_standard = None # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+    dark_file_standard = None # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
 
     try:
         # Create a branding item
         
         results = BrandingApi(api_client).create_branding_item_v1(name=name, product_name=product_name)
         # Below is a request that includes all optional parameters
-        # results = BrandingApi(api_client).create_branding_item_v1(name, product_name, action_button_color, active_link_color, navigation_color, email_from_address, login_informational_message, file_standard)
+        # results = BrandingApi(api_client).create_branding_item_v1(name, product_name, action_button_color, dark_action_button_color, active_link_color, dark_active_link_color, navigation_color, dark_navigation_color, email_from_address, login_informational_message, file_standard, dark_file_standard)
         print("The response of BrandingApi->create_branding_item_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -149,6 +158,57 @@ with ApiClient(configuration) as api_client:
         # BrandingApi(api_client).delete_branding_v1(name)
     except Exception as e:
         print("Exception when calling BrandingApi->delete_branding_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## delete-default-branding-v1
+Clear the default branding item
+This API endpoint clears the customizable properties of the default branding item. The default item is kept.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-default-branding-v-1)
+
+### Parameters 
+This endpoint does not need any parameter. 
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetBrandingListV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetBrandingListV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.branding.api.branding_api import BrandingApi
+from sailpoint.branding.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+
+    try:
+        # Clear the default branding item
+        
+        BrandingApi(api_client).delete_default_branding_v1()
+        # Below is a request that includes all optional parameters
+        # BrandingApi(api_client).delete_default_branding_v1()
+    except Exception as e:
+        print("Exception when calling BrandingApi->delete_default_branding_v1: %s\n" % e)
 ```
 
 
@@ -283,11 +343,15 @@ Path   | name | **str** | True  | The name of the branding item to be retrieved
    | name2 | **str** | True  | name of branding item
    | product_name | **str** | True  | product name
    | action_button_color | **str** |   (optional) | hex value of color for action button
+   | dark_action_button_color | **str** |   (optional) | hex value of color for action button in dark mode
    | active_link_color | **str** |   (optional) | hex value of color for link
+   | dark_active_link_color | **str** |   (optional) | hex value of color for link in dark mode
    | navigation_color | **str** |   (optional) | hex value of color for navigation bar
+   | dark_navigation_color | **str** |   (optional) | hex value of color for navigation bar in dark mode
    | email_from_address | **str** |   (optional) | email from address
    | login_informational_message | **str** |   (optional) | login information message
-   | file_standard | **bytearray** |   (optional) | png file with logo
+   | file_standard | **bytearray** |   (optional) | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.
+   | dark_file_standard | **bytearray** |   (optional) | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.
 
 ### Return type
 [**BrandingItem**](../models/branding-item)
@@ -322,18 +386,22 @@ with ApiClient(configuration) as api_client:
     name2 = 'name_example' # str | name of branding item # str | name of branding item
     product_name = 'product_name_example' # str | product name # str | product name
     action_button_color = 'action_button_color_example' # str | hex value of color for action button (optional) # str | hex value of color for action button (optional)
+    dark_action_button_color = 'dark_action_button_color_example' # str | hex value of color for action button in dark mode (optional) # str | hex value of color for action button in dark mode (optional)
     active_link_color = 'active_link_color_example' # str | hex value of color for link (optional) # str | hex value of color for link (optional)
+    dark_active_link_color = 'dark_active_link_color_example' # str | hex value of color for link in dark mode (optional) # str | hex value of color for link in dark mode (optional)
     navigation_color = 'navigation_color_example' # str | hex value of color for navigation bar (optional) # str | hex value of color for navigation bar (optional)
+    dark_navigation_color = 'dark_navigation_color_example' # str | hex value of color for navigation bar in dark mode (optional) # str | hex value of color for navigation bar in dark mode (optional)
     email_from_address = 'email_from_address_example' # str | email from address (optional) # str | email from address (optional)
     login_informational_message = 'login_informational_message_example' # str | login information message (optional) # str | login information message (optional)
-    file_standard = None # bytearray | png file with logo (optional) # bytearray | png file with logo (optional)
+    file_standard = None # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+    dark_file_standard = None # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
 
     try:
         # Update a branding item
         
         results = BrandingApi(api_client).set_branding_item_v1(name=name, name2=name2, product_name=product_name)
         # Below is a request that includes all optional parameters
-        # results = BrandingApi(api_client).set_branding_item_v1(name, name2, product_name, action_button_color, active_link_color, navigation_color, email_from_address, login_informational_message, file_standard)
+        # results = BrandingApi(api_client).set_branding_item_v1(name, name2, product_name, action_button_color, dark_action_button_color, active_link_color, dark_active_link_color, navigation_color, dark_navigation_color, email_from_address, login_informational_message, file_standard, dark_file_standard)
         print("The response of BrandingApi->set_branding_item_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

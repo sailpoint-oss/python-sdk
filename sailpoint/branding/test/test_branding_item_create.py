@@ -38,11 +38,15 @@ class TestBrandingItemCreate(unittest.TestCase):
                 name = 'custom-branding-item',
                 product_name = 'product name',
                 action_button_color = '0074D9',
+                dark_action_button_color = '0074D9',
                 active_link_color = '011E69',
+                dark_active_link_color = '011E69',
                 navigation_color = '011E69',
+                dark_navigation_color = '011E69',
                 email_from_address = 'no-reply@sailpoint.com',
                 login_informational_message = '',
-                file_standard = '[B@6754ef00'
+                file_standard = '[B@6754ef00',
+                dark_file_standard = '[B@619bd14c'
             )
         else:
             return BrandingItemCreate(

@@ -15,17 +15,21 @@
           name = 'name_example' # str | name of branding item # str | name of branding item
           product_name = 'product_name_example' # str | product name # str | product name
           action_button_color = 'action_button_color_example' # str | hex value of color for action button (optional) # str | hex value of color for action button (optional)
+          dark_action_button_color = 'dark_action_button_color_example' # str | hex value of color for action button in dark mode (optional) # str | hex value of color for action button in dark mode (optional)
           active_link_color = 'active_link_color_example' # str | hex value of color for link (optional) # str | hex value of color for link (optional)
+          dark_active_link_color = 'dark_active_link_color_example' # str | hex value of color for link in dark mode (optional) # str | hex value of color for link in dark mode (optional)
           navigation_color = 'navigation_color_example' # str | hex value of color for navigation bar (optional) # str | hex value of color for navigation bar (optional)
+          dark_navigation_color = 'dark_navigation_color_example' # str | hex value of color for navigation bar in dark mode (optional) # str | hex value of color for navigation bar in dark mode (optional)
           email_from_address = 'email_from_address_example' # str | email from address (optional) # str | email from address (optional)
           login_informational_message = 'login_informational_message_example' # str | login information message (optional) # str | login information message (optional)
-          file_standard = None # bytearray | png file with logo (optional) # bytearray | png file with logo (optional)
+          file_standard = None # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+          dark_file_standard = None # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
           try:
               # Create a branding item
               
               results = BrandingApi(api_client).create_branding_item_v1(name=name, product_name=product_name)
               # Below is a request that includes all optional parameters
-              # results = BrandingApi(api_client).create_branding_item_v1(name, product_name, action_button_color, active_link_color, navigation_color, email_from_address, login_informational_message, file_standard)
+              # results = BrandingApi(api_client).create_branding_item_v1(name, product_name, action_button_color, dark_action_button_color, active_link_color, dark_active_link_color, navigation_color, dark_navigation_color, email_from_address, login_informational_message, file_standard, dark_file_standard)
               print("The response of BrandingApi->create_branding_item_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -52,6 +56,27 @@
               # BrandingApi(api_client).delete_branding_v1(name)
           except Exception as e:
               print("Exception when calling BrandingApi->delete_branding_v1: %s\n" % e)
+- path: /brandings/v1/default
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/branding/methods/branding#delete-default-branding-v1
+      source: |
+        from sailpoint.branding.api.branding_api import BrandingApi
+        from sailpoint.branding.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Clear the default branding item
+              
+              BrandingApi(api_client).delete_default_branding_v1()
+              # Below is a request that includes all optional parameters
+              # BrandingApi(api_client).delete_default_branding_v1()
+          except Exception as e:
+              print("Exception when calling BrandingApi->delete_default_branding_v1: %s\n" % e)
 - path: /brandings/v1
   method: GET
   xCodeSample:
@@ -120,17 +145,21 @@
           name2 = 'name_example' # str | name of branding item # str | name of branding item
           product_name = 'product_name_example' # str | product name # str | product name
           action_button_color = 'action_button_color_example' # str | hex value of color for action button (optional) # str | hex value of color for action button (optional)
+          dark_action_button_color = 'dark_action_button_color_example' # str | hex value of color for action button in dark mode (optional) # str | hex value of color for action button in dark mode (optional)
           active_link_color = 'active_link_color_example' # str | hex value of color for link (optional) # str | hex value of color for link (optional)
+          dark_active_link_color = 'dark_active_link_color_example' # str | hex value of color for link in dark mode (optional) # str | hex value of color for link in dark mode (optional)
           navigation_color = 'navigation_color_example' # str | hex value of color for navigation bar (optional) # str | hex value of color for navigation bar (optional)
+          dark_navigation_color = 'dark_navigation_color_example' # str | hex value of color for navigation bar in dark mode (optional) # str | hex value of color for navigation bar in dark mode (optional)
           email_from_address = 'email_from_address_example' # str | email from address (optional) # str | email from address (optional)
           login_informational_message = 'login_informational_message_example' # str | login information message (optional) # str | login information message (optional)
-          file_standard = None # bytearray | png file with logo (optional) # bytearray | png file with logo (optional)
+          file_standard = None # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional) # bytearray | png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo. (optional)
+          dark_file_standard = None # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional) # bytearray | png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo. (optional)
           try:
               # Update a branding item
               
               results = BrandingApi(api_client).set_branding_item_v1(name=name, name2=name2, product_name=product_name)
               # Below is a request that includes all optional parameters
-              # results = BrandingApi(api_client).set_branding_item_v1(name, name2, product_name, action_button_color, active_link_color, navigation_color, email_from_address, login_informational_message, file_standard)
+              # results = BrandingApi(api_client).set_branding_item_v1(name, name2, product_name, action_button_color, dark_action_button_color, active_link_color, dark_active_link_color, navigation_color, dark_navigation_color, email_from_address, login_informational_message, file_standard, dark_file_standard)
               print("The response of BrandingApi->set_branding_item_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

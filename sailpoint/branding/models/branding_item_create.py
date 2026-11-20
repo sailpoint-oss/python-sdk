@@ -30,12 +30,16 @@ class BrandingItemCreate(BaseModel):
     name: StrictStr = Field(description="name of branding item")
     product_name: Optional[StrictStr] = Field(description="product name", alias="productName")
     action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button", alias="actionButtonColor")
+    dark_action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button in dark mode", alias="darkActionButtonColor")
     active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link", alias="activeLinkColor")
+    dark_active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link in dark mode", alias="darkActiveLinkColor")
     navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar", alias="navigationColor")
+    dark_navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar in dark mode", alias="darkNavigationColor")
     email_from_address: Optional[StrictStr] = Field(default=None, description="email from address", alias="emailFromAddress")
     login_informational_message: Optional[StrictStr] = Field(default=None, description="login information message", alias="loginInformationalMessage")
-    file_standard: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="png file with logo", alias="fileStandard")
-    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "activeLinkColor", "navigationColor", "emailFromAddress", "loginInformationalMessage", "fileStandard"]
+    file_standard: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="png file with logo. To remove an existing logo, delete the branding item and create it again. Omitting this field on update keeps the current logo.", alias="fileStandard")
+    dark_file_standard: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="png file with dark-mode logo. To remove an existing dark-mode logo, delete the branding item and create it again. Omitting this field on update keeps the current dark-mode logo.", alias="darkFileStandard")
+    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "darkActionButtonColor", "activeLinkColor", "darkActiveLinkColor", "navigationColor", "darkNavigationColor", "emailFromAddress", "loginInformationalMessage", "fileStandard", "darkFileStandard"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,11 +100,15 @@ class BrandingItemCreate(BaseModel):
             "name": obj.get("name"),
             "productName": obj.get("productName"),
             "actionButtonColor": obj.get("actionButtonColor"),
+            "darkActionButtonColor": obj.get("darkActionButtonColor"),
             "activeLinkColor": obj.get("activeLinkColor"),
+            "darkActiveLinkColor": obj.get("darkActiveLinkColor"),
             "navigationColor": obj.get("navigationColor"),
+            "darkNavigationColor": obj.get("darkNavigationColor"),
             "emailFromAddress": obj.get("emailFromAddress"),
             "loginInformationalMessage": obj.get("loginInformationalMessage"),
-            "fileStandard": obj.get("fileStandard")
+            "fileStandard": obj.get("fileStandard"),
+            "darkFileStandard": obj.get("darkFileStandard")
         })
         return _obj
 

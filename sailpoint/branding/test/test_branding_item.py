@@ -38,10 +38,14 @@ class TestBrandingItem(unittest.TestCase):
                 name = 'default',
                 product_name = 'product name',
                 action_button_color = '0074D9',
+                dark_action_button_color = '0074D9',
                 active_link_color = '011E69',
+                dark_active_link_color = '011E69',
                 navigation_color = '011E69',
+                dark_navigation_color = '011E69',
                 email_from_address = 'no-reply@sailpoint.com',
-                standard_logo_url = '',
+                standard_logo_url = 'https://example.identitynow.com/logos/standard.png',
+                dark_standard_logo_url = 'https://example.identitynow.com/logos/dark.png',
                 login_informational_message = ''
             )
         else:
