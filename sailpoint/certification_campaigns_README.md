@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**delete_campaign_template_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#delete_campaign_template_v1) | **DELETE** /campaign-templates/v1/{id} | Delete a campaign template
 *CertificationCampaignsApi* | [**delete_campaigns_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#delete_campaigns_v1) | **POST** /campaigns/v1/delete | Delete campaigns
 *CertificationCampaignsApi* | [**get_active_campaigns_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#get_active_campaigns_v1) | **GET** /campaigns/v1 | List campaigns
+*CertificationCampaignsApi* | [**get_campaign_report_download_url_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#get_campaign_report_download_url_v1) | **GET** /campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat} | Get campaign report download URL
 *CertificationCampaignsApi* | [**get_campaign_reports_config_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#get_campaign_reports_config_v1) | **GET** /campaigns/v1/reports-configuration | Get campaign reports configuration
 *CertificationCampaignsApi* | [**get_campaign_reports_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#get_campaign_reports_v1) | **GET** /campaigns/v1/{id}/reports | Get campaign reports
 *CertificationCampaignsApi* | [**get_campaign_template_schedule_v1**](sailpoint/certification_campaigns/docs/CertificationCampaignsApi.md#get_campaign_template_schedule_v1) | **GET** /campaign-templates/v1/{id}/schedule | Get campaign template schedule
@@ -111,6 +112,7 @@ Class | Method | HTTP request | Description
  - [CampaignCompleteOptions](sailpoint/certification_campaigns/docs/CampaignCompleteOptions.md)
  - [CampaignReference](sailpoint/certification_campaigns/docs/CampaignReference.md)
  - [CampaignReport](sailpoint/certification_campaigns/docs/CampaignReport.md)
+ - [CampaignReportDownload](sailpoint/certification_campaigns/docs/CampaignReportDownload.md)
  - [CampaignReportsConfig](sailpoint/certification_campaigns/docs/CampaignReportsConfig.md)
  - [CampaignTemplate](sailpoint/certification_campaigns/docs/CampaignTemplate.md)
  - [CampaignTemplateOwnerRef](sailpoint/certification_campaigns/docs/CampaignTemplateOwnerRef.md)

@@ -75,6 +75,13 @@ class TestCertificationCampaignsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_campaign_report_download_url_v1(self) -> None:
+        """Test case for get_campaign_report_download_url_v1
+
+        Get campaign report download URL
+        """
+        pass
+
     def test_get_campaign_reports_config_v1(self) -> None:
         """Test case for get_campaign_reports_config_v1
 

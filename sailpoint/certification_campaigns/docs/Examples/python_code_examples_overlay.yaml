@@ -302,6 +302,35 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling CertificationCampaignsApi->get_active_campaigns_v1: %s\n" % e)
+- path: /campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certification-campaigns/methods/certification-campaigns#get-campaign-report-download-url-v1
+      source: |
+        from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.certification_campaigns.api_client import ApiClient
+        from sailpoint.certification_campaigns.models.campaign_report_download import CampaignReportDownload
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign whose report is being downloaded. # str | ID of the campaign whose report is being downloaded.
+          task_result_id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign task that generated the report. # str | ID of the campaign task that generated the report.
+          report_format = 'PDF' # str | File format of the report to download. # str | File format of the report to download.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get campaign report download URL
+              
+              results = CertificationCampaignsApi(api_client).get_campaign_report_download_url_v1(id=id, task_result_id=task_result_id, report_format=report_format)
+              # Below is a request that includes all optional parameters
+              # results = CertificationCampaignsApi(api_client).get_campaign_report_download_url_v1(id, task_result_id, report_format, x_sail_point_experimental)
+              print("The response of CertificationCampaignsApi->get_campaign_report_download_url_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationCampaignsApi->get_campaign_report_download_url_v1: %s\n" % e)
 - path: /campaigns/v1/reports-configuration
   method: GET
   xCodeSample:

@@ -87,6 +87,7 @@ Method | HTTP request | Description
 [**delete-campaign-template-v1**](#delete-campaign-template-v1) | **DELETE** `/campaign-templates/v1/{id}` | Delete a campaign template
 [**delete-campaigns-v1**](#delete-campaigns-v1) | **POST** `/campaigns/v1/delete` | Delete campaigns
 [**get-active-campaigns-v1**](#get-active-campaigns-v1) | **GET** `/campaigns/v1` | List campaigns
+[**get-campaign-report-download-url-v1**](#get-campaign-report-download-url-v1) | **GET** `/campaigns/v1/{id}/reports/{taskResultId}/download-url/{reportFormat}` | Get campaign report download URL
 [**get-campaign-reports-config-v1**](#get-campaign-reports-config-v1) | **GET** `/campaigns/v1/reports-configuration` | Get campaign reports configuration
 [**get-campaign-reports-v1**](#get-campaign-reports-v1) | **GET** `/campaigns/v1/{id}/reports` | Get campaign reports
 [**get-campaign-template-schedule-v1**](#get-campaign-template-schedule-v1) | **GET** `/campaign-templates/v1/{id}/schedule` | Get campaign template schedule
@@ -662,6 +663,84 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling CertificationCampaignsApi->get_active_campaigns_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-campaign-report-download-url-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Get campaign report download URL
+Use this API to get a URL for downloading a certification campaign report.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-campaign-report-download-url-v-1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | ID of the campaign whose report is being downloaded.
+Path   | task_result_id | **str** | True  | ID of the campaign task that generated the report.
+Path   | report_format | **str** | True  | File format of the report to download.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**CampaignReportDownload**](../models/campaign-report-download)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The information to download the campaign report. | CampaignReportDownload |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetActiveCampaignsV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetActiveCampaignsV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.certification_campaigns.api.certification_campaigns_api import CertificationCampaignsApi
+from sailpoint.certification_campaigns.api_client import ApiClient
+from sailpoint.certification_campaigns.models.campaign_report_download import CampaignReportDownload
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign whose report is being downloaded. # str | ID of the campaign whose report is being downloaded.
+    task_result_id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign task that generated the report. # str | ID of the campaign task that generated the report.
+    report_format = 'PDF' # str | File format of the report to download. # str | File format of the report to download.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Get campaign report download URL
+        
+        results = CertificationCampaignsApi(api_client).get_campaign_report_download_url_v1(id=id, task_result_id=task_result_id, report_format=report_format)
+        # Below is a request that includes all optional parameters
+        # results = CertificationCampaignsApi(api_client).get_campaign_report_download_url_v1(id, task_result_id, report_format, x_sail_point_experimental)
+        print("The response of CertificationCampaignsApi->get_campaign_report_download_url_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling CertificationCampaignsApi->get_campaign_report_download_url_v1: %s\n" % e)
 ```
 
 
