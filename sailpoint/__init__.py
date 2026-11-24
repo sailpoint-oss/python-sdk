@@ -76,6 +76,7 @@ _API_EXPORTS: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "GlobalTenantSecuritySettingsApi": (("sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api", "GlobalTenantSecuritySettingsApi"),),
     "NextGenerationCertificationCampaignsApi": (("sailpoint.gov_certification.api.next_generation_certification_campaigns_api", "NextGenerationCertificationCampaignsApi"),),
     "GovernanceGroupsApi": (("sailpoint.governance_groups.api.governance_groups_api", "GovernanceGroupsApi"),),
+    "HumanAccountSubtypesApi": (("sailpoint.human_account_subtypes.api.human_account_subtypes_api", "HumanAccountSubtypesApi"),),
     "IAIAccessRequestRecommendationsApi": (("sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api", "IAIAccessRequestRecommendationsApi"),),
     "IAICommonAccessApi": (("sailpoint.iai_common_access.api.iai_common_access_api", "IAICommonAccessApi"),),
     "IAIOutliersApi": (("sailpoint.iai_outliers.api.iai_outliers_api", "IAIOutliersApi"),),
@@ -245,6 +246,7 @@ __all__ = [
     "GlobalTenantSecuritySettingsApi",
     "NextGenerationCertificationCampaignsApi",
     "GovernanceGroupsApi",
+    "HumanAccountSubtypesApi",
     "IAIAccessRequestRecommendationsApi",
     "IAICommonAccessApi",
     "IAIOutliersApi",
@@ -442,6 +444,7 @@ if TYPE_CHECKING:
     from sailpoint.global_tenant_security_settings.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi as _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     from sailpoint.gov_certification.api.next_generation_certification_campaigns_api import NextGenerationCertificationCampaignsApi as _gov_certification__NextGenerationCertificationCampaignsApi
     from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi as _governance_groups__GovernanceGroupsApi
+    from sailpoint.human_account_subtypes.api.human_account_subtypes_api import HumanAccountSubtypesApi as _human_account_subtypes__HumanAccountSubtypesApi
     from sailpoint.iai_access_request_recommendations.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi as _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
     from sailpoint.iai_common_access.api.iai_common_access_api import IAICommonAccessApi as _iai_common_access__IAICommonAccessApi
     from sailpoint.iai_outliers.api.iai_outliers_api import IAIOutliersApi as _iai_outliers__IAIOutliersApi
@@ -611,6 +614,7 @@ if TYPE_CHECKING:
     GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
     NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
     GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
+    HumanAccountSubtypesApi = _human_account_subtypes__HumanAccountSubtypesApi
     IAIAccessRequestRecommendationsApi = _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
     IAICommonAccessApi = _iai_common_access__IAICommonAccessApi
     IAIOutliersApi = _iai_outliers__IAIOutliersApi
@@ -775,6 +779,7 @@ if TYPE_CHECKING:
         GlobalTenantSecuritySettingsApi = _global_tenant_security_settings__GlobalTenantSecuritySettingsApi
         NextGenerationCertificationCampaignsApi = _gov_certification__NextGenerationCertificationCampaignsApi
         GovernanceGroupsApi = _governance_groups__GovernanceGroupsApi
+        HumanAccountSubtypesApi = _human_account_subtypes__HumanAccountSubtypesApi
         IAIAccessRequestRecommendationsApi = _iai_access_request_recommendations__IAIAccessRequestRecommendationsApi
         IAICommonAccessApi = _iai_common_access__IAICommonAccessApi
         IAIOutliersApi = _iai_outliers__IAIOutliersApi
