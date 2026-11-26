@@ -39,6 +39,7 @@ class TestApprovalCancelRequest(unittest.TestCase):
             )
         else:
             return ApprovalCancelRequest(
+                comment = 'Cancelled by administrator',
         )
         """
 

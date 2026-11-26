@@ -17,7 +17,7 @@ Request body for cancelling a single approval request.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | **str** | Optional comment associated with the cancel request. | [optional] 
+**comment** | **str** | Required comment associated with the cancel request. | [required]
 }
 
 ## Example

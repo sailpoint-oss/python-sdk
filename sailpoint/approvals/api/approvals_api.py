@@ -361,7 +361,7 @@ class ApprovalsApi:
     ) -> Approval2:
         """Post Approvals Approve
 
-        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
@@ -438,7 +438,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval2]:
         """Post Approvals Approve
 
-        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
@@ -515,7 +515,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Approve
 
-        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
@@ -651,7 +651,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        approval_cancel_request: ApprovalCancelRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -667,11 +667,11 @@ class ApprovalsApi:
     ) -> None:
         """Post Approval Cancel
 
-        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support cancelling Access Request Approvals or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1).
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approval_cancel_request:
+        :param approval_cancel_request: (required)
         :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -728,7 +728,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        approval_cancel_request: ApprovalCancelRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -744,11 +744,11 @@ class ApprovalsApi:
     ) -> ApiResponse[None]:
         """Post Approval Cancel
 
-        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support cancelling Access Request Approvals or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1).
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approval_cancel_request:
+        :param approval_cancel_request: (required)
         :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -805,7 +805,7 @@ class ApprovalsApi:
     def cancel_approval_by_id_v1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
-        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        approval_cancel_request: ApprovalCancelRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -821,11 +821,11 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approval Cancel
 
-        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support cancelling Access Request Approvals or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1).
 
         :param id: ID of the approval request to cancel. (required)
         :type id: str
-        :param approval_cancel_request:
+        :param approval_cancel_request: (required)
         :type approval_cancel_request: ApprovalCancelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3497,7 +3497,7 @@ class ApprovalsApi:
     ) -> None:
         """Post Approvals Reject
 
-        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
@@ -3574,7 +3574,7 @@ class ApprovalsApi:
     ) -> ApiResponse[None]:
         """Post Approvals Reject
 
-        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
@@ -3651,7 +3651,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Reject
 
-        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str

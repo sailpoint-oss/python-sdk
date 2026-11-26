@@ -104,7 +104,7 @@ with ApiClient(configuration) as api_client:
 ## approve-approval-v1
 Post Approvals Approve
 Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
-If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user.
 
 [API Spec](https://developer.sailpoint.com/docs/api/approve-approval-v-1)
 
@@ -175,8 +175,7 @@ with ApiClient(configuration) as api_client:
 ## cancel-approval-by-id-v1
 Post Approval Cancel
 Cancels a specified approval requests on behalf of the caller. 
-Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following:
-/access-requests/cancel
+Note: This endpoint does not support cancelling Access Request Approvals or accessRequestIDs. To cancel an Access Request Approval, please use: [Cancel Access Request endpoint](https://developer.sailpoint.com/docs/api/cancel-access-request-v-1).
 
 [API Spec](https://developer.sailpoint.com/docs/api/cancel-approval-by-id-v-1)
 
@@ -185,7 +184,7 @@ Note: This endpoint does not support access request IDs. To cancel access reques
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the approval request to cancel.
- Body  | approval_cancel_request | [**ApprovalCancelRequest**](../models/approval-cancel-request) |   (optional) | 
+ Body  | approval_cancel_request | [**ApprovalCancelRequest**](../models/approval-cancel-request) | True  | 
 
 ### Return type
  (empty response body)
@@ -219,12 +218,12 @@ with ApiClient(configuration) as api_client:
     id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | ID of the approval request to cancel. # str | ID of the approval request to cancel.
     approval_cancel_request = '''{
           "comment" : "Cancelled by administrator"
-        }''' # ApprovalCancelRequest |  (optional)
+        }''' # ApprovalCancelRequest | 
 
     try:
         # Post Approval Cancel
-        
-        ApprovalsApi(api_client).cancel_approval_by_id_v1(id=id)
+        new_approval_cancel_request = ApprovalCancelRequest.from_json(approval_cancel_request)
+        ApprovalsApi(api_client).cancel_approval_by_id_v1(id=id, approval_cancel_request=new_approval_cancel_request)
         # Below is a request that includes all optional parameters
         # ApprovalsApi(api_client).cancel_approval_by_id_v1(id, new_approval_cancel_request)
     except Exception as e:
@@ -805,7 +804,7 @@ with ApiClient(configuration) as api_client:
 ## reject-approval-v1
 Post Approvals Reject
 Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
-If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+If called by an admin and the admin is not listed as an approver, the approval request will be reassigned either from overrideApproverID or from a random approver to the admin user and rejected.
 
 [API Spec](https://developer.sailpoint.com/docs/api/reject-approval-v-1)
 

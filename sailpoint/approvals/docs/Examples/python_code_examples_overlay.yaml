@@ -82,11 +82,11 @@
           id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | ID of the approval request to cancel. # str | ID of the approval request to cancel.
           approval_cancel_request = '''{
           "comment" : "Cancelled by administrator"
-        }''' # ApprovalCancelRequest |  (optional)
+        }''' # ApprovalCancelRequest | 
           try:
               # Post Approval Cancel
-              
-              ApprovalsApi(api_client).cancel_approval_by_id_v1(id=id)
+              new_approval_cancel_request = ApprovalCancelRequest.from_json(approval_cancel_request)
+              ApprovalsApi(api_client).cancel_approval_by_id_v1(id=id, approval_cancel_request=new_approval_cancel_request)
               # Below is a request that includes all optional parameters
               # ApprovalsApi(api_client).cancel_approval_by_id_v1(id, new_approval_cancel_request)
           except Exception as e:
