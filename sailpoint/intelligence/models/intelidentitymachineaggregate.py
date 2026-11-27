@@ -27,6 +27,9 @@ from sailpoint.intelligence.models.intelmachinederived import Intelmachinederive
 from sailpoint.intelligence.models.intelmachineidentityowners import Intelmachineidentityowners
 from sailpoint.intelligence.models.intelmachinesourcewire import Intelmachinesourcewire
 from sailpoint.intelligence.models.intelmachineuserentitlement import Intelmachineuserentitlement
+from sailpoint.intelligence.models.intelnhicapabilities import Intelnhicapabilities
+from sailpoint.intelligence.models.intelnhirisk import Intelnhirisk
+from sailpoint.intelligence.models.intelnhirisksignals import Intelnhirisksignals
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,6 +47,9 @@ class Intelidentitymachineaggregate(BaseModel):
     match_confidence: Optional[StrictStr] = Field(default=None, description="Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches.", alias="matchConfidence")
     identity_graph: Optional[Intelidentitygraphlink] = Field(default=None, description="Omitted when the tenant lacks the idg:base license.", alias="identityGraph")
     accounts: Intelmachineaccountsslice
+    capabilities: Intelnhicapabilities
+    risk: Optional[Intelnhirisk] = None
+    risk_signals: Intelnhirisksignals = Field(alias="riskSignals")
     native_identity: StrictStr = Field(description="Native identifier on the source system.", alias="nativeIdentity")
     dataset_id: Optional[StrictStr] = Field(default=None, description="Dataset identifier from upstream machine-identity services when present.", alias="datasetId")
     source: Optional[Intelmachinesourcewire] = Field(default=None, description="Source metadata for the machine identity when present upstream.")
@@ -54,7 +60,7 @@ class Intelidentitymachineaggregate(BaseModel):
     user_entitlements: Optional[List[Intelmachineuserentitlement]] = Field(default=None, description="Entitlements associated with the machine identity from upstream.", alias="userEntitlements")
     attributes: Dict[str, Any] = Field(description="Connector or runtime metadata; empty object when absent upstream.")
     derived: Intelmachinederived
-    __properties: ClassVar[List[str]] = ["id", "type", "displayName", "description", "subtype", "created", "modified", "matchConfidence", "identityGraph", "accounts", "nativeIdentity", "datasetId", "source", "existsOnSource", "manuallyEdited", "manuallyCreated", "owners", "userEntitlements", "attributes", "derived"]
+    __properties: ClassVar[List[str]] = ["id", "type", "displayName", "description", "subtype", "created", "modified", "matchConfidence", "identityGraph", "accounts", "capabilities", "risk", "riskSignals", "nativeIdentity", "datasetId", "source", "existsOnSource", "manuallyEdited", "manuallyCreated", "owners", "userEntitlements", "attributes", "derived"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -118,6 +124,15 @@ class Intelidentitymachineaggregate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of accounts
         if self.accounts:
             _dict['accounts'] = self.accounts.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of capabilities
+        if self.capabilities:
+            _dict['capabilities'] = self.capabilities.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of risk
+        if self.risk:
+            _dict['risk'] = self.risk.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of risk_signals
+        if self.risk_signals:
+            _dict['riskSignals'] = self.risk_signals.to_dict()
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -143,6 +158,11 @@ class Intelidentitymachineaggregate(BaseModel):
         # and model_fields_set contains the field
         if self.subtype is None and "subtype" in self.model_fields_set:
             _dict['subtype'] = None
+
+        # set to None if risk (nullable) is None
+        # and model_fields_set contains the field
+        if self.risk is None and "risk" in self.model_fields_set:
+            _dict['risk'] = None
 
         # set to None if dataset_id (nullable) is None
         # and model_fields_set contains the field
@@ -181,6 +201,9 @@ class Intelidentitymachineaggregate(BaseModel):
             "matchConfidence": obj.get("matchConfidence"),
             "identityGraph": Intelidentitygraphlink.from_dict(obj["identityGraph"]) if obj.get("identityGraph") is not None else None,
             "accounts": Intelmachineaccountsslice.from_dict(obj["accounts"]) if obj.get("accounts") is not None else None,
+            "capabilities": Intelnhicapabilities.from_dict(obj["capabilities"]) if obj.get("capabilities") is not None else None,
+            "risk": Intelnhirisk.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
+            "riskSignals": Intelnhirisksignals.from_dict(obj["riskSignals"]) if obj.get("riskSignals") is not None else None,
             "nativeIdentity": obj.get("nativeIdentity"),
             "datasetId": obj.get("datasetId"),
             "source": Intelmachinesourcewire.from_dict(obj["source"]) if obj.get("source") is not None else None,

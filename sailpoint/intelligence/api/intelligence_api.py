@@ -24,6 +24,8 @@ from sailpoint.intelligence.models.intel_access_item_history_event import IntelA
 from sailpoint.intelligence.models.intel_certification_history_event import IntelCertificationHistoryEvent
 from sailpoint.intelligence.models.intel_outlier_access_item import IntelOutlierAccessItem
 from sailpoint.intelligence.models.intelidentityenvelope import Intelidentityenvelope
+from sailpoint.intelligence.models.intelnhicapabilitywire import Intelnhicapabilitywire
+from sailpoint.intelligence.models.intelnhirisksignalwire import Intelnhirisksignalwire
 from sailpoint.intelligence.models.intelnonhumanidentityownershipitem import Intelnonhumanidentityownershipitem
 from sailpoint.intelligence.models.responseactionaccepted import Responseactionaccepted
 from sailpoint.intelligence.models.responseactioncreaterequest import Responseactioncreaterequest
@@ -66,7 +68,7 @@ class IntelligenceApi:
     ) -> Responseactionaccepted:
         """Create a response action
 
-        Requires tenant license idn:response-and-remediation.  Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that triggers the correlated workflow(s).  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll GET /intelligence/v1/response-actions/{requestId}/status for progress. 
+        Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that starts processing.  Human Actions (`DISABLE_IDENTITY`, `DISABLE_ACCOUNT` with `identityType` HUMAN) require tenant license idn:response-and-remediation.  Deactivating a NHI (`DEACTIVATE_AGENT` with `identityType` NHI) requires idn:response-and-remediation-saf.  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll [Get response action status](https://developer.sailpoint.com/docs/api/v1/get-response-action-status-v1) for progress. 
 
         :param responseactioncreaterequest: (required)
         :type responseactioncreaterequest: Responseactioncreaterequest
@@ -138,7 +140,7 @@ class IntelligenceApi:
     ) -> ApiResponse[Responseactionaccepted]:
         """Create a response action
 
-        Requires tenant license idn:response-and-remediation.  Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that triggers the correlated workflow(s).  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll GET /intelligence/v1/response-actions/{requestId}/status for progress. 
+        Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that starts processing.  Human Actions (`DISABLE_IDENTITY`, `DISABLE_ACCOUNT` with `identityType` HUMAN) require tenant license idn:response-and-remediation.  Deactivating a NHI (`DEACTIVATE_AGENT` with `identityType` NHI) requires idn:response-and-remediation-saf.  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll [Get response action status](https://developer.sailpoint.com/docs/api/v1/get-response-action-status-v1) for progress. 
 
         :param responseactioncreaterequest: (required)
         :type responseactioncreaterequest: Responseactioncreaterequest
@@ -210,7 +212,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """Create a response action
 
-        Requires tenant license idn:response-and-remediation.  Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that triggers the correlated workflow(s).  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll GET /intelligence/v1/response-actions/{requestId}/status for progress. 
+        Creates a response action: the request is validated, a requestId (the correlation id) is minted, the action is recorded as SUBMITTED, and an event is published that starts processing.  Human Actions (`DISABLE_IDENTITY`, `DISABLE_ACCOUNT` with `identityType` HUMAN) require tenant license idn:response-and-remediation.  Deactivating a NHI (`DEACTIVATE_AGENT` with `identityType` NHI) requires idn:response-and-remediation-saf.  Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll [Get response action status](https://developer.sailpoint.com/docs/api/v1/get-response-action-status-v1) for progress. 
 
         :param responseactioncreaterequest: (required)
         :type responseactioncreaterequest: Responseactioncreaterequest
@@ -1288,6 +1290,352 @@ class IntelligenceApi:
 
 
     @validate_call
+    def get_intel_identity_capabilities_v1(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        type: Annotated[StrictStr, Field(description="Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Intelnhicapabilitywire]:
+        """List NHI capabilities
+
+        Requires tenant license idn:response-and-remediation.  Lists linked capabilities for one non-human identity (NHI). Required query parameter `type` selects the kind: `mcp`, `tool`, or `skill`. Do not send `isNHI`.  Returns one page of capabilities as a JSON array. Each element includes the capability id, display name, kind (`MCP`, `TOOL`, or `SKILL`), and source name. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or linked capabilities are not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param type: Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`. (required)
+        :type type: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_capabilities_v1_serialize(
+            id=id,
+            type=type,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhicapabilitywire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_intel_identity_capabilities_v1_with_http_info(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        type: Annotated[StrictStr, Field(description="Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Intelnhicapabilitywire]]:
+        """List NHI capabilities
+
+        Requires tenant license idn:response-and-remediation.  Lists linked capabilities for one non-human identity (NHI). Required query parameter `type` selects the kind: `mcp`, `tool`, or `skill`. Do not send `isNHI`.  Returns one page of capabilities as a JSON array. Each element includes the capability id, display name, kind (`MCP`, `TOOL`, or `SKILL`), and source name. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or linked capabilities are not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param type: Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`. (required)
+        :type type: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_capabilities_v1_serialize(
+            id=id,
+            type=type,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhicapabilitywire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_intel_identity_capabilities_v1_without_preload_content(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        type: Annotated[StrictStr, Field(description="Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List NHI capabilities
+
+        Requires tenant license idn:response-and-remediation.  Lists linked capabilities for one non-human identity (NHI). Required query parameter `type` selects the kind: `mcp`, `tool`, or `skill`. Do not send `isNHI`.  Returns one page of capabilities as a JSON array. Each element includes the capability id, display name, kind (`MCP`, `TOOL`, or `SKILL`), and source name. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or linked capabilities are not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param type: Which kind of linked capability to list. Must be `mcp`, `tool`, or `skill`. (required)
+        :type type: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_capabilities_v1_serialize(
+            id=id,
+            type=type,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhicapabilitywire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_intel_identity_capabilities_v1_serialize(
+        self,
+        id,
+        type,
+        limit,
+        offset,
+        count,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if type is not None:
+            
+            _query_params.append(('type', type))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/intelligence/v1/identities/{id}/capabilities',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_intel_identity_certification_history_v1(
         self,
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
@@ -2298,6 +2646,335 @@ class IntelligenceApi:
 
 
     @validate_call
+    def get_intel_identity_risk_signals_v1(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Intelnhirisksignalwire]:
+        """List non-human identity risk factors
+
+        Requires tenant license idn:response-and-remediation.  Lists risk factors for one non-human identity (NHI). Do not send `isNHI`.  Returns one page of risk factors as a JSON array, ordered strongest factor first. Each element describes a factor (id, name, description, severity, status, and when it was last observed) that contributes to the identity risk posture. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or risk information is not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_risk_signals_v1_serialize(
+            id=id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhirisksignalwire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_intel_identity_risk_signals_v1_with_http_info(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Intelnhirisksignalwire]]:
+        """List non-human identity risk factors
+
+        Requires tenant license idn:response-and-remediation.  Lists risk factors for one non-human identity (NHI). Do not send `isNHI`.  Returns one page of risk factors as a JSON array, ordered strongest factor first. Each element describes a factor (id, name, description, severity, status, and when it was last observed) that contributes to the identity risk posture. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or risk information is not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_risk_signals_v1_serialize(
+            id=id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhirisksignalwire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_intel_identity_risk_signals_v1_without_preload_content(
+        self,
+        id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Non-empty identity id path segment for Intelligence sub-resources.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List non-human identity risk factors
+
+        Requires tenant license idn:response-and-remediation.  Lists risk factors for one non-human identity (NHI). Do not send `isNHI`.  Returns one page of risk factors as a JSON array, ordered strongest factor first. Each element describes a factor (id, name, description, severity, status, and when it was last observed) that contributes to the identity risk posture. An empty array is a valid page.  Send `count=true` to receive the `x-total-count` response header (including `0` on empty pages).  Returns **404** when the identity is unknown or risk information is not available for this identity. 
+
+        :param id: Non-empty identity id path segment for Intelligence sub-resources. (required)
+        :type id: str
+        :param limit: Max number of results to return. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [API Standard Collection Parameters](https://developer.sailpoint.com/docs/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_intel_identity_risk_signals_v1_serialize(
+            id=id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Intelnhirisksignalwire]",
+            '400': "ErrorResponseDto",
+            '401': "GetIdentityIntelligenceV1401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetIdentityIntelligenceV1429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_intel_identity_risk_signals_v1_serialize(
+        self,
+        id,
+        limit,
+        offset,
+        count,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/intelligence/v1/identities/{id}/risk-signals',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_response_action_status_v1(
         self,
         id: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="The requestId of the response action to look up.")],
@@ -2316,7 +2993,7 @@ class IntelligenceApi:
     ) -> Responseactionstatus:
         """Get response action status
 
-        Requires tenant license idn:response-and-remediation.  Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from POST /intelligence/v1/response-actions.  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT. 
+        Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from [Create a response action](https://developer.sailpoint.com/docs/api/v1/create-response-action-v1).  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT, DEACTIVATE_AGENT. License requirements match the action submitted on create. 
 
         :param id: The requestId of the response action to look up. (required)
         :type id: str
@@ -2389,7 +3066,7 @@ class IntelligenceApi:
     ) -> ApiResponse[Responseactionstatus]:
         """Get response action status
 
-        Requires tenant license idn:response-and-remediation.  Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from POST /intelligence/v1/response-actions.  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT. 
+        Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from [Create a response action](https://developer.sailpoint.com/docs/api/v1/create-response-action-v1).  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT, DEACTIVATE_AGENT. License requirements match the action submitted on create. 
 
         :param id: The requestId of the response action to look up. (required)
         :type id: str
@@ -2462,7 +3139,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """Get response action status
 
-        Requires tenant license idn:response-and-remediation.  Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from POST /intelligence/v1/response-actions.  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT. 
+        Returns the current aggregate status of a previously submitted response action, identified by the requestId returned from [Create a response action](https://developer.sailpoint.com/docs/api/v1/create-response-action-v1).  Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT, DEACTIVATE_AGENT. License requirements match the action submitted on create. 
 
         :param id: The requestId of the response action to look up. (required)
         :type id: str

@@ -28,7 +28,8 @@ class ResponseactioncreaterequestOneOf(BaseModel):
     ResponseactioncreaterequestOneOf
     """ # noqa: E501
     action_type: Optional[StrictStr] = Field(default=None, alias="actionType")
-    __properties: ClassVar[List[str]] = ["actionType"]
+    identity_type: Optional[StrictStr] = Field(default=None, alias="identityType")
+    __properties: ClassVar[List[str]] = ["actionType", "identityType"]
 
     @field_validator('action_type')
     def action_type_validate_enum(cls, value):
@@ -38,6 +39,16 @@ class ResponseactioncreaterequestOneOf(BaseModel):
 
         if value not in set(['DISABLE_IDENTITY']):
             warnings.warn(f"must be one of enum values ('DISABLE_IDENTITY') unknown value: {value}")
+        return value
+
+    @field_validator('identity_type')
+    def identity_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['HUMAN']):
+            warnings.warn(f"must be one of enum values ('HUMAN') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -91,7 +102,8 @@ class ResponseactioncreaterequestOneOf(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "actionType": obj.get("actionType")
+            "actionType": obj.get("actionType"),
+            "identityType": obj.get("identityType")
         })
         return _obj
 

@@ -54,6 +54,13 @@ class TestIntelligenceApi(unittest.TestCase):
         """
         pass
 
+    def test_get_intel_identity_capabilities_v1(self) -> None:
+        """Test case for get_intel_identity_capabilities_v1
+
+        List NHI capabilities
+        """
+        pass
+
     def test_get_intel_identity_certification_history_v1(self) -> None:
         """Test case for get_intel_identity_certification_history_v1
 
@@ -72,6 +79,13 @@ class TestIntelligenceApi(unittest.TestCase):
         """Test case for get_intel_identity_rare_access_v1
 
         List identity rare access
+        """
+        pass
+
+    def test_get_intel_identity_risk_signals_v1(self) -> None:
+        """Test case for get_intel_identity_risk_signals_v1
+
+        List non-human identity risk factors
         """
         pass
 

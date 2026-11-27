@@ -38,8 +38,8 @@ class Responseactionstatus(BaseModel):
     @field_validator('action_type')
     def action_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['DISABLE_IDENTITY', 'DISABLE_ACCOUNT']):
-            warnings.warn(f"must be one of enum values ('DISABLE_IDENTITY', 'DISABLE_ACCOUNT') unknown value: {value}")
+        if value not in set(['DISABLE_IDENTITY', 'DISABLE_ACCOUNT', 'DEACTIVATE_AGENT']):
+            warnings.warn(f"must be one of enum values ('DISABLE_IDENTITY', 'DISABLE_ACCOUNT', 'DEACTIVATE_AGENT') unknown value: {value}")
         return value
 
     @field_validator('status')

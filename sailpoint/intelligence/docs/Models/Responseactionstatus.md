@@ -18,7 +18,7 @@ Current tracked status of a response action. Target fields from the create reque
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request_id** | **str** | Tracking handle and correlation id for the response action. | [required]
-**action_type** |  **Enum** [  'DISABLE_IDENTITY',    'DISABLE_ACCOUNT' ] | The action that was requested. | [required]
+**action_type** |  **Enum** [  'DISABLE_IDENTITY',    'DISABLE_ACCOUNT',    'DEACTIVATE_AGENT' ] | The action that was requested. | [required]
 **status** |  **Enum** [  'SUBMITTED',    'IN_PROGRESS',    'COMPLETED',    'FAILED' ] | Aggregate status across the correlated workflow execution(s): SUBMITTED (registered, no execution yet), IN_PROGRESS (any still non-terminal), COMPLETED (all terminal and at least one succeeded), or FAILED (all terminal and none succeeded).  | [required]
 **submitted_at** | **datetime** | When the response action was accepted. | [required]
 **updated_at** | **datetime** | When the response action status last changed. | [required]

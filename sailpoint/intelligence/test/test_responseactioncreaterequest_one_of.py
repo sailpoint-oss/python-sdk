@@ -35,7 +35,8 @@ class TestResponseactioncreaterequestOneOf(unittest.TestCase):
         model = ResponseactioncreaterequestOneOf()
         if include_optional:
             return ResponseactioncreaterequestOneOf(
-                action_type = 'DISABLE_IDENTITY'
+                action_type = 'DISABLE_IDENTITY',
+                identity_type = 'HUMAN'
             )
         else:
             return ResponseactioncreaterequestOneOf(

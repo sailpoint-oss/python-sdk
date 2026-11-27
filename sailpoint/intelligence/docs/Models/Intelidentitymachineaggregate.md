@@ -27,6 +27,9 @@ Name | Type | Description | Notes
 **match_confidence** |  **Enum** [  'exact',    'partial' ] | Match quality for opaque prefix resolution; omitted for direct id eq and exact opaque matches. | [optional] 
 **identity_graph** | [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **accounts** | [**Intelmachineaccountsslice**](intelmachineaccountsslice) |  | [required]
+**capabilities** | [**Intelnhicapabilities**](intelnhicapabilities) |  | [required]
+**risk** | [**Intelnhirisk**](intelnhirisk) |  | [optional] 
+**risk_signals** | [**Intelnhirisksignals**](intelnhirisksignals) |  | [required]
 **native_identity** | **str** | Native identifier on the source system. | [required]
 **dataset_id** | **str** | Dataset identifier from upstream machine-identity services when present. | [optional] 
 **source** | [**Intelmachinesourcewire**](intelmachinesourcewire) | Source metadata for the machine identity when present upstream. | [optional] 
@@ -81,6 +84,29 @@ accounts=sailpoint.intelligence.models.intelmachineaccountsslice.Intelmachineacc
                         ], 
                     total_count = 11, 
                     next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/accounts?limit=10&offset=10&count=true&isNHI=true', ),
+capabilities=sailpoint.intelligence.models.intelnhicapabilities.Intelnhicapabilities(
+                    mcp = null, 
+                    tool = null, 
+                    skill = null, 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
+risk=sailpoint.intelligence.models.intelnhirisk.Intelnhirisk(
+                    severity = 'HIGH', 
+                    last_modified = '2026-10-10T16:48:51.866993644Z', ),
+risk_signals=sailpoint.intelligence.models.intelnhirisksignals.Intelnhirisksignals(
+                    items = [
+                        sailpoint.intelligence.models.intelnhirisksignalwire.Intelnhirisksignalwire(
+                            id = 'human_owner_confirmed', 
+                            name = 'No human owner confirmed', 
+                            description = 'No attributed owner means weak accountability for access and remediation.', 
+                            severity_value = 'CRITICAL', 
+                            last_received_at = '2026-10-10T16:45:29Z', 
+                            status = 'active', )
+                        ], 
+                    total_count = 3, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/risk-signals?limit=10&offset=10&count=true', 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
 native_identity='arn:aws:bedrock:us-east-1:336721:agent/ABCDEFGHI',
 dataset_id='dataset-001',
 source=sailpoint.intelligence.models.intelmachinesourcewire.Intelmachinesourcewire(

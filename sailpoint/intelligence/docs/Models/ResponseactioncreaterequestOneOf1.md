@@ -17,6 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'ResponseactioncreaterequestOneOf1', '
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action_type** |  **Enum** [  'DISABLE_ACCOUNT' ] |  | [optional] 
+**identity_type** |  **Enum** [  'HUMAN' ] |  | [optional] 
 }
 
 ## Example
@@ -25,7 +26,8 @@ Name | Type | Description | Notes
 from sailpoint.intelligence.models.responseactioncreaterequest_one_of1 import ResponseactioncreaterequestOneOf1
 
 responseactioncreaterequest_one_of1 = ResponseactioncreaterequestOneOf1(
-action_type='DISABLE_ACCOUNT'
+action_type='DISABLE_ACCOUNT',
+identity_type='HUMAN'
 )
 
 ```

@@ -69,9 +69,11 @@ Class | Method | HTTP request | Description
 *IntelligenceApi* | [**get_identity_intelligence_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_identity_intelligence_v1) | **GET** /intelligence/v1/identities | Get identity by filter
 *IntelligenceApi* | [**get_intel_identity_access_item_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_access_item_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceApi* | [**get_intel_identity_accounts_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_accounts_v1) | **GET** /intelligence/v1/identities/{id}/accounts | List identity accounts
+*IntelligenceApi* | [**get_intel_identity_capabilities_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_capabilities_v1) | **GET** /intelligence/v1/identities/{id}/capabilities | List NHI capabilities
 *IntelligenceApi* | [**get_intel_identity_certification_history_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_certification_history_v1) | **GET** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
 *IntelligenceApi* | [**get_intel_identity_non_human_identity_ownership_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_non_human_identity_ownership_v1) | **GET** /intelligence/v1/identities/{id}/non-human-identity-ownership/{category} | List owned NHI identities
 *IntelligenceApi* | [**get_intel_identity_rare_access_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_rare_access_v1) | **GET** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
+*IntelligenceApi* | [**get_intel_identity_risk_signals_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_intel_identity_risk_signals_v1) | **GET** /intelligence/v1/identities/{id}/risk-signals | List non-human identity risk factors
 *IntelligenceApi* | [**get_response_action_status_v1**](sailpoint/intelligence/docs/IntelligenceApi.md#get_response_action_status_v1) | **GET** /intelligence/v1/response-actions/{id}/status | Get response action status
 
 
@@ -99,6 +101,7 @@ Class | Method | HTTP request | Description
  - [IntelPrivilegedAccessSlice](sailpoint/intelligence/docs/IntelPrivilegedAccessSlice.md)
  - [IntelRareAccessSlice](sailpoint/intelligence/docs/IntelRareAccessSlice.md)
  - [Intelblastradiussummary](sailpoint/intelligence/docs/Intelblastradiussummary.md)
+ - [Intelenrichmentfailurereason](sailpoint/intelligence/docs/Intelenrichmentfailurereason.md)
  - [Intelidentityambiguousbody](sailpoint/intelligence/docs/Intelidentityambiguousbody.md)
  - [Intelidentityambiguouscandidate](sailpoint/intelligence/docs/Intelidentityambiguouscandidate.md)
  - [Intelidentityenvelope](sailpoint/intelligence/docs/Intelidentityenvelope.md)
@@ -111,6 +114,12 @@ Class | Method | HTTP request | Description
  - [Intelmachineidentityowners](sailpoint/intelligence/docs/Intelmachineidentityowners.md)
  - [Intelmachinesourcewire](sailpoint/intelligence/docs/Intelmachinesourcewire.md)
  - [Intelmachineuserentitlement](sailpoint/intelligence/docs/Intelmachineuserentitlement.md)
+ - [Intelnhicapabilities](sailpoint/intelligence/docs/Intelnhicapabilities.md)
+ - [Intelnhicapabilitybucket](sailpoint/intelligence/docs/Intelnhicapabilitybucket.md)
+ - [Intelnhicapabilitywire](sailpoint/intelligence/docs/Intelnhicapabilitywire.md)
+ - [Intelnhirisk](sailpoint/intelligence/docs/Intelnhirisk.md)
+ - [Intelnhirisksignals](sailpoint/intelligence/docs/Intelnhirisksignals.md)
+ - [Intelnhirisksignalwire](sailpoint/intelligence/docs/Intelnhirisksignalwire.md)
  - [Intelnonhumanidentityownedslice](sailpoint/intelligence/docs/Intelnonhumanidentityownedslice.md)
  - [Intelnonhumanidentityownership](sailpoint/intelligence/docs/Intelnonhumanidentityownership.md)
  - [Intelnonhumanidentityownershipcategory](sailpoint/intelligence/docs/Intelnonhumanidentityownershipcategory.md)
@@ -122,6 +131,7 @@ Class | Method | HTTP request | Description
  - [Responseactioncreaterequest](sailpoint/intelligence/docs/Responseactioncreaterequest.md)
  - [ResponseactioncreaterequestOneOf](sailpoint/intelligence/docs/ResponseactioncreaterequestOneOf.md)
  - [ResponseactioncreaterequestOneOf1](sailpoint/intelligence/docs/ResponseactioncreaterequestOneOf1.md)
+ - [ResponseactioncreaterequestOneOf2](sailpoint/intelligence/docs/ResponseactioncreaterequestOneOf2.md)
  - [Responseactionstatus](sailpoint/intelligence/docs/Responseactionstatus.md)
 
 

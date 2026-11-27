@@ -71,6 +71,29 @@ class TestIntelidentitymachineaggregate(unittest.TestCase):
                         ], 
                     total_count = 11, 
                     next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/accounts?limit=10&offset=10&count=true&isNHI=true', ),
+                capabilities = sailpoint.intelligence.models.intelnhicapabilities.Intelnhicapabilities(
+                    mcp = null, 
+                    tool = null, 
+                    skill = null, 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
+                risk = sailpoint.intelligence.models.intelnhirisk.Intelnhirisk(
+                    severity = 'HIGH', 
+                    last_modified = '2026-10-10T16:48:51.866993644Z', ),
+                risk_signals = sailpoint.intelligence.models.intelnhirisksignals.Intelnhirisksignals(
+                    items = [
+                        sailpoint.intelligence.models.intelnhirisksignalwire.Intelnhirisksignalwire(
+                            id = 'human_owner_confirmed', 
+                            name = 'No human owner confirmed', 
+                            description = 'No attributed owner means weak accountability for access and remediation.', 
+                            severity_value = 'CRITICAL', 
+                            last_received_at = '2026-10-10T16:45:29Z', 
+                            status = 'active', )
+                        ], 
+                    total_count = 3, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/risk-signals?limit=10&offset=10&count=true', 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
                 native_identity = 'arn:aws:bedrock:us-east-1:336721:agent/ABCDEFGHI',
                 dataset_id = 'dataset-001',
                 source = sailpoint.intelligence.models.intelmachinesourcewire.Intelmachinesourcewire(
@@ -138,6 +161,26 @@ class TestIntelidentitymachineaggregate(unittest.TestCase):
                         ], 
                     total_count = 11, 
                     next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/accounts?limit=10&offset=10&count=true&isNHI=true', ),
+                capabilities = sailpoint.intelligence.models.intelnhicapabilities.Intelnhicapabilities(
+                    mcp = null, 
+                    tool = null, 
+                    skill = null, 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
+                risk_signals = sailpoint.intelligence.models.intelnhirisksignals.Intelnhirisksignals(
+                    items = [
+                        sailpoint.intelligence.models.intelnhirisksignalwire.Intelnhirisksignalwire(
+                            id = 'human_owner_confirmed', 
+                            name = 'No human owner confirmed', 
+                            description = 'No attributed owner means weak accountability for access and remediation.', 
+                            severity_value = 'CRITICAL', 
+                            last_received_at = '2026-10-10T16:45:29Z', 
+                            status = 'active', )
+                        ], 
+                    total_count = 3, 
+                    next = 'https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/2c91808874ff91550175097daaec161e/risk-signals?limit=10&offset=10&count=true', 
+                    message = 'Data temporarily unavailable. Please try again later.', 
+                    reason = 'UPSTREAM_UNAVAILABLE', ),
                 native_identity = 'arn:aws:bedrock:us-east-1:336721:agent/ABCDEFGHI',
                 owners = sailpoint.intelligence.models.intelmachineidentityowners.Intelmachineidentityowners(
                     primary_identity = null, 

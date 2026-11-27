@@ -19,11 +19,12 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, f
 from typing import Any, List, Optional
 from sailpoint.intelligence.models.responseactioncreaterequest_one_of import ResponseactioncreaterequestOneOf
 from sailpoint.intelligence.models.responseactioncreaterequest_one_of1 import ResponseactioncreaterequestOneOf1
+from sailpoint.intelligence.models.responseactioncreaterequest_one_of2 import ResponseactioncreaterequestOneOf2
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-RESPONSEACTIONCREATEREQUEST_ONE_OF_SCHEMAS = ["ResponseactioncreaterequestOneOf", "ResponseactioncreaterequestOneOf1"]
+RESPONSEACTIONCREATEREQUEST_ONE_OF_SCHEMAS = ["ResponseactioncreaterequestOneOf", "ResponseactioncreaterequestOneOf1", "ResponseactioncreaterequestOneOf2"]
 
 class Responseactioncreaterequest(BaseModel):
     """
@@ -33,8 +34,10 @@ class Responseactioncreaterequest(BaseModel):
     oneof_schema_1_validator: Optional[ResponseactioncreaterequestOneOf] = None
     # data type: ResponseactioncreaterequestOneOf1
     oneof_schema_2_validator: Optional[ResponseactioncreaterequestOneOf1] = None
-    actual_instance: Optional[Union[ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1]] = None
-    one_of_schemas: Set[str] = { "ResponseactioncreaterequestOneOf", "ResponseactioncreaterequestOneOf1" }
+    # data type: ResponseactioncreaterequestOneOf2
+    oneof_schema_3_validator: Optional[ResponseactioncreaterequestOneOf2] = None
+    actual_instance: Optional[Union[ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2]] = None
+    one_of_schemas: Set[str] = { "ResponseactioncreaterequestOneOf", "ResponseactioncreaterequestOneOf1", "ResponseactioncreaterequestOneOf2" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -67,12 +70,17 @@ class Responseactioncreaterequest(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ResponseactioncreaterequestOneOf1`")
         else:
             match += 1
+        # validate data type: ResponseactioncreaterequestOneOf2
+        if not isinstance(v, ResponseactioncreaterequestOneOf2):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ResponseactioncreaterequestOneOf2`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -99,13 +107,19 @@ class Responseactioncreaterequest(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into ResponseactioncreaterequestOneOf2
+        try:
+            instance.actual_instance = ResponseactioncreaterequestOneOf2.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into Responseactioncreaterequest with oneOf schemas: ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -119,7 +133,7 @@ class Responseactioncreaterequest(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], ResponseactioncreaterequestOneOf, ResponseactioncreaterequestOneOf1, ResponseactioncreaterequestOneOf2]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
