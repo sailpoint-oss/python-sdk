@@ -962,7 +962,7 @@ function generateInitPy() {
   //
   // Type-checking imports: one private alias per versioned class.
   // Use the partition dir as a disambiguating prefix so two partitions that
-  // happen to generate the same class name (e.g. both NERM and ISC expose a
+  // happen to generate the same class name (e.g. both NERM and SailPoint Identity Security expose a
   // RolesApi) don't clobber each other's alias.
   const aliasOf = p => `_${p.partDir}__${p.className}`;
   const typeCheckingImports = partitions.map(p =>
@@ -1167,7 +1167,7 @@ function main() {
 
   // Clean only the sailpoint/* directories and loose files that correspond to
   // partitions in this run's apisDir.  This prevents a NERM build from wiping
-  // ISC partition output (or vice versa) when two separate builds are used.
+  // SailPoint Identity Security partition output (or vice versa) when two separate builds are used.
   //
   // Partition output dir name = partition name with '-' → '_'.
   // Loose README files follow the same naming convention.

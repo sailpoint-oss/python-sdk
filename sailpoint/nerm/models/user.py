@@ -41,7 +41,7 @@ class User(BaseModel):
     preferred_language: Optional[StrictStr] = Field(default=None, description="The locale the user prefers to use")
     locale: Optional[StrictStr] = Field(default=None, description="The locale the user prefers to use")
     group_strings: Optional[StrictStr] = Field(default=None, description="Group strings configured on the customer's Active Directory configuration, provided by the IDP at the moment on authentication.")
-    sailpoint_identity_id: Optional[StrictStr] = Field(default=None, description="The identity ID of the user in ISC")
+    sailpoint_identity_id: Optional[StrictStr] = Field(default=None, description="The identity ID of the user in SailPoint Identity Security")
     __properties: ClassVar[List[str]] = ["id", "uid", "name", "email", "type", "title", "status", "login", "last_login", "cookies_accepted_at", "preferred_language", "locale", "group_strings", "sailpoint_identity_id"]
 
     @field_validator('type')

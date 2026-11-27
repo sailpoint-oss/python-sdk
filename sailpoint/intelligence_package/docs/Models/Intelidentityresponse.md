@@ -17,14 +17,14 @@ HUMAN responses include human, top-level subtype (NERM classification: Employee,
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Identity Security Cloud identifier for this identity. | [required]
+**id** | **str** | SailPoint Identity Security identifier for this identity. | [required]
 **type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Discriminator indicating whether this identity is human or machine backed. | [required]
 **display_name** | **str** | Preferred display name for the identity across administrative experiences. | [optional] 
 **description** | **str** | Optional free-text description assigned to the identity profile when present. | [optional] 
 **subtype** | **str** | For HUMAN identities, NERM classification (Employee, Non Employee, or Cannot Determine). For MACHINE identities, connector subtype string from the authoritative source.  | [optional] 
 **owners** | **str** | Serialized owner reference information when populated by upstream identity services. | [optional] 
 **attributes** | **map[string]object** | Arbitrary SCIM-style attribute bag returned for the identity context view. | [optional] 
-**timestamps** | [**Intelidentitytimestamps**](intelidentitytimestamps) | Created and modified timestamps for the identity record in Identity Security Cloud. | [required]
+**timestamps** | [**Intelidentitytimestamps**](intelidentitytimestamps) | Created and modified timestamps for the identity record in SailPoint Identity Security. | [required]
 **human** | [**Intelhuman**](intelhuman) | Human identity extension payload when type is HUMAN. | [optional] 
 **machine** | [**Intelmachine**](intelmachine) | Machine identity extension payload when type is MACHINE. | [optional] 
 **links** | [**Intelidentitylinks**](intelidentitylinks) | Hyperlinks to related Intelligence Package sub-resources; present for HUMAN only. | [optional] 
